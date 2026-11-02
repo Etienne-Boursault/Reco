@@ -43,10 +43,16 @@ export interface Galerie {
    * simplement le type », relecture du 2026-08-19.
    */
   court: string;
-  /** Le compteur au singulier — « spectacle recommandé ». */
+  /**
+   * Le compteur au singulier — « spectacle cité ». « cité » et non
+   * « recommandé » : la galerie compte aussi les œuvres seulement évoquées
+   * (`selectByType` garde les citations), corrigé le 2026-11-02.
+   */
   unGe: string;
-  /** Le compteur au pluriel — « spectacles recommandés ». */
+  /** Le compteur au pluriel — « spectacles cités ». */
   plusieurs: string;
+  /** Nom féminin : accorde « recommandées ou seulement évoquées ». */
+  feminin: boolean;
   /** La phrase affichée quand la galerie est vide. */
   vide: string;
 }
@@ -57,19 +63,19 @@ export interface Galerie {
  */
 export const PAGES_DEDIEES: Galerie[] = [
   { slug: 'films', court: 'Films', types: ['film'], titre: 'Tous les films',
-    unGe: 'film recommandé', plusieurs: 'films recommandés',
+    unGe: 'film cité', plusieurs: 'films cités', feminin: false,
     vide: 'Aucun film recommandé pour l’instant.' },
   { slug: 'series', court: 'Séries', types: ['serie'], titre: 'Toutes les séries',
-    unGe: 'série recommandée', plusieurs: 'séries recommandées',
+    unGe: 'série citée', plusieurs: 'séries citées', feminin: true,
     vide: 'Aucune série recommandée pour l’instant.' },
   { slug: 'musique', court: 'Musique', types: ['musique', 'album'], titre: 'Toute la musique',
-    unGe: 'œuvre musicale recommandée', plusieurs: 'œuvres musicales recommandées',
+    unGe: 'œuvre musicale citée', plusieurs: 'œuvres musicales citées', feminin: true,
     vide: 'Aucune musique recommandée pour l’instant.' },
   { slug: 'livres', court: 'Livres et BD', types: ['livre', 'bd'], titre: 'Tous les livres',
-    unGe: 'livre ou BD recommandé', plusieurs: 'livres et BD recommandés',
+    unGe: 'livre ou BD cité', plusieurs: 'livres et BD cités', feminin: false,
     vide: 'Aucun livre recommandé pour l’instant.' },
   { slug: 'chaines', court: 'Chaînes', types: ['chaine'], titre: 'Toutes les chaînes YouTube',
-    unGe: 'chaîne YouTube recommandée', plusieurs: 'chaînes YouTube recommandées',
+    unGe: 'chaîne YouTube citée', plusieurs: 'chaînes YouTube citées', feminin: true,
     vide: 'Aucune chaîne recommandée pour l’instant.' },
 ];
 
@@ -82,36 +88,36 @@ export const PAGES_DEDIEES: Galerie[] = [
  */
 export const GALERIES_PAR_TYPE: Galerie[] = [
   { slug: 'artistes', court: 'Artistes', types: ['artiste'], titre: 'Tous les artistes',
-    unGe: 'artiste recommandé', plusieurs: 'artistes recommandés',
+    unGe: 'artiste cité', plusieurs: 'artistes cités', feminin: false,
     vide: 'Aucun artiste recommandé pour l’instant.' },
   { slug: 'albums', court: 'Albums', types: ['album'], titre: 'Tous les albums',
-    unGe: 'album recommandé', plusieurs: 'albums recommandés',
+    unGe: 'album cité', plusieurs: 'albums cités', feminin: false,
     vide: 'Aucun album recommandé pour l’instant.' },
   { slug: 'bd', court: 'BD', types: ['bd'], titre: 'Toutes les BD',
-    unGe: 'bande dessinée recommandée', plusieurs: 'bandes dessinées recommandées',
+    unGe: 'bande dessinée citée', plusieurs: 'bandes dessinées citées', feminin: true,
     vide: 'Aucune bande dessinée recommandée pour l’instant.' },
   { slug: 'spectacles', court: 'Spectacles', types: ['spectacle'], titre: 'Tous les spectacles',
-    unGe: 'spectacle recommandé', plusieurs: 'spectacles recommandés',
+    unGe: 'spectacle cité', plusieurs: 'spectacles cités', feminin: false,
     vide: 'Aucun spectacle recommandé pour l’instant.' },
   { slug: 'videos', court: 'Vidéos', types: ['video'], titre: 'Toutes les vidéos',
-    unGe: 'vidéo recommandée', plusieurs: 'vidéos recommandées',
+    unGe: 'vidéo citée', plusieurs: 'vidéos citées', feminin: true,
     vide: 'Aucune vidéo recommandée pour l’instant.' },
   { slug: 'podcasts', court: 'Podcasts', types: ['podcast'], titre: 'Tous les podcasts',
-    unGe: 'podcast recommandé', plusieurs: 'podcasts recommandés',
+    unGe: 'podcast cité', plusieurs: 'podcasts cités', feminin: false,
     vide: 'Aucun podcast recommandé pour l’instant.' },
   { slug: 'jeux', court: 'Jeux', types: ['jeu'], titre: 'Tous les jeux',
-    unGe: 'jeu recommandé', plusieurs: 'jeux recommandés',
+    unGe: 'jeu cité', plusieurs: 'jeux cités', feminin: false,
     vide: 'Aucun jeu recommandé pour l’instant.' },
   { slug: 'lieux', court: 'Lieux', types: ['lieu'], titre: 'Tous les lieux',
-    unGe: 'lieu recommandé', plusieurs: 'lieux recommandés',
+    unGe: 'lieu cité', plusieurs: 'lieux cités', feminin: false,
     vide: 'Aucun lieu recommandé pour l’instant.' },
   { slug: 'applications', court: 'Applications', types: ['application'], titre: 'Toutes les applications',
-    unGe: 'application recommandée', plusieurs: 'applications recommandées',
+    unGe: 'application citée', plusieurs: 'applications citées', feminin: true,
     vide: 'Aucune application recommandée pour l’instant.' },
   // `autre` est le type de repli : ce qui n'entre dans aucune case. Sans page,
   // ces œuvres ne s'atteignaient que par la recherche.
   { slug: 'autres', court: 'Autres', types: ['autre'], titre: 'Tout le reste',
-    unGe: 'recommandation hors catégorie', plusieurs: 'recommandations hors catégorie',
+    unGe: 'œuvre hors catégorie citée', plusieurs: 'œuvres hors catégorie citées', feminin: true,
     vide: 'Rien hors catégorie pour l’instant.' },
 ];
 

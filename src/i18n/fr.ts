@@ -87,18 +87,23 @@ export const fr = {
   // pluriel s'applique dès `n >= 2`, donc 0 et 1 prennent le singulier.
   // La galerie « livres » couvrant deux types, son singulier dit « ou »
   // (une entrée est un livre OU une BD) et son pluriel « et ».
-  'gallery.films.count.one': 'film recommandé',
-  'gallery.films.count.many': 'films recommandés',
-  'gallery.series.count.one': 'série recommandée',
-  'gallery.series.count.many': 'séries recommandées',
-  'gallery.livres.count.one': 'livre ou BD recommandé',
-  'gallery.livres.count.many': 'livres et BD recommandés',
-  'gallery.musique.count.one': 'œuvre musicale recommandée',
-  'gallery.musique.count.many': 'œuvres musicales recommandées',
-  'gallery.chaines.count.one': 'chaîne YouTube recommandée',
-  'gallery.chaines.count.many': 'chaînes YouTube recommandées',
-  'gallery.guest.count.one': 'recommandation',
-  'gallery.guest.count.many': 'recommandations',
+  // « cités » et non « recommandés » (2026-11-02) : une galerie compte toute
+  // œuvre qui a une mention visible, citations comprises (`selectByType`). La
+  // page Films annonçait « 208 films recommandés » quand 123 seulement l'étaient.
+  'gallery.films.count.one': 'film cité',
+  'gallery.films.count.many': 'films cités',
+  'gallery.series.count.one': 'série citée',
+  'gallery.series.count.many': 'séries citées',
+  'gallery.livres.count.one': 'livre ou BD cité',
+  'gallery.livres.count.many': 'livres et BD cités',
+  'gallery.musique.count.one': 'œuvre musicale citée',
+  'gallery.musique.count.many': 'œuvres musicales citées',
+  'gallery.chaines.count.one': 'chaîne YouTube citée',
+  'gallery.chaines.count.many': 'chaînes YouTube citées',
+  // Page d'un invité : `selectByGuest` retient aussi les œuvres qu'il a
+  // seulement évoquées (337 citations portent un `recommendedBy`).
+  'gallery.guest.count.one': 'œuvre citée',
+  'gallery.guest.count.many': 'œuvres citées',
 
   // Listes et playlists (page `/[source]/listes` et ses quatre accès). Les
   // nombres viennent de `tools/data/` au build (cf. `src/lib/listes/`).
