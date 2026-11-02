@@ -22,10 +22,17 @@
  *
  * Le sommaire interne `/[source]/galeries` reste hors navigation : il porte
  * des indications réservées à l'éditeur.
+ *
+ * Après les galeries, une carte « Listes et playlists » quand la source en a
+ * (maquette LS2-accueil ; EN DERNIER, décision du 2026-11-02). Son nombre est
+ * celui des listes : une playlist compte une fois pour Spotify et Deezer.
  */
 import type { EntreeSommaire } from '../lib/gallery/sommaire';
 import { iconeDuType } from '../utils/iconesTypes';
 import { plural } from '../utils/plural';
+import { chargerListes, nombreDeListes } from '../lib/listes/donnees';
+import { apercuSensCritique, libelleTitres } from '../lib/listes/libelles';
+import { t } from '../i18n';
 
 interface Props {
   sourceId: string;
@@ -33,6 +40,17 @@ interface Props {
 }
 
 const { sourceId, galeries } = Astro.props;
+
+const listes = chargerListes(sourceId);
+const nListes = listes ? nombreDeListes(listes) : 0;
+const apercuListes = listes
+  ? [
+      listes.toutes && `${listes.toutes.nom} · ${libelleTitres(listes.toutes)}`,
+      listes.saisons.length > 0 && t('listes.carte.saisons'),
+      listes.senscritique.length > 0 && apercuSensCritique(listes.senscritique),
+    ].filter((l): l is string => Boolean(l))
+  : [];
+const iconeListes = 'M4 6h11 M4 12h11 M4 18h7 M17 14v-8l4-1 M17 14a2 2 0 1 1-4 0 2 2 0 0 1 4 0z';
 ---
 
 <h2 class="visually-hidden">Galeries par type d'œuvre</h2>
@@ -67,6 +85,24 @@ const { sourceId, galeries } = Astro.props;
       </a>
     </li>
   ))}
+  {listes && (
+    <li>
+      <a class="galerie-carte galerie-carte--listes" href={`/${sourceId}/listes`}>
+        <span class="galerie-n">
+          {nListes}<span class="visually-hidden"> {plural(nListes, 'liste')}</span>
+        </span>
+        <span class="galerie-nom">{t('listes.title')}</span>
+        <svg class="galerie-icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d={iconeListes} />
+        </svg>
+        <span class="galerie-apercu">
+          {apercuListes.map((ligne) => <span class="galerie-titre">{ligne}</span>)}
+        </span>
+        <span class="galerie-voir" aria-hidden="true">{t('listes.carte.voir')}</span>
+      </a>
+    </li>
+  )}
 </ul>
 
 <style>
@@ -144,6 +180,11 @@ const { sourceId, galeries } = Astro.props;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  /* Les lignes de la carte des listes sont des phrases, pas des titres :
+     coupées, « 298 ti… » ne disait plus rien. Elles passent à la ligne. */
+  .galerie-carte--listes .galerie-titre {
+    white-space: normal;
   }
   .galerie-voir {
     grid-area: voir;

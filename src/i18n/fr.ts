@@ -35,6 +35,7 @@ export const fr = {
   'footer.about': 'À propos',
   'footer.manifesto': 'Manifeste éthique',
   'footer.legal': 'Mentions légales',
+  'footer.listes': 'Listes et playlists',
   'footer.nav.label': 'Liens secondaires',
   'footer.support': 'Soutenir le projet',
 
@@ -98,6 +99,52 @@ export const fr = {
   'gallery.chaines.count.many': 'chaînes YouTube recommandées',
   'gallery.guest.count.one': 'recommandation',
   'gallery.guest.count.many': 'recommandations',
+
+  // Listes et playlists (page `/[source]/listes` et ses quatre accès). Les
+  // nombres viennent de `tools/data/` au build (cf. `src/lib/listes/`).
+  'listes.title': 'Listes et playlists',
+  'listes.lede.debut': 'Les recos du podcast',
+  'listes.lede.fin': ', rangées dans des playlists et des listes à suivre. Voici ce qui vient d’y entrer.',
+  'listes.description': 'Les recos du podcast {podcast} en playlists Spotify et Deezer et en listes SensCritique : {detail}.',
+  'listes.titres.ecart': '{spotify} sur Spotify, {deezer} sur Deezer',
+  'listes.musique.plateformes': 'sur Spotify et Deezer',
+  'listes.derniersAjouts': 'Derniers ajouts',
+  'listes.derniersAjouts.aide': 'chaque vignette mène à sa fiche sur le site',
+  'listes.parSaison': 'Par saison',
+  'listes.sc.plateforme': 'sur SensCritique',
+  'listes.sc.voir': 'Voir la liste',
+  'listes.genre.film': 'Films',
+  'listes.genre.serie': 'Séries',
+  'listes.genre.livre': 'Livres',
+  'listes.genre.bd': 'Bandes dessinées',
+  'listes.genreCourt.film': 'films',
+  'listes.genreCourt.serie': 'séries',
+  'listes.genreCourt.livre': 'livres',
+  'listes.genreCourt.bd': 'BD',
+  'listes.vieprivee':
+    'Les liens ouvrent Spotify, Deezer ou SensCritique dans un nouvel onglet. Cette page ne charge rien depuis ces plateformes : ni lecteur, ni image, ni script.',
+  'listes.a11y.ecouter': 'Écouter la playlist « {nom} » sur {plateforme} (nouvel onglet)',
+  'listes.a11y.voirListe': 'Voir la liste SensCritique des {genre} (nouvel onglet)',
+  'listes.carte.saisons': 'Une playlist par saison',
+  'listes.carte.sc': '{genres} sur SensCritique',
+  'listes.carte.voir': 'Voir les listes →',
+  'listes.bandeau.musique': 'À écouter d’une traite :',
+  'listes.bandeau.musique.fin': 'en playlist',
+  'listes.bandeau.saisons': 'Une playlist par saison →',
+  'listes.bandeau.toutes': 'Toutes les listes →',
+  // Une liste SensCritique ne rassemble que des œuvres RECOMMANDÉES, et pas
+  // toutes (SensCritique ne les connaît pas toutes) ; la galerie compte en
+  // plus les œuvres seulement évoquées. « {n} des films recommandés » le dit.
+  'listes.bandeau.film': 'Une liste à suivre sur SensCritique rassemble {n} des films recommandés ici.',
+  'listes.bandeau.serie': 'Une liste à suivre sur SensCritique rassemble {n} des séries recommandées ici.',
+  'listes.bandeau.livre': 'Une liste à suivre sur SensCritique rassemble {n} des livres recommandés ici.',
+  'listes.bandeau.bd': 'Une liste à suivre sur SensCritique rassemble {n} des BD recommandées ici.',
+  'listes.bandeau.livresEtBd':
+    'Deux listes à suivre sur SensCritique rassemblent {livres} des livres et {bd} des BD recommandés ici.',
+  'listes.bandeau.liste.livre': 'Liste des livres',
+  'listes.bandeau.liste.bd': 'Liste des BD',
+  'listes.episode.label': 'Playlist de l’épisode',
+  'listes.episode.texte': 'La musique de cet épisode est dans la playlist',
 
   // Extrait audio (item #12)
   'audio.listenAt': 'Écouter à',

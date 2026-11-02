@@ -1,0 +1,30 @@
+---
+/**
+ * ListesBoutonsPlaylist.astro — les deux liens d'une playlist : Spotify, Deezer.
+ *
+ * Le texte visible reste court (« Spotify ↗ ») ; le nom accessible précise la
+ * playlist, sans quoi une page qui aligne sept paires de « Spotify » serait
+ * illisible au lecteur d'écran.
+ */
+import ListesLien from './ListesLien.astro';
+import type { Playlist } from '../lib/listes/donnees';
+import { ariaEcouter } from '../lib/listes/libelles';
+
+interface Props {
+  sourceId: string;
+  playlist: Playlist;
+  variante?: 'pilule' | 'texte';
+  /** Sans la flèche ↗ (pastilles de saison, où la place manque). */
+  court?: boolean;
+}
+
+const { sourceId, playlist, variante = 'pilule', court = false } = Astro.props;
+const fleche = court ? '' : ' ↗';
+---
+
+<ListesLien href={playlist.spotify} sourceId={sourceId} ariaLabel={ariaEcouter(playlist, 'Spotify')} variante={variante}>
+  Spotify{fleche}
+</ListesLien>
+<ListesLien href={playlist.deezer} sourceId={sourceId} ariaLabel={ariaEcouter(playlist, 'Deezer')} variante={variante}>
+  Deezer{fleche}
+</ListesLien>

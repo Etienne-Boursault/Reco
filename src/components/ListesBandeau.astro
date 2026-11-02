@@ -1,0 +1,109 @@
+---
+/**
+ * ListesBandeau.astro — en tête d'une page par type, la liste qui la prolonge.
+ *
+ * Musique : la playlist « Toutes les recos musicales » et un lien vers les
+ * playlists de saison. Films, séries, livres : la ou les listes SensCritique
+ * du genre. Maquette LS2-musique, validée le 2026-11-02.
+ *
+ * La phrase reste vraie : la galerie compte toutes les œuvres citées, même
+ * seulement évoquées ; une liste SensCritique ne rassemble qu'une partie des
+ * recommandées (cf. `listes.bandeau.*` dans `src/i18n/fr.ts`).
+ *
+ * Rien ne s'affiche pour une source sans listes, ou si la liste demandée
+ * n'existe pas.
+ */
+import ListesLien from './ListesLien.astro';
+import ListesBoutonsPlaylist from './ListesBoutonsPlaylist.astro';
+import { chargerListes, listeDuGenre, type Genre, type Listes } from '../lib/listes/donnees';
+import { ariaVoirListe, libelleTitres, phraseBandeau } from '../lib/listes/libelles';
+import { t } from '../i18n';
+import type { I18nKey } from '../i18n/fr';
+
+interface Props {
+  sourceId: string;
+  /** `musique`, ou les genres SensCritique de la page (`['livre', 'bd']`). */
+  genres: 'musique' | Genre[];
+  /** Pour les tests ; par défaut, les listes de la source. */
+  listes?: Listes | null;
+}
+
+const { sourceId, genres } = Astro.props;
+const listes = Astro.props.listes !== undefined ? Astro.props.listes : chargerListes(sourceId);
+const toutes = genres === 'musique' ? listes?.toutes ?? null : null;
+const sc = genres === 'musique' || !listes ? [] : genres.flatMap((g) => listeDuGenre(listes, g) ?? []);
+const page = `/${sourceId}/listes`;
+const icone = toutes
+  ? 'M9 18V6l11-2v12 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z'
+  : 'M4 6h16 M4 12h16 M4 18h10';
+---
+
+{(toutes || sc.length > 0) && (
+  <aside class="lst-bandeau" aria-label={t('listes.title')}>
+    <svg class="lst-bandeau-icone" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icone} /></svg>
+    {toutes ? (
+      <>
+        <p class="lst-bandeau-texte">
+          {t('listes.bandeau.musique')} <strong>{libelleTitres(toutes)}</strong> {t('listes.bandeau.musique.fin')}
+        </p>
+        <span class="lst-bandeau-liens"><ListesBoutonsPlaylist sourceId={sourceId} playlist={toutes} /></span>
+        <a class="lst-bandeau-tous" href={page}>{t('listes.bandeau.saisons')}</a>
+      </>
+    ) : (
+      <>
+        <p class="lst-bandeau-texte">{phraseBandeau(sc)}</p>
+        <span class="lst-bandeau-liens">
+          {sc.map((l) => (
+            <ListesLien href={l.url} sourceId={sourceId} ariaLabel={ariaVoirListe(l.genre)}>
+              {sc.length > 1 ? t(`listes.bandeau.liste.${l.genre}` as I18nKey) : t('listes.sc.voir')} ↗
+            </ListesLien>
+          ))}
+        </span>
+        <a class="lst-bandeau-tous" href={page}>{t('listes.bandeau.toutes')}</a>
+      </>
+    )}
+  </aside>
+)}
+
+<style>
+  .lst-bandeau {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.1rem;
+    margin: 0 0 1.5rem;
+    padding: 0.6rem 1rem;
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+    border-radius: var(--radius);
+  }
+  .lst-bandeau-icone {
+    color: var(--accent);
+    flex: 0 0 auto;
+  }
+  .lst-bandeau-texte {
+    margin: 0;
+    flex: 1 1 12rem;
+    font-size: 0.95rem;
+  }
+  .lst-bandeau-liens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .lst-bandeau-tous {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-left: auto;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .lst-bandeau-tous:hover {
+      text-decoration: underline;
+    }
+  }
+</style>

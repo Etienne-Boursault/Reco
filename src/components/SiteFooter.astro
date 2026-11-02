@@ -11,6 +11,7 @@ import { getCollection } from 'astro:content';
 import { t } from '../i18n';
 import SupportLinks from './SupportLinks.astro';
 import { siteConfig } from '../config/site';
+import { chargerListes } from '../lib/listes/donnees';
 
 interface Props {
   /** Texte d'accroche du pied de page. Par défaut = string i18n. */
@@ -26,6 +27,9 @@ const primary = sources.find((s) => s.data.enabled !== false) ?? sources[0];
 const support = primary?.data.support ?? [];
 // Comptes officiels du site (Instagram…), cf. `siteConfig.socials`.
 const socials = siteConfig.socials ?? [];
+// « Listes et playlists » : seulement si la source primaire en a (cf. `lib/listes`).
+const primaryId = primary?.id;
+const listes = chargerListes(primaryId) ? `/${primaryId}/listes` : null;
 ---
 
 <footer class="wrap site-footer" role="contentinfo">
@@ -35,6 +39,12 @@ const socials = siteConfig.socials ?? [];
     {/* Les statistiques étaient publiques et indexées, mais rien n'y menait
        (audit d'interface du 2026-10-07). */}
     <a href="/stats">{t('footer.stats')}</a>
+    {listes && (
+      <>
+        <span aria-hidden="true">·</span>
+        <a href={listes}>{t('footer.listes')}</a>
+      </>
+    )}
     <span aria-hidden="true">·</span>
     <a href="/a-propos">{t('footer.about')}</a>
     <span aria-hidden="true">·</span>

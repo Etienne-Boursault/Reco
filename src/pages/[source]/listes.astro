@@ -1,0 +1,96 @@
+---
+/**
+ * /[source]/listes — « Listes et playlists ».
+ *
+ * Les playlists Spotify et Deezer et les listes SensCritique tenues par les
+ * outils de publication, avec leurs derniers ajouts. Maquette LS1-B, validée
+ * le 2026-11-02. Les nombres sont lus au build dans `tools/data/` (cf.
+ * `src/lib/listes/donnees.ts`) ; rien n'est saisi à la main.
+ *
+ * La page n'existe que pour une source qui a ces données : les autres n'ont
+ * ni la page ni les liens qui y mènent.
+ */
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ListesCarteMusique from '../../components/ListesCarteMusique.astro';
+import ListesCarteSensCritique from '../../components/ListesCarteSensCritique.astro';
+import { chargerListes, type Listes } from '../../lib/listes/donnees';
+import { derniersAjouts, type Vignette } from '../../lib/listes/ajouts';
+import { descriptionListes } from '../../lib/listes/libelles';
+import { galleryBreadcrumb } from '../../lib/gallery/page';
+import type { ItemLike } from '../../lib/work/aggregator';
+import { t } from '../../i18n';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.flatMap((source) => {
+    const listes = chargerListes(source.id);
+    return listes ? [{ params: { source: source.id }, props: { source, listes } }] : [];
+  });
+}
+
+const { source, listes } = Astro.props as { source: CollectionEntry<'sources'>; listes: Listes };
+const data = source.data;
+
+const items: ItemLike[] = (await getCollection('items'))
+  .filter((i) => i.id.startsWith(`${source.id}/`))
+  .map((i) => ({ id: i.data.id, title: i.data.title, types: i.data.types, creator: i.data.creator ?? null,
+    externalIds: i.data.externalIds ?? {}, customLinks: i.data.customLinks ?? [] }));
+const mentions = (await getCollection('mentions'))
+  .filter((m) => m.data.sourceRef.sourceId === source.id)
+  .map((m) => m.data);
+const recos = new Map(
+  (await getCollection('recos')).filter((r) => r.data.sourceId.id === source.id).map((r) => [r.data.id, r.data]),
+);
+const episodes = (await getCollection('episodes')).filter((e) => e.data.sourceId.id === source.id).map((e) => e.data);
+
+const ajouts = derniersAjouts({ items, mentions, recos, episodes }, listes.senscritique, { musique: 4, liste: 3 });
+
+const heading = t('listes.title');
+const description = descriptionListes(data.title, listes);
+const jsonLd = galleryBreadcrumb({
+  homeUrl: new URL('/', Astro.site).toString(),
+  sourceName: data.title,
+  sourceUrl: new URL(`/${source.id}`, Astro.site).toString(),
+  galleryName: heading,
+  galleryUrl: new URL(`/${source.id}/listes`, Astro.site).toString(),
+});
+---
+
+<Layout title={`${heading} — ${data.title}`} description={description} theme={data.theme} ogSlug={source.id} jsonLd={jsonLd}>
+  <header class="head wrap" role="banner">
+    <a class="back" href={`/${source.id}`}>
+      <span aria-hidden="true">←</span> <span>{t('gallery.backToSource')} {data.title}</span>
+    </a>
+    <h1>{heading}</h1>
+    <p class="tag">{t('listes.lede.debut')} <strong>{data.title}</strong>{t('listes.lede.fin')}</p>
+  </header>
+  <main id="main" tabindex="-1" class="wrap lst-page">
+    {(listes.toutes || listes.saisons.length > 0) && (
+      <ListesCarteMusique sourceId={source.id} toutes={listes.toutes} saisons={listes.saisons} ajouts={ajouts.musique} />
+    )}
+    {listes.senscritique.length > 0 && (
+      <div class="lst-grille">
+        {listes.senscritique.map((l) => (
+          <ListesCarteSensCritique sourceId={source.id} liste={l} ajouts={ajouts.listes.get(l.genre) as Vignette<ItemLike>[]} />
+        ))}
+      </div>
+    )}
+    <p class="lst-note">{t('listes.vieprivee')}</p>
+  </main>
+</Layout>
+
+<style>
+  .head { padding: clamp(2rem, 6vw, 4rem) 0 1.5rem; }
+  .back { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+  .back:hover { color: var(--accent); }
+  .head h1 { font-size: clamp(2.2rem, 7vw, 5rem); margin: 0.6rem 0 0.3rem; }
+  .tag { color: var(--text); margin: 0 0 0.5rem; max-width: 62ch; }
+  .lst-page { display: flex; flex-direction: column; gap: 1.5rem; padding-bottom: 4rem; }
+  .lst-grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+    gap: 1.25rem;
+  }
+  .lst-note { margin: 0; color: var(--muted); font-size: 0.875rem; max-width: 70ch; }
+</style>

@@ -1,0 +1,97 @@
+---
+/**
+ * ListesEpisode.astro — en fin de page d'épisode, la playlist de sa saison.
+ *
+ * « La musique de cet épisode est dans la playlist Saison 6 : Spotify ↗
+ * Deezer ↗ · Toutes les listes → ». Maquette LS2-episode, validée le
+ * 2026-11-02 ; placée À LA FIN de la page, après les recos (décision du
+ * même jour).
+ *
+ * La ligne n'apparaît que si l'épisode a fait entrer au moins une fiche dans
+ * les playlists, selon la règle même du script qui les remplit
+ * (`episodeAMusique`, cf. `src/lib/listes/ajouts.ts`) : sans quoi la phrase
+ * serait fausse. Un épisode sans saison (hors-série) renvoie à la playlist
+ * qui cumule tout.
+ */
+import { getCollection } from 'astro:content';
+import ListesBoutonsPlaylist from './ListesBoutonsPlaylist.astro';
+import { chargerListes, playlistDeLaSaison, type Listes } from '../lib/listes/donnees';
+import { episodeAMusique } from '../lib/listes/ajouts';
+import { t } from '../i18n';
+
+interface Props {
+  sourceId: string;
+  episodeGuid: string;
+  season?: number;
+  /** Pour les tests ; par défaut, les listes de la source. */
+  listes?: Listes | null;
+}
+
+const { sourceId, episodeGuid, season } = Astro.props;
+const listes = Astro.props.listes !== undefined ? Astro.props.listes : chargerListes(sourceId);
+const playlist = listes ? playlistDeLaSaison(listes, season) : null;
+
+let aMusique = false;
+if (playlist) {
+  const items = (await getCollection('items'))
+    .filter((i) => i.id.startsWith(`${sourceId}/`))
+    .map((i) => i.data);
+  const mentions = (await getCollection('mentions'))
+    .filter((m) => m.data.sourceRef.sourceId === sourceId)
+    .map((m) => m.data);
+  const recos = new Map(
+    (await getCollection('recos')).filter((r) => r.data.sourceId.id === sourceId).map((r) => [r.data.id, r.data]),
+  );
+  aMusique = episodeAMusique({ items, mentions, recos }, episodeGuid);
+}
+const icone = 'M9 18V6l11-2v12 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z';
+---
+
+{playlist && aMusique && (
+  <aside class="lst-episode" aria-label={t('listes.episode.label')}>
+    <svg class="lst-episode-icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icone} /></svg>
+    <p class="lst-episode-texte">{t('listes.episode.texte')} <strong>{playlist.nom}</strong> :</p>
+    <span class="lst-episode-liens"><ListesBoutonsPlaylist sourceId={sourceId} playlist={playlist} variante="texte" /></span>
+    <a class="lst-episode-tous" href={`/${sourceId}/listes`}>{t('listes.bandeau.toutes')}</a>
+  </aside>
+)}
+
+<style>
+  .lst-episode {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1rem;
+    margin: 2rem 0 0;
+    padding: 0.25rem 1rem;
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+    border-radius: var(--radius);
+  }
+  .lst-episode-icone {
+    color: var(--accent);
+    flex: 0 0 auto;
+  }
+  .lst-episode-texte {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  .lst-episode-liens {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .lst-episode-tous {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .lst-episode-tous:hover {
+      color: var(--accent);
+    }
+  }
+</style>

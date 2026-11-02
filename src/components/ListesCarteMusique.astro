@@ -1,0 +1,162 @@
+---
+/**
+ * ListesCarteMusique.astro — la carte vedette de « Listes et playlists ».
+ *
+ * La playlist qui cumule tout (nombre de titres, Spotify, Deezer), ses
+ * derniers ajouts — chacun mène à sa fiche sur le site —, puis une pastille
+ * par saison. Maquette LS1-B, validée le 2026-11-02.
+ *
+ * Les fiches d'œuvre du site n'ont pas d'image : la vignette est la carte
+ * d'œuvre du site (`WorkCard`, icône du type, titre, créateur), et rien n'est
+ * chargé depuis les plateformes.
+ */
+import WorkCard from './WorkCard.astro';
+import ListesBoutonsPlaylist from './ListesBoutonsPlaylist.astro';
+import type { Playlist } from '../lib/listes/donnees';
+import type { Vignette } from '../lib/listes/ajouts';
+import type { ItemLike } from '../lib/work/aggregator';
+import { libelleTitres, saisonCourte } from '../lib/listes/libelles';
+import { t } from '../i18n';
+
+interface Props {
+  sourceId: string;
+  toutes: Playlist | null;
+  saisons: Playlist[];
+  ajouts: Vignette<ItemLike>[];
+}
+
+const { sourceId, toutes, saisons, ajouts } = Astro.props;
+const icone = 'M9 18V6l11-2v12 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z';
+---
+
+<section class="lst-bloc lst-vedette" aria-labelledby="lst-musique">
+  {toutes && (
+    <div class="lst-tete">
+      <div class="lst-nom-bloc">
+        <svg class="lst-icone" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icone} /></svg>
+        <div>
+          <h2 id="lst-musique" class="lst-nom">{toutes.nom}</h2>
+          <p class="lst-n"><strong>{libelleTitres(toutes)}</strong> {t('listes.musique.plateformes')}</p>
+        </div>
+      </div>
+      <div class="lst-boutons"><ListesBoutonsPlaylist sourceId={sourceId} playlist={toutes} /></div>
+    </div>
+  )}
+  {!toutes && <h2 id="lst-musique" class="lst-nom">{t('listes.parSaison')}</h2>}
+  {ajouts.length > 0 && (
+    <>
+      <h3 class="lst-etiquette">
+        {t('listes.derniersAjouts')} <span class="lst-aide">· {t('listes.derniersAjouts.aide')}</span>
+      </h3>
+      <ul class="lst-ajouts" role="list">
+        {ajouts.map((a) => <li><WorkCard sourceId={sourceId} item={a.item} detail={a.detail} /></li>)}
+      </ul>
+    </>
+  )}
+  {toutes && saisons.length > 0 && <h3 class="lst-etiquette">{t('listes.parSaison')}</h3>}
+  {saisons.length > 0 && (
+    <ul class="lst-saisons" role="list">
+      {saisons.map((p) => (
+        <li class="lst-saison">
+          <span class="lst-saison-nom"><span aria-hidden="true">{saisonCourte(p)}</span><span class="visually-hidden">{p.nom}</span> · {libelleTitres(p)}</span>
+          <ListesBoutonsPlaylist sourceId={sourceId} playlist={p} variante="texte" court />
+        </li>
+      ))}
+    </ul>
+  )}
+</section>
+
+<style>
+  .lst-bloc {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: clamp(1rem, 3vw, 1.4rem);
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius);
+  }
+  .lst-vedette {
+    border-color: color-mix(in oklab, var(--accent) 45%, transparent);
+  }
+  .lst-tete {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+  }
+  .lst-nom-bloc {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .lst-icone {
+    color: var(--accent);
+    flex: 0 0 auto;
+  }
+  .lst-nom {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 1.9rem);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .lst-n {
+    margin: 0.2rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .lst-n strong {
+    color: var(--accent);
+  }
+  .lst-boutons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .lst-etiquette {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .lst-aide {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+  .lst-ajouts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+    gap: 0.75rem;
+  }
+  .lst-saisons {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .lst-saison {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0 0.3rem 0 1rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+    font-size: 0.9rem;
+  }
+  .lst-saison-nom {
+    font-variant-numeric: tabular-nums;
+    padding-right: 0.3rem;
+  }
+</style>
