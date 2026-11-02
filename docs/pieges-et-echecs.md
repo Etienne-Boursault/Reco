@@ -473,6 +473,34 @@ remplacé les 37 « Frère. » par le passage, Fiona G. et « elle est sur Inter
 compris. En dehors de ce passage, une seule ligne change : un trou comblé à
 00:56:16.
 
+#### Les longues boucles des anciens épisodes : le bord manquait, pas la réécoute
+
+Lot du 2026-11-02 sur les 38 anciens épisodes, boucles réécoutées dès 8 lignes :
+sur 60 zones, 17 réparées, 43 refusées. Les 9 plus longues refusées ont été
+réécoutées à part et leur réécoute gardée. Toutes étaient propres ; 8 sur 9
+avaient été refusées faute de bord :
+
+- deux boucles collées (Clément Cotentin, 2022-10-10 : 26 « Cléopâtrement
+  Aurélien. », une ligne, puis 361 « Cléopâtre Aurélien. ») : chacune servait
+  de bord à l'autre ;
+- des lignes voisines mal entendues elles aussi, surtout dans les jeux de
+  chaînes de noms (« Moni Cardi Bicente Lizarazou… ») ;
+- une phrase réécoutée qui commence 3 s avant la fin de la boucle (« Bloqués »,
+  01:21:38 pour une fin à 01:21:41), hors de la tolérance de 2 s.
+
+La 9ᵉ tombait sur la musique d'un blind test : la réécoute rend trop peu de
+mots, refus voulu. La boucle de Cotentin effaçait une vraie reco, « La Morale »
+d'Orelsan (01:01:46).
+
+Depuis : les boucles séparées de moins de 6 lignes sont réunies ; si les deux
+lignes voisines ne se retrouvent pas dans la réécoute, le bord est cherché une
+ligne à la fois, jusqu'à 6 lignes plus loin, et ces lignes fausses partent avec
+la boucle ; le bord d'après peut commencer jusqu'à 5 s avant la fin. Seule une
+phrase dite une fois dans la zone compte comme parole à reprendre, et moins de
+5 mots ne retiennent rien. Rejouée hors ligne sur les 9 réécoutes gardées, la
+garde répare 6 zones (dont les deux de Cotentin, réunies) ; 3 restent refusées :
+le blind test et deux jeux de chaînes de noms dont aucun bord ne s'entend.
+
 #### Un vocabulaire de l'émission dans l'amorce : rien de gagné
 
 Mesuré le 2026-11-01 sur S6-E07. Pour chacune des 22 recos validées, on a réécouté

@@ -61,6 +61,18 @@ BOUCLE_MIN = 8
 # Une suite de 8 à 14 lignes reste ambiguë ; on la signale sans la remplacer.
 BOUCLE_REPARATION_MIN = 15
 BOUCLE_CONTEXTE = 20.0
+# Bords d'une boucle. Sur les 38 anciens épisodes retraités le 2026-11-02, 8 des
+# 9 longues boucles refusées l'étaient faute de bord, alors que leur réécoute
+# était propre : deux boucles collées (Clément Cotentin, 26 puis 361 lignes), ou
+# des lignes voisines elles-mêmes mal entendues (jeux de chaînes de noms). On
+# réunit donc les boucles séparées de moins de BORD_MAX lignes, on cherche un
+# bord jusqu'à BORD_MAX lignes plus loin, et le bord d'après peut commencer
+# jusqu'à BORD_AVANCE secondes avant la fin de la boucle (une phrase réécoutée
+# qui la chevauche : « Bloqués », 01:21:38 pour une fin à 01:21:41).
+BORD_MAX = 6
+BORD_AVANCE = 5.0
+# En deçà, les phrases prises dans une boucle n'ont pas à être reprises.
+PAROLE_MIN = 5
 # Mots que la réécoute d'une fenêtre doit entendre en plus pour qu'une fenêtre
 # non comblée soit signalée. Sur S6-E07 (rejoué le 2026-11-01), les trois faux
 # « passages muets » avaient de -61 à +1 mot de plus ; les autres fenêtres, de
@@ -220,15 +232,63 @@ def _reprend_la_parole(zone: Sequence[Entree], nouvelles: Sequence[Entree]) -> b
     Une zone en morceaux contient de la parole entre ses répétitions : la
     réécoute ne la remplace que si elle en reprend l'essentiel.
     """
-    repetes = Counter(_cle(t) for _d, t in zone).most_common(1)[0][0]
-    parole = [_cle(m) for _d, t in zone if _cle(t) != repetes for m in t.split()]
+    # Seules les phrases dites une fois sont de la parole : deux boucles réunies
+    # répètent deux textes, et une phrase redite trois fois au milieu d'une
+    # boucle (« Il n'y a David Guetta. », 2024-02-19) en est un morceau.
+    comptes = Counter(_cle(t) for _d, t in zone)
+    parole = [_cle(m) for _d, t in zone if comptes[_cle(t)] == 1 for m in t.split()]
     parole = [m for m in parole if re.search(r"\w", m)]
-    if not parole:
+    # Un mot isolé mal entendu (« Cléopâtreur. ») ne retient pas 9 min de boucle.
+    if not parole or len(parole) < PAROLE_MIN:
         return True
     neufs = [_cle(m) for _d, t in nouvelles for m in t.split()]
     repris = sum(bloc.size for bloc in difflib.SequenceMatcher(
         None, parole, neufs, autojunk=False).get_matching_blocks())
     return repris / len(parole) >= RECOUVREMENT_MIN
+
+
+def _zones_a_reparer(lignes: Sequence[Entree]) -> list[tuple[int, int, int]]:
+    """Les boucles, celles séparées de moins de `BORD_MAX` lignes réunies."""
+    zones: list[list[int]] = []
+    for i, j, nombre in zones_de_boucle(lignes):
+        if zones and i - zones[-1][1] < BORD_MAX:
+            zones[-1][1:] = [j, zones[-1][2] + nombre]
+        else:
+            zones.append([i, j, nombre])
+    return [(i, j, n) for i, j, n in zones]
+
+
+def _caler(lignes: Sequence[Entree], rendues: Sequence[Entree], i: int, j: int,
+           ) -> tuple[int, int, int, int] | None:
+    """Bords de la réécoute : (a, b, première, dernière) ou None.
+
+    Les lignes [a, b) sont à remplacer par rendues[première:dernière]. On part
+    des lignes qui touchent la boucle et on s'en écarte, jusqu'à `BORD_MAX`
+    lignes, tant que la réécoute ne les reconnaît pas.
+    """
+    # Au premier pas, les deux lignes voisines font le bord, comme avant
+    # 2026-11-02 ; plus loin, une seule : une ligne fausse prise avec une juste
+    # resterait collée à la réécoute.
+    premiere = a = None
+    for a in range(i, max(0, i - BORD_MAX) - 1, -1):
+        if a == 0:
+            return None
+        avant = " ".join(t for _d, t in lignes[max(0, a - (2 if a == i else 1)):a])
+        ancres = [k for k, (d, t) in enumerate(rendues)
+                  if d <= lignes[a][0] + 1 and _ancre_commune(avant, t) >= 2]
+        if ancres:
+            premiere = ancres[-1] + 1
+            break
+    if premiere is None:
+        return None
+    for b in range(j, min(len(lignes), j + BORD_MAX + 1)):
+        apres = " ".join(t for _d, t in lignes[b:b + (2 if b == j else 1)])
+        derniere = next((k for k, (d, t) in enumerate(rendues)
+                         if k > premiere and d >= lignes[b][0] - BORD_AVANCE
+                         and _ancre_commune(apres, t) >= 3), None)
+        if derniere is not None:
+            return a, b, premiere, derniere
+    return None
 
 
 def reparer_boucles(entrees: Sequence[Entree], reecouter: Reecoute,
@@ -242,7 +302,7 @@ def reparer_boucles(entrees: Sequence[Entree], reecouter: Reecoute,
     """
     lignes = list(entrees)
     reparees, non_reparees = [], []
-    for i, j, nombre in reversed(zones_de_boucle(lignes)):
+    for i, j, nombre in reversed(_zones_a_reparer(lignes)):
         debut = lignes[i][0]
         # Sans une ligne des deux côtés, le remplacement ne peut pas être calé.
         if nombre < BOUCLE_REPARATION_MIN or i == 0 or j == len(lignes):
@@ -259,22 +319,13 @@ def reparer_boucles(entrees: Sequence[Entree], reecouter: Reecoute,
                         format_timestamp(debut), exc)
             non_reparees.append((debut, nombre))
             continue
-        avant = " ".join(t for _d, t in lignes[max(0, i - 2):i])
-        apres = " ".join(t for _d, t in lignes[j:j + 2])
-        ancres_avant = [k for k, (d, t) in enumerate(rendues)
-                         if d <= debut + 1 and _ancre_commune(avant, t) >= 2]
-        ancres_apres = [k for k, (d, t) in enumerate(rendues)
-                         if d >= fin - 2 and _ancre_commune(apres, t) >= 3]
-        if not ancres_avant or not ancres_apres:
+        calage = _caler(lignes, rendues, i, j)
+        if calage is None:
             non_reparees.append((debut, nombre))
             continue
-        premiere = ancres_avant[-1] + 1
-        derniere = next((k for k in ancres_apres if k > premiere), None)
-        if derniere is None:
-            non_reparees.append((debut, nombre))
-            continue
+        a, b, premiere, derniere = calage
         nouvelles = [(d, t.strip()) for d, t in rendues[premiere:derniere]
-                     if debut - 1 <= d < fin and t.strip()]
+                     if lignes[a][0] - 1 <= d < lignes[b][0] and t.strip()]
         mots = sum(_mots(t.split()) for _d, t in nouvelles)
         if (len(nouvelles) < 2 or mots < max(5, nombre // 2)
                 or zones_de_boucle(nouvelles)
@@ -282,7 +333,7 @@ def reparer_boucles(entrees: Sequence[Entree], reecouter: Reecoute,
                 or not _reprend_la_parole(lignes[i:j], nouvelles)):
             non_reparees.append((debut, nombre))
             continue
-        lignes[i:j] = nouvelles
+        lignes[a:b] = nouvelles
         reparees.append((debut, nombre))
         log.info("Boucle de %d lignes réparée vers %s : %d mots réécoutés.",
                  nombre, format_timestamp(debut), mots)
