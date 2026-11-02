@@ -133,7 +133,8 @@ def test_watch_providers_returns_link_and_unique_providers(monkeypatch):
         json={"results": {"FR": {
             "link": "https://www.justwatch.com/fr/film/mortel",
             "flatrate": [{"provider_name": "Netflix"}],
-            "rent": [{"provider_name": "Apple TV"}, {"provider_name": "Netflix"}],  # doublon
+            "rent": [{"provider_name": "Apple TV"}, {"provider_name": "Netflix"},  # doublon
+                     {"provider_name": "Molotov TV"}],  # sans recherche → ignoré
             "buy": [{"provider_name": ""}],  # nom vide → ignoré
         }}},
         status=200,

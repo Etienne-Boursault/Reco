@@ -27,6 +27,7 @@ def test_refresh_watch_provider_urls_updates_urls(monkeypatch, tmp_path: Path):
         "watchProviders": [
             {"label": "Apple TV Store", "url": "https://google.com/search?q=old", "ethics": "neutral"},
             {"label": "Netflix",         "url": "https://google.com/search?q=old", "ethics": "neutral"},
+            {"label": "TF1+",            "url": "https://www.tf1.fr/recherche?q=Mortel", "ethics": "neutral"},
         ],
     }), encoding="utf-8")
 
@@ -37,6 +38,8 @@ def test_refresh_watch_provider_urls_updates_urls(monkeypatch, tmp_path: Path):
     urls = [p["url"] for p in out["watchProviders"]]
     assert any("tv.apple.com" in u for u in urls)
     assert any("netflix.com" in u for u in urls)
+    # TF1+ n'a plus de recherche publique : son lien disparaît.
+    assert [p["label"] for p in out["watchProviders"]] == ["Apple TV Store", "Netflix"]
 
 
 def test_refresh_skips_recos_without_providers(monkeypatch, tmp_path: Path):

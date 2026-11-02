@@ -33,7 +33,9 @@ def main():
             continue
         seen += 1
         title = d["title"]
-        new_providers = [_provider_link(prov["label"], title) for prov in providers]
+        liens = (_provider_link(prov["label"], title) for prov in providers)
+        # Une plateforme passée dans SANS_RECHERCHE perd son lien.
+        new_providers = [lien for lien in liens if lien is not None]
         d["watchProviders"] = new_providers
         if write_json_if_changed(p, d):
             updated += 1

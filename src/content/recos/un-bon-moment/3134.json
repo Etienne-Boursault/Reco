@@ -67,7 +67,7 @@
   "watchProviders": [
     {
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Drive",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Drive",
       "ethics": "neutral"
     },
     {
@@ -139,16 +139,6 @@
       "label": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Drive",
       "ethics": "avoid"
-    },
-    {
-      "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Drive",
-      "ethics": "neutral"
-    },
-    {
-      "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Drive",
-      "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",

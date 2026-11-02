@@ -71,11 +71,6 @@
   "watchProviders": [
     {
       "ethics": "neutral",
-      "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Slumdog%20Millionaire"
-    },
-    {
-      "ethics": "neutral",
       "label": "Paramount Plus",
       "url": "https://www.paramountplus.com/fr/search/?q=Slumdog%20Millionaire"
     },
@@ -132,7 +127,7 @@
     {
       "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Slumdog%20Millionaire"
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Slumdog%20Millionaire"
     },
     {
       "ethics": "avoid",
@@ -143,16 +138,6 @@
       "ethics": "neutral",
       "label": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Slumdog%20Millionaire"
-    },
-    {
-      "ethics": "neutral",
-      "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Slumdog%20Millionaire"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Slumdog%20Millionaire"
     },
     {
       "ethics": "indie",

@@ -13,11 +13,6 @@
   ],
   "watchProviders": [
     {
-      "ethics": "neutral",
-      "name": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=Mid90s"
-    },
-    {
       "ethics": "avoid",
       "name": "Cine+ OCS Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Mid90s"
@@ -60,7 +55,7 @@
     {
       "ethics": "neutral",
       "name": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Mid90s"
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Mid90s"
     },
     {
       "ethics": "avoid",
@@ -71,16 +66,6 @@
       "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Mid90s"
-    },
-    {
-      "ethics": "neutral",
-      "name": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Mid90s"
-    },
-    {
-      "ethics": "neutral",
-      "name": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Mid90s"
     }
   ],
   "year": 2018

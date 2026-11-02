@@ -56,11 +56,6 @@
   "watchProviders": [
     {
       "ethics": "neutral",
-      "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Anastasia"
-    },
-    {
-      "ethics": "neutral",
       "label": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Anastasia"
     },
@@ -93,16 +88,6 @@
       "ethics": "neutral",
       "label": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Anastasia"
-    },
-    {
-      "ethics": "neutral",
-      "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Anastasia"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Anastasia"
     }
   ]
 }

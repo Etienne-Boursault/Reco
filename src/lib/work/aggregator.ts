@@ -240,8 +240,9 @@ export function estRecherche(url: string): boolean {
   // Sinon, un paramètre qui porte la REQUÊTE. La liste est relevée, pas
   // devinée : YouTube passe par `/results?search_query=`, sans « search » dans
   // le chemin. `c` en est volontairement absent — chez Google Play il porte la
-  // catégorie (`?c=movies`), pas la recherche.
-  return ['q', 'query', 'phrase', 'term', 'text', 'search_query', 's'].some(
+  // catégorie (`?c=movies`), pas la recherche. Sooner passe la sienne en
+  // tableau (`/catalogue?term[]=`), d'où `term[]`.
+  return ['q', 'query', 'phrase', 'term', 'term[]', 'text', 'search_query', 's'].some(
     (cle) => u.searchParams.has(cle),
   );
 }
