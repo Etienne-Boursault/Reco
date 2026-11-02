@@ -324,6 +324,13 @@ def fetch_episodes(source_id: str, limit: int | None = None,
                 merged["guests"] = current["guests"]
             if current.get("youtubeUrl"):
                 merged["youtubeUrl"] = current["youtubeUrl"]
+            # Saison et numéro posés à la main (saisons 1 à 4, d'après TheTVDB le
+            # 2026-11-02) : le flux Acast ne les connaît pas et numérote de 1 à 70
+            # d'un seul tenant. Seul un « SX-EX » du titre les remplace.
+            if current.get("season") and "season" not in episode:
+                merged["season"] = current["season"]
+                if current.get("number") is not None:
+                    merged["number"] = current["number"]
             if write_json_if_changed(existing_path, merged):
                 written += 1
                 log.info("Mis à jour : %s", existing_path.name)
