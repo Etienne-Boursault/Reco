@@ -21,7 +21,6 @@ PROVIDER_RULES: dict[str, dict[str, str]] = {
     # --- Plateformes mainstream (neutres) ---
     "Netflix":              {"url": "https://www.netflix.com/search?q={q}",                     "ethics": "neutral"},
     "Apple TV":             {"url": "https://tv.apple.com/fr/search?term={q}",                  "ethics": "neutral"},
-    "Disney Plus":          {"url": "https://www.disneyplus.com/fr-fr/search?q={q}",            "ethics": "neutral"},
     "Paramount Plus":       {"url": "https://www.paramountplus.com/fr/search/?q={q}",           "ethics": "neutral"},
     "Max":                  {"url": "https://play.max.com/search?q={q}",                       "ethics": "neutral"},
     "Crunchyroll":          {"url": "https://www.crunchyroll.com/fr/search?q={q}",              "ethics": "neutral"},
@@ -29,15 +28,11 @@ PROVIDER_RULES: dict[str, dict[str, str]] = {
     "Filmo TV":             {"url": "https://www.filmotv.fr/?txtsearch={q}",                    "ethics": "neutral"},
     "Google Play Movies":   {"url": "https://play.google.com/store/search?q={q}&c=movies",      "ethics": "neutral"},
     "Orange VOD":           {"url": "https://video.orange.fr/search?q={q}",                     "ethics": "neutral"},
-    "Sooner":               {"url": "https://www.sooner.fr/recherche?q={q}",                    "ethics": "neutral"},
+    "Sooner":               {"url": "https://www.sooner.fr/catalogue?term%5B%5D={q}",           "ethics": "neutral"},
     "Pathé Home":           {"url": "https://www.pathehome.com/recherche?text={q}",             "ethics": "neutral"},
     "Rakuten TV":           {"url": "https://rakuten.tv/fr/search?q={q}",                       "ethics": "neutral"},
-    "Molotov TV":           {"url": "https://www.molotov.tv/search?q={q}",                      "ethics": "neutral"},
     "SFR Play":             {"url": "https://www.sfrplay.fr/recherche?q={q}",                   "ethics": "neutral"},
-    "TF1+":                 {"url": "https://www.tf1.fr/recherche?q={q}",                       "ethics": "neutral"},
     "M6+":                  {"url": "https://www.6play.fr/recherche?q={q}",                     "ethics": "neutral"},
-    "VIVA by videofutur":   {"url": "https://www.videofutur.fr/recherche?q={q}",                "ethics": "neutral"},
-    "Premiere Max":         {"url": "https://www.premieremax.com/search?q={q}",                 "ethics": "neutral"},
     "Animation Digital Network": {"url": "https://animationdigitalnetwork.com/search?q={q}",    "ethics": "neutral"},
     "Cinemas a la Demande": {"url": "https://www.cinemasalademande.com/?s={q}",                 "ethics": "neutral"},
     "Plex":                 {"url": "https://watch.plex.tv/search?q={q}",                       "ethics": "neutral"},
@@ -64,6 +59,19 @@ PROVIDER_RULES: dict[str, dict[str, str]] = {
     "Canal VOD":            {"url": "https://www.canalplus.com/cmd/searchOnsite?query={q}",     "ethics": "avoid"},
 }
 
+# Plateformes SANS adresse de recherche publique : `_provider_link` ne leur
+# fabrique aucun lien. Constaté dans un navigateur le 2026-11-02, après que le
+# vérificateur de liens du site les a toutes trouvées en 404 : Première Max et
+# VIVA (Vidéofutur) cherchent dans une application qui ne change pas d'adresse,
+# Molotov et Disney+ exigent une connexion, TF1+ ouvre sa recherche par-dessus
+# la page. Un lien de recherche qui mène à « Page introuvable » fait plus de
+# tort que pas de lien : la page TMDB (`watchPage`) reste là pour ces œuvres.
+# Correspondance par sous-chaîne, insensible à la casse (« Disney Plus »,
+# « Molotov TV », « VIVA by videofutur »…).
+SANS_RECHERCHE: tuple[str, ...] = (
+    "premiere max", "videofutur", "molotov", "tf1+", "disney",
+)
+
 # Patterns appliqués DANS L'ORDRE quand le nom du provider ne match aucune
 # entrée exacte. La 1ère règle qui matche gagne.
 # (substring insensible à la casse → règle exacte du dict ci-dessus)
@@ -76,8 +84,7 @@ PROVIDER_PATTERNS: list[tuple[str, dict[str, str]]] = [
     ("apple tv",       {"url": "https://tv.apple.com/fr/search?term={q}",               "ethics": "neutral"}),
     # Variantes Netflix (« Netflix Standard with Ads », « Netflix basic »).
     ("netflix",        {"url": "https://www.netflix.com/search?q={q}",                  "ethics": "neutral"}),
-    # Variantes Disney+ / Paramount+ / HBO Max / Max.
-    ("disney",         {"url": "https://www.disneyplus.com/fr-fr/search?q={q}",         "ethics": "neutral"}),
+    # Variantes Paramount+ / HBO Max / Max.
     ("paramount",      {"url": "https://www.paramountplus.com/fr/search/?q={q}",        "ethics": "neutral"}),
     ("hbo max",        {"url": "https://play.max.com/search?q={q}",                     "ethics": "neutral"}),
     # MUBI peut apparaître avec d'autres suffixes (« MUBI Amazon Channel »
@@ -88,20 +95,24 @@ PROVIDER_PATTERNS: list[tuple[str, dict[str, str]]] = [
 ]
 
 
-def _provider_link(provider_name: str, title: str) -> dict:
+def _provider_link(provider_name: str, title: str) -> dict | None:
     """Construit un lien { label, url, ethics } pour un nom de provider TMDB.
 
-    Cascade : 1) règle exacte, 2) pattern substring (1er match), 3) fallback
-    DuckDuckGo. On garde toujours le `provider_name` original comme `label`
-    pour l'affichage (≠ de l'URL cible).
+    Cascade : 0) plateforme sans recherche publique → None, 1) règle exacte,
+    2) pattern substring (1er match), 3) fallback DuckDuckGo. On garde
+    toujours le `provider_name` original comme `label` pour l'affichage
+    (≠ de l'URL cible).
     """
+    name_lc = provider_name.lower()
+    # 0) aucune adresse à proposer : l'appelant n'ajoute rien.
+    if any(n in name_lc for n in SANS_RECHERCHE):
+        return None
     q = quote(title)
     # 1) règle exacte
     rule = PROVIDER_RULES.get(provider_name)
     if rule:
         return {"label": provider_name, "url": rule["url"].format(q=q), "ethics": rule["ethics"]}
     # 2) pattern substring (premier match gagne)
-    name_lc = provider_name.lower()
     for needle, r in PROVIDER_PATTERNS:
         if needle in name_lc:
             return {"label": provider_name, "url": r["url"].format(q=q), "ethics": r["ethics"]}

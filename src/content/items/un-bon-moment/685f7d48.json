@@ -19,11 +19,6 @@
       "name": "Amazon Prime Video"
     },
     {
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Brazil",
-      "ethics": "neutral",
-      "name": "Disney Plus"
-    },
-    {
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Brazil",
       "ethics": "avoid",
       "name": "Amazon Prime Video with Ads"
@@ -47,16 +42,6 @@
       "url": "https://www.pathehome.com/recherche?text=Brazil",
       "ethics": "neutral",
       "name": "Pathé Home"
-    },
-    {
-      "url": "https://www.videofutur.fr/recherche?q=Brazil",
-      "ethics": "neutral",
-      "name": "VIVA by videofutur"
-    },
-    {
-      "url": "https://www.premieremax.com/search?q=Brazil",
-      "ethics": "neutral",
-      "name": "Premiere Max"
     }
   ]
 }

@@ -53,11 +53,6 @@
   ],
   "watchProviders": [
     {
-      "ethics": "neutral",
-      "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=School%20of%20Rock"
-    },
-    {
       "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=School%20of%20Rock"
@@ -124,18 +119,8 @@
     },
     {
       "ethics": "neutral",
-      "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=School%20of%20Rock"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=School%20of%20Rock"
-    },
-    {
-      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=School%20of%20Rock"
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=School%20of%20Rock"
     }
   ]
 }

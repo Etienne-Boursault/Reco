@@ -169,7 +169,10 @@ def tmdb_watch_providers(
             if not name or name in seen:
                 continue
             seen.add(name)
-            providers.append(_provider_link(name, title))
+            lien = _provider_link(name, title)
+            # Plateforme sans recherche publique : rien à proposer.
+            if lien is not None:
+                providers.append(lien)
     return watch_page_url, providers
 
 

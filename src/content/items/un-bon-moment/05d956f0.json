@@ -14,11 +14,6 @@
   "year": 2018,
   "watchProviders": [
     {
-      "url": "https://www.molotov.tv/search?q=Vice",
-      "ethics": "neutral",
-      "name": "Molotov TV"
-    },
-    {
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Vice",
       "ethics": "avoid",
       "name": "Cine+ OCS Amazon Channel"
@@ -44,7 +39,7 @@
       "name": "Rakuten TV"
     },
     {
-      "url": "https://www.sooner.fr/recherche?q=Vice",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Vice",
       "ethics": "neutral",
       "name": "Sooner"
     },
@@ -57,16 +52,6 @@
       "url": "https://www.pathehome.com/recherche?text=Vice",
       "ethics": "neutral",
       "name": "Pathé Home"
-    },
-    {
-      "url": "https://www.videofutur.fr/recherche?q=Vice",
-      "ethics": "neutral",
-      "name": "VIVA by videofutur"
-    },
-    {
-      "url": "https://www.premieremax.com/search?q=Vice",
-      "ethics": "neutral",
-      "name": "Premiere Max"
     },
     {
       "url": "https://boutique.arte.tv/search?q=Vice",

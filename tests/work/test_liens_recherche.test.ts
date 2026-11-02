@@ -23,6 +23,9 @@ describe('estRecherche', () => {
     ['https://www.netflix.com/search?q=La%20Pampa'],
     ['https://tv.apple.com/search?term=La%20Pampa'],
     ['https://www.pathehome.com/recherche?text=La%20Pampa'],
+    // Adresse de Sooner depuis le 2026-11-02 : ni « recherche » dans le
+    // chemin, ni paramètre `term` simple.
+    ['https://www.sooner.fr/catalogue?term%5B%5D=La%20Pampa'],
   ])('reconnaît la recherche %s', (url) => {
     expect(estRecherche(url)).toBe(true);
   });

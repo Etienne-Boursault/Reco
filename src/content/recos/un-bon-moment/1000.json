@@ -112,11 +112,6 @@
   "year": 1942,
   "watchProviders": [
     {
-      "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=To%20Be%20or%20Not%20to%20Be",
-      "ethics": "neutral"
-    },
-    {
       "label": "Cine+ OCS Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=To%20Be%20or%20Not%20to%20Be",
       "ethics": "avoid"
@@ -143,23 +138,13 @@
     },
     {
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=To%20Be%20or%20Not%20to%20Be",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=To%20Be%20or%20Not%20to%20Be",
       "ethics": "neutral"
     },
     {
       "label": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=To%20Be%20or%20Not%20to%20Be",
       "ethics": "avoid"
-    },
-    {
-      "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=To%20Be%20or%20Not%20to%20Be",
-      "ethics": "neutral"
-    },
-    {
-      "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=To%20Be%20or%20Not%20to%20Be",
-      "ethics": "neutral"
     },
     {
       "label": "LaCinetek",

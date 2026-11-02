@@ -62,11 +62,6 @@
   "watchProviders": [
     {
       "ethics": "neutral",
-      "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Coco"
-    },
-    {
-      "ethics": "neutral",
       "label": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Coco"
     },
@@ -99,16 +94,6 @@
       "ethics": "neutral",
       "label": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Coco"
-    },
-    {
-      "ethics": "neutral",
-      "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Coco"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Coco"
     }
   ]
 }
