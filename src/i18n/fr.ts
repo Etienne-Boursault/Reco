@@ -37,6 +37,7 @@ export const fr = {
   'footer.legal': 'Mentions légales',
   'footer.listes': 'Listes et playlists',
   'footer.nav.label': 'Liens secondaires',
+  'footer.follow': 'Nous suivre',
   'footer.support': 'Soutenir le projet',
 
   // À propos (item #22)

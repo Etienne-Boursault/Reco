@@ -51,13 +51,21 @@ const listes = chargerListes(primaryId) ? `/${primaryId}/listes` : null;
     <a href="/manifeste">{t('footer.manifesto')}</a>
     <span aria-hidden="true">·</span>
     <a href="/mentions-legales">{t('footer.legal')}</a>
-    {socials.map((s) => (
-      <>
-        <span aria-hidden="true">·</span>
-        <a href={s.url} rel="me noopener" target="_blank">{s.label}</a>
-      </>
-    ))}
   </nav>
+  {/* Les comptes du projet sur une ligne à part (décision PL-3 du
+     2026-11-02) : mêlés aux pages du site, six réseaux noyaient « À propos »
+     et « Mentions légales ». */}
+  {socials.length > 0 && (
+    <nav class="site-footer-nav site-footer-follow" aria-label={t('footer.follow')}>
+      <span class="site-footer-follow-label">{t('footer.follow')}</span>
+      {socials.map((s, i) => (
+        <>
+          {i > 0 && <span aria-hidden="true">·</span>}
+          <a href={s.url} rel="me noopener" target="_blank">{s.label}</a>
+        </>
+      ))}
+    </nav>
+  )}
   <p>{tagline}</p>
 </footer>
 
@@ -101,5 +109,10 @@ const listes = chargerListes(primaryId) ? `/${primaryId}/listes` : null;
   }
   .site-footer-nav span {
     opacity: 0.4;
+  }
+  /* L'intitulé garde la couleur discrète du pied de page, sans le fondu des
+     séparateurs. */
+  .site-footer-nav .site-footer-follow-label {
+    opacity: 1;
   }
 </style>

@@ -100,3 +100,29 @@ describe('SiteFooter — résolution de la source primaire', () => {
     expect(html).toContain('https://ko-fi.com/reco');
   });
 });
+
+describe('SiteFooter — ligne « Nous suivre »', () => {
+  it('rend les comptes du projet dans une nav à part, après les pages du site', async () => {
+    const { siteConfig } = await import('../../src/config/site');
+    const html = await render();
+    expect(html).toMatch(/<nav class="site-footer-nav site-footer-follow"[^>]*aria-label="Nous suivre"/);
+    for (const s of siteConfig.socials ?? []) {
+      expect(html).toContain(`href="${s.url}"`);
+    }
+    // Les réseaux ne se mêlent plus aux pages du site.
+    expect(html.indexOf('href="/mentions-legales"')).toBeLessThan(html.indexOf('site-footer-follow'));
+    expect(html).toContain('rel="me noopener"');
+  });
+
+  it('sans compte déclaré, aucune ligne « Nous suivre »', async () => {
+    const { siteConfig } = await import('../../src/config/site');
+    const avant = siteConfig.socials;
+    Object.assign(siteConfig, { socials: undefined });
+    try {
+      const html = await render();
+      expect(html).not.toContain('site-footer-follow');
+    } finally {
+      Object.assign(siteConfig, { socials: avant });
+    }
+  });
+});
