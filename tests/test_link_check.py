@@ -362,6 +362,32 @@ def test_un_hote_ORDINAIRE_sans_titre_reste_mort():
     assert r.verdict == "dead"
 
 
+@pytest.mark.parametrize("url", [
+    "https://www.youtube.com/results?search_query=American%20History%20X",
+    "https://podcasts.apple.com/fr/search?term=Insomniac",
+    "https://www.exemple.fr/recherche?q=Akira",
+])
+def test_une_recherche_sans_titre_nest_pas_morte(url):
+    """Passe du 2026-11-02 : 38 recherches YouTube « mortes » s'ouvraient dans Edge."""
+    assert classify(url, FetchOutcome(200, "<html></html>")).verdict == "unknown"
+
+
+def test_une_recherche_en_404_reste_morte():
+    """Molotov, TF1, Sooner, Disney+ : « introuvable » dans un navigateur aussi."""
+    assert classify("https://www.molotov.tv/search?q=Akira", FetchOutcome(404)).verdict == "dead"
+
+
+def test_une_redirection_non_suivie_sans_titre_nest_pas_morte():
+    """dofus.com répondait 302 sans titre : un pare-feu CloudFront, pas une absence."""
+    assert classify("https://www.dofus.com/fr", FetchOutcome(302, "")).verdict == "unknown"
+
+
+def test_une_playlist_youtube_sans_titre_reste_morte():
+    """La règle d'origine tient hors recherche : c'est la signature d'un ID inventé."""
+    r = classify("https://www.youtube.com/playlist?list=PLZZZ", FetchOutcome(200, "<html></html>"))
+    assert r.verdict == "dead"
+
+
 def test_un_hote_a_page_vide_AVEC_titre_reste_vivant():
     """L'exception ne doit pas aveugler : quand le titre est là, on le lit."""
     r = classify("https://www.imdb.com/title/tt0110922/",

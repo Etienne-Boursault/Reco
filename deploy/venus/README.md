@@ -241,6 +241,21 @@ deux heures. Un verrou (`flock`) empêche deux passages de se chevaucher. Interr
 chaîne plus souvent n'apporterait rien, et exposerait venus au blocage « Sign in to
 confirm you're not a bot » de YouTube.
 
+### Les liens externes du site, chaque lundi à 3 h 17
+
+```
+17 3 * * 1  /home/etienne/docker/reco/depot/deploy/venus/verifier_liens.sh
+```
+
+`verifier_liens.sh` construit le site dans `~/reco-liens/site` (un clone tiré de
+celui de la chaîne, dans l'image `node:24.22.2-bookworm-slim` : venus a Node 20 et
+Astro en demande 22.22), puis sonde chaque adresse externe une fois, une requête à la
+fois par site. Rapports dans `~/reco-liens/liens-AAAA-MM-JJ.{md,json}`, journal dans
+`~/reco-liens/journal-AAAA-MM.log`. Le salon Matrix ne reçoit un message que si des
+liens sont morts depuis la vérification précédente (`~/reco-liens/etat.json`), et
+rien n'est jamais retiré du site. Les liens internes, eux, se vérifient dans la CI
+après chaque build (`tools/verifier_liens.py internes dist`).
+
 ## Savoir que la chaîne tourne encore : le moniteur « push » de Kuma
 
 Quand tout va bien, la chaîne est **silencieuse**. Si le cron meurt, si un conteneur

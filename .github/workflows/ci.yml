@@ -164,6 +164,11 @@ jobs:
       - name: Build Astro
         run: npm run build
 
+      # Une page qui renvoie vers une page du site absente du build. Sans
+      # réseau, quelques secondes ; les liens externes se vérifient sur venus.
+      - name: Liens internes
+        run: python3 tools/verifier_liens.py internes dist
+
       - name: Upload dist artifact
         uses: actions/upload-artifact@v7
         with:
