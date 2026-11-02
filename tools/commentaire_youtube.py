@@ -5,14 +5,24 @@ CE QUE FAIT CETTE ETAPE
 -----------------------
 Une fois l'episode publie sur le site, la chaine poste sous sa video YouTube
 un commentaire de la chaine « Une Bonne Reco » : chaque reco avec son minutage
-(cliquable sur YouTube), puis le lien vers la page de l'episode.
+(cliquable sur YouTube), puis un renvoi vers la chaine, qui porte le lien du
+site.
+
+PAS DE LIEN DANS LE TEXTE
+-------------------------
+Depuis fin octobre 2026, YouTube ecarte en silence tout commentaire qui
+contient unebonnere.co, meme ecrit sans « https:// » et quel que soit le compte
+qui le poste : l'API rend un identifiant, puis le commentaire n'existe plus,
+meme pour son auteur (essais du 2026-11-02 ; un lien Wikipedia passe, un lien
+SensCritique non). Le texte renvoie donc a la chaine plutot qu'au site.
 
 QUAND
 -----
 Apres la publication (`state["published"]`), et seulement quand la page de
-l'episode est EN LIGNE avec ses recos : poster un lien vers une page encore
-absente — la PR n'est pas fusionnee, ou le deploiement tourne — enverrait les
-lecteurs sur une 404. Tant que la page manque, l'etape repasse au tick suivant.
+l'episode est EN LIGNE avec ses recos : annoncer des recos que le site ne
+montre pas encore — la PR n'est pas fusionnee, ou le deploiement tourne —
+enverrait les lecteurs sur une 404. Tant que la page manque, l'etape repasse
+au tick suivant.
 
 Seuls les episodes sortis depuis `RECO_YT_COMMENTAIRES_DEPUIS` (par defaut le
 2026-10-22) sont commentes : les anciens ne recoivent rien d'un coup.
@@ -51,6 +61,8 @@ LONGUEUR_MAX = 10_000
 SECRETS = ("RECO_YT_CLIENT_ID", "RECO_YT_CLIENT_SECRET", "RECO_YT_REFRESH_TOKEN")
 #: Episodes sortis avant l'arrivee de l'etape : jamais commentes.
 DEPUIS_PAR_DEFAUT = "2026-10-22"
+#: Derniere ligne utile du texte : jamais d'adresse (voir PAS DE LIEN DANS LE TEXTE).
+RENVOI = "👉 Toutes les recos avec leurs liens : voir la chaîne @unebonnereco"
 #: Les memes que sur le carrousel (tools/carrousel_episode.py).
 EMOJIS = {"film": "🎬", "serie": "📺", "spectacle": "🎭", "livre": "📚", "bd": "💭", "musique": "🎵",
           "album": "🎵", "artiste": "🎤", "chaine": "🎤", "podcast": "🎙️", "jeu": "🎮", "lieu": "📍",
@@ -117,7 +129,7 @@ def adresse_episode(source_id: str, guid: str, site: str) -> str:
     return f"{site.rstrip('/')}/{source_id}/episode/{guid}/"
 
 
-def texte(recos: list[dict[str, Any]], adresse: str) -> str:
+def texte(recos: list[dict[str, Any]]) -> str:
     """Les recommandations d'abord ; les simples evocations a part, comme sur
     le site, pour ne pas les faire passer pour des conseils."""
     conseils = [_ligne(r) for r in recos if r.get("kind") != "citation"]
@@ -129,7 +141,7 @@ def texte(recos: list[dict[str, Any]], adresse: str) -> str:
         parties.append("💬 Aussi évoqués : " + _evocations(evocations))
     message = (
         "\n\n".join(parties) + "\n\n"
-        f"👉 Toutes les recos avec leurs liens : {adresse}\n"
+        f"{RENVOI}\n"
         "Une Bonne Reco ⭐ site de fan, non officiel"
     )
     return message[:LONGUEUR_MAX]
@@ -213,7 +225,7 @@ def commenter(source_id: str, notify: Notify, state: dict[str, Any], episodes: l
         cle = f"commentaire:{guid}"
         try:
             jeton = jeton_d_acces(session, env)
-            identifiant = poster(session, jeton, guid.removeprefix("yt-"), texte(recos, adresse))
+            identifiant = poster(session, jeton, guid.removeprefix("yt-"), texte(recos))
         except Exception as exc:  # noqa: BLE001 — signale une fois, retente ensuite.
             rapporter(state, cle, f"💬 Commentaire YouTube impossible pour « "
                       f"{episode.get('title', guid)} » : {type(exc).__name__}: "
@@ -232,9 +244,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--source", default="un-bon-moment")
     parser.add_argument("--apercu", metavar="GUID", required=True)
     args = parser.parse_args(argv)
-    recos = recos_publiees(args.source, args.apercu)
-    site = os.environ.get("SITE_URL") or SITE_PAR_DEFAUT
-    print(texte(recos, adresse_episode(args.source, args.apercu, site)))
+    print(texte(recos_publiees(args.source, args.apercu)))
     return 0
 
 
