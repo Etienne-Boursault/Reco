@@ -141,7 +141,7 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
             raison = "la page de l'épisode ne montre pas toutes ses recos"
         else:
             try:
-                ident = cy.poster(session, jeton, video, cy.texte(recos, adresse))
+                ident = cy.poster(session, jeton, video, cy.texte(recos))
             except Exception as exc:  # noqa: BLE001 — propre à cette vidéo.
                 raison = f"{type(exc).__name__}: {str(exc)[:160]}"
             else:
@@ -188,11 +188,10 @@ def main(argv: list[str] | None = None) -> int:
     if args.apercu:
         etat = charger_etat(chemin)
         file = en_attente(args.source, etat)
-        site = os.environ.get("SITE_URL") or cy.SITE_PAR_DEFAUT
         print(f"{len(file)} vidéo(s) en attente.\n")
         for ep, video, recos in file[:args.nombre]:
             print(f"── {ep.get('title')} ({ep.get('date')}) https://www.youtube.com/watch?v={video}")
-            print(cy.texte(recos, cy.adresse_episode(args.source, ep["guid"], site)) + "\n")
+            print(cy.texte(recos) + "\n")
         return 0
     from traiter_nouveaux_episodes import build_notify
     rattraper(args.source, args.nombre, build_notify(args.notifier), chemin=chemin,
