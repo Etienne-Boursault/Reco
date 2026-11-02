@@ -77,3 +77,10 @@ def test_a_ajouter_en_fin_de_liste():
 def test_a_ajouter_signale_une_insertion_au_milieu():
     nouveaux, en_fin = pm.a_ajouter(["a", "c"], ["a", "b", "c"])
     assert nouveaux == ["b"] and not en_fin
+
+
+def test_un_hors_serie_suit_la_saison_la_plus_proche_en_date():
+    episodes = [{"season": 2, "date": "2021-03-21"}, {"season": 3, "date": "2021-12-05"}]
+    assert pm.saison_de({"date": "2021-11-25"}, episodes) == 3
+    assert pm.saison_de({"season": 4, "date": "2021-11-25"}, episodes) == 4
+    assert pm.saison_de({}, episodes) is None

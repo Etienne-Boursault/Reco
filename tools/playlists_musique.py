@@ -4,8 +4,8 @@ playlists_musique.py — contenu des playlists Spotify « Un Bon Moment ».
 CE QUE FAIT CET OUTIL
 ---------------------
 Calcule, a partir du corpus, la liste ordonnee des titres de chaque playlist
-du compte Spotify « Une Bonne Reco » : une par saison, une pour les episodes
-d'avant la numerotation (2020-2024), une qui cumule tout. Ordre des episodes,
+du compte Spotify « Une Bonne Reco » : une par saison (un hors-serie suit la
+saison la plus proche en date), une qui cumule tout. Ordre des episodes,
 du plus ancien au plus recent, pour que chaque nouvel episode s'ajoute a la
 fin : le lecteur web n'insere jamais ailleurs.
 
@@ -31,6 +31,7 @@ import re
 import sys
 import time
 import unicodedata
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -68,9 +69,28 @@ def nom_playlist(saison: int | None) -> str:
     return f"Saison {saison}" if saison else AVANT_SAISONS
 
 
+def saison_de(ep: dict[str, Any], episodes: list[dict[str, Any]]) -> int | None:
+    """Saison d'un episode ; un hors-serie prend celle de l'episode numerote le plus proche.
+
+    Les saisons 1 a 4 ont recu leur numero le 2026-11-02 (d'apres TheTVDB) : seuls
+    les hors-series restent sans saison. « Kyan sort un album » (2021-11-25) tombe
+    ainsi en saison 3, dix jours avant son premier episode.
+    """
+    if ep.get("season"):
+        return int(ep["season"])
+    jour = str(ep.get("date") or "")[:10]
+    if not jour:
+        return None
+    debut = date.fromisoformat(jour)
+    proches = sorted((abs((date.fromisoformat(str(e["date"])[:10]) - debut).days), e["season"])
+                     for e in episodes if e.get("season") and e.get("date"))
+    return int(proches[0][1]) if proches else None
+
+
 def entrees() -> list[dict[str, Any]]:
     """Une entree par fiche et par playlist de saison, la plus ancienne mention d'abord."""
-    episodes = {e["guid"]: e for e in _lire(EPISODES_DIR)}
+    tous = _lire(EPISODES_DIR)
+    episodes = {e["guid"]: e for e in tous}
     items = {i["id"]: i for i in _lire(ITEMS_DIR)}
     recos = {r["id"]: r for r in _lire(RECOS_DIR)}
     retenues: dict[tuple[str, str], dict[str, Any]] = {}
@@ -86,7 +106,7 @@ def entrees() -> list[dict[str, Any]]:
             continue
         ep = episodes.get(m["sourceRef"]["episodeGuid"], {})
         e = {"item": item["id"], "titre": item["title"], "url": url, "date": ep.get("date") or "",
-             "playlist": nom_playlist(ep.get("season")), "guid": m["sourceRef"]["episodeGuid"],
+             "playlist": nom_playlist(saison_de(ep, tous)), "guid": m["sourceRef"]["episodeGuid"],
              "type": next(t for t in TYPES if t in item["types"])}
         cle = (e["playlist"], e["item"])
         if cle not in retenues or e["date"] < retenues[cle]["date"]:
