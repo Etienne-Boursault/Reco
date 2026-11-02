@@ -87,17 +87,20 @@ def test_texte_separe_recos_et_evocations():
          "transcriptSource": "youtube", "kind": "reco"},
         {"title": "Bo Burnham", "creator": "Bo Burnham", "timestamp": "01:19:51",
          "transcriptSource": "youtube", "kind": "citation"},
-    ], "https://site/ep/")
+    ])
     recos, evocations = message.split("Aussi évoqués")
     # Un createur identique au titre ne se repete pas, et le type donne l'emoji.
     assert "1:10 ✨ Renversée (Amandine Lourdel)" in recos
     assert evocations.startswith(" : Bo Burnham (1:19:51)\n")
-    assert "https://site/ep/" in message and "non officiel" in message
+    assert "non officiel" in message
+    # YouTube écarte tout commentaire qui porte l'adresse du site : renvoi vers la chaîne.
+    assert "voir la chaîne @unebonnereco" in message
+    assert "unebonnere.co" not in message and "http" not in message
 
 
 def test_l_emoji_suit_le_type():
     message = cy.texte([{"title": "Noor", "types": ["artiste"], "timestamp": "01:09:06",
-                         "transcriptSource": "youtube"}], "https://site/")
+                         "transcriptSource": "youtube"}])
     assert "1:09:06 🎤 Noor" in message
 
 
@@ -106,13 +109,13 @@ def test_les_evocations_d_un_meme_moment_tiennent_en_une_ligne():
         {"title": "Nardwuar", "timestamp": "00:29:34", "transcriptSource": "youtube", "kind": "citation"},
         {"title": "Bigflo & Oli", "timestamp": "00:29:34", "transcriptSource": "youtube", "kind": "citation"},
         {"title": "Linky", "timestamp": "01:00:00", "transcriptSource": "youtube", "kind": "citation"},
-    ], "https://site/")
+    ])
     assert "💬 Aussi évoqués : Nardwuar et Bigflo & Oli (29:34), Linky (1:00:00)\n" in message
 
 
 def test_un_minutage_acast_n_est_pas_donne_pour_la_video():
     message = cy.texte([{"title": "X", "timestamp": "00:10:00",
-                         "transcriptSource": "acast"}], "https://site/")
+                         "transcriptSource": "acast"}])
     assert "✨ X" in message and "10:00" not in message
 
 
