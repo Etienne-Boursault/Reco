@@ -40,11 +40,13 @@ def _page():
     return "".join(f"Oeuvre {g}" for g in ("a", "b", "c"))
 
 
-def _lancer(corpus, session, nombre=1, notes=None, recap=False, le="2026-11-02T14:00:00"):
+def _lancer(corpus, session, nombre=1, notes=None, recap=False, le="2026-11-02T14:00:00",
+            verifier=lambda video, commentaire: True):
     notes = [] if notes is None else notes
     chemin = corpus / "etat.json"
     n = rc.rattraper("ubm", nombre, notes.append, chemin=chemin, session=session,
-                     env=ENV, maintenant=lambda: le, recap=recap)
+                     env=ENV, maintenant=lambda: le, recap=recap, verifier=verifier,
+                     attendre=lambda secondes: None)
     return n, json.loads(chemin.read_text(encoding="utf-8")) if chemin.exists() else None, notes
 
 
@@ -131,3 +133,44 @@ def test_pas_de_recapitulatif_sans_commentaire_du_jour(corpus):
     _, _, notes = _lancer(corpus, Session(page="rien"), recap=True, le="2026-11-02T20:00:00")
     # Seule la mise de côté sonne ; aucun récapitulatif vide.
     assert len(notes) == 1 and "mis de côté" in notes[0]
+
+
+# ===== La relecture sans compte ============================================
+def test_un_commentaire_invisible_des_l_envoi_suspend_le_rattrapage(corpus):
+    session = Session(page=_page())
+    n, etat, notes = _lancer(corpus, session, nombre=4, verifier=lambda v, c: False)
+    # Un seul envoi : on ne continue pas à poster des messages que personne ne voit.
+    assert n == 0 and len(session.postes) == 1
+    assert etat["postes"]["b"]["masque"] and "invisible sans compte" in etat["suspendu"]
+    assert "suspendu" in notes[0] and "lc=UgzCommentaire" in notes[0]
+    # Tant que « suspendu » reste dans l'état, plus rien ne part.
+    n, _, notes = _lancer(corpus, session)
+    assert n == 0 and len(session.postes) == 1 and notes == []
+
+
+def test_un_commentaire_masque_plus_tard_suspend_au_passage_suivant(corpus):
+    session = Session(page=_page())
+    _lancer(corpus, session)  # « b » posté et visible
+    n, etat, notes = _lancer(corpus, session, le="2026-11-03T09:00:00",
+                             verifier=lambda v, c: v != "BBB")
+    assert n == 0 and len(session.postes) == 1
+    assert etat["postes"]["b"]["masque"] == "2026-11-03T09:00:00" and etat["suspendu"]
+    assert "avec B" in notes[0]
+
+
+def test_la_relecture_laisse_les_commentaires_de_plus_de_deux_jours(corpus):
+    session = Session(page=_page())
+    _lancer(corpus, session, le="2026-10-30T09:00:00")  # « b », trois jours avant
+    lus = []
+    n, etat, _ = _lancer(corpus, session, verifier=lambda v, c: lus.append(v) or True)
+    assert n == 1 and "suspendu" not in etat
+    assert lus == ["CCC"]  # seul le commentaire du jour est relu
+
+
+def test_le_recapitulatif_ne_compte_pas_un_commentaire_masque(corpus):
+    session = Session(page=_page())
+    _lancer(corpus, session, verifier=lambda v, c: False)
+    etat = json.loads((corpus / "etat.json").read_text(encoding="utf-8"))
+    notes = []
+    rc._recapituler("ubm", etat, notes.append, "2026-11-02", ENV)
+    assert notes == []

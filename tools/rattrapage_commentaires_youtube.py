@@ -27,6 +27,18 @@ Matrix reçoit un récapitulatif par jour (`--recap`, au dernier passage), les
 échecs et la fin du rattrapage — pas un message par vidéo, qui ferait quatre
 messages par jour pendant un mois.
 
+RELECTURE SANS COMPTE
+---------------------
+YouTube peut accepter un commentaire (l'API rend un identifiant) puis l'effacer
+ou le masquer au public, tout de suite ou des heures plus tard ; l'API, lue avec
+le jeton de la chaîne, continue alors de le voir (essais du 2026-11-02 : S6-E03
+public à 20 h 15, masqué à 22 h). Chaque commentaire est donc relu SANS COMPTE
+(yt-dlp) 40 s après son envoi, puis à chaque passage pendant deux jours. Au
+premier commentaire introuvable, le rattrapage se suspend (`suspendu` dans
+l'état) et le signale : continuer posterait des messages que personne ne voit,
+et chargerait la chaîne aux yeux des filtres de YouTube. Retirer `suspendu` du
+fichier le relance.
+
 INERTE sans `RECO_YT_COMMENTAIRES=1` et les secrets OAuth (comme l'étape
 `commenter`). Aperçu sans rien poster : `--apercu`.
 """
@@ -37,8 +49,9 @@ import json
 import logging
 import os
 import sys
+import time
 from collections.abc import Callable, Mapping
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlsplit
@@ -51,6 +64,49 @@ import common
 log = logging.getLogger("rattrapage_commentaires_youtube")
 
 Notify = Callable[[str], None]
+EstPublic = Callable[[str, str], bool]
+
+#: Délai avant la première relecture d'un commentaire qui vient de partir.
+DELAI_RELECTURE_S = 40
+#: Durée pendant laquelle chaque passage relit un commentaire déjà posté.
+RELIRE_PENDANT = timedelta(days=2)
+#: Commentaires les plus récents lus sans compte pour retrouver le nôtre.
+COMMENTAIRES_LUS = 300
+
+
+def est_public(video: str, commentaire: str) -> bool:  # pragma: no cover — réseau réel
+    """Le commentaire est-il visible SANS COMPTE sous la vidéo ?"""
+    import yt_dlp
+    options = {"quiet": True, "no_warnings": True, "skip_download": True, "getcomments": True,
+               "extractor_args": {"youtube": {"comment_sort": ["new"],
+                                              "max_comments": [str(COMMENTAIRES_LUS), "all", "0"]}}}
+    with yt_dlp.YoutubeDL(options) as ydl:
+        info = ydl.extract_info(f"https://www.youtube.com/watch?v={video}", download=False)
+    return any(c.get("id") == commentaire for c in info.get("comments") or [])
+
+
+def _masque(etat: dict[str, Any], guid: str, quand: str, notify: Notify) -> None:
+    poste = etat["postes"][guid]
+    poste["masque"] = quand
+    etat["suspendu"] = f"commentaire de « {poste.get('titre', guid)} » invisible sans compte"
+    notify(f"💬 Rattrapage YouTube suspendu : le commentaire posté sous « "
+           f"{poste.get('titre', guid)} » n'est pas visible sans compte "
+           f"(https://www.youtube.com/watch?v={poste['video']}&lc={poste['commentaire']}). "
+           f"Retirer « suspendu » de l'état pour reprendre.")
+
+
+def relire_recents(etat: dict[str, Any], notify: Notify, verifier: EstPublic,
+                   maintenant: str) -> bool:
+    """Relit sans compte les commentaires des deux derniers jours. Rend False,
+    et suspend le rattrapage, dès que l'un d'eux a disparu."""
+    limite = datetime.fromisoformat(maintenant) - RELIRE_PENDANT
+    for guid, poste in etat["postes"].items():
+        if poste.get("masque") or datetime.fromisoformat(poste["le"]) < limite:
+            continue
+        if not verifier(poste["video"], poste["commentaire"]):
+            _masque(etat, guid, maintenant, notify)
+            return False
+    return True
 
 
 def etat_path() -> Path:
@@ -108,8 +164,11 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
               recap: bool = False,
               session: Any = None, env: Mapping[str, str] = os.environ,
               maintenant: Callable[[], str] = lambda: datetime.now().isoformat(timespec="seconds"),
+              verifier: EstPublic = est_public,
+              attendre: Callable[[float], None] = time.sleep,
               ) -> int:
-    """Poste sous `nombre` vidéos au plus. Rend le nombre de commentaires postés."""
+    """Poste sous `nombre` vidéos au plus. Rend le nombre de commentaires
+    postés et restés visibles."""
     if not cy.actif(env):
         log.info("étape inactive (RECO_YT_COMMENTAIRES ou secrets absents)")
         return 0
@@ -117,6 +176,12 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
         import requests
         session = requests.Session()
     etat = charger_etat(chemin)
+    if etat.get("suspendu"):
+        log.info("rattrapage suspendu : %s", etat["suspendu"])
+        return 0
+    if not relire_recents(etat, notify, verifier, maintenant()):
+        sauver_etat(chemin, etat)
+        return 0
     file = en_attente(source_id, etat, env)
     if not file:
         if not etat.get("termine"):
@@ -147,9 +212,14 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
             else:
                 etat["postes"][guid] = {"video": video, "commentaire": ident, "titre": titre,
                                         "le": maintenant(), "recos": len(recos)}
-                postes += 1
                 log.info("%s : commentaire %s sous %s", titre, ident, video)
                 sauver_etat(chemin, etat)
+                attendre(DELAI_RELECTURE_S)
+                if not verifier(video, ident):
+                    _masque(etat, guid, maintenant(), notify)
+                    sauver_etat(chemin, etat)
+                    return postes
+                postes += 1
                 continue
         etat["de_cote"][guid] = {"video": video, "raison": raison, "le": maintenant()}
         sauver_etat(chemin, etat)
@@ -163,7 +233,8 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
 def _recapituler(source_id: str, etat: dict[str, Any], notify: Notify, jour: str,
                  env: Mapping[str, str]) -> None:
     """Un message pour les vidéos commentées ce jour-là ; rien si aucune."""
-    du_jour = [v for v in etat["postes"].values() if str(v.get("le", "")).startswith(jour)]
+    du_jour = [v for v in etat["postes"].values()
+               if str(v.get("le", "")).startswith(jour) and not v.get("masque")]
     if not du_jour:
         return
     reste = len(en_attente(source_id, etat, env))
