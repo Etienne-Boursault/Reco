@@ -77,6 +77,29 @@ describe('lireSensCritique', () => {
     ]);
   });
 
+  it('attache la liste « évoqués » à la liste « recommandés » du même genre', () => {
+    const r = lireSensCritique({
+      listes: {
+        film: { url: 'https://www.senscritique.com/liste/films/1', ajoutees: ['f1'] },
+        serie: { url: 'https://www.senscritique.com/liste/series/2', ajoutees: [] },
+      },
+      evoquees: {
+        film: { url: 'https://www.senscritique.com/liste/films_evoques/5', ajoutees: ['f2', 'f3'] },
+        serie: { url: 'https://exemple.com/x', ajoutees: [] },
+        bd: { url: 'https://www.senscritique.com/liste/bd_evoquees/8', ajoutees: ['b'] },
+      },
+    });
+    expect(r).toEqual([
+      {
+        genre: 'film',
+        url: 'https://www.senscritique.com/liste/films/1',
+        oeuvres: ['f1'],
+        evoquees: { url: 'https://www.senscritique.com/liste/films_evoques/5', oeuvres: ['f2', 'f3'] },
+      },
+      { genre: 'serie', url: 'https://www.senscritique.com/liste/series/2', oeuvres: [] },
+    ]);
+  });
+
   it('écarte une adresse hors SensCritique ou une liste sans `ajoutees`', () => {
     expect(
       lireSensCritique({
@@ -137,6 +160,7 @@ describe('chargerListes', () => {
     const sc = JSON.parse(readFileSync('tools/data/senscritique.json', 'utf-8'));
     expect(l.toutes?.titres.spotify).toBe(brut.playlists['Toutes les recos musicales'].titres.length);
     expect(listeDuGenre(l, 'film')?.oeuvres.length).toBe(sc.listes.film.ajoutees.length);
+    expect(listeDuGenre(l, 'film')?.evoquees?.oeuvres.length).toBe(sc.evoquees?.film?.ajoutees?.length);
   });
 });
 
@@ -157,6 +181,8 @@ describe('aides', () => {
   it('nombreDeListes compte une playlist une fois pour ses deux plateformes', () => {
     expect(nombreDeListes(listes)).toBe(4);
     expect(nombreDeListes({ ...listes, toutes: null })).toBe(3);
+    const avecEvoquees = { ...listes, senscritique: [{ genre: 'film' as const, url: 'u', oeuvres: [], evoquees: { url: 'e', oeuvres: [] } }] };
+    expect(nombreDeListes(avecEvoquees)).toBe(5);
   });
 
   it('playlistDeLaSaison : la saison, sinon celle qui cumule tout', () => {

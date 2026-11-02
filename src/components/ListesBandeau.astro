@@ -6,9 +6,10 @@
  * playlists de saison. Films, séries, livres : la ou les listes SensCritique
  * du genre. Maquette LS2-musique, validée le 2026-11-02.
  *
- * La phrase reste vraie : la galerie compte toutes les œuvres citées, même
- * seulement évoquées ; une liste SensCritique ne rassemble qu'une partie des
- * recommandées (cf. `listes.bandeau.*` dans `src/i18n/fr.ts`).
+ * La phrase reste vraie : la galerie compte toutes les œuvres citées. La
+ * liste « recommandés » n'en rassemble qu'une partie, la liste « seulement
+ * évoqués » une autre ; le bandeau nomme les deux (cf. `listes.bandeau.*`
+ * dans `src/i18n/fr.ts`).
  *
  * Rien ne s'affiche pour une source sans listes, ou si la liste demandée
  * n'existe pas.
@@ -16,9 +17,8 @@
 import ListesLien from './ListesLien.astro';
 import ListesBoutonsPlaylist from './ListesBoutonsPlaylist.astro';
 import { chargerListes, listeDuGenre, type Genre, type Listes } from '../lib/listes/donnees';
-import { ariaVoirListe, libelleTitres, phraseBandeau } from '../lib/listes/libelles';
+import { liensBandeau, libelleTitres, phraseBandeau } from '../lib/listes/libelles';
 import { t } from '../i18n';
-import type { I18nKey } from '../i18n/fr';
 
 interface Props {
   sourceId: string;
@@ -40,23 +40,26 @@ const icone = toutes
 
 {(toutes || sc.length > 0) && (
   <aside class="lst-bandeau" aria-label={t('listes.title')}>
-    <svg class="lst-bandeau-icone" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icone} /></svg>
     {toutes ? (
       <>
-        <p class="lst-bandeau-texte">
-          {t('listes.bandeau.musique')} <strong>{libelleTitres(toutes)}</strong> {t('listes.bandeau.musique.fin')}
-        </p>
+        <div class="lst-bandeau-tete">
+          <svg class="lst-bandeau-icone" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icone} /></svg>
+          <p class="lst-bandeau-texte">
+            {t('listes.bandeau.musique')} <strong>{libelleTitres(toutes)}</strong> {t('listes.bandeau.musique.fin')}
+          </p>
+        </div>
         <span class="lst-bandeau-liens"><ListesBoutonsPlaylist sourceId={sourceId} playlist={toutes} /></span>
         <a class="lst-bandeau-tous" href={page}>{t('listes.bandeau.saisons')}</a>
       </>
     ) : (
       <>
-        <p class="lst-bandeau-texte">{phraseBandeau(sc)}</p>
+        <div class="lst-bandeau-tete">
+          <svg class="lst-bandeau-icone" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icone} /></svg>
+          <p class="lst-bandeau-texte">{phraseBandeau(sc)}</p>
+        </div>
         <span class="lst-bandeau-liens">
-          {sc.map((l) => (
-            <ListesLien href={l.url} sourceId={sourceId} ariaLabel={ariaVoirListe(l.genre)}>
-              {sc.length > 1 ? t(`listes.bandeau.liste.${l.genre}` as I18nKey) : t('listes.sc.voir')} ↗
-            </ListesLien>
+          {liensBandeau(sc).map((l) => (
+            <ListesLien href={l.url} sourceId={sourceId} ariaLabel={l.aria}>{l.libelle} ↗</ListesLien>
           ))}
         </span>
         <a class="lst-bandeau-tous" href={page}>{t('listes.bandeau.toutes')}</a>
@@ -77,13 +80,21 @@ const icone = toutes
     border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
     border-radius: var(--radius);
   }
+  /* L'icône reste collée au texte, qui prend une ligne entière avant que les
+     boutons ne passent dessous : une phrase de quatre listes, serrée à côté
+     de quatre boutons, se lisait mot par mot. */
+  .lst-bandeau-tete {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1 1 26rem;
+  }
   .lst-bandeau-icone {
     color: var(--accent);
     flex: 0 0 auto;
   }
   .lst-bandeau-texte {
     margin: 0;
-    flex: 1 1 12rem;
     font-size: 0.95rem;
   }
   .lst-bandeau-liens {

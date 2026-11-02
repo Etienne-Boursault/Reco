@@ -12,7 +12,10 @@
  *  - `tools/data/senscritique.json` : `listes.{film,serie,livre,bd}` → `url`
  *    et `ajoutees`, les fiches du site réellement présentes dans la liste, de
  *    la plus récente à la plus ancienne. `traitees` est ignoré : il compte
- *    aussi les œuvres que SensCritique n'a pas trouvées.
+ *    aussi les œuvres que SensCritique n'a pas trouvées. `evoquees`, même
+ *    format, tient les listes des œuvres seulement citées, sans être
+ *    recommandées (créées le 2026-11-02) : chacune s'attache à la liste
+ *    « recommandés » de son genre, en lien secondaire.
  *
  * Ces fichiers ne valent que pour une source — ils ne nomment pas le podcast,
  * et le site est multi-source (« une source = un podcast »). La table
@@ -64,6 +67,8 @@ export interface ListeSensCritique {
   url: string;
   /** Identifiants des fiches du site présentes dans la liste, récentes d'abord. */
   oeuvres: string[];
+  /** La liste des œuvres du même genre seulement évoquées, si elle existe. */
+  evoquees?: { url: string; oeuvres: string[] };
 }
 
 export interface Listes {
@@ -127,16 +132,29 @@ export function lirePlaylists(
   return { toutes, saisons };
 }
 
-/** Les listes SensCritique valides, dans l'ordre de `GENRES`. */
+/** `{url, oeuvres}` d'une liste SensCritique, ou `null` si elle n'a pas la forme attendue. */
+function entreeListe(valeur: unknown): { url: string; oeuvres: string[] } | null {
+  const l = objet(valeur);
+  const url = typeof l?.url === 'string' ? l.url : '';
+  if (!l || !url.startsWith('https://www.senscritique.com/liste/') || !Array.isArray(l.ajoutees)) return null;
+  return { url, oeuvres: l.ajoutees.filter((id): id is string => typeof id === 'string') };
+}
+
+/**
+ * Les listes SensCritique valides, dans l'ordre de `GENRES`.
+ *
+ * Une liste « évoqués » sans liste « recommandés » du même genre est ignorée :
+ * elle n'est montrée qu'en complément.
+ */
 export function lireSensCritique(senscritique: unknown): ListeSensCritique[] {
   const listes = objet(objet(senscritique)?.listes) ?? {};
+  const evoquees = objet(objet(senscritique)?.evoquees) ?? {};
   const out: ListeSensCritique[] = [];
   for (const genre of GENRES) {
-    const l = objet(listes[genre]);
-    const url = typeof l?.url === 'string' ? l.url : '';
-    if (!l || !url.startsWith('https://www.senscritique.com/liste/') || !Array.isArray(l.ajoutees)) continue;
-    const oeuvres = l.ajoutees.filter((id): id is string => typeof id === 'string');
-    out.push({ genre, url, oeuvres });
+    const l = entreeListe(listes[genre]);
+    if (!l) continue;
+    const e = entreeListe(evoquees[genre]);
+    out.push(e ? { genre, ...l, evoquees: e } : { genre, ...l });
   }
   return out;
 }
@@ -178,9 +196,14 @@ export function viderCacheListes(): void {
   cache.clear();
 }
 
+/** Nombre de listes SensCritique, « évoqués » comprises. */
+export function nombreDeListesSensCritique(listes: Listes): number {
+  return listes.senscritique.reduce((n, l) => n + (l.evoquees ? 2 : 1), 0);
+}
+
 /** Nombre de listes affichées : une playlist compte une fois pour ses deux plateformes. */
 export function nombreDeListes(listes: Listes): number {
-  return (listes.toutes ? 1 : 0) + listes.saisons.length + listes.senscritique.length;
+  return (listes.toutes ? 1 : 0) + listes.saisons.length + nombreDeListesSensCritique(listes);
 }
 
 /**

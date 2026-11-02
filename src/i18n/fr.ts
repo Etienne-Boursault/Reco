@@ -124,7 +124,8 @@ export const fr = {
   'listes.vieprivee':
     'Les liens ouvrent Spotify, Deezer ou SensCritique dans un nouvel onglet. Cette page ne charge rien depuis ces plateformes : ni lecteur, ni image, ni script.',
   'listes.a11y.ecouter': 'Écouter la playlist « {nom} » sur {plateforme} (nouvel onglet)',
-  'listes.a11y.voirListe': 'Voir la liste SensCritique des {genre} (nouvel onglet)',
+  'listes.a11y.voirListe': 'Voir la liste SensCritique : {nom} (nouvel onglet)',
+  'listes.a11y.evoquees': '{texte}, liste SensCritique (nouvel onglet)',
   'listes.carte.saisons': 'Une playlist par saison',
   'listes.carte.sc': '{genres} sur SensCritique',
   'listes.carte.voir': 'Voir les listes →',
@@ -132,17 +133,36 @@ export const fr = {
   'listes.bandeau.musique.fin': 'en playlist',
   'listes.bandeau.saisons': 'Une playlist par saison →',
   'listes.bandeau.toutes': 'Toutes les listes →',
-  // Une liste SensCritique ne rassemble que des œuvres RECOMMANDÉES, et pas
-  // toutes (SensCritique ne les connaît pas toutes) ; la galerie compte en
-  // plus les œuvres seulement évoquées. « {n} des films recommandés » le dit.
-  'listes.bandeau.film': 'Une liste à suivre sur SensCritique rassemble {n} des films recommandés ici.',
-  'listes.bandeau.serie': 'Une liste à suivre sur SensCritique rassemble {n} des séries recommandées ici.',
-  'listes.bandeau.livre': 'Une liste à suivre sur SensCritique rassemble {n} des livres recommandés ici.',
-  'listes.bandeau.bd': 'Une liste à suivre sur SensCritique rassemble {n} des BD recommandées ici.',
-  'listes.bandeau.livresEtBd':
-    'Deux listes à suivre sur SensCritique rassemblent {livres} des livres et {bd} des BD recommandés ici.',
-  'listes.bandeau.liste.livre': 'Liste des livres',
-  'listes.bandeau.liste.bd': 'Liste des BD',
+  // Le bandeau des pages Films, Séries et Livres. La galerie compte toutes les
+  // œuvres citées ; une liste « recommandés » n'en rassemble qu'une partie
+  // (SensCritique ne les connaît pas toutes), la liste « évoqués » une autre.
+  // « {n} des films recommandés ici » ne prétend donc pas tout contenir.
+  'listes.bandeau.une': 'Une liste à suivre sur SensCritique rassemble {contenu}.',
+  'listes.bandeau.plusieurs': '{nombre} listes à suivre sur SensCritique rassemblent {contenu}.',
+  'listes.bandeau.reco.film': '{n} des films recommandés ici',
+  'listes.bandeau.reco.serie': '{n} des séries recommandées ici',
+  'listes.bandeau.reco.livre': '{n} des livres recommandés ici',
+  'listes.bandeau.reco.bd': '{n} des BD recommandées ici',
+  'listes.bandeau.reco.livresEtBd': '{livres} des livres et {bd} des BD recommandés ici',
+  // Les listes des œuvres seulement évoquées (2026-11-02), accordées au nombre.
+  'listes.evoquees.aussi': 'Aussi :',
+  'listes.evoquees.film.one': 'film seulement évoqué',
+  'listes.evoquees.film.many': 'films seulement évoqués',
+  'listes.evoquees.serie.one': 'série seulement évoquée',
+  'listes.evoquees.serie.many': 'séries seulement évoquées',
+  'listes.evoquees.livre.one': 'livre seulement évoqué',
+  'listes.evoquees.livre.many': 'livres seulement évoqués',
+  'listes.evoquees.bd.one': 'BD seulement évoquée',
+  'listes.evoquees.bd.many': 'BD seulement évoquées',
+  'listes.lien.reco.film': 'Films recommandés',
+  'listes.lien.reco.serie': 'Séries recommandées',
+  'listes.lien.reco.livre': 'Livres recommandés',
+  'listes.lien.reco.bd': 'BD recommandées',
+  'listes.lien.evoquees.film': 'Films évoqués',
+  'listes.lien.evoquees.serie': 'Séries évoquées',
+  'listes.lien.evoquees.livre': 'Livres évoqués',
+  'listes.lien.evoquees.bd': 'BD évoquées',
+  'listes.a11y.liste': 'Liste SensCritique : {nom} (nouvel onglet)',
   'listes.episode.label': 'Playlist de l’épisode',
   'listes.episode.texte': 'La musique de cet épisode est dans la playlist',
 

@@ -19,9 +19,12 @@ import {
 import {
   apercuSensCritique,
   ariaEcouter,
+  ariaEvoquees,
   ariaVoirListe,
   descriptionListes,
-  libelleOeuvres,
+  libelleEvoquees,
+  libelleOeuvresRecommandees,
+  liensBandeau,
   libelleTitres,
   nomGenre,
   phraseBandeau,
@@ -180,15 +183,18 @@ describe('libellés', () => {
     expect(libelleTitres(pl(298, 298))).toBe('298 titres');
     expect(libelleTitres(pl(1, 1))).toBe('1 titre');
     expect(libelleTitres(pl(18, 17))).toBe('18 titres sur Spotify, 17 sur Deezer');
-    expect(libelleOeuvres(1)).toBe('1 œuvre');
-    expect(libelleOeuvres(122)).toBe('122 œuvres');
+    expect(libelleOeuvresRecommandees(1)).toBe('1 œuvre recommandée');
+    expect(libelleOeuvresRecommandees(122)).toBe('122 œuvres recommandées');
+    expect(libelleEvoquees('film', 75)).toBe('75 films seulement évoqués');
+    expect(libelleEvoquees('bd', 1)).toBe('1 BD seulement évoquée');
   });
 
   it('noms et noms accessibles', () => {
     expect(nomGenre('bd')).toBe('Bandes dessinées');
     expect(saisonCourte(pl(1, 1, 6))).toBe('S6');
     expect(ariaEcouter(pl(1, 1), 'Spotify')).toBe('Écouter la playlist « Saison 6 » sur Spotify (nouvel onglet)');
-    expect(ariaVoirListe('serie')).toBe('Voir la liste SensCritique des séries (nouvel onglet)');
+    expect(ariaVoirListe('serie')).toBe('Voir la liste SensCritique : Séries recommandées (nouvel onglet)');
+    expect(ariaEvoquees('Aussi : 3 BD seulement évoquées')).toBe('Aussi : 3 BD seulement évoquées, liste SensCritique (nouvel onglet)');
   });
 
   it('aperçu SensCritique de la carte d’accueil', () => {
@@ -214,5 +220,41 @@ describe('libellés', () => {
       'Deux listes à suivre sur SensCritique rassemblent 51 des livres et 14 des BD recommandés ici.',
     );
     expect(phraseBandeau([l('bd', 3)])).toBe('Une liste à suivre sur SensCritique rassemble 3 des BD recommandées ici.');
+  });
+
+  const ev = (genre: 'film' | 'serie' | 'livre' | 'bd', n: number, m: number) => ({
+    genre, url: `r-${genre}`, oeuvres: Array(n).fill('x'), evoquees: { url: `e-${genre}`, oeuvres: Array(m).fill('y') },
+  });
+
+  it('phrase du bandeau : les seulement évoqués après les recommandés', () => {
+    expect(phraseBandeau([ev('film', 123, 75)])).toBe(
+      'Deux listes à suivre sur SensCritique rassemblent 123 des films recommandés ici, et 75 films seulement évoqués.',
+    );
+    expect(phraseBandeau([ev('livre', 51, 13), ev('bd', 15, 3)])).toBe(
+      'Quatre listes à suivre sur SensCritique rassemblent 51 des livres et 15 des BD recommandés ici, et 13 livres seulement évoqués et 3 BD seulement évoquées.',
+    );
+    const l = { genre: 'livre' as const, url: 'u', oeuvres: ['a'] };
+    expect(phraseBandeau([l, ev('bd', 2, 1)])).toBe(
+      'Trois listes à suivre sur SensCritique rassemblent 1 des livres et 2 des BD recommandés ici, et 1 BD seulement évoquée.',
+    );
+  });
+
+  it('au-delà de quatre listes, le nombre en chiffres', () => {
+    const cinq = [ev('film', 2, 3), ev('serie', 4, 5), { genre: 'livre' as const, url: 'u', oeuvres: [] }];
+    expect(phraseBandeau(cinq)).toBe(
+      '5 listes à suivre sur SensCritique rassemblent 2 des films recommandés ici et 4 des séries recommandées ici et 0 des livres recommandés ici, et 3 films seulement évoqués et 5 séries seulement évoquées.',
+    );
+  });
+
+  it('boutons du bandeau : « Voir la liste » seul, sinon chacun nommé', () => {
+    expect(liensBandeau([{ genre: 'film', url: 'u', oeuvres: [] }])).toEqual([
+      { url: 'u', libelle: 'Voir la liste', aria: 'Voir la liste SensCritique : Films recommandés (nouvel onglet)' },
+    ]);
+    expect(liensBandeau([ev('livre', 1, 1), ev('bd', 1, 1)]).map((l) => l.libelle)).toEqual([
+      'Livres recommandés', 'BD recommandées', 'Livres évoqués', 'BD évoquées',
+    ]);
+    expect(liensBandeau([ev('serie', 1, 1)])[1]).toEqual({
+      url: 'e-serie', libelle: 'Séries évoquées', aria: 'Liste SensCritique : Séries évoquées (nouvel onglet)',
+    });
   });
 });

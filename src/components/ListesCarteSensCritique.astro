@@ -6,13 +6,17 @@
  * Le nombre est celui des fiches réellement entrées dans la liste
  * (`ajoutees`), pas celui des œuvres traitées : SensCritique n'en connaît pas
  * certaines (cf. `src/lib/listes/donnees.ts`).
+ *
+ * La liste des œuvres seulement évoquées du même genre, quand elle existe,
+ * suit en lien secondaire, sans vignettes (décision du 2026-11-02) : la carte
+ * reste celle des recommandés.
  */
 import WorkCard from './WorkCard.astro';
 import ListesLien from './ListesLien.astro';
 import type { ListeSensCritique } from '../lib/listes/donnees';
 import type { Vignette } from '../lib/listes/ajouts';
 import type { ItemLike } from '../lib/work/aggregator';
-import { ariaVoirListe, libelleOeuvres, nomGenre } from '../lib/listes/libelles';
+import { ariaEvoquees, ariaVoirListe, libelleEvoquees, libelleOeuvresRecommandees, nomGenre } from '../lib/listes/libelles';
 import { t } from '../i18n';
 
 interface Props {
@@ -23,13 +27,19 @@ interface Props {
 
 const { sourceId, liste, ajouts } = Astro.props;
 const titreId = `lst-sc-${liste.genre}`;
+const evoquees = liste.evoquees
+  ? {
+      url: liste.evoquees.url,
+      texte: `${t('listes.evoquees.aussi')} ${libelleEvoquees(liste.genre, liste.evoquees.oeuvres.length)}`,
+    }
+  : null;
 ---
 
 <section class="lst-bloc" aria-labelledby={titreId}>
   <div class="lst-tete">
     <div>
       <h2 id={titreId} class="lst-nom">{nomGenre(liste.genre)}</h2>
-      <p class="lst-n"><strong>{libelleOeuvres(liste.oeuvres.length)}</strong> {t('listes.sc.plateforme')}</p>
+      <p class="lst-n"><strong>{libelleOeuvresRecommandees(liste.oeuvres.length)}</strong> {t('listes.sc.plateforme')}</p>
     </div>
     <ListesLien href={liste.url} sourceId={sourceId} ariaLabel={ariaVoirListe(liste.genre)}>
       {t('listes.sc.voir')} ↗
@@ -42,6 +52,13 @@ const titreId = `lst-sc-${liste.genre}`;
         {ajouts.map((a) => <li><WorkCard sourceId={sourceId} item={a.item} detail={a.detail} /></li>)}
       </ul>
     </>
+  )}
+  {evoquees && (
+    <p class="lst-evoquees">
+      <ListesLien href={evoquees.url} sourceId={sourceId} ariaLabel={ariaEvoquees(evoquees.texte)} variante="texte">
+        {evoquees.texte} ↗
+      </ListesLien>
+    </p>
   )}
 </section>
 
@@ -80,6 +97,9 @@ const titreId = `lst-sc-${liste.genre}`;
   }
   /* Une œuvre par ligne : la carte d'œuvre est une ligne (icône, titre,
      épisode), trois côte à côte couperaient les titres. */
+  .lst-evoquees {
+    margin: -0.4rem 0 -0.6rem;
+  }
   .lst-ajouts {
     list-style: none;
     margin: 0;

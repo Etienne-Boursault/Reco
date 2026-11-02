@@ -76,8 +76,17 @@ describe('ListesBandeau', () => {
 
   it('livres : deux listes, deux boutons nommés', async () => {
     const html = await rendre(ListesBandeau, { sourceId: 'x', genres: ['livre', 'bd'], listes: LISTES });
-    expect(visibleText(html)).toContain('51 des livres et 14 des BD recommandés ici. Liste des livres ↗ Liste des BD ↗');
-    expect(html).toContain('aria-label="Voir la liste SensCritique des BD (nouvel onglet)"');
+    expect(visibleText(html)).toContain('51 des livres et 14 des BD recommandés ici. Livres recommandés ↗ BD recommandées ↗');
+    expect(html).toContain('aria-label="Liste SensCritique : BD recommandées (nouvel onglet)"');
+  });
+
+  it('films avec la liste des évoqués : les deux listes, nommées', async () => {
+    const listes = { ...LISTES, senscritique: [{ ...sc('film', 123), evoquees: { url: 'https://www.senscritique.com/liste/ev/9', oeuvres: Array(75).fill('e') } }] };
+    const html = await rendre(ListesBandeau, { sourceId: 'x', genres: ['film'], listes });
+    expect(visibleText(html)).toContain(
+      'Deux listes à suivre sur SensCritique rassemblent 123 des films recommandés ici, et 75 films seulement évoqués. Films recommandés ↗ Films évoqués ↗',
+    );
+    expect(html).toContain('href="https://www.senscritique.com/liste/ev/9"');
   });
 
   it('rien sans listes, sans la liste du genre, ou sans playlist cumulée', async () => {
@@ -151,9 +160,17 @@ describe('Cartes de la page', () => {
 
   it('carte SensCritique', async () => {
     const avec = await rendre(ListesCarteSensCritique, { sourceId: 'src', liste: sc('bd', 14), ajouts: [{ item: ITEM, detail: '' }] });
-    expect(visibleText(avec)).toContain('Bandes dessinées 14 œuvres sur SensCritique Voir la liste ↗ Derniers ajouts');
+    expect(visibleText(avec)).toContain('Bandes dessinées 14 œuvres recommandées sur SensCritique Voir la liste ↗ Derniers ajouts');
+    expect(avec).not.toContain('seulement évoqu');
+    const evoq = await rendre(ListesCarteSensCritique, {
+      sourceId: 'src',
+      liste: { ...sc('film', 123), evoquees: { url: 'https://www.senscritique.com/liste/ev/9', oeuvres: Array(75).fill('e') } },
+      ajouts: [{ item: ITEM, detail: 'S6·E7' }],
+    });
+    expect(visibleText(evoq)).toContain('Marie Jay S6·E7 Aussi : 75 films seulement évoqués ↗');
+    expect(evoq).toContain('aria-label="Aussi : 75 films seulement évoqués, liste SensCritique (nouvel onglet)"');
     const sans = await rendre(ListesCarteSensCritique, { sourceId: 'src', liste: sc('film', 1), ajouts: [] });
-    expect(visibleText(sans)).toContain('1 œuvre sur SensCritique');
+    expect(visibleText(sans)).toContain('1 œuvre recommandée sur SensCritique');
     expect(sans).not.toContain('Derniers ajouts');
   });
 
@@ -212,7 +229,7 @@ describe('Page /[source]/listes', () => {
     expect(html).toMatch(/<h1[^>]*>Listes et playlists<\/h1>/);
     expect(texte).toContain('Les recos du podcast Un Bon Moment , rangées dans des playlists');
     expect(texte).toContain('Morceau S6·E7');
-    expect(texte).toContain('Films 1 œuvre sur SensCritique Voir la liste ↗ Derniers ajouts Film Le Film X S6·E7');
+    expect(texte).toContain('Films 1 œuvre recommandée sur SensCritique Voir la liste ↗ Derniers ajouts Film Le Film X S6·E7');
     expect(html).toContain('<title>Listes et playlists — Un Bon Moment');
     expect(html).toContain('/src/listes');
   });
