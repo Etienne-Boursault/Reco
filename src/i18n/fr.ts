@@ -36,6 +36,7 @@ export const fr = {
   'footer.manifesto': 'Manifeste éthique',
   'footer.legal': 'Mentions légales',
   'footer.nav.label': 'Liens secondaires',
+  'footer.follow': 'Nous suivre',
   'footer.support': 'Soutenir le projet',
 
   // À propos (item #22)

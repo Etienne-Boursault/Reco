@@ -64,5 +64,14 @@ export const siteConfig: SiteConfig = {
   contactEmail: 'contact@unebonnere.co',
   googleSiteVerification: 'ldAExERRaCmTqOPmJVgtqiLX4sBrmZTr8C_iH_6MlV8',
   alternateNames: ['UneBonneReco', 'unebonnere.co'],
-  socials: [{ label: 'Instagram', url: 'https://www.instagram.com/unebonnere.co/' }],
+  // Ligne « Nous suivre » du pied de page (décision PL-3 du 2026-11-02) et
+  // `sameAs` du JSON-LD. Adresses ouvertes une à une le 2026-11-02.
+  socials: [
+    { label: 'Instagram', url: 'https://www.instagram.com/unebonnere.co/' },
+    { label: 'Threads', url: 'https://www.threads.com/@unebonnere.co' },
+    { label: 'YouTube', url: 'https://www.youtube.com/@unebonnereco' },
+    { label: 'SensCritique', url: 'https://www.senscritique.com/unebonnereco' },
+    { label: 'Spotify', url: 'https://open.spotify.com/user/31wjsalcfucndfrmvulpwppydoqe' },
+    { label: 'Deezer', url: 'https://www.deezer.com/fr/profile/6954464223' },
+  ],
 };
