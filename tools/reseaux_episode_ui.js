@@ -190,11 +190,12 @@ window.__scChercher = async (titre, univers, listId) => {
 };
 
 // Ajoute une oeuvre a une liste, en tete par defaut (les listes vont du plus
-// recent au plus ancien), avec le lien vers sa fiche sur le site.
-window.__scAjouter = async (listId, scId, fiche, position = 1) => {
+// recent au plus ancien), avec le lien vers sa fiche sur le site. `verbe` vaut
+// 'Évoqué' pour les listes des oeuvres seulement citees (senscritiqueEvoquees).
+window.__scAjouter = async (listId, scId, fiche, position = 1, verbe = 'Recommandé') => {
   const q = 'mutation A($listId:Int!,$annotation:String,$itemId:Int!,$position:Int){'
     + 'userListAddItem(annotation:$annotation,itemId:$itemId,listId:$listId,position:$position){position}}';
-  const annotation = 'Recommandé dans Un Bon Moment : https://unebonnere.co/un-bon-moment/oeuvre/' + fiche + '/';
+  const annotation = verbe + ' dans Un Bon Moment : https://unebonnere.co/un-bon-moment/oeuvre/' + fiche + '/';
   const j = await scGql({ operationName: 'A', variables: { listId, itemId: scId, annotation, position }, query: q });
   if (j.errors) return JSON.stringify(j.errors).includes('already been added') ? 'deja dans la liste' : JSON.stringify(j.errors).slice(0, 200);
   return 'ok, position ' + j.data.userListAddItem.position;

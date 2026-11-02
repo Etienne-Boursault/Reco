@@ -73,6 +73,58 @@ def test_senscritique_sans_citation_ni_oeuvre_deja_traitee():
     assert sortie["serie"]["oeuvres"] == [] and sortie["livre"]["oeuvres"] == []
 
 
+def test_senscritique_evoquees_recoit_les_seules_citations():
+    items = {**ITEMS, "e": {"id": "e", "title": "Une BD citée", "types": ["livre"]},
+             "f": {"id": "f", "title": "Citée et recommandée", "types": ["film"]}}
+    mentions = [mention("m1", "a", "00:01:00"), mention("m2", "d", "00:02:00", kind="citation"),
+                mention("m3", "e", "00:03:00", kind="citation"), mention("m4", "f", "00:04:00", kind="citation"),
+                mention("m5", "f", "00:05:00"), mention("m6", "d", "00:06:00", kind="citation")]
+    etat = {"listes": {"film": {"id": 1, "traitees": [], "ajoutees": []}},
+            "evoquees": {"film": {"id": 11, "ajoutees": []},
+                         "livre": {"id": 13, "traitees": [], "ajoutees": []},
+                         "bd": {"id": 14, "ajoutees": ["e"]}}}
+    sortie = re_.senscritique(EP, mentions, items, etat, famille="evoquees")
+    # « f » est aussi recommandée dans l'épisode : elle va dans les recommandées, pas ici ;
+    # « e » est déjà dans la liste des BD, même classée « livre » sur le site.
+    assert sortie["film"]["oeuvres"] == []
+    assert [o["fiche"] for o in sortie["livre"]["oeuvres"]] == ["d"]
+    assert sortie["livre"]["liste"] == 13
+    recommandees = re_.senscritique(EP, mentions, items, etat)
+    assert [o["fiche"] for o in recommandees["film"]["oeuvres"]] == ["a", "f"]
+
+
+def test_senscritique_sans_famille_evoquees_dans_l_etat():
+    assert re_.senscritique(EP, [], ITEMS, {"listes": {}}, famille="evoquees") == {}
+
+
+def test_reporter_senscritique_note_les_examinees_et_relit_les_listes():
+    etat = {"listes": {"film": {"id": 1, "url": "https://sc/l1", "traitees": ["z"], "ajoutees": []}},
+            "evoquees": {"livre": {"id": 13, "url": "https://sc/l13", "ajoutees": []},
+                         "bd": {"id": 14, "ajoutees": ["e"]}}}
+    plan = {"senscritique": {"film": {"liste": 1, "oeuvres": [{"fiche": "a"}, {"fiche": "z"}]}},
+            "senscritiqueEvoquees": {"livre": {"liste": 13, "oeuvres": [{"fiche": "d"}]}}}
+    lues = {"https://sc/l1": ["a"], "https://sc/l13": ["d", "x"]}
+    re_.reporter_senscritique(etat, plan, lues.__getitem__)
+    assert etat["listes"]["film"]["traitees"] == ["a", "z"]
+    assert etat["listes"]["film"]["ajoutees"] == ["a"]
+    assert etat["evoquees"]["livre"] == {"id": 13, "url": "https://sc/l13", "ajoutees": ["d", "x"], "traitees": ["d"]}
+    assert etat["evoquees"]["bd"]["ajoutees"] == ["e"]
+
+
+def test_relire_liste_suit_les_pages_jusqu_a_la_derniere():
+    pages = {1: "oeuvre/aaaaaaaa/ unebonnere.co/un-bon-moment/oeuvre/11111111/ x "
+                "unebonnere.co/un-bon-moment/oeuvre/22222222/ unebonnere.co/un-bon-moment/oeuvre/11111111/",
+             2: "unebonnere.co/un-bon-moment/oeuvre/33333333/",
+             3: "unebonnere.co/un-bon-moment/oeuvre/33333333/"}
+
+    class Session:
+        def get(self, url, headers, timeout):
+            n = int(url.rsplit("=", 1)[1])
+            return type("R", (), {"text": pages.get(n, "")})()
+
+    assert re_.relire_liste("https://sc/l1", Session()) == ["11111111", "22222222", "33333333"]
+
+
 def test_musique_ajoute_en_fin_sans_doublon_de_chanson():
     etat = {"Saison 6": {"id": "p6", "titres": ["t1", "t2"]}}
     cles = {"t1": "a|x", "t2": "b|x", "t3": "c|x", "t4": "a|x", "t5": "c|x"}

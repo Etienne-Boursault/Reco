@@ -56,6 +56,8 @@ CODE = re.compile(r"^S(\d+)-?E(\d+)$", re.IGNORECASE)
 ONGLETS_SPOTIFY = {"artiste": "artists", "album": "albums", "musique": "tracks",
                    "podcast": "podcastAndEpisodes"}
 ECOUTE = re.compile(r"deezer\.com|music\.apple\.com|qobuz\.com|bandcamp\.com|music\.youtube\.com")
+#: Lien de fiche que porte l'annotation de chaque oeuvre d'une liste SensCritique.
+FICHE = re.compile(r"unebonnere\.co/un-bon-moment/oeuvre/([0-9a-f]{8})")
 
 
 def typo(texte: str | None) -> str:
@@ -119,21 +121,57 @@ def carrousel(ep: dict[str, Any], mentions: list[dict[str, Any]], items: dict[st
 
 
 def senscritique(ep: dict[str, Any], mentions: list[dict[str, Any]], items: dict[str, dict[str, Any]],
-                 etat: dict[str, Any]) -> dict[str, Any]:
-    """Oeuvres de l'episode pas encore traitees, par liste (les citations n'y vont pas)."""
+                 etat: dict[str, Any], famille: str = "listes") -> dict[str, Any]:
+    """Oeuvres de l'episode pas encore traitees, par liste.
+
+    Deux familles de listes : `listes` recoit les oeuvres recommandees, `evoquees`
+    celles que l'episode ne fait que citer (mention `citation`), sauf si l'episode
+    les recommande aussi. Une oeuvre deja presente dans une liste, quelle qu'elle
+    soit (une BD classee « livre » sur le site peut etre dans la liste des BD),
+    n'est pas proposee de nouveau.
+    """
+    if famille not in etat:
+        return {}
+    du_jour = mentions_validees(ep, mentions)
+    recommandees = {m["itemId"] for m in du_jour if m.get("kind") != "citation"}
+    deja = {f for fam in ("listes", "evoquees") for liste in etat.get(fam, {}).values()
+            for f in liste.get("ajoutees", [])}
     sortie = {}
-    for univers, liste in etat["listes"].items():
+    for univers, liste in etat[famille].items():
         oeuvres = []
-        for m in mentions_validees(ep, mentions):
+        for m in du_jour:
             item = items[m["itemId"]]
-            if m.get("kind") == "citation" or univers not in item.get("types", []):
+            citee = m.get("kind") == "citation"
+            if citee != (famille == "evoquees") or univers not in item.get("types", []):
                 continue
-            if item["id"] in liste["traitees"] or any(o["fiche"] == item["id"] for o in oeuvres):
+            if famille == "evoquees" and item["id"] in recommandees:
+                continue
+            if item["id"] in liste.get("traitees", []) or item["id"] in deja \
+                    or any(o["fiche"] == item["id"] for o in oeuvres):
                 continue
             oeuvres.append({"fiche": item["id"], "titre": item["title"], "annee": item.get("year"),
                             "createur": item.get("creator") or ""})
         sortie[univers] = {"liste": liste["id"], "oeuvres": oeuvres}
     return sortie
+
+
+def relire_liste(url: str, session: Any = None) -> list[str]:
+    """Fiches du site presentes dans une liste SensCritique publique, de la premiere a la derniere.
+
+    Chaque oeuvre ajoutee porte en annotation le lien de sa fiche : la page publique
+    suffit, sans compte. C'est ce qui fait foi, pas `traitees`, qui compte aussi les
+    oeuvres ecartees faute de bonne fiche.
+    """
+    import requests
+    session = session or requests.Session()
+    fiches: list[str] = []
+    for page in range(1, 50):
+        texte = session.get(f"{url}?page={page}", headers={"User-Agent": "Mozilla/5.0"}, timeout=30).text
+        neuves = [f for f in dict.fromkeys(FICHE.findall(texte)) if f not in fiches]
+        if not neuves:
+            break
+        fiches += neuves
+    return fiches
 
 
 def musique(voulu: dict[str, list[str]], etat_sp: dict[str, Any],
@@ -228,13 +266,16 @@ def preparer(code: str, sortie: Path | None) -> int:
     du_jour = [e for e in pm.entrees() if e["guid"] == ep["guid"]]
     spotify, alertes = musique(pm.playlists(du_jour, embed), etat_sp,
                                lambda i: pm.meme_chanson(*embed.titre_artiste(i)))
-    sc = senscritique(ep, mentions, items, json.loads(SENSCRITIQUE.read_text(encoding="utf-8")))
+    etat_sc = json.loads(SENSCRITIQUE.read_text(encoding="utf-8"))
+    sc = senscritique(ep, mentions, items, etat_sc)
+    sc_evoquees = senscritique(ep, mentions, items, etat_sc, famille="evoquees")
     manquants = spotify_manquants(ep, mentions, items, recos)
     if manquants:
         alertes.append(f"{len(manquants)} reco(s) sans lien Spotify : les chercher dans le lecteur, les poser avec "
                        "--lien-spotify, puis relancer (les playlists en dependent)")
     plan = {"episode": {"guid": ep["guid"], "code": f"S{ep['season']}-E{ep['number']:02d}", "titre": ep["title"]},
-            "spotify": spotify, "spotifyManquants": manquants, "senscritique": sc, "alertes": alertes}
+            "spotify": spotify, "spotifyManquants": manquants, "senscritique": sc,
+            "senscritiqueEvoquees": sc_evoquees, "alertes": alertes}
     (sortie / "plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
     print(f"{plan['episode']['code']} — {ep['title']}\n{sortie}")
@@ -243,6 +284,8 @@ def preparer(code: str, sortie: Path | None) -> int:
         print(f"Spotify {nom} : {len(p['ajouts'])} titre(s) a ajouter")
     for univers, s in sc.items():
         print(f"SensCritique {univers} : {[o['titre'] for o in s['oeuvres']]}")
+    for univers, s in sc_evoquees.items():
+        print(f"SensCritique {univers} evoques : {[o['titre'] for o in s['oeuvres']]}")
     for r in manquants:
         de = f" ({r['createur']})" if r["createur"] else ""
         print(f"Sans lien Spotify : {r['reco']} {r['titre']}{de} -> onglet {r['onglet']}")
@@ -252,6 +295,20 @@ def preparer(code: str, sortie: Path | None) -> int:
     if sans_qui:
         print("Sans « qui » (a completer dans episode.json) :", sans_qui)
     return 0
+
+
+def reporter_senscritique(etat: dict[str, Any], plan: dict[str, Any],
+                          relire: Callable[[str], list[str]]) -> None:
+    """Note les oeuvres examinees (`traitees`), puis relit chaque liste en ligne (`ajoutees`)."""
+    for cle, famille in (("senscritique", "listes"), ("senscritiqueEvoquees", "evoquees")):
+        for univers, s in plan.get(cle, {}).items():
+            traitees = etat[famille][univers].setdefault("traitees", [])
+            traitees.extend(o["fiche"] for o in s["oeuvres"] if o["fiche"] not in traitees)
+            traitees.sort()
+    for famille in ("listes", "evoquees"):
+        for liste in etat.get(famille, {}).values():
+            if liste.get("url"):
+                liste["ajoutees"] = relire(liste["url"])
 
 
 def enregistrer(chemin: Path) -> int:
@@ -268,10 +325,7 @@ def enregistrer(chemin: Path) -> int:
         p["titres"] = deezer.pistes(p["id"])
     playlists_deezer.ETAT.write_text(json.dumps(etat_dz, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     etat_sc = json.loads(SENSCRITIQUE.read_text(encoding="utf-8"))
-    for univers, s in plan["senscritique"].items():
-        traitees = etat_sc["listes"][univers]["traitees"]
-        traitees.extend(o["fiche"] for o in s["oeuvres"] if o["fiche"] not in traitees)
-        traitees.sort()
+    reporter_senscritique(etat_sc, plan, relire_liste)
     SENSCRITIQUE.write_text(json.dumps(etat_sc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     for nom, p in etat_sp["playlists"].items():
         dz = len(etat_dz["playlists"].get(nom, {}).get("titres", []))
