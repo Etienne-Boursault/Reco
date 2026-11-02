@@ -157,6 +157,7 @@ def test_a_failing_rehearing_keeps_the_transcript(caplog):
     entrees = _episode(BOUQUIN, ANALYSE, PHOTOS, SUITE)
     apres, bilan = ct.combler(entrees, Reecoute(erreur=RuntimeError("audio illisible")))
     assert apres == entrees and bilan.combles == 0
+    assert bilan.non_combles
     assert any("audio illisible" in r.getMessage() for r in caplog.records)
 
 
@@ -220,14 +221,28 @@ def test_a_rehearing_about_something_else_is_still_refused_when_the_last_line_is
     assert apres == entrees and bilan.combles == 0
 
 
+HORS_SUJET = [(4318.0, ("Je pense qu'en grandissant c'est beaucoup ça qu'on te raconte, "
+                        "quand t'es plus jeune on te dit qu'après la mort tu vas dans une "
+                        "ferme et on t'explique que tu flottes au-dessus des nuages."))]
+
+
 def test_the_bilan_carries_the_windows_left_alone_and_their_longest_silence():
     """Ce que l'éditeur reçoit par Matrix : où, et combien de temps de silence —
-    c'est la durée qui dit si le passage vaut l'écoute."""
+    c'est la durée qui dit si le passage vaut l'écoute. La réécoute entend bien
+    plus que la transcription, mais ne s'y cale pas : du texte manque peut-être."""
     entrees = _episode_pieds(RECO_PERDUE, PERSPECTIVE, C_EST_BEAU)
-    _apres, bilan = ct.combler(entrees, Reecoute([(4318.0, "Eh ben…")]))
+    _apres, bilan = ct.combler(entrees, Reecoute(HORS_SUJET))
     assert bilan.combles == 0
     assert [debut for debut, _silence in bilan.non_combles] == [4318.0]
     assert bilan.non_combles[0][1] == pytest.approx(13.0)
+
+
+def test_a_window_whose_rehearing_hears_nothing_more_is_not_reported():
+    """S6-E07 : les trois faux « passages muets » (00:03:17, 00:40:14, 01:32:16)
+    n'avaient, à la réécoute, pas plus de mots que la transcription."""
+    entrees = _episode_pieds(RECO_PERDUE, PERSPECTIVE, C_EST_BEAU)
+    _apres, bilan = ct.combler(entrees, Reecoute([(4318.0, "Eh ben…")]))
+    assert bilan.combles == 0 and bilan.non_combles == []
 
 
 def test_a_filled_window_is_not_reported_as_left_alone():
@@ -242,3 +257,244 @@ def test_the_windows_left_alone_are_named_in_the_log(caplog):
     assert any("laissées telles quelles" in r.getMessage() and "01:11:58" in r.getMessage()
                for r in caplog.records)
 
+
+# ===== boucles sans saut horodaté ============================================
+def _boucle_frere():
+    return [
+        (5409.0, "Il est éminemment drôle ce monsieur."),
+        (5411.0, "Un grand plaisir."),
+        *((5412.0 + n, "Frère.") for n in range(30)),
+        (5442.0, "Il aurait pu se sortir les pouces et briller au firmament."),
+        (5445.0, "Il n'a pas choisi de sortir de Suisse."),
+    ]
+
+
+def _reprise_frere():
+    return [
+        (5409.0, "Il est éminemment drôle ce monsieur."),
+        (5411.0, "Un grand plaisir."),
+        (5412.0, "Et j'avais vu en première partie une Suissesse, Fiona G."),
+        (5415.0, "Oui, qui a un Instagram totalement illisible."),
+        (5422.0, "Elle est sur Inter maintenant."),
+        (5430.0, "Blaise Bersinger, un humoriste suisse très talentueux."),
+        (5439.0, "Ne l'enfonce pas non plus."),
+        (5441.6, "Il aurait pu se sortir les pouces et briller au firmament."),
+        (5445.0, "Il n'a pas choisi de sortir de Suisse."),
+    ]
+
+
+def test_thirty_repeated_lines_are_replaced_only_between_matching_anchors():
+    entrees = _boucle_frere()
+    reprise = Reecoute(_reprise_frere())
+
+    apres, bilan = ct.combler(entrees, Reecoute(), reprise, duree_audio=5579.0)
+
+    assert reprise.fenetres == [[5392.0, 5462.0]]
+    assert bilan.boucles_reparees == [(5412.0, 30)]
+    assert bilan.boucles_non_reparees == []
+    assert "Fiona G." in _texte(apres) and "Blaise Bersinger" in _texte(apres)
+    assert "Frère." not in _texte(apres)
+    assert apres[0:2] == entrees[0:2]
+    assert apres[-2:] == entrees[-2:]
+    assert [d for d, _t in apres] == sorted(d for d, _t in apres)
+
+
+def test_a_relisten_without_both_anchors_never_overwrites_a_loop():
+    entrees = _boucle_frere()
+    reprise = Reecoute([(5412.0, "Une publicité sans rapport avec l'épisode."),
+                        (5430.0, "Un autre texte inventé par le modèle."),
+                        (5441.0, "Merci de vous abonner.")])
+
+    apres, bilan = ct.combler(entrees, Reecoute(), reprise)
+
+    assert apres == entrees
+    assert bilan.boucles_reparees == []
+    assert bilan.boucles_non_reparees == [(5412.0, 30)]
+
+
+def test_a_short_real_repetition_is_not_reheard():
+    entrees = [(0.0, "Bonjour."), *((i + 1.0, "Non.") for i in range(4)),
+               (5.0, "On continue.")]
+    reprise = Reecoute(_reprise_frere())
+
+    apres, bilan = ct.combler(entrees, Reecoute(), reprise)
+
+    assert apres == entrees and reprise.fenetres == []
+    assert bilan.boucles_reparees == bilan.boucles_non_reparees == []
+
+
+def test_seven_repeated_lines_are_a_spoken_repetition_left_silent():
+    """59 suites de 5 à 7 lignes dans le dépôt, presque toutes parlées."""
+    entrees = [(0.0, "On commence."), *((i + 1.0, "Bonne année !") for i in range(7)),
+               (8.0, "On continue.")]
+    reprise = Reecoute(_reprise_frere())
+
+    apres, bilan = ct.combler(entrees, Reecoute(), reprise)
+
+    assert apres == entrees and reprise.fenetres == []
+    assert bilan.boucles_non_reparees == []
+
+
+def test_eight_repeated_lines_are_reported_without_automatic_replacement():
+    entrees = [(0.0, "On commence."), *((i + 1.0, "Frère.") for i in range(8)),
+               (9.0, "On continue.")]
+    reprise = Reecoute(_reprise_frere())
+
+    apres, bilan = ct.combler(entrees, Reecoute(), reprise)
+
+    assert apres == entrees and reprise.fenetres == []
+    assert bilan.boucles_non_reparees == [(1.0, 8)]
+
+
+def test_an_eleven_line_repetition_is_reported_without_automatic_replacement():
+    entrees = [(0.0, "On commence."), *((i + 1.0, "C'est bon.") for i in range(11)),
+               (12.0, "On continue.")]
+    reprise = Reecoute(_reprise_frere())
+
+    apres, bilan = ct.combler(entrees, Reecoute(), reprise)
+
+    assert apres == entrees and reprise.fenetres == []
+    assert bilan.boucles_non_reparees == [(1.0, 11)]
+
+
+def test_a_failed_loop_relisten_is_reported_without_losing_the_text():
+    entrees = _boucle_frere()
+    apres, bilan = ct.combler(entrees, Reecoute(),
+                              Reecoute(erreur=RuntimeError("audio illisible")))
+    assert apres == entrees
+    assert bilan.boucles_non_reparees == [(5412.0, 30)]
+
+
+def test_interleaved_phrase_repetitions_are_reported_without_automatic_replacement():
+    entrees = [(0.0, "Introduction.")]
+    for i in range(8):
+        entrees.extend([(2 * i + 1.0, "C'est une bonne raison."),
+                        (2 * i + 2.0, "Une autre phrase.")])
+    entrees.append((18.0, "Suite de l'épisode."))
+
+    apres, bilan = ct.combler(entrees, Reecoute())
+
+    assert apres == entrees
+    assert bilan.boucles_non_reparees == []
+    assert len(bilan.repetitions_suspectes) == 1
+    assert bilan.repetitions_suspectes[0][2] >= 8
+
+
+def test_a_repeated_phrase_inside_one_line_is_reported():
+    repetitions = ct.repetitions_de_phrases([(1.0, "et euh " * 30)])
+    assert len(repetitions) == 1
+    assert repetitions[0][2] >= 8
+
+
+def test_exact_loop_is_not_reported_twice_as_a_phrase_repetition():
+    entrees = [(float(i), "C'est bon.") for i in range(11)]
+    assert ct.repetitions_de_phrases(entrees) == []
+
+
+
+# ===== génériques inventés ===================================================
+@pytest.mark.parametrize("ligne", [
+    "Sous-titrage Société Radio-Canada",
+    "Sous-titrage ST' 501",
+    "– Sous-titrage ST' 501",
+    "Sous-titres par Jérémy Diaz.",
+    "Sous-titres réalisés par la communauté d'Amara.org",
+])
+def test_known_subtitle_credits_are_recognised(ligne):
+    assert ct.GENERIQUE.match(ligne)
+
+
+@pytest.mark.parametrize("ligne", [
+    "Il est sous-titré, au moins en anglais, peut-être en français.",
+    "Rien que les sous-titres.",
+    "Comment vous faites les sous-titres ?",
+    "Sous-titres par mon frère",
+    "Abonnez-vous à la chaîne.",
+])
+def test_spoken_mentions_of_subtitles_are_kept(ligne):
+    assert not ct.GENERIQUE.match(ligne)
+
+
+def test_an_invented_credit_is_removed_and_its_hole_is_heard_again():
+    """S6-E07, 00:39:50 : le générique couvrait un passage du blind test."""
+    entrees = [(2380.0, "Allez, chanson suivante."), (2384.0, "Écoutez bien."),
+               (2390.0, "Sous-titrage Société Radio-Canada"),
+               (2399.0, "C'est Daft Punk !"), (2401.0, "Bravo.")]
+    reecoute = Reecoute([(2384.0, "Écoutez bien."),
+                         (2386.0, "Sous-titrage ST' 501"),
+                         (2390.0, "Je crois que c'est un groupe français des années 90."),
+                         (2399.0, "C'est Daft Punk !")])
+
+    apres, bilan = ct.combler(entrees, reecoute)
+
+    assert bilan.generiques_retires == [2390.0]
+    assert "Sous-titrage" not in _texte(apres)
+    assert reecoute.fenetres, "le trou laissé par le générique doit être réécouté"
+    assert "groupe français des années 90" in _texte(apres)
+    assert [d for d, _t in apres] == sorted(d for d, _t in apres)
+
+
+# ===== boucle en morceaux ====================================================
+def _boucle_en_morceaux():
+    """S6-E07 en production : 7 « Frère. », 4 vraies phrases, puis 30 « Frère. »."""
+    return [
+        (5389.0, "C'est pour ça que je le connais pas, je regarde les trucs..."),
+        (5392.0, "Miaou."),
+        *((5393.0 + n, "Frère.") for n in range(7)),
+        (5400.0, "Mais en plus tu peux t'en foutre des chroniques, il fait un truc un peu différent"),
+        (5405.0, "Le spectacle de Louis Catlat."),
+        (5409.0, "Il est éminemment drôle ce monsieur."),
+        (5411.0, "Un grand plaisir."),
+        *((5412.0 + n, "Frère.") for n in range(30)),
+        (5442.0, "Il aurait pu se sortir les pouces et briller au firmament."),
+        (5445.0, "Il n'a pas choisi de sortir de Suisse."),
+    ]
+
+
+def _reprise_en_morceaux():
+    return [
+        (5389.0, "C'est pour ça que je le connais pas, je regarde les trucs..."),
+        (5392.0, "Miaou."),
+        (5394.0, "Qui sont pas des trucs de... Je peux pas dire, ça s'appelle Un Bon Moment."),
+        (5400.0, "Mais en plus tu peux t'en foutre des chroniques, il fait un truc un peu différent"),
+        (5405.0, "Le spectacle de Louis Catlat."),
+        (5409.0, "Il est éminemment drôle ce monsieur. Un grand plaisir."),
+        (5412.0, "Et j'avais vu en première partie une Suissesse, Fiona G."),
+        (5415.0, "Oui, qui a un Instagram totalement illisible."),
+        (5430.0, "Blaise Bersinger, un humoriste suisse très talentueux."),
+        (5441.6, "Il aurait pu se sortir les pouces et briller au firmament."),
+        (5445.0, "Il n'a pas choisi de sortir de Suisse."),
+    ]
+
+
+def test_the_pieces_of_one_loop_form_a_single_zone():
+    assert ct.zones_de_boucle(_boucle_en_morceaux()) == [(2, 43, 37)]
+
+
+def test_a_loop_in_pieces_is_replaced_as_a_whole():
+    entrees = _boucle_en_morceaux()
+    reprise = Reecoute(_reprise_en_morceaux())
+
+    apres, bilan = ct.combler(entrees, Reecoute(), reprise, duree_audio=5579.0)
+
+    assert bilan.boucles_reparees == [(5393.0, 37)]
+    assert "Frère." not in _texte(apres)
+    assert "Fiona G." in _texte(apres) and "Louis Catlat" in _texte(apres)
+    assert [d for d, _t in apres] == sorted(d for d, _t in apres)
+
+
+def test_a_relisten_that_drops_the_real_sentences_of_a_zone_is_refused():
+    """La parole prise entre les morceaux ne doit pas disparaître au remplacement."""
+    entrees = _boucle_en_morceaux()
+    sans_la_parole = [s for s in _reprise_en_morceaux()
+                      if not s[1].startswith(("Mais en plus", "Le spectacle", "Il est"))]
+    apres, bilan = ct.combler(entrees, Reecoute(), Reecoute(sans_la_parole))
+    assert apres == entrees
+    assert bilan.boucles_non_reparees == [(5393.0, 37)]
+
+
+def test_two_short_spoken_repetitions_far_apart_stay_separate():
+    entrees = [(0.0, "On commence."), *((1.0 + n, "Non.") for n in range(4)),
+               *((10.0 + n, f"Phrase {n} de l'épisode.") for n in range(30)),
+               *((40.0 + n, "Non.") for n in range(4)), (45.0, "Suite.")]
+    assert ct.zones_de_boucle(entrees) == []
