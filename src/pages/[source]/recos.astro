@@ -32,11 +32,17 @@ export async function getStaticPaths() {
 const { source } = Astro.props;
 const { recos, epByGuid, types, oeuvres } = await loadCatalogData(source.id);
 const titre = `Toutes les recommandations — ${source.data.title}`;
+// La liste mêle recommandations et simples évocations, et une œuvre citée dans
+// deux épisodes y figure deux fois : la description compte des recos, pas des œuvres.
+const evocations = recos.filter((r) => r.kind === 'citation').length;
+const description =
+  `${recos.length - evocations} recommandations et ${evocations} évocations ` +
+  `d'œuvres dans le podcast ${source.data.title}, épisode par épisode.`;
 ---
 
 <Layout
   title={titre}
-  description={`Les ${recos.length} œuvres recommandées dans le podcast ${source.data.title}.`}
+  description={description}
   theme={source.data.theme}
 >
   <a class="retour wrap" href="/">← retour au catalogue</a>
