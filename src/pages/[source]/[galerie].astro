@@ -104,9 +104,13 @@ const jsonLd = [
       <span aria-hidden="true">←</span> <span>{t('gallery.backToSource')} {data.title}</span>
     </a>
     <h1>{heading}</h1>
-    {/* Le pluriel porte deja l'accord (« bandes dessinees recommandees »),
-        ce que « Toutes les BD » ne permettrait pas de recoller. */}
-    <p class="tag">Les {galerie.plusieurs} dans <strong>{data.title}</strong>.</p>
+    {/* Le pluriel porte deja l'accord (« bandes dessinees citees »), ce que
+        « Toutes les BD » ne permettrait pas de recoller ; `feminin` accorde la
+        precision qui suit. */}
+    <p class="tag">
+      Les {galerie.plusieurs} dans <strong>{data.title}</strong>,
+      {galerie.feminin ? 'recommandées ou seulement évoquées' : 'recommandés ou seulement évoqués'}.
+    </p>
   </header>
   <main id="main" tabindex="-1" class="wrap">
     <h2 class="visually-hidden">{heading}</h2>

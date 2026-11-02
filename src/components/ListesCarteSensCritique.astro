@@ -1,0 +1,111 @@
+---
+/**
+ * ListesCarteSensCritique.astro — une liste SensCritique : nombre d'œuvres,
+ * lien vers la liste, et ses trois derniers ajouts, qui mènent aux fiches.
+ *
+ * Le nombre est celui des fiches réellement entrées dans la liste
+ * (`ajoutees`), pas celui des œuvres traitées : SensCritique n'en connaît pas
+ * certaines (cf. `src/lib/listes/donnees.ts`).
+ *
+ * La liste des œuvres seulement évoquées du même genre, quand elle existe,
+ * suit en lien secondaire, sans vignettes (décision du 2026-11-02) : la carte
+ * reste celle des recommandés.
+ */
+import WorkCard from './WorkCard.astro';
+import ListesLien from './ListesLien.astro';
+import type { ListeSensCritique } from '../lib/listes/donnees';
+import type { Vignette } from '../lib/listes/ajouts';
+import type { ItemLike } from '../lib/work/aggregator';
+import { ariaEvoquees, ariaVoirListe, libelleEvoquees, libelleOeuvresRecommandees, nomGenre } from '../lib/listes/libelles';
+import { t } from '../i18n';
+
+interface Props {
+  sourceId: string;
+  liste: ListeSensCritique;
+  ajouts: Vignette<ItemLike>[];
+}
+
+const { sourceId, liste, ajouts } = Astro.props;
+const titreId = `lst-sc-${liste.genre}`;
+const evoquees = liste.evoquees
+  ? {
+      url: liste.evoquees.url,
+      texte: `${t('listes.evoquees.aussi')} ${libelleEvoquees(liste.genre, liste.evoquees.oeuvres.length)}`,
+    }
+  : null;
+---
+
+<section class="lst-bloc" aria-labelledby={titreId}>
+  <div class="lst-tete">
+    <div>
+      <h2 id={titreId} class="lst-nom">{nomGenre(liste.genre)}</h2>
+      <p class="lst-n"><strong>{libelleOeuvresRecommandees(liste.oeuvres.length)}</strong> {t('listes.sc.plateforme')}</p>
+    </div>
+    <ListesLien href={liste.url} sourceId={sourceId} ariaLabel={ariaVoirListe(liste.genre)}>
+      {t('listes.sc.voir')} ↗
+    </ListesLien>
+  </div>
+  {ajouts.length > 0 && (
+    <>
+      <h3 class="visually-hidden">{t('listes.derniersAjouts')}</h3>
+      <ul class="lst-ajouts" role="list">
+        {ajouts.map((a) => <li><WorkCard sourceId={sourceId} item={a.item} detail={a.detail} /></li>)}
+      </ul>
+    </>
+  )}
+  {evoquees && (
+    <p class="lst-evoquees">
+      <ListesLien href={evoquees.url} sourceId={sourceId} ariaLabel={ariaEvoquees(evoquees.texte)} variante="texte">
+        {evoquees.texte} ↗
+      </ListesLien>
+    </p>
+  )}
+</section>
+
+<style>
+  .lst-bloc {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(1rem, 3vw, 1.4rem);
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius);
+  }
+  .lst-tete {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+  }
+  .lst-nom {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 1.9rem);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .lst-n {
+    margin: 0.2rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .lst-n strong {
+    color: var(--accent);
+  }
+  /* Une œuvre par ligne : la carte d'œuvre est une ligne (icône, titre,
+     épisode), trois côte à côte couperaient les titres. */
+  .lst-evoquees {
+    margin: -0.4rem 0 -0.6rem;
+  }
+  .lst-ajouts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+</style>

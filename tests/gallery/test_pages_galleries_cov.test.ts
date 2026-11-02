@@ -57,8 +57,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Chaines,
     mod: chainesMod as never,
     heading: 'Toutes les chaînes YouTube',
-    countLabelOne: 'chaîne YouTube recommandée',
-    countLabelMany: 'chaînes YouTube recommandées',
+    countLabelOne: 'chaîne YouTube citée',
+    countLabelMany: 'chaînes YouTube citées',
     keptType: 'chaine',
     rejectedType: 'film',
     emptyMessage: "Aucune chaîne YouTube recommandée pour l'instant.",
@@ -68,8 +68,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Films,
     mod: filmsMod as never,
     heading: 'Tous les films',
-    countLabelOne: 'film recommandé',
-    countLabelMany: 'films recommandés',
+    countLabelOne: 'film cité',
+    countLabelMany: 'films cités',
     keptType: 'film',
     rejectedType: 'livre',
     emptyMessage: "Aucun film recommandé pour l'instant.",
@@ -79,8 +79,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Livres,
     mod: livresMod as never,
     heading: 'Tous les livres',
-    countLabelOne: 'livre ou BD recommandé',
-    countLabelMany: 'livres et BD recommandés',
+    countLabelOne: 'livre ou BD cité',
+    countLabelMany: 'livres et BD cités',
     keptType: 'livre',
     rejectedType: 'film',
     emptyMessage: "Aucun livre recommandé pour l'instant.",
@@ -90,8 +90,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Musique,
     mod: musiqueMod as never,
     heading: 'Toute la musique',
-    countLabelOne: 'œuvre musicale recommandée',
-    countLabelMany: 'œuvres musicales recommandées',
+    countLabelOne: 'œuvre musicale citée',
+    countLabelMany: 'œuvres musicales citées',
     keptType: 'album',
     rejectedType: 'film',
     emptyMessage: "Aucune œuvre musicale recommandée pour l'instant.",
@@ -101,8 +101,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Series,
     mod: seriesMod as never,
     heading: 'Toutes les séries',
-    countLabelOne: 'série recommandée',
-    countLabelMany: 'séries recommandées',
+    countLabelOne: 'série citée',
+    countLabelMany: 'séries citées',
     keptType: 'serie',
     rejectedType: 'film',
     emptyMessage: "Aucune série recommandée pour l'instant.",
@@ -347,7 +347,7 @@ describe('Galeries — particularités par page', () => {
 
     expect(html).toContain('Un roman');
     expect(html).toContain('Une BD');
-    expect(visibleText(html)).toContain('2 livres et BD recommandés');
+    expect(visibleText(html)).toContain('2 livres et BD cités');
   });
 
   it('musique englobe morceaux et albums, PAS les artistes tout court', async () => {
@@ -367,7 +367,7 @@ describe('Galeries — particularités par page', () => {
     expect(html).toContain('Un morceau');
     expect(html).toContain('Un album');
     expect(html).not.toContain('Un acteur');
-    expect(visibleText(html)).toContain('2 œuvres musicales recommandées');
+    expect(visibleText(html)).toContain('2 œuvres musicales citées');
   });
 
   it('musique garde les artistes MUSICAUX', async () => {

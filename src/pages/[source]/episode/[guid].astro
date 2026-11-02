@@ -15,6 +15,7 @@ import { lienOeuvre, oeuvreParReco } from '../../../utils/oeuvreDesRecos';
 import { decouperEnMoments } from '../../../lib/episode/chapitres';
 import { vignette } from '../../../utils/vignettes';
 import EpisodeChapitres from '../../../components/EpisodeChapitres.astro';
+import ListesEpisode from '../../../components/ListesEpisode.astro';
 
 export async function getStaticPaths() {
   const sources = await getCollection('sources');
@@ -78,8 +79,7 @@ const ficheOeuvre = (recoId: string) => lienOeuvre(oeuvres, source.id, recoId);
 const moments = decouperEnMoments(recos, episode.youtubeDuration);
 
 const ytId = episode.youtubeUrl?.match(/[?&]v=([\w-]+)/)?.[1];
-// Miniature : vignette YouTube si dispo, sinon artwork Acast (imageUrl), en
-// copie locale (cf. `utils/vignettes.ts`).
+// Miniature : vignette YouTube, sinon artwork Acast, en copie locale (`utils/vignettes.ts`).
 const thumb = vignette(episode, 'hq');
 // Dimensions posées UNIQUEMENT pour la vignette YouTube : `hqdefault.jpg` fait
 // toujours 480×360. Sans elles, le navigateur réserve zéro place puis décale
@@ -145,9 +145,8 @@ const citationCountLabel =
       : t('episode.count.citations.one', { count: citations.length })
     : null;
 
-// JSON-LD : PodcastEpisode + toutes les recommandations (spontanées ET œuvres
-// d'invités — elles restent des recos au sens catalogue). Seules les citations
-// sont exclues. Cf. ADR 0021 §7.
+// JSON-LD : PodcastEpisode + les recommandations (spontanées ET œuvres d'invités,
+// des recos au sens catalogue) ; les citations sont exclues. Cf. ADR 0021 §7.
 // Image de partage : la carte « Étiquette » (`ogSlug`) dès que l'épisode a une
 // recommandation — elle dit ce qu'il recommande, la vignette YouTube non
 // (audit d'interface du 2026-10-07). Sans reco, pas de carte : la vignette.
@@ -318,6 +317,7 @@ const jsonLd: Record<string, unknown>[] = [
         </ul>
       </section>
     )}
+    <ListesEpisode sourceId={source.id} episodeGuid={episode.guid} season={episode.season} />
   </main>
 </Layout>
 

@@ -115,13 +115,23 @@ Pour chaque œuvre du plan :
 L'œuvre s'ajoute **en tête** de la liste, qui va du plus récent au plus ancien, avec le lien vers sa
 fiche.
 
+Chaque type a deux listes : les œuvres **recommandées** (`senscritique` dans le plan) et celles
+seulement **évoquées**, c'est-à-dire citées sans être recommandées (`senscritiqueEvoquees`). Pour
+ces dernières, l'annotation change : `await __scAjouter(<liste>, <id SensCritique>, '<fiche>', 1,
+'Évoqué')`. Une œuvre citée et recommandée dans le même épisode ne va que dans les recommandées.
+
+Une œuvre écartée faute de bonne fiche reste notée comme examinée (`traitees`) : la commande ne la
+repropose pas. Ce qui est réellement dans les listes (`ajoutees`) est relu sur leurs pages publiques
+à l'étape suivante ; c'est ce que la page « Listes et playlists » du site affiche.
+
 ## 6. Enregistrer
 
 ```bash
 python -X utf8 tools/reseaux_episode.py --enregistrer "<dossier>/plan.json"
 ```
 
-Cette commande met à jour les états de Spotify et de SensCritique, et relit Deezer en ligne. Elle
+Cette commande met à jour les états de Spotify et de SensCritique, et relit en ligne Deezer et les
+huit listes SensCritique. Elle
 affiche ensuite le nombre de titres de chaque playlist sur les deux plateformes, qui doit être le même
 des deux côtés.
 

@@ -184,7 +184,7 @@ describe('/[source]/[galerie] — rendu', () => {
 
   it('accorde le compteur au singulier à une entrée', async () => {
     const html = await rendre([pair('w1', 'Seule', ['spectacle'])]);
-    expect(visibleText(html)).toContain('1 spectacle recommandé');
+    expect(visibleText(html)).toContain('1 spectacle cité');
   });
 
   it('accorde le compteur au pluriel dès deux entrées', async () => {
@@ -193,7 +193,7 @@ describe('/[source]/[galerie] — rendu', () => {
       pair('w2', 'Deux', ['spectacle']),
     ]);
 
-    expect(visibleText(html)).toContain('2 spectacles recommandés');
+    expect(visibleText(html)).toContain('2 spectacles cités');
   });
 
   it('affiche le message d’état vide quand rien ne sort', async () => {
@@ -202,12 +202,12 @@ describe('/[source]/[galerie] — rendu', () => {
   });
 
   it('emploie le PLURIEL accordé dans la phrase d’en-tête', async () => {
-    // « Les bandes dessinées recommandées dans … » : « Toutes les BD » ne
+    // « Les bandes dessinées citées dans …, recommandées ou seulement évoquées » : « Toutes les BD » ne
     // permettrait pas de recoller l'accord.
     const bd = GALERIES_PAR_TYPE.find((g) => g.slug === 'bd')!;
     const html = await rendre([pair('w1', 'Une BD', ['bd'])], bd);
 
-    expect(visibleText(html)).toContain('Les bandes dessinées recommandées dans');
+    expect(visibleText(html)).toContain('Les bandes dessinées citées dans Un Bon Moment , recommandées ou seulement évoquées.');
   });
 
   it('émet un ItemList et un fil d’Ariane en JSON-LD', async () => {

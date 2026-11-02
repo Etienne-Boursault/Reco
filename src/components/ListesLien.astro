@@ -1,0 +1,73 @@
+---
+/**
+ * ListesLien.astro — un lien sortant vers Spotify, Deezer ou SensCritique.
+ *
+ * Un lien simple, par `OutboundLink` comme les autres liens sortants du site :
+ * aucun lecteur intégré, aucune image ni script chargés depuis ces
+ * plateformes (manifeste, vie privée). Le style passe par une enveloppe :
+ * le style à portée limitée d'Astro n'atteint pas l'`<a>` rendu par un
+ * composant enfant, d'où `:global(a)` sous la classe de l'enveloppe.
+ *
+ * Variantes : `pilule` (bouton à bord arrondi, 44 px de haut) et `texte`
+ * (lien en couleur d'accent, même hauteur de cible, pour les lignes denses).
+ */
+import OutboundLink from './OutboundLink.astro';
+
+interface Props {
+  href: string;
+  sourceId: string;
+  /** Nom accessible : doit contenir le texte visible (WCAG 2.5.3). */
+  ariaLabel: string;
+  variante?: 'pilule' | 'texte';
+}
+
+const { href, sourceId, ariaLabel, variante = 'pilule' } = Astro.props;
+---
+
+<span class={`lst-lien lst-lien--${variante}`}>
+  <OutboundLink href={href} sourceId={sourceId} ariaLabel={ariaLabel}><slot /></OutboundLink>
+</span>
+
+<style>
+  .lst-lien {
+    display: inline-flex;
+  }
+  .lst-lien :global(a) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 44px;
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .lst-lien--pilule :global(a) {
+    padding: 0 1.1rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--text) 18%, transparent);
+    font-size: 0.95rem;
+    transition: border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
+  }
+  .lst-lien--texte :global(a) {
+    padding: 0 0.4rem;
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+  /* Survol réservé aux vrais pointeurs, appui immédiat pour tous — cf. la
+     convention en tête de `global.css` (audit d'interface du 2026-10-07). */
+  @media (hover: hover) and (pointer: fine) {
+    .lst-lien--pilule :global(a:hover) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .lst-lien--texte :global(a:hover) {
+      text-decoration: underline;
+    }
+  }
+  .lst-lien--pilule :global(a:active) {
+    transform: scale(0.97);
+    border-color: var(--accent);
+    transition-duration: 0.08s;
+  }
+</style>

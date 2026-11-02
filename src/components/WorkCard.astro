@@ -11,8 +11,13 @@ import CreatorFlag from './CreatorFlag.astro';
 interface Props {
   sourceId: string;
   item: ItemLike;
+  /**
+   * Remplace l'année à droite de la carte. La page « Listes et playlists » y
+   * met l'épisode qui a fait entrer l'œuvre dans la liste (« S6·E7 »).
+   */
+  detail?: string;
 }
-const { sourceId, item } = Astro.props;
+const { sourceId, item, detail } = Astro.props;
 
 const types = item.types ?? [];
 const typeEmojis = types.map((tp) => ({
@@ -40,7 +45,7 @@ const typeTitle = typeEmojis.map((te) => te.label).join(', ');
       </span>
     )}
   </span>
-  {item.year && <span class="wcard-year">{item.year}</span>}
+  {detail ? <span class="wcard-year">{detail}</span> : item.year && <span class="wcard-year">{item.year}</span>}
 </a>
 
 <style>

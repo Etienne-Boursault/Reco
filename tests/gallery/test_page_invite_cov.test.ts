@@ -278,7 +278,7 @@ describe('/[source]/invite/[name] — rendu', () => {
       mentions: [mention('w1', 'Bruno')],
     });
     expect(une).toContain(
-      '<meta name="description" content="1 recommandation de Bruno dans Un Bon Moment.">',
+      '<meta name="description" content="1 œuvre citée par Bruno dans Un Bon Moment.">',
     );
 
     const deux = await render('Bruno', 'bruno', {
@@ -286,7 +286,7 @@ describe('/[source]/invite/[name] — rendu', () => {
       mentions: [mention('w1', 'Bruno'), mention('w2', 'Bruno')],
     });
     expect(deux).toContain(
-      '<meta name="description" content="2 recommandations de Bruno dans Un Bon Moment.">',
+      '<meta name="description" content="2 œuvres citées par Bruno dans Un Bon Moment.">',
     );
   });
 });

@@ -35,6 +35,7 @@ export const fr = {
   'footer.about': 'À propos',
   'footer.manifesto': 'Manifeste éthique',
   'footer.legal': 'Mentions légales',
+  'footer.listes': 'Listes et playlists',
   'footer.nav.label': 'Liens secondaires',
   'footer.support': 'Soutenir le projet',
 
@@ -86,18 +87,91 @@ export const fr = {
   // pluriel s'applique dès `n >= 2`, donc 0 et 1 prennent le singulier.
   // La galerie « livres » couvrant deux types, son singulier dit « ou »
   // (une entrée est un livre OU une BD) et son pluriel « et ».
-  'gallery.films.count.one': 'film recommandé',
-  'gallery.films.count.many': 'films recommandés',
-  'gallery.series.count.one': 'série recommandée',
-  'gallery.series.count.many': 'séries recommandées',
-  'gallery.livres.count.one': 'livre ou BD recommandé',
-  'gallery.livres.count.many': 'livres et BD recommandés',
-  'gallery.musique.count.one': 'œuvre musicale recommandée',
-  'gallery.musique.count.many': 'œuvres musicales recommandées',
-  'gallery.chaines.count.one': 'chaîne YouTube recommandée',
-  'gallery.chaines.count.many': 'chaînes YouTube recommandées',
-  'gallery.guest.count.one': 'recommandation',
-  'gallery.guest.count.many': 'recommandations',
+  // « cités » et non « recommandés » (2026-11-02) : une galerie compte toute
+  // œuvre qui a une mention visible, citations comprises (`selectByType`). La
+  // page Films annonçait « 208 films recommandés » quand 123 seulement l'étaient.
+  'gallery.films.count.one': 'film cité',
+  'gallery.films.count.many': 'films cités',
+  'gallery.series.count.one': 'série citée',
+  'gallery.series.count.many': 'séries citées',
+  'gallery.livres.count.one': 'livre ou BD cité',
+  'gallery.livres.count.many': 'livres et BD cités',
+  'gallery.musique.count.one': 'œuvre musicale citée',
+  'gallery.musique.count.many': 'œuvres musicales citées',
+  'gallery.chaines.count.one': 'chaîne YouTube citée',
+  'gallery.chaines.count.many': 'chaînes YouTube citées',
+  // Page d'un invité : `selectByGuest` retient aussi les œuvres qu'il a
+  // seulement évoquées (337 citations portent un `recommendedBy`).
+  'gallery.guest.count.one': 'œuvre citée',
+  'gallery.guest.count.many': 'œuvres citées',
+
+  // Listes et playlists (page `/[source]/listes` et ses quatre accès). Les
+  // nombres viennent de `tools/data/` au build (cf. `src/lib/listes/`).
+  'listes.title': 'Listes et playlists',
+  'listes.lede.debut': 'Les recos du podcast',
+  'listes.lede.fin': ', rangées dans des playlists et des listes à suivre. Voici ce qui vient d’y entrer.',
+  'listes.description': 'Les recos du podcast {podcast} en playlists Spotify et Deezer et en listes SensCritique : {detail}.',
+  'listes.titres.ecart': '{spotify} sur Spotify, {deezer} sur Deezer',
+  'listes.musique.plateformes': 'sur Spotify et Deezer',
+  'listes.derniersAjouts': 'Derniers ajouts',
+  'listes.derniersAjouts.aide': 'chaque vignette mène à sa fiche sur le site',
+  'listes.parSaison': 'Par saison',
+  'listes.sc.plateforme': 'sur SensCritique',
+  'listes.sc.voir': 'Voir la liste',
+  'listes.sc.familles':
+    'Sur SensCritique, deux listes par type : les œuvres recommandées, que quelqu’un conseille dans l’émission, et celles seulement évoquées, citées en passant.',
+  'listes.genre.film': 'Films',
+  'listes.genre.serie': 'Séries',
+  'listes.genre.livre': 'Livres',
+  'listes.genre.bd': 'Bandes dessinées',
+  'listes.genreCourt.film': 'films',
+  'listes.genreCourt.serie': 'séries',
+  'listes.genreCourt.livre': 'livres',
+  'listes.genreCourt.bd': 'BD',
+  'listes.vieprivee':
+    'Les liens ouvrent Spotify, Deezer ou SensCritique dans un nouvel onglet. Cette page ne charge rien depuis ces plateformes : ni lecteur, ni image, ni script.',
+  'listes.a11y.ecouter': 'Écouter la playlist « {nom} » sur {plateforme} (nouvel onglet)',
+  'listes.a11y.voirListe': 'Voir la liste SensCritique : {nom} (nouvel onglet)',
+  'listes.a11y.evoquees': '{texte}, liste SensCritique (nouvel onglet)',
+  'listes.carte.saisons': 'Une playlist par saison',
+  'listes.carte.sc': '{genres} sur SensCritique',
+  'listes.carte.voir': 'Voir les listes →',
+  'listes.bandeau.musique': 'À écouter d’une traite :',
+  'listes.bandeau.musique.fin': 'en playlist',
+  'listes.bandeau.saisons': 'Une playlist par saison →',
+  'listes.bandeau.toutes': 'Toutes les listes →',
+  // Le bandeau des pages Films, Séries et Livres. La galerie compte toutes les
+  // œuvres citées ; une liste « recommandés » n'en rassemble qu'une partie
+  // (SensCritique ne les connaît pas toutes), la liste « évoqués » une autre.
+  // « {n} des films recommandés ici » ne prétend donc pas tout contenir.
+  'listes.bandeau.une': 'Une liste à suivre sur SensCritique rassemble {contenu}.',
+  'listes.bandeau.plusieurs': '{nombre} listes à suivre sur SensCritique rassemblent {contenu}.',
+  'listes.bandeau.reco.film': '{n} des films recommandés ici',
+  'listes.bandeau.reco.serie': '{n} des séries recommandées ici',
+  'listes.bandeau.reco.livre': '{n} des livres recommandés ici',
+  'listes.bandeau.reco.bd': '{n} des BD recommandées ici',
+  'listes.bandeau.reco.livresEtBd': '{livres} des livres et {bd} des BD recommandés ici',
+  // Les listes des œuvres seulement évoquées (2026-11-02), accordées au nombre.
+  'listes.evoquees.aussi': 'Aussi :',
+  'listes.evoquees.film.one': 'film seulement évoqué',
+  'listes.evoquees.film.many': 'films seulement évoqués',
+  'listes.evoquees.serie.one': 'série seulement évoquée',
+  'listes.evoquees.serie.many': 'séries seulement évoquées',
+  'listes.evoquees.livre.one': 'livre seulement évoqué',
+  'listes.evoquees.livre.many': 'livres seulement évoqués',
+  'listes.evoquees.bd.one': 'BD seulement évoquée',
+  'listes.evoquees.bd.many': 'BD seulement évoquées',
+  'listes.lien.reco.film': 'Films recommandés',
+  'listes.lien.reco.serie': 'Séries recommandées',
+  'listes.lien.reco.livre': 'Livres recommandés',
+  'listes.lien.reco.bd': 'BD recommandées',
+  'listes.lien.evoquees.film': 'Films évoqués',
+  'listes.lien.evoquees.serie': 'Séries évoquées',
+  'listes.lien.evoquees.livre': 'Livres évoqués',
+  'listes.lien.evoquees.bd': 'BD évoquées',
+  'listes.a11y.liste': 'Liste SensCritique : {nom} (nouvel onglet)',
+  'listes.episode.label': 'Playlist de l’épisode',
+  'listes.episode.texte': 'La musique de cet épisode est dans la playlist',
 
   // Extrait audio (item #12)
   'audio.listenAt': 'Écouter à',

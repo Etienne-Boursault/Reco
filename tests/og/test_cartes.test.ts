@@ -108,9 +108,9 @@ describe('cartesDuSite — galeries et œuvres', () => {
     const d = donnees({ items, mentions: [mention('m1', 'f1'), mention('m2', 'f2')] });
     const series = carte(d, 'ubm/galerie/series')!;
     expect(series.chiffre).toBe(2);
-    expect(series.chiffreLibelle).toBe('séries recommandées');
+    expect(series.chiffreLibelle).toBe('séries citées');
     expect(series.titre).toBe('Toutes les séries');
-    expect(carte(d, 'ubm/galerie/films')!.chiffreLibelle).toBe('film recommandé');
+    expect(carte(d, 'ubm/galerie/films')!.chiffreLibelle).toBe('film cité');
     expect(carte(d, 'ubm/galerie/livres')).toBeUndefined();
   });
 

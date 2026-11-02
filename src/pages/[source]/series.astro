@@ -6,6 +6,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import GalleryGrid from '../../components/GalleryGrid.astro';
+import ListesBandeau from '../../components/ListesBandeau.astro';
 import { selectByType } from '../../lib/gallery/aggregate';
 import { galleryBreadcrumb, galleryItemListSchema } from '../../lib/gallery/page';
 import { t } from '../../i18n';
@@ -59,10 +60,11 @@ const jsonLd = [
       <span aria-hidden="true">←</span> <span>{t('gallery.backToSource')} {data.title}</span>
     </a>
     <h1>{heading}</h1>
-    <p class="tag">Toutes les séries recommandées dans <strong>{data.title}</strong>.</p>
+    <p class="tag">Toutes les séries citées dans <strong>{data.title}</strong>, recommandées ou seulement évoquées.</p>
   </header>
   <main id="main" tabindex="-1" class="wrap">
     <h2 class="visually-hidden">Liste des séries</h2>
+    <ListesBandeau sourceId={source.id} genres={['serie']} />
     <GalleryGrid
       galleryTypes={['serie']}
       heading={heading}

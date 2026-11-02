@@ -1,12 +1,13 @@
 ---
 /**
- * /[source]/films — Galerie de tous les films recommandés dans une source.
+ * /[source]/films — Galerie de tous les films cités dans une source.
  * Pages statiques générées au build via `getStaticPaths` (1 page / source).
  * Cf. ADR 0031.
  */
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import GalleryGrid from '../../components/GalleryGrid.astro';
+import ListesBandeau from '../../components/ListesBandeau.astro';
 import { selectByType } from '../../lib/gallery/aggregate';
 import { galleryBreadcrumb, galleryItemListSchema } from '../../lib/gallery/page';
 import { t } from '../../i18n';
@@ -72,10 +73,11 @@ const jsonLd = [
       <span aria-hidden="true">←</span> <span>{t('gallery.backToSource')} {data.title}</span>
     </a>
     <h1>{heading}</h1>
-    <p class="tag">Toutes les œuvres de type film recommandées dans <strong>{data.title}</strong>.</p>
+    <p class="tag">Tous les films cités dans <strong>{data.title}</strong>, recommandés ou seulement évoqués.</p>
   </header>
   <main id="main" tabindex="-1" class="wrap">
     <h2 class="visually-hidden">Liste des films</h2>
+    <ListesBandeau sourceId={source.id} genres={['film']} />
     <GalleryGrid
       galleryTypes={['film']}
       heading={heading}
