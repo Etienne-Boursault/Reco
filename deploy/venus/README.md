@@ -216,13 +216,15 @@ commentaire au compte-gouttes, quatre par jour, de la plus récente à la plus a
 (décision du 2026-11-02, 113 vidéos, environ un mois) :
 
 ```
-23 9,13,17,21 * * * cd /home/etienne/docker/reco && [ -f depot/tools/rattrapage_commentaires_youtube.py ] && flock -n /tmp/reco-rattrapage-yt.lock docker compose run --rm -T pipeline python rattrapage_commentaires_youtube.py --notifier matrix >> logs/rattrapage-youtube.log 2>&1
+23 9,13,17 * * * cd /home/etienne/docker/reco && [ -f depot/tools/rattrapage_commentaires_youtube.py ] && flock -n /tmp/reco-rattrapage-yt.lock docker compose run --rm -T pipeline python rattrapage_commentaires_youtube.py --notifier matrix >> logs/rattrapage-youtube.log 2>&1
+23 21 * * * cd /home/etienne/docker/reco && [ -f depot/tools/rattrapage_commentaires_youtube.py ] && flock -n /tmp/reco-rattrapage-yt.lock docker compose run --rm -T pipeline python rattrapage_commentaires_youtube.py --recap --notifier matrix >> logs/rattrapage-youtube.log 2>&1
 ```
 
 État dans `depot/tools/output/pipeline/rattrapage-commentaires-youtube.json` : les vidéos
 commentées (`postes`) et celles mises de côté sur un échec qui leur est propre
 (`de_cote`, avec la raison) ; retirer une entrée de `de_cote` la fait retenter.
-Le salon Matrix ne reçoit que les échecs et la fin du rattrapage. Aperçu :
+Le salon Matrix reçoit un récapitulatif par jour (passage de 21 h, `--recap`), les
+échecs et la fin du rattrapage. Aperçu :
 `python rattrapage_commentaires_youtube.py --apercu --nombre 3`.
 
 ## Quand ça tourne

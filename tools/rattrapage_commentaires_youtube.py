@@ -23,8 +23,9 @@ vidéo mise de côté n'est pas retentée ; la retirer du fichier suffit pour
 qu'elle revienne. Un échec du jeton OAuth, lui, ne met rien de côté : il arrête
 le passage et se signale.
 
-Matrix ne reçoit que les échecs et la fin du rattrapage : quatre messages par
-jour pendant un mois couvriraient le reste du salon.
+Matrix reçoit un récapitulatif par jour (`--recap`, au dernier passage), les
+échecs et la fin du rattrapage — pas un message par vidéo, qui ferait quatre
+messages par jour pendant un mois.
 
 INERTE sans `RECO_YT_COMMENTAIRES=1` et les secrets OAuth (comme l'étape
 `commenter`). Aperçu sans rien poster : `--apercu`.
@@ -104,6 +105,7 @@ def en_attente(source_id: str, etat: dict[str, Any],
 
 
 def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
+              recap: bool = False,
               session: Any = None, env: Mapping[str, str] = os.environ,
               maintenant: Callable[[], str] = lambda: datetime.now().isoformat(timespec="seconds"),
               ) -> int:
@@ -143,7 +145,7 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
             except Exception as exc:  # noqa: BLE001 — propre à cette vidéo.
                 raison = f"{type(exc).__name__}: {str(exc)[:160]}"
             else:
-                etat["postes"][guid] = {"video": video, "commentaire": ident,
+                etat["postes"][guid] = {"video": video, "commentaire": ident, "titre": titre,
                                         "le": maintenant(), "recos": len(recos)}
                 postes += 1
                 log.info("%s : commentaire %s sous %s", titre, ident, video)
@@ -153,7 +155,21 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
         sauver_etat(chemin, etat)
         notify(f"💬 Rattrapage YouTube : « {titre} » mis de côté ({raison}). "
                f"Le retirer de {chemin.name} pour le retenter.")
+    if recap:
+        _recapituler(source_id, etat, notify, maintenant()[:10], env)
     return postes
+
+
+def _recapituler(source_id: str, etat: dict[str, Any], notify: Notify, jour: str,
+                 env: Mapping[str, str]) -> None:
+    """Un message pour les vidéos commentées ce jour-là ; rien si aucune."""
+    du_jour = [v for v in etat["postes"].values() if str(v.get("le", "")).startswith(jour)]
+    if not du_jour:
+        return
+    reste = len(en_attente(source_id, etat, env))
+    titres = " ; ".join(v.get("titre") or v["video"] for v in du_jour)
+    notify(f"💬 Rattrapage YouTube du jour : {len(du_jour)} vidéo(s) commentée(s) "
+           f"({titres}). Reste {reste} vidéo(s).")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -164,6 +180,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--apercu", action="store_true",
                         help="affiche les prochains messages sans rien poster")
     parser.add_argument("--notifier", choices=("matrix", "none"), default="none")
+    parser.add_argument("--recap", action="store_true",
+                        help="envoie le récapitulatif du jour (dernier passage de la journée)")
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     chemin = etat_path()
@@ -177,7 +195,8 @@ def main(argv: list[str] | None = None) -> int:
             print(cy.texte(recos, cy.adresse_episode(args.source, ep["guid"], site)) + "\n")
         return 0
     from traiter_nouveaux_episodes import build_notify
-    rattraper(args.source, args.nombre, build_notify(args.notifier), chemin=chemin)
+    rattraper(args.source, args.nombre, build_notify(args.notifier), chemin=chemin,
+              recap=args.recap)
     return 0
 
 

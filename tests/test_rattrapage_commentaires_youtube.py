@@ -40,11 +40,11 @@ def _page():
     return "".join(f"Oeuvre {g}" for g in ("a", "b", "c"))
 
 
-def _lancer(corpus, session, nombre=1, notes=None):
+def _lancer(corpus, session, nombre=1, notes=None, recap=False, le="2026-11-02T14:00:00"):
     notes = [] if notes is None else notes
     chemin = corpus / "etat.json"
     n = rc.rattraper("ubm", nombre, notes.append, chemin=chemin, session=session,
-                     env=ENV, maintenant=lambda: "2026-11-02T14:00:00")
+                     env=ENV, maintenant=lambda: le, recap=recap)
     return n, json.loads(chemin.read_text(encoding="utf-8")) if chemin.exists() else None, notes
 
 
@@ -114,3 +114,20 @@ def test_fin_du_rattrapage_annoncee_une_fois(corpus):
     assert etat["termine"] and "terminé : 3 vidéo(s)" in notes[0]
     _, _, notes = _lancer(corpus, session)
     assert notes == []
+
+
+def test_recapitulatif_du_jour_au_dernier_passage(corpus):
+    session = Session(page=_page())
+    _lancer(corpus, session, le="2026-11-01T20:00:00")  # la veille : hors du récapitulatif
+    _lancer(corpus, session)
+    _, _, notes = _lancer(corpus, session, recap=True)
+    assert notes == [("💬 Rattrapage YouTube du jour : 2 vidéo(s) commentée(s) "
+                      "(avec C ; avec A). Reste 0 vidéo(s).")]
+
+
+def test_pas_de_recapitulatif_sans_commentaire_du_jour(corpus):
+    session = Session(page=_page())
+    _lancer(corpus, session, le="2026-11-01T20:00:00")
+    _, _, notes = _lancer(corpus, Session(page="rien"), recap=True, le="2026-11-02T20:00:00")
+    # Seule la mise de côté sonne ; aucun récapitulatif vide.
+    assert len(notes) == 1 and "mis de côté" in notes[0]
