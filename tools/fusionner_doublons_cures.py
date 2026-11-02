@@ -434,6 +434,17 @@ GROUPES: tuple[Groupe, ...] = (
         types=("chaine",),
         titres_alternatifs=("Nardwuarserviette", "Nardwuar vs"),
     ),
+    Groupe(
+        survivant="5be2c4d6", perdants=("1dd76cb5",),
+        titre="Don't F**k with Cats",
+        # La mini-serie documentaire Netflix de Mark Lewis (TMDB tv/96129),
+        # recommandee dans deux episodes sous son titre court et son titre
+        # complet. Relevee en remplissant les listes SensCritique (2026-11-02).
+        raison="titre court et titre complet de la meme serie",
+        types=("serie",),
+        createur="Mark Lewis",
+        titres_alternatifs=("Don't F**k with Cats: Hunting an Internet Killer",),
+    ),
 )
 
 

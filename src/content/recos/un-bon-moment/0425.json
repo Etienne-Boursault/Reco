@@ -15,13 +15,15 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "creator": "Jack Thorne, Stephen Graham",
   "enrichedAt": {
     "links": "2026-07-31T20:22:34Z"
   },
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
-    "tmdb": "434398",
-    "tmdbType": "movie"
+    "tmdb": "249042",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/249042-adolescence/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -50,13 +52,13 @@
       "ethics": "neutral",
       "kind": "info",
       "label": "IMDb",
-      "url": "https://www.imdb.com/title/tt3220900/"
+      "url": "https://www.imdb.com/title/tt31806037/"
     },
     {
       "ethics": "neutral",
       "kind": "info",
       "label": "TMDB",
-      "url": "https://www.themoviedb.org/movie/434398"
+      "url": "https://www.themoviedb.org/tv/249042"
     }
   ],
   "quote": "Le dernier truc que j'ai vu, c'est Adolescence. C'est un super adolescence.",
@@ -67,6 +69,6 @@
   "title": "Adolescence",
   "transcriptSource": "acast",
   "types": [
-    "film"
+    "serie"
   ]
 }
