@@ -70,7 +70,17 @@ OPAQUE_404_HOSTS = frozenset({
 PAGE_VIDE_ATTENDUE = frozenset({
     "imdb.com",      # 202 + corps vide pour tout client non navigateur
     "pluto.tv",      # rendu client intégral
+    # Vérifiés dans un navigateur le 2026-11-02 (première passe sur le site) :
+    "max.com",       # 200 « Access Denied » pour un robot, même page dans Edge
+    "pdc.tv",        # page vivante, titre posé par JavaScript
 })
+
+#: Une page de RECHERCHE n'a pas d'identifiant à inventer : sans titre, elle est
+#: rendue par le navigateur, pas absente. Sur la passe du 2026-11-02, les 38
+#: recherches YouTube « mortes » s'ouvraient toutes dans Edge, titre compris.
+#: Une recherche qui répond 404 reste morte (Molotov, TF1, Sooner, Disney+).
+_RECHERCHE_RE = re.compile(r"/(results|search|recherche)([/?#]|$)|[?&](search_query|term)=",
+                           re.IGNORECASE)
 
 # YouTube place son <title> à ~700 Ko, derrière son bundle JS. Un plafond plus
 # bas ferait passer une page valide pour une coquille vide.
@@ -223,6 +233,12 @@ def classify(url: str, outcome: FetchOutcome) -> ProbeResult:
         if host_in(url, PAGE_VIDE_ATTENDUE):
             return ProbeResult("unknown",
                                f"HTTP {outcome.status} (host qui sert une page vide)")
+        if _RECHERCHE_RE.search(url):
+            return ProbeResult("unknown",
+                               f"HTTP {outcome.status} (page de recherche rendue par le navigateur)")
+        if 300 <= outcome.status < 400:
+            # Redirection non suivie (pare-feu, boucle) : rien n'est prouvé.
+            return ProbeResult("unknown", f"HTTP {outcome.status} (redirection non suivie)")
         # Page servie mais sans titre : coquille vide (playlist supprimée,
         # fiche inexistante). C'est LA signature des identifiants inventés —
         # YouTube répond 200 à n'importe quel ID de playlist bien formé, y
