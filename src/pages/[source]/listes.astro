@@ -44,6 +44,9 @@ const recos = new Map(
 );
 const episodes = (await getCollection('episodes')).filter((e) => e.data.sourceId.id === source.id).map((e) => e.data);
 
+// La phrase qui distingue recommandé et évoqué n'a de sens que si une liste
+// « évoqués » est montrée.
+const deuxFamilles = listes.senscritique.some((l) => l.evoquees);
 const ajouts = derniersAjouts({ items, mentions, recos, episodes }, listes.senscritique, { musique: 4, liste: 3 });
 
 const heading = t('listes.title');
@@ -69,6 +72,7 @@ const jsonLd = galleryBreadcrumb({
     {(listes.toutes || listes.saisons.length > 0) && (
       <ListesCarteMusique sourceId={source.id} toutes={listes.toutes} saisons={listes.saisons} ajouts={ajouts.musique} />
     )}
+    {deuxFamilles && <p class="lst-familles">{t('listes.sc.familles')}</p>}
     {listes.senscritique.length > 0 && (
       <div class="lst-grille">
         {listes.senscritique.map((l) => (
@@ -92,5 +96,6 @@ const jsonLd = galleryBreadcrumb({
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
     gap: 1.25rem;
   }
+  .lst-familles { margin: 0 0 -0.5rem; max-width: 70ch; }
   .lst-note { margin: 0; color: var(--muted); font-size: 0.875rem; max-width: 70ch; }
 </style>

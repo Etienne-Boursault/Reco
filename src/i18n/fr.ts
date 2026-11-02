@@ -113,6 +113,8 @@ export const fr = {
   'listes.parSaison': 'Par saison',
   'listes.sc.plateforme': 'sur SensCritique',
   'listes.sc.voir': 'Voir la liste',
+  'listes.sc.familles':
+    'Sur SensCritique, deux listes par type : les œuvres recommandées, que quelqu’un conseille dans l’émission, et celles seulement évoquées, citées en passant.',
   'listes.genre.film': 'Films',
   'listes.genre.serie': 'Séries',
   'listes.genre.livre': 'Livres',

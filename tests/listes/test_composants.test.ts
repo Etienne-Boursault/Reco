@@ -231,7 +231,17 @@ describe('Page /[source]/listes', () => {
     expect(texte).toContain('Morceau S6·E7');
     expect(texte).toContain('Films 1 œuvre recommandée sur SensCritique Voir la liste ↗ Derniers ajouts Film Le Film X S6·E7');
     expect(html).toContain('<title>Listes et playlists — Un Bon Moment');
+    expect(texte).not.toContain('deux listes par type');
     expect(html).toContain('/src/listes');
+  });
+
+  it('avec des listes « évoqués », une phrase distingue les deux familles', async () => {
+    const listes = { ...LISTES, senscritique: [{ ...sc('film', 0), evoquees: { url: 'https://www.senscritique.com/liste/ev/9', oeuvres: ['z'] } }] };
+    const html = await renderPage(PageListes, { params: { source: 'src' }, props: { source: SOURCE('src'), listes }, path: '/src/listes' });
+    expect(visibleText(html)).toContain(
+      'Sur SensCritique, deux listes par type : les œuvres recommandées, que quelqu’un conseille dans l’émission, et celles seulement évoquées, citées en passant. Films 0 œuvre recommandée',
+    );
+    expect(visibleText(html)).toContain('Aussi : 1 film seulement évoqué ↗');
   });
 
   it('sans playlist ni liste SensCritique, aucune carte vide', async () => {
