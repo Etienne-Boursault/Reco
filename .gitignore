@@ -14,6 +14,9 @@ __pycache__/
 # Sortie du pipeline (re-générable, gros)
 tools/output/
 
+# Dossier de données écrit par le site à l'exécution (V2) : jamais dans Git
+reco-donnees/
+
 # Listes de travail (dispatch entre main et portable)
 tools/dispatch/
 
