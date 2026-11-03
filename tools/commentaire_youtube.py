@@ -3,31 +3,32 @@ commentaire_youtube.py — poster les recos sous la video d'un nouvel episode.
 
 CE QUE FAIT CETTE ETAPE
 -----------------------
-Une fois l'episode publie sur le site, la chaine poste sous sa video YouTube
-un commentaire de la chaine « Une Bonne Reco » : chaque reco avec son minutage
+Une fois l'épisode publié sur le site, la chaîne poste sous sa vidéo YouTube
+un commentaire de la chaîne « Une Bonne Reco » : chaque reco avec son minutage
 (cliquable sur YouTube), et rien d'autre.
 
 NI LIEN NI AUTO-PROMOTION DANS LE TEXTE
 ---------------------------------------
-Depuis fin octobre 2026, YouTube ecarte en silence tout commentaire qui
-contient unebonnere.co, meme ecrit sans « https:// » et quel que soit le compte
+Depuis fin octobre 2026, YouTube écarte en silence tout commentaire qui
+contient unebonnere.co, même écrit sans « https:// » et quel que soit le compte
 qui le poste : l'API rend un identifiant, puis le commentaire n'existe plus,
-meme pour son auteur (essais du 2026-11-02 ; un lien Wikipedia passe, un lien
-SensCritique non). Depuis le 2026-11-02 au soir, il ecarte aussi les nouveaux
-commentaires qui finissent par un renvoi « voir la chaine @unebonnereco » et la
-signature « site de fan, non officiel », sans lien, depuis la chaine comme
-depuis un compte personnel. La meme liste sans ces deux lignes est restee
-visible (essais du 2026-11-03 sous S5-E34 et S5-E35). Le nom de la chaine,
-affiche au-dessus du commentaire, suffit a mener vers elle. Decision YT-3 A du
+même pour son auteur (essais du 2026-11-02 ; un lien Wikipédia passe, un lien
+SensCritique non). Depuis le 2026-11-02 au soir, il écarte aussi les nouveaux
+commentaires qui finissent par un renvoi « voir la chaîne @unebonnereco » et la
+signature « site de fan, non officiel », sans lien, depuis la chaîne comme
+depuis un compte personnel. La même liste sans ces deux lignes est restée
+visible (essais du 2026-11-03 sous S5-E34 et S5-E35). Le nom de la chaîne,
+affiché au-dessus du commentaire, suffit à mener vers elle. Décision YT-3 A du
 2026-11-03.
 
 QUAND
 -----
-Apres la publication (`state["published"]`), et seulement quand la page de
-l'episode est EN LIGNE avec ses recos : annoncer des recos que le site ne
-montre pas encore — la PR n'est pas fusionnee, ou le deploiement tourne —
-enverrait les lecteurs sur une 404. Tant que la page manque, l'etape repasse
-au tick suivant.
+Après la publication (`state["published"]`), et seulement quand la page de
+l'épisode est EN LIGNE avec ses recos. Le commentaire ne renvoie plus au site,
+mais il ne doit pas annoncer des recos que le site ne montre pas encore (la PR
+n'est pas fusionnée, ou le déploiement tourne) : le lecteur qui va voir la
+chaîne puis le site y chercherait en vain l'épisode. Tant que la page manque,
+l'étape repasse au tick suivant.
 
 Seuls les episodes sortis depuis `RECO_YT_COMMENTAIRES_DEPUIS` (par defaut le
 2026-10-22) sont commentes : les anciens ne recoivent rien d'un coup.
@@ -135,7 +136,7 @@ def adresse_episode(source_id: str, guid: str, site: str) -> str:
 def texte(recos: list[dict[str, Any]]) -> str:
     """Les recommandations d'abord ; les simples evocations a part, comme sur
     le site, pour ne pas les faire passer pour des conseils. Ni renvoi ni
-    signature a la fin (voir NI LIEN NI AUTO-PROMOTION DANS LE TEXTE)."""
+    signature à la fin (voir NI LIEN NI AUTO-PROMOTION DANS LE TEXTE)."""
     conseils = [_ligne(r) for r in recos if r.get("kind") != "citation"]
     evocations = [r for r in recos if r.get("kind") == "citation"]
     parties = []

@@ -122,8 +122,8 @@ def test_recapitulatif_du_jour_au_dernier_passage(corpus):
     session = Session(page=_page())
     _lancer(corpus, session, le="2026-11-01T20:00:00")  # la veille : hors du récapitulatif
     _lancer(corpus, session)
-    _, _, notes = _lancer(corpus, session, recap=True)
-    # Un lien par commentaire, à ouvrir en navigation privée (YT-5 A).
+    _, _, notes = _lancer(corpus, session, recap=True, le="2026-11-02T21:40:00")
+    # Un lien par commentaire, dans l'ordre d'envoi, à ouvrir en navigation privée (YT-5 A).
     assert notes == [("💬 Rattrapage YouTube du jour : 2 vidéo(s) commentée(s), "
                       "à vérifier en navigation privée :\n"
                       "• avec C : https://www.youtube.com/watch?v=CCC&lc=UgzCommentaire\n"
@@ -143,6 +143,24 @@ def test_un_creneau_sans_envoi_relit_et_recapitule_sans_poster(corpus):
     assert len(notes) == 1 and notes[0].startswith("💬 Rattrapage YouTube du jour : 1 vidéo(s)")
 
 
+def test_un_jeton_refuse_au_dernier_creneau_n_emporte_pas_le_recapitulatif(corpus):
+    _lancer(corpus, Session(page=_page()), le="2026-11-02T12:30:00")
+    _, _, notes = _lancer(corpus, Session(page=_page(), statut_jeton=500), recap=True,
+                          le="2026-11-02T21:40:00")
+    assert "jeton refusé" in notes[0]
+    assert "watch?v=BBB&lc=UgzCommentaire" in notes[1]
+
+
+def test_un_effacement_au_dernier_creneau_n_emporte_pas_le_recapitulatif(corpus):
+    session = Session(page=_page())
+    _lancer(corpus, session, le="2026-11-02T12:30:00")  # « b », resté
+    _, _, notes = _lancer(corpus, session, recap=True, le="2026-11-02T21:40:00",
+                          verifier=lambda v, c: v != "CCC")
+    assert "suspendu" in notes[0]
+    # Le commentaire effacé n'y figure pas ; celui de midi, si.
+    assert "watch?v=BBB" in notes[1] and "CCC" not in notes[1]
+
+
 # ===== Les créneaux de la journée (YT-4 C) =================================
 def test_deux_ou_trois_creneaux_postent_chaque_jour_et_le_tirage_tient():
     jours = [f"2026-12-{j:02d}" for j in range(1, 32)]
@@ -160,6 +178,29 @@ def test_l_attente_reste_dans_le_creneau():
     tirage = random.Random(0)
     attentes = [rc.attente_aleatoire(120, tirage) for _ in range(200)]
     assert all(0 <= a <= 7200 for a in attentes) and max(attentes) - min(attentes) > 3600
+
+
+def _jour(retenu: bool, creneau: int = 1) -> str:
+    return next(j for j in (f"2026-12-{n:02d}" for n in range(1, 32))
+                if rc.poste_ce_creneau(j, creneau) == retenu)
+
+
+def test_le_passage_attend_seulement_s_il_va_poster(tmp_path: Path):
+    import random
+    chemin = tmp_path / "etat.json"
+    tirage = random.Random(0)
+    nombre, attente = rc.preparer_passage(1, 1, 120, jour=_jour(True), chemin=chemin, env=ENV,
+                                          tirage=tirage)
+    assert nombre == 1 and 0 < attente <= 7200
+    # Créneau non retenu ce jour-là : relecture seule, tout de suite.
+    assert rc.preparer_passage(1, 1, 120, jour=_jour(False), chemin=chemin, env=ENV) == (0, 0)
+    # Étape inactive : rien ne partira, inutile de garder le verrou deux heures.
+    assert rc.preparer_passage(1, 1, 120, jour=_jour(True), chemin=chemin, env={}) == (1, 0)
+    # Sans créneau ni attente : le comportement d'avant.
+    assert rc.preparer_passage(1, None, 0, jour=_jour(False), chemin=chemin, env=ENV) == (1, 0)
+    chemin.write_text(json.dumps({"postes": {}, "de_cote": {}, "suspendu": "essai"}),
+                      encoding="utf-8")
+    assert rc.preparer_passage(1, 1, 120, jour=_jour(True), chemin=chemin, env=ENV) == (1, 0)
 
 
 def test_pas_de_recapitulatif_sans_commentaire_du_jour(corpus):

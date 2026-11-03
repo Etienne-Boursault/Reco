@@ -101,6 +101,20 @@ def attente_aleatoire(minutes_max: float, tirage: random.Random | None = None) -
     return (tirage or random.Random()).uniform(0, minutes_max * 60)  # noqa: S311 — idem.
 
 
+def preparer_passage(nombre: int, creneau: int | None, attente_max: float, *, jour: str,
+                     chemin: Path, env: Mapping[str, str] = os.environ,
+                     tirage: random.Random | None = None) -> tuple[int, float]:
+    """Combien poster, et combien de secondes attendre, décidé au début du
+    créneau : le tirage du jour se fait avant l'attente (une attente qui
+    passerait minuit ne change pas de jour), et l'on n'attend pas quand rien ne
+    partira (étape inactive, rattrapage suspendu, créneau non retenu) — sinon
+    le conteneur et le verrou resteraient pris deux heures pour rien."""
+    if creneau and not poste_ce_creneau(jour, creneau):
+        nombre = 0
+    if nombre <= 0 or attente_max <= 0 or not cy.actif(env) or charger_etat(chemin).get("suspendu"):
+        return nombre, 0.0
+    return nombre, attente_aleatoire(attente_max, tirage)
+
 
 def est_public(video: str, commentaire: str) -> bool:  # pragma: no cover — réseau réel
     """Le commentaire est-il visible SANS COMPTE sous la vidéo ?"""
@@ -194,12 +208,30 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
               maintenant: Callable[[], str] = lambda: datetime.now().isoformat(timespec="seconds"),
               verifier: EstPublic = est_public,
               attendre: Callable[[float], None] = time.sleep,
+              jour: str | None = None,
               ) -> int:
     """Poste sous `nombre` vidéos au plus (0 : relecture seule). Rend le nombre
-    de commentaires postés et non repérés comme effacés."""
+    de commentaires postés et non repérés comme effacés.
+
+    Avec `recap`, le récapitulatif du jour (`jour`, sinon la date de
+    `maintenant`) part quelle que soit l'issue du passage : jeton refusé ou
+    commentaire effacé n'emportent pas les liens des commentaires déjà postés
+    dans la journée, qu'Étienne doit pouvoir ouvrir."""
     if not cy.actif(env):
         log.info("étape inactive (RECO_YT_COMMENTAIRES ou secrets absents)")
         return 0
+    try:
+        return _passer(source_id, nombre, notify, chemin=chemin, session=session, env=env,
+                       maintenant=maintenant, verifier=verifier, attendre=attendre)
+    finally:
+        if recap:
+            _recapituler(source_id, charger_etat(chemin), notify,
+                         jour or maintenant()[:10], env)
+
+
+def _passer(source_id: str, nombre: int, notify: Notify, *, chemin: Path, session: Any,
+            env: Mapping[str, str], maintenant: Callable[[], str], verifier: EstPublic,
+            attendre: Callable[[float], None]) -> int:
     if session is None:  # pragma: no cover — branche réseau réelle
         import requests
         session = requests.Session()
@@ -220,8 +252,6 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
                    f"{len(etat['de_cote'])} mise(s) de côté.")
         return 0
     if nombre <= 0:  # créneau sans envoi ce jour-là : la relecture suffit.
-        if recap:
-            _recapituler(source_id, etat, notify, maintenant()[:10], env)
         return 0
     site = env.get("SITE_URL") or cy.SITE_PAR_DEFAUT
     try:
@@ -257,8 +287,6 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
         sauver_etat(chemin, etat)
         notify(f"💬 Rattrapage YouTube : « {titre} » mis de côté ({raison}). "
                f"Le retirer de {chemin.name} pour le retenter.")
-    if recap:
-        _recapituler(source_id, etat, notify, maintenant()[:10], env)
     return postes
 
 
@@ -266,8 +294,9 @@ def _recapituler(source_id: str, etat: dict[str, Any], notify: Notify, jour: str
                  env: Mapping[str, str]) -> None:
     """Un message pour les vidéos commentées ce jour-là, avec le lien de
     chaque commentaire à ouvrir en navigation privée ; rien si aucune."""
-    du_jour = [v for v in etat["postes"].values()
-               if str(v.get("le", "")).startswith(jour) and not v.get("masque")]
+    du_jour = sorted((v for v in etat["postes"].values()
+                      if str(v.get("le", "")).startswith(jour) and not v.get("masque")),
+                     key=lambda v: str(v.get("le", "")))  # l'état relu est trié par guid
     if not du_jour:
         return
     reste = len(en_attente(source_id, etat, env))
@@ -304,13 +333,14 @@ def main(argv: list[str] | None = None) -> int:
             print(cy.texte(recos) + "\n")
         return 0
     from traiter_nouveaux_episodes import build_notify
-    if args.attente_max > 0:
-        time.sleep(attente_aleatoire(args.attente_max))
-    nombre = args.nombre
-    if args.creneau and not poste_ce_creneau(datetime.now().date().isoformat(), args.creneau):
-        nombre = 0
+    jour = datetime.now().date().isoformat()  # lu AVANT l'attente
+    nombre, attente = preparer_passage(args.nombre, args.creneau, args.attente_max,
+                                       jour=jour, chemin=chemin)
+    if attente:
+        log.info("créneau %s : départ dans %d min", args.creneau, attente // 60)
+        time.sleep(attente)
     rattraper(args.source, nombre, build_notify(args.notifier), chemin=chemin,
-              recap=args.recap)
+              recap=args.recap, jour=jour)
     return 0
 
 
