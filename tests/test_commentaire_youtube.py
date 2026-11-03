@@ -91,11 +91,11 @@ def test_texte_separe_recos_et_evocations():
     recos, evocations = message.split("Aussi évoqués")
     # Un createur identique au titre ne se repete pas, et le type donne l'emoji.
     assert "1:10 ✨ Renversée (Amandine Lourdel)" in recos
-    assert evocations.startswith(" : Bo Burnham (1:19:51)\n")
-    assert "non officiel" in message
-    # YouTube écarte tout commentaire qui porte l'adresse du site : renvoi vers la chaîne.
-    assert "voir la chaîne @unebonnereco" in message
+    # Le message s'arrête sur les recos : YouTube écarte tout commentaire qui porte
+    # l'adresse du site, et depuis le 2/11 au soir le renvoi vers la chaîne et la signature.
+    assert evocations == " : Bo Burnham (1:19:51)"
     assert "unebonnere.co" not in message and "http" not in message
+    assert "unebonnereco" not in message and "non officiel" not in message
 
 
 def test_l_emoji_suit_le_type():
@@ -110,7 +110,7 @@ def test_les_evocations_d_un_meme_moment_tiennent_en_une_ligne():
         {"title": "Bigflo & Oli", "timestamp": "00:29:34", "transcriptSource": "youtube", "kind": "citation"},
         {"title": "Linky", "timestamp": "01:00:00", "transcriptSource": "youtube", "kind": "citation"},
     ])
-    assert "💬 Aussi évoqués : Nardwuar et Bigflo & Oli (29:34), Linky (1:00:00)\n" in message
+    assert message == "💬 Aussi évoqués : Nardwuar et Bigflo & Oli (29:34), Linky (1:00:00)"
 
 
 def test_un_minutage_acast_n_est_pas_donne_pour_la_video():

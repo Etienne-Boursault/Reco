@@ -184,8 +184,11 @@ la variable — laisse Qobuz actif.
 
 Une fois l'épisode en ligne sur le site, l'étape `commenter` poste sous sa vidéo un
 commentaire de la chaîne « Une Bonne Reco » : les recos avec leur minutage
-cliquable, les évocations à part, puis le lien vers la page de l'épisode. Elle
-attend que la page porte les recos (PR fusionnée ET déploiement terminé), et ne
+cliquable, les évocations à part, et rien d'autre : YouTube efface en silence les
+commentaires qui portent l'adresse du site, et depuis le 2026-11-02 au soir ceux qui
+finissent par un renvoi vers la chaîne ou la signature « site de fan » (décision YT-3 A,
+détail dans `tools/commentaire_youtube.py`). Le salon Matrix reçoit le lien du
+commentaire posté, à ouvrir en navigation privée. Elle attend que la page porte les recos (PR fusionnée ET déploiement terminé), et ne
 commente que les épisodes sortis depuis `RECO_YT_COMMENTAIRES_DEPUIS` (défaut :
 2026-10-22). Aperçu sans rien poster : `python commentaire_youtube.py --apercu <guid>`.
 
@@ -212,19 +215,30 @@ Retirer `RECO_YT_COMMENTAIRES=1` coupe l'étape au passage suivant. Chaque
 commentaire coûte 50 unités de quota sur 10 000 par jour.
 
 **Les anciennes vidéos** (avant `RECO_YT_COMMENTAIRES_DEPUIS`) reçoivent le même
-commentaire au compte-gouttes, quatre par jour, de la plus récente à la plus ancienne
-(décision du 2026-11-02, 113 vidéos, environ un mois) :
+commentaire au compte-gouttes, de la plus récente à la plus ancienne. Décision du
+2026-11-03 (YT-4 C) : deux ou trois par jour, à une heure tirée au hasard dans trois
+créneaux (12 h–14 h, 16 h 30–18 h 30, 21 h–23 h), un tirage propre au jour choisissant les
+créneaux qui postent ; les autres ne font que relire. Le rattrapage est **suspendu**
+depuis le 2026-11-03 (`suspendu` dans l'état) : la reprise attend que le commentaire de
+S6-E08 ait tenu 24 h. Elle se fait en remplaçant les deux lignes du 2026-11-02
+(`23 9,13,17` et `23 21`) par :
 
 ```
-23 9,13,17 * * * cd /home/etienne/docker/reco && [ -f depot/tools/rattrapage_commentaires_youtube.py ] && flock -n /tmp/reco-rattrapage-yt.lock docker compose run --rm -T pipeline python rattrapage_commentaires_youtube.py --notifier matrix >> logs/rattrapage-youtube.log 2>&1
-23 21 * * * cd /home/etienne/docker/reco && [ -f depot/tools/rattrapage_commentaires_youtube.py ] && flock -n /tmp/reco-rattrapage-yt.lock docker compose run --rm -T pipeline python rattrapage_commentaires_youtube.py --recap --notifier matrix >> logs/rattrapage-youtube.log 2>&1
+0 12 * * * cd /home/etienne/docker/reco && [ -f depot/tools/rattrapage_commentaires_youtube.py ] && flock -n /tmp/reco-rattrapage-yt.lock docker compose run --rm -T pipeline python rattrapage_commentaires_youtube.py --creneau 1 --attente-max 120 --notifier matrix >> logs/rattrapage-youtube.log 2>&1
+30 16 * * * cd /home/etienne/docker/reco && [ -f depot/tools/rattrapage_commentaires_youtube.py ] && flock -n /tmp/reco-rattrapage-yt.lock docker compose run --rm -T pipeline python rattrapage_commentaires_youtube.py --creneau 2 --attente-max 120 --notifier matrix >> logs/rattrapage-youtube.log 2>&1
+0 21 * * * cd /home/etienne/docker/reco && [ -f depot/tools/rattrapage_commentaires_youtube.py ] && flock -n /tmp/reco-rattrapage-yt.lock docker compose run --rm -T pipeline python rattrapage_commentaires_youtube.py --creneau 3 --attente-max 120 --recap --notifier matrix >> logs/rattrapage-youtube.log 2>&1
 ```
+
+puis en retirant `suspendu` du fichier d'état. Un appel attend dans son créneau
+seulement s'il va poster : suspendu, inactif ou non retenu ce jour-là, il relit et
+s'arrête aussitôt.
 
 État dans `depot/tools/output/pipeline/rattrapage-commentaires-youtube.json` : les vidéos
 commentées (`postes`) et celles mises de côté sur un échec qui leur est propre
 (`de_cote`, avec la raison) ; retirer une entrée de `de_cote` la fait retenter.
-Le salon Matrix reçoit un récapitulatif par jour (passage de 21 h, `--recap`), les
-échecs et la fin du rattrapage. Aperçu :
+Le salon Matrix reçoit un récapitulatif par jour (dernier créneau, `--recap`) avec le
+lien de chaque commentaire du jour, à ouvrir en navigation privée — la relecture sans
+compte ne prouve qu'une absence —, les échecs et la fin du rattrapage. Aperçu :
 `python rattrapage_commentaires_youtube.py --apercu --nombre 3`.
 
 ## Quand ça tourne
