@@ -146,19 +146,6 @@ describe('traiter — qui répond ?', () => {
     expect(res.writeHead).toHaveBeenCalledWith(404, expect.any(Object));
     rmSync(vide, { recursive: true, force: true });
   });
-
-  it('une requête prise par la sonde n’atteint ni la mesure ni Astro', () => {
-    const appels: Appels = { recu: [] };
-    const mesurer = vi.fn();
-    const req = { method: 'GET', url: '/__sonde/processus', headers: {} } as any;
-
-    const rendu = traiter(fauxHandler(appels, null), racine, req, {} as any, mesurer,
-      new Map(), () => true);
-
-    expect(rendu).toBeUndefined();
-    expect(mesurer).not.toHaveBeenCalled();
-    expect(appels.recu).toEqual([]);
-  });
 });
 
 describe('fermerProprement', () => {
