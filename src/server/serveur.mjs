@@ -14,7 +14,6 @@ import { hoteDe, mesurerVisite, sourcesDe } from '../lib/audience/mesure.mjs';
 import { envelopper } from './compression.mjs';
 import { METHODES_STATIQUES, fichierPour, servirFichier } from './fichiers.mjs';
 import { chargerRedirections, rediriger } from './redirections.mjs';
-import { sonder } from './sonde.mjs';
 
 /** Le domaine public et les sources connues — voir `lib/audience/mesure.mjs`. */
 const HOTE_DU_SITE = hoteDe(process.env.SITE_URL);
@@ -28,12 +27,7 @@ const SOURCES_CONNUES = sourcesDe(process.env.RECO_SOURCES);
  * route à la demande ne doit jamais masquer un fichier réellement construit.
  */
 export function traiter(handler, racine, req, res, mesurer = mesurerVisite,
-  redirections = new Map(), sonde = sonder) {
-  // La sonde des vérifications chez l'hébergeur passe avant la mesure : ses
-  // requêtes sont des essais, pas des visites. Sans sa clé, elle rend la main
-  // et la requête suit son chemin ordinaire. Voir `./sonde.mjs`.
-  if (sonde(req, res)) return undefined;
-
+  redirections = new Map()) {
   // La mesure se pose AVANT tout aiguillage, pour couvrir aussi bien une page
   // servie depuis le disque qu'une route à la demande ou un 404. Elle
   // n'écrit rien tout de suite : elle s'abonne à la fin de la réponse, quand
