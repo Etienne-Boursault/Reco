@@ -115,7 +115,7 @@ describe('classerLiens', () => {
       classerLiens([reco(['Steam', steam]), reco(['Steam', 'https://store.steampowered.com/app/1/Jeu/'])], new Set()),
     ).toEqual({ brut: 'memeLibelleUrlDifferentes', classe: 'C1' });
   });
-  it('YouTube : la chaîne enregistrée vaut la poignée de l’œuvre', () => {
+  it('R-L4 : la chaîne YouTube enregistrée vaut la poignée de l’œuvre', () => {
     const recos = [
       reco(['Chaîne YouTube', 'https://www.youtube.com/@nardwuar']),
       reco(['Chaîne YouTube', 'https://www.youtube.com/channel/UC1']),
@@ -123,7 +123,7 @@ describe('classerLiens', () => {
     expect(classerLiens(recos, new Set(['UC1'])).classe).toBe('C1');
     expect(classerLiens(recos, new Set()).classe).toBe('C3');
   });
-  it('YouTube : deux poignées ne se fusionnent pas', () => {
+  it('R-L4 : deux poignées YouTube ne se fusionnent pas', () => {
     const recos = [
       reco(['Chaîne YouTube', 'https://www.youtube.com/@a']),
       reco(['Chaîne YouTube', 'https://www.youtube.com/@b'], ['Chaîne YouTube', 'https://www.youtube.com/channel/UC1']),
@@ -226,16 +226,16 @@ describe('analyser — comptes et invariants', () => {
     ]);
   });
 
-  it('bloque un recommendedBy sur une œuvre, sauf vide', () => {
+  it('02 § 2.1 : un recommendedBy sur une œuvre bloque, vide ou null compris', () => {
     const c = sain();
     c.items.push(
       e('items/s/i3.json', { id: 'i3', title: 'A', types: ['film'], recommendedBy: 'Navo' }),
       e('items/s/i4.json', { id: 'i4', title: 'B', types: ['film'], recommendedBy: null }),
     );
-    expect(analyser(c).bloquants.find((v) => v.regle === 'recommendedBy-sur-oeuvre')?.ids).toEqual(['i3']);
+    expect(analyser(c).bloquants.find((v) => v.regle === 'recommendedBy-sur-oeuvre')?.ids).toEqual(['i3', 'i4']);
   });
 
-  it('vérifie les redirections', () => {
+  it('ADR 0053 et 0061 : vérifie les redirections, chaînes comprises', () => {
     const c = sain();
     c.items.push(
       e('items/s/vivante.json', { id: 'vivante', title: 'V', types: ['film'] }),
@@ -308,7 +308,7 @@ describe('analyser — écarts', () => {
     expect(avec({ guestWork: true }).recosValideesSansEcart).toBe(0);
   });
 
-  it('R-V5 : kind absent vaut reco', () => {
+  it('kind absent vaut reco, comme dans le schéma', () => {
     expect(ecartsDe(avec({}, { kind: 'reco' }))).toEqual([]);
     expect(ecartsDe(avec({ kind: 'reco' }, { kind: 'citation' }))).toEqual(['ubm-1 kind C3']);
   });
@@ -318,7 +318,7 @@ describe('analyser — écarts', () => {
     expect(ecartsDe(avec({ aliases: ['A'] }, {}, { aliases: ['A'] }))).toEqual([]);
   });
 
-  it('externalIds : par clé, tmdb en texte ou en nombre, watchPage équivalente', () => {
+  it('R-V7 et § 4.6 : externalIds par clé, tmdb en texte ou en nombre, watchPage équivalente', () => {
     const tmdb = 'https://www.themoviedb.org/tv/1-nom/watch';
     const r = avec(
       { externalIds: { tmdb: '12', watchPage: tmdb, isbn: '978', instagram: 'a' } },

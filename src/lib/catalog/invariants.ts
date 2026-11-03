@@ -16,10 +16,12 @@
  * - C2 : une seule des deux copies porte la valeur ;
  * - C3 : deux valeurs différentes.
  *
- * Les différences de pure représentation qu'imposent les schémas actuels
- * (`tmdb` en texte sur la reco et en nombre sur l'œuvre, `kind` absent qui
- * vaut `reco`) ne sont pas des écarts : la normalisation les efface, et la
- * référence datée ne les suit pas.
+ * Deux différences de pure représentation qu'imposent les schémas actuels ne
+ * sont pas comptées : `tmdb` en texte sur la reco et en nombre sur l'œuvre,
+ * `kind` absent qui vaut `reco`. La normalisation les effacera. `02` § 3.2 les
+ * range pourtant en C1, « correction automatique et comptée » : cet écart avec
+ * la documentation est soumis à l'éditeur le 3 novembre, et le code ne change
+ * qu'après sa réponse.
  */
 
 import { canoniserUrl, classerLiens } from './liens.ts';
@@ -134,7 +136,54 @@ export const FORMATS = {
 
 const vide = (v: unknown): boolean => v === undefined || v === null || v === '';
 const texte = (v: unknown): string | undefined => (typeof v === 'string' && v !== '' ? v : undefined);
-const objet = (v: unknown): Json => (v !== null && typeof v === 'object' && !Array.isArray(v) ? (v as Json) : {});
+const estObjet = (v: unknown): v is Json => v !== null && typeof v === 'object' && !Array.isArray(v);
+const objet = (v: unknown): Json => (estObjet(v) ? v : {});
+
+/**
+ * Règle C (`05`, 3 novembre) : la forme attendue de chaque champ que l'analyse
+ * lit. Une valeur d'une autre forme est rapportée, au lieu d'être lue comme
+ * absente ou comme une valeur par défaut (un `guestWork` à `'true'` passerait
+ * pour faux).
+ */
+type Forme = 'texte' | 'nombre' | 'vrai' | 'textes' | 'statut' | 'kind' | 'ids' | 'liens' | 'sourceRef';
+const FORMES: Record<'recos' | 'items' | 'mentions', Record<string, Forme>> = {
+  recos: {
+    status: 'statut', episodeGuid: 'texte', title: 'texte', creator: 'texte', types: 'textes', year: 'nombre',
+    recommendedBy: 'texte', quote: 'texte', timestamp: 'texte', kind: 'kind', guestWork: 'vrai',
+    aliases: 'textes', externalIds: 'ids', links: 'liens',
+  },
+  items: { title: 'texte', creator: 'texte', types: 'textes', year: 'nombre', aliases: 'textes', externalIds: 'ids' },
+  mentions: {
+    status: 'statut', itemId: 'texte', sourceRef: 'sourceRef', recommendedBy: 'texte', quote: 'texte',
+    kind: 'kind', guestWork: 'vrai',
+  },
+};
+
+const estTexte = (v: unknown): boolean => typeof v === 'string';
+const estNombre = (v: unknown): boolean => typeof v === 'number' && Number.isFinite(v);
+
+function bienForme(forme: Forme, v: unknown): boolean {
+  switch (forme) {
+    case 'texte':
+      return estTexte(v);
+    case 'nombre':
+      return estNombre(v);
+    case 'vrai': // R-V3 : un drapeau vaut vrai, ou il est absent.
+      return v === true;
+    case 'textes':
+      return Array.isArray(v) && v.every(estTexte);
+    case 'statut':
+      return v === 'draft' || v === 'validated' || v === 'discarded';
+    case 'kind':
+      return v === 'reco' || v === 'citation';
+    case 'ids':
+      return estObjet(v) && Object.values(v).every((x) => estTexte(x) || estNombre(x));
+    case 'liens':
+      return Array.isArray(v) && v.every((l) => estObjet(l) && estTexte(l.url) && (l.label === undefined || estTexte(l.label)));
+    case 'sourceRef':
+      return estObjet(v) && [v.episodeGuid, v.timestamp].every((x) => x === undefined || estTexte(x));
+  }
+}
 const statutDe = (d: Json): string => texte(d.status) ?? 'draft';
 const parOrdre = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
 
@@ -231,6 +280,24 @@ export function analyser(corpus: Corpus): Rapport {
   for (const [nom, ix, format] of formats) {
     signaler(bloquants, 'format-identifiant', `${nom} : identifiant hors de son format fermé`, [...ix.parId.keys()].filter((id) => !format.test(id)));
   }
+
+  // Règle C : un champ d'une autre forme que celle attendue est bloquant ; un
+  // champ présent mais vide (R-V6) ou `null` (R-V1) est signalé.
+  const malFormes: string[] = [];
+  const videsOuNull: string[] = [];
+  const formes: ['recos' | 'items' | 'mentions', Index][] = [['recos', recos], ['items', items], ['mentions', mentions]];
+  for (const [nom, ix] of formes) {
+    for (const [id, d] of ix.parId) {
+      for (const [champ, forme] of Object.entries(FORMES[nom])) {
+        if (!(champ in d)) continue;
+        const v = d[champ];
+        if (v === null || v === '') videsOuNull.push(`${nom}:${id}.${champ}`);
+        else if (!bienForme(forme, v)) malFormes.push(`${nom}:${id}.${champ}`);
+      }
+    }
+  }
+  signaler(bloquants, 'type-champ', 'champ d’une autre forme que celle attendue', malFormes);
+  signaler(avertissements, 'valeur-vide', 'champ présent mais vide ou null, à retirer (R-V1, R-V6)', videsOuNull);
   if (corpus.erreurRedirections !== undefined) {
     bloquants.push({ regle: 'lecture', message: `redirections illisibles : ${corpus.erreurRedirections}`, ids: [] });
   }
@@ -284,12 +351,13 @@ export function analyser(corpus: Corpus): Rapport {
     [...mentions.parId].filter(([, m]) => statutDe(m) === 'draft').map(([id]) => id),
   );
 
-  // `recommendedBy` appartient à la mention, jamais à l'œuvre (ADR 0061 ; `02` § 2).
+  // `recommendedBy` appartient à la mention, jamais à l'œuvre (ADR 0061 ; `02`
+  // § 2.1 : « absent de l'œuvre ») : la clé seule suffit, vide ou `null` compris.
   signaler(
     bloquants,
     'recommendedBy-sur-oeuvre',
     'œuvre qui porte un recommendedBy (champ de mention)',
-    [...items.parId].filter(([, it]) => !vide(it.recommendedBy)).map(([id]) => id),
+    [...items.parId].filter(([, it]) => 'recommendedBy' in it).map(([id]) => id),
   );
 
   // Redirections.
@@ -347,11 +415,13 @@ export function analyser(corpus: Corpus): Rapport {
     ajouter('recommendedBy', classer(r.recommendedBy, m.recommendedBy));
     ajouter('quote', classer(r.quote, m.quote));
     ajouter('timestamp', classer(r.timestamp, sr.timestamp));
-    // R-V5 (`02` § 3.1) : `kind` absent vaut `reco`, ce n'est pas une valeur manquante.
+    // Le schéma lit un `kind` absent comme `reco` (`.default('reco')`) ; R-V5
+    // (`02` § 3.1) veut qu'il soit toujours écrit, ce que fera la normalisation.
     ajouter('kind', (texte(r.kind) ?? 'reco') === (texte(m.kind) ?? 'reco') ? null : 'C3');
     // R-V3 (`02` § 3.1) : un drapeau absent vaut faux. Vrai sur une copie et absent
     // sur l'autre, ce sont donc deux valeurs différentes, C3, et non une valeur
-    // présente d'un seul côté (C2). Cas d'essai F1 (`02` § 10) : les 197 écarts.
+    // présente d'un seul côté (C2) : c'est l'attendu du cas d'essai F1 (`02` § 10).
+    // Les 197 écarts du corpus (`02` § 2.2) sont de cette forme.
     ajouter('guestWork', (r.guestWork === true) === (m.guestWork === true) ? null : 'C3');
     if (ecarts.length === avant) sansEcart += 1;
     if (it === undefined) continue;
@@ -365,8 +435,9 @@ export function analyser(corpus: Corpus): Rapport {
       const a = er[cle];
       const b = ei[cle];
       let classe: Classe | null;
-      // R-V7 (`02` § 3.1) : `tmdb` en texte sur la reco, en entier sur l'œuvre ;
-      // la normalisation l'écrit en entier, ce n'est pas un écart.
+      // R-V7 (`02` § 3.1) : `tmdb` est un entier, en texte sur la reco aujourd'hui.
+      // `02` § 3.2 range « texte ou nombre » en C1, correction comptée ; ce
+      // vérificateur ne la compte pas encore (voir l'en-tête).
       if (cle === 'tmdb') classe = classer(a, b, (x, y) => String(x) === String(y));
       // `02` § 4.6 : les 4 `watchPage` différentes sont toutes équivalentes (C1).
       else if (cle === 'watchPage') {

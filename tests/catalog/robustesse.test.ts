@@ -50,6 +50,15 @@ const CHAMPS: Record<'sources' | 'episodes' | 'recos' | 'items' | 'mentions', st
   mentions: ['id', 'status', 'itemId', 'sourceRef', 'recommendedBy', 'quote', 'kind', 'guestWork'],
 };
 
+/** Les valeurs de HOSTILES qui ont la bonne forme pour ce champ ; toutes les autres doivent être rapportées. */
+const VALIDES: Record<string, unknown[]> = {
+  title: ['texte'], creator: ['texte'], recommendedBy: ['texte'], quote: ['texte'], timestamp: ['texte'],
+  episodeGuid: ['texte'], itemId: ['texte'], year: [3], guestWork: [true],
+  types: [[]], aliases: [[]], links: [[]], externalIds: [{}], sourceRef: [{}, { a: { b: 1 } }],
+};
+/** Les identifiants ont leurs propres règles (sans-id, format, doublon), testées ailleurs. */
+const IDENTIFIANTS = new Set(['id', 'guid']);
+
 describe('règle C : des valeurs du mauvais type sont rapportées, jamais fatales', () => {
   for (const [collection, champs] of Object.entries(CHAMPS) as [keyof typeof CHAMPS, string[]][]) {
     for (const champ of champs) {
@@ -57,21 +66,54 @@ describe('règle C : des valeurs du mauvais type sont rapportées, jamais fatale
         for (const valeur of HOSTILES) {
           const c = corpus();
           const entree = c[collection][0];
+          const id = String(entree.donnees?.id);
           entree.donnees = { ...entree.donnees, [champ]: valeur };
-          expect(() => analyser(c), `${collection}.${champ} = ${JSON.stringify(valeur)}`).not.toThrow();
+          const cas = `${collection}.${champ} = ${JSON.stringify(valeur)}`;
+          let r: ReturnType<typeof analyser> | undefined;
+          expect(() => (r = analyser(c)), cas).not.toThrow();
+          // Sur une œuvre, recommendedBy bloque quelle que soit sa valeur (test dédié).
+          if (IDENTIFIANTS.has(champ) || `${collection}.${champ}` === 'items.recommendedBy') continue;
+          const rapportee = [...r!.bloquants, ...r!.avertissements].some(
+            (v) => (v.regle === 'type-champ' || v.regle === 'valeur-vide') && v.ids.includes(`${collection}:${id}.${champ}`),
+          );
+          const valide = (VALIDES[champ] ?? []).some((x) => JSON.stringify(x) === JSON.stringify(valeur));
+          expect(rapportee, cas).toBe(!valide);
         }
       });
     }
   }
 
+  it('type-champ est bloquant, valeur-vide un avertissement', () => {
+    const c = corpus();
+    (c.recos[0].donnees as Json).guestWork = 'true';
+    (c.recos[0].donnees as Json).creator = '';
+    const r = analyser(c);
+    expect(r.bloquants.find((v) => v.regle === 'type-champ')?.ids).toEqual(['recos:ubm-1.guestWork']);
+    expect(r.avertissements.find((v) => v.regle === 'valeur-vide')?.ids).toEqual(['recos:ubm-1.creator']);
+  });
+
+  it('les statuts et les natures hors de leur liste sont rapportés', () => {
+    const c = corpus();
+    (c.recos[0].donnees as Json).status = 'valide';
+    (c.mentions[0].donnees as Json).kind = 'Reco';
+    expect(analyser(c).bloquants.find((v) => v.regle === 'type-champ')?.ids).toEqual(['mentions:ubm-1.kind', 'recos:ubm-1.status']);
+  });
+
   it('externalIds, liens et sourceRef : valeurs internes du mauvais type', () => {
     for (const valeur of HOSTILES) {
       const c = corpus();
-      const r = c.recos[0].donnees as Json;
-      r.externalIds = { tmdb: valeur, watchPage: valeur, youtubeChannelId: valeur };
-      r.links = [valeur, { url: valeur, label: valeur }];
+      const reco = c.recos[0].donnees as Json;
+      reco.externalIds = { tmdb: valeur, watchPage: valeur, youtubeChannelId: valeur };
+      reco.links = [valeur, { url: valeur, label: valeur }];
       (c.mentions[0].donnees as Json).sourceRef = { episodeGuid: valeur, timestamp: valeur };
-      expect(() => analyser(c), JSON.stringify(valeur)).not.toThrow();
+      let r: ReturnType<typeof analyser> | undefined;
+      expect(() => (r = analyser(c)), JSON.stringify(valeur)).not.toThrow();
+      const malFormes = r!.bloquants.find((v) => v.regle === 'type-champ')?.ids ?? [];
+      const texteOuNombre = typeof valeur === 'string' || typeof valeur === 'number';
+      // Un lien qui n'est pas un objet à `url` texte est toujours mal formé.
+      expect(malFormes.includes('recos:ubm-1.links'), JSON.stringify(valeur)).toBe(true);
+      expect(malFormes.includes('recos:ubm-1.externalIds'), JSON.stringify(valeur)).toBe(!texteOuNombre);
+      expect(malFormes.includes('mentions:ubm-1.sourceRef'), JSON.stringify(valeur)).toBe(typeof valeur !== 'string');
     }
   });
 
