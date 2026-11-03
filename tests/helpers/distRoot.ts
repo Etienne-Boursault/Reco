@@ -30,3 +30,13 @@ export function distRoot(): string | null {
   }
   return null;
 }
+
+/**
+ * Délai d'un test qui lit TOUTES les pages du site construit (2 800 fichiers
+ * HTML au 2026-11-03). Le délai par défaut de vitest.config.ts, 30 s, ne
+ * suffit pas sous `--coverage` quand le poste est chargé : 140 s et 70 s
+ * mesurés le 2026-11-03 pour les deux tests qui échouaient au hasard.
+ * Un test qui dépasse ce délai-ci signale un vrai problème, pas une lenteur
+ * du poste.
+ */
+export const DELAI_PARCOURS_DIST = 300_000;

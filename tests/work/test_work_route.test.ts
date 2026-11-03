@@ -9,7 +9,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { distRoot } from '../helpers/distRoot';
+import { DELAI_PARCOURS_DIST, distRoot } from '../helpers/distRoot';
 
 // Racine résolue selon le MODE de build : `dist/` en statique,
 // `dist/client/` en SSR (mode `middleware`, celui de la production
@@ -92,7 +92,7 @@ describe.skipIf(!hasBuild)('work canonical page — post-build', () => {
       }
     }
     expect(morts).toEqual([]);
-  });
+  }, DELAI_PARCOURS_DIST);
 
   it('affiche les liens de l’œuvre sur la grande majorité des fiches', () => {
     // « Quand je clique sur une œuvre, j'aimerais aussi voir les liens ».
@@ -102,5 +102,5 @@ describe.skipIf(!hasBuild)('work canonical page — post-build', () => {
       readFileSync(join(oeuvreDir, id, 'index.html'), 'utf-8').includes('work-links'),
     );
     expect(avecLiens.length / subdirs.length).toBeGreaterThan(0.9);
-  });
+  }, DELAI_PARCOURS_DIST);
 });
