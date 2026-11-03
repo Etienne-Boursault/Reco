@@ -6,10 +6,10 @@
  * Comportement CI vs local : skip silencieux si pas de build local, fail
  * explicite si CI=true (cf. test_meta_tags_build pour le pattern).
  */
-import { describe, it, expect } from 'vitest';
+import { beforeAll, describe, it, expect } from 'vitest';
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { distRoot } from '../helpers/distRoot';
+import { DELAI_PARCOURS_DIST, distRoot } from '../helpers/distRoot';
 
 // Racine résolue selon le MODE de build : `dist/` en statique,
 // `dist/client/` en SSR (mode `middleware`, celui de la production
@@ -39,6 +39,13 @@ describe.skipIf(!hasBuild)('work canonical page — post-build', () => {
   const html = firstId
     ? readFileSync(join(oeuvreDir, firstId, 'index.html'), 'utf-8')
     : '';
+
+  // Toutes les fiches, lues une seule fois pour les deux tests qui les
+  // parcourent (elles étaient lues deux fois, une par test).
+  const fiches = new Map<string, string>();
+  beforeAll(() => {
+    for (const id of subdirs) fiches.set(id, readFileSync(join(oeuvreDir, id, 'index.html'), 'utf-8'));
+  }, DELAI_PARCOURS_DIST);
 
   it('génère au moins une page d’œuvre', () => {
     expect(subdirs.length).toBeGreaterThan(0);
@@ -82,8 +89,7 @@ describe.skipIf(!hasBuild)('work canonical page — post-build', () => {
     // que pour celles qui sont mentionnées : 337 liens morts sur 230 fiches.
     const emises = new Set(subdirs);
     const morts: string[] = [];
-    for (const id of subdirs) {
-      const page = readFileSync(join(oeuvreDir, id, 'index.html'), 'utf-8');
+    for (const [id, page] of fiches) {
       const debut = page.indexOf('similar-grid');
       if (debut < 0) continue;
       const bloc = page.slice(debut, debut + 4000);
@@ -98,9 +104,7 @@ describe.skipIf(!hasBuild)('work canonical page — post-build', () => {
     // « Quand je clique sur une œuvre, j'aimerais aussi voir les liens ».
     // Ils vivent sur les recommandations, pas sur la fiche : sans agrégation,
     // presque aucune page n'en montrait.
-    const avecLiens = subdirs.filter((id) =>
-      readFileSync(join(oeuvreDir, id, 'index.html'), 'utf-8').includes('work-links'),
-    );
+    const avecLiens = [...fiches.values()].filter((page) => page.includes('work-links'));
     expect(avecLiens.length / subdirs.length).toBeGreaterThan(0.9);
   });
 });

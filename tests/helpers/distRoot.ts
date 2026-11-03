@@ -30,3 +30,15 @@ export function distRoot(): string | null {
   }
   return null;
 }
+
+/**
+ * Délai d'un test (ou d'un `beforeAll`) qui lit toutes les pages d'un type
+ * dans le site construit : les 2 800 pages HTML pour test_no_placeholder_leak,
+ * les fiches d'œuvre pour test_work_route (2026-11-03). Les 30 s par défaut de
+ * vitest.config.ts ne suffisaient pas sous `--coverage` sur un poste chargé :
+ * 140 s et 70 s mesurés le 2026-11-03.
+ *
+ * 3 min, pas plus : le job `test-vitest` de la CI dispose de 10 min, build
+ * compris, et deux parcours au plus utilisent ce délai.
+ */
+export const DELAI_PARCOURS_DIST = 180_000;

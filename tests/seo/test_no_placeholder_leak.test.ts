@@ -14,8 +14,8 @@
  */
 import { describe, expect, test } from 'vitest';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
-import { distRoot } from '../helpers/distRoot';
+import { join, resolve } from 'node:path';
+import { DELAI_PARCOURS_DIST, distRoot } from '../helpers/distRoot';
 
 // Racine résolue selon le MODE de build : `dist/` en statique,
 // `dist/client/` en SSR (mode `middleware`, celui de la production
@@ -36,6 +36,16 @@ function collectHtml(dir: string, acc: string[] = []): string[] {
   return acc;
 }
 
+// En CI, sauter ce contrôle en silence le rendrait inutile : sans build, il
+// échoue, comme le garde-fou de test_work_route.
+if (!distExists && process.env.CI === 'true') {
+  describe('no placeholder leak (CI guard)', () => {
+    test('dist/index.html doit exister en CI', () => {
+      expect.fail('dist/index.html introuvable — lancer `npm run build` avant les tests post-build en CI.');
+    });
+  });
+}
+
 describe.skipIf(!distExists)('no placeholder leak (post-build)', () => {
   test('dist/index.html ne contient pas reco.example', () => {
     const html = readFileSync(join(DIST, 'index.html'), 'utf-8');
@@ -50,7 +60,7 @@ describe.skipIf(!distExists)('no placeholder leak (post-build)', () => {
       if (html.includes('reco.example')) leaks.push(file);
     }
     expect(leaks).toEqual([]);
-  });
+  }, DELAI_PARCOURS_DIST);
 
   test('robots.txt ne contient pas reco.example', () => {
     const robotsPath = join(DIST, 'robots.txt');
