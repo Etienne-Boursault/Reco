@@ -1,6 +1,6 @@
 # Schéma de données — contrat site ⇄ pipeline
 
-Le site (Astro) lit trois collections de fichiers **JSON**. Le pipeline de
+Le site (Astro) lit cinq collections de fichiers **JSON**. Le pipeline de
 collecte (`tools/`) doit produire des fichiers conformes. La source de vérité
 exécutable est `src/content.config.ts` (schémas Zod) — ce document en est la
 version lisible.
@@ -11,8 +11,13 @@ Arborescence des données :
 src/content/
 ├─ sources/   un fichier .json par podcast      (ex: un-bon-moment.json)
 ├─ episodes/  un fichier .json par épisode       (ex: un-bon-moment/ep-312.json)
-└─ recos/     un fichier .json par recommandation (ex: un-bon-moment/0001.json)
+├─ recos/     un fichier .json par recommandation (ex: un-bon-moment/0001.json)
+├─ items/     un fichier .json par œuvre          (ex: un-bon-moment/00080c17.json)
+└─ mentions/  un fichier .json par citation       (ex: un-bon-moment/ubm-0006.json)
 ```
+
+À côté des collections, `src/content/redirections-oeuvres.json` relie l'identifiant
+d'une fiche fusionnée à celui de la fiche qui la remplace (ADR 0053).
 
 ## 1. Source (un podcast)
 
@@ -76,6 +81,45 @@ src/content/
   "status": "draft"                      // draft | validated | discarded (écarté)
 }
 ```
+
+## 4. Item (œuvre) — une fiche par œuvre
+
+```jsonc
+{
+  "id": "00080c17",                      // [a-z0-9-], 64 caractères au plus
+  "types": ["film"],                     // au moins un type (mêmes valeurs que reco.type)
+  "title": "Paranormal Activity",
+  "schemaVersion": 1
+}
+```
+
+Champs facultatifs : `creator`, `year`, `aliases`, `externalIds`, `customLinks`,
+`watchProviders`, `linkOverrides`, `recommendedBy`, `enrichmentSuspect`, `enrichedAt`.
+
+## 5. Mention — une œuvre citée dans un épisode
+
+```jsonc
+{
+  "id": "ubm-0006",                      // même identifiant que la reco correspondante
+  "itemId": "bc516c54",                  // relie à items[].id
+  "sourceRef": {
+    "sourceId": "un-bon-moment",
+    "episodeGuid": "108b16ed-…",         // relie à episodes[].guid
+    "timestamp": "00:58:15",
+    "transcriptSource": "youtube"        // youtube | acast
+  },
+  "recommendedBy": "Hakim Jemili",
+  "quote": "…",
+  "kind": "reco",                        // reco | citation
+  "status": "validated",                 // draft | validated | discarded
+  "schemaVersion": 1
+}
+```
+
+Champs facultatifs en plus : `guestWork`, `extractionHistory`, `extractors`.
+
+Aujourd'hui, une même citation existe en deux copies, la reco et la mention ;
+l'ADR 0055 décrit le modèle qui les réunit.
 
 ## Règles d'or pour le pipeline
 
