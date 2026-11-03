@@ -36,6 +36,16 @@ function collectHtml(dir: string, acc: string[] = []): string[] {
   return acc;
 }
 
+// En CI, sauter ce contrôle en silence le rendrait inutile : sans build, il
+// échoue, comme le garde-fou de test_work_route.
+if (!distExists && process.env.CI === 'true') {
+  describe('no placeholder leak (CI guard)', () => {
+    test('dist/index.html doit exister en CI', () => {
+      expect.fail('dist/index.html introuvable — lancer `npm run build` avant les tests post-build en CI.');
+    });
+  });
+}
+
 describe.skipIf(!distExists)('no placeholder leak (post-build)', () => {
   test('dist/index.html ne contient pas reco.example', () => {
     const html = readFileSync(join(DIST, 'index.html'), 'utf-8');
