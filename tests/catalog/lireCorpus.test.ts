@@ -31,10 +31,15 @@ describe('lireCorpus', () => {
       'mentions/s/a.json': '{"id":"m1"}',
       'mentions/s/casse.json': '{"id":',
       'mentions/s/tableau.json': '[]',
+      'mentions/__cross_stack_fixture__/fm.json': '{"id":"fm"}',
+      'recos/__cross_stack_fixture__/r.json': '{"id":"r"}',
       'redirections-oeuvres.json': '{"/s/oeuvre/x":"/s/oeuvre/i1"}',
     });
     const c = lireCorpus(racine);
     expect(c.items.map((x) => x.chemin)).toEqual(['items/s/i1.json']);
+    // Le schéma n'exclut ce dossier que pour les œuvres et les mentions : le site
+    // chargerait une reco qui s'y trouve, le vérificateur doit donc la lire.
+    expect(c.recos.map((x) => x.chemin)).toEqual(['recos/__cross_stack_fixture__/r.json']);
     expect(c.mentions.map((x) => x.chemin)).toEqual([
       'mentions/s/a.json',
       'mentions/s/b/m2.json',
@@ -43,7 +48,6 @@ describe('lireCorpus', () => {
     ]);
     expect(c.mentions[2]?.erreur).toBeTruthy();
     expect(c.mentions[3]?.erreur).toBe('le fichier ne contient pas un objet JSON');
-    expect(c.recos).toEqual([]);
     expect(c.redirections).toEqual({ '/s/oeuvre/x': '/s/oeuvre/i1' });
     expect(c.erreurRedirections).toBeUndefined();
   });

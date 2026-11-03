@@ -6,19 +6,23 @@
  *                                   [--reference tests/fixtures/corpus/divergences-connues.json]
  *                                   [--sans-reference] [--json]
  *                                   [--ecrire-reference [--commit <sha>]]
+ *                                   [--retirer-disparus]
  *
  * TypeScript exécuté tel quel par Node (≥ 22.18, ou 23.6), sans dépendance.
  *
  * Code de sortie : 0 aucun problème ; 1 invariant bloquant, fichier illisible
  * ou écart hors de la référence ; 2 erreur d'usage.
  * `--ecrire-reference` réécrit la référence datée avec les écarts du corpus :
- * à relire dans la PR qui la change.
+ * à relire dans la PR qui la change, car elle accepte aussi les écarts nouveaux.
+ * `--retirer-disparus` retire de la référence les seuls écarts disparus ; un
+ * écart nouveau reste un échec.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { analyser } from '../src/lib/catalog/invariants.ts';
 import { comparerReference, formaterReference, lireReference } from '../src/lib/catalog/reference.ts';
+import type { Reference } from '../src/lib/catalog/reference.ts';
 import type { Ecart, Rapport } from '../src/lib/catalog/invariants.ts';
 import { lireCorpus } from '../src/lib/catalog/lireCorpus.ts';
 
@@ -32,6 +36,7 @@ interface Options {
   sansReference: boolean;
   json: boolean;
   ecrireReference: boolean;
+  retirerDisparus: boolean;
   commit?: string;
 }
 
@@ -42,6 +47,7 @@ function lireOptions(args: string[]): Options {
     sansReference: false,
     json: false,
     ecrireReference: false,
+    retirerDisparus: false,
   };
   for (let i = 0; i < args.length; i += 1) {
     const a = args[i];
@@ -57,8 +63,10 @@ function lireOptions(args: string[]): Options {
     else if (a === '--sans-reference') o.sansReference = true;
     else if (a === '--json') o.json = true;
     else if (a === '--ecrire-reference') o.ecrireReference = true;
+    else if (a === '--retirer-disparus') o.retirerDisparus = true;
     else throw new Error(`option inconnue : ${a}`);
   }
+  if (o.ecrireReference && o.retirerDisparus) throw new Error('--ecrire-reference et --retirer-disparus s’excluent');
   return o;
 }
 
@@ -96,8 +104,9 @@ function afficher(r: Rapport, cliquet: { nouveaux: Ecart[]; disparus: Ecart[] } 
     for (const e of cliquet.disparus.slice(0, 20)) lignes.push(`  - ${e.id} ${e.champ} ${e.classe}`);
     if (cliquet.nouveaux.length + cliquet.disparus.length > 0) {
       lignes.push(
-        '  Un écart nouveau se corrige dans les données, ou s’ajoute à la référence s’il est voulu ;',
-        '  un écart disparu se retire de la référence : node scripts/verifier-corpus.ts --ecrire-reference',
+        '  Un écart disparu se retire de la référence : node scripts/verifier-corpus.ts --retirer-disparus',
+        '  Un écart nouveau se corrige dans les données. S’il est voulu, --ecrire-reference l’ajoute,',
+        '  avec tous les autres : relire alors le diff de la référence ligne par ligne.',
       );
     }
   }
@@ -129,17 +138,37 @@ export function principal(args: string[]): number {
   }
 
   let cliquet: { nouveaux: Ecart[]; disparus: Ecart[] } | null = null;
+  let reference: Reference | null = null;
   let erreurReference: string | null = null;
-  if (!o.sansReference) {
+  if (!o.sansReference || o.retirerDisparus) {
     if (!existsSync(o.reference)) {
       erreurReference = `référence absente : ${o.reference} (la créer avec --ecrire-reference)`;
     } else {
       try {
-        cliquet = comparerReference(rapport.ecarts, lireReference(readFileSync(o.reference, 'utf8')).ecarts);
+        reference = lireReference(readFileSync(o.reference, 'utf8'));
+        cliquet = comparerReference(rapport.ecarts, reference.ecarts);
       } catch (e) {
         erreurReference = (e as Error).message;
       }
     }
+  }
+
+  if (o.retirerDisparus) {
+    if (reference === null || cliquet === null) {
+      console.error(erreurReference);
+      return 1;
+    }
+    const disparus = new Set(cliquet.disparus);
+    const date = new Date().toISOString().slice(0, 10);
+    const commit = o.commit ?? reference.commit;
+    const gardes = reference.ecarts.filter((e) => !disparus.has(e));
+    writeFileSync(o.reference, formaterReference({ schemaVersion: 1, date, ...(commit ? { commit } : {}), ecarts: gardes }));
+    console.log(`Référence écrite : ${o.reference} (${cliquet.disparus.length} écart(s) disparu(s) retiré(s), ${gardes.length} gardés, ${date})`);
+    if (cliquet.nouveaux.length > 0) {
+      console.log(`${cliquet.nouveaux.length} écart(s) nouveau(x), laissés hors de la référence :`);
+      for (const e of cliquet.nouveaux) console.log(`  + ${e.id} ${e.champ} ${e.classe}`);
+    }
+    return rapport.bloquants.length > 0 || cliquet.nouveaux.length > 0 ? 1 : 0;
   }
 
   if (o.json) console.log(JSON.stringify({ ...rapport, cliquet, erreurReference }, null, 2));

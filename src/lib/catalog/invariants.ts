@@ -151,8 +151,11 @@ export function classer(
   return egaux(a, b) ? null : 'C3';
 }
 
+/** Deux listes de types égales à l'ordre près. Un `types` qui n'est pas une liste est comparé tel quel : l'écart est rapporté, l'analyse ne s'arrête pas. */
 const memesTypes = (x: unknown, y: unknown): boolean =>
-  JSON.stringify([...(x as unknown[])].sort()) === JSON.stringify([...(y as unknown[])].sort());
+  Array.isArray(x) && Array.isArray(y)
+    ? JSON.stringify([...x].sort()) === JSON.stringify([...y].sort())
+    : JSON.stringify(x) === JSON.stringify(y);
 
 // --- Analyse --------------------------------------------------------------------------
 

@@ -285,6 +285,12 @@ describe('analyser — écarts', () => {
     expect(ecartsDe(avec({ types: ['serie'] }))).toEqual(['ubm-1 types C3']);
   });
 
+  it('rapporte un types qui n’est pas une liste, sans arrêter l’analyse', () => {
+    expect(ecartsDe(avec({ types: 3 }))).toEqual(['ubm-1 types C3']);
+    expect(ecartsDe(avec({ types: 'film' }))).toEqual(['ubm-1 types C3']);
+    expect(ecartsDe(avec({ types: 'film' }, {}, { types: 'film' }))).toEqual([]);
+  });
+
   it('classe les champs de la mention', () => {
     expect(ecartsDe(avec({ recommendedBy: 'Navo' }))).toEqual(['ubm-1 recommendedBy C2']);
     expect(ecartsDe(avec({ quote: 'a' }, { quote: 'b' }))).toEqual(['ubm-1 quote C3']);

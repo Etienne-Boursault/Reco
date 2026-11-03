@@ -69,6 +69,39 @@ describe('scripts/verifier-corpus.ts', () => {
     expect(disparu.stdout).toContain('- ubm-1 title C3');
   });
 
+  it('--retirer-disparus retire les seuls écarts disparus, et laisse les nouveaux en échec', () => {
+    const racine = corpus('Autre titre');
+    expect(lancer(racine, '--ecrire-reference', '--commit', 'abc1234').status).toBe(0);
+    const reco = (titre: string, creator?: string) =>
+      writeFileSync(
+        join(racine, 'content/recos/s/1.json'),
+        JSON.stringify({ id: 'ubm-1', status: 'validated', episodeGuid: 'e1', title: titre, types: ['film'], ...(creator ? { creator } : {}) }),
+      );
+
+    // Le titre est corrigé (écart disparu) et un créateur apparaît (écart nouveau).
+    reco('Titre', 'Quelqu’un');
+    const r = lancer(racine, '--retirer-disparus');
+    expect(r.status).toBe(1);
+    expect(r.stdout).toContain('1 écart(s) disparu(s) retiré(s), 0 gardés');
+    expect(r.stdout).toContain('+ ubm-1 creator C2');
+    const ref = JSON.parse(readFileSync(join(racine, 'ref', 'reference.json'), 'utf8'));
+    expect(ref).toMatchObject({ commit: 'abc1234', ecarts: [] });
+    expect(lancer(racine).stdout).toContain('écarts nouveaux : 1');
+
+    // Sans écart nouveau, le retrait réussit.
+    reco('Titre');
+    expect(lancer(racine, '--retirer-disparus').status).toBe(0);
+    expect(lancer(racine).status).toBe(0);
+  });
+
+  it('--retirer-disparus exige une référence lisible, et exclut --ecrire-reference', () => {
+    const racine = corpus();
+    const absente = lancer(racine, '--retirer-disparus');
+    expect(absente.status).toBe(1);
+    expect(absente.stderr).toContain('référence absente');
+    expect(lancer(racine, '--retirer-disparus', '--ecrire-reference').status).toBe(2);
+  });
+
   it('deux ids identiques et une mention orpheline : rapport explicite, code non nul', () => {
     const racine = corpus('Titre', {
       'content/recos/s/1-bis.json': '{"id":"ubm-1","status":"discarded","episodeGuid":"e1","title":"x","types":["film"]}',
