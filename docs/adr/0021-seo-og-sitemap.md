@@ -1,6 +1,7 @@
 # ADR 0021 — SEO : OG cards build-time + sitemap + meta enrichies
 
 - Statut : **Acceptée — implémentée + révision CR senior/archi** (Phase 2, item P2.13, livraison 2026-06-10, durcissement 2026-06-10)
+- Amendée par : ADR 0058 (publication sans rebuild : sitemap et cartes de partage), le 2026-11-01
 - Date : 2026-06-10
 - Décideurs : équipe Reco
 - ADRs liés : ADR 0030 (tokens UI), ADR 0026 (tokens partagés UI+OG), ADR 0027 (JSON-LD mapping), ADR 0028 (frontière fork), ADR 0029 (polices embarquées)

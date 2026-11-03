@@ -133,6 +133,17 @@ Pas obligatoire mais aide à cadrer l'investissement.
 
 ---
 
+## Décision 4 — Community + Cloud
+
+**Décidée le 2026-10-24** ; détail et conséquences dans l'[ADR 0062](adr/0062-orientation-community-cloud.md).
+
+- **Community** : le kit open-source, pour les podcasts qui l'installent eux-mêmes. Il fonctionne seul, sans compte ni service extérieur obligatoire.
+- **Cloud** : peut-être, plus tard, une offre hébergée. Elle reste **conditionnelle** : une étude dira d'abord si un particulier peut la proposer ou s'il faut une structure. Rien n'est arbitré sur sa spécification, le multi-tenant ni le financement.
+- **Un podcast, un site** : chaque podcast a son domaine, sa base, ses publications et ses clés.
+- Aucune fondation technique ne dépend du Cloud, et les refus de [`roadmap-2026.md`](roadmap-2026.md) (comptes utilisateurs, multi-rôles) restent valables tant qu'il n'est pas arbitré.
+
+---
+
 ## Cadre de décision long-terme
 
 Une fois les décisions 1, 2, 3 prises, voici **comment elles cascadent** :
@@ -168,3 +179,4 @@ Décision 3 (volume)
 | Date | Décision | Notes |
 |---|---|---|
 | _2026-06-10_ | _à remplir_ | _à remplir_ |
+| 2026-10-24 | Décision 4 : Community + Cloud | Cloud conditionnel ; ADR 0062 |

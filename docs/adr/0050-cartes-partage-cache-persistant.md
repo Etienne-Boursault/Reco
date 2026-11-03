@@ -1,6 +1,7 @@
 # ADR 0050 — Une carte de partage par œuvre, et un cache qui survit aux builds
 
 - **Statut** : Acceptée
+- **Amendée par** : ADR 0058 (publication sans rebuild : cartes à la demande), le 2026-11-01
 - **Date** : 2026-10-07
 - **Décideurs** : équipe Reco
 - **Liens** : ADR 0021 (SEO / OG / sitemap), rapport
