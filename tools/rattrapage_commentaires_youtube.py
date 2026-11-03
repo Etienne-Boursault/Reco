@@ -6,13 +6,19 @@ POURQUOI
 L'étape `commenter` de la chaîne ne commente que les épisodes sortis depuis
 `RECO_YT_COMMENTAIRES_DEPUIS` (2026-10-22). Les 113 vidéos plus anciennes qui
 ont des recos validées attendent leur commentaire. Décision d'Étienne du
-2026-11-02 (YT-1) : un rattrapage lent, quatre vidéos par jour, pour que tout
-soit prêt avant la V2 ; pas de ligne de playlist dans le message (YT-2 B).
+2026-11-02 (YT-1) : un rattrapage lent, pour que tout soit prêt avant la V2 ;
+pas de ligne de playlist dans le message (YT-2 B). Décision du 2026-11-03
+(YT-4 C) : reprise une fois que le commentaire de S6-E08 a tenu un jour, puis
+deux ou trois vidéos par jour, à une heure tirée au hasard dans trois créneaux
+(12 h–14 h, 16 h 30–18 h 30, 21 h–23 h).
 
 COMMENT
 -------
-Chaque appel poste sous `--nombre` vidéos au plus (1 par défaut ; la cron de
-venus passe quatre fois par jour), de la plus récente à la plus ancienne. Le
+Chaque appel poste sous `--nombre` vidéos au plus (1 par défaut), de la plus
+récente à la plus ancienne. La cron de venus lance un appel au début de chaque
+créneau avec `--creneau 1|2|3 --attente-max 120` : l'appel attend un temps tiré
+au hasard dans le créneau, et un tirage propre au jour décide quels créneaux
+postent (deux ou trois) ; les autres ne font que la relecture. Le
 texte est celui de l'étape `commenter` (`commentaire_youtube.texte`) : mêmes
 lignes, mêmes minutages, absents quand la reco vient de l'audio Acast.
 
@@ -24,8 +30,9 @@ qu'elle revienne. Un échec du jeton OAuth, lui, ne met rien de côté : il arr�
 le passage et se signale.
 
 Matrix reçoit un récapitulatif par jour (`--recap`, au dernier passage), les
-échecs et la fin du rattrapage — pas un message par vidéo, qui ferait quatre
-messages par jour pendant un mois.
+échecs et la fin du rattrapage — pas un message par vidéo. Le récapitulatif
+donne le lien de chaque commentaire du jour, pour qu'Étienne l'ouvre en
+navigation privée (YT-5 A) : la relecture ci-dessous ne prouve qu'une absence.
 
 RELECTURE SANS COMPTE
 ---------------------
@@ -39,6 +46,10 @@ l'état) et le signale : continuer posterait des messages que personne ne voit,
 et chargerait la chaîne aux yeux des filtres de YouTube. Retirer `suspendu` du
 fichier le relance.
 
+L'inverse ne vaut pas : yt-dlp listait encore, le 2026-11-03, une réponse de la
+chaîne que personne ne voyait, connecté ou en navigation privée. Un commentaire
+retrouvé est donc « non repéré comme effacé », pas « visible ».
+
 INERTE sans `RECO_YT_COMMENTAIRES=1` et les secrets OAuth (comme l'étape
 `commenter`). Aperçu sans rien poster : `--apercu`.
 """
@@ -48,6 +59,7 @@ import argparse
 import json
 import logging
 import os
+import random
 import sys
 import time
 from collections.abc import Callable, Mapping
@@ -72,6 +84,22 @@ DELAI_RELECTURE_S = 40
 RELIRE_PENDANT = timedelta(days=2)
 #: Commentaires les plus récents lus sans compte pour retrouver le nôtre.
 COMMENTAIRES_LUS = 300
+#: Créneaux de la journée (YT-4 C) et nombre de ceux qui postent chaque jour.
+CRENEAUX = (1, 2, 3)
+POSTES_PAR_JOUR = (2, 3)
+
+
+def poste_ce_creneau(jour: str, creneau: int) -> bool:
+    """Ce créneau poste-t-il ce jour-là ? Le tirage dépend du seul jour : les
+    trois appels de la journée, lancés séparément, tombent d'accord."""
+    tirage = random.Random(f"rattrapage-{jour}")  # noqa: S311 — un horaire, pas un secret.
+    return creneau in tirage.sample(CRENEAUX, tirage.choice(POSTES_PAR_JOUR))
+
+
+def attente_aleatoire(minutes_max: float, tirage: random.Random | None = None) -> float:
+    """Secondes à attendre avant le passage, tirées dans [0, minutes_max]."""
+    return (tirage or random.Random()).uniform(0, minutes_max * 60)  # noqa: S311 — idem.
+
 
 
 def est_public(video: str, commentaire: str) -> bool:  # pragma: no cover — réseau réel
@@ -167,8 +195,8 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
               verifier: EstPublic = est_public,
               attendre: Callable[[float], None] = time.sleep,
               ) -> int:
-    """Poste sous `nombre` vidéos au plus. Rend le nombre de commentaires
-    postés et restés visibles."""
+    """Poste sous `nombre` vidéos au plus (0 : relecture seule). Rend le nombre
+    de commentaires postés et non repérés comme effacés."""
     if not cy.actif(env):
         log.info("étape inactive (RECO_YT_COMMENTAIRES ou secrets absents)")
         return 0
@@ -190,6 +218,10 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
             notify(f"💬 Rattrapage des commentaires YouTube terminé : "
                    f"{len(etat['postes'])} vidéo(s) commentée(s), "
                    f"{len(etat['de_cote'])} mise(s) de côté.")
+        return 0
+    if nombre <= 0:  # créneau sans envoi ce jour-là : la relecture suffit.
+        if recap:
+            _recapituler(source_id, etat, notify, maintenant()[:10], env)
         return 0
     site = env.get("SITE_URL") or cy.SITE_PAR_DEFAUT
     try:
@@ -232,15 +264,18 @@ def rattraper(source_id: str, nombre: int, notify: Notify, *, chemin: Path,
 
 def _recapituler(source_id: str, etat: dict[str, Any], notify: Notify, jour: str,
                  env: Mapping[str, str]) -> None:
-    """Un message pour les vidéos commentées ce jour-là ; rien si aucune."""
+    """Un message pour les vidéos commentées ce jour-là, avec le lien de
+    chaque commentaire à ouvrir en navigation privée ; rien si aucune."""
     du_jour = [v for v in etat["postes"].values()
                if str(v.get("le", "")).startswith(jour) and not v.get("masque")]
     if not du_jour:
         return
     reste = len(en_attente(source_id, etat, env))
-    titres = " ; ".join(v.get("titre") or v["video"] for v in du_jour)
-    notify(f"💬 Rattrapage YouTube du jour : {len(du_jour)} vidéo(s) commentée(s) "
-           f"({titres}). Reste {reste} vidéo(s).")
+    liens = "\n".join(f"• {v.get('titre') or v['video']} : "
+                      f"https://www.youtube.com/watch?v={v['video']}&lc={v['commentaire']}"
+                      for v in du_jour)
+    notify(f"💬 Rattrapage YouTube du jour : {len(du_jour)} vidéo(s) commentée(s), "
+           f"à vérifier en navigation privée :\n{liens}\nReste {reste} vidéo(s).")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -253,6 +288,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--notifier", choices=("matrix", "none"), default="none")
     parser.add_argument("--recap", action="store_true",
                         help="envoie le récapitulatif du jour (dernier passage de la journée)")
+    parser.add_argument("--creneau", type=int, choices=CRENEAUX,
+                        help="créneau de la journée : ne poste que si le tirage du jour le retient")
+    parser.add_argument("--attente-max", type=float, default=0, metavar="MINUTES",
+                        help="attend un temps tiré au hasard, jusqu'à MINUTES, avant le passage")
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     chemin = etat_path()
@@ -265,7 +304,12 @@ def main(argv: list[str] | None = None) -> int:
             print(cy.texte(recos) + "\n")
         return 0
     from traiter_nouveaux_episodes import build_notify
-    rattraper(args.source, args.nombre, build_notify(args.notifier), chemin=chemin,
+    if args.attente_max > 0:
+        time.sleep(attente_aleatoire(args.attente_max))
+    nombre = args.nombre
+    if args.creneau and not poste_ce_creneau(datetime.now().date().isoformat(), args.creneau):
+        nombre = 0
+    rattraper(args.source, nombre, build_notify(args.notifier), chemin=chemin,
               recap=args.recap)
     return 0
 

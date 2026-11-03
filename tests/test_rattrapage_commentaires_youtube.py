@@ -123,8 +123,43 @@ def test_recapitulatif_du_jour_au_dernier_passage(corpus):
     _lancer(corpus, session, le="2026-11-01T20:00:00")  # la veille : hors du récapitulatif
     _lancer(corpus, session)
     _, _, notes = _lancer(corpus, session, recap=True)
-    assert notes == [("💬 Rattrapage YouTube du jour : 2 vidéo(s) commentée(s) "
-                      "(avec C ; avec A). Reste 0 vidéo(s).")]
+    # Un lien par commentaire, à ouvrir en navigation privée (YT-5 A).
+    assert notes == [("💬 Rattrapage YouTube du jour : 2 vidéo(s) commentée(s), "
+                      "à vérifier en navigation privée :\n"
+                      "• avec C : https://www.youtube.com/watch?v=CCC&lc=UgzCommentaire\n"
+                      "• avec A : https://www.youtube.com/watch?v=AAA&lc=UgzCommentaire\n"
+                      "Reste 0 vidéo(s).")]
+
+
+def test_un_creneau_sans_envoi_relit_et_recapitule_sans_poster(corpus):
+    session = Session(page=_page())
+    _lancer(corpus, session, le="2026-11-02T12:30:00")
+    lus = []
+    # Jeton refusé : s'il était demandé, une alerte sonnerait.
+    n, etat, notes = _lancer(corpus, Session(page=_page(), statut_jeton=500), nombre=0,
+                             recap=True, le="2026-11-02T21:40:00",
+                             verifier=lambda v, c: lus.append(v) or True)
+    assert n == 0 and list(etat["postes"]) == ["b"] and lus == ["BBB"]
+    assert len(notes) == 1 and notes[0].startswith("💬 Rattrapage YouTube du jour : 1 vidéo(s)")
+
+
+# ===== Les créneaux de la journée (YT-4 C) =================================
+def test_deux_ou_trois_creneaux_postent_chaque_jour_et_le_tirage_tient():
+    jours = [f"2026-12-{j:02d}" for j in range(1, 32)]
+    comptes = {sum(rc.poste_ce_creneau(jour, c) for c in rc.CRENEAUX) for jour in jours}
+    assert comptes == {2, 3}
+    # Trois appels séparés d'un même jour tombent d'accord.
+    assert all(rc.poste_ce_creneau(jour, 2) == rc.poste_ce_creneau(jour, 2) for jour in jours)
+    # Chaque créneau poste certains jours et pas d'autres.
+    for creneau in rc.CRENEAUX:
+        assert {rc.poste_ce_creneau(jour, creneau) for jour in jours} == {True, False}
+
+
+def test_l_attente_reste_dans_le_creneau():
+    import random
+    tirage = random.Random(0)
+    attentes = [rc.attente_aleatoire(120, tirage) for _ in range(200)]
+    assert all(0 <= a <= 7200 for a in attentes) and max(attentes) - min(attentes) > 3600
 
 
 def test_pas_de_recapitulatif_sans_commentaire_du_jour(corpus):

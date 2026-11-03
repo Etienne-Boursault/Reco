@@ -5,16 +5,21 @@ CE QUE FAIT CETTE ETAPE
 -----------------------
 Une fois l'episode publie sur le site, la chaine poste sous sa video YouTube
 un commentaire de la chaine « Une Bonne Reco » : chaque reco avec son minutage
-(cliquable sur YouTube), puis un renvoi vers la chaine, qui porte le lien du
-site.
+(cliquable sur YouTube), et rien d'autre.
 
-PAS DE LIEN DANS LE TEXTE
--------------------------
+NI LIEN NI AUTO-PROMOTION DANS LE TEXTE
+---------------------------------------
 Depuis fin octobre 2026, YouTube ecarte en silence tout commentaire qui
 contient unebonnere.co, meme ecrit sans « https:// » et quel que soit le compte
 qui le poste : l'API rend un identifiant, puis le commentaire n'existe plus,
 meme pour son auteur (essais du 2026-11-02 ; un lien Wikipedia passe, un lien
-SensCritique non). Le texte renvoie donc a la chaine plutot qu'au site.
+SensCritique non). Depuis le 2026-11-02 au soir, il ecarte aussi les nouveaux
+commentaires qui finissent par un renvoi « voir la chaine @unebonnereco » et la
+signature « site de fan, non officiel », sans lien, depuis la chaine comme
+depuis un compte personnel. La meme liste sans ces deux lignes est restee
+visible (essais du 2026-11-03 sous S5-E34 et S5-E35). Le nom de la chaine,
+affiche au-dessus du commentaire, suffit a mener vers elle. Decision YT-3 A du
+2026-11-03.
 
 QUAND
 -----
@@ -61,8 +66,6 @@ LONGUEUR_MAX = 10_000
 SECRETS = ("RECO_YT_CLIENT_ID", "RECO_YT_CLIENT_SECRET", "RECO_YT_REFRESH_TOKEN")
 #: Episodes sortis avant l'arrivee de l'etape : jamais commentes.
 DEPUIS_PAR_DEFAUT = "2026-10-22"
-#: Derniere ligne utile du texte : jamais d'adresse (voir PAS DE LIEN DANS LE TEXTE).
-RENVOI = "👉 Toutes les recos avec leurs liens : voir la chaîne @unebonnereco"
 #: Les memes que sur le carrousel (tools/carrousel_episode.py).
 EMOJIS = {"film": "🎬", "serie": "📺", "spectacle": "🎭", "livre": "📚", "bd": "💭", "musique": "🎵",
           "album": "🎵", "artiste": "🎤", "chaine": "🎤", "podcast": "🎙️", "jeu": "🎮", "lieu": "📍",
@@ -131,7 +134,8 @@ def adresse_episode(source_id: str, guid: str, site: str) -> str:
 
 def texte(recos: list[dict[str, Any]]) -> str:
     """Les recommandations d'abord ; les simples evocations a part, comme sur
-    le site, pour ne pas les faire passer pour des conseils."""
+    le site, pour ne pas les faire passer pour des conseils. Ni renvoi ni
+    signature a la fin (voir NI LIEN NI AUTO-PROMOTION DANS LE TEXTE)."""
     conseils = [_ligne(r) for r in recos if r.get("kind") != "citation"]
     evocations = [r for r in recos if r.get("kind") == "citation"]
     parties = []
@@ -139,12 +143,7 @@ def texte(recos: list[dict[str, Any]]) -> str:
         parties.append("🎙️ Les recos de l'épisode\n\n" + "\n".join(conseils))
     if evocations:
         parties.append("💬 Aussi évoqués : " + _evocations(evocations))
-    message = (
-        "\n\n".join(parties) + "\n\n"
-        f"{RENVOI}\n"
-        "Une Bonne Reco ⭐ site de fan, non officiel"
-    )
-    return message[:LONGUEUR_MAX]
+    return "\n\n".join(parties)[:LONGUEUR_MAX]
 
 
 def page_en_ligne(adresse: str, recos: list[dict[str, Any]], session: Any) -> bool:
