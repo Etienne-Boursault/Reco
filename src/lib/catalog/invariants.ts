@@ -275,7 +275,8 @@ export function analyser(corpus: Corpus): Rapport {
   }
   signaler(avertissements, 'ecart-statut', 'reco et mention de statuts différents (une seule est validée)', ecartStatut);
 
-  // Brouillons publics : le site affiche toute mention qui n'est pas écartée.
+  // Brouillons publics (ADR 0061 ; « brouillons : jamais publics », `02` § 6) :
+  // le site affiche toute mention qui n'est pas écartée.
   signaler(
     bloquants,
     'brouillon-public',
@@ -283,7 +284,7 @@ export function analyser(corpus: Corpus): Rapport {
     [...mentions.parId].filter(([, m]) => statutDe(m) === 'draft').map(([id]) => id),
   );
 
-  // `recommendedBy` appartient à la mention, jamais à l'œuvre.
+  // `recommendedBy` appartient à la mention, jamais à l'œuvre (ADR 0061 ; `02` § 2).
   signaler(
     bloquants,
     'recommendedBy-sur-oeuvre',
@@ -313,6 +314,7 @@ export function analyser(corpus: Corpus): Rapport {
     if (items.parId.has(de)) (visibles.has(de) ? sourceAvecPage : sourceSansPage).push(de);
     if (!items.parId.has(vers)) cibleAbsente.push(vers);
     else if (!visibles.has(vers)) cibleSansPage.push(vers);
+    // ADR 0053 : une chaîne A → B → C est raccourcie, une cible n'est donc jamais redirigée.
     if (sourcesRedir.has(vers)) chaine.push(de);
   }
   signaler(bloquants, 'redirection-source-vivante-avec-page', 'redirection depuis une œuvre vivante qui a une page : la page serait masquée', sourceAvecPage);
@@ -345,7 +347,11 @@ export function analyser(corpus: Corpus): Rapport {
     ajouter('recommendedBy', classer(r.recommendedBy, m.recommendedBy));
     ajouter('quote', classer(r.quote, m.quote));
     ajouter('timestamp', classer(r.timestamp, sr.timestamp));
+    // R-V5 (`02` § 3.1) : `kind` absent vaut `reco`, ce n'est pas une valeur manquante.
     ajouter('kind', (texte(r.kind) ?? 'reco') === (texte(m.kind) ?? 'reco') ? null : 'C3');
+    // R-V3 (`02` § 3.1) : un drapeau absent vaut faux. Vrai sur une copie et absent
+    // sur l'autre, ce sont donc deux valeurs différentes, C3, et non une valeur
+    // présente d'un seul côté (C2). Cas d'essai F1 (`02` § 10) : les 197 écarts.
     ajouter('guestWork', (r.guestWork === true) === (m.guestWork === true) ? null : 'C3');
     if (ecarts.length === avant) sansEcart += 1;
     if (it === undefined) continue;
@@ -359,7 +365,10 @@ export function analyser(corpus: Corpus): Rapport {
       const a = er[cle];
       const b = ei[cle];
       let classe: Classe | null;
+      // R-V7 (`02` § 3.1) : `tmdb` en texte sur la reco, en entier sur l'œuvre ;
+      // la normalisation l'écrit en entier, ce n'est pas un écart.
       if (cle === 'tmdb') classe = classer(a, b, (x, y) => String(x) === String(y));
+      // `02` § 4.6 : les 4 `watchPage` différentes sont toutes équivalentes (C1).
       else if (cle === 'watchPage') {
         classe = classer(a, b);
         if (classe === 'C3' && canoniserUrl(String(a)) === canoniserUrl(String(b))) classe = 'C1';

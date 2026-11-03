@@ -44,7 +44,7 @@ describe('classer', () => {
   });
 });
 
-describe('canoniserUrl — liste fermée de règles', () => {
+describe('canoniserUrl — liste fermée de 02 § 4.5, une règle par plateforme', () => {
   it('Steam : même numéro de jeu, avec ou sans nom', () => {
     expect(canoniserUrl('https://store.steampowered.com/app/753640/Outer_Wilds/')).toBe(
       canoniserUrl('https://store.steampowered.com/app/753640/'),
@@ -299,10 +299,18 @@ describe('analyser — écarts', () => {
     expect(ecartsDe(avec({ kind: 'citation' }))).toEqual(['ubm-1 kind C3']);
   });
 
-  it('guestWork : absent vaut faux', () => {
+  it('F1, R-V3 : guestWork absent vaut faux, donc vrai d’un côté et absent de l’autre est C3', () => {
+    // M1 : vrai sur la reco, absent sur la mention ; M2 : l'inverse ; M3 : vrai des deux côtés.
     expect(ecartsDe(avec({ guestWork: true }))).toEqual(['ubm-1 guestWork C3']);
+    expect(ecartsDe(avec({}, { guestWork: true }))).toEqual(['ubm-1 guestWork C3']);
+    expect(ecartsDe(avec({ guestWork: true }, { guestWork: true }))).toEqual([]);
     expect(ecartsDe(avec({ guestWork: false }))).toEqual([]);
     expect(avec({ guestWork: true }).recosValideesSansEcart).toBe(0);
+  });
+
+  it('R-V5 : kind absent vaut reco', () => {
+    expect(ecartsDe(avec({}, { kind: 'reco' }))).toEqual([]);
+    expect(ecartsDe(avec({ kind: 'reco' }, { kind: 'citation' }))).toEqual(['ubm-1 kind C3']);
   });
 
   it('alias de la reco absents de l’œuvre : C2', () => {

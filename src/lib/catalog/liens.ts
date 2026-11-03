@@ -40,7 +40,8 @@ function sansParametresRetires(url: string): string {
 }
 
 /**
- * Forme canonique d'une URL selon la liste fermée de l'ADR 0055.
+ * Forme canonique d'une URL selon la liste fermée de l'ADR 0055 (le tableau de `02` § 4.5,
+ * une règle par plateforme, chacune testée sous son nom).
  * Aucune règle ne s'applique par ressemblance : une URL hors de ces plateformes ne
  * perd que ses paramètres `hl`, `si` et `utm_*`.
  */
@@ -108,7 +109,8 @@ export interface ClassementLiens {
  * 24/10). `classe` applique les règles d'équivalence : une chaîne YouTube
  * `/channel/UC…` vaut la `@poignée` de l'œuvre seulement si cet `UC…` est
  * l'identifiant de chaîne enregistré pour l'œuvre ou l'une de ses recos, et
- * si l'œuvre n'a qu'une poignée.
+ * si l'œuvre n'a qu'une poignée ; sinon, ce sont deux adresses contradictoires
+ * (`02` § 4.5 et R-L4).
  */
 export function classerLiens(recos: Json[], idsChaine: Set<string>): ClassementLiens {
   const liens = recos.map(liensDe);
