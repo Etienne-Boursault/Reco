@@ -1,7 +1,6 @@
 # ADR 0003 — Identité typée (`BookIdentity` / `FilmIdentity`) — DIFFÉRÉ
 
 - Statut : Différée (réévaluer si >5 sources externes par type)
-- Amendée par : ADR 0056 (identifiants d'œuvre permanents), le 2026-11-01
 - Date : 2026-06-10
 - Décideurs : équipe Reco
 

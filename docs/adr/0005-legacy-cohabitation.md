@@ -1,7 +1,6 @@
 # ADR 0005 — Cohabitation legacy `Reco`/`Episode` et nouvelle couche `Item`/`Mention`
 
 - Statut : Acceptée
-- Remplacée par : ADR 0055 (modèle canonique), quand celle-ci sera acceptée ; elle l'est sur le principe depuis le 2026-10-25
 - Date : 2026-06-10
 - Décideurs : équipe Reco
 

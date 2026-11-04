@@ -1,7 +1,6 @@
 # ADR 0053 — Redirections permanentes des fiches d'œuvre fusionnées
 
 - **Statut** : Acceptée
-- **Amendée par** : ADR 0056 (identifiants d'œuvre permanents) et ADR 0058 (publication sans rebuild), le 2026-11-01
 - **Date** : 2026-10-21
 - **Décideurs** : équipe Reco (éditeur)
 - **Liens** : ADR 0032 (page œuvre canonique), PR #118
