@@ -1,7 +1,6 @@
 # ADR 0035 — Recherche full-text frontend (site public + palette Cmd+K)
 
 - **Statut** : Accepté
-- **Amendée par** : ADR 0058 (publication sans rebuild : index de recherche), le 2026-11-01
 - **Date** : 2026-06-11
 - **Auteurs** : Dev P2.9
 - **Issue roadmap** : item #9 — Recherche full-text

@@ -118,8 +118,7 @@ Champs facultatifs : `creator`, `year`, `aliases`, `externalIds`, `customLinks`,
 
 Champs facultatifs en plus : `guestWork`, `extractionHistory`, `extractors`.
 
-Aujourd'hui, une même citation existe en deux copies, la reco et la mention ;
-l'ADR 0055 décrit le modèle qui les réunit.
+Une même citation existe en deux copies, la reco et la mention.
 
 ## Règles d'or pour le pipeline
 
