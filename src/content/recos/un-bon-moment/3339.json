@@ -2,8 +2,11 @@
   "agentReview": {
     "reviewedByHuman": true
   },
-  "creator": "Pierre Hilleret",
+  "creator": "Pierre Hillairet",
   "episodeGuid": "yt-udvXcW_beHU",
+  "externalIds": {
+    "instagram": "pierrehillairet_"
+  },
   "extractionHistory": [
     {
       "at": "2026-11-06T11:39:16+00:00",
@@ -20,7 +23,38 @@
   ],
   "id": "ubm-3339",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre du Marais",
+      "url": "https://theatredumarais.fr/spectacle/pierre-hillairet/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle/pierre-hillairet-dans-jour-de-pluie-408073"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/pierrehillairet_/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc — toutes ses dates",
+      "url": "https://www.billetreduc.com/spectacle-pierre-hillairet.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Humorix",
+      "url": "https://humorix.fr/humoriste/pierre-hillairet/"
+    }
+  ],
   "quote": "Pierre Hilleret mais allez le voir !",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

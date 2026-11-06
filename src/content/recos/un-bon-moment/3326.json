@@ -4,6 +4,9 @@
   },
   "creator": "Gavin Free et Dan Gruchy",
   "episodeGuid": "yt-udvXcW_beHU",
+  "externalIds": {
+    "youtubeChannelId": "UCUK0HBIBWgM2c4vsPhkYY4w"
+  },
   "extractionHistory": [
     {
       "at": "2026-11-06T11:39:16+00:00",
@@ -20,7 +23,14 @@
   ],
   "id": "ubm-3326",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — chaîne",
+      "url": "https://www.youtube.com/@theslowmoguys"
+    }
+  ],
   "quote": "Slow Mo Guys sur Youtube qui font tout en slow mo genre avec des caméras qui filment à 2-3 mille images secondes",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
@@ -29,6 +39,6 @@
   "title": "The Slow Mo Guys",
   "transcriptSource": "youtube",
   "types": [
-    "video"
+    "chaine"
   ]
 }
