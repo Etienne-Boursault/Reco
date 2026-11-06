@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "yt-udvXcW_beHU",
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:08:26",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3323",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "LeBlogTVNews — Canal+, 18 novembre à 21 h 10",
+      "url": "https://www.leblogtvnews.com/2026/11/nouvelle-edition-de-soixante-sur-canal-60-artistes-se-succedent-avec-60-secondes-chacun-pour-faire-rire-surprendre-ou-emouvoir.html"
+    }
+  ],
+  "quote": "Là, par exemple, moi j'ai fait 60 la semaine dernière, très belle initiative, bravo à tous les deux...",
+  "recommendedBy": "Maxime Gasteuil",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:08:26",
+  "title": "Soixante 80's",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

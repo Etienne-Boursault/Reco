@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:43:13"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3337",
+  "itemId": "cbdda44c",
+  "kind": "reco",
+  "quote": "Il est bien alors The Gentlemen de Guy Ritchie !",
+  "recommendedBy": "Maxime Gasteuil",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-udvXcW_beHU",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:43:13",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:39:55"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3331",
+  "itemId": "62328a31",
+  "kind": "reco",
+  "quote": "Moi je vais te donner une pièce pour enfants [...] mis en scène par Monsieur Solivérès [...] C'est Au Pays du Père Noël, qui est extraordinaire !",
+  "recommendedBy": "Maxime Gasteuil & Charlotte Gabris",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-udvXcW_beHU",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:39:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

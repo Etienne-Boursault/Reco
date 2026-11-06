@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:35:52"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3327",
+  "itemId": "3e402e86",
+  "kind": "citation",
+  "quote": "Complètement fan de Friends",
+  "recommendedBy": "Kyan Khojandi & Charlotte Gabris",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-udvXcW_beHU",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:35:52",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

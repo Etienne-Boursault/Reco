@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Coolio",
+  "enrichedAt": {
+    "links": "2026-11-06T11:45:06Z"
+  },
+  "episodeGuid": "yt-udvXcW_beHU",
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3329",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/1584416372"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YT Music",
+      "url": "https://music.youtube.com/watch?v=-5qqrMu_AZc"
+    }
+  ],
+  "quote": "L'esprit rebelle avec Coolio ! [...] C'est extraordinaire ce morceau !",
+  "recommendedBy": "Maxime Gasteuil",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:21:58",
+  "title": "Gangsta's Paradise",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ],
+  "year": 1995
+}

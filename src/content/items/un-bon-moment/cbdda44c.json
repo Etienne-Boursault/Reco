@@ -1,0 +1,27 @@
+{
+  "creator": "Guy Ritchie",
+  "externalIds": {
+    "tmdb": 236235,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=FR"
+  },
+  "id": "cbdda44c",
+  "schemaVersion": 1,
+  "title": "The Gentlemen",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=The%20Gentlemen"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=The%20Gentlemen"
+    }
+  ],
+  "year": 2024
+}

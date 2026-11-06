@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "yt-udvXcW_beHU",
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:39",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3334",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/browse/entity-b329134e-b113-49d6-827e-dd4e0616457f"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60715"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/bref"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/kyankhojandi/"
+    }
+  ],
+  "quote": "Et puis il y a un truc aussi, c'est Bref 2 si vous voulez le regarder en replay !",
+  "recommendedBy": "Maxime Gasteuil",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:40:39",
+  "title": "Bref. 2",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 2025
+}

@@ -1,0 +1,34 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Pierre Hilleret",
+  "episodeGuid": "yt-udvXcW_beHU",
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:44",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3339",
+  "kind": "reco",
+  "links": [],
+  "quote": "Pierre Hilleret mais allez le voir !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:43:44",
+  "title": "Jour de pluie",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

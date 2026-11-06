@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:32:50"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3326",
+  "itemId": "24a80ca7",
+  "kind": "reco",
+  "quote": "Slow Mo Guys sur Youtube qui font tout en slow mo genre avec des caméras qui filment à 2-3 mille images secondes",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-udvXcW_beHU",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:32:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

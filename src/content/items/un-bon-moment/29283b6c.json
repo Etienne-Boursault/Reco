@@ -1,0 +1,26 @@
+{
+  "creator": "Jérôme Niel",
+  "externalIds": {
+    "tmdb": 288385,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/288385-paolo/watch?locale=FR"
+  },
+  "id": "29283b6c",
+  "schemaVersion": 1,
+  "title": "Paolo",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Paolo"
+    },
+    {
+      "ethics": "avoid",
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Paolo"
+    }
+  ]
+}
