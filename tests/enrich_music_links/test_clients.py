@@ -209,25 +209,32 @@ def test_itunes_candidate_artist():
     assert cand.url == "https://music.apple.com/fr/artist/12"
 
 
-def test_itunes_candidate_artist_itunes_host_becomes_apple_music():
-    # Ce que l'API rend vraiment (Virginie Efira, S6-E08) : un hôte iTunes et
-    # `?uo=4`. Cette adresse redirige vers l'accueil d'Apple TV et le site
-    # n'a pas de logo pour cet hôte ; la page Apple Music est la même sans eux.
+def test_itunes_candidate_actor_is_not_a_musician():
+    # Réponse réelle pour Virginie Efira (S6-E08) : une fiche d'ACTRICE, dont
+    # l'adresse redirige vers l'accueil d'Apple TV. Un lien Apple Music la
+    # ferait passer pour une musicienne : la fiche est écartée.
+    payload = {"artistType": "Movie Artist", "artistId": 388685559,
+               "artistName": "Virginie Efira", "primaryGenreName": "Films",
+               "artistLinkUrl":
+                   "https://itunes.apple.com/fr/artist/virginie-efira/388685559?uo=4"}
+    assert m.itunes_candidate(payload, "artist") is None
+
+
+def test_itunes_candidate_actor_is_rejected_whatever_the_host():
+    # Jean Dujardin a une fiche d'acteur déjà sous music.apple.com : l'hôte ne
+    # départage pas, `artistType` si.
+    payload = {"artistType": "Movie Artist", "artistId": 369233939,
+               "artistName": "Jean Dujardin",
+               "artistLinkUrl": "https://music.apple.com/fr/artist/x/369233939"}
+    assert m.itunes_candidate(payload, "artist") is None
+
+
+def test_itunes_candidate_musician_is_kept():
     cand = m.itunes_candidate(
-        {"artistId": 388685559, "artistName": "Virginie Efira",
-         "artistLinkUrl":
-             "https://itunes.apple.com/fr/artist/virginie-efira/388685559?uo=4"},
+        {"artistType": "Artist", "artistId": 657515, "artistName": "Radiohead",
+         "artistLinkUrl": "https://music.apple.com/fr/artist/radiohead/657515"},
         "artist")
-    assert cand.url == "https://music.apple.com/fr/artist/virginie-efira/388685559"
-
-
-def test_apple_music_url_keeps_apple_music_addresses():
-    # Un morceau garde son `?i=` (et le reste) : seul l'ancien hôte est réécrit.
-    url = "https://music.apple.com/fr/album/caravane/699652588?i=699653000&uo=4"
-    assert m.apple_music_url(url) == url
-    assert m.apple_music_url(
-        "https://itunes.apple.com/fr/album/x/5?i=6&uo=4") == (
-        "https://music.apple.com/fr/album/x/5?i=6")
+    assert cand.url == "https://music.apple.com/fr/artist/radiohead/657515"
 
 
 def test_itunes_candidate_without_url_is_none():
