@@ -17,7 +17,7 @@
   "externalIds": {
     "tmdb": "530385",
     "tmdbType": "movie",
-    "watchPage": "https://www.themoviedb.org/movie/530385-midsommar/watch?locale=FR"
+    "watchPage": "https://www.themoviedb.org/movie/530385/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -58,13 +58,13 @@
     {
       "ethics": "indie",
       "kind": "streaming",
-      "label": "Sooner (VOD)",
+      "label": "Sooner",
       "url": "https://www.sooner.fr/films/midsommar"
     },
     {
       "ethics": "indie",
       "kind": "official",
-      "label": "Page officielle A24",
+      "label": "A24",
       "url": "https://a24films.com/films/midsommar"
     },
     {
@@ -82,8 +82,8 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "Où regarder",
-      "url": "https://www.themoviedb.org/movie/530385-midsommar/watch?locale=FR"
+      "label": "TMDB — où regarder",
+      "url": "https://www.themoviedb.org/movie/530385/watch?locale=FR"
     }
   ],
   "quote": "Midsommar est magnifique.",
