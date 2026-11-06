@@ -1,0 +1,52 @@
+{
+  "creator": "Ronan Bennett",
+  "externalIds": {
+    "tmdb": 247718,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=FR"
+  },
+  "id": "70d055dd",
+  "schemaVersion": 1,
+  "title": "MobLand",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Paramount Plus",
+      "url": "https://www.paramountplus.com/fr/search/?q=MobLand"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Paramount+ Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=MobLand"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Paramount Plus Apple TV channel",
+      "url": "https://tv.apple.com/fr/search?term=MobLand"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Paramount Plus Premium",
+      "url": "https://www.paramountplus.com/fr/search/?q=MobLand"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=MobLand"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=MobLand"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=MobLand"
+    }
+  ],
+  "year": 2025
+}

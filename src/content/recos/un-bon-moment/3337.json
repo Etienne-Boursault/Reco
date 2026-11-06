@@ -1,0 +1,86 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Guy Ritchie",
+  "enrichedAt": {
+    "links": "2026-11-06T11:44:55Z"
+  },
+  "episodeGuid": "yt-udvXcW_beHU",
+  "externalIds": {
+    "tmdb": "236235",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:13",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3337",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81437051"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt13210838/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/236235"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=27403.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=FR"
+    }
+  ],
+  "quote": "The Gentlemen sur Netflix aussi ! De Guy Ritchie ! [...] Le film était fou ! La série il est encore plus !",
+  "recommendedBy": "Maxime Gasteuil",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:43:13",
+  "title": "The Gentlemen",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=The%20Gentlemen"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=The%20Gentlemen"
+    }
+  ],
+  "year": 2024
+}

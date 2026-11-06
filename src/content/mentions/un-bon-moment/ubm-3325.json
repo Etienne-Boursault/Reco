@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:33"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3325",
+  "itemId": "52a1b6b7",
+  "kind": "citation",
+  "quote": "Virginie Efira, exceptionnel, le parcours de Virginie Efira.",
+  "recommendedBy": "Charlotte Gabris",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-udvXcW_beHU",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:26:33",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

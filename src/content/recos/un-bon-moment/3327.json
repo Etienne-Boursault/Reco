@@ -1,0 +1,122 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "David Crane et Marta Kauffman",
+  "enrichedAt": {
+    "links": "2026-11-06T11:44:51Z"
+  },
+  "episodeGuid": "yt-udvXcW_beHU",
+  "externalIds": {
+    "tmdb": "1668",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/1668-friends/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3327",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70153404"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/friends/umc.cmc.4dxfvjbc4rdww1dcp3kbgoaqm"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0108778/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/1668"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=49.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "TMDB — où regarder",
+      "url": "https://www.themoviedb.org/tv/1668/watch?locale=FR"
+    }
+  ],
+  "quote": "Complètement fan de Friends",
+  "recommendedBy": "Kyan Khojandi & Charlotte Gabris",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:35:52",
+  "title": "Friends",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Friends"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Friends"
+    },
+    {
+      "ethics": "neutral",
+      "label": "SFR Play",
+      "url": "https://www.sfrplay.fr/recherche?q=Friends"
+    },
+    {
+      "ethics": "neutral",
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=Friends"
+    },
+    {
+      "ethics": "avoid",
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Friends"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Friends"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends"
+    }
+  ],
+  "year": 1994
+}

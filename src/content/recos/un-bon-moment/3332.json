@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Olivier Solivérès",
+  "episodeGuid": "yt-udvXcW_beHU",
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:28",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3332",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "L'Officiel des spectacles — Théâtre Marigny",
+      "url": "https://www.offi.fr/theatre/theatre-marigny-2735/amadeus-104148.html"
+    }
+  ],
+  "quote": "Bah je vais doubler Olivier Solivérès, parce qu'il faut voir Amadeus aussi !",
+  "recommendedBy": "Charlotte Gabris",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:40:28",
+  "title": "Amadeus",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

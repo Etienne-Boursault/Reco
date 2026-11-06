@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:08:26"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3323",
+  "itemId": "9402781a",
+  "kind": "citation",
+  "quote": "Là, par exemple, moi j'ai fait 60 la semaine dernière, très belle initiative, bravo à tous les deux...",
+  "recommendedBy": "Maxime Gasteuil",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-udvXcW_beHU",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:08:26",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

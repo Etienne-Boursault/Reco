@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Olivier Solivérès",
+  "episodeGuid": "yt-udvXcW_beHU",
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:55",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3331",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "L'Officiel des spectacles — Théâtre Marigny",
+      "url": "https://www.offi.fr/enfants/theatre-marigny-2735/au-pays-du-pere-noel-75671.html"
+    }
+  ],
+  "quote": "Moi je vais te donner une pièce pour enfants [...] mis en scène par Monsieur Solivérès [...] C'est Au Pays du Père Noël, qui est extraordinaire !",
+  "recommendedBy": "Maxime Gasteuil & Charlotte Gabris",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:39:55",
+  "title": "Au Pays du Père Noël",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

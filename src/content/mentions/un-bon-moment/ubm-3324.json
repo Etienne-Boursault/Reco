@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:18:14"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3324",
+  "itemId": "34bfc7c8",
+  "kind": "reco",
+  "quote": "Vous viendrez nous voir et j'en serais enchanté que vous veniez dans la salle",
+  "recommendedBy": "Maxime Gasteuil",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-udvXcW_beHU",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:20:49",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

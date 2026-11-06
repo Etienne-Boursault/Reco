@@ -1,0 +1,35 @@
+{
+  "agentReview": {
+    "reason": "Doublon de ubm-3331 (Au Pays du Père Noël), fusionnée à la relecture.",
+    "reviewedByHuman": true,
+    "verdict": "discard"
+  },
+  "episodeGuid": "yt-udvXcW_beHU",
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:55",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3330",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi je vais te donner une pièce pour enfants, qui se joue au théâtre des Maturins, qui est mis en scène par Monsieur Solivérès",
+  "recommendedBy": "Maxime Gasteuil",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:39:55",
+  "title": "Pièce pour enfants au Théâtre des Mathurins (titre non précisé dans l'extrait)",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

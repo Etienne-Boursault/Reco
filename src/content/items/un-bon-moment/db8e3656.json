@@ -1,0 +1,41 @@
+{
+  "creator": "Chris Mundy, Damon Lindelof et Tom King",
+  "externalIds": {
+    "tmdb": 95350,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=FR"
+  },
+  "id": "db8e3656",
+  "schemaVersion": 1,
+  "title": "Lanterns",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Lanterns"
+    },
+    {
+      "ethics": "avoid",
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Lanterns"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Lanterns"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Lanterns"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Lanterns"
+    }
+  ]
+}

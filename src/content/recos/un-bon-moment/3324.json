@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-udvXcW_beHU",
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:14",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3324",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.lalettre-spectacle.fr/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Casino de Paris — billetterie",
+      "url": "https://www.casinodeparis.fr/fr/La-Lettre-8-D%C3%A9cembre-Au-13-D%C3%A9cembre-2026-Billetterie-Paris"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/maxime.gasteuil/"
+    }
+  ],
+  "quote": "Vous viendrez nous voir et j'en serais enchanté que vous veniez dans la salle",
+  "recommendedBy": "Maxime Gasteuil",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:20:49",
+  "title": "La Lettre",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

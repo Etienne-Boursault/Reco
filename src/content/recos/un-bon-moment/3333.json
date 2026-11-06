@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Rudy Milstein",
+  "episodeGuid": "yt-udvXcW_beHU",
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:33",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3333",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "L'Officiel des spectacles — La Pépinière Théâtre",
+      "url": "https://www.offi.fr/theatre/theatre-la-pepiniere-2986/jespere-que-nos-enfants-iront-mieux-que-nous-106717.html"
+    }
+  ],
+  "quote": "Et après il y a une autre pièce aussi que j'adore, de Rudy Milstein",
+  "recommendedBy": "Charlotte Gabris",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:40:33",
+  "title": "J'espère que nos enfants iront mieux que nous",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

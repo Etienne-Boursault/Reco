@@ -1,0 +1,105 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Ronan Bennett",
+  "enrichedAt": {
+    "links": "2026-11-06T11:44:54Z"
+  },
+  "episodeGuid": "yt-udvXcW_beHU",
+  "externalIds": {
+    "tmdb": "247718",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-06T11:39:16+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:13",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3336",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt31510819/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/247718"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=36161.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=FR"
+    }
+  ],
+  "quote": "Mobland sur Paramount et Gentleman sur Netflix aussi !",
+  "recommendedBy": "Maxime Gasteuil",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:43:13",
+  "title": "MobLand",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Paramount Plus",
+      "url": "https://www.paramountplus.com/fr/search/?q=MobLand"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Paramount+ Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=MobLand"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Paramount Plus Apple TV channel",
+      "url": "https://tv.apple.com/fr/search?term=MobLand"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Paramount Plus Premium",
+      "url": "https://www.paramountplus.com/fr/search/?q=MobLand"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=MobLand"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=MobLand"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=MobLand"
+    }
+  ],
+  "year": 2025
+}
