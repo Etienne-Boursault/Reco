@@ -254,3 +254,16 @@ def test_allocine_juste_avant_ou_regarder_sinon_a_la_fin():
     allocine = Lien("allocine", "info", "neutral", "AlloCiné", "https://www.allocine.fr/x")
     assert sm.placer([TMDB, OU], allocine) == 1
     assert sm.placer([TMDB], allocine) == 1
+
+
+def test_allocine_reconnait_ou_regarder_a_son_adresse_tmdb():
+    """Le lot 1 de la V2 renomme « Où regarder » en « TMDB — où regarder » et
+    retire le titre de l'adresse : chercher le libellé exact envoyait AlloCiné
+    en fin de liste, au-delà des six liens qu'affiche la carte."""
+    allocine = Lien("allocine", "info", "neutral", "AlloCiné", "https://www.allocine.fr/x")
+    renomme = _l("TMDB — où regarder", "https://www.themoviedb.org/tv/67070/watch?locale=FR")
+    film = _l("TMDB — où regarder", "https://www.themoviedb.org/movie/597/watch")
+    autre = _l("JustWatch", "https://www.justwatch.com/fr/serie/fleabag")
+    assert sm.placer([TMDB, renomme, autre], allocine) == 1
+    assert sm.placer([film], allocine) == 0
+    assert sm.placer([TMDB, autre], allocine) == 2
