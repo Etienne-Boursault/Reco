@@ -21,7 +21,7 @@
   "externalIds": {
     "tmdb": "87393",
     "tmdbType": "tv",
-    "watchPage": "https://www.themoviedb.org/tv/87393-run/watch?locale=FR"
+    "watchPage": "https://www.themoviedb.org/tv/87393/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -62,7 +62,7 @@
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "AlloCine (fiche serie)",
+      "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=23539.html"
     },
     {
@@ -80,8 +80,8 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "Où regarder",
-      "url": "https://www.themoviedb.org/tv/87393-run/watch?locale=FR"
+      "label": "TMDB — où regarder",
+      "url": "https://www.themoviedb.org/tv/87393/watch?locale=FR"
     }
   ],
   "quote": "J'ai vu Run, qui est sur...",

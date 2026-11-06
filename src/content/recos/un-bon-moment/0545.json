@@ -10,7 +10,7 @@
   "externalIds": {
     "tmdb": "4148",
     "tmdbType": "movie",
-    "watchPage": "https://www.themoviedb.org/movie/4148-revolutionary-road/watch?locale=FR"
+    "watchPage": "https://www.themoviedb.org/movie/4148/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -47,7 +47,7 @@
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "AlloCiné — où voir le film",
+      "label": "AlloCiné — où regarder",
       "url": "https://www.allocine.fr/film/fichefilm-127486/streaming/"
     },
     {
@@ -65,8 +65,8 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "Où regarder",
-      "url": "https://www.themoviedb.org/movie/4148-revolutionary-road/watch?locale=FR"
+      "label": "TMDB — où regarder",
+      "url": "https://www.themoviedb.org/movie/4148/watch?locale=FR"
     }
   ],
   "quote": "Ouais, c'est un super film.",

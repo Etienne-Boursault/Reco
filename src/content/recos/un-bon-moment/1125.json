@@ -21,7 +21,7 @@
   "externalIds": {
     "tmdb": "97546",
     "tmdbType": "tv",
-    "watchPage": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=FR"
+    "watchPage": "https://www.themoviedb.org/tv/97546/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -62,7 +62,7 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "Apple TV+",
+      "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy"
     },
     {
@@ -80,8 +80,8 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "Où regarder",
-      "url": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=FR"
+      "label": "TMDB — où regarder",
+      "url": "https://www.themoviedb.org/tv/97546/watch?locale=FR"
     }
   ],
   "quote": "Ted Lasso exceptionnel.",
