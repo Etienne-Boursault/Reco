@@ -209,6 +209,27 @@ def test_itunes_candidate_artist():
     assert cand.url == "https://music.apple.com/fr/artist/12"
 
 
+def test_itunes_candidate_artist_itunes_host_becomes_apple_music():
+    # Ce que l'API rend vraiment (Virginie Efira, S6-E08) : un hôte iTunes et
+    # `?uo=4`. Cette adresse redirige vers l'accueil d'Apple TV et le site
+    # n'a pas de logo pour cet hôte ; la page Apple Music est la même sans eux.
+    cand = m.itunes_candidate(
+        {"artistId": 388685559, "artistName": "Virginie Efira",
+         "artistLinkUrl":
+             "https://itunes.apple.com/fr/artist/virginie-efira/388685559?uo=4"},
+        "artist")
+    assert cand.url == "https://music.apple.com/fr/artist/virginie-efira/388685559"
+
+
+def test_apple_music_url_keeps_apple_music_addresses():
+    # Un morceau garde son `?i=` (et le reste) : seul l'ancien hôte est réécrit.
+    url = "https://music.apple.com/fr/album/caravane/699652588?i=699653000&uo=4"
+    assert m.apple_music_url(url) == url
+    assert m.apple_music_url(
+        "https://itunes.apple.com/fr/album/x/5?i=6&uo=4") == (
+        "https://music.apple.com/fr/album/x/5?i=6")
+
+
 def test_itunes_candidate_without_url_is_none():
     assert m.itunes_candidate({"collectionName": "X"}, "album") is None
 
