@@ -50,6 +50,7 @@ import re
 from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Any
+from urllib.parse import urlsplit
 
 from common import normalize_text, slugify
 from wikidata_matching import (
@@ -108,6 +109,8 @@ SOURCES_PLATEFORMES = frozenset(p.nom for p in PLATEFORMES)
 
 ALLOCINE = Lien("allocine", "info", "neutral", "AlloCiné", "")
 LABEL_OU_REGARDER = "Où regarder"
+# Chemin de la page « où regarder » de TMDB, avec ou sans le titre.
+_RE_CHEMIN_OU_REGARDER = re.compile(r"^/(?:movie|tv)/\d+[^/]*/watch/?$")
 
 _RE_NETFLIX = re.compile(r"^\d{6,9}$")
 _RE_PRIME = re.compile(r"^(?:[0-9A-Z]{26}|amzn1\.dv\.gti\.[0-9a-f-]{36})$")
@@ -317,7 +320,8 @@ def lien_arte(url: str) -> Lien:
 def placer(existants: list[dict[str, Any]], lien: Lien) -> int:
     """Plateformes EN TÊTE (la carte n'affiche que six liens), dans l'ordre de
     `PLATEFORMES` ; AlloCiné juste avant « Où regarder », comme l'éditeur l'a
-    posé pour Fleabag ; à défaut, à la fin."""
+    posé pour Fleabag ; à défaut, à la fin. « Où regarder » se reconnaît à
+    son adresse TMDB : le lot 1 de la V2 l'a renommé « TMDB — où regarder »."""
     if lien.source in SOURCES_PLATEFORMES:
         rang = [p.nom for p in PLATEFORMES].index(lien.source)
         position = 0
@@ -328,9 +332,16 @@ def placer(existants: list[dict[str, Any]], lien: Lien) -> int:
             position = i + 1
         return position
     for i, existant in enumerate(existants):
-        if existant.get("label") == LABEL_OU_REGARDER:
+        if _est_ou_regarder(existant):
             return i
     return len(existants)
+
+
+def _est_ou_regarder(lien: dict[str, Any]) -> bool:
+    url = str(lien.get("url") or "")
+    return (lien.get("label") == LABEL_OU_REGARDER
+            or (hote(url) == "themoviedb.org"
+                and bool(_RE_CHEMIN_OU_REGARDER.match(urlsplit(url).path))))
 
 
 def _source_de(lien: dict[str, Any]) -> str | None:
