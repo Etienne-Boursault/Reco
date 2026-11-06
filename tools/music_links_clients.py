@@ -250,8 +250,23 @@ _ITUNES_URL_FIELD = {"song": "trackViewUrl", "album": "collectionViewUrl",
 ITUNES_ENTITY = {"track": "song", "album": "album", "artist": "musicArtist"}
 
 
+#: Seule fiche d'artiste iTunes qui soit celle d'un musicien. La recherche
+#: `entity=musicArtist` rend aussi des fiches d'acteur (« Movie Artist », genre
+#: « Films ») : Virginie Efira, Omar Sy, Isabelle Huppert, Vincent Lindon
+#: (vérifié le 2026-11-06). Leur `artistLinkUrl` pointe vers itunes.apple.com,
+#: qui redirige vers l'accueil d'Apple TV ; et un lien Apple Music sur un acteur
+#: le ferait passer pour un musicien (marquer_artistes_musicaux.py). L'hôte n'est
+#: pas un critère sûr (Jean Dujardin a une fiche d'acteur sous music.apple.com) :
+#: c'est `artistType` qui départage.
+_ITUNES_MUSICIAN_TYPE = "Artist"
+
+
 def itunes_candidate(payload: dict[str, Any], kind: str) -> Candidate | None:
-    """Convertit un résultat iTunes en `Candidate`. None si inexploitable."""
+    """Convertit un résultat iTunes en `Candidate`. None si inexploitable,
+    ou si la fiche d'artiste est celle d'un acteur et non d'un musicien."""
+    if kind == "artist" and payload.get("artistType", _ITUNES_MUSICIAN_TYPE) \
+            != _ITUNES_MUSICIAN_TYPE:
+        return None
     url = payload.get(_ITUNES_URL_FIELD[ITUNES_ENTITY[kind]])
     if not url:
         return None
