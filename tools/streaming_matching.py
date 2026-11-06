@@ -50,6 +50,7 @@ import re
 from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Any
+from urllib.parse import urlsplit
 
 from common import normalize_text, slugify
 from wikidata_matching import (
@@ -108,8 +109,8 @@ SOURCES_PLATEFORMES = frozenset(p.nom for p in PLATEFORMES)
 
 ALLOCINE = Lien("allocine", "info", "neutral", "AlloCiné", "")
 LABEL_OU_REGARDER = "Où regarder"
-# La page « où regarder » de TMDB, avec ou sans le titre dans l'adresse.
-_RE_OU_REGARDER_TMDB = re.compile(r"^https?://(?:www\.)?themoviedb\.org/(?:movie|tv)/\d+[^/]*/watch/?(?:[?#]|$)")
+# Chemin de la page « où regarder » de TMDB, avec ou sans le titre.
+_RE_CHEMIN_OU_REGARDER = re.compile(r"^/(?:movie|tv)/\d+[^/]*/watch/?$")
 
 _RE_NETFLIX = re.compile(r"^\d{6,9}$")
 _RE_PRIME = re.compile(r"^(?:[0-9A-Z]{26}|amzn1\.dv\.gti\.[0-9a-f-]{36})$")
@@ -337,8 +338,10 @@ def placer(existants: list[dict[str, Any]], lien: Lien) -> int:
 
 
 def _est_ou_regarder(lien: dict[str, Any]) -> bool:
+    url = str(lien.get("url") or "")
     return (lien.get("label") == LABEL_OU_REGARDER
-            or bool(_RE_OU_REGARDER_TMDB.match(str(lien.get("url") or ""))))
+            or (hote(url) == "themoviedb.org"
+                and bool(_RE_CHEMIN_OU_REGARDER.match(urlsplit(url).path))))
 
 
 def _source_de(lien: dict[str, Any]) -> str | None:

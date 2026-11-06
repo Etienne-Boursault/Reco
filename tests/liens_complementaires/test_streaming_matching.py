@@ -267,3 +267,17 @@ def test_allocine_reconnait_ou_regarder_a_son_adresse_tmdb():
     assert sm.placer([TMDB, renomme, autre], allocine) == 1
     assert sm.placer([film], allocine) == 0
     assert sm.placer([TMDB, autre], allocine) == 2
+
+
+@pytest.mark.parametrize("url,attendu", [
+    ("https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR", 1),
+    ("https://www.TheMovieDB.org/tv/67070/watch", 1),
+    ("https://www.themoviedb.org/tv/67070?ref=/watch", 2),
+    ("https://www.themoviedb.org/movie/597#/watch", 2),
+])
+def test_ou_regarder_se_lit_sur_l_hote_et_le_chemin(url, attendu):
+    """Le titre dans l'adresse ne compte pas, la casse de l'hôte non plus ; un
+    « /watch » dans la requête ou le fragment n'en fait pas la page."""
+    allocine = Lien("allocine", "info", "neutral", "AlloCiné", "https://www.allocine.fr/x")
+    liens = [TMDB, _l("TMDB — où regarder", url)]
+    assert sm.placer(liens, allocine) == attendu
