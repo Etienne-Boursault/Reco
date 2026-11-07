@@ -1,9 +1,46 @@
 {
   "creator": "Louis de Funès",
+  "externalIds": {
+    "tmdb": 19548,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/19548/watch?locale=FR"
+  },
   "id": "b095226e",
   "schemaVersion": 1,
   "title": "Le Grand Restaurant",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/le-grand-restaurant/umc.cmc.769nh6p42eil188weqedkn6rs"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/le-grand-restaurant/h/438488_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=1m5OJkA6i-M"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/le-grand-restaurant"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.aebaa30f-fbb2-863e-6f40-0f0cba063479"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-SKKTZHJXJX/le-grand-restaurant"
+    }
   ]
 }

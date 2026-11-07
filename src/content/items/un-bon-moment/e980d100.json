@@ -1,11 +1,23 @@
 {
   "creator": "Bo Burnham",
+  "externalIds": {
+    "tmdb": 823754,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/823754/watch?locale=FR"
+  },
   "id": "e980d100",
   "schemaVersion": 1,
   "title": "Inside",
   "types": [
     "video",
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/81289483"
+    }
   ],
   "year": 2021
 }

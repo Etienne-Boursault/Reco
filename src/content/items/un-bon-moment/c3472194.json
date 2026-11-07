@@ -1,9 +1,21 @@
 {
   "creator": "TF1",
+  "externalIds": {
+    "tmdb": 112747,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/112747/watch?locale=FR"
+  },
   "id": "c3472194",
   "schemaVersion": 1,
   "title": "L'agence",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/81417684"
+    }
   ]
 }

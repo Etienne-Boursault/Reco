@@ -79,7 +79,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Le%20Grand%20Restaurant",
+      "url": "https://tv.apple.com/fr/movie/le-grand-restaurant/umc.cmc.769nh6p42eil188weqedkn6rs",
       "ethics": "neutral"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Grand%20Restaurant",
+      "url": "https://www.canalplus.com/cinema/le-grand-restaurant/h/438488_40099",
       "ethics": "avoid"
     },
     {
@@ -99,22 +99,22 @@
     },
     {
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Le%20Grand%20Restaurant",
+      "url": "https://www.youtube.com/watch?v=1m5OJkA6i-M",
       "ethics": "neutral"
     },
     {
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Le%20Grand%20Restaurant",
+      "url": "https://www.rakuten.tv/fr/movies/le-grand-restaurant",
       "ethics": "neutral"
     },
     {
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Grand%20Restaurant",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.aebaa30f-fbb2-863e-6f40-0f0cba063479",
       "ethics": "avoid"
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Le%20Grand%20Restaurant",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-SKKTZHJXJX/le-grand-restaurant",
       "ethics": "neutral"
     }
   ]

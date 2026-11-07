@@ -13,6 +13,11 @@
     "links": "2026-08-17T15:39:37Z"
   },
   "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "externalIds": {
+    "tmdb": "69478",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/69478/watch?locale=FR"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T21:29:13+00:00",
@@ -80,5 +85,6 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
-  ]
+  ],
+  "year": 2017
 }

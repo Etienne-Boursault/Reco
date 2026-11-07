@@ -1,8 +1,35 @@
 {
+  "externalIds": {
+    "tmdb": 1668,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/1668/watch?locale=FR"
+  },
   "id": "c4f15b4c",
   "schemaVersion": 1,
   "title": "Friends",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/70153404"
+    },
+    {
+      "ethics": "avoid",
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.dfe4cdb1-6d74-422b-837f-1724d5509438"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/series/friends/h/379112_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/show/friends/umc.cmc.4dxfvjbc4rdww1dcp3kbgoaqm"
+    }
   ]
 }

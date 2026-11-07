@@ -1,9 +1,46 @@
 {
   "creator": "Jacob Van Dormael",
+  "externalIds": {
+    "tmdb": 31011,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/31011/watch?locale=FR"
+  },
   "id": "c8646f2a",
   "schemaVersion": 1,
   "title": "Mr. Nobody",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/mr-nobody/umc.cmc.5uvaz25u1qw2b83k69i1jnog2"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/mr-nobody/h/115074_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/mr-nobody-2009"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.1200cc58-463c-4995-9276-f6a577cbff60"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-UKWXRBJV5X/mr-nobody"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/mr-nobody-jaco-van-dormael-vod"
+    }
   ]
 }

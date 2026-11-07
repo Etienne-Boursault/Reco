@@ -86,7 +86,7 @@
   "watchProviders": [
     {
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Crazy%2C%20Stupid%2C%20Love",
+      "url": "https://www.netflix.com/title/70167068",
       "ethics": "neutral"
     },
     {
@@ -96,7 +96,7 @@
     },
     {
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Crazy%2C%20Stupid%2C%20Love",
+      "url": "https://www.netflix.com/title/70167068",
       "ethics": "neutral"
     },
     {
@@ -111,12 +111,12 @@
     },
     {
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Crazy%2C%20Stupid%2C%20Love",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.4ea9f775-af88-5a4e-3c54-396f711e1640",
       "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Crazy%2C%20Stupid%2C%20Love",
+      "url": "https://tv.apple.com/fr/movie/crazy-stupid-love/umc.cmc.3vej6ly9q94lncie8z6saklrp",
       "ethics": "neutral"
     },
     {
@@ -126,7 +126,7 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Crazy%2C%20Stupid%2C%20Love",
+      "url": "https://www.canalplus.com/cinema/crazy-stupid-love/h/436123_40099",
       "ethics": "avoid"
     },
     {
@@ -136,22 +136,22 @@
     },
     {
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Crazy%2C%20Stupid%2C%20Love",
+      "url": "https://www.youtube.com/watch?v=8f1MCjQ0Fq0",
       "ethics": "neutral"
     },
     {
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Crazy%2C%20Stupid%2C%20Love",
+      "url": "https://www.rakuten.tv/fr/movies/crazy-stupid-love",
       "ethics": "neutral"
     },
     {
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Crazy%2C%20Stupid%2C%20Love",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.4ea9f775-af88-5a4e-3c54-396f711e1640",
       "ethics": "avoid"
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Crazy%2C%20Stupid%2C%20Love",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-WEV8DMCKIU/crazy-stupid-love",
       "ethics": "neutral"
     }
   ]

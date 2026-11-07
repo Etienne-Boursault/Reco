@@ -1,8 +1,20 @@
 {
+  "externalIds": {
+    "tmdb": 122228,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/122228/watch?locale=FR"
+  },
   "id": "86eb4e90",
   "schemaVersion": 1,
   "title": "LOL",
   "types": [
     "video"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.c6bc5cf3-3094-ae53-072e-96a3056486a1"
+    }
   ]
 }

@@ -15,7 +15,10 @@
   },
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
   "externalIds": {
-    "instagram": "kyankhojandi"
+    "instagram": "kyankhojandi",
+    "tmdb": "60715",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/60715/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -80,5 +83,6 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
-  ]
+  ],
+  "year": 2011
 }

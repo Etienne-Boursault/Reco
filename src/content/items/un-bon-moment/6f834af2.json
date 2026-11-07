@@ -1,12 +1,22 @@
 {
   "creator": "Clément Cotentin",
   "externalIds": {
-    "instagram": "clementcotentin"
+    "instagram": "clementcotentin",
+    "tmdb": 135184,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/135184/watch?locale=FR"
   },
   "id": "6f834af2",
   "schemaVersion": 1,
   "title": "Montre jamais ça à personne",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.2477cf27-2254-4368-b78c-5cb37754db37"
+    }
   ]
 }

@@ -1,12 +1,22 @@
 {
   "creator": "Cédric Klapisch",
   "externalIds": {
-    "instagram": "cedklap"
+    "instagram": "cedklap",
+    "tmdb": 121459,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/121459/watch?locale=FR"
   },
   "id": "416701f6",
   "schemaVersion": 1,
   "title": "Salade grecque",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.7e7e663f-f078-4cf1-ac4a-6b0fa2ab7c89"
+    }
   ]
 }

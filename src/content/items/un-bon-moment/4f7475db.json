@@ -1,9 +1,21 @@
 {
   "creator": "Catherine Bijelot",
+  "externalIds": {
+    "tmdb": 1290159,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1290159/watch?locale=FR"
+  },
   "id": "4f7475db",
   "schemaVersion": 1,
   "title": "A House of Dynamite",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/81744537"
+    }
   ]
 }

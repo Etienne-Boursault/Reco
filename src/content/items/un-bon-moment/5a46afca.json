@@ -1,9 +1,51 @@
 {
   "creator": "Richard Linklater",
+  "externalIds": {
+    "tmdb": 132344,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/132344/watch?locale=FR"
+  },
   "id": "5a46afca",
   "schemaVersion": 1,
   "title": "Before Midnight",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/before-midnight/umc.cmc.5a1k15u705gddv7913ds29kgg"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/before-midnight/h/2702286_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=pOdFtQCkUX4"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/before-midnight"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.e4b98dbe-9bc6-1d30-2c28-395d13db343c"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-AK79UZIPJ4/before-midnight"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE Boutique",
+      "url": "https://vod.arte.tv/detail/before-midnight"
+    }
   ]
 }

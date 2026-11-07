@@ -105,17 +105,17 @@
   "watchProviders": [
     {
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Shameless",
+      "url": "https://www.netflix.com/title/70184207",
       "ethics": "neutral"
     },
     {
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Shameless",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.c977823e-c208-4bd3-baee-2b25bce098f2",
       "ethics": "avoid"
     },
     {
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Shameless",
+      "url": "https://www.netflix.com/title/70184207",
       "ethics": "neutral"
     },
     {
@@ -125,22 +125,22 @@
     },
     {
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Shameless",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.c977823e-c208-4bd3-baee-2b25bce098f2",
       "ethics": "avoid"
     },
     {
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Shameless",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.c977823e-c208-4bd3-baee-2b25bce098f2",
       "ethics": "avoid"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Shameless",
+      "url": "https://www.canalplus.com/series/shameless/h/102375_40099",
       "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Shameless",
+      "url": "https://tv.apple.com/fr/show/shameless/umc.cmc.699yz0ndcm42cxcwcbzkb6dng",
       "ethics": "neutral"
     }
   ]
