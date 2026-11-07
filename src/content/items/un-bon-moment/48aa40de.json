@@ -1,12 +1,22 @@
 {
   "creator": "Cédric Klapisch",
   "externalIds": {
-    "instagram": "cedklap"
+    "instagram": "cedklap",
+    "tmdb": 352038,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/352038/watch?locale=FR"
   },
   "id": "48aa40de",
   "schemaVersion": 1,
   "title": "In Transit",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/in-transit-cedric-klapisch-vod"
+    }
   ]
 }

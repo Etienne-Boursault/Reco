@@ -79,7 +79,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Before%20Sunrise",
+      "url": "https://tv.apple.com/fr/movie/before-sunrise/umc.cmc.65m3n3lrca1e6nljfyvhn76u0",
       "ethics": "neutral"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Before%20Sunrise",
+      "url": "https://www.canalplus.com/cinema/before-sunrise/h/3441537_40099",
       "ethics": "avoid"
     },
     {
@@ -99,12 +99,12 @@
     },
     {
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Before%20Sunrise",
+      "url": "https://www.youtube.com/watch?v=jcbsGHb_kzE",
       "ethics": "neutral"
     },
     {
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Before%20Sunrise",
+      "url": "https://www.rakuten.tv/fr/movies/before-sunrise",
       "ethics": "neutral"
     },
     {
@@ -114,17 +114,17 @@
     },
     {
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Before%20Sunrise",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.92a9f74b-a7aa-845b-720b-1cfb3b8700c8",
       "ethics": "avoid"
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Before%20Sunrise",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-4WMI2ABXCP/before-sunrise",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Before%20Sunrise",
+      "url": "https://vod.arte.tv/detail/before-sunrise",
       "ethics": "indie"
     }
   ]

@@ -87,12 +87,12 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Mr.%20Nobody",
+      "url": "https://tv.apple.com/fr/movie/mr-nobody/umc.cmc.5uvaz25u1qw2b83k69i1jnog2",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mr.%20Nobody",
+      "url": "https://www.canalplus.com/cinema/mr-nobody/h/115074_40099",
       "ethics": "avoid"
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Mr.%20Nobody",
+      "url": "https://www.rakuten.tv/fr/movies/mr-nobody-2009",
       "ethics": "neutral"
     },
     {
@@ -112,17 +112,17 @@
     },
     {
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20Nobody",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.1200cc58-463c-4995-9276-f6a577cbff60",
       "ethics": "avoid"
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Mr.%20Nobody",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-UKWXRBJV5X/mr-nobody",
       "ethics": "neutral"
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Mr.%20Nobody",
+      "url": "https://www.lacinetek.com/fr/film/mr-nobody-jaco-van-dormael-vod",
       "ethics": "indie"
     }
   ]

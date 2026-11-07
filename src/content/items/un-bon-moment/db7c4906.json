@@ -1,9 +1,52 @@
 {
   "creator": "Grand Corps Malade & Mehdi Idir",
+  "externalIds": {
+    "tmdb": 434616,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/434616/watch?locale=FR"
+  },
   "id": "db7c4906",
   "schemaVersion": 1,
   "title": "Patients",
   "types": [
     "film"
-  ]
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/patients/umc.cmc.2hwlcn0latz50w4f7sl8ovytn"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/patients/h/8265340_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=0b135_SNNCY"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/patients"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.a4b7815f-33eb-8238-b8be-b2e9029f070f"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-217YUE9YL5/patients"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE Boutique",
+      "url": "https://vod.arte.tv/detail/patients"
+    }
+  ],
+  "year": 2017
 }

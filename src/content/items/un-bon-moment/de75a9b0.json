@@ -2,12 +2,21 @@
   "creator": "Blake Crouch",
   "externalIds": {
     "tmdb": 196322,
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/196322/watch?locale=FR"
   },
   "id": "de75a9b0",
   "schemaVersion": 1,
   "title": "Dark Matter",
   "types": [
     "serie"
-  ]
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.401fe8ae-ae32-44e4-8e52-9341c585f159"
+    }
+  ],
+  "year": 2024
 }

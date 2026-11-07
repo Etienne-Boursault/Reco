@@ -1,9 +1,26 @@
 {
   "creator": "Émilie Tronche",
+  "externalIds": {
+    "tmdb": 248664,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/248664/watch?locale=FR"
+  },
   "id": "58bd0462",
   "schemaVersion": 1,
   "title": "Samuel",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/82084354"
+    },
+    {
+      "ethics": "indie",
+      "name": "Arte",
+      "url": "https://www.arte.tv/fr/videos/RC-024878/samuel/"
+    }
   ]
 }

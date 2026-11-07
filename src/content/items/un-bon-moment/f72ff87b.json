@@ -1,9 +1,21 @@
 {
+  "externalIds": {
+    "tmdb": 154385,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/154385/watch?locale=FR"
+  },
   "id": "f72ff87b",
   "schemaVersion": 1,
   "title": "Acharnés (Beef)",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/81447461"
+    }
   ],
   "year": 2023
 }

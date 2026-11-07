@@ -1,9 +1,51 @@
 {
   "creator": "Glenn Ficarra, John Requa",
+  "externalIds": {
+    "tmdb": 50646,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/50646/watch?locale=FR"
+  },
   "id": "85ddf720",
   "schemaVersion": 1,
   "title": "Crazy, Stupid, Love",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/70167068"
+    },
+    {
+      "ethics": "avoid",
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.4ea9f775-af88-5a4e-3c54-396f711e1640"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/crazy-stupid-love/umc.cmc.3vej6ly9q94lncie8z6saklrp"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/crazy-stupid-love/h/436123_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=8f1MCjQ0Fq0"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/crazy-stupid-love"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-WEV8DMCKIU/crazy-stupid-love"
+    }
   ]
 }

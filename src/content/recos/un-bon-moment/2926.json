@@ -72,7 +72,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=L%27Avare",
+      "url": "https://tv.apple.com/fr/movie/lavare/umc.cmc.1rclrmb096iw50o8du9uc4tsq",
       "ethics": "neutral"
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=L%27Avare",
+      "url": "https://www.canalplus.com/cinema/lavare/h/501092_40099",
       "ethics": "avoid"
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=L%27Avare",
+      "url": "https://www.youtube.com/watch?v=f50gGW7kxJ8",
       "ethics": "neutral"
     },
     {
@@ -102,12 +102,12 @@
     },
     {
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27Avare",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.e945a272-67ec-46b4-977e-e95895c03aae",
       "ethics": "avoid"
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=L%27Avare",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-X5JMAKO0W1/lavare",
       "ethics": "neutral"
     }
   ]

@@ -3,10 +3,22 @@
     "Jim et Andy"
   ],
   "creator": "Chris Smith",
+  "externalIds": {
+    "tmdb": 469019,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/469019/watch?locale=FR"
+  },
   "id": "409fb74b",
   "schemaVersion": 1,
   "title": "Jim & Andy: The Great Beyond",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/80209608"
+    }
   ]
 }

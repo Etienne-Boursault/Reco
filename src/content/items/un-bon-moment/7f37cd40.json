@@ -1,9 +1,41 @@
 {
   "creator": "Gaspar Noé",
+  "externalIds": {
+    "tmdb": 979,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/979/watch?locale=FR"
+  },
   "id": "7f37cd40",
   "schemaVersion": 1,
   "title": "Irréversible",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/irreversible/h/437195_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=Z36ykLYWZiw"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/irreversible"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-JL7IGZ1XO4/irreversible"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/irreversible-gaspar-noe-vod"
+    }
   ]
 }

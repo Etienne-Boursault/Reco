@@ -1,9 +1,31 @@
 {
   "creator": "Jesse Armstrong",
+  "externalIds": {
+    "tmdb": 76331,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/76331/watch?locale=FR"
+  },
   "id": "2b0f6088",
   "schemaVersion": 1,
   "title": "Succession",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.25914a60-7121-4977-9f38-c4a5b620208b"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/show/succession/umc.cmc.3trf3c8kzd8m4w72c9q8dwjqe"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/series/succession/h/9935923_40099"
+    }
   ]
 }

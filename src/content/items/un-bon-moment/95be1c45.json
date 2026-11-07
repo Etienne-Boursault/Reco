@@ -1,9 +1,51 @@
 {
   "creator": "Richard Linklater",
+  "externalIds": {
+    "tmdb": 76,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/76/watch?locale=FR"
+  },
   "id": "95be1c45",
   "schemaVersion": 1,
   "title": "Before Sunrise",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/before-sunrise/umc.cmc.65m3n3lrca1e6nljfyvhn76u0"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/before-sunrise/h/3441537_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=jcbsGHb_kzE"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/before-sunrise"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.92a9f74b-a7aa-845b-720b-1cfb3b8700c8"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-4WMI2ABXCP/before-sunrise"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE Boutique",
+      "url": "https://vod.arte.tv/detail/before-sunrise"
+    }
   ]
 }

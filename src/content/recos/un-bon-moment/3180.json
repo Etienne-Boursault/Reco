@@ -73,7 +73,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Before%20Midnight",
+      "url": "https://tv.apple.com/fr/movie/before-midnight/umc.cmc.5a1k15u705gddv7913ds29kgg",
       "ethics": "neutral"
     },
     {
@@ -83,7 +83,7 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Before%20Midnight",
+      "url": "https://www.canalplus.com/cinema/before-midnight/h/2702286_40099",
       "ethics": "avoid"
     },
     {
@@ -93,12 +93,12 @@
     },
     {
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Before%20Midnight",
+      "url": "https://www.youtube.com/watch?v=pOdFtQCkUX4",
       "ethics": "neutral"
     },
     {
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Before%20Midnight",
+      "url": "https://www.rakuten.tv/fr/movies/before-midnight",
       "ethics": "neutral"
     },
     {
@@ -108,17 +108,17 @@
     },
     {
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Before%20Midnight",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.e4b98dbe-9bc6-1d30-2c28-395d13db343c",
       "ethics": "avoid"
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Before%20Midnight",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-AK79UZIPJ4/before-midnight",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Before%20Midnight",
+      "url": "https://vod.arte.tv/detail/before-midnight",
       "ethics": "indie"
     }
   ]

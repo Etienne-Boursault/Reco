@@ -20,6 +20,11 @@
     "links": "2026-08-17T15:39:49Z"
   },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "externalIds": {
+    "tmdb": "265195",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/265195/watch?locale=FR"
+  },
   "extractionHistory": [
     {
       "at": "2026-07-18T17:20:42+00:00",
@@ -83,5 +88,6 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
-  ]
+  ],
+  "year": 2014
 }

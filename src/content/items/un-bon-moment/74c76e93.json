@@ -1,8 +1,20 @@
 {
+  "externalIds": {
+    "tmdb": 74306,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/74306/watch?locale=FR"
+  },
   "id": "74c76e93",
   "schemaVersion": 1,
   "title": "God Bless America",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Outbuster Amazon Channel",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.66b89989-d3b6-0a25-e28d-207b6f6fdb8c"
+    }
   ]
 }

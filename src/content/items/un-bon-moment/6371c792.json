@@ -1,12 +1,22 @@
 {
   "creator": "Fary et Panayotis",
   "externalIds": {
-    "instagram": "panayotispascot"
+    "instagram": "panayotispascot",
+    "tmdb": 270963,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/270963/watch?locale=FR"
   },
   "id": "6371c792",
   "schemaVersion": 1,
   "title": "Loup-Garou Saison 2",
   "types": [
     "video"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/divertissement/loups-garous/h/26439553_50001"
+    }
   ]
 }

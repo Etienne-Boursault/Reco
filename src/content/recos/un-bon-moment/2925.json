@@ -72,7 +72,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=La%20Soupe%20au%20Chou",
+      "url": "https://tv.apple.com/fr/movie/la-soupe-aux-choux/umc.cmc.fo3p9qduetfdz666hy3ag1go",
       "ethics": "neutral"
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Soupe%20au%20Chou",
+      "url": "https://www.canalplus.com/cinema/la-soupe-aux-choux/h/437776_40099",
       "ethics": "avoid"
     },
     {
@@ -92,12 +92,12 @@
     },
     {
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=La%20Soupe%20au%20Chou",
+      "url": "https://www.youtube.com/watch?v=HYpoIeJ5UCQ",
       "ethics": "neutral"
     },
     {
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=La%20Soupe%20au%20Chou",
+      "url": "https://www.rakuten.tv/fr/movies/la-soupe-aux-choux",
       "ethics": "neutral"
     },
     {
@@ -107,18 +107,19 @@
     },
     {
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Soupe%20au%20Chou",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.6b5ad87f-63e1-49de-9495-26d8cb632eca",
       "ethics": "avoid"
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=La%20Soupe%20au%20Chou",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-EDFOAT6IHM/la-soupe-aux-choux",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=La%20Soupe%20au%20Chou",
+      "url": "https://vod.arte.tv/detail/la-soupe-aux-choux",
       "ethics": "indie"
     }
-  ]
+  ],
+  "year": 1981
 }
