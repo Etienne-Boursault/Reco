@@ -1,10 +1,52 @@
 {
   "creator": "Louis de Funès",
+  "externalIds": {
+    "tmdb": 9317,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/9317/watch?locale=FR"
+  },
   "id": "7a7b7fc5",
   "schemaVersion": 1,
   "title": "La Soupe aux choux",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/la-soupe-aux-choux/umc.cmc.fo3p9qduetfdz666hy3ag1go"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/la-soupe-aux-choux/h/437776_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=HYpoIeJ5UCQ"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/la-soupe-aux-choux"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.6b5ad87f-63e1-49de-9495-26d8cb632eca"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-EDFOAT6IHM/la-soupe-aux-choux"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE Boutique",
+      "url": "https://vod.arte.tv/detail/la-soupe-aux-choux"
+    }
   ],
   "year": 1981
 }

@@ -79,7 +79,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=En%20corps",
+      "url": "https://tv.apple.com/fr/movie/en-corps/umc.cmc.c8vncjtmgj9tc62sqchu2yz7",
       "ethics": "neutral"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=En%20corps",
+      "url": "https://www.canalplus.com/cinema/en-corps/h/19022282_40099",
       "ethics": "avoid"
     },
     {
@@ -99,12 +99,12 @@
     },
     {
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=En%20corps",
+      "url": "https://www.youtube.com/watch?v=8YgVftCmBWI",
       "ethics": "neutral"
     },
     {
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=En%20corps",
+      "url": "https://www.rakuten.tv/fr/movies/en-corps",
       "ethics": "neutral"
     },
     {
@@ -114,17 +114,17 @@
     },
     {
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=En%20corps",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.82d33894-554b-4d38-ba5e-3a5c7fb2fe84",
       "ethics": "avoid"
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=En%20corps",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-Y6ECC2UTRI/en-corps",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=En%20corps",
+      "url": "https://vod.arte.tv/detail/en-corps",
       "ethics": "indie"
     }
   ]

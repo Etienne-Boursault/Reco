@@ -1,9 +1,21 @@
 {
   "creator": "Netflix",
+  "externalIds": {
+    "tmdb": 84777,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/84777/watch?locale=FR"
+  },
   "id": "1642cb4e",
   "schemaVersion": 1,
   "title": "Sunderland 'Til I Die",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/80207046"
+    }
   ]
 }

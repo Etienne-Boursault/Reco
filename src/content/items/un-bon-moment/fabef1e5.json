@@ -1,9 +1,21 @@
 {
   "creator": "Igor Goutsman",
+  "externalIds": {
+    "tmdb": 89785,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/89785/watch?locale=FR"
+  },
   "id": "fabef1e5",
   "schemaVersion": 1,
   "title": "Family Business",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/81010818"
+    }
   ]
 }

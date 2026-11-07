@@ -1,12 +1,22 @@
 {
   "creator": "Anna Apter",
   "externalIds": {
-    "instagram": "annaapter"
+    "instagram": "annaapter",
+    "tmdb": 137117,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/137117/watch?locale=FR"
   },
   "id": "349a5e8c",
   "schemaVersion": 1,
   "title": "Ça sera (peut-être) mieux après",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/series/ca-sera-peut-etre-mieux-apres/h/17276944_50001"
+    }
   ]
 }

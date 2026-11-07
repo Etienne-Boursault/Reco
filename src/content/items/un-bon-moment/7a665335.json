@@ -1,9 +1,36 @@
 {
   "creator": "John Wells",
+  "externalIds": {
+    "tmdb": 34307,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/34307/watch?locale=FR"
+  },
   "id": "7a665335",
   "schemaVersion": 1,
   "title": "Shameless",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/70184207"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.c977823e-c208-4bd3-baee-2b25bce098f2"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/series/shameless/h/102375_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/show/shameless/umc.cmc.699yz0ndcm42cxcwcbzkb6dng"
+    }
   ]
 }

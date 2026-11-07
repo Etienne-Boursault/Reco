@@ -1,9 +1,51 @@
 {
   "creator": "Maïmouna Doucouré",
+  "externalIds": {
+    "tmdb": 582885,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/582885/watch?locale=FR"
+  },
   "id": "46659e3a",
   "schemaVersion": 1,
   "title": "Mignonnes",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/mignonnes/umc.cmc.k4ni02kmtgu8pb9n01d3zgm3"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/mignonnes/h/14503336_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=G4-Zm2z8DYs"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/mignonnes"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.a8badead-27c9-1c66-fb3a-4832e9af178e"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-DCC7PYLK5V/mignonnes"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE Boutique",
+      "url": "https://vod.arte.tv/detail/mignonnes"
+    }
   ]
 }

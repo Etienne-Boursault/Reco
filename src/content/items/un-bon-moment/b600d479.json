@@ -10,5 +10,12 @@
   "title": "Loki",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50"
+    }
   ]
 }

@@ -1,9 +1,41 @@
 {
   "creator": "Louis de Funès",
+  "externalIds": {
+    "tmdb": 11680,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/11680/watch?locale=FR"
+  },
   "id": "97f4ddd5",
   "schemaVersion": 1,
   "title": "L'Avare",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/lavare/umc.cmc.1rclrmb096iw50o8du9uc4tsq"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/lavare/h/501092_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=f50gGW7kxJ8"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.e945a272-67ec-46b4-977e-e95895c03aae"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-X5JMAKO0W1/lavare"
+    }
   ]
 }

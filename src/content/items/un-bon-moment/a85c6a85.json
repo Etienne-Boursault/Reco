@@ -1,12 +1,52 @@
 {
   "creator": "Cédric Klapisch",
   "externalIds": {
-    "instagram": "cedklap"
+    "instagram": "cedklap",
+    "tmdb": 771077,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/771077/watch?locale=FR"
   },
   "id": "a85c6a85",
   "schemaVersion": 1,
   "title": "En corps",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/movie/en-corps/umc.cmc.c8vncjtmgj9tc62sqchu2yz7"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cinema/en-corps/h/19022282_40099"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/watch?v=8YgVftCmBWI"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/en-corps"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.82d33894-554b-4d38-ba5e-3a5c7fb2fe84"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/fr/fr/film/phf-Y6ECC2UTRI/en-corps"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE Boutique",
+      "url": "https://vod.arte.tv/detail/en-corps"
+    }
   ]
 }

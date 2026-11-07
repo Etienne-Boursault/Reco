@@ -90,5 +90,10 @@
   "types": [
     "film"
   ],
-  "creator": "A. V. R. Roth"
+  "creator": "A. V. R. Roth",
+  "externalIds": {
+    "tmdb": "858718",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/858718/watch?locale=FR"
+  }
 }

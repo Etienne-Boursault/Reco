@@ -1,12 +1,22 @@
 {
   "creator": "Nathan Fielder & Benny Safdie",
   "externalIds": {
-    "instagram": "nathanfielder"
+    "instagram": "nathanfielder",
+    "tmdb": 114655,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/114655/watch?locale=FR"
   },
   "id": "75be4873",
   "schemaVersion": 1,
   "title": "The Curse",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Paramount+ Amazon Channel",
+      "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.61291af2-1d00-4ce5-9c81-951bbff1be79"
+    }
   ]
 }
