@@ -322,10 +322,13 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
     # déjà corrigé à la main, l'outil se tait.
     # ==================================================================
     "ubm-1544": {
-        "attendu": {"creator": "Antoine Gouille"},
-        "creator": "Antoine Gouy",
-        "pourquoi": "Article Wikipédia « Antoine Gouy ». « Gouille » est la "
-                    "restitution phonétique de la transcription.",
+        "attendu": {"creator": "Antoine Gouy"},
+        "creator": "Henri Debeurme, Mathilde Arnaud, Yoann Legave",
+        "pourquoi": "« Antoine Gouille », restitution phonétique de la "
+                    "transcription, avait été corrigé en « Antoine Gouy ». Mais "
+                    "Antoine Gouy joue dans « Le Charles » sans l'avoir créée : "
+                    "AlloCiné crédite Henri Debeurme, Mathilde Arnaud et Yoann "
+                    "Legave (décision de l'éditeur, lot 4, 2026-11-08).",
     },
     "ubm-2777": {
         "attendu": {"creator": "Clément Victorovitch"},
@@ -652,10 +655,12 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                      "`created_by`). « Apple TV+ » est le diffuseur."),
     },
     "ubm-2275": {
-        "attendu": {"creator": "Apple TV+"},
-        "creator": "Brett Goldstein, Jason Segel, Bill Lawrence",
-        "pourquoi": ("Les trois createurs credites par TMDB tv/136311, dont "
-                     "Apple TV n'est que le diffuseur."),
+        "attendu": {"creator": "Brett Goldstein, Jason Segel, Bill Lawrence"},
+        "creator": "Bill Lawrence, Jason Segel, Brett Goldstein",
+        "pourquoi": ("Les trois createurs credites par TMDB tv/136311 "
+                     "remplacaient « Apple TV+ », qui n'est que le diffuseur ; "
+                     "ils passent dans l'ordre du generique (decision de "
+                     "l'editeur, lot 4, 2026-11-08)."),
     },
     "ubm-0294": {
         "attendu": {"creator": "TF1"},
