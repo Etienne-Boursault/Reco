@@ -321,15 +321,14 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
     # La garde `attendu` porte ici sur `creator` lui-même : si quelqu'un a
     # déjà corrigé à la main, l'outil se tait.
     # ==================================================================
-    "ubm-1544": {
-        "attendu": {"creator": "Antoine Gouy"},
-        "creator": "Henri Debeurme, Mathilde Arnaud, Yoann Legave",
-        "pourquoi": "« Antoine Gouille », restitution phonétique de la "
-                    "transcription, avait été corrigé en « Antoine Gouy ». Mais "
-                    "Antoine Gouy joue dans « Le Charles » sans l'avoir créée : "
-                    "AlloCiné crédite Henri Debeurme, Mathilde Arnaud et Yoann "
-                    "Legave (décision de l'éditeur, lot 4, 2026-11-08).",
-    },
+    # « ubm-1544 » (« Le Charles ») a été RETIRÉE le 2026-11-09. Son effet
+    # était accompli : « Antoine Gouille », restitution phonétique, était
+    # devenu « Antoine Gouy ». Mais Antoine Gouy joue dans la série sans
+    # l'avoir créée : l'éditeur a décidé « Henri Debeurme, Mathilde Arnaud,
+    # Yoann Legave » (AlloCiné), écrits sur la fiche et la carte par le lot 4
+    # (décision C19 de `arbitrages/lot4-decisions-2026-11-08.json`, dans la
+    # documentation de la V2). Réorientée vers cette valeur, l'entrée aurait
+    # réécrit la carte seule avant le lot, ou après son annulation.
     "ubm-2777": {
         "attendu": {"creator": "Clément Victorovitch"},
         "creator": "Clément Viktorovitch",
@@ -654,14 +653,13 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         "pourquoi": ("Cree par Dan Erickson (TMDB tv/95396, champ "
                      "`created_by`). « Apple TV+ » est le diffuseur."),
     },
-    "ubm-2275": {
-        "attendu": {"creator": "Brett Goldstein, Jason Segel, Bill Lawrence"},
-        "creator": "Bill Lawrence, Jason Segel, Brett Goldstein",
-        "pourquoi": ("Les trois createurs credites par TMDB tv/136311 "
-                     "remplacaient « Apple TV+ », qui n'est que le diffuseur ; "
-                     "ils passent dans l'ordre du generique (decision de "
-                     "l'editeur, lot 4, 2026-11-08)."),
-    },
+    # « ubm-2275 » (« Shrinking ») a été RETIRÉE le 2026-11-09. Son effet
+    # était accompli : « Apple TV+ », le diffuseur, avait laissé place aux
+    # trois créateurs crédités par TMDB tv/136311. L'éditeur les a remis dans
+    # l'ordre du générique (Wikipédia en anglais) : « Bill Lawrence, Jason
+    # Segel, Brett Goldstein », écrits sur la fiche et la carte par le lot 4
+    # (décision C28 du même fichier). Retirée pour la même raison que
+    # ubm-1544.
     "ubm-0294": {
         "attendu": {"creator": "TF1"},
         "creator": None,
