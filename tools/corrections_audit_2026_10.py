@@ -20,7 +20,7 @@ CE QUE FAIT CE SCRIPT, DANS L'ORDRE
 2. Corrige titres, createurs et types avec celui de
    `corriger_attributions_erronees.py`, sur la fiche ET ses recos publiees :
    la carte d'episode lit la reco, la page de l'oeuvre lit la fiche.
-3. Ecarte une mention en double.
+3. Ecarte les mentions en double (aucune depuis L7-2, voir MENTIONS_A_ECARTER).
 
 L'etape 2 retrouve les recos par les mentions ECRITES par l'etape 1 : la
 simulation sous-estime donc les recos touchees. Seul `--apply` est complet.
@@ -248,13 +248,13 @@ CORRECTIONS: tuple[Correction, ...] = (
 )
 
 #: Mentions validees a ecarter, et pourquoi.
-MENTIONS_A_ECARTER: dict[str, str] = {
-    # Meme instant (00:51:20 contre 00:51:22) et meme phrase que la reco
-    # ubm-1368 « Balade Mentale ». « Christophe Pauly » est l'attribution
-    # fautive deja retiree de Balade Mentale ; cette mention sans reco
-    # comptait la meme recommandation une seconde fois.
-    "ubm-1560": "doublon de ubm-1368 (Balade Mentale)",
-}
+#:
+#: Elle ecartait ubm-1560, prise pour un doublon de ubm-1368 « Balade
+#: Mentale ». Retiree le 2026-11-11 (L7-2 A) : la transcription YouTube de
+#: S5-E27 cite deux chaines, « On recommande la chaine de Christophe Pauly. »
+#: (00:51:20) puis « Balade mentale aussi. » (00:51:22). ubm-1560 est la
+#: premiere, publiee sur la fiche 73833582 ; ubm-1368 reprend la seconde.
+MENTIONS_A_ECARTER: dict[str, str] = {}
 
 
 def ecarter_mentions(ecarts: dict[str, str], *, apply: bool) -> int:

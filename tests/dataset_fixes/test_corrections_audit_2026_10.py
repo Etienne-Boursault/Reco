@@ -108,11 +108,22 @@ def test_fusion_puis_alignement_des_recos(corpus: Path):
 
 
 def test_la_mention_en_double_est_ecartee_une_seule_fois(corpus: Path):
-    chemin = poser(corpus, "mentions", "ubm-1560", {
-        "id": "ubm-1560", "itemId": "8b112235", "status": "validated"})
-    assert audit.ecarter_mentions(audit.MENTIONS_A_ECARTER, apply=True) == 1
+    chemin = poser(corpus, "mentions", "ubm-0001", {
+        "id": "ubm-0001", "itemId": "0099e3e6", "status": "validated"})
+    ecarts = {"ubm-0001": "doublon"}
+    assert audit.ecarter_mentions(ecarts, apply=True) == 1
     assert lire(chemin)["status"] == "discarded"
-    assert audit.ecarter_mentions(audit.MENTIONS_A_ECARTER, apply=True) == 0
+    assert audit.ecarter_mentions(ecarts, apply=True) == 0
+
+
+def test_ubm_1560_n_est_plus_ecartee_c_est_la_chaine_de_christophe_pauly(corpus: Path):
+    # L7-2 A (2026-11-10) : la phrase est celle de Christophe Pauly, et la
+    # carte de Balade Mentale reprend la sienne. Relancer l'audit ne doit pas
+    # écarter de nouveau la citation publiée.
+    chemin = poser(corpus, "mentions", "ubm-1560", {
+        "id": "ubm-1560", "itemId": "73833582", "status": "validated"})
+    audit.executer(apply=True)
+    assert lire(chemin)["status"] == "validated"
 
 
 def test_la_simulation_n_ecrit_rien(corpus: Path):
