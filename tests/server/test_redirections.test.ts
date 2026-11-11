@@ -67,10 +67,14 @@ describe('rediriger', () => {
     };
   }
 
-  it('répond 301 vers le survivant', () => {
+  it('répond 301 vers le survivant, gardé une heure au plus', () => {
     const { r, res } = fausseReponse();
     expect(rediriger(TABLE, { method: 'GET', url: '/un-bon-moment/oeuvre/perdant' }, res)).toBe(true);
-    expect(r).toEqual({ statut: 301, entetes: { Location: '/un-bon-moment/oeuvre/survivant', 'Content-Length': 0 }, fini: true });
+    expect(r).toEqual({
+      statut: 301,
+      entetes: { Location: '/un-bon-moment/oeuvre/survivant', 'Content-Length': 0, 'Cache-Control': 'public, max-age=3600' },
+      fini: true,
+    });
   });
 
   it('laisse passer un POST et une URL absente', () => {
@@ -99,6 +103,8 @@ describe('le serveur redirige avant de chercher la page', () => {
     const redirige = await demander(lance.port, '/un-bon-moment/oeuvre/perdant/');
     expect(redirige.statut).toBe(301);
     expect(redirige.entetes.location).toBe('/un-bon-moment/oeuvre/survivant');
+    // Sans durée, un navigateur garde un 301 sans limite : une redirection corrigée ne l'atteindrait jamais.
+    expect(redirige.entetes['cache-control']).toBe('public, max-age=3600');
 
     const normal = await demander(lance.port, '/un-bon-moment/oeuvre/survivant');
     expect(normal.statut).toBe(200);
