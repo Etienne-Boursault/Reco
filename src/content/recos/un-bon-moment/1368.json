@@ -1,6 +1,5 @@
 {
   "aliases": [
-    "Chaîne Christophe Pauly",
     "Balade Mentale"
   ],
   "creator": "Théo Drieu, Kévin Fauvre",
@@ -14,15 +13,6 @@
       "llmModel": "(assumed)",
       "llmProvider": "openai",
       "timestamp_at_extraction": "00:51:21",
-      "transcriptModel": "(assumed)",
-      "transcriptSource": "acast",
-      "worker": "(assumed)"
-    },
-    {
-      "at": "2026-06-04T16:00:13+00:00",
-      "llmModel": "(assumed)",
-      "llmProvider": "anthropic",
-      "timestamp_at_extraction": "00:51:20",
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
@@ -78,7 +68,7 @@
       "url": "https://www.youtube.com/@BaladeMentale"
     }
   ],
-  "quote": "On recommande la chaîne de Christophe Pauly.",
+  "quote": "Balade mentale aussi.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",

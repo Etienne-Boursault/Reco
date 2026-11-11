@@ -107,12 +107,27 @@ def test_fusion_puis_alignement_des_recos(corpus: Path):
     assert survivant["aliases"] == ["Joe Rogan Experience"]
 
 
-def test_la_mention_en_double_est_ecartee_une_seule_fois(corpus: Path):
+def test_ubm_1560_n_est_plus_ecartee_c_est_la_chaine_de_christophe_pauly(corpus: Path):
+    # L7-2 A (2026-11-10) : la phrase est celle de Christophe Pauly, et la
+    # carte de Balade Mentale reprend la sienne. Relancer l'audit ne doit pas
+    # écarter de nouveau la citation publiée.
     chemin = poser(corpus, "mentions", "ubm-1560", {
-        "id": "ubm-1560", "itemId": "8b112235", "status": "validated"})
-    assert audit.ecarter_mentions(audit.MENTIONS_A_ECARTER, apply=True) == 1
-    assert lire(chemin)["status"] == "discarded"
-    assert audit.ecarter_mentions(audit.MENTIONS_A_ECARTER, apply=True) == 0
+        "id": "ubm-1560", "itemId": "73833582", "status": "validated"})
+    audit.executer(apply=True)
+    assert lire(chemin)["status"] == "validated"
+
+
+def test_la_commande_simule_par_defaut_ecrit_avec_apply_et_signale_les_refus(corpus: Path):
+    # Un corpus partiel : les survivants des fusions manquent, d'où des refus
+    # (code 1), mais les corrections s'appliquent quand même.
+    chemin = poser(corpus, "items", "416701f6", {
+        "id": "416701f6", "title": "Salade grecque", "types": ["film"],
+        "creator": "Cédric Clapichon"})
+    avant = chemin.read_text(encoding="utf-8")
+    assert audit.main([]) == 1
+    assert chemin.read_text(encoding="utf-8") == avant
+    assert audit.main(["--apply"]) == 1
+    assert chemin.read_text(encoding="utf-8") != avant
 
 
 def test_la_simulation_n_ecrit_rien(corpus: Path):

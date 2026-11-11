@@ -1,0 +1,38 @@
+{
+  "creator": "Christophe Pauly",
+  "episodeGuid": "69e13325fb440758726a665f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:13+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1560",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube — chaîne",
+      "url": "https://www.youtube.com/@Christophe_Pauly"
+    }
+  ],
+  "quote": "On recommande la chaîne de Christophe Pauly.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:51:20",
+  "title": "Christophe Pauly",
+  "transcriptSource": "youtube",
+  "types": [
+    "chaine"
+  ]
+}

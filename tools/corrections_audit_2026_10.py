@@ -20,7 +20,10 @@ CE QUE FAIT CE SCRIPT, DANS L'ORDRE
 2. Corrige titres, createurs et types avec celui de
    `corriger_attributions_erronees.py`, sur la fiche ET ses recos publiees :
    la carte d'episode lit la reco, la page de l'oeuvre lit la fiche.
-3. Ecarte une mention en double.
+
+Une troisième étape écartait une mention prise pour un doublon ; retirée le
+2026-11-11, la mention étant la recommandation d'une autre chaîne (voir
+`executer`).
 
 L'etape 2 retrouve les recos par les mentions ECRITES par l'etape 1 : la
 simulation sous-estime donc les recos touchees. Seul `--apply` est complet.
@@ -38,7 +41,6 @@ et « Les Parasites », « Soixante » et « Soixante 2 ».
 from __future__ import annotations
 
 import argparse
-import json
 import logging
 import sys
 from collections.abc import Sequence
@@ -47,7 +49,6 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import common
 from corriger_attributions_erronees import Correction
 from corriger_attributions_erronees import executer as corriger
 from fusionner_doublons_cures import Groupe
@@ -247,37 +248,17 @@ CORRECTIONS: tuple[Correction, ...] = (
     ),
 )
 
-#: Mentions validees a ecarter, et pourquoi.
-MENTIONS_A_ECARTER: dict[str, str] = {
-    # Meme instant (00:51:20 contre 00:51:22) et meme phrase que la reco
-    # ubm-1368 « Balade Mentale ». « Christophe Pauly » est l'attribution
-    # fautive deja retiree de Balade Mentale ; cette mention sans reco
-    # comptait la meme recommandation une seconde fois.
-    "ubm-1560": "doublon de ubm-1368 (Balade Mentale)",
-}
-
-
-def ecarter_mentions(ecarts: dict[str, str], *, apply: bool) -> int:
-    """Passe en `discarded` les mentions listees encore validees."""
-    n = 0
-    for chemin in sorted(common.MENTIONS_DIR.rglob("*.json")):
-        doc = json.loads(chemin.read_text(encoding="utf-8"))
-        if doc.get("id") not in ecarts or doc.get("status") != "validated":
-            continue
-        doc["status"] = "discarded"
-        log.info("mention %s ecartee : %s", doc["id"], ecarts[doc["id"]])
-        n += 1
-        if apply:
-            chemin.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n",
-                              encoding="utf-8")
-    return n
+# Une troisième étape écartait ubm-1560, prise pour un doublon de ubm-1368
+# « Balade Mentale ». Retirée le 2026-11-11 (L7-2 A) : la transcription YouTube
+# de S5-E27 cite deux chaînes, « On recommande la chaîne de Christophe Pauly. »
+# (00:51:20) puis « Balade mentale aussi. » (00:51:22). ubm-1560 est la
+# première, publiée sur la fiche 73833582 ; ubm-1368 reprend la seconde.
 
 
 def executer(*, apply: bool) -> dict[str, Any]:
     fusions = fusionner(GROUPES, apply=apply)
     corrections = corriger(apply=apply, corrections=CORRECTIONS)
-    ecartees = ecarter_mentions(MENTIONS_A_ECARTER, apply=apply)
-    return {"fusions": fusions, "corrections": corrections, "ecartees": ecartees}
+    return {"fusions": fusions, "corrections": corrections}
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -289,9 +270,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     rapport = executer(apply=args.apply)
     f, c = rapport["fusions"], rapport["corrections"]
     log.info("%d fusion(s), %d fiche(s) supprimee(s), %d mention(s) reportee(s) ; "
-             "%d fiche(s) et %d reco(s) corrigee(s) ; %d mention(s) ecartee(s)",
+             "%d fiche(s) et %d reco(s) corrigee(s)",
              f["fusions"], f["supprimes"], f["mentions_reportees"],
-             c["items"], c["recos"], rapport["ecartees"])
+             c["items"], c["recos"])
     for refus in f["refus"]:
         log.warning("REFUS %s", refus)
     if not args.apply:
