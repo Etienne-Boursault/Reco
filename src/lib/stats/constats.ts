@@ -15,8 +15,9 @@
  *
  * La maquette annonçait 904 recommandations, 1 075 œuvres et 31 œuvres pour
  * Albert Dupontel ; le site, 903, 1 073 et 30. Trois causes, aucune erreur :
- *  - 904 comptait les MENTIONS non citées ; il en existe une sans reco
- *    (ubm-1560, la chaîne de Christophe Pauly). Ici : les recos, comme l'accueil.
+ *  - 904 comptait les MENTIONS non citées ; il en existait une sans reco
+ *    (ubm-1560, la chaîne de Christophe Pauly, publiée avec sa carte depuis
+ *    le 2026-11-11). Ici : les recos, comme l'accueil.
  *  - 1 075 venait d'un corpus où les corrections de données du 2026-10-07
  *    étaient déjà fusionnées (deux mentions revalidées). Ici : le corpus du build.
  *  - 30 était le classement par attribution EXACTE ; une mention signée
