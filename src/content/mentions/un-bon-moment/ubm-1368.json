@@ -14,17 +14,6 @@
     {
       "at": "2026-06-04T16:00:13+00:00",
       "extra": {
-        "timestamp_at_extraction": "00:51:20"
-      },
-      "llmModel": "(assumed)",
-      "llmProvider": "anthropic",
-      "transcriptModel": "(assumed)",
-      "transcriptSource": "acast",
-      "worker": "(assumed)"
-    },
-    {
-      "at": "2026-06-04T16:00:13+00:00",
-      "extra": {
         "timestamp_at_extraction": "00:51:22"
       },
       "llmModel": "claude-haiku-4-5",
