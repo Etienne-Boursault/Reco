@@ -47,12 +47,19 @@ export function cibleDe(table, url) {
   return cible ? cible + requete : null;
 }
 
+/**
+ * Un 301 sans durée, le navigateur le garde sans limite : une redirection
+ * corrigée (la cible d'une fusion qui change, une fiche séparée à nouveau)
+ * ne l'atteindrait jamais. Une heure suffit à épargner le serveur.
+ */
+export const CACHE_REDIRECTION = 'public, max-age=3600';
+
 /** Répond 301 si l'URL a une cible. Rend `true` si la réponse est partie. */
 export function rediriger(table, req, res) {
   if (req.method !== 'GET' && req.method !== 'HEAD') return false;
   const cible = cibleDe(table, req.url || '/');
   if (!cible) return false;
-  res.writeHead(301, { Location: cible, 'Content-Length': 0 });
+  res.writeHead(301, { Location: cible, 'Content-Length': 0, 'Cache-Control': CACHE_REDIRECTION });
   res.end();
   return true;
 }

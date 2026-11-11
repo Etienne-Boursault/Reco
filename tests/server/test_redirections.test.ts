@@ -10,7 +10,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 // @ts-expect-error — module `.mjs` sans déclaration de types
-import { chargerRedirections, cibleDe, rediriger } from '../../src/server/redirections.mjs';
+import { CACHE_REDIRECTION, chargerRedirections, cibleDe, rediriger } from '../../src/server/redirections.mjs';
 // @ts-expect-error — module `.mjs` sans déclaration de types
 import { creerServeur } from '../../src/server/serveur.mjs';
 import { demander, demarrer } from './_client';
@@ -67,10 +67,19 @@ describe('rediriger', () => {
     };
   }
 
-  it('répond 301 vers le survivant', () => {
+  it('garde un 301 une heure au plus (`03` § 8.1 de la V2)', () => {
+    // La seule valeur écrite en dur : la changer doit être un choix, pas un accident.
+    expect(CACHE_REDIRECTION).toBe('public, max-age=3600');
+  });
+
+  it('répond 301 vers le survivant, avec sa durée de cache', () => {
     const { r, res } = fausseReponse();
     expect(rediriger(TABLE, { method: 'GET', url: '/un-bon-moment/oeuvre/perdant' }, res)).toBe(true);
-    expect(r).toEqual({ statut: 301, entetes: { Location: '/un-bon-moment/oeuvre/survivant', 'Content-Length': 0 }, fini: true });
+    expect(r).toEqual({
+      statut: 301,
+      entetes: { Location: '/un-bon-moment/oeuvre/survivant', 'Content-Length': 0, 'Cache-Control': CACHE_REDIRECTION },
+      fini: true,
+    });
   });
 
   it('laisse passer un POST et une URL absente', () => {
@@ -99,6 +108,8 @@ describe('le serveur redirige avant de chercher la page', () => {
     const redirige = await demander(lance.port, '/un-bon-moment/oeuvre/perdant/');
     expect(redirige.statut).toBe(301);
     expect(redirige.entetes.location).toBe('/un-bon-moment/oeuvre/survivant');
+    // Sans durée, un navigateur garde un 301 sans limite : une redirection corrigée ne l'atteindrait jamais.
+    expect(redirige.entetes['cache-control']).toBe(CACHE_REDIRECTION);
 
     const normal = await demander(lance.port, '/un-bon-moment/oeuvre/survivant');
     expect(normal.statut).toBe(200);

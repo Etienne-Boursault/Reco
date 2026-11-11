@@ -23,6 +23,12 @@ répondait alors 404. L'audit du 2026-10-20 a demandé neuf fusions de plus, et
 - `src/server/redirections.mjs` répond à ces adresses par un **301** vers la
   fiche survivante, avant tout autre traitement. Une table absente ou
   illisible donne une table vide : elle coûte des 404, jamais le site.
+- Le 301 porte `Cache-Control: public, max-age=3600` (ajouté le 2026-11-11).
+  Sans durée, un navigateur garde un 301 sans limite. Quand le lot 7 a
+  corrigé la cible de `8b112235`, qui menait depuis le 21/10 à *Balade
+  Mentale* au lieu de *Christophe Pauly*, les visiteurs qui avaient déjà
+  suivi l'ancienne redirection n'auraient jamais vu la correction. L'en-tête
+  ne rattrape pas ces visiteurs-là, il vaut pour les corrections suivantes.
 
 ## Conséquences
 
