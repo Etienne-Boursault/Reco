@@ -11,6 +11,8 @@ Elles s'affichent donc dans la chronologie d'une fiche d'oeuvre avec un nom
 approximatif — « Nassim », « Kyan », « N/A » — et rien d'autre. Repere le
 2026-08-19 en corrigeant « Balade Mentale ».
 
+Depuis le 2026-11-11, ubm-1560 (Christophe Pauly) a sa recommandation.
+
 CE QUE LES TRANSCRIPTS NE POUVAIENT PAS DIRE
 --------------------------------------------
 Le corpus n'est pas diarize : rien, dans le texte, ne dit qui parle. C'est
@@ -79,9 +81,12 @@ ATTRIBUTIONS: tuple[Attribution, ...] = (
                 pourquoi="etait attribuee a « Nassim »"),
     Attribution("ubm-1559", "The Zone of Interest", ecarter=True,
                 pourquoi="meme instant et meme phrase que ubm-0525"),
-    Attribution("ubm-1560", "Chaîne Christophe Pauly", par="Kyan Khojandi",
-                pourquoi="etait attribuee a « Kyan », nom tronque ; les deux "
-                         "chaines sont citees dans la meme phrase"),
+    # Deux phrases à la suite, et non une seule : « On recommande la chaîne
+    # de Christophe Pauly. » (00:51:20), puis « Balade mentale aussi. »
+    # (00:51:22). Publiée sur la fiche 73833582 avec sa carte le 2026-11-11.
+    Attribution("ubm-1560", "Christophe Pauly", par="Kyan Khojandi",
+                pourquoi="était attribuée à « Kyan », nom tronqué ; les deux "
+                         "chaînes sont citées l'une après l'autre"),
     Attribution("ubm-2091", "Message Personnel", par="Kyan Khojandi",
                 guest_work=True,
                 pourquoi="etait attribuee a « Jessé » ; l'oeuvre est celle "
