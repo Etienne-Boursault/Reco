@@ -1,0 +1,58 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Miki",
+  "enrichedAt": {
+    "links": "2026-11-13T11:38:13Z"
+  },
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:51",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3355",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/812891361"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/industry-plant/1836468875"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/0RdSN1LHK5602mFafwYu4i"
+    }
+  ],
+  "quote": "Et branchez-vous, Miki, si ce n'est pas encore déjà fait, Industry Plant, Graou.",
+  "recommendedBy": "Adèle Castillon",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:51",
+  "title": "Industry Plant",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 2025
+}

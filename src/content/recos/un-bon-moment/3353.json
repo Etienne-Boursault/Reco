@@ -1,0 +1,116 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Florian Zeller",
+  "enrichedAt": {
+    "links": "2026-11-13T11:38:27Z"
+  },
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "externalIds": {
+    "tmdb": "600354",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/600354-the-father/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:20",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3353",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/the-father/umc.cmc.1737b9sd7muinc2as10iz1w0p"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10272386/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/600354"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=273981.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/600354-the-father/watch?locale=FR"
+    }
+  ],
+  "quote": "Je recommande The Father, de Florian Zeller, qui est exceptionnel, un film exceptionnel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:19:20",
+  "title": "The Father",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=The%20Father"
+    },
+    {
+      "ethics": "neutral",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=The%20Father"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=The%20Father"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Father"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=The%20Father"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Father"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=The%20Father"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=The%20Father"
+    }
+  ],
+  "year": 2020
+}

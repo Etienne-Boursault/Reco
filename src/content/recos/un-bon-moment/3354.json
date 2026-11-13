@@ -1,0 +1,66 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Blonde Redhead",
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:22",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3354",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/misery-is-a-butterfly-blonde-redhead/0652637240900"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/10966642"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/misery-is-a-butterfly/1027461699"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/2IOkphZwsrRk1nWRkikEgK"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube Music",
+      "url": "https://music.youtube.com/browse/MPREb_VUOIN6G9KmD"
+    }
+  ],
+  "quote": "et ça s'appelle Blonde Redhead. Ça a une bien de lui. Ils ont un album qui s'appelle Misery, Misery is Butterfly,",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:20:22",
+  "title": "Misery Is a Butterfly",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 2004
+}

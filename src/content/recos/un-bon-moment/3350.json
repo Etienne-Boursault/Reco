@@ -1,0 +1,90 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Maite Alberdi",
+  "enrichedAt": {
+    "links": "2026-11-13T11:38:25Z"
+  },
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "externalIds": {
+    "tmdb": "1032760",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1032760-la-memoria-infinita/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3350",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt24082488/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1032760"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=311641.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/1032760-la-memoria-infinita/watch?locale=FR"
+    }
+  ],
+  "quote": "Mais c'était un super super docu, la mémoire éternelle.",
+  "recommendedBy": "Adèle Castillon",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:48",
+  "title": "La Mémoire éternelle",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20M%C3%A9moire%20%C3%A9ternelle"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=La%20M%C3%A9moire%20%C3%A9ternelle"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20M%C3%A9moire%20%C3%A9ternelle"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=La%20M%C3%A9moire%20%C3%A9ternelle"
+    }
+  ],
+  "year": 2023
+}

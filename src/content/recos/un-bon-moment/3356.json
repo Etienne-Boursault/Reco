@@ -1,0 +1,73 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Adèle Castillon",
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:56",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3356",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/6Xadqm9viEhsKgp0zRp8Gc"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/499165321"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/plaisir-risque-d%C3%A9pendance/1708076786"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/plaisir-risque-dependance-adele-castillon-videoclub/b1m89c8td8hcc"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube Music",
+      "url": "https://music.youtube.com/playlist?list=OLAK5uy_kPxG88eISRqzNxZettJ5YTzG8_bEf44hg"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/adelecastillon/"
+    }
+  ],
+  "quote": "Et branchez-vous Adèle, si ce n'est pas encore fait, Plaisir Risque Dépendance.",
+  "recommendedBy": "Miki",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:56",
+  "title": "Plaisir Risque Dépendance",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 2023
+}

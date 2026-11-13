@@ -1,8 +1,57 @@
 {
+  "creator": "Sofia Coppola",
+  "externalIds": {
+    "tmdb": 153,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/153-lost-in-translation/watch?locale=FR"
+  },
   "id": "ce1e43c7",
   "schemaVersion": 1,
   "title": "Lost in Translation",
   "types": [
     "film"
-  ]
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Paramount Plus",
+      "url": "https://www.paramountplus.com/fr/search/?q=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Paramount+ Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Lost%20in%20Translation"
+    }
+  ],
+  "year": 2003
 }

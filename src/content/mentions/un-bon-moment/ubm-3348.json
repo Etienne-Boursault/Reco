@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:54:19"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3348",
+  "itemId": "a9cd392b",
+  "kind": "reco",
+  "quote": "Et l'album Rebelle, 20 novembre, Adèle Castillon, il y aura de l'Omnicorde dedans.",
+  "recommendedBy": "Adèle Castillon",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-rwlXWp7Lrhg",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:54:19",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

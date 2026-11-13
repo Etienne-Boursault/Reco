@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:05:42"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3352",
+  "itemId": "141bc746",
+  "kind": "reco",
+  "quote": "Suivez-la sur les réseaux sociaux, Mona Guba !",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-rwlXWp7Lrhg",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:05:42",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

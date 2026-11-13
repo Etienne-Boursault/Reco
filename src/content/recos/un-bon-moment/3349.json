@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Charlie Kaufman",
+  "enrichedAt": {
+    "links": "2026-11-13T11:38:23Z"
+  },
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "externalIds": {
+    "tmdb": "4960",
+    "tmdbType": "movie"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3349",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0383028/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/4960"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=117064.html"
+    }
+  ],
+  "quote": "Non, c'était un film de Charlie Kaufman qui s'appelle Synecdoche New York, et qui est trop bien, parce que c'est que des mises en abîme de trucs, et moi j'adore ça.",
+  "recommendedBy": "Miki",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:52",
+  "title": "Synecdoche, New York",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2008
+}

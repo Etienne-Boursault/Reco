@@ -1,0 +1,116 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Sofia Coppola",
+  "enrichedAt": {
+    "links": "2026-11-13T11:38:22Z"
+  },
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "externalIds": {
+    "tmdb": "153",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/153-lost-in-translation/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:01",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3343",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/lost-in-translation/umc.cmc.4e1hhenepzwuv36lgkmm8ns84"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0335266/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/153"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=47395.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/153-lost-in-translation/watch?locale=FR"
+    }
+  ],
+  "quote": "Ou Lost in Translation.",
+  "recommendedBy": "Adèle Castillon",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:26:01",
+  "title": "Lost in Translation",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Paramount Plus",
+      "url": "https://www.paramountplus.com/fr/search/?q=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Paramount+ Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "indie",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Lost%20in%20Translation"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Lost%20in%20Translation"
+    }
+  ],
+  "year": 2003
+}

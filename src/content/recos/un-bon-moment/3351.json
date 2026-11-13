@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Louie Media",
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3351",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/menteuse-menteuse/id1534412600?i=1000790049064"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/episode/7CcH5P5SOtOhh33Bmv2CA6"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/episode/938518002"
+    }
+  ],
+  "quote": "je dirais l'épisode Menteuse, Menteuse du podcast Passage.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:52",
+  "title": "Menteuse, menteuse",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

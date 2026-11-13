@@ -5,7 +5,7 @@ sans rappeler l'API TMDB.
 Quand on enrichit (ou améliore) la table de mapping PROVIDER_RULES /
 PROVIDER_PATTERNS dans tmdb_providers.py, les recos déjà enrichies ont des URLs
 basées sur l'ancienne table. Ce script lit chaque reco ayant des
-`watchProviders`, ré-applique `_provider_link()` sur chaque label, et écrit
+`watchProviders`, ré-applique `liens_des_plateformes()` sur leurs labels, et écrit
 les nouvelles URLs / ethics. Idempotent.
 
 Usage :
@@ -16,7 +16,7 @@ from __future__ import annotations
 import argparse
 
 from common import log, read_json, recos_dir_for, write_json_if_changed
-from tmdb_providers import _provider_link
+from tmdb_providers import liens_des_plateformes
 
 
 def main():
@@ -33,10 +33,15 @@ def main():
             continue
         seen += 1
         title = d["title"]
-        liens = (_provider_link(prov["label"], title) for prov in providers)
-        # Une plateforme passée dans SANS_RECHERCHE perd son lien.
-        new_providers = [lien for lien in liens if lien is not None]
-        d["watchProviders"] = new_providers
+        # Mêmes boutons qu'à l'enrichissement : une plateforme passée dans
+        # SANS_RECHERCHE perd son lien, deux offres d'une même recherche n'en
+        # gardent qu'un.
+        boutons = liens_des_plateformes((prov["label"] for prov in providers), title)
+        # Plus aucun bouton : la clé disparaît, comme à l'enrichissement.
+        if boutons:
+            d["watchProviders"] = boutons
+        else:
+            del d["watchProviders"]
         if write_json_if_changed(p, d):
             updated += 1
 

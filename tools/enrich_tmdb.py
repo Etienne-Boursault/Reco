@@ -49,7 +49,7 @@ from common import (
     write_json_if_changed,
 )
 from review_lock import ServerLockBusy, acquire_pipeline_lock
-from tmdb_providers import _provider_link
+from tmdb_providers import liens_des_plateformes
 
 TMDB_BASE = "https://api.themoviedb.org/3"
 RATE_LIMIT_SLEEP = 0.1  # 10 req/sec, bien sous la limite TMDB (50 req/sec).
@@ -161,19 +161,10 @@ def tmdb_watch_providers(
                      api_key=api_key, strict=strict)
     fr = ((data or {}).get("results") or {}).get("FR") or {}
     watch_page_url = fr.get("link") or None
-    seen: set[str] = set()
-    providers: list[dict] = []
-    for slot in ("flatrate", "free", "ads", "rent", "buy"):
-        for prov in fr.get(slot, []) or []:
-            name = (prov.get("provider_name") or "").strip()
-            if not name or name in seen:
-                continue
-            seen.add(name)
-            lien = _provider_link(name, title)
-            # Plateforme sans recherche publique : rien à proposer.
-            if lien is not None:
-                providers.append(lien)
-    return watch_page_url, providers
+    noms = [(prov.get("provider_name") or "").strip()
+            for slot in ("flatrate", "free", "ads", "rent", "buy")
+            for prov in fr.get(slot, []) or []]
+    return watch_page_url, liens_des_plateformes(noms, title)
 
 
 def is_targetable(reco: dict) -> bool:

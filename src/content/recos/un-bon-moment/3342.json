@@ -1,0 +1,101 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Jonathan Dayton et Valerie Faris",
+  "enrichedAt": {
+    "links": "2026-11-13T11:38:20Z"
+  },
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "externalIds": {
+    "tmdb": "773",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/773-little-miss-sunshine/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:57",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3342",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/little-miss-sunshine/umc.cmc.39trxqhqfin42c3loja0ka8oh"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0449059/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/773"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=109815.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/773-little-miss-sunshine/watch?locale=FR"
+    }
+  ],
+  "quote": "Je dis toujours Little Miss Sunshine.",
+  "recommendedBy": "Adèle Castillon",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:25:57",
+  "title": "Little Miss Sunshine",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Little%20Miss%20Sunshine"
+    },
+    {
+      "ethics": "neutral",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Little%20Miss%20Sunshine"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Little%20Miss%20Sunshine"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Little%20Miss%20Sunshine"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Little%20Miss%20Sunshine"
+    }
+  ],
+  "year": 2006
+}

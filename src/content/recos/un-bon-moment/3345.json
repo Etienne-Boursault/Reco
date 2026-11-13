@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:43",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3345",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle-pierre-hillairet.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Humorix",
+      "url": "https://humorix.fr/humoriste/pierre-hillairet/"
+    }
+  ],
+  "quote": "Pierre Hillairet, le mercredi au Théâtre du Marais, allez voir Pierre Hillairet.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:39:43",
+  "title": "Pierre Hillairet",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

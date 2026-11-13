@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:51"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3355",
+  "itemId": "e2b37338",
+  "kind": "reco",
+  "quote": "Et branchez-vous, Miki, si ce n'est pas encore déjà fait, Industry Plant, Graou.",
+  "recommendedBy": "Adèle Castillon",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-rwlXWp7Lrhg",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:22:51",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

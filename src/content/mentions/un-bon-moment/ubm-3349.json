@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:52"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3349",
+  "itemId": "a7fb403c",
+  "kind": "reco",
+  "quote": "Non, c'était un film de Charlie Kaufman qui s'appelle Synecdoche New York, et qui est trop bien, parce que c'est que des mises en abîme de trucs, et moi j'adore ça.",
+  "recommendedBy": "Miki",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-rwlXWp7Lrhg",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:52",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}
