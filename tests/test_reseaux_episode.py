@@ -166,3 +166,25 @@ def test_lien_spotify_canonique_en_tete_et_jamais_en_double():
     assert len(reco["links"]) == 2
     with pytest.raises(SystemExit):
         re_.lien_spotify({}, "https://www.deezer.com/artist/1")
+
+
+def test_carrousel_donne_l_image_de_chaque_page_et_la_vignette_de_l_episode():
+    mentions = [mention("m1", "a", "00:05:00"), mention("m2", "b", "01:00:00")]
+    images = {"a": "https://image.tmdb.org/t/p/w780/a.jpg"}
+    ep = re_.carrousel(EP, mentions, ITEMS, {}, image=lambda item, reco: images.get(item["id"]))
+    assert ep["couverture"] == "https://i.ytimg.com/vi/x/maxresdefault.jpg"
+    assert [r["image"] for r in ep["recos"]] == ["https://image.tmdb.org/t/p/w780/a.jpg", None]
+    assert "image" not in re_.carrousel(EP, mentions, ITEMS, {})["recos"][0]
+
+
+def test_cle_tmdb_absente_laisse_les_films_sans_affiche(monkeypatch, capsys):
+    import enrich_tmdb
+
+    monkeypatch.setattr(enrich_tmdb, "cle_api", lambda: "cle")
+    assert re_._cle_tmdb() == "cle"
+
+    def absente():
+        raise RuntimeError("TMDB_API_KEY absent")
+    monkeypatch.setattr(enrich_tmdb, "cle_api", absente)
+    assert re_._cle_tmdb() is None
+    assert "Pas de cle TMDB" in capsys.readouterr().out

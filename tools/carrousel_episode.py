@@ -1,63 +1,46 @@
 """
 carrousel_episode.py — carrousel Instagram/Threads d'un episode, en PNG 1080x1350.
 
-Les gabarits viennent du canevas Design (`tools/carrousel/*.dc.html`) :
-couverture, une page par reco, page de fin. `episode.json` (produit par
-reseaux_episode.py, puis relu a la main) les remplit ; Edge sans interface
-rend chaque page en PNG. A cote : les legendes Instagram (« lien en bio ») et
-Threads (lien direct, 500 caracteres au plus) et les textes alternatifs.
+Couverture, une page par reco, page de fin, chacune avec son visuel depuis le
+2026-11-13 (modele valide par Etienne sur le canevas Design « Carrousel avec
+visuels », mise en page dans `carrousel_scenes.py`). `episode.json` (produit
+par reseaux_episode.py, puis relu a la main) donne pour chaque page son texte
+et l'adresse de son image (`image`, une adresse ou une liste de deux, a
+changer ou retirer a la relecture ; `mise` force la mise en scene) ; les
+images sont telechargees dans `images/`, Edge sans interface rend chaque page
+en PNG. A cote : les legendes Instagram (« lien en bio ») et Threads (lien
+direct, 500 caracteres au plus) et les textes alternatifs.
 
 Usage : python tools/carrousel_episode.py <dossier contenant episode.json>
 """
 from __future__ import annotations
 
-import html
 import json
-import re
+import logging
+import mimetypes
 import shutil
 import subprocess
 import sys
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
-GABARITS = Path(__file__).resolve().parent / "carrousel"
-ACCENT = "#ffd23f"
+import requests
+from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import carrousel_images as ci
+import carrousel_scenes as cs
+
+log = logging.getLogger("reco")
 EDGE = Path(r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe")
 EMOJIS = {"Série": "📺", "Film": "🎬", "Spectacle": "🎭", "Livre": "📚", "BD": "💭", "Musique": "🎵",
           "Album": "🎵", "Artiste": "🎤", "Chaîne YouTube": "🎤", "Podcast": "🎙️", "Jeu": "🎮",
           "Lieu": "📍", "Vidéo": "📹", "Application": "📱"}
 LIMITE_THREADS = 500
-
-
-def morceaux(src: Path) -> tuple[str, str]:
-    texte = src.read_text(encoding="utf-8")
-    helmet = re.search(r"<helmet>(.*?)</helmet>", texte, re.DOTALL).group(1)
-    corps = re.search(r"</helmet>(.*?)</x-dc>", texte, re.DOTALL).group(1)
-    return helmet, corps
-
-
-def remplir(corps: str, valeurs: dict[str, Any]) -> str:
-    def boucle(m: re.Match[str]) -> str:
-        liste, var, tpl = valeurs[m.group(1)], m.group(2), m.group(3)
-        return "".join(
-            re.sub(r"\{\{" + var + r"\.(\w+)\}\}", lambda k, e=e: html.escape(str(e[k.group(1)])), tpl)
-            for e in liste)
-
-    corps = re.sub(r'<sc-for list="\{\{(\w+)\}\}" as="(\w+)"[^>]*>(.*?)</sc-for>', boucle, corps, flags=re.DOTALL)
-    corps = re.sub(r"\{\{(\w+)\}\}", lambda m: html.escape(str(valeurs[m.group(1)])), corps)
-    if "{{" in corps:
-        raise SystemExit(f"gabarit non resolu : {re.findall(r'{{[^}]*}}', corps)}")
-    return corps
-
-
-def taille_titre(titre: str) -> int:
-    """Le gabarit vise 190 px ; on reduit pour tenir en deux lignes de Bebas Neue."""
-    mots = max(len(m) for m in titre.split())
-    if len(titre) <= 18 and mots <= 9:
-        return 190
-    if len(titre) <= 26 and mots <= 11:
-        return 160
-    return 130
+NAVIGATEUR = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
+Telecharger = Callable[[str, Path], "Path | None"]
 
 
 def ecrire(dst: Path, helmet: str, corps: str) -> None:
@@ -67,24 +50,51 @@ def ecrire(dst: Path, helmet: str, corps: str) -> None:
         + corps + "</body></html>", encoding="utf-8")
 
 
-def pages(ep: dict[str, Any], sortie: Path) -> list[Path]:
-    """Ecrit les pages HTML du carrousel et renvoie leurs chemins, dans l'ordre."""
-    recos, faites = ep["recos"], []
-    total = len(recos)
-    helmet, corps = morceaux(GABARITS / "EpCouverture.dc.html")
+def telecharger(url: str, chemin: Path, session: Any = None) -> Path | None:
+    """Telecharge une image vers `chemin` (extension d'apres le type rendu) ; None en cas d'echec."""
+    try:
+        reponse = (session or requests).get(url, headers=NAVIGATEUR, timeout=30)
+        reponse.raise_for_status()
+    except (OSError, ValueError) as exc:  # requests.RequestException derive d'OSError
+        log.warning("image du carrousel : telechargement en echec pour %s (%s : %s)", url, type(exc).__name__, exc)
+        return None
+    type_ = (reponse.headers.get("content-type") or "").split(";")[0]
+    suffixe = mimetypes.guess_extension(type_) or Path(urlparse(url).path).suffix or ".jpg"
+    chemin = chemin.with_suffix(".jpg" if suffixe == ".jpe" else suffixe)
+    chemin.write_bytes(reponse.content)
+    return chemin
+
+
+def _images(r: dict[str, Any], dossier: Path, rang: int, tel: Telecharger) -> list[tuple[str, Path]]:
+    adresses = r.get("image") or []
+    adresses = [adresses] if isinstance(adresses, str) else adresses
+    faites = [(url, tel(url, dossier / f"{rang:02d}-{i}")) for i, url in enumerate(adresses)]
+    return [(url, chemin) for url, chemin in faites if chemin]
+
+
+def pages(ep: dict[str, Any], sortie: Path, telecharger: Telecharger | None = None) -> list[Path]:
+    """Ecrit les pages HTML du carrousel (images comprises) et renvoie leurs chemins, dans l'ordre."""
+    tel = telecharger or globals()["telecharger"]
+    dossier = sortie / "images"
+    dossier.mkdir(parents=True, exist_ok=True)
+    recos, total, utilisees, faites = ep["recos"], len(ep["recos"]), [], []
+    vignette = tel(ep["couverture"], dossier / "00-couverture") if ep.get("couverture") else None
+    if vignette:
+        utilisees.append(ep["couverture"])
     faites.append(sortie / "01-couverture.html")
-    ecrire(faites[-1], helmet, remplir(corps, {
-        "accent": ACCENT, "numero": ep["numero"], "titre": ep["titre"], "nbRecos": total,
-        "invites": [{"nom": n} for n in ep["invites"]]}))
-    helmet, corps = morceaux(GABARITS / "EpReco.dc.html")
+    ecrire(faites[-1], cs.HEAD, cs.couverture(ep, total, vignette.resolve().as_uri() if vignette else None))
     for rang, r in enumerate(recos, 1):
-        page = remplir(corps, {"accent": ACCENT, "rang": rang, "total": total, **r})
-        page = page.replace("font-size: 190px", f"font-size: {taille_titre(r['titre'])}px", 1)
+        images = _images(r, dossier, rang, tel)
+        utilisees += [url for url, _ in images]
+        tailles = [Image.open(chemin).size for _, chemin in images]
+        calculee = ci.mise_en_scene(r["type"], tailles)
+        # Une mise forcee dans episode.json ne vaut que si ses images sont la.
+        mise = r["mise"] if r.get("mise") and tailles and (r["mise"] == "double") == (len(tailles) > 1) else calculee
+        alts = [(chemin.resolve().as_uri(), f"Visuel de « {r['titre']} »") for _, chemin in images]
         faites.append(sortie / f"{rang + 1:02d}-reco.html")
-        ecrire(faites[-1], helmet, page)
-    helmet, corps = morceaux(GABARITS / "EpFin.dc.html")
+        ecrire(faites[-1], cs.HEAD, cs.page_reco(r, rang, total, alts, mise))
     faites.append(sortie / f"{total + 2:02d}-fin.html")
-    ecrire(faites[-1], helmet, remplir(corps, {"accent": ACCENT, "numero": ep["numero"], "nbRecos": total}))
+    ecrire(faites[-1], cs.HEAD, cs.fin(ep, total, ci.credits(utilisees)))
     return faites
 
 
@@ -122,11 +132,12 @@ def rendre(page: Path) -> Path:
     return png
 
 
-def main() -> int:
-    if len(sys.argv) != 2:
+def main(argv: list[str] | None = None) -> int:
+    argv = sys.argv if argv is None else argv
+    if len(argv) != 2:
         print(__doc__)
         return 2
-    dossier = Path(sys.argv[1])
+    dossier = Path(argv[1])
     ep = json.loads((dossier / "episode.json").read_text(encoding="utf-8"))
     for page in pages(ep, dossier):
         print(rendre(page))

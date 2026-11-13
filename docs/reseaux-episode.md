@@ -57,7 +57,35 @@ Dans `episode.json` :
 
 - raccourcir les citations, qui doivent tenir en 3 ou 4 lignes ;
 - compléter les « qui » vides ;
-- préciser `createur` si besoin : une plateforme (« Sur Apple TV »), un lieu (« au Funambule »).
+- préciser `createur` si besoin : une plateforme (« Sur Apple TV »), un lieu (« au Funambule ») ;
+- vérifier les **images**.
+
+Depuis le 2026-11-13, chaque page a un visuel (modèle validé par l'éditeur sur le canevas Design
+« Carrousel avec visuels »). La préparation écrit dans `episode.json` l'adresse de l'image de chaque
+page (`image`) et la vignette YouTube de l'épisode (`couverture`). Elle la tire des identifiants déjà
+vérifiés sur la reco, jamais d'une recherche par titre (`tools/carrousel_images.py`) :
+
+| Type | Image |
+|---|---|
+| Film, série | l'affiche TMDB dans la langue originale de l'œuvre |
+| Album | la pochette Deezer, sinon Apple Music |
+| Artiste, musique | la photo Deezer (pas la photo grise par défaut) |
+| Podcast | la vignette Apple Podcasts |
+| Chaîne YouTube | l'avatar de la chaîne |
+| Livre, BD | l'image de l'article Wikipédia |
+| Autre | l'image de partage du lien « site officiel », sinon son icône d'application |
+
+La commande liste les pages restées **sans image**. À la relecture :
+
+- remplacer une image fausse ou inutilisable par une autre adresse (une photo d'artiste Deezer peut
+  être une pochette de single, une affiche originale se trouve sur TMDB) ; `null` retire l'image ;
+- deux œuvres d'une même phrase peuvent partager une page (Instagram plafonne à 20 images) : fusionner
+  les deux pages et mettre les deux adresses en liste, `"image": ["…", "…"]` ;
+- `mise` force la mise en scène, rarement utile : `affiche`, `carre`, `rond`, `double`, `photo`,
+  `cadre`, `tuile` ou `sans`. Sinon, elle se choisit d'après le type et les proportions de l'image.
+
+Une page sans image garde le rythme du carrousel : un aplat jaune, avec un disque pour la musique.
+La page de fin cite les sources des images utilisées (TMDB, Deezer, Apple, YouTube, Wikipédia).
 
 Ensuite :
 
@@ -65,7 +93,8 @@ Ensuite :
 python -X utf8 tools/carrousel_episode.py "<dossier>"
 ```
 
-La commande produit les PNG (1080×1350), `legende-instagram.txt`, `legende-threads.txt` (500
+La commande télécharge les images dans `images/`, puis produit les PNG (1080×1350, mise en page dans
+`tools/carrousel_scenes.py`), `legende-instagram.txt`, `legende-threads.txt` (500
 caractères au plus) et `alts.json`. Il faut regarder les PNG, puis les **montrer à l'éditeur avant de
 publier**.
 
