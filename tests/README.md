@@ -27,7 +27,8 @@ Le `pyproject.toml` à la racine déclare :
 |---|---|
 | `test_common.py` | `slugify` (accents/casse/ponct), `reco_prefix` (initiales), `write_json_if_changed` (idempotence, UTF-8) |
 | `test_match_youtube.py` | `_normalize`, `_similarity` (inclusion boost), `_parse_se` (séparateurs `-`/`·`/`.`/`–`), `_video_id` |
-| `test_enrich_tmdb.py` | `_provider_link` : mapping exact + patterns substring (Apple TV Store, Netflix with Ads, X Amazon Channel) + fallback DuckDuckGo |
+| `test_enrich_tmdb.py` | `_provider_link` : mapping exact + patterns substring (Apple TV Store, Netflix with Ads, X Amazon Channel) + plateformes sans recherche ou disparues (Orange VOD, SFR Play) + fallback DuckDuckGo ; `liens_des_plateformes` : un bouton par adresse, nom et marqueur d'une règle exacte |
+| `test_refresh_watch_provider_urls.py` | reconstruction des boutons des recos publiées : plateformes mortes et doublons retirés, clé retirée quand plus rien ne reste, idempotence |
 | `test_rematch_with_ocr.py` | `_episode_is_extract` : tous les cas-limites (audio absent, YT absent, durées au seuil) |
 | `test_inventory_md.py` | `fmt_dur` (zéro, sub-minute, padding 2 chiffres) |
 | `test_extract_recos.py` | `_norm` (accents/casse/ponct/digits), `_dedupe` (fusion intelligente des champs manquants) |

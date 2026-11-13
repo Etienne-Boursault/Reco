@@ -103,3 +103,14 @@ def test_le_nom_general_de_la_plateforme_l_emporte_sur_une_offre_particuliere():
 def test_un_nom_repete_ou_sans_recherche_ne_donne_rien_de_plus():
     liens = liens_des_plateformes(["Netflix", "Orange VOD", "Netflix", "SFR Play"], "Mortel")
     assert [lien["label"] for lien in liens] == ["Netflix"]
+
+
+def test_le_bouton_fusionne_prend_aussi_le_marqueur_ethique_de_la_regle_exacte(monkeypatch):
+    """Le nom et le marqueur viennent de la même règle : jamais un nom de
+    plateforme « neutre » sous le marqueur d'une offre « indie », ni l'inverse."""
+    import tmdb_providers
+    regles = dict(tmdb_providers.PROVIDER_RULES)
+    regles["Kino"] = {"url": "https://mubi.com/fr/films?q={q}", "ethics": "neutral"}
+    monkeypatch.setattr(tmdb_providers, "PROVIDER_RULES", regles)
+    liens = liens_des_plateformes(["MUBI Truc", "Kino"], "Mortel")
+    assert [(lien["label"], lien["ethics"]) for lien in liens] == [("Kino", "neutral")]

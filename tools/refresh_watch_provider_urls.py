@@ -36,8 +36,12 @@ def main():
         # Mêmes boutons qu'à l'enrichissement : une plateforme passée dans
         # SANS_RECHERCHE perd son lien, deux offres d'une même recherche n'en
         # gardent qu'un.
-        d["watchProviders"] = liens_des_plateformes(
-            (prov["label"] for prov in providers), title)
+        boutons = liens_des_plateformes((prov["label"] for prov in providers), title)
+        # Plus aucun bouton : la clé disparaît, comme à l'enrichissement.
+        if boutons:
+            d["watchProviders"] = boutons
+        else:
+            del d["watchProviders"]
         if write_json_if_changed(p, d):
             updated += 1
 

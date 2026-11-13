@@ -133,9 +133,11 @@ def liens_des_plateformes(noms: Iterable[str], titre: str) -> list[dict]:
     Une plateforme sans recherche publique ou disparue ne donne rien. Deux
     offres qui mènent à la même recherche (« Paramount Plus » et « … Premium »,
     « HBO Max Amazon Channel » et « Amazon Video ») ne donnent qu'un bouton, à
-    la place du premier, avec le nom général de la plateforme quand l'une des
-    deux en a une règle exacte : la recherche ouverte est celle de la
-    plateforme, pas celle de l'offre (doublons vus sur S6-E09, 2026-11-13).
+    la place du premier. Ce bouton prend le nom et le marqueur éthique d'une
+    règle exacte (`PROVIDER_RULES`) plutôt que ceux d'une offre reconnue par
+    motif : la recherche ouverte est celle de la plateforme, pas celle de
+    l'offre. Entre deux règles exactes, la première lue reste (doublons vus
+    sur S6-E09, 2026-11-13).
     Commun à `enrich_tmdb` et à `refresh_watch_provider_urls`, pour que les
     deux chemins donnent les mêmes boutons.
     """
@@ -148,5 +150,5 @@ def liens_des_plateformes(noms: Iterable[str], titre: str) -> list[dict]:
         if deja is None:
             par_adresse[lien["url"]] = lien
         elif nom in PROVIDER_RULES and deja["label"] not in PROVIDER_RULES:
-            deja["label"] = nom
+            deja.update(lien)  # nom ET marqueur de la même règle
     return list(par_adresse.values())
