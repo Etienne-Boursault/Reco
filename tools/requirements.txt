@@ -39,7 +39,7 @@ filelock>=4.0.9,<5          # verrou inter-processus (cf. tools/review_lock.py)
 
 # Carrousel des réseaux — taille et orientation des images téléchargées (carrousel_episode.py).
 # Arrivait jusqu'ici par fastembed : la déclarer évite qu'elle disparaisse avec lui.
-pillow>=12.2.0,<13
+pillow>=13.0.0,<14  # 13.0.0 corrige les failles signalées par l'audit des dépendances (GHSA-f2g6-542v-9j58…)
 
 # Tests — parsing HTML structurel (review_server)
 beautifulsoup4>=4.15.0,<5  # assertions DOM robustes aux changements de markup
