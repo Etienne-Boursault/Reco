@@ -58,7 +58,7 @@ def test_serie_sans_affiche_originale_prend_la_premiere():
 
 
 def test_film_sans_cle_ni_affiche_ne_donne_rien():
-    reco = {"types": ["film"], "externalIds": {"tmdb": "38"}}
+    reco = {"types": ["film"], "externalIds": {"tmdb": "38", "tmdbType": "movie"}}
     assert ci.source({}, reco, FauxWeb(), None) is None
     assert ci.source({}, reco, FauxWeb(json={TMDB + "/images": {"posters": []}}), "cle") is None
 
@@ -160,77 +160,6 @@ def test_une_source_presente_mais_vide_ne_donne_rien():
         lien("https://exemple.org/", "official")]}, vide, None) is None
 
 
-# ===== L'accès réel au web, avec une fausse session ===========================
-class FausseReponse:
-    encoding = "utf-8"
-
-    def __init__(self, donnees=None, texte="", url=""):
-        self._donnees, self.text, self.url = donnees, texte, url
-
-    def raise_for_status(self):
-        return None
-
-    def json(self):
-        return self._donnees
-
-    def iter_content(self, chunk_size):
-        yield self.text.encode("utf-8")
-
-    def close(self):
-        return None
-
-
-class FausseSession:
-    def __init__(self):
-        self.appels = []
-
-    def get(self, url, **kw):
-        self.appels.append((url, kw))
-        return FausseReponse({"ok": url}, "<html>" + url, url)
-
-
-def test_web_reel_lit_json_et_html_avec_les_bons_en_tetes():
-    session = FausseSession()
-    web = ci.WebReel(session=session)
-    assert web.json("https://api/x", id=3) == {"ok": "https://api/x"}
-    assert web.html("https://site/y") == ("https://site/y", "<html>https://site/y")
-    assert session.appels[0][1]["params"] == {"id": 3}
-    assert "SOCS=CAI" in session.appels[1][1]["headers"]["Cookie"]
-
-
-def test_web_reel_trouve_l_avatar_youtube(monkeypatch):
-    infos = {"thumbnails": [{"id": "banner", "url": "b"}, {"id": "avatar_uncropped", "url": "https://yt3/a"}]}
-    assert ci.WebReel(session=FausseSession(), ytdl=lambda url: infos).avatar_youtube("https://youtube/@x") == \
-        "https://yt3/a"
-    assert ci.WebReel(session=FausseSession(), ytdl=lambda url: {}).avatar_youtube("https://youtube/@x") is None
-
-    import sys
-    import types
-
-    class FauxYoutubeDL:
-        def __init__(self, options):
-            assert options["extract_flat"] is True
-
-        def __enter__(self):
-            return self
-
-        def __exit__(self, *exc):
-            return False
-
-        def extract_info(self, url, download):
-            return infos
-
-    monkeypatch.setitem(sys.modules, "yt_dlp", types.SimpleNamespace(YoutubeDL=FauxYoutubeDL))
-    assert ci.WebReel(session=FausseSession()).avatar_youtube("https://youtube/@x") == "https://yt3/a"
-
-
-def test_wikipedia_recoit_un_agent_qui_nomme_l_outil():
-    """Wikimedia refuse (403) les agents qui imitent un navigateur ; il veut un nom d'outil."""
-    session = FausseSession()
-    ci.WebReel(session=session).json("https://fr.wikipedia.org/api/rest_v1/page/summary/X")
-    assert session.appels[0][1]["headers"]["User-Agent"].startswith("UneBonneReco/")
-
-
 def test_site_sans_image_de_partage_donne_son_icone_d_application():
     url = "https://www.wiki-masters.com/"
     page = ('<meta charset="utf-8"><meta name="description" content="Cartes">'
@@ -245,7 +174,7 @@ def test_la_cle_tmdb_ne_sort_jamais_dans_les_journaux(caplog):
         def json(self, url, **params):
             raise OSError("404 Client Error for url: https://api.themoviedb.org/3/movie/600?api_key=SECRET&x=1")
 
-    reco = {"id": "ubm-1", "types": ["film"], "externalIds": {"tmdb": "600"}}
+    reco = {"id": "ubm-1", "types": ["film"], "externalIds": {"tmdb": "600", "tmdbType": "movie"}}
     assert ci.source({}, reco, Panne(), "SECRET") is None
     assert "SECRET" not in caplog.text and "api_key=…" in caplog.text
 
@@ -257,31 +186,6 @@ def test_une_erreur_de_reponse_d_une_source_ne_bloque_pas():
 
     reco = {"types": ["chaine"], "links": [lien("https://www.youtube.com/@x")]}
     assert ci.source({}, reco, Panne(), None) is None
-
-
-def test_yt_dlp_en_echec_ne_donne_pas_d_avatar(monkeypatch):
-    import sys
-    import types
-
-    class ErreurYoutube(Exception):
-        pass
-
-    class FauxYoutubeDL:
-        def __init__(self, options):
-            pass
-
-        def __enter__(self):
-            return self
-
-        def __exit__(self, *exc):
-            return False
-
-        def extract_info(self, url, download):
-            raise ErreurYoutube("This channel does not exist")
-
-    faux = types.SimpleNamespace(YoutubeDL=FauxYoutubeDL, utils=types.SimpleNamespace(YoutubeDLError=ErreurYoutube))
-    monkeypatch.setitem(sys.modules, "yt_dlp", faux)
-    assert ci.WebReel(session=FausseSession()).avatar_youtube("https://www.youtube.com/@disparue") is None
 
 
 def test_image_de_partage_quel_que_soit_l_ordre_des_attributs():
@@ -301,11 +205,12 @@ def test_wikipedia_donne_une_vignette_agrandie_plutot_que_l_original():
     web = FauxWeb(json={base + "Logo": {
         "thumbnail": {"source": "https://upload/thumb/a/ab/Logo.svg/330px-Logo.svg.png"},
         "originalimage": {"source": "https://upload/a/ab/Logo.svg"}}})
-    assert ci.source({}, reco, web, None) == "https://upload/thumb/a/ab/Logo.svg/1000px-Logo.svg.png"
+    # Sans largeur connue, la vignette telle quelle : Wikimedia refuse d'agrandir (400).
+    assert ci.source({}, reco, web, None) == "https://upload/thumb/a/ab/Logo.svg/330px-Logo.svg.png"
 
 
 def test_affiche_de_repli_francaise_puis_sans_texte():
-    reco = {"types": ["film"], "externalIds": {"tmdb": "38"}}
+    reco = {"types": ["film"], "externalIds": {"tmdb": "38", "tmdbType": "movie"}}
     for affiches, attendu in (
         ([{"iso_639_1": "de", "file_path": "/de.jpg"}, {"iso_639_1": "fr", "file_path": "/fr.jpg"}], "/fr.jpg"),
         ([{"iso_639_1": "ru", "file_path": "/ru.jpg"}, {"iso_639_1": None, "file_path": "/nu.jpg"}], "/nu.jpg"),
@@ -347,34 +252,6 @@ def test_couverture_suit_l_adresse_youtube_de_l_episode():
     assert ci.couverture({"guid": "acast-1"}) is None
 
 
-def test_html_ne_lit_que_le_debut_de_la_page():
-    class Flux:
-        encoding = "utf-8"
-
-        def raise_for_status(self):
-            return None
-
-        url = "https://site/x"
-
-        def iter_content(self, chunk_size):
-            yield b"<head>og</head>"
-            yield b"x" * ci.TAILLE_PAGE
-            raise AssertionError("lu trop loin")
-
-        def close(self):
-            self.ferme = True
-
-    class Session:
-        def get(self, url, **kw):
-            assert kw["stream"] is True
-            self.reponse = Flux()
-            return self.reponse
-
-    session = Session()
-    finale, texte = ci.WebReel(session=session).html("https://site/x")
-    assert texte.startswith("<head>og</head>") and session.reponse.ferme and finale == "https://site/x"
-
-
 # ===== Deuxième tour de revue de la PR #204 ===================================
 WIKI = "https://fr.wikipedia.org/api/rest_v1/page/summary/"
 LIVRE = {"types": ["livre"], "links": [lien("https://fr.wikipedia.org/wiki/X", "info")]}
@@ -387,10 +264,10 @@ def test_wikipedia_n_agrandit_jamais_au_dela_de_l_original():
     assert ci.source({}, LIVRE, petit, None) == "https://upload/a/ab/X.jpg"
     svg = FauxWeb(json={WIKI + "X": {"thumbnail": {"source": "https://upload/thumb/a/ab/X.svg/330px-X.svg.png"},
                                      "originalimage": {"source": "https://upload/a/ab/X.svg", "width": 600}}})
-    assert ci.source({}, LIVRE, svg, None) == "https://upload/thumb/a/ab/X.svg/600px-X.svg.png"
+    assert ci.source({}, LIVRE, svg, None) == "https://upload/thumb/a/ab/X.svg/330px-X.svg.png"
     grand = FauxWeb(json={WIKI + "X": {"thumbnail": vignette,
                                        "originalimage": {"source": "https://upload/a/ab/X.jpg", "width": 4000}}})
-    assert ci.source({}, LIVRE, grand, None) == "https://upload/thumb/a/ab/X.jpg/1000px-X.jpg"
+    assert ci.source({}, LIVRE, grand, None) == "https://upload/thumb/a/ab/X.jpg/960px-X.jpg"
 
 
 def test_une_image_refusee_fait_passer_a_la_source_suivante():
@@ -400,63 +277,6 @@ def test_une_image_refusee_fait_passer_a_la_source_suivante():
                   html={url: '<meta property="og:image" content="https://pdl/couv.jpg">'},
                   invalides={"https://upload/X.svg"})
     assert ci.source({}, reco, web, None) == "https://pdl/couv.jpg"
-
-
-def test_web_reel_verifie_qu_une_adresse_rend_bien_une_image():
-    class Reponse:
-        def __init__(self, statut, genre):
-            self.status_code, self.headers = statut, {"content-type": genre}
-
-        def close(self):
-            return None
-
-    class Session:
-        def __init__(self, statut, genre):
-            self.reponse = Reponse(statut, genre)
-
-        def get(self, url, **kw):
-            assert kw["stream"] is True
-            return self.reponse
-
-    assert ci.WebReel(session=Session(200, "image/jpeg")).image_valide("https://x/a.jpg")
-    assert not ci.WebReel(session=Session(200, "image/svg+xml")).image_valide("https://x/a.svg")
-    assert not ci.WebReel(session=Session(200, "text/html; charset=utf-8")).image_valide("https://x/a")
-    assert not ci.WebReel(session=Session(404, "image/jpeg")).image_valide("https://x/a.jpg")
-
-    class Coupee:
-        def get(self, url, **kw):
-            raise OSError("connexion refusée")
-    assert not ci.WebReel(session=Coupee()).image_valide("https://x/a.jpg")
-
-
-def test_html_decode_sans_planter_sur_un_encodage_inconnu_ou_absent():
-    class Flux:
-        url = "https://site/x"
-
-        def __init__(self, encodage, octets):
-            self.encoding, self.octets = encodage, octets
-
-        def raise_for_status(self):
-            return None
-
-        def iter_content(self, chunk_size):
-            yield self.octets
-
-        def close(self):
-            return None
-
-    class Session:
-        def __init__(self, flux):
-            self.flux = flux
-
-        def get(self, url, **kw):
-            return self.flux
-
-    ete = "<meta content='/affiche-été.jpg'>".encode()
-    assert "été" in ci.WebReel(session=Session(Flux("utf8mb4", ete))).html("https://site/x")[1]
-    assert "été" in ci.WebReel(session=Session(Flux("ISO-8859-1", ete))).html("https://site/x")[1]
-    latin = "<p>été</p>".encode("latin-1")
-    assert "été" in ci.WebReel(session=Session(Flux(None, latin))).html("https://site/x")[1]
 
 
 def test_une_image_relative_se_resout_sur_l_adresse_finale_apres_redirection():
@@ -492,28 +312,6 @@ def test_une_erreur_de_programmation_n_est_pas_masquee():
         ci.source({}, reco, Bug(), None)
 
 
-def test_wikimedia_recoit_l_agent_de_l_outil_partout():
-    """upload.wikimedia.org refuse lui aussi un faux navigateur : vérification et téléchargement."""
-    assert ci.entetes("https://upload.wikimedia.org/x.jpg")["User-Agent"] == ci.OUTIL
-    assert ci.entetes("https://fr.wikipedia.org/api/x")["User-Agent"] == ci.OUTIL
-    assert ci.entetes("https://cdn-images.dzcdn.net/x.jpg")["User-Agent"] != ci.OUTIL
-
-    class Reponse:
-        status_code, headers = 200, {"content-type": "image/jpeg"}
-
-        def close(self):
-            return None
-
-    class Session:
-        def get(self, url, **kw):
-            self.agent = kw["headers"]["User-Agent"]
-            return Reponse()
-
-    session = Session()
-    assert ci.WebReel(session=session).image_valide("https://upload.wikimedia.org/x.jpg")
-    assert session.agent == ci.OUTIL
-
-
 def test_une_page_de_recherche_de_librairie_n_est_pas_une_fiche_de_livre():
     """Son image de partage est le logo du site, pas la couverture (Max et Lili, S6-E09)."""
     recherche = "https://www.placedeslibraires.fr/listeliv.php?base=allbooks&mots_recherche=max%20et%20lili"
@@ -528,3 +326,54 @@ def test_l_extension_de_l_original_se_lit_sans_les_parametres_de_suivi():
     web = FauxWeb(json={WIKI + "X": {"thumbnail": {"source": "https://thumb/0/08/M.jpg/330px-M.jpg"},
                                      "originalimage": {"source": original, "width": 720}}})
     assert ci.source({}, LIVRE, web, None) == original
+
+
+# ===== Troisième tour de revue de la PR #204 ==================================
+def test_sans_type_tmdb_pas_d_affiche_et_jamais_un_couple_croise():
+    """Les identifiants des films et des séries se chevauchent : sans type, l'affiche serait d'une autre œuvre."""
+    web = FauxWeb(json={TMDB: {"original_language": "en"},
+                        TMDB + "/images": {"posters": [{"iso_639_1": "en", "file_path": "/film.jpg"}]}})
+    assert ci.source({}, {"types": ["serie"], "externalIds": {"tmdb": "38"}}, web, "cle") is None
+    croise = ci.source({"externalIds": {"tmdb": "99", "tmdbType": "tv"}},
+                       {"types": ["serie"], "externalIds": {"tmdb": "38"}}, web, "cle")
+    assert croise is None and not any("/tv/38" in d for d in web.demandes)
+
+
+def test_une_reponse_d_api_de_forme_inattendue_ne_bloque_pas():
+    class Liste(FauxWeb):
+        def json(self, url, **params):
+            return []
+    reco = {"types": ["album"], "links": [lien("https://www.deezer.com/album/42")]}
+    assert ci.source({}, reco, Liste(), None) is None
+    sans_chemin = FauxWeb(json={TMDB: {"original_language": "en"},
+                                TMDB + "/images": {"posters": [{"iso_639_1": "en", "file_path": None}]}})
+    film = {"types": ["film"], "externalIds": {"tmdb": "38", "tmdbType": "movie"}}
+    assert ci.source({}, film, sans_chemin, "cle") is None
+
+
+def test_icone_et_image_de_partage_sous_leurs_autres_noms():
+    url = "https://vieux-cms.fr/"
+    reco = {"types": ["spectacle"], "links": [lien(url, "official")]}
+    for page, attendu in (
+        ('<link rel="Apple-Touch-Icon-Precomposed" href="/icone.png">', "https://vieux-cms.fr/icone.png"),
+        ('<link rel="icon apple-touch-icon" href="/i.png">', "https://vieux-cms.fr/i.png"),
+        ('<meta property="og:image:secure_url" content="https://cdn/s.jpg">', "https://cdn/s.jpg"),
+    ):
+        assert ci.source({}, reco, FauxWeb(html={url: page}), None) == attendu
+
+
+def test_seuls_les_domaines_youtube_sont_credites_youtube():
+    assert ci.credits(["https://blogger.googleusercontent.com/img/a.jpg"]) == "Images : sites des œuvres"
+    assert ci.credits(["https://yt3.googleusercontent.com/a"]) == "Images : YouTube"
+
+
+def test_une_pochette_carree_reste_carree_et_une_photo_d_artiste_est_ronde():
+    assert ci.mise_en_scene("Musique", [(1000, 1000)], ["https://cdn-images.dzcdn.net/images/cover/x.jpg"]) == "carre"
+    assert ci.mise_en_scene("Musique", [(1000, 1000)], ["https://cdn-images.dzcdn.net/images/artist/x.jpg"]) == "rond"
+    assert ci.mise_en_scene("Artiste", [(1000, 1000)]) == "rond"
+
+
+def test_couverture_des_adresses_live_shorts_et_embed():
+    for forme in ("live", "shorts", "embed"):
+        ep = {"guid": "abc", "youtubeUrl": f"https://www.youtube.com/{forme}/aBc-12_xYz9"}
+        assert ci.couverture(ep) == "https://i.ytimg.com/vi/aBc-12_xYz9/maxresdefault.jpg"

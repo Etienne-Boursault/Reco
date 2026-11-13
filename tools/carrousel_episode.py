@@ -45,7 +45,9 @@ Telecharger = Callable[[str, Path], "Path | None"]
 QUART_DE_TOUR = {5, 6, 7, 8}
 #: Ce que Pillow lève sur un fichier qu'il ne sait pas lire (SVG, HTML, image tronquée ou géante).
 ILLISIBLE = (OSError, ValueError, SyntaxError, struct.error, ZeroDivisionError, Image.DecompressionBombError)
-MISES = {"affiche", "carre", "rond", "double", "photo", "cadre", "tuile", "sans"}
+#: YouTube rend une vignette grise de 120×90 quand une vidéo n'a pas la taille demandée.
+SUBSTITUT_YOUTUBE = (120, 90)
+INDEX = "index.json"
 
 
 def ecrire(dst: Path, helmet: str, corps: str) -> None:
@@ -84,9 +86,30 @@ def taille_affichee(chemin: Path) -> tuple[int, int] | None:
     return (hauteur, largeur) if tournee else (largeur, hauteur)
 
 
+def _avec_cache(tel: Telecharger, dossier: Path) -> Telecharger:
+    """L'éditeur relance le rendu à chaque retouche d'episode.json : une image déjà
+    téléchargée pour la même adresse ne l'est pas de nouveau (index `images/index.json`)."""
+    chemin_index = dossier / INDEX
+    try:
+        index = json.loads(chemin_index.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        index = {}
+
+    def telecharger_une_fois(url: str, chemin: Path) -> Path | None:
+        deja = dossier / index.get(url, "")
+        if index.get(url) and deja.exists():
+            return deja
+        if fait := tel(url, chemin):
+            index[url] = fait.name
+            chemin_index.write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding="utf-8")
+        return fait
+    return telecharger_une_fois
+
+
 def _images(r: dict[str, Any], dossier: Path, rang: int, tel: Telecharger) -> list[tuple[str, Path, tuple[int, int]]]:
     adresses = r.get("image") or []
-    adresses = [adresses] if isinstance(adresses, str) else adresses
+    # Une seule adresse, ou une liste ; un `null` dans la liste (image retirée) est ignoré.
+    adresses = [a for a in ([adresses] if isinstance(adresses, str) else adresses) if a]
     lues = []
     for i, url in enumerate(adresses):
         if (chemin := tel(url, dossier / f"{rang:02d}-{i}")) and (taille := taille_affichee(chemin)):
@@ -100,28 +123,34 @@ def _vignette(adresse: str | None, dossier: Path, tel: Telecharger) -> tuple[Pat
     if adresse and "maxresdefault" in adresse:
         essais.append(adresse.replace("maxresdefault", "hqdefault"))
     for essai in essais:
-        if (chemin := tel(essai, dossier / "00-couverture")) and taille_affichee(chemin):
+        chemin = tel(essai, dossier / "00-couverture")
+        if chemin and (taille := taille_affichee(chemin)) and taille != SUBSTITUT_YOUTUBE:
             return chemin, essai
     return None, None
 
 
-def _mise(r: dict[str, Any], rang: int, tailles: list[tuple[int, int]]) -> str:
-    """Mise en scène calculée, sauf une mise forcée connue dont les images sont là."""
-    calculee, voulue = ci.mise_en_scene(r["type"], tailles), r.get("mise")
-    if voulue and voulue not in MISES:
-        log.warning("carrousel : page %d, mise « %s » inconnue (%s), « %s » à la place",
-                    rang, voulue, ", ".join(sorted(MISES)), calculee)
+def _mise(r: dict[str, Any], rang: int, tailles: list[tuple[int, int]], urls: list[str]) -> str:
+    """Mise en scène calculée, sauf une mise forcée connue dont les images sont là ;
+    une mise forcée inconnue ou incompatible est signalée à l'éditeur."""
+    calculee, voulue = ci.mise_en_scene(r["type"], tailles, urls), r.get("mise")
+    if not voulue:
         return calculee
-    if voulue == "sans" or (voulue and tailles and (voulue == "double") == (len(tailles) > 1)):
+    if voulue not in cs.MISES:
+        log.warning("carrousel : page %d, mise « %s » inconnue (%s), « %s » à la place",
+                    rang, voulue, ", ".join(sorted(cs.MISES)), calculee)
+        return calculee
+    if voulue == "sans" or (tailles and (voulue == "double") == (len(tailles) > 1)):
         return voulue
+    log.warning("carrousel : page %d, mise « %s » ignorée (%d image(s) téléchargée(s)), « %s » à la place",
+                rang, voulue, len(tailles), calculee)
     return calculee
 
 
 def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> list[Path]:
     """Écrit les pages HTML du carrousel (images comprises) et renvoie leurs chemins, dans l'ordre."""
-    tel = tel or telecharger
     dossier = sortie / "images"
     dossier.mkdir(parents=True, exist_ok=True)
+    tel = _avec_cache(tel or telecharger, dossier)
     recos, total, utilisees, faites = ep["recos"], len(ep["recos"]), [], []
     vignette, adresse = _vignette(ep.get("couverture"), dossier, tel)
     if vignette:
@@ -130,7 +159,7 @@ def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> l
     ecrire(faites[-1], cs.HEAD, cs.couverture(ep, total, vignette.resolve().as_uri() if vignette else None))
     for rang, r in enumerate(recos, 1):
         images = _images(r, dossier, rang, tel)
-        mise = _mise(r, rang, [taille for _, _, taille in images])
+        mise = _mise(r, rang, [taille for _, _, taille in images], [url for url, _, _ in images])
         montrees = [] if mise == "sans" else images[:2] if mise == "double" else images[:1]
         utilisees += [url for url, _, _ in montrees]  # seules les images montrées sont créditées
         if cs.trop_long(r, mise):

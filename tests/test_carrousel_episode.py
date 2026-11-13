@@ -207,3 +207,37 @@ def test_telecharger_wikimedia_avec_l_agent_de_l_outil(tmp_path):
     session = Session()
     ce.telecharger("https://upload.wikimedia.org/a.jpg", tmp_path / "01-0", session=session)
     assert session.agent == ce.ci.OUTIL
+
+
+# ===== Troisième tour de revue de la PR #204 ==================================
+def test_un_null_dans_une_liste_d_images_est_ignore(tmp_path):
+    tel = faux_telechargement({"https://cdn-images.dzcdn.net/1.jpg": (1000, 1000)})
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": ["https://cdn-images.dzcdn.net/1.jpg", None]}]}
+    assert "01-0.png" in ce.pages(ep, tmp_path, tel=tel)[1].read_text(encoding="utf-8")
+    assert tel.demandes == ["https://cdn-images.dzcdn.net/1.jpg"]
+
+
+def test_une_mise_forcee_incompatible_est_signalee(tmp_path, caplog):
+    tel = faux_telechargement({"https://a/1.jpg": (1000, 1000), "https://a/2.jpg": (1000, 1000)})
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": ["https://a/1.jpg", "https://a/2.jpg"], "mise": "affiche"}]}
+    assert "width: 400px" in ce.pages(ep, tmp_path, tel=tel)[1].read_text(encoding="utf-8")
+    assert "affiche" in caplog.text and "ignorée" in caplog.text
+
+
+def test_une_image_deja_telechargee_ne_l_est_pas_de_nouveau(tmp_path):
+    tel = faux_telechargement({"https://image.tmdb.org/a.jpg": (780, 1170)})
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": "https://image.tmdb.org/a.jpg"}]}
+    ce.pages(ep, tmp_path, tel=tel)
+    ce.pages(ep, tmp_path, tel=tel)
+    assert tel.demandes == ["https://image.tmdb.org/a.jpg"]
+
+
+def test_la_vignette_de_substitution_de_youtube_fait_prendre_la_hq(tmp_path):
+    maxres = "https://i.ytimg.com/vi/x/maxresdefault.jpg"
+    tel = faux_telechargement({maxres: (120, 90), "https://i.ytimg.com/vi/x/hqdefault.jpg": (480, 360)})
+    ce.pages({**EP, "couverture": maxres}, tmp_path, tel=tel)
+    assert "https://i.ytimg.com/vi/x/hqdefault.jpg" in tel.demandes
+
+
+def test_la_liste_des_mises_vit_avec_le_rendu():
+    assert ce.cs.MISES == {"affiche", "carre", "rond", "double", "photo", "cadre", "tuile", "sans"}

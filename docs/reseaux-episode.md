@@ -87,8 +87,12 @@ relecture :
   les deux pages et mettre les deux adresses en liste, `"image": ["…", "…"]` ;
 - `mise` force la mise en scène, rarement utile : `affiche`, `carre`, `rond`, `double`, `photo`,
   `cadre`, `tuile` ou `sans`. Sinon, elle se choisit d'après le type et les proportions de l'image.
-  Une valeur inconnue est signalée au rendu et remplacée par la mise calculée ; `sans` cache l'image
-  (elle n'est alors pas créditée).
+  Une valeur inconnue, ou incompatible avec le nombre d'images téléchargées, est signalée au rendu
+  et remplacée par la mise calculée ; `sans` cache l'image (elle n'est alors pas créditée).
+
+Le rendu garde les images téléchargées dans `images/` (avec `images/index.json`) : relancer
+`carrousel_episode.py` après une retouche ne les retélécharge pas. Pour forcer un nouveau
+téléchargement, supprimer l'image et sa ligne de l'index, ou changer l'adresse.
 
 Une page sans image garde le rythme du carrousel : un aplat jaune, avec un disque pour la musique.
 Sous l'image, la citation puis le titre rapetissent si le texte déborde ; le rendu signale une

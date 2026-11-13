@@ -32,6 +32,8 @@ GUILLEMETS = ('<svg aria-hidden="true" width="64" height="48" viewBox="0 0 48 36
               '0l2 5c-6 2-9 6-9 12h8v19zm28 0V22c0-13 6-20 18-22l2 5c-6 2-9 6-9 12h8v19z" '
               f'fill="{ACCENT}"></path></svg>')
 MUSIQUE = {"Album", "Musique"}
+#: Les mises en scène que `_scene` sait dessiner (et qu'`episode.json` peut forcer).
+MISES = {"affiche", "carre", "rond", "double", "photo", "cadre", "tuile", "sans"}
 #: Hauteur laissée au texte sous l'image (1 350 − 640 de scène − marges) quand elle diffère
 #: des 606 px des autres mises en scène.
 PLACE = {"photo": 690, "sans": 566}
