@@ -73,3 +73,23 @@ def test_remplir_plan_suit_l_ordre_spotify(tmp_path, monkeypatch):
     assert plan["deezer"] == {"Toutes les recos musicales": {"id": 9, "ajouts": [1, 2]},
                               "Saison 6": {"id": 6, "ajouts": [2, 1]}}
     assert len(a_verifier) == 1 and "absent" in a_verifier[0]
+
+
+def test_remplir_plan_reprend_le_titre_deezer_deja_publie(tmp_path, monkeypatch):
+    """Un titre Spotify déjà publié garde son titre Deezer : l'ISRC peut renvoyer
+    le single au lieu de l'album (Elephant Woman, Impala, Alabama sur S6-E09)."""
+    etat_dz = tmp_path / "playlists_deezer.json"
+    etat_dz.write_text(json.dumps({"playlists": {
+        "Toutes les recos musicales": {"id": 9, "titres": [105292054, 77]},
+        "Saison 6": {"id": 6, "titres": []}}}))
+    etat_sp = tmp_path / "playlists_spotify.json"
+    etat_sp.write_text(json.dumps({"playlists": {
+        "Toutes les recos musicales": {"id": "x", "titres": ["elephant", "autre"]},
+        "Saison 6": {"id": "y", "titres": []}}}))
+    monkeypatch.setattr(pd, "ETAT", etat_dz)
+    monkeypatch.setattr(pd, "ETAT_SPOTIFY", etat_sp)
+    plan = {"spotify": {"Saison 6": {"id": "y", "ajouts": ["elephant", "neuf"]}}}
+    deezer = FauxDeezer(isrc={"GBAFL0300096": 947155, "I9": 9001})
+    a_verifier = pd.remplir_plan(plan, {"elephant": "GBAFL0300096", "neuf": "I9"}, FauxEmbed({}), deezer)
+    assert plan["deezer"] == {"Saison 6": {"id": 6, "ajouts": [105292054, 9001]}}
+    assert a_verifier == []

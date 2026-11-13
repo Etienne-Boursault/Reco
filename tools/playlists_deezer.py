@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from playlists_musique import Embed, meme_chanson, norm
 
 ETAT = Path(__file__).resolve().parent / "data" / "playlists_deezer.json"
+ETAT_SPOTIFY = Path(__file__).resolve().parent / "data" / "playlists_spotify.json"
 ECART_MAX_MS = 5000
 
 
@@ -93,12 +94,31 @@ def lire_isrc(texte: str) -> dict[str, str]:
     return {tid: isrc for tid, isrc in paires if isrc and isrc != "-"}
 
 
+def deja_publies(etat_deezer: dict[str, Any]) -> dict[str, int]:
+    """Titre Spotify -> titre Deezer deja publie : les deux playlists d'un meme nom
+    vont titre pour titre, dans le meme ordre."""
+    spotify = json.loads(ETAT_SPOTIFY.read_text(encoding="utf-8"))["playlists"]
+    paires: dict[str, int] = {}
+    for nom, p in spotify.items():
+        if nom in etat_deezer and len(p["titres"]) == len(etat_deezer[nom]["titres"]):
+            paires.update(zip(p["titres"], etat_deezer[nom]["titres"], strict=True))
+    return paires
+
+
 def remplir_plan(plan: dict[str, Any], isrc: dict[str, str], embed: Embed, deezer: Deezer) -> list[str]:
-    """Ajoute au plan les titres Deezer de chaque playlist ; renvoie ce qui est a verifier."""
+    """Ajoute au plan les titres Deezer de chaque playlist ; renvoie ce qui est a verifier.
+
+    Un titre deja publie reprend son titre Deezer : l'ISRC peut renvoyer une autre
+    edition du meme enregistrement (le single au lieu de l'album), et le meme titre
+    Spotify se retrouverait sous deux titres Deezer d'une playlist a l'autre (vu
+    sur S6-E09, 2026-11-13, revue de la PR #203).
+    """
     etat = json.loads(ETAT.read_text(encoding="utf-8"))["playlists"]
+    connus = deja_publies(etat)
     trouves: dict[str, tuple[int | None, str]] = {}
     for tid in dict.fromkeys(t for p in plan["spotify"].values() for t in p["ajouts"]):
-        trouves[tid] = correspondance(tid, isrc.get(tid), embed, deezer)
+        trouves[tid] = ((connus[tid], "isrc") if tid in connus
+                        else correspondance(tid, isrc.get(tid), embed, deezer))
     plan["deezer"] = {}
     for nom, p in plan["spotify"].items():
         ids = [trouves[t][0] for t in p["ajouts"] if trouves[t][0]]
