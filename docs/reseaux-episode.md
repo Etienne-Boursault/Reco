@@ -68,15 +68,18 @@ vérifiés sur la reco, jamais d'une recherche par titre (`tools/carrousel_image
 
 | Type | Image |
 |---|---|
-| Film, série | l'affiche TMDB dans la langue originale de l'œuvre |
-| Album | la pochette Deezer, sinon Apple Music |
-| Artiste, musique | la photo Deezer (pas la photo grise par défaut) |
+| Film, série | l'affiche TMDB dans la langue originale de l'œuvre, sinon française, sinon sans texte |
+| Album, titre | la pochette Deezer (de l'album, ou de l'album du titre), sinon Apple Music |
+| Artiste | la photo Deezer (pas la photo grise par défaut) |
 | Podcast | la vignette Apple Podcasts |
 | Chaîne YouTube | l'avatar de la chaîne |
-| Livre, BD | l'image de l'article Wikipédia |
+| Livre, BD | l'image de l'article Wikipédia, sinon celle de la fiche du livre chez le libraire |
 | Autre | l'image de partage du lien « site officiel », sinon son icône d'application |
 
-La commande liste les pages restées **sans image**. À la relecture :
+Chaque adresse est vérifiée avant d'être retenue : elle doit rendre une image qu'Edge sait afficher (pas un
+SVG, pas une page HTML), sinon la source suivante prend le relais. Les recherches se font en parallèle ;
+compter quelques minutes pour un épisode. La commande liste les pages restées **sans image**. À la
+relecture :
 
 - remplacer une image fausse ou inutilisable par une autre adresse (une photo d'artiste Deezer peut
   être une pochette de single, une affiche originale se trouve sur TMDB) ; `null` retire l'image ;
@@ -84,8 +87,12 @@ La commande liste les pages restées **sans image**. À la relecture :
   les deux pages et mettre les deux adresses en liste, `"image": ["…", "…"]` ;
 - `mise` force la mise en scène, rarement utile : `affiche`, `carre`, `rond`, `double`, `photo`,
   `cadre`, `tuile` ou `sans`. Sinon, elle se choisit d'après le type et les proportions de l'image.
+  Une valeur inconnue est signalée au rendu et remplacée par la mise calculée ; `sans` cache l'image
+  (elle n'est alors pas créditée).
 
 Une page sans image garde le rythme du carrousel : un aplat jaune, avec un disque pour la musique.
+Sous l'image, la citation puis le titre rapetissent si le texte déborde ; le rendu signale une
+citation trop longue même au plus petit, à raccourcir.
 La page de fin cite les sources des images utilisées (TMDB, Deezer, Apple, YouTube, Wikipédia).
 
 Ensuite :

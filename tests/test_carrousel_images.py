@@ -1,14 +1,17 @@
 """Tests de tools/carrousel_images.py : l'image de chaque page du carrousel, sans réseau."""
 from __future__ import annotations
 
+import pytest
+
 import carrousel_images as ci
 
 
 class FauxWeb:
     """Réponses préparées, par adresse ; note les adresses demandées."""
 
-    def __init__(self, json=None, html=None, avatars=None):
+    def __init__(self, json=None, html=None, avatars=None, invalides=()):
         self._json, self._html, self._avatars = json or {}, html or {}, avatars or {}
+        self.invalides = set(invalides)
         self.demandes: list[str] = []
 
     def json(self, url, **params):
@@ -17,7 +20,11 @@ class FauxWeb:
 
     def html(self, url):
         self.demandes.append(url)
-        return self._html.get(url, "")
+        page = self._html.get(url, "")
+        return page if isinstance(page, tuple) else (url, page)
+
+    def image_valide(self, url):
+        return url not in self.invalides
 
     def avatar_youtube(self, url):
         self.demandes.append(url)
@@ -157,8 +164,8 @@ def test_une_source_presente_mais_vide_ne_donne_rien():
 class FausseReponse:
     encoding = "utf-8"
 
-    def __init__(self, donnees=None, texte=""):
-        self._donnees, self.text = donnees, texte
+    def __init__(self, donnees=None, texte="", url=""):
+        self._donnees, self.text, self.url = donnees, texte, url
 
     def raise_for_status(self):
         return None
@@ -179,14 +186,14 @@ class FausseSession:
 
     def get(self, url, **kw):
         self.appels.append((url, kw))
-        return FausseReponse({"ok": url}, "<html>" + url)
+        return FausseReponse({"ok": url}, "<html>" + url, url)
 
 
 def test_web_reel_lit_json_et_html_avec_les_bons_en_tetes():
     session = FausseSession()
     web = ci.WebReel(session=session)
     assert web.json("https://api/x", id=3) == {"ok": "https://api/x"}
-    assert web.html("https://site/y") == "<html>https://site/y"
+    assert web.html("https://site/y") == ("https://site/y", "<html>https://site/y")
     assert session.appels[0][1]["params"] == {"id": 3}
     assert "SOCS=CAI" in session.appels[1][1]["headers"]["Cookie"]
 
@@ -243,10 +250,10 @@ def test_la_cle_tmdb_ne_sort_jamais_dans_les_journaux(caplog):
     assert "SECRET" not in caplog.text and "api_key=…" in caplog.text
 
 
-def test_une_erreur_inattendue_d_une_source_ne_bloque_pas():
+def test_une_erreur_de_reponse_d_une_source_ne_bloque_pas():
     class Panne(FauxWeb):
         def avatar_youtube(self, url):
-            raise AttributeError("yt-dlp a changé")
+            raise LookupError("unknown encoding: utf8mb4")
 
     reco = {"types": ["chaine"], "links": [lien("https://www.youtube.com/@x")]}
     assert ci.source({}, reco, Panne(), None) is None
@@ -347,6 +354,8 @@ def test_html_ne_lit_que_le_debut_de_la_page():
         def raise_for_status(self):
             return None
 
+        url = "https://site/x"
+
         def iter_content(self, chunk_size):
             yield b"<head>og</head>"
             yield b"x" * ci.TAILLE_PAGE
@@ -362,5 +371,160 @@ def test_html_ne_lit_que_le_debut_de_la_page():
             return self.reponse
 
     session = Session()
-    texte = ci.WebReel(session=session).html("https://site/x")
-    assert texte.startswith("<head>og</head>") and session.reponse.ferme
+    finale, texte = ci.WebReel(session=session).html("https://site/x")
+    assert texte.startswith("<head>og</head>") and session.reponse.ferme and finale == "https://site/x"
+
+
+# ===== Deuxième tour de revue de la PR #204 ===================================
+WIKI = "https://fr.wikipedia.org/api/rest_v1/page/summary/"
+LIVRE = {"types": ["livre"], "links": [lien("https://fr.wikipedia.org/wiki/X", "info")]}
+
+
+def test_wikipedia_n_agrandit_jamais_au_dela_de_l_original():
+    vignette = {"source": "https://upload/thumb/a/ab/X.jpg/330px-X.jpg"}
+    petit = FauxWeb(json={WIKI + "X": {"thumbnail": vignette,
+                                       "originalimage": {"source": "https://upload/a/ab/X.jpg", "width": 600}}})
+    assert ci.source({}, LIVRE, petit, None) == "https://upload/a/ab/X.jpg"
+    svg = FauxWeb(json={WIKI + "X": {"thumbnail": {"source": "https://upload/thumb/a/ab/X.svg/330px-X.svg.png"},
+                                     "originalimage": {"source": "https://upload/a/ab/X.svg", "width": 600}}})
+    assert ci.source({}, LIVRE, svg, None) == "https://upload/thumb/a/ab/X.svg/600px-X.svg.png"
+    grand = FauxWeb(json={WIKI + "X": {"thumbnail": vignette,
+                                       "originalimage": {"source": "https://upload/a/ab/X.jpg", "width": 4000}}})
+    assert ci.source({}, LIVRE, grand, None) == "https://upload/thumb/a/ab/X.jpg/1000px-X.jpg"
+
+
+def test_une_image_refusee_fait_passer_a_la_source_suivante():
+    url = "https://www.placedeslibraires.fr/livre/1"
+    reco = {"types": ["livre"], "links": [lien("https://fr.wikipedia.org/wiki/X", "info"), lien(url, "buy")]}
+    web = FauxWeb(json={WIKI + "X": {"originalimage": {"source": "https://upload/X.svg", "width": 500}}},
+                  html={url: '<meta property="og:image" content="https://pdl/couv.jpg">'},
+                  invalides={"https://upload/X.svg"})
+    assert ci.source({}, reco, web, None) == "https://pdl/couv.jpg"
+
+
+def test_web_reel_verifie_qu_une_adresse_rend_bien_une_image():
+    class Reponse:
+        def __init__(self, statut, genre):
+            self.status_code, self.headers = statut, {"content-type": genre}
+
+        def close(self):
+            return None
+
+    class Session:
+        def __init__(self, statut, genre):
+            self.reponse = Reponse(statut, genre)
+
+        def get(self, url, **kw):
+            assert kw["stream"] is True
+            return self.reponse
+
+    assert ci.WebReel(session=Session(200, "image/jpeg")).image_valide("https://x/a.jpg")
+    assert not ci.WebReel(session=Session(200, "image/svg+xml")).image_valide("https://x/a.svg")
+    assert not ci.WebReel(session=Session(200, "text/html; charset=utf-8")).image_valide("https://x/a")
+    assert not ci.WebReel(session=Session(404, "image/jpeg")).image_valide("https://x/a.jpg")
+
+    class Coupee:
+        def get(self, url, **kw):
+            raise OSError("connexion refusée")
+    assert not ci.WebReel(session=Coupee()).image_valide("https://x/a.jpg")
+
+
+def test_html_decode_sans_planter_sur_un_encodage_inconnu_ou_absent():
+    class Flux:
+        url = "https://site/x"
+
+        def __init__(self, encodage, octets):
+            self.encoding, self.octets = encodage, octets
+
+        def raise_for_status(self):
+            return None
+
+        def iter_content(self, chunk_size):
+            yield self.octets
+
+        def close(self):
+            return None
+
+    class Session:
+        def __init__(self, flux):
+            self.flux = flux
+
+        def get(self, url, **kw):
+            return self.flux
+
+    ete = "<meta content='/affiche-été.jpg'>".encode()
+    assert "été" in ci.WebReel(session=Session(Flux("utf8mb4", ete))).html("https://site/x")[1]
+    assert "été" in ci.WebReel(session=Session(Flux("ISO-8859-1", ete))).html("https://site/x")[1]
+    latin = "<p>été</p>".encode("latin-1")
+    assert "été" in ci.WebReel(session=Session(Flux(None, latin))).html("https://site/x")[1]
+
+
+def test_une_image_relative_se_resout_sur_l_adresse_finale_apres_redirection():
+    url = "http://ancien-site.fr"
+    page = ("https://www.nouveau.fr/fr/", '<meta property="og:image" content="/img/partage.jpg">')
+    reco = {"types": ["spectacle"], "links": [lien(url, "official")]}
+    assert ci.source({}, reco, FauxWeb(html={url: page}), None) == "https://www.nouveau.fr/img/partage.jpg"
+
+
+def test_les_types_de_la_fiche_priment_sur_ceux_de_la_reco():
+    web = FauxWeb(json={"https://api.deezer.com/album/42": {"cover_xl": "https://cdn/42.jpg"}})
+    reco = {"types": ["musique"], "links": [lien("https://www.deezer.com/album/42")]}
+    assert ci.source({"types": ["album"]}, reco, web, None) == "https://cdn/42.jpg"
+
+
+def test_un_titre_prend_la_pochette_de_son_album():
+    web = FauxWeb(json={"https://api.deezer.com/track/7": {"album": {"cover_xl": "https://cdn/album7.jpg"}}})
+    reco = {"types": ["musique"], "links": [lien("https://www.deezer.com/fr/track/7")]}
+    assert ci.source({}, reco, web, None) == "https://cdn/album7.jpg"
+
+
+def test_les_avatars_youtube_ggpht_sont_credites_youtube():
+    assert ci.credits(["https://yt3.ggpht.com/a"]) == "Images : YouTube"
+
+
+def test_une_erreur_de_programmation_n_est_pas_masquee():
+    class Bug(FauxWeb):
+        def json(self, url, **params):
+            raise TypeError("argument manquant")
+
+    reco = {"types": ["album"], "links": [lien("https://www.deezer.com/album/42")]}
+    with pytest.raises(TypeError):
+        ci.source({}, reco, Bug(), None)
+
+
+def test_wikimedia_recoit_l_agent_de_l_outil_partout():
+    """upload.wikimedia.org refuse lui aussi un faux navigateur : vérification et téléchargement."""
+    assert ci.entetes("https://upload.wikimedia.org/x.jpg")["User-Agent"] == ci.OUTIL
+    assert ci.entetes("https://fr.wikipedia.org/api/x")["User-Agent"] == ci.OUTIL
+    assert ci.entetes("https://cdn-images.dzcdn.net/x.jpg")["User-Agent"] != ci.OUTIL
+
+    class Reponse:
+        status_code, headers = 200, {"content-type": "image/jpeg"}
+
+        def close(self):
+            return None
+
+    class Session:
+        def get(self, url, **kw):
+            self.agent = kw["headers"]["User-Agent"]
+            return Reponse()
+
+    session = Session()
+    assert ci.WebReel(session=session).image_valide("https://upload.wikimedia.org/x.jpg")
+    assert session.agent == ci.OUTIL
+
+
+def test_une_page_de_recherche_de_librairie_n_est_pas_une_fiche_de_livre():
+    """Son image de partage est le logo du site, pas la couverture (Max et Lili, S6-E09)."""
+    recherche = "https://www.placedeslibraires.fr/listeliv.php?base=allbooks&mots_recherche=max%20et%20lili"
+    reco = {"types": ["bd"], "links": [lien(recherche, "buy")]}
+    web = FauxWeb(html={recherche: '<meta property="og:image" content="https://pdl/logo.png">'})
+    assert ci.source({}, reco, web, None) is None
+
+
+def test_l_extension_de_l_original_se_lit_sans_les_parametres_de_suivi():
+    """Wikipédia ajoute « ?utm_source=… » à l'adresse de l'original (Max et Lili, S6-E09)."""
+    original = "https://upload/0/08/Max_et_Lili.jpg?utm_source=fr.wikipedia.org&utm_campaign=api"
+    web = FauxWeb(json={WIKI + "X": {"thumbnail": {"source": "https://thumb/0/08/M.jpg/330px-M.jpg"},
+                                     "originalimage": {"source": original, "width": 720}}})
+    assert ci.source({}, LIVRE, web, None) == original

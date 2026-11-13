@@ -60,7 +60,7 @@ def test_un_titre_long_et_une_citation_longue_tiennent_dans_la_page():
             "citation": "Non, c’était un film de Charlie Kaufman qui s’appelle Synecdoche New York, et qui est "
                         "trop bien, parce que c’est que des mises en abîme de trucs, et moi j’adore ça, vraiment."}
     titre, citation = cs.ajuster(long, "affiche")
-    assert cs.hauteur_du_texte(long, titre, citation) <= cs.PLACE["affiche"]
+    assert cs.hauteur_du_texte(long, titre, citation) <= cs.place("affiche")
     assert citation < 42
     assert cs.ajuster(R, "affiche") == (cs.taille("The Father"), 42)
     page = cs.page_reco(long, 1, 2, IMG, "affiche")
@@ -70,3 +70,24 @@ def test_un_titre_long_et_une_citation_longue_tiennent_dans_la_page():
 def test_une_citation_demesuree_prend_les_tailles_minimales():
     enorme = {**R, "citation": "mot " * 400}
     assert cs.ajuster(enorme, "sans") == (cs.TITRES[-1], cs.CITATIONS[-1])
+
+
+def test_place_par_mise_en_scene():
+    assert cs.place("photo") == 690 and cs.place("sans") == 566 and cs.place("affiche") == cs.place("rond") == 606
+
+
+def test_un_mot_trop_long_passe_a_la_ligne_au_lieu_de_sortir_de_la_page():
+    page = cs.page_reco({**R, "titre": "Anticonstitutionnellementissimement"}, 1, 2, IMG, "affiche")
+    assert page.count("overflow-wrap: anywhere") >= 2
+
+
+def test_le_navigateur_reduit_encore_le_texte_s_il_deborde():
+    """L'estimation ne voit pas la police réelle : Edge mesure et réduit, une fois les polices chargées."""
+    page = cs.page_reco(R, 1, 2, IMG, "affiche")
+    assert "document.fonts.ready" in page and "scrollHeight" in page
+    assert 'data-bas' in page and 'data-titre' in page and 'data-citation' in page
+
+
+def test_trop_long_signale_un_texte_qui_deborde_meme_au_plus_petit():
+    assert cs.trop_long({**R, "citation": "mot " * 400}, "sans")
+    assert not cs.trop_long(R, "affiche")

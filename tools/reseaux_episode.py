@@ -36,6 +36,7 @@ import json
 import re
 import sys
 from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
@@ -107,20 +108,23 @@ def carrousel(ep: dict[str, Any], mentions: list[dict[str, Any]], items: dict[st
     `image(item, reco)` donne l'adresse du visuel de chaque page (carrousel_images.source) ;
     sans elle, les pages n'ont pas de clé `image`.
     """
-    pages = []
+    pages, paires = [], []
     for m in mentions_validees(ep, mentions):
         item, reco = items[m["itemId"]], recos.get(m["id"], {})
-        page = {
+        paires.append((item, reco))
+        pages.append({
             "type": LIBELLES.get((item.get("types") or ["autre"])[0], "Autre"),
             "titre": typo(item["title"]),
             "createur": createur(item, reco),
             "citation": typo(m.get("quote")),
             "qui": m.get("recommendedBy") or "",
             "moment": moment(m["sourceRef"].get("timestamp")),
-        }
-        if image:
-            page["image"] = image(item, reco)
-        pages.append(page)
+        })
+    if image:
+        # Une quinzaine de sources lentes (sites, yt-dlp) : en parallèle, l'ordre des pages gardé.
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            for page, url in zip(pages, pool.map(lambda paire: image(*paire), paires), strict=True):
+                page["image"] = url
     return {
         "numero": f"S{ep['season']} · E{ep['number']:02d}",
         "titre": typo(re.sub(r"\s*\(Un Bon Moment, S\d+-E\d+\)\s*$", "", ep["title"])),
@@ -263,10 +267,10 @@ def poser_liens(paires: list[str]) -> int:
 
 def _cle_tmdb() -> str | None:
     """Clé TMDB pour les affiches ; sans elle, les films et séries restent sans image."""
-    from enrich_tmdb import cle_api
     try:
+        from enrich_tmdb import cle_api  # importé ici : son absence ne doit priver que des affiches
         return cle_api()
-    except (SystemExit, RuntimeError, KeyError) as exc:
+    except (ImportError, SystemExit, RuntimeError, KeyError) as exc:
         print(f"Pas de clé TMDB ({exc}) : les films et séries n'auront pas d'affiche.")
         return None
 

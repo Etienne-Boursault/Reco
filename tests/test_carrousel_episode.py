@@ -141,3 +141,69 @@ def test_l_orientation_exif_compte_pour_la_mise_en_scene(tmp_path):
 
     ep = {**EP, "recos": [{**EP["recos"][0], "image": "https://site/x.jpg"}]}
     assert "height: 460px" in ce.pages(ep, tmp_path, tel=telecharger)[1].read_text(encoding="utf-8")
+
+
+# ===== Deuxième tour de revue de la PR #204 ===================================
+def test_couverture_sans_maxres_prend_la_vignette_hq(tmp_path):
+    maxres = "https://i.ytimg.com/vi/x/maxresdefault.jpg"
+    tel = faux_telechargement({"https://i.ytimg.com/vi/x/hqdefault.jpg": (480, 360)})
+    pages = ce.pages({**EP, "couverture": maxres}, tmp_path, tel=tel)
+    assert tel.demandes[:2] == [maxres, "https://i.ytimg.com/vi/x/hqdefault.jpg"]
+    assert "00-couverture" in pages[0].read_text(encoding="utf-8")
+    assert "YouTube" in pages[-1].read_text(encoding="utf-8")
+
+
+def test_seules_les_images_montrees_sont_creditees(tmp_path):
+    tel = faux_telechargement({"https://image.tmdb.org/a.jpg": (780, 1170), "https://cdn-images.dzcdn.net/1.jpg":
+                               (1000, 1000), "https://cdn-images.dzcdn.net/2.jpg": (1000, 1000),
+                               "https://mzstatic.com/3.jpg": (1000, 1000)})
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": "https://image.tmdb.org/a.jpg", "mise": "sans"},
+                          {**EP["recos"][1], "image": ["https://cdn-images.dzcdn.net/1.jpg",
+                                                       "https://cdn-images.dzcdn.net/2.jpg",
+                                                       "https://mzstatic.com/3.jpg"]}]}
+    pages = ce.pages(ep, tmp_path, tel=tel)
+    assert "<img" not in pages[1].read_text(encoding="utf-8")
+    fin = pages[-1].read_text(encoding="utf-8")
+    assert "Images : pochettes Deezer" in fin and "TMDB" not in fin and "Apple" not in fin
+
+
+def test_une_mise_inconnue_est_signalee_et_remplacee(tmp_path, caplog):
+    tel = faux_telechargement({"https://image.tmdb.org/a.jpg": (780, 1170)})
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": "https://image.tmdb.org/a.jpg", "mise": "afiche"}]}
+    assert "height: 460px" in ce.pages(ep, tmp_path, tel=tel)[1].read_text(encoding="utf-8")
+    assert "afiche" in caplog.text
+
+
+def test_un_texte_trop_long_est_signale(tmp_path, caplog):
+    ep = {**EP, "recos": [{**EP["recos"][0], "citation": "mot " * 400}]}
+    ce.pages(ep, tmp_path, tel=faux_telechargement({}))
+    assert "trop longue" in caplog.text
+
+
+def test_un_exif_corrompu_laisse_la_page_sans_image(tmp_path, monkeypatch, caplog):
+    import struct
+
+    def corrompu(self):
+        raise struct.error("unpack requires a buffer of 4 bytes")
+    monkeypatch.setattr(Image.Image, "getexif", corrompu)
+    tel = faux_telechargement({"https://site/x.jpg": (800, 1200)})
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": "https://site/x.jpg"}]}
+    assert "<img" not in ce.pages(ep, tmp_path, tel=tel)[1].read_text(encoding="utf-8")
+    assert "illisible" in caplog.text
+
+
+def test_telecharger_wikimedia_avec_l_agent_de_l_outil(tmp_path):
+    class Reponse:
+        content, headers = b"x", {"content-type": "image/jpeg"}
+
+        def raise_for_status(self):
+            return None
+
+    class Session:
+        def get(self, url, **kw):
+            self.agent = kw["headers"]["User-Agent"]
+            return Reponse()
+
+    session = Session()
+    ce.telecharger("https://upload.wikimedia.org/a.jpg", tmp_path / "01-0", session=session)
+    assert session.agent == ce.ci.OUTIL

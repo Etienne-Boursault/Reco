@@ -32,10 +32,20 @@ GUILLEMETS = ('<svg aria-hidden="true" width="64" height="48" viewBox="0 0 48 36
               '0l2 5c-6 2-9 6-9 12h8v19zm28 0V22c0-13 6-20 18-22l2 5c-6 2-9 6-9 12h8v19z" '
               f'fill="{ACCENT}"></path></svg>')
 MUSIQUE = {"Album", "Musique"}
-#: Hauteur laissée au texte sous l'image (1 350 − 640 de scène − marges), par mise en scène.
-PLACE = {"photo": 690, "sans": 566, "affiche": 606, "carre": 606, "rond": 606, "double": 606, "cadre": 606,
-         "tuile": 606}
+#: Hauteur laissée au texte sous l'image (1 350 − 640 de scène − marges) quand elle diffère
+#: des 606 px des autres mises en scène.
+PLACE = {"photo": 690, "sans": 566}
 CITATIONS = (42, 38, 34, 30)
+#: Filet de sécurité : la police réelle peut être plus large que l'estimation. Une fois les
+#: polices chargées, Edge réduit encore la citation (et une fois sur trois le titre) tant que
+#: le bas de la page déborde.
+AJUSTER_DANS_LE_NAVIGATEUR = (
+    "<script>document.fonts.ready.then(() => {"
+    "const bas = document.querySelector('[data-bas]'), titre = document.querySelector('[data-titre]'),"
+    " citation = document.querySelector('[data-citation]');"
+    "for (let i = 0; i < 24 && bas.scrollHeight > bas.clientHeight; i++) {"
+    "const e = i % 3 === 2 ? titre : citation;"
+    "e.style.fontSize = (parseFloat(getComputedStyle(e).fontSize) * 0.94) + 'px'; }});</script>")
 TITRES = (150, 132, 116, 100, 88)
 
 
@@ -72,13 +82,23 @@ def hauteur_du_texte(r: dict, titre: int, citation: int) -> float:
     return lignes_titre * titre * 0.88 + createur + 40 + 48 + 28 + lignes_citation * citation * 1.3 + 28 + 64
 
 
+def place(mise: str) -> int:
+    """Hauteur, en px, laissée au texte sous la scène."""
+    return PLACE.get(mise, 606)
+
+
+def trop_long(r: dict, mise: str) -> bool:
+    """Le texte déborde-t-il même aux plus petites tailles ? (à signaler à l'éditeur)"""
+    return hauteur_du_texte(r, TITRES[-1], CITATIONS[-1]) > place(mise)
+
+
 def ajuster(r: dict, mise: str) -> tuple[int, int]:
-    """Tailles du titre et de la citation qui tiennent dans la place : la citation baisse d'abord."""
-    place = PLACE.get(mise, PLACE["affiche"])
+    """Tailles du titre et de la citation qui tiennent dans la place : la citation baisse d'abord.
+    Ce n'est qu'une estimation : le script de la page finit l'ajustement dans le navigateur."""
     titres = [t for t in TITRES if t <= taille(r["titre"])]
     for titre in titres:
         for citation in CITATIONS:
-            if hauteur_du_texte(r, titre, citation) <= place:
+            if hauteur_du_texte(r, titre, citation) <= place(mise):
                 return titre, citation
     return titres[-1], CITATIONS[-1]
 
@@ -165,14 +185,17 @@ def page_reco(r: dict, rang: int, total: int, images: list[tuple[str, str]], mis
     return ('<div style="position: relative; width: 1080px; height: 1350px; overflow: hidden; background: #0e0e10; '
             "color: #f6f4ee; font-family: 'Inter', system-ui, sans-serif; display: flex; flex-direction: column\">"
             + _scene(mise, images, r["type"], rang, total)
-            + f'<div style="flex: 1; box-sizing: border-box; {marge}; display: flex; flex-direction: column; '
-            'justify-content: space-between; gap: 40px"><div style="display: flex; flex-direction: column; gap: 14px">'
-            f'<h2 style="margin: 0; {BEBAS}; font-weight: 400; font-size: {titre}px; line-height: 0.88; '
-            f'letter-spacing: -0.005em">{E(r["titre"])}</h2>{createur}</div>'
+            + f'<div data-bas style="flex: 1; min-height: 0; overflow: hidden; box-sizing: border-box; {marge}; '
+            'display: flex; flex-direction: column; justify-content: space-between; gap: 40px">'
+            '<div style="display: flex; flex-direction: column; gap: 14px">'
+            f'<h2 data-titre style="margin: 0; {BEBAS}; font-weight: 400; font-size: {titre}px; line-height: 0.88; '
+            f'letter-spacing: -0.005em; overflow-wrap: anywhere">{E(r["titre"])}</h2>{createur}</div>'
             f'<div style="display: flex; flex-direction: column; gap: 28px">{GUILLEMETS}'
-            f'<p style="margin: 0; font-size: {citation}px; line-height: 1.3; font-style: italic; max-width: 900px">'
+            f'<p data-citation style="margin: 0; font-size: {citation}px; line-height: 1.3; font-style: italic; '
+            'max-width: 900px; overflow-wrap: anywhere">'
             f'{E(r["citation"])}</p><div style="display: flex; align-items: center; gap: 16px; font-size: 28px; '
-            f'border-top: 2px solid #2a2a30; padding-top: 28px">{qui}</div></div></div></div>')
+            f'border-top: 2px solid #2a2a30; padding-top: 28px">{qui}</div></div></div></div>'
+            + AJUSTER_DANS_LE_NAVIGATEUR)
 
 
 def couverture(ep: dict, total: int, vignette: str | None) -> str:

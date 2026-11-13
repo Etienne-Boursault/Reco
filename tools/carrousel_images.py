@@ -27,8 +27,13 @@ from __future__ import annotations
 import html
 import logging
 import re
+import sys
+from pathlib import Path
 from typing import Any, Protocol
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from link_check import BROWSER_HEADERS
 
 log = logging.getLogger("reco")
 
@@ -36,19 +41,29 @@ TMDB = "https://api.themoviedb.org/3"
 AFFICHE = "https://image.tmdb.org/t/p/w780"
 ITUNES = "https://itunes.apple.com/lookup"
 RONDS = {"Artiste", "Chaîne YouTube", "Musique"}
-NAVIGATEUR = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36",
-              "Accept-Language": "fr-FR,fr;q=0.9"}
+#: En-têtes d'un navigateur, ceux de link_check, sans le cookie de consentement (API, images).
+NAVIGATEUR = {cle: valeur for cle, valeur in BROWSER_HEADERS.items() if cle not in ("Cookie", "Accept")}
 OUTIL = "UneBonneReco/1.0 (carrousel des recos ; https://unebonnere.co)"
+#: Wikimedia (API et serveur d'images) refuse (403) un agent qui imite un navigateur.
+WIKIMEDIA = ("wikipedia.org", "wikimedia.org")
+
+
+def entetes(url: str) -> dict[str, str]:
+    """En-têtes d'une requête vers `url` : l'agent de l'outil pour Wikimedia, un navigateur ailleurs."""
+    return {**NAVIGATEUR, "User-Agent": OUTIL} if any(d in url for d in WIKIMEDIA) else dict(NAVIGATEUR)
 #: Une balise og:image est dans l'en-tête : inutile de lire plus loin.
 TAILLE_PAGE = 512_000
-#: Ce qu'une source en panne peut lever (réseau, réponse inattendue, module absent ou changé).
-PANNES = (OSError, ValueError, KeyError, TypeError, IndexError, AttributeError, ImportError)
+#: Ce qu'une source en panne peut lever : réseau, réponse de forme inattendue (clé, index,
+#: encodage inconnu), module absent. Une erreur de programmation (TypeError,
+#: AttributeError) remonte, au lieu de passer pour une source en panne.
+PANNES = (OSError, ValueError, LookupError, ImportError)
 
 
 class Web(Protocol):
     def json(self, url: str, **params: Any) -> dict[str, Any]: ...
-    def html(self, url: str) -> str: ...
+    def html(self, url: str) -> tuple[str, str]: ...
     def avatar_youtube(self, url: str) -> str | None: ...
+    def image_valide(self, url: str) -> bool: ...
 
 
 class WebReel:
@@ -61,15 +76,14 @@ class WebReel:
         self._session, self._ytdl = session, ytdl
 
     def json(self, url: str, **params: Any) -> dict[str, Any]:
-        # Wikimedia refuse (403) un agent qui imite un navigateur : il veut le nom de l'outil.
-        entetes = {**NAVIGATEUR, "User-Agent": OUTIL} if "wikipedia.org" in url else NAVIGATEUR
-        reponse = self._session.get(url, params=params or None, headers=entetes, timeout=20)
+        reponse = self._session.get(url, params=params or None, headers=entetes(url), timeout=20)
         reponse.raise_for_status()
         return reponse.json()
 
-    def html(self, url: str) -> str:
-        # SOCS=CAI : sans lui, YouTube et Google rendent leur page de consentement.
-        reponse = self._session.get(url, headers={**NAVIGATEUR, "Cookie": "SOCS=CAI"}, timeout=20, stream=True)
+    def html(self, url: str) -> tuple[str, str]:
+        """(adresse finale après redirections, début de la page)."""
+        # BROWSER_HEADERS porte SOCS=CAI : sans lui, YouTube et Google rendent leur consentement.
+        reponse = self._session.get(url, headers=BROWSER_HEADERS, timeout=20, stream=True)
         try:
             reponse.raise_for_status()
             lu = b""
@@ -77,7 +91,20 @@ class WebReel:
                 lu += morceau
                 if len(lu) >= TAILLE_PAGE:
                     break
-            return lu[:TAILLE_PAGE].decode(reponse.encoding or "utf-8", errors="replace")
+            return reponse.url or url, _decoder(lu[:TAILLE_PAGE], reponse.encoding)
+        finally:
+            reponse.close()
+
+    def image_valide(self, url: str) -> bool:
+        """L'adresse rend-elle une image que Pillow et Edge savent afficher (pas un SVG, pas du HTML) ?"""
+        try:
+            reponse = self._session.get(url, headers=entetes(url), timeout=20, stream=True)
+        except OSError as exc:
+            log.warning("image du carrousel : %s injoignable (%s)", _sans_secret(url), type(exc).__name__)
+            return False
+        try:
+            genre = (reponse.headers.get("content-type") or "").split(";")[0].strip().lower()
+            return reponse.status_code == 200 and genre.startswith("image/") and genre != "image/svg+xml"
         finally:
             reponse.close()
 
@@ -95,6 +122,20 @@ class WebReel:
         except yt_dlp.utils.YoutubeDLError as exc:  # chaîne supprimée, privée, connexion exigée
             log.warning("image du carrousel : pas d'avatar pour %s (%s)", url, exc)
             return {}
+
+
+def _decoder(octets: bytes, encodage: str | None) -> str:
+    """Décode une page : l'encodage annoncé s'il est connu ; sans annonce (requests suppose
+    alors ISO-8859-1), UTF-8 d'abord, Latin-1 à défaut."""
+    if encodage and encodage.lower() not in ("iso-8859-1", "latin-1"):
+        try:
+            return octets.decode(encodage, errors="replace")
+        except LookupError:  # « utf8mb4 », « none » : un encodage que Python ne connaît pas
+            pass
+    try:
+        return octets.decode("utf-8")
+    except UnicodeDecodeError:
+        return octets.decode("latin-1")
 
 
 def _liens(reco: dict[str, Any]) -> list[dict[str, Any]]:
@@ -119,10 +160,14 @@ def _affiche(item: dict[str, Any], reco: dict[str, Any], web: Web, cle: str | No
 
 
 def _pochette(reco: dict[str, Any], web: Web) -> str | None:
+    """Pochette d'un album, ou de l'album d'un titre."""
+    pochette = None
     if m := _premier(reco, r"deezer\.com/(?:\w+/)?album/(\d+)"):
         pochette = web.json(f"https://api.deezer.com/album/{m[1]}").get("cover_xl")
-        if pochette and "/cover//" not in pochette:  # « /cover// » : la pochette grise par défaut
-            return pochette
+    elif m := _premier(reco, r"deezer\.com/(?:\w+/)?track/(\d+)"):
+        pochette = (web.json(f"https://api.deezer.com/track/{m[1]}").get("album") or {}).get("cover_xl")
+    if pochette and "/cover//" not in pochette:  # « /cover// » : la pochette grise par défaut
+        return pochette
     if m := _premier(reco, r"music\.apple\.com/.*/album/[^/]+/(\d+)"):
         resultats = web.json(ITUNES, id=m[1], country="fr").get("results") or []
         if resultats and resultats[0].get("artworkUrl100"):
@@ -153,11 +198,18 @@ def _avatar(reco: dict[str, Any], web: Web) -> str | None:
 def _wikipedia(reco: dict[str, Any], web: Web) -> str | None:
     if m := _premier(reco, r"fr\.wikipedia\.org/wiki/([^?#]+)"):
         page = web.json(f"https://fr.wikipedia.org/api/rest_v1/page/summary/{m[1]}")
-        # La vignette agrandie : un JPEG ou un PNG de taille raisonnable, même quand
-        # l'original est un SVG, un TIFF ou un scan de plusieurs dizaines de Mo.
-        if vignette := (page.get("thumbnail") or {}).get("source"):
-            return re.sub(r"/\d+px-", "/1000px-", vignette)
-        return (page.get("originalimage") or {}).get("source")
+        original = page.get("originalimage") or {}
+        vignette = (page.get("thumbnail") or {}).get("source")
+        largeur = original.get("width") or 0
+        # L'extension se lit dans le chemin : Wikipédia ajoute « ?utm_source=… » à l'adresse.
+        lisible = re.search(r"\.(jpe?g|png|webp|gif)$", urlparse(original.get("source") or "").path, re.IGNORECASE)
+        # Un original assez petit et lisible se prend tel quel ; sinon la vignette, que
+        # Wikimedia sait rendre en JPEG ou PNG mais jamais plus large que l'original (400).
+        if lisible and largeur and largeur <= 1000:
+            return original["source"]
+        if vignette:
+            return re.sub(r"/\d+px-", f"/{min(largeur, 1000) if largeur else 1000}px-", vignette)
+        return original.get("source")
     return None
 
 
@@ -166,8 +218,9 @@ def _attributs(balise: str) -> dict[str, str]:
 
 
 def _image_de_page(url: str, web: Web) -> str | None:
-    """og:image de la page (quel que soit l'ordre des attributs), sinon son icône d'application."""
-    page = web.html(url)
+    """og:image de la page (quel que soit l'ordre des attributs), sinon son icône d'application.
+    Une adresse relative se résout sur l'adresse finale, après redirections."""
+    url, page = web.html(url)
     for balise in re.findall(r"<meta\b[^>]*>", page, flags=re.IGNORECASE):
         attrs = _attributs(balise)
         if "og:image" in (attrs.get("property"), attrs.get("name")) and attrs.get("content"):
@@ -179,8 +232,14 @@ def _image_de_page(url: str, web: Web) -> str | None:
     return None
 
 
+#: Une page de recherche de librairie porte le logo du site, pas la couverture d'un livre.
+RECHERCHE = re.compile(r"recherche|search|listeliv|[?&](q|query|mots?)=", re.IGNORECASE)
+
+
 def _partage(reco: dict[str, Any], web: Web, genres: tuple[str, ...] = ("official",)) -> str | None:
-    lien = next((lien["url"] for lien in _liens(reco) if lien.get("kind") in genres), None)
+    lien = next((lien["url"] for lien in _liens(reco)
+                 if lien.get("kind") in genres and not (genres == ("buy",) and RECHERCHE.search(lien["url"]))),
+                None)
     return _image_de_page(lien, web) if lien else None
 
 
@@ -191,11 +250,12 @@ def _sans_secret(texte: str) -> str:
 
 def source(item: dict[str, Any], reco: dict[str, Any], web: Web, cle_tmdb: str | None) -> str | None:
     """Adresse de l'image d'une page, ou None (page sans image)."""
-    types = set(reco.get("types") or item.get("types") or [])
+    # Les types de la fiche, comme le libellé de la page (reseaux_episode.carrousel).
+    types = set(item.get("types") or reco.get("types") or [])
     essais = []
     if types & {"film", "serie"}:
         essais.append(lambda: _affiche(item, reco, web, cle_tmdb))
-    if "album" in types:
+    if types & {"album", "musique"}:
         essais.append(lambda: _pochette(reco, web))
     if types & {"artiste", "musique"}:
         essais.append(lambda: _photo_artiste(reco, web))
@@ -208,7 +268,8 @@ def source(item: dict[str, Any], reco: dict[str, Any], web: Web, cle_tmdb: str |
     essais.append(lambda: _partage(reco, web))
     for essai in essais:
         try:
-            if url := essai():
+            # Une adresse qui ne rend pas d'image affichable laisse sa chance à la source suivante.
+            if (url := essai()) and web.image_valide(url):
                 return url
         except PANNES as exc:  # une source en panne ne bloque pas le carrousel
             log.warning("image du carrousel : source en échec pour %s (%s : %s)",
@@ -242,6 +303,7 @@ def mise_en_scene(type_: str, tailles: list[tuple[int, int]]) -> str:
 
 CREDITS = (("image.tmdb.org", "affiches TMDB"), ("dzcdn.net", "pochettes Deezer"),
            ("mzstatic.com", "Apple"), ("ytimg.com", "YouTube"), ("googleusercontent.com", "YouTube"),
+           ("ggpht.com", "YouTube"),
            ("wikimedia.org", "Wikipédia"))
 
 

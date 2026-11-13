@@ -19,6 +19,7 @@ import json
 import logging
 import mimetypes
 import shutil
+import struct
 import subprocess
 import sys
 from collections.abc import Callable
@@ -43,7 +44,8 @@ Telecharger = Callable[[str, Path], "Path | None"]
 #: Orientations EXIF où l'image s'affiche tournée d'un quart de tour.
 QUART_DE_TOUR = {5, 6, 7, 8}
 #: Ce que Pillow lève sur un fichier qu'il ne sait pas lire (SVG, HTML, image tronquée ou géante).
-ILLISIBLE = (OSError, ValueError, SyntaxError, Image.DecompressionBombError)
+ILLISIBLE = (OSError, ValueError, SyntaxError, struct.error, ZeroDivisionError, Image.DecompressionBombError)
+MISES = {"affiche", "carre", "rond", "double", "photo", "cadre", "tuile", "sans"}
 
 
 def ecrire(dst: Path, helmet: str, corps: str) -> None:
@@ -56,7 +58,7 @@ def ecrire(dst: Path, helmet: str, corps: str) -> None:
 def telecharger(url: str, chemin: Path, session: Any = None) -> Path | None:
     """Télécharge une image vers `chemin` (extension d'après le type rendu) ; None en cas d'échec."""
     try:
-        reponse = (session or requests).get(url, headers=ci.NAVIGATEUR, timeout=30)
+        reponse = (session or requests).get(url, headers=ci.entetes(url), timeout=30)
         reponse.raise_for_status()
     except (OSError, ValueError) as exc:  # requests.RequestException dérive d'OSError
         log.warning("image du carrousel : téléchargement en échec pour %s (%s : %s)", url, type(exc).__name__, exc)
@@ -92,27 +94,49 @@ def _images(r: dict[str, Any], dossier: Path, rang: int, tel: Telecharger) -> li
     return lues
 
 
+def _vignette(adresse: str | None, dossier: Path, tel: Telecharger) -> tuple[Path | None, str | None]:
+    """Vignette de la couverture ; YouTube n'a pas de « maxresdefault » pour toutes les vidéos."""
+    essais = [adresse] if adresse else []
+    if adresse and "maxresdefault" in adresse:
+        essais.append(adresse.replace("maxresdefault", "hqdefault"))
+    for essai in essais:
+        if (chemin := tel(essai, dossier / "00-couverture")) and taille_affichee(chemin):
+            return chemin, essai
+    return None, None
+
+
+def _mise(r: dict[str, Any], rang: int, tailles: list[tuple[int, int]]) -> str:
+    """Mise en scène calculée, sauf une mise forcée connue dont les images sont là."""
+    calculee, voulue = ci.mise_en_scene(r["type"], tailles), r.get("mise")
+    if voulue and voulue not in MISES:
+        log.warning("carrousel : page %d, mise « %s » inconnue (%s), « %s » à la place",
+                    rang, voulue, ", ".join(sorted(MISES)), calculee)
+        return calculee
+    if voulue == "sans" or (voulue and tailles and (voulue == "double") == (len(tailles) > 1)):
+        return voulue
+    return calculee
+
+
 def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> list[Path]:
     """Écrit les pages HTML du carrousel (images comprises) et renvoie leurs chemins, dans l'ordre."""
     tel = tel or telecharger
     dossier = sortie / "images"
     dossier.mkdir(parents=True, exist_ok=True)
     recos, total, utilisees, faites = ep["recos"], len(ep["recos"]), [], []
-    vignette = tel(ep["couverture"], dossier / "00-couverture") if ep.get("couverture") else None
-    if vignette and taille_affichee(vignette):
-        utilisees.append(ep["couverture"])
-    else:
-        vignette = None
+    vignette, adresse = _vignette(ep.get("couverture"), dossier, tel)
+    if vignette:
+        utilisees.append(adresse)
     faites.append(sortie / "01-couverture.html")
     ecrire(faites[-1], cs.HEAD, cs.couverture(ep, total, vignette.resolve().as_uri() if vignette else None))
     for rang, r in enumerate(recos, 1):
         images = _images(r, dossier, rang, tel)
-        utilisees += [url for url, _, _ in images]
-        tailles = [taille for _, _, taille in images]
-        calculee = ci.mise_en_scene(r["type"], tailles)
-        # Une mise forcée dans episode.json ne vaut que si ses images sont là.
-        mise = r["mise"] if r.get("mise") and tailles and (r["mise"] == "double") == (len(tailles) > 1) else calculee
-        alts = [(chemin.resolve().as_uri(), f"Visuel de « {r['titre']} »") for _, chemin, _ in images]
+        mise = _mise(r, rang, [taille for _, _, taille in images])
+        montrees = [] if mise == "sans" else images[:2] if mise == "double" else images[:1]
+        utilisees += [url for url, _, _ in montrees]  # seules les images montrées sont créditées
+        if cs.trop_long(r, mise):
+            log.warning("carrousel : page %d (« %s »), citation trop longue même au plus petit, "
+                        "à raccourcir dans episode.json", rang, r["titre"])
+        alts = [(chemin.resolve().as_uri(), f"Visuel de « {r['titre']} »") for _, chemin, _ in montrees]
         faites.append(sortie / f"{rang + 1:02d}-reco.html")
         ecrire(faites[-1], cs.HEAD, cs.page_reco(r, rang, total, alts, mise))
     faites.append(sortie / f"{total + 2:02d}-fin.html")
@@ -161,7 +185,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     dossier = Path(argv[1])
     ep = json.loads((dossier / "episode.json").read_text(encoding="utf-8"))
-    for page in pages(ep, dossier, tel=telecharger):
+    for page in pages(ep, dossier):
         print(rendre(page))
     t = textes(ep)
     (dossier / "legende-instagram.txt").write_text(t["instagram"] + "\n", encoding="utf-8")

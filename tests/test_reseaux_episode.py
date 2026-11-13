@@ -188,3 +188,26 @@ def test_cle_tmdb_absente_laisse_les_films_sans_affiche(monkeypatch, capsys):
     monkeypatch.setattr(enrich_tmdb, "cle_api", absente)
     assert re_._cle_tmdb() is None
     assert "Pas de clé TMDB" in capsys.readouterr().out
+
+
+def test_cle_tmdb_sans_le_module_d_enrichissement(monkeypatch, capsys):
+    import sys
+    monkeypatch.setitem(sys.modules, "enrich_tmdb", None)  # import impossible
+    assert re_._cle_tmdb() is None
+    assert "Pas de clé TMDB" in capsys.readouterr().out
+
+
+def test_carrousel_cherche_les_images_en_parallele_sans_changer_l_ordre():
+    import threading
+    import time
+    fils = set()
+
+    def image(item, reco):
+        fils.add(threading.get_ident())
+        time.sleep(0.05)
+        return "img-" + item["id"]
+
+    mentions = [mention(f"m{i}", k, f"00:0{i}:00") for i, k in enumerate("abd")]
+    ep = re_.carrousel(EP, mentions, ITEMS, {}, image=image)
+    assert [r["image"] for r in ep["recos"]] == ["img-a", "img-b", "img-d"]
+    assert len(fils) > 1
