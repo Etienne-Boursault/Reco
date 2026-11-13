@@ -266,3 +266,26 @@ def test_une_image_servie_en_octet_stream_est_acceptee():
             return Reponse()
 
     assert ci.WebReel(session=Session()).image_valide("https://s3/x.jpg")
+
+
+def test_seules_les_images_qu_edge_affiche_sont_acceptees():
+    class Reponse:
+        status_code = 200
+
+        def __init__(self, genre):
+            self.headers = {"content-type": genre}
+
+        def close(self):
+            return None
+
+    class Session:
+        def __init__(self, genre):
+            self.genre = genre
+
+        def get(self, url, **kw):
+            return Reponse(self.genre)
+
+    for genre in ("image/jpeg", "image/png", "image/webp", "image/gif", "image/avif"):
+        assert ci.WebReel(session=Session(genre)).image_valide("https://x/a")
+    for genre in ("image/tiff", "image/heic", "image/x-icon"):
+        assert not ci.WebReel(session=Session(genre)).image_valide("https://x/a")

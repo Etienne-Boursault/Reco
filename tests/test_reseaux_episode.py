@@ -211,3 +211,13 @@ def test_carrousel_cherche_les_images_en_parallele_sans_changer_l_ordre():
     ep = re_.carrousel(EP, mentions, ITEMS, {}, image=image)
     assert [r["image"] for r in ep["recos"]] == ["img-a", "img-b", "img-d"]
     assert len(fils) > 1
+
+
+def test_cle_tmdb_ne_masque_pas_une_vraie_erreur(monkeypatch):
+    import enrich_tmdb
+
+    def bug():
+        raise KeyError("TMDB_API_KEY mal lu")
+    monkeypatch.setattr(enrich_tmdb, "cle_api", bug)
+    with pytest.raises(KeyError):
+        re_._cle_tmdb()

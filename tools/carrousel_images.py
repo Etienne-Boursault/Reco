@@ -31,7 +31,7 @@ import sys
 import threading
 from pathlib import Path
 from typing import Any, Protocol
-from urllib.parse import urljoin, urlparse
+from urllib.parse import quote, unquote, urljoin, urlparse
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from link_check import BROWSER_HEADERS
@@ -61,6 +61,8 @@ PANNES = (OSError, ValueError, LookupError, ImportError)
 VIGNETTE_WIKIMEDIA = 960
 #: Types de contenu d'une image servie sans le bon type (S3, CDN) : Pillow tranchera au rendu.
 BINAIRES = ("application/octet-stream", "binary/octet-stream")
+#: Ce qu'Edge affiche à coup sûr (pas de TIFF, de HEIC ni d'ICO, que Pillow lit pourtant).
+AFFICHABLES = {"image/jpeg", "image/png", "image/webp", "image/gif", "image/avif"}
 
 
 def entetes(url: str) -> dict[str, str]:
@@ -127,8 +129,7 @@ class WebReel:
             return False
         try:
             genre = (reponse.headers.get("content-type") or "").split(";")[0].strip().lower()
-            image = genre.startswith("image/") and genre != "image/svg+xml"
-            return reponse.status_code == 200 and (image or genre in BINAIRES)
+            return reponse.status_code == 200 and (genre in AFFICHABLES or genre in BINAIRES)
         finally:
             reponse.close()
 
@@ -202,11 +203,16 @@ def _pochette(reco: dict[str, Any], web: Web) -> str | None:
         pochette = _objet(_objet(web.json(f"https://api.deezer.com/track/{m[1]}")).get("album")).get("cover_xl")
     if pochette and "/cover//" not in pochette:  # « /cover// » : la pochette grise par défaut
         return pochette
-    if m := _premier(reco, r"music\.apple\.com/.*/album/[^/]+/(\d+)"):
-        resultat = _objet((_objet(web.json(ITUNES, id=m[1], country="fr")).get("results") or [{}])[0])
-        if resultat.get("artworkUrl100"):
-            return resultat["artworkUrl100"].replace("100x100", "1000x1000")
+    # Avec ou sans le nom de l'album dans l'adresse (liens courts « /album/<id> »).
+    if m := _premier(reco, r"music\.apple\.com/.*/album/(?:[^/?]+/)?(\d+)"):
+        return _artwork_itunes(m[1], web, "artworkUrl100", "100x100", "1000x1000")
     return None
+
+
+def _artwork_itunes(identifiant: str, web: Web, champ: str, petite: str, grande: str) -> str | None:
+    """Image agrandie d'un album ou d'un podcast Apple, par la recherche iTunes."""
+    resultat = _objet((_objet(web.json(ITUNES, id=identifiant, country="fr")).get("results") or [{}])[0])
+    return resultat[champ].replace(petite, grande) if resultat.get(champ) else None
 
 
 def _photo_artiste(reco: dict[str, Any], web: Web) -> str | None:
@@ -218,20 +224,19 @@ def _photo_artiste(reco: dict[str, Any], web: Web) -> str | None:
 
 def _vignette_podcast(reco: dict[str, Any], web: Web) -> str | None:
     if m := _premier(reco, r"podcasts\.apple\.com/.*/id(\d+)"):
-        resultat = _objet((_objet(web.json(ITUNES, id=m[1], country="fr")).get("results") or [{}])[0])
-        if resultat.get("artworkUrl600"):
-            return resultat["artworkUrl600"].replace("600x600", "1200x1200")
+        return _artwork_itunes(m[1], web, "artworkUrl600", "600x600", "1200x1200")
     return None
 
 
 def _avatar(reco: dict[str, Any], web: Web) -> str | None:
-    m = _premier(reco, r"(?:https?://)?(?:www\.|m\.)?youtube\.com/(@[\w.-]+|(?:channel|c|user)/[\w.-]+)")
+    m = _premier(reco, r"(?:https?://)?(?:www\.|m\.)?youtube\.com/(@[\w.%-]+|(?:channel|c|user)/[\w.%-]+)")
     return web.avatar_youtube(f"https://www.youtube.com/{m[1]}") if m else None
 
 
 def _wikipedia(reco: dict[str, Any], web: Web) -> str | None:
     if m := _premier(reco, r"fr\.wikipedia\.org/wiki/([^?#]+)"):
-        page = _objet(web.json(f"https://fr.wikipedia.org/api/rest_v1/page/summary/{m[1]}"))
+        titre = quote(unquote(m[1]), safe="")  # « AC/DC » : la barre fait partie du titre
+        page = _objet(web.json(f"https://fr.wikipedia.org/api/rest_v1/page/summary/{titre}"))
         original = _objet(page.get("originalimage"))
         vignette = _objet(page.get("thumbnail")).get("source")
         largeur = original.get("width") or 0
@@ -272,13 +277,16 @@ def _image_de_page(url: str, web: Web) -> str | None:
 
 
 #: Une page de recherche de librairie porte le logo du site, pas la couverture d'un livre.
-RECHERCHE = re.compile(r"recherche|search|listeliv|[?&](q|query|mots?)=", re.IGNORECASE)
+#: Un segment de chemin (« /recherche », « /search/… », « listeliv.php ») ou un paramètre de
+#: requête, jamais un mot du titre (« /a-la-recherche-du-temps-perdu »).
+RECHERCHE = re.compile(r"(?:/(?:recherche|search|listeliv[^/?]*)(?:[/?]|$))|[?&](?:q|query|mots?|mots_recherche|term)=",
+                       re.IGNORECASE)
 
 
-def _partage(reco: dict[str, Any], web: Web, genres: tuple[str, ...] = ("official",)) -> str | None:
+def _partage(reco: dict[str, Any], web: Web, genres: tuple[str, ...] = ("official",),
+             sauf_recherche: bool = False) -> str | None:
     lien = next((lien["url"] for lien in _liens(reco)
-                 if lien.get("kind") in genres and not (genres == ("buy",) and RECHERCHE.search(lien["url"]))),
-                None)
+                 if lien.get("kind") in genres and not (sauf_recherche and RECHERCHE.search(lien["url"]))), None)
     return _image_de_page(lien, web) if lien else None
 
 
@@ -304,7 +312,7 @@ def source(item: dict[str, Any], reco: dict[str, Any], web: Web, cle_tmdb: str |
     if "chaine" in types:
         essais.append(lambda: _avatar(reco, web))
     if types & {"livre", "bd"}:
-        essais += [lambda: _wikipedia(reco, web), lambda: _partage(reco, web, ("buy",))]
+        essais += [lambda: _wikipedia(reco, web), lambda: _partage(reco, web, ("buy",), sauf_recherche=True)]
     essais.append(lambda: _partage(reco, web))
     for essai in essais:
         try:

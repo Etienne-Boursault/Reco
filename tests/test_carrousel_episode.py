@@ -47,10 +47,11 @@ def test_pages_telechargent_les_images_et_choisissent_la_mise_en_scene(tmp_path)
                                "https://cdn-images.dzcdn.net/1.jpg": (1000, 1000)})
     pages = ce.pages(ep, tmp_path, tel=tel)
     textes = [p.read_text(encoding="utf-8") for p in pages]
-    assert (tmp_path / "images" / "00-couverture.png").exists() and "00-couverture.png" in textes[0]
+    vignette = ce.nom_fichier("https://yt/v.jpg") + ".png"
+    assert (tmp_path / "images" / vignette).exists() and vignette in textes[0]
     assert "height: 460px" in textes[1] and "blur(46px)" in textes[1]
     # « double » demandé, mais une seule image téléchargée : la page reprend la mise calculée.
-    assert "02-0.png" in textes[2] and "width: 440px; height: 440px" in textes[2] and "width: 400px" not in textes[2]
+    assert ce.nom_fichier("https://cdn-images.dzcdn.net/1.jpg") + ".png" in textes[2] and "width: 440px; height: 440px" in textes[2] and "width: 400px" not in textes[2]
     # Seules les images réellement téléchargées sont créditées.
     assert "Images : affiches TMDB, pochettes Deezer, sites des œuvres" in textes[3]
     assert len(tel.demandes) == 4
@@ -149,7 +150,7 @@ def test_couverture_sans_maxres_prend_la_vignette_hq(tmp_path):
     tel = faux_telechargement({"https://i.ytimg.com/vi/x/hqdefault.jpg": (480, 360)})
     pages = ce.pages({**EP, "couverture": maxres}, tmp_path, tel=tel)
     assert tel.demandes[:2] == [maxres, "https://i.ytimg.com/vi/x/hqdefault.jpg"]
-    assert "00-couverture" in pages[0].read_text(encoding="utf-8")
+    assert ce.nom_fichier("https://i.ytimg.com/vi/x/hqdefault.jpg") in pages[0].read_text(encoding="utf-8")
     assert "YouTube" in pages[-1].read_text(encoding="utf-8")
 
 
@@ -213,7 +214,7 @@ def test_telecharger_wikimedia_avec_l_agent_de_l_outil(tmp_path):
 def test_un_null_dans_une_liste_d_images_est_ignore(tmp_path):
     tel = faux_telechargement({"https://cdn-images.dzcdn.net/1.jpg": (1000, 1000)})
     ep = {**EP, "recos": [{**EP["recos"][0], "image": ["https://cdn-images.dzcdn.net/1.jpg", None]}]}
-    assert "01-0.png" in ce.pages(ep, tmp_path, tel=tel)[1].read_text(encoding="utf-8")
+    assert ce.nom_fichier("https://cdn-images.dzcdn.net/1.jpg") in ce.pages(ep, tmp_path, tel=tel)[1].read_text(encoding="utf-8")
     assert tel.demandes == ["https://cdn-images.dzcdn.net/1.jpg"]
 
 
@@ -241,3 +242,89 @@ def test_la_vignette_de_substitution_de_youtube_fait_prendre_la_hq(tmp_path):
 
 def test_la_liste_des_mises_vit_avec_le_rendu():
     assert ce.cs.MISES == {"affiche", "carre", "rond", "double", "photo", "cadre", "tuile", "sans"}
+
+
+# ===== Quatrième tour de revue de la PR #204 ==================================
+def test_le_cache_ne_confond_jamais_deux_images_quand_les_pages_se_decalent(tmp_path):
+    """Revue (élevé) : le fichier portait le numéro de page ; un décalage écrasait une image encore indexée."""
+    tailles = {"https://a/A.jpg": (780, 1170), "https://a/B.jpg": (1000, 1000)}
+    tel = faux_telechargement(tailles)
+    un = {**EP, "recos": [{**EP["recos"][0], "image": "https://a/A.jpg"}]}
+    ce.pages(un, tmp_path, tel=tel)
+    deux = {**EP, "recos": [{**EP["recos"][0], "image": "https://a/B.jpg"},
+                            {**EP["recos"][1], "image": "https://a/A.jpg"}]}
+    pages = ce.pages(deux, tmp_path, tel=tel)
+    assert "height: 460px" in pages[2].read_text(encoding="utf-8")  # A reste une affiche
+    assert "width: 440px; height: 440px" in pages[1].read_text(encoding="utf-8")  # B, carrée
+
+
+def test_les_pages_d_un_rendu_precedent_disparaissent(tmp_path):
+    """Revue (moyen) : après une fusion de pages, l'ancienne fin et la reco en trop restaient."""
+    ce.pages(EP, tmp_path, tel=faux_telechargement({}))
+    ce.pages({**EP, "recos": EP["recos"][:1]}, tmp_path, tel=faux_telechargement({}))
+    restes = sorted(p.name for p in tmp_path.glob("[0-9][0-9]-*.html"))
+    assert restes == ["01-couverture.html", "02-reco.html", "03-fin.html"]
+
+
+def test_une_image_illisible_en_cache_est_retelechargee(tmp_path):
+    appels = []
+
+    def tel(url, chemin):
+        appels.append(url)
+        chemin = chemin.with_suffix(".png")
+        if len(appels) == 1:
+            chemin.write_text("<html>erreur</html>", encoding="utf-8")
+        else:
+            Image.new("RGB", (780, 1170)).save(chemin)
+        return chemin
+
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": "https://a/A.jpg"}]}
+    ce.pages(ep, tmp_path, tel=tel)
+    assert "height: 460px" in ce.pages(ep, tmp_path, tel=tel)[1].read_text(encoding="utf-8")
+    assert len(appels) == 2
+
+
+def test_une_image_en_octet_stream_prend_l_extension_de_son_format(tmp_path):
+    import io
+    tampon = io.BytesIO()
+    Image.new("RGB", (10, 10)).save(tampon, format="PNG")
+
+    class Reponse:
+        content, headers = tampon.getvalue(), {"content-type": "binary/octet-stream"}
+
+        def raise_for_status(self):
+            return None
+
+    class Session:
+        def get(self, url, **kw):
+            return Reponse()
+
+    assert ce.telecharger("https://s3/x", tmp_path / "abc", session=Session()).suffix == ".png"
+
+
+def test_une_vignette_de_moins_de_2000_octets_est_un_substitut(tmp_path):
+    maxres = "https://i.ytimg.com/vi/x/maxresdefault.jpg"
+
+    def tel(url, chemin):
+        chemin = chemin.with_suffix(".png")
+        Image.new("RGB", (1280, 720) if "hq" in url else (640, 360)).save(chemin)
+        if "maxres" in url:
+            chemin.write_bytes(chemin.read_bytes()[:1500])  # tronquée, comme le substitut de YouTube
+        return chemin
+
+    pages = ce.pages({**EP, "couverture": maxres}, tmp_path, tel=tel)
+    assert "YouTube" in pages[-1].read_text(encoding="utf-8")
+
+
+def test_un_fichier_inconnu_et_illisible_garde_son_extension(tmp_path):
+    class Reponse:
+        content, headers = b"pas une image", {"content-type": "binary/octet-stream"}
+
+        def raise_for_status(self):
+            return None
+
+    class Session:
+        def get(self, url, **kw):
+            return Reponse()
+
+    assert ce.telecharger("https://s3/x", tmp_path / "abc", session=Session()).suffix == ".bin"

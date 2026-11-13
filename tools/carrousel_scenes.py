@@ -46,8 +46,9 @@ AJUSTER_DANS_LE_NAVIGATEUR = (
     "const bas = document.querySelector('[data-bas]'), titre = document.querySelector('[data-titre]'),"
     " citation = document.querySelector('[data-citation]');"
     "for (let i = 0; i < 24 && bas.scrollHeight > bas.clientHeight; i++) {"
-    "const e = i % 3 === 2 ? titre : citation;"
-    "e.style.fontSize = (parseFloat(getComputedStyle(e).fontSize) * 0.94) + 'px'; }});</script>")
+    "const e = i % 3 === 2 ? titre : citation, plus_petit = parseFloat(getComputedStyle(e).fontSize) * 0.94;"
+    # Pas sous 26 px : mieux vaut un texte coupé, signalé par trop_long, qu'illisible.
+    "if (plus_petit > 26) e.style.fontSize = plus_petit + 'px'; }});</script>")
 TITRES = (150, 132, 116, 100, 88)
 
 
@@ -80,7 +81,8 @@ def hauteur_du_texte(r: dict, titre: int, citation: int) -> float:
     """Estimation, en px, de la hauteur du titre, du créateur et du bloc de citation."""
     lignes_titre = _lignes(r["titre"], _signes_titre(titre))[0]
     lignes_citation = math.ceil(len(r["citation"]) * 1.1 / (900 / (0.5 * citation)))  # Inter italique ~0,5 em
-    createur = 58 if r.get("createur") else 0
+    # Le créateur, en Inter 36 px (~0,5 em par signe sur 904 px), peut tenir sur plusieurs lignes.
+    createur = (math.ceil(len(r["createur"]) / (904 / (0.5 * 36))) * 44 + 14) if r.get("createur") else 0
     return lignes_titre * titre * 0.88 + createur + 40 + 48 + 28 + lignes_citation * citation * 1.3 + 28 + 64
 
 

@@ -91,3 +91,13 @@ def test_le_navigateur_reduit_encore_le_texte_s_il_deborde():
 def test_trop_long_signale_un_texte_qui_deborde_meme_au_plus_petit():
     assert cs.trop_long({**R, "citation": "mot " * 400}, "sans")
     assert not cs.trop_long(R, "affiche")
+
+
+def test_un_createur_long_compte_sur_plusieurs_lignes():
+    court = cs.hauteur_du_texte({**R, "createur": "X"}, 100, 42)
+    long = cs.hauteur_du_texte({**R, "createur": "Un créateur, " * 12}, 100, 42)
+    assert long > court + 40
+
+
+def test_le_filet_du_navigateur_ne_descend_pas_sous_une_taille_lisible():
+    assert "> 26" in cs.AJUSTER_DANS_LE_NAVIGATEUR

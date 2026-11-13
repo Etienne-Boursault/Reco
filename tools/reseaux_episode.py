@@ -270,7 +270,7 @@ def _cle_tmdb() -> str | None:
     try:
         from enrich_tmdb import cle_api  # importé ici : son absence ne doit priver que des affiches
         return cle_api()
-    except (ImportError, SystemExit, RuntimeError, KeyError) as exc:
+    except (ImportError, RuntimeError) as exc:  # module absent, ou clé absente (cle_api)
         print(f"Pas de clé TMDB ({exc}) : les films et séries n'auront pas d'affiche.")
         return None
 

@@ -377,3 +377,33 @@ def test_couverture_des_adresses_live_shorts_et_embed():
     for forme in ("live", "shorts", "embed"):
         ep = {"guid": "abc", "youtubeUrl": f"https://www.youtube.com/{forme}/aBc-12_xYz9"}
         assert ci.couverture(ep) == "https://i.ytimg.com/vi/aBc-12_xYz9/maxresdefault.jpg"
+
+
+# ===== Quatrième tour de revue de la PR #204 ==================================
+def test_une_fiche_de_livre_dont_le_titre_contient_recherche_n_est_pas_une_recherche():
+    url = "https://www.placedeslibraires.fr/livre/9782070360/a-la-recherche-du-temps-perdu"
+    reco = {"types": ["livre"], "links": [lien(url, "buy")]}
+    web = FauxWeb(html={url: '<meta property="og:image" content="https://pdl/proust.jpg">'})
+    assert ci.source({}, reco, web, None) == "https://pdl/proust.jpg"
+    for recherche in ("https://site.fr/recherche?q=x", "https://site.fr/search/x", "https://site.fr/p?query=x"):
+        reco = {"types": ["livre"], "links": [lien(recherche, "buy")]}
+        assert ci.source({}, reco, FauxWeb(html={recherche: '<meta property="og:image" content="/l.png">'}),
+                         None) is None
+
+
+def test_un_pseudo_youtube_encode_garde_ses_caracteres():
+    web = FauxWeb(avatars={"https://www.youtube.com/@caf%C3%A9": "https://yt3/cafe"})
+    reco = {"types": ["chaine"], "links": [lien("https://www.youtube.com/@caf%C3%A9")]}
+    assert ci.source({}, reco, web, None) == "https://yt3/cafe"
+
+
+def test_un_titre_wikipedia_avec_une_barre_est_encode():
+    reco = {"types": ["livre"], "links": [lien("https://fr.wikipedia.org/wiki/AC/DC", "info")]}
+    web = FauxWeb(json={WIKI + "AC%2FDC": {"originalimage": {"source": "https://upload/acdc.jpg", "width": 500}}})
+    assert ci.source({}, reco, web, None) == "https://upload/acdc.jpg"
+
+
+def test_un_lien_apple_music_court_donne_la_pochette():
+    web = FauxWeb(json={"https://itunes.apple.com/lookup": {"results": [{"artworkUrl100": "https://is1/100x100bb.jpg"}]}})
+    reco = {"types": ["album"], "links": [lien("https://music.apple.com/fr/album/1440857781")]}
+    assert ci.source({}, reco, web, None) == "https://is1/1000x1000bb.jpg"

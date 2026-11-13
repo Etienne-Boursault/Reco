@@ -15,9 +15,11 @@ Usage : python tools/carrousel_episode.py <dossier contenant episode.json>
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import mimetypes
+import re
 import shutil
 import struct
 import subprocess
@@ -50,11 +52,23 @@ SUBSTITUT_YOUTUBE = (120, 90)
 INDEX = "index.json"
 
 
-def ecrire(dst: Path, helmet: str, corps: str) -> None:
+#: Pages produites par un rendu : celles d'un rendu précédent sont retirées avant le suivant.
+PAGE_RENDUE = re.compile(r"^\d\d-(?:couverture|reco|fin)\.(?:html|png)$")
+#: Extensions qu'Edge reconnaît ; une autre (« .bin » d'un octet-stream) prend celle du format réel.
+EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}
+
+
+def ecrire(dst: Path, corps: str) -> None:
     dst.write_text(
-        '<!doctype html><html lang="fr"><head><meta charset="utf-8">' + helmet
-        + "<style>html,body{margin:0;padding:0;overflow:hidden;background:#0e0e10}</style></head><body>"
+        '<!doctype html><html lang="fr"><head><meta charset="utf-8">' + cs.HEAD
+        + "<style>html,body{padding:0;overflow:hidden;background:#0e0e10}</style></head><body>"
         + corps + "</body></html>", encoding="utf-8")
+
+
+def nom_fichier(url: str) -> str:
+    """Nom d'une image dans `images/` : l'empreinte de son adresse, jamais le numéro de sa page
+    (des pages qui se décalent écrasaient une image encore indexée, revue de la PR #204)."""
+    return hashlib.sha256(url.encode("utf-8")).hexdigest()[:16]
 
 
 def telecharger(url: str, chemin: Path, session: Any = None) -> Path | None:
@@ -66,9 +80,20 @@ def telecharger(url: str, chemin: Path, session: Any = None) -> Path | None:
         log.warning("image du carrousel : téléchargement en échec pour %s (%s : %s)", url, type(exc).__name__, exc)
         return None
     type_ = (reponse.headers.get("content-type") or "").split(";")[0]
-    suffixe = mimetypes.guess_extension(type_) or Path(urlparse(url).path).suffix or ".jpg"
+    # Le type annoncé, sinon l'extension de l'adresse si Edge la connaît ; sinon « .bin », que
+    # le format réel (lu par Pillow ci-dessous) remplace.
+    du_chemin = Path(urlparse(url).path).suffix.lower()
+    annonce = mimetypes.guess_extension(type_) if type_ not in ci.BINAIRES else None
+    suffixe = annonce or (du_chemin if du_chemin in EXTENSIONS else ".bin")
     chemin = chemin.with_suffix(".jpg" if suffixe == ".jpe" else suffixe)
     chemin.write_bytes(reponse.content)
+    if chemin.suffix.lower() not in EXTENSIONS:
+        try:
+            with Image.open(chemin) as image:
+                format_ = image.format.lower()  # toujours connu pour un fichier que Pillow a ouvert
+        except ILLISIBLE:
+            return chemin  # taille_affichee l'écartera
+        chemin = chemin.rename(chemin.with_suffix(".jpg" if format_ == "jpeg" else f".{format_}"))
     return chemin
 
 
@@ -97,7 +122,8 @@ def _avec_cache(tel: Telecharger, dossier: Path) -> Telecharger:
 
     def telecharger_une_fois(url: str, chemin: Path) -> Path | None:
         deja = dossier / index.get(url, "")
-        if index.get(url) and deja.exists():
+        # Une image restée illisible (page d'erreur, fichier tronqué) se retélécharge.
+        if index.get(url) and deja.exists() and taille_affichee(deja):
             return deja
         if fait := tel(url, chemin):
             index[url] = fait.name
@@ -111,8 +137,8 @@ def _images(r: dict[str, Any], dossier: Path, rang: int, tel: Telecharger) -> li
     # Une seule adresse, ou une liste ; un `null` dans la liste (image retirée) est ignoré.
     adresses = [a for a in ([adresses] if isinstance(adresses, str) else adresses) if a]
     lues = []
-    for i, url in enumerate(adresses):
-        if (chemin := tel(url, dossier / f"{rang:02d}-{i}")) and (taille := taille_affichee(chemin)):
+    for url in adresses:
+        if (chemin := tel(url, dossier / nom_fichier(url))) and (taille := taille_affichee(chemin)):
             lues.append((url, chemin, taille))
     return lues
 
@@ -123,7 +149,7 @@ def _vignette(adresse: str | None, dossier: Path, tel: Telecharger) -> tuple[Pat
     if adresse and "maxresdefault" in adresse:
         essais.append(adresse.replace("maxresdefault", "hqdefault"))
     for essai in essais:
-        chemin = tel(essai, dossier / "00-couverture")
+        chemin = tel(essai, dossier / nom_fichier(essai))
         if chemin and (taille := taille_affichee(chemin)) and taille != SUBSTITUT_YOUTUBE:
             return chemin, essai
     return None, None
@@ -150,13 +176,16 @@ def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> l
     """Écrit les pages HTML du carrousel (images comprises) et renvoie leurs chemins, dans l'ordre."""
     dossier = sortie / "images"
     dossier.mkdir(parents=True, exist_ok=True)
+    for ancienne in sortie.iterdir():
+        if PAGE_RENDUE.match(ancienne.name):
+            ancienne.unlink()
     tel = _avec_cache(tel or telecharger, dossier)
     recos, total, utilisees, faites = ep["recos"], len(ep["recos"]), [], []
     vignette, adresse = _vignette(ep.get("couverture"), dossier, tel)
     if vignette:
         utilisees.append(adresse)
     faites.append(sortie / "01-couverture.html")
-    ecrire(faites[-1], cs.HEAD, cs.couverture(ep, total, vignette.resolve().as_uri() if vignette else None))
+    ecrire(faites[-1], cs.couverture(ep, total, vignette.resolve().as_uri() if vignette else None))
     for rang, r in enumerate(recos, 1):
         images = _images(r, dossier, rang, tel)
         mise = _mise(r, rang, [taille for _, _, taille in images], [url for url, _, _ in images])
@@ -167,9 +196,9 @@ def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> l
                         "à raccourcir dans episode.json", rang, r["titre"])
         alts = [(chemin.resolve().as_uri(), f"Visuel de « {r['titre']} »") for _, chemin, _ in montrees]
         faites.append(sortie / f"{rang + 1:02d}-reco.html")
-        ecrire(faites[-1], cs.HEAD, cs.page_reco(r, rang, total, alts, mise))
+        ecrire(faites[-1], cs.page_reco(r, rang, total, alts, mise))
     faites.append(sortie / f"{total + 2:02d}-fin.html")
-    ecrire(faites[-1], cs.HEAD, cs.fin(ep, total, ci.credits(utilisees)))
+    ecrire(faites[-1], cs.fin(ep, total, ci.credits(utilisees)))
     return faites
 
 

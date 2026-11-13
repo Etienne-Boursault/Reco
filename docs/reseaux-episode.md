@@ -92,7 +92,9 @@ relecture :
 
 Le rendu garde les images téléchargées dans `images/` (avec `images/index.json`) : relancer
 `carrousel_episode.py` après une retouche ne les retélécharge pas. Pour forcer un nouveau
-téléchargement, supprimer l'image et sa ligne de l'index, ou changer l'adresse.
+téléchargement, supprimer l'image et sa ligne de l'index, ou changer l'adresse. Les pages d'un
+rendu précédent (`NN-couverture`, `NN-reco`, `NN-fin`) sont retirées avant chaque rendu : après une
+fusion de pages, il ne reste pas d'ancienne page en trop.
 
 Une page sans image garde le rythme du carrousel : un aplat jaune, avec un disque pour la musique.
 Sous l'image, la citation puis le titre rapetissent si le texte déborde ; le rendu signale une
