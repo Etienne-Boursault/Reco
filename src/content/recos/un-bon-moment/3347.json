@@ -1,0 +1,35 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Miki",
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:01",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3347",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est important de le dire aussi, 18 novembre au Zénith, Miki, dernière date, c'est dans 5 jours.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:54:01",
+  "title": "Miki au Zénith",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

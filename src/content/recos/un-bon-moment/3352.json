@@ -1,0 +1,68 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-11-13T11:38:42Z"
+  },
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:42",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3352",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — page artiste",
+      "url": "https://www.deezer.com/artist/151333242"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music — page artiste",
+      "url": "https://music.apple.com/fr/artist/mona-guba/1597468015"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — page artiste",
+      "url": "https://open.spotify.com/artist/0XcjEhnBxtPbt6ZwfIoAyn"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz — page artiste",
+      "url": "https://www.qobuz.com/fr-fr/interpreter/mona-guba/11904200"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YT Music",
+      "url": "https://music.youtube.com/channel/UCQnhTpkHZGDAfsam40bpj8A"
+    }
+  ],
+  "quote": "Suivez-la sur les réseaux sociaux, Mona Guba !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:05:42",
+  "title": "Mona Guba",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

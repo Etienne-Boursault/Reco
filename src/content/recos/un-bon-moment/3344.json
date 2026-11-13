@@ -1,0 +1,34 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Dominique de Saint Mars et Serge Bloch",
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:43",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3344",
+  "kind": "citation",
+  "links": [],
+  "quote": "Merci Max et Lili. Moi, ça m'a décomplexée sur plein de trucs dont Max parle tout le temps de son zizi.",
+  "recommendedBy": "Miki",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:20:43",
+  "title": "Max et Lili",
+  "transcriptSource": "youtube",
+  "types": [
+    "bd"
+  ]
+}

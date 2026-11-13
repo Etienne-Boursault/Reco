@@ -1,0 +1,33 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Patrick Hamilton",
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:07:43",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3341",
+  "links": [],
+  "quote": "Parce que j'ai lu ça c'est une pièce super ça s'appelle Gaslight vous connaissez ?",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:07:43",
+  "title": "Gaslight",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ],
+  "year": 1938
+}

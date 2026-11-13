@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:46:41"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3346",
+  "itemId": "7019cb44",
+  "kind": "reco",
+  "quote": "Si vous aimez les chocs mentaux, allez voir Nardwuar.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-rwlXWp7Lrhg",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:46:41",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

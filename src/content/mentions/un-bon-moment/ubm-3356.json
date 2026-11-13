@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:56"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3356",
+  "itemId": "e8768ef9",
+  "kind": "reco",
+  "quote": "Et branchez-vous Adèle, si ce n'est pas encore fait, Plaisir Risque Dépendance.",
+  "recommendedBy": "Miki",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-rwlXWp7Lrhg",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:22:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

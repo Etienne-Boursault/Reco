@@ -1,0 +1,41 @@
+{
+  "creator": "Maite Alberdi",
+  "externalIds": {
+    "tmdb": 1032760,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1032760-la-memoria-infinita/watch?locale=FR"
+  },
+  "id": "b81c2a38",
+  "schemaVersion": 1,
+  "title": "La Mémoire éternelle",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=La%20M%C3%A9moire%20%C3%A9ternelle"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20M%C3%A9moire%20%C3%A9ternelle"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=La%20M%C3%A9moire%20%C3%A9ternelle"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20M%C3%A9moire%20%C3%A9ternelle"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=La%20M%C3%A9moire%20%C3%A9ternelle"
+    }
+  ]
+}

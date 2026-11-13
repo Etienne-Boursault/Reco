@@ -1,0 +1,33 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-rwlXWp7Lrhg",
+  "extractionHistory": [
+    {
+      "at": "2026-11-13T11:32:42+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3351",
+  "kind": "reco",
+  "links": [],
+  "quote": "je dirais l'épisode Menteuse, Menteuse du podcast Passage.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:52",
+  "title": "Menteuse, menteuse (podcast Passages)",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}
