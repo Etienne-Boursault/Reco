@@ -1,25 +1,26 @@
 """
-carrousel_images.py — l'image de chaque page du carrousel d'un episode.
+carrousel_images.py — l'image de chaque page du carrousel d'un épisode.
 
-Demande d'Etienne du 2026-11-13 (« recuperer des visuels pour le carrousel ?
-Genre les pochettes d'album, de film »), modele valide le meme jour sur le
-canevas Design « Carrousel avec visuels » (S6-E09, premier carrousel publie
+Demande d'Étienne du 2026-11-13 (« récupérer des visuels pour le carrousel ?
+Genre les pochettes d'album, de film »), modèle validé le même jour sur le
+canevas Design « Carrousel avec visuels » (S6-E09, premier carrousel publié
 avec visuels).
 
-L'image vient des identifiants deja verifies sur la reco, jamais d'une
+L'image vient des identifiants déjà vérifiés sur la reco, jamais d'une
 recherche par titre :
-- film, serie : l'affiche TMDB dans la langue originale de l'oeuvre (Etienne a
-  prefere l'affiche originale d'Eternal Sunshine a l'affiche francaise) ;
+- film, série : l'affiche TMDB dans la langue originale de l'œuvre (Étienne a
+  préféré l'affiche originale d'Eternal Sunshine à l'affiche française), à
+  défaut la française, puis une affiche sans texte ;
 - album : la pochette Deezer, sinon Apple Music ;
-- artiste, musique : la photo Deezer (pas la photo grise par defaut) ;
+- artiste, musique : la photo Deezer (pas la photo grise par défaut) ;
 - podcast : la vignette Apple Podcasts ;
-- chaine : l'avatar YouTube ;
-- livre, BD : l'image de l'article Wikipedia ;
-- sinon : l'image de partage (og:image) du site officiel.
-Une source qui ne repond pas ne donne rien : la page reste sans image, et
-l'editeur peut toujours poser ou retirer une image a la main dans
-`episode.json` (une photo d'artiste Deezer peut etre une pochette de single
-inutilisable, vu pour Adele Castillon).
+- chaîne : l'avatar YouTube ;
+- livre, BD : l'image de l'article Wikipédia, sinon celle de la librairie ;
+- sinon : l'image de partage (og:image) du site officiel, ou son icône.
+Une source qui ne répond pas ne donne rien : la page reste sans image, et
+l'éditeur peut toujours poser ou retirer une image à la main dans
+`episode.json` (une photo d'artiste Deezer peut être une pochette de single
+inutilisable, vu pour Adèle Castillon).
 """
 from __future__ import annotations
 
@@ -35,6 +36,13 @@ TMDB = "https://api.themoviedb.org/3"
 AFFICHE = "https://image.tmdb.org/t/p/w780"
 ITUNES = "https://itunes.apple.com/lookup"
 RONDS = {"Artiste", "Chaîne YouTube", "Musique"}
+NAVIGATEUR = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36",
+              "Accept-Language": "fr-FR,fr;q=0.9"}
+OUTIL = "UneBonneReco/1.0 (carrousel des recos ; https://unebonnere.co)"
+#: Une balise og:image est dans l'en-tête : inutile de lire plus loin.
+TAILLE_PAGE = 512_000
+#: Ce qu'une source en panne peut lever (réseau, réponse inattendue, module absent ou changé).
+PANNES = (OSError, ValueError, KeyError, TypeError, IndexError, AttributeError, ImportError)
 
 
 class Web(Protocol):
@@ -43,16 +51,11 @@ class Web(Protocol):
     def avatar_youtube(self, url: str) -> str | None: ...
 
 
-NAVIGATEUR = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36",
-              "Accept-Language": "fr-FR,fr;q=0.9"}
-OUTIL = "UneBonneReco/1.0 (carrousel des recos ; https://unebonnere.co)"
-
-
 class WebReel:
-    """Acces reel au web : APIs publiques (requests), avatar YouTube (yt-dlp)."""
+    """Accès réel au web : APIs publiques (requests), avatar YouTube (yt-dlp)."""
 
     def __init__(self, session: Any = None, ytdl: Any = None) -> None:
-        if session is None:  # pragma: no cover — la session reelle, remplacee dans les tests
+        if session is None:  # pragma: no cover — la session réelle, remplacée dans les tests
             import requests
             session = requests.Session()
         self._session, self._ytdl = session, ytdl
@@ -66,9 +69,17 @@ class WebReel:
 
     def html(self, url: str) -> str:
         # SOCS=CAI : sans lui, YouTube et Google rendent leur page de consentement.
-        reponse = self._session.get(url, headers={**NAVIGATEUR, "Cookie": "SOCS=CAI"}, timeout=20)
-        reponse.raise_for_status()
-        return reponse.text
+        reponse = self._session.get(url, headers={**NAVIGATEUR, "Cookie": "SOCS=CAI"}, timeout=20, stream=True)
+        try:
+            reponse.raise_for_status()
+            lu = b""
+            for morceau in reponse.iter_content(chunk_size=65_536):
+                lu += morceau
+                if len(lu) >= TAILLE_PAGE:
+                    break
+            return lu[:TAILLE_PAGE].decode(reponse.encoding or "utf-8", errors="replace")
+        finally:
+            reponse.close()
 
     def avatar_youtube(self, url: str) -> str | None:
         infos = self._ytdl(url) if self._ytdl else self._yt_dlp(url)
@@ -78,8 +89,12 @@ class WebReel:
     def _yt_dlp(url: str) -> dict[str, Any]:
         import yt_dlp
         options = {"quiet": True, "no_warnings": True, "extract_flat": True, "playlist_items": "0"}
-        with yt_dlp.YoutubeDL(options) as ydl:
-            return ydl.extract_info(url, download=False)
+        try:
+            with yt_dlp.YoutubeDL(options) as ydl:
+                return ydl.extract_info(url, download=False)
+        except yt_dlp.utils.YoutubeDLError as exc:  # chaîne supprimée, privée, connexion exigée
+            log.warning("image du carrousel : pas d'avatar pour %s (%s)", url, exc)
+            return {}
 
 
 def _liens(reco: dict[str, Any]) -> list[dict[str, Any]]:
@@ -97,13 +112,17 @@ def _affiche(item: dict[str, Any], reco: dict[str, Any], web: Web, cle: str | No
     base = f"{TMDB}/{ids.get('tmdbType') or 'movie'}/{ids['tmdb']}"
     langue = web.json(base, api_key=cle).get("original_language")
     affiches = web.json(base + "/images", api_key=cle).get("posters") or []
-    choisie = next((a for a in affiches if a.get("iso_639_1") == langue), affiches[0] if affiches else None)
-    return AFFICHE + choisie["file_path"] if choisie else None
+    for voulue in (langue, "fr", None):  # langue originale, française, sans texte
+        if choisie := next((a for a in affiches if a.get("iso_639_1") == voulue), None):
+            return AFFICHE + choisie["file_path"]
+    return AFFICHE + affiches[0]["file_path"] if affiches else None
 
 
 def _pochette(reco: dict[str, Any], web: Web) -> str | None:
     if m := _premier(reco, r"deezer\.com/(?:\w+/)?album/(\d+)"):
-        return web.json(f"https://api.deezer.com/album/{m[1]}").get("cover_xl")
+        pochette = web.json(f"https://api.deezer.com/album/{m[1]}").get("cover_xl")
+        if pochette and "/cover//" not in pochette:  # « /cover// » : la pochette grise par défaut
+            return pochette
     if m := _premier(reco, r"music\.apple\.com/.*/album/[^/]+/(\d+)"):
         resultats = web.json(ITUNES, id=m[1], country="fr").get("results") or []
         if resultats and resultats[0].get("artworkUrl100"):
@@ -127,28 +146,47 @@ def _vignette_podcast(reco: dict[str, Any], web: Web) -> str | None:
 
 
 def _avatar(reco: dict[str, Any], web: Web) -> str | None:
-    m = _premier(reco, r"https://www\.youtube\.com/(?:@[\w.-]+|channel/[\w-]+)")
-    return web.avatar_youtube(m[0]) if m else None
+    m = _premier(reco, r"(?:https?://)?(?:www\.|m\.)?youtube\.com/(@[\w.-]+|(?:channel|c|user)/[\w.-]+)")
+    return web.avatar_youtube(f"https://www.youtube.com/{m[1]}") if m else None
 
 
 def _wikipedia(reco: dict[str, Any], web: Web) -> str | None:
     if m := _premier(reco, r"fr\.wikipedia\.org/wiki/([^?#]+)"):
         page = web.json(f"https://fr.wikipedia.org/api/rest_v1/page/summary/{m[1]}")
+        # La vignette agrandie : un JPEG ou un PNG de taille raisonnable, même quand
+        # l'original est un SVG, un TIFF ou un scan de plusieurs dizaines de Mo.
+        if vignette := (page.get("thumbnail") or {}).get("source"):
+            return re.sub(r"/\d+px-", "/1000px-", vignette)
         return (page.get("originalimage") or {}).get("source")
     return None
 
 
-def _partage(reco: dict[str, Any], web: Web) -> str | None:
-    officiel = next((lien["url"] for lien in _liens(reco) if lien.get("kind") == "official"), None)
-    if not officiel:
-        return None
-    page = web.html(officiel)
-    if m := re.search(r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"', page):
-        return html.unescape(m[1])
-    # Pas d'image de partage : l'icone d'application du site, a defaut (WikiMasters).
-    if m := re.search(r'<link[^>]+rel="apple-touch-icon"[^>]+href="([^"]+)"', page):
-        return urljoin(officiel, html.unescape(m[1]))
+def _attributs(balise: str) -> dict[str, str]:
+    return {nom.lower(): html.unescape(valeur) for nom, _, valeur in re.findall(r"([\w:-]+)\s*=\s*([\"'])(.*?)\2", balise)}
+
+
+def _image_de_page(url: str, web: Web) -> str | None:
+    """og:image de la page (quel que soit l'ordre des attributs), sinon son icône d'application."""
+    page = web.html(url)
+    for balise in re.findall(r"<meta\b[^>]*>", page, flags=re.IGNORECASE):
+        attrs = _attributs(balise)
+        if "og:image" in (attrs.get("property"), attrs.get("name")) and attrs.get("content"):
+            return urljoin(url, attrs["content"])
+    for balise in re.findall(r"<link\b[^>]*>", page, flags=re.IGNORECASE):
+        attrs = _attributs(balise)
+        if attrs.get("rel") == "apple-touch-icon" and attrs.get("href"):  # WikiMasters n'a que celle-ci
+            return urljoin(url, attrs["href"])
     return None
+
+
+def _partage(reco: dict[str, Any], web: Web, genres: tuple[str, ...] = ("official",)) -> str | None:
+    lien = next((lien["url"] for lien in _liens(reco) if lien.get("kind") in genres), None)
+    return _image_de_page(lien, web) if lien else None
+
+
+def _sans_secret(texte: str) -> str:
+    """Retire la clé TMDB d'un message d'erreur (elle voyage dans l'adresse)."""
+    return re.sub(r"api_key=[^&\s)'\"]+", "api_key=…", texte)
 
 
 def source(item: dict[str, Any], reco: dict[str, Any], web: Web, cle_tmdb: str | None) -> str | None:
@@ -166,26 +204,27 @@ def source(item: dict[str, Any], reco: dict[str, Any], web: Web, cle_tmdb: str |
     if "chaine" in types:
         essais.append(lambda: _avatar(reco, web))
     if types & {"livre", "bd"}:
-        essais.append(lambda: _wikipedia(reco, web))
+        essais += [lambda: _wikipedia(reco, web), lambda: _partage(reco, web, ("buy",))]
     essais.append(lambda: _partage(reco, web))
     for essai in essais:
         try:
             if url := essai():
                 return url
-        # Une source en panne (reseau, reponse inattendue) ne bloque pas le carrousel.
-        except (OSError, ValueError, KeyError, TypeError, IndexError) as exc:
-            log.warning("image du carrousel : source en echec pour %s (%s : %s)",
-                        reco.get("id", "?"), type(exc).__name__, exc)
+        except PANNES as exc:  # une source en panne ne bloque pas le carrousel
+            log.warning("image du carrousel : source en échec pour %s (%s : %s)",
+                        reco.get("id", "?"), type(exc).__name__, _sans_secret(str(exc)))
     return None
 
 
-def couverture(guid: str) -> str | None:
-    """Vignette YouTube de l'episode (guid « yt-<id> »)."""
-    return f"https://i.ytimg.com/vi/{guid[3:]}/maxresdefault.jpg" if guid.startswith("yt-") else None
+def couverture(ep: dict[str, Any]) -> str | None:
+    """Vignette YouTube de l'épisode : son adresse YouTube, sinon son guid « yt-<id> »."""
+    m = re.search(r"(?:v=|youtu\.be/)([\w-]{11})", ep.get("youtubeUrl") or "")
+    video = m[1] if m else (ep["guid"][3:] if ep["guid"].startswith("yt-") else None)
+    return f"https://i.ytimg.com/vi/{video}/maxresdefault.jpg" if video else None
 
 
 def mise_en_scene(type_: str, tailles: list[tuple[int, int]]) -> str:
-    """Mise en scene d'une page d'apres son type et les proportions de ses images."""
+    """Mise en scène d'une page d'après son type et les proportions de ses images."""
     if not tailles:
         return "sans"
     if len(tailles) > 1:

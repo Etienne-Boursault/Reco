@@ -55,7 +55,8 @@ fichiers `tools/data/playlists_*.json`, puis on relance la commande.
 
 Dans `episode.json` :
 
-- raccourcir les citations, qui doivent tenir en 3 ou 4 lignes ;
+- raccourcir les citations à la phrase qui recommande, deux ou trois lignes : sous l'image, la place
+  est comptée, et une citation trop longue fait rapetisser le texte de la page ;
 - compléter les « qui » vides ;
 - préciser `createur` si besoin : une plateforme (« Sur Apple TV »), un lieu (« au Funambule ») ;
 - vérifier les **images**.

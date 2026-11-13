@@ -187,4 +187,4 @@ def test_cle_tmdb_absente_laisse_les_films_sans_affiche(monkeypatch, capsys):
         raise RuntimeError("TMDB_API_KEY absent")
     monkeypatch.setattr(enrich_tmdb, "cle_api", absente)
     assert re_._cle_tmdb() is None
-    assert "Pas de cle TMDB" in capsys.readouterr().out
+    assert "Pas de clé TMDB" in capsys.readouterr().out

@@ -8,7 +8,7 @@ seule commande prepare tout ce qui part ailleurs que sur le site :
 
 Dans DOSSIER (par defaut Images/unebonnere.co/<date>-S6E06) :
 - `episode.json` : le carrousel Instagram/Threads (une page par mention
-  validee, avec l'adresse de son image, cf. carrousel_images.py), a relire
+  validée, avec l'adresse de son image, cf. carrousel_images.py), à relire
   avant `python tools/carrousel_episode.py DOSSIER` ;
 - `plan.json` : les titres a ajouter aux playlists Spotify (puis Deezer, via
   playlists_deezer.py) et les oeuvres a ajouter aux listes SensCritique.
@@ -102,10 +102,10 @@ def createur(item: dict[str, Any], reco: dict[str, Any]) -> str:
 def carrousel(ep: dict[str, Any], mentions: list[dict[str, Any]], items: dict[str, dict[str, Any]],
               recos: dict[str, dict[str, Any]],
               image: Callable[[dict[str, Any], dict[str, Any]], str | None] | None = None) -> dict[str, Any]:
-    """Brouillon de `episode.json` : a relire (citations a raccourcir, « qui » manquants, images).
+    """Brouillon de `episode.json` : à relire (citations à raccourcir, « qui » manquants, images).
 
     `image(item, reco)` donne l'adresse du visuel de chaque page (carrousel_images.source) ;
-    sans elle, les pages n'ont pas de cle `image`.
+    sans elle, les pages n'ont pas de clé `image`.
     """
     pages = []
     for m in mentions_validees(ep, mentions):
@@ -126,7 +126,7 @@ def carrousel(ep: dict[str, Any], mentions: list[dict[str, Any]], items: dict[st
         "titre": typo(re.sub(r"\s*\(Un Bon Moment, S\d+-E\d+\)\s*$", "", ep["title"])),
         "invites": ep.get("guestsParsed") or ep.get("guests") or [],
         "lien": f"https://unebonnere.co/un-bon-moment/episode/{ep['guid']}/",
-        "couverture": ci.couverture(ep["guid"]),
+        "couverture": ci.couverture(ep),
         "recos": pages,
     }
 
@@ -262,12 +262,12 @@ def poser_liens(paires: list[str]) -> int:
 
 
 def _cle_tmdb() -> str | None:
-    """Cle TMDB pour les affiches ; sans elle, les films et series restent sans image."""
+    """Clé TMDB pour les affiches ; sans elle, les films et séries restent sans image."""
     from enrich_tmdb import cle_api
     try:
         return cle_api()
     except (SystemExit, RuntimeError, KeyError) as exc:
-        print(f"Pas de cle TMDB ({exc}) : les films et series n'auront pas d'affiche.")
+        print(f"Pas de clé TMDB ({exc}) : les films et séries n'auront pas d'affiche.")
         return None
 
 
@@ -315,7 +315,7 @@ def preparer(code: str, sortie: Path | None) -> int:
         print("ALERTE :", a)
     sans_image = [r["titre"] for r in brouillon["recos"] if not r.get("image")]
     if sans_image:
-        print("Sans image (a poser a la main dans episode.json si besoin) :", sans_image)
+        print("Sans image (à poser à la main dans episode.json si besoin) :", sans_image)
     sans_qui = [r["titre"] for r in brouillon["recos"] if not r["qui"]]
     if sans_qui:
         print("Sans « qui » (a completer dans episode.json) :", sans_qui)

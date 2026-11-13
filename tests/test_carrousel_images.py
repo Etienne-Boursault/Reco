@@ -117,11 +117,6 @@ def test_aucune_source_ne_donne_rien_et_ne_casse_pas_sur_une_erreur():
     assert ci.source({}, {"types": ["autre"]}, FauxWeb(), None) is None
 
 
-def test_couverture_prend_la_vignette_youtube_de_l_episode():
-    assert ci.couverture("yt-rwlXWp7Lrhg") == "https://i.ytimg.com/vi/rwlXWp7Lrhg/maxresdefault.jpg"
-    assert ci.couverture("acast-123") is None
-
-
 # ===== La mise en scène, d'après le type et les proportions ===================
 def test_mise_en_scene():
     assert ci.mise_en_scene("Film", []) == "sans"
@@ -160,6 +155,8 @@ def test_une_source_presente_mais_vide_ne_donne_rien():
 
 # ===== L'accès réel au web, avec une fausse session ===========================
 class FausseReponse:
+    encoding = "utf-8"
+
     def __init__(self, donnees=None, texte=""):
         self._donnees, self.text = donnees, texte
 
@@ -168,6 +165,12 @@ class FausseReponse:
 
     def json(self):
         return self._donnees
+
+    def iter_content(self, chunk_size):
+        yield self.text.encode("utf-8")
+
+    def close(self):
+        return None
 
 
 class FausseSession:
@@ -223,6 +226,141 @@ def test_wikipedia_recoit_un_agent_qui_nomme_l_outil():
 
 def test_site_sans_image_de_partage_donne_son_icone_d_application():
     url = "https://www.wiki-masters.com/"
-    page = '<link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">'
+    page = ('<meta charset="utf-8"><meta name="description" content="Cartes">'
+            '<link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">')
     reco = {"types": ["application"], "links": [lien(url, "official")]}
     assert ci.source({}, reco, FauxWeb(html={url: page}), None) == "https://www.wiki-masters.com/apple-touch-icon.png"
+
+
+# ===== Revue de la PR #204 ====================================================
+def test_la_cle_tmdb_ne_sort_jamais_dans_les_journaux(caplog):
+    class Panne(FauxWeb):
+        def json(self, url, **params):
+            raise OSError("404 Client Error for url: https://api.themoviedb.org/3/movie/600?api_key=SECRET&x=1")
+
+    reco = {"id": "ubm-1", "types": ["film"], "externalIds": {"tmdb": "600"}}
+    assert ci.source({}, reco, Panne(), "SECRET") is None
+    assert "SECRET" not in caplog.text and "api_key=…" in caplog.text
+
+
+def test_une_erreur_inattendue_d_une_source_ne_bloque_pas():
+    class Panne(FauxWeb):
+        def avatar_youtube(self, url):
+            raise AttributeError("yt-dlp a changé")
+
+    reco = {"types": ["chaine"], "links": [lien("https://www.youtube.com/@x")]}
+    assert ci.source({}, reco, Panne(), None) is None
+
+
+def test_yt_dlp_en_echec_ne_donne_pas_d_avatar(monkeypatch):
+    import sys
+    import types
+
+    class ErreurYoutube(Exception):
+        pass
+
+    class FauxYoutubeDL:
+        def __init__(self, options):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+        def extract_info(self, url, download):
+            raise ErreurYoutube("This channel does not exist")
+
+    faux = types.SimpleNamespace(YoutubeDL=FauxYoutubeDL, utils=types.SimpleNamespace(YoutubeDLError=ErreurYoutube))
+    monkeypatch.setitem(sys.modules, "yt_dlp", faux)
+    assert ci.WebReel(session=FausseSession()).avatar_youtube("https://www.youtube.com/@disparue") is None
+
+
+def test_image_de_partage_quel_que_soit_l_ordre_des_attributs():
+    url = "https://site.fr/spectacle"
+    reco = {"types": ["spectacle"], "links": [lien(url, "official")]}
+    for page, attendu in (
+        ('<meta content="/img/a.jpg" property="og:image">', "https://site.fr/img/a.jpg"),
+        ("<meta property='og:image' content='https://cdn/b.jpg'>", "https://cdn/b.jpg"),
+        ('<meta name="og:image" content="//cdn/c.jpg">', "https://cdn/c.jpg"),
+    ):
+        assert ci.source({}, reco, FauxWeb(html={url: page}), None) == attendu
+
+
+def test_wikipedia_donne_une_vignette_agrandie_plutot_que_l_original():
+    base = "https://fr.wikipedia.org/api/rest_v1/page/summary/"
+    reco = {"types": ["livre"], "links": [lien("https://fr.wikipedia.org/wiki/Logo", "info")]}
+    web = FauxWeb(json={base + "Logo": {
+        "thumbnail": {"source": "https://upload/thumb/a/ab/Logo.svg/330px-Logo.svg.png"},
+        "originalimage": {"source": "https://upload/a/ab/Logo.svg"}}})
+    assert ci.source({}, reco, web, None) == "https://upload/thumb/a/ab/Logo.svg/1000px-Logo.svg.png"
+
+
+def test_affiche_de_repli_francaise_puis_sans_texte():
+    reco = {"types": ["film"], "externalIds": {"tmdb": "38"}}
+    for affiches, attendu in (
+        ([{"iso_639_1": "de", "file_path": "/de.jpg"}, {"iso_639_1": "fr", "file_path": "/fr.jpg"}], "/fr.jpg"),
+        ([{"iso_639_1": "ru", "file_path": "/ru.jpg"}, {"iso_639_1": None, "file_path": "/nu.jpg"}], "/nu.jpg"),
+        ([{"iso_639_1": "ru", "file_path": "/ru.jpg"}], "/ru.jpg"),
+    ):
+        web = FauxWeb(json={TMDB: {"original_language": "cn"}, TMDB + "/images": {"posters": affiches}})
+        assert ci.source({}, reco, web, "cle") == "https://image.tmdb.org/t/p/w780" + attendu
+
+
+def test_pochette_deezer_par_defaut_cede_la_place_a_apple():
+    web = FauxWeb(json={"https://api.deezer.com/album/42": {"cover_xl": "https://cdn/images/cover//1000.jpg"},
+                        "https://itunes.apple.com/lookup": {"results": [{"artworkUrl100": "https://is1/100x100bb.jpg"}]}})
+    reco = {"types": ["album"], "links": [lien("https://www.deezer.com/album/42"),
+                                          lien("https://music.apple.com/fr/album/x/7")]}
+    assert ci.source({}, reco, web, None) == "https://is1/1000x1000bb.jpg"
+
+
+def test_toutes_les_formes_d_adresse_de_chaine_youtube():
+    for url, attendu in (("https://youtube.com/@x", "https://www.youtube.com/@x"),
+                         ("http://m.youtube.com/c/Nom", "https://www.youtube.com/c/Nom"),
+                         ("https://www.youtube.com/user/Ancien", "https://www.youtube.com/user/Ancien")):
+        web = FauxWeb(avatars={attendu: "https://yt3/a"})
+        assert ci.source({}, {"types": ["chaine"], "links": [lien(url)]}, web, None) == "https://yt3/a"
+
+
+def test_livre_sans_wikipedia_prend_l_image_de_la_librairie():
+    url = "https://www.placedeslibraires.fr/livre/9782"
+    reco = {"types": ["livre"], "links": [lien(url, "buy")]}
+    page = '<meta property="og:image" content="https://www.placedeslibraires.fr/couv.jpg">'
+    assert ci.source({}, reco, FauxWeb(html={url: page}), None) == "https://www.placedeslibraires.fr/couv.jpg"
+
+
+def test_couverture_suit_l_adresse_youtube_de_l_episode():
+    assert ci.couverture({"guid": "abc", "youtubeUrl": "https://www.youtube.com/watch?v=aBc-12_xYz9"}) == \
+        "https://i.ytimg.com/vi/aBc-12_xYz9/maxresdefault.jpg"
+    assert ci.couverture({"guid": "abc", "youtubeUrl": "https://youtu.be/aBc-12_xYz9?t=3"}) == \
+        "https://i.ytimg.com/vi/aBc-12_xYz9/maxresdefault.jpg"
+    assert ci.couverture({"guid": "yt-rwlXWp7Lrhg"}) == "https://i.ytimg.com/vi/rwlXWp7Lrhg/maxresdefault.jpg"
+    assert ci.couverture({"guid": "acast-1"}) is None
+
+
+def test_html_ne_lit_que_le_debut_de_la_page():
+    class Flux:
+        encoding = "utf-8"
+
+        def raise_for_status(self):
+            return None
+
+        def iter_content(self, chunk_size):
+            yield b"<head>og</head>"
+            yield b"x" * ci.TAILLE_PAGE
+            raise AssertionError("lu trop loin")
+
+        def close(self):
+            self.ferme = True
+
+    class Session:
+        def get(self, url, **kw):
+            assert kw["stream"] is True
+            self.reponse = Flux()
+            return self.reponse
+
+    session = Session()
+    texte = ci.WebReel(session=session).html("https://site/x")
+    assert texte.startswith("<head>og</head>") and session.reponse.ferme

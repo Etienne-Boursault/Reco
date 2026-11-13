@@ -1,17 +1,23 @@
 """
 carrousel_scenes.py — le HTML des pages du carrousel, avec leurs visuels.
 
-Modele valide par Etienne le 2026-11-13 (« ca me va comme ca ») sur le
-canevas Design « Carrousel avec visuels » : la moitie haute porte l'image,
-posee sur un flou de ses propres couleurs ; la moitie basse le titre, le
-createur et la citation. Une mise en scene par cas (voir
-`carrousel_images.mise_en_scene`) : affiche, carre, rond, deux images, photo
+Modèle validé par Étienne le 2026-11-13 (« ça me va comme ça ») sur le
+canevas Design « Carrousel avec visuels » : la moitié haute porte l'image,
+posée sur un flou de ses propres couleurs ; la moitié basse le titre, le
+créateur et la citation. Une mise en scène par cas (voir
+`carrousel_images.mise_en_scene`) : affiche, carré, rond, deux images, photo
 pleine largeur, tuile claire pour un logo, et un aplat jaune sans image.
 Remplace les gabarits `tools/carrousel/*.dc.html`, qui n'avaient pas d'image.
+
+La moitié basse n'a que la place qui reste sous l'image : un titre long et une
+citation longue la feraient déborder, et « Reco de … » serait coupé sans
+avertissement (revue de la PR #204). `ajuster` réduit donc la citation, puis
+le titre, d'après une estimation de la hauteur du texte.
 """
 from __future__ import annotations
 
 import html
+import math
 
 ACCENT = "#ffd23f"
 HEAD = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
@@ -26,20 +32,55 @@ GUILLEMETS = ('<svg aria-hidden="true" width="64" height="48" viewBox="0 0 48 36
               '0l2 5c-6 2-9 6-9 12h8v19zm28 0V22c0-13 6-20 18-22l2 5c-6 2-9 6-9 12h8v19z" '
               f'fill="{ACCENT}"></path></svg>')
 MUSIQUE = {"Album", "Musique"}
+#: Hauteur laissée au texte sous l'image (1 350 − 640 de scène − marges), par mise en scène.
+PLACE = {"photo": 690, "sans": 566, "affiche": 606, "carre": 606, "rond": 606, "double": 606, "cadre": 606,
+         "tuile": 606}
+CITATIONS = (42, 38, 34, 30)
+TITRES = (150, 132, 116, 100, 88)
+
+
+def _lignes(texte: str, par_ligne: int) -> tuple[int, int]:
+    """Lignes d'un texte coupé aux mots, et longueur de la plus longue ligne."""
+    lignes, courant, plus_longue = 1, 0, 0
+    for mot in texte.split():
+        if courant and courant + 1 + len(mot) > par_ligne:
+            lignes, courant = lignes + 1, len(mot)
+        else:
+            courant += len(mot) + (1 if courant else 0)
+        plus_longue = max(plus_longue, courant)
+    return lignes, plus_longue
+
+
+def _signes_titre(corps: int) -> int:
+    return int(904 / (0.4 * corps))  # Bebas Neue : ~0,4 em par signe sur 904 px
 
 
 def taille(titre: str) -> int:
-    """Plus grande taille ou le titre tient en deux lignes de 904 px (Bebas Neue : ~0,4 em par signe)."""
-    for corps in (150, 132, 116, 100):
-        par_ligne, lignes, courant = int(904 / (0.4 * corps)), 1, 0
-        for mot in titre.split():
-            if courant and courant + 1 + len(mot) > par_ligne:
-                lignes, courant = lignes + 1, len(mot)
-            else:
-                courant += len(mot) + (1 if courant else 0)
-        if lignes <= (1 if corps == 150 else 2) and courant <= par_ligne:
+    """Plus grande taille où le titre tient en deux lignes (une seule à 150 px)."""
+    for corps in TITRES[:-1]:
+        lignes, plus_longue = _lignes(titre, _signes_titre(corps))
+        if lignes <= (1 if corps == 150 else 2) and plus_longue <= _signes_titre(corps):
             return corps
-    return 88
+    return TITRES[-1]
+
+
+def hauteur_du_texte(r: dict, titre: int, citation: int) -> float:
+    """Estimation, en px, de la hauteur du titre, du créateur et du bloc de citation."""
+    lignes_titre = _lignes(r["titre"], _signes_titre(titre))[0]
+    lignes_citation = math.ceil(len(r["citation"]) * 1.1 / (900 / (0.5 * citation)))  # Inter italique ~0,5 em
+    createur = 58 if r.get("createur") else 0
+    return lignes_titre * titre * 0.88 + createur + 40 + 48 + 28 + lignes_citation * citation * 1.3 + 28 + 64
+
+
+def ajuster(r: dict, mise: str) -> tuple[int, int]:
+    """Tailles du titre et de la citation qui tiennent dans la place : la citation baisse d'abord."""
+    place = PLACE.get(mise, PLACE["affiche"])
+    titres = [t for t in TITRES if t <= taille(r["titre"])]
+    for titre in titres:
+        for citation in CITATIONS:
+            if hauteur_du_texte(r, titre, citation) <= place:
+                return titre, citation
+    return titres[-1], CITATIONS[-1]
 
 
 def _flou(uri: str) -> str:
@@ -113,7 +154,8 @@ def _scene(mise: str, images: list[tuple[str, str]], type_: str, rang: int, tota
 
 
 def page_reco(r: dict, rang: int, total: int, images: list[tuple[str, str]], mise: str) -> str:
-    """Une page de reco : `images` = [(adresse, texte alternatif)], `mise` = sa mise en scene."""
+    """Une page de reco : `images` = [(adresse, texte alternatif)], `mise` = sa mise en scène."""
+    titre, citation = ajuster(r, mise if images else "sans")
     marge = {"photo": "padding: 0 88px 80px; margin-top: -60px; position: relative",
              "sans": "padding: 64px 88px 80px"}.get(mise if images else "sans", "padding: 24px 88px 80px")
     createur = f'<div style="font-size: 36px; color: #c9c7c0">{E(r["createur"])}</div>' if r.get("createur") else ""
@@ -125,16 +167,16 @@ def page_reco(r: dict, rang: int, total: int, images: list[tuple[str, str]], mis
             + _scene(mise, images, r["type"], rang, total)
             + f'<div style="flex: 1; box-sizing: border-box; {marge}; display: flex; flex-direction: column; '
             'justify-content: space-between; gap: 40px"><div style="display: flex; flex-direction: column; gap: 14px">'
-            f'<h2 style="margin: 0; {BEBAS}; font-weight: 400; font-size: {taille(r["titre"])}px; line-height: 0.88; '
+            f'<h2 style="margin: 0; {BEBAS}; font-weight: 400; font-size: {titre}px; line-height: 0.88; '
             f'letter-spacing: -0.005em">{E(r["titre"])}</h2>{createur}</div>'
             f'<div style="display: flex; flex-direction: column; gap: 28px">{GUILLEMETS}'
-            '<p style="margin: 0; font-size: 42px; line-height: 1.3; font-style: italic; max-width: 900px">'
+            f'<p style="margin: 0; font-size: {citation}px; line-height: 1.3; font-style: italic; max-width: 900px">'
             f'{E(r["citation"])}</p><div style="display: flex; align-items: center; gap: 16px; font-size: 28px; '
             f'border-top: 2px solid #2a2a30; padding-top: 28px">{qui}</div></div></div></div>')
 
 
 def couverture(ep: dict, total: int, vignette: str | None) -> str:
-    """Couverture : la vignette de l'episode fondue dans le noir, le nombre de recos par-dessus."""
+    """Couverture : la vignette de l'épisode fondue dans le noir, le nombre de recos par-dessus."""
     photo = (f'<img src="{vignette}" alt="Vignette de l’épisode" style="position: absolute; left: 0; top: 0; '
              'width: 1080px; height: 780px; object-fit: cover"><div style="position: absolute; left: 0; top: 430px; '
              'width: 1080px; height: 360px; background: linear-gradient(to bottom, rgba(14,14,16,0), #0e0e10)">'

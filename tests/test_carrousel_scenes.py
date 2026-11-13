@@ -52,3 +52,21 @@ def test_fin_nomme_les_sources():
     fin = cs.fin({"numero": "S6 · E09"}, 18, "Images : affiches TMDB")
     assert "Les 18 recos" in fin and "Images : affiches TMDB" in fin
     assert "Images" not in cs.fin({"numero": "S6 · E09"}, 18, "")
+
+
+def test_un_titre_long_et_une_citation_longue_tiennent_dans_la_page():
+    """Revue de la PR #204 : sinon « Reco de … » sort de la page, coupé sans avertissement."""
+    long = {**R, "titre": "Eternal Sunshine of the Spotless Mind", "createur": "Michel Gondry et Charlie Kaufman",
+            "citation": "Non, c’était un film de Charlie Kaufman qui s’appelle Synecdoche New York, et qui est "
+                        "trop bien, parce que c’est que des mises en abîme de trucs, et moi j’adore ça, vraiment."}
+    titre, citation = cs.ajuster(long, "affiche")
+    assert cs.hauteur_du_texte(long, titre, citation) <= cs.PLACE["affiche"]
+    assert citation < 42
+    assert cs.ajuster(R, "affiche") == (cs.taille("The Father"), 42)
+    page = cs.page_reco(long, 1, 2, IMG, "affiche")
+    assert f"font-size: {citation}px" in page and f"font-size: {titre}px" in page
+
+
+def test_une_citation_demesuree_prend_les_tailles_minimales():
+    enorme = {**R, "citation": "mot " * 400}
+    assert cs.ajuster(enorme, "sans") == (cs.TITRES[-1], cs.CITATIONS[-1])

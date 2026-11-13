@@ -30,7 +30,7 @@ def faux_telechargement(tailles):
 
 
 def test_pages_couverture_recos_fin_sans_image(tmp_path):
-    pages = ce.pages(EP, tmp_path, telecharger=faux_telechargement({}))
+    pages = ce.pages(EP, tmp_path, tel=faux_telechargement({}))
     assert [p.name for p in pages] == ["01-couverture.html", "02-reco.html", "03-reco.html", "04-fin.html"]
     reco = pages[1].read_text(encoding="utf-8")
     assert "&lt;b&gt;" in reco and "Navo" in reco and "<img" not in reco
@@ -45,7 +45,7 @@ def test_pages_telechargent_les_images_et_choisissent_la_mise_en_scene(tmp_path)
                      "mise": "double"}]}
     tel = faux_telechargement({"https://yt/v.jpg": (1280, 720), "https://image.tmdb.org/t/p/w780/a.jpg": (780, 1170),
                                "https://cdn-images.dzcdn.net/1.jpg": (1000, 1000)})
-    pages = ce.pages(ep, tmp_path, telecharger=tel)
+    pages = ce.pages(ep, tmp_path, tel=tel)
     textes = [p.read_text(encoding="utf-8") for p in pages]
     assert (tmp_path / "images" / "00-couverture.png").exists() and "00-couverture.png" in textes[0]
     assert "height: 460px" in textes[1] and "blur(46px)" in textes[1]
@@ -83,7 +83,7 @@ def test_textes_groupent_par_type_et_suivent_les_images(tmp_path):
     assert t["instagram"].startswith("Les 2 recos d’Un Bon Moment S6·E06, avec A et B 🎙️\n\n🎬 Court\n📺 Un titre")
     assert "lien en bio" in t["instagram"] and "https://unebonnere.co/x/" in t["threads"]
     assert t["instagram"].endswith("Site de fan, non officiel.")
-    assert len(t["alts"]) == len(ce.pages(EP, tmp_path, telecharger=faux_telechargement({}))) == 4
+    assert len(t["alts"]) == len(ce.pages(EP, tmp_path, tel=faux_telechargement({}))) == 4
     assert t["alts"][1] == "Reco 1 sur 2. Film : Court — X. « « <b> » » Reco de Navo, à 1:10."
     assert t["alts"][2].startswith("Reco 2 sur 2. Série : Un titre vraiment beaucoup trop long. «")
 
@@ -114,3 +114,30 @@ def test_main_sans_alerte_quand_la_legende_threads_tient(tmp_path, monkeypatch, 
     monkeypatch.setattr(ce, "telecharger", faux_telechargement({}))
     assert ce.main(["carrousel", str(tmp_path)]) == 0
     assert "ATTENTION" not in capsys.readouterr().out
+
+
+def test_un_fichier_qui_n_est_pas_une_image_laisse_la_page_sans_image(tmp_path, caplog):
+    """Un SVG, une page de consentement en HTML : Pillow ne sait pas les lire."""
+    def telecharger(url, chemin):
+        chemin = chemin.with_suffix(".html")
+        chemin.write_text("<html>consentement</html>", encoding="utf-8")
+        return chemin
+
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": "https://site/x.jpg"}]}
+    pages = ce.pages(ep, tmp_path, tel=telecharger)
+    assert "<img" not in pages[1].read_text(encoding="utf-8")
+    assert "illisible" in caplog.text
+
+
+def test_l_orientation_exif_compte_pour_la_mise_en_scene(tmp_path):
+    """Une photo couchée dans le fichier mais affichée debout (Orientation=6) est une affiche."""
+    def telecharger(url, chemin):
+        chemin = chemin.with_suffix(".jpg")
+        image = Image.new("RGB", (1200, 800))
+        exif = image.getexif()
+        exif[274] = 6
+        image.save(chemin, exif=exif)
+        return chemin
+
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": "https://site/x.jpg"}]}
+    assert "height: 460px" in ce.pages(ep, tmp_path, tel=telecharger)[1].read_text(encoding="utf-8")

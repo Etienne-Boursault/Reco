@@ -1,15 +1,15 @@
 """
-carrousel_episode.py — carrousel Instagram/Threads d'un episode, en PNG 1080x1350.
+carrousel_episode.py — carrousel Instagram/Threads d'un épisode, en PNG 1080×1350.
 
 Couverture, une page par reco, page de fin, chacune avec son visuel depuis le
-2026-11-13 (modele valide par Etienne sur le canevas Design « Carrousel avec
+2026-11-13 (modèle validé par Étienne sur le canevas Design « Carrousel avec
 visuels », mise en page dans `carrousel_scenes.py`). `episode.json` (produit
-par reseaux_episode.py, puis relu a la main) donne pour chaque page son texte
-et l'adresse de son image (`image`, une adresse ou une liste de deux, a
-changer ou retirer a la relecture ; `mise` force la mise en scene) ; les
-images sont telechargees dans `images/`, Edge sans interface rend chaque page
-en PNG. A cote : les legendes Instagram (« lien en bio ») et Threads (lien
-direct, 500 caracteres au plus) et les textes alternatifs.
+par reseaux_episode.py, puis relu à la main) donne pour chaque page son texte
+et l'adresse de son image (`image`, une adresse ou une liste de deux, à
+changer ou retirer à la relecture ; `mise` force la mise en scène) ; les
+images sont téléchargées dans `images/`, Edge sans interface rend chaque page
+en PNG. À côté : les légendes Instagram (« lien en bio ») et Threads (lien
+direct, 500 caractères au plus) et les textes alternatifs.
 
 Usage : python tools/carrousel_episode.py <dossier contenant episode.json>
 """
@@ -39,8 +39,11 @@ EMOJIS = {"Série": "📺", "Film": "🎬", "Spectacle": "🎭", "Livre": "📚"
           "Album": "🎵", "Artiste": "🎤", "Chaîne YouTube": "🎤", "Podcast": "🎙️", "Jeu": "🎮",
           "Lieu": "📍", "Vidéo": "📹", "Application": "📱"}
 LIMITE_THREADS = 500
-NAVIGATEUR = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
 Telecharger = Callable[[str, Path], "Path | None"]
+#: Orientations EXIF où l'image s'affiche tournée d'un quart de tour.
+QUART_DE_TOUR = {5, 6, 7, 8}
+#: Ce que Pillow lève sur un fichier qu'il ne sait pas lire (SVG, HTML, image tronquée ou géante).
+ILLISIBLE = (OSError, ValueError, SyntaxError, Image.DecompressionBombError)
 
 
 def ecrire(dst: Path, helmet: str, corps: str) -> None:
@@ -51,12 +54,12 @@ def ecrire(dst: Path, helmet: str, corps: str) -> None:
 
 
 def telecharger(url: str, chemin: Path, session: Any = None) -> Path | None:
-    """Telecharge une image vers `chemin` (extension d'apres le type rendu) ; None en cas d'echec."""
+    """Télécharge une image vers `chemin` (extension d'après le type rendu) ; None en cas d'échec."""
     try:
-        reponse = (session or requests).get(url, headers=NAVIGATEUR, timeout=30)
+        reponse = (session or requests).get(url, headers=ci.NAVIGATEUR, timeout=30)
         reponse.raise_for_status()
-    except (OSError, ValueError) as exc:  # requests.RequestException derive d'OSError
-        log.warning("image du carrousel : telechargement en echec pour %s (%s : %s)", url, type(exc).__name__, exc)
+    except (OSError, ValueError) as exc:  # requests.RequestException dérive d'OSError
+        log.warning("image du carrousel : téléchargement en échec pour %s (%s : %s)", url, type(exc).__name__, exc)
         return None
     type_ = (reponse.headers.get("content-type") or "").split(";")[0]
     suffixe = mimetypes.guess_extension(type_) or Path(urlparse(url).path).suffix or ".jpg"
@@ -65,32 +68,51 @@ def telecharger(url: str, chemin: Path, session: Any = None) -> Path | None:
     return chemin
 
 
-def _images(r: dict[str, Any], dossier: Path, rang: int, tel: Telecharger) -> list[tuple[str, Path]]:
+def taille_affichee(chemin: Path) -> tuple[int, int] | None:
+    """Largeur et hauteur telles que le navigateur affiche l'image (orientation EXIF comprise) ;
+    None si Pillow ne sait pas la lire."""
+    try:
+        with Image.open(chemin) as image:
+            largeur, hauteur = image.size
+            tournee = image.getexif().get(274) in QUART_DE_TOUR
+    except ILLISIBLE as exc:
+        log.warning("image du carrousel : %s illisible (%s : %s), page sans cette image",
+                    chemin.name, type(exc).__name__, exc)
+        return None
+    return (hauteur, largeur) if tournee else (largeur, hauteur)
+
+
+def _images(r: dict[str, Any], dossier: Path, rang: int, tel: Telecharger) -> list[tuple[str, Path, tuple[int, int]]]:
     adresses = r.get("image") or []
     adresses = [adresses] if isinstance(adresses, str) else adresses
-    faites = [(url, tel(url, dossier / f"{rang:02d}-{i}")) for i, url in enumerate(adresses)]
-    return [(url, chemin) for url, chemin in faites if chemin]
+    lues = []
+    for i, url in enumerate(adresses):
+        if (chemin := tel(url, dossier / f"{rang:02d}-{i}")) and (taille := taille_affichee(chemin)):
+            lues.append((url, chemin, taille))
+    return lues
 
 
-def pages(ep: dict[str, Any], sortie: Path, telecharger: Telecharger | None = None) -> list[Path]:
-    """Ecrit les pages HTML du carrousel (images comprises) et renvoie leurs chemins, dans l'ordre."""
-    tel = telecharger or globals()["telecharger"]
+def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> list[Path]:
+    """Écrit les pages HTML du carrousel (images comprises) et renvoie leurs chemins, dans l'ordre."""
+    tel = tel or telecharger
     dossier = sortie / "images"
     dossier.mkdir(parents=True, exist_ok=True)
     recos, total, utilisees, faites = ep["recos"], len(ep["recos"]), [], []
     vignette = tel(ep["couverture"], dossier / "00-couverture") if ep.get("couverture") else None
-    if vignette:
+    if vignette and taille_affichee(vignette):
         utilisees.append(ep["couverture"])
+    else:
+        vignette = None
     faites.append(sortie / "01-couverture.html")
     ecrire(faites[-1], cs.HEAD, cs.couverture(ep, total, vignette.resolve().as_uri() if vignette else None))
     for rang, r in enumerate(recos, 1):
         images = _images(r, dossier, rang, tel)
-        utilisees += [url for url, _ in images]
-        tailles = [Image.open(chemin).size for _, chemin in images]
+        utilisees += [url for url, _, _ in images]
+        tailles = [taille for _, _, taille in images]
         calculee = ci.mise_en_scene(r["type"], tailles)
-        # Une mise forcee dans episode.json ne vaut que si ses images sont la.
+        # Une mise forcée dans episode.json ne vaut que si ses images sont là.
         mise = r["mise"] if r.get("mise") and tailles and (r["mise"] == "double") == (len(tailles) > 1) else calculee
-        alts = [(chemin.resolve().as_uri(), f"Visuel de « {r['titre']} »") for _, chemin in images]
+        alts = [(chemin.resolve().as_uri(), f"Visuel de « {r['titre']} »") for _, chemin, _ in images]
         faites.append(sortie / f"{rang + 1:02d}-reco.html")
         ecrire(faites[-1], cs.HEAD, cs.page_reco(r, rang, total, alts, mise))
     faites.append(sortie / f"{total + 2:02d}-fin.html")
@@ -99,7 +121,7 @@ def pages(ep: dict[str, Any], sortie: Path, telecharger: Telecharger | None = No
 
 
 def textes(ep: dict[str, Any]) -> dict[str, Any]:
-    """Legendes Instagram et Threads, et un texte alternatif par image."""
+    """Légendes Instagram et Threads, et un texte alternatif par image."""
     recos, n = ep["recos"], len(ep["recos"])
     groupes: dict[str, list[str]] = {}
     for r in recos:
@@ -139,7 +161,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     dossier = Path(argv[1])
     ep = json.loads((dossier / "episode.json").read_text(encoding="utf-8"))
-    for page in pages(ep, dossier):
+    for page in pages(ep, dossier, tel=telecharger):
         print(rendre(page))
     t = textes(ep)
     (dossier / "legende-instagram.txt").write_text(t["instagram"] + "\n", encoding="utf-8")
