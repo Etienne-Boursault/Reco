@@ -14,11 +14,6 @@
   "watchProviders": [
     {
       "ethics": "neutral",
-      "name": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
-    },
-    {
-      "ethics": "neutral",
       "name": "HBO Max",
       "url": "https://play.max.com/search?q=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
     },
@@ -44,11 +39,6 @@
     },
     {
       "ethics": "neutral",
-      "name": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
-    },
-    {
-      "ethics": "neutral",
       "name": "YouTube",
       "url": "https://www.youtube.com/results?search_query=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
     },
@@ -68,11 +58,6 @@
       "url": "https://www.sooner.fr/catalogue?term%5B%5D=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
     },
     {
-      "ethics": "avoid",
-      "name": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
-    },
-    {
       "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
@@ -82,5 +67,6 @@
       "name": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
     }
-  ]
+  ],
+  "year": 2004
 }
