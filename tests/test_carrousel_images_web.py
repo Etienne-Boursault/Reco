@@ -289,3 +289,7 @@ def test_seules_les_images_qu_edge_affiche_sont_acceptees():
         assert ci.WebReel(session=Session(genre)).image_valide("https://x/a")
     for genre in ("image/tiff", "image/heic", "image/x-icon"):
         assert not ci.WebReel(session=Session(genre)).image_valide("https://x/a")
+
+
+def test_yt_dlp_qui_ne_rend_rien_ne_donne_pas_d_avatar():
+    assert ci.WebReel(session=FausseSession(), ytdl=lambda url: None).avatar_youtube("https://youtube/@x") is None

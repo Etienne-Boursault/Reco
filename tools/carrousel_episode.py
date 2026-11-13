@@ -56,6 +56,8 @@ INDEX = "index.json"
 PAGE_RENDUE = re.compile(r"^\d\d-(?:couverture|reco|fin)\.(?:html|png)$")
 #: Extensions qu'Edge reconnaît ; une autre (« .bin » d'un octet-stream) prend celle du format réel.
 EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}
+#: Formats, au sens de Pillow, qu'Edge affiche à coup sûr.
+FORMATS_EDGE = {"JPEG", "PNG", "WEBP", "GIF", "AVIF", "MPO"}
 
 
 def ecrire(dst: Path, corps: str) -> None:
@@ -93,7 +95,8 @@ def telecharger(url: str, chemin: Path, session: Any = None) -> Path | None:
                 format_ = image.format.lower()  # toujours connu pour un fichier que Pillow a ouvert
         except ILLISIBLE:
             return chemin  # taille_affichee l'écartera
-        chemin = chemin.rename(chemin.with_suffix(".jpg" if format_ == "jpeg" else f".{format_}"))
+        # replace et non rename : sous Windows, rename refuse d'écraser un fichier existant.
+        chemin = chemin.replace(chemin.with_suffix(".jpg" if format_ == "jpeg" else f".{format_}"))
     return chemin
 
 
@@ -104,9 +107,14 @@ def taille_affichee(chemin: Path) -> tuple[int, int] | None:
         with Image.open(chemin) as image:
             largeur, hauteur = image.size
             tournee = image.getexif().get(274) in QUART_DE_TOUR
+            format_ = image.format
     except ILLISIBLE as exc:
         log.warning("image du carrousel : %s illisible (%s : %s), page sans cette image",
                     chemin.name, type(exc).__name__, exc)
+        return None
+    if format_ not in FORMATS_EDGE:  # un TIFF, un PSD : Pillow les lit, Edge ne les affiche pas
+        log.warning("image du carrousel : %s au format %s, qu'Edge n'affiche pas, page sans cette image",
+                    chemin.name, format_)
         return None
     return (hauteur, largeur) if tournee else (largeur, hauteur)
 
@@ -134,8 +142,14 @@ def _avec_cache(tel: Telecharger, dossier: Path) -> Telecharger:
 
 def _images(r: dict[str, Any], dossier: Path, rang: int, tel: Telecharger) -> list[tuple[str, Path, tuple[int, int]]]:
     adresses = r.get("image") or []
-    # Une seule adresse, ou une liste ; un `null` dans la liste (image retirée) est ignoré.
-    adresses = [a for a in ([adresses] if isinstance(adresses, str) else adresses) if a]
+    # episode.json s'édite à la main : une adresse, ou une liste d'adresses ; un `null` dans la
+    # liste (image retirée) est ignoré, une autre valeur est signalée.
+    adresses = [adresses] if isinstance(adresses, str) else adresses
+    if not isinstance(adresses, list) or not all(isinstance(a, str) or a is None for a in adresses):
+        log.warning("carrousel : page %d, image %r illisible (une adresse ou une liste d'adresses), "
+                    "page sans image", rang, r.get("image"))
+        return []
+    adresses = [a for a in adresses if a]
     lues = []
     for url in adresses:
         if (chemin := tel(url, dossier / nom_fichier(url))) and (taille := taille_affichee(chemin)):
@@ -159,6 +173,9 @@ def _mise(r: dict[str, Any], rang: int, tailles: list[tuple[int, int]], urls: li
     """Mise en scène calculée, sauf une mise forcée connue dont les images sont là ;
     une mise forcée inconnue ou incompatible est signalée à l'éditeur."""
     calculee, voulue = ci.mise_en_scene(r["type"], tailles, urls), r.get("mise")
+    if voulue is not None and not isinstance(voulue, str):
+        log.warning("carrousel : page %d, mise %r illisible (un nom attendu), « %s » à la place", rang, voulue, calculee)
+        return calculee
     if not voulue:
         return calculee
     if voulue not in cs.MISES:

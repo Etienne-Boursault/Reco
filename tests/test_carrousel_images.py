@@ -407,3 +407,20 @@ def test_un_lien_apple_music_court_donne_la_pochette():
     web = FauxWeb(json={"https://itunes.apple.com/lookup": {"results": [{"artworkUrl100": "https://is1/100x100bb.jpg"}]}})
     reco = {"types": ["album"], "links": [lien("https://music.apple.com/fr/album/1440857781")]}
     assert ci.source({}, reco, web, None) == "https://is1/1000x1000bb.jpg"
+
+
+# ===== Cinquième tour de revue de la PR #204 ==================================
+def test_deezer_en_panne_laisse_sa_chance_a_apple_music():
+    class DeezerEnPanne(FauxWeb):
+        def json(self, url, **params):
+            if "deezer" in url:
+                raise OSError("délai dépassé")
+            return {"results": [{"artworkUrl100": "https://is1/100x100bb.jpg"}]}
+
+    reco = {"types": ["album"], "links": [lien("https://www.deezer.com/album/42"),
+                                          lien("https://music.apple.com/fr/album/x/7")]}
+    assert ci.source({}, reco, DeezerEnPanne(), None) == "https://is1/1000x1000bb.jpg"
+
+
+def test_une_photo_d_artiste_deezer_n_est_pas_une_pochette():
+    assert ci.credits(["https://cdn-images.dzcdn.net/images/artist/a/1000.jpg"]) == "Images : photos Deezer"

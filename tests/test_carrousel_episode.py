@@ -328,3 +328,41 @@ def test_un_fichier_inconnu_et_illisible_garde_son_extension(tmp_path):
             return Reponse()
 
     assert ce.telecharger("https://s3/x", tmp_path / "abc", session=Session()).suffix == ".bin"
+
+
+# ===== Cinquième tour de revue de la PR #204 ==================================
+def test_retelecharger_une_image_deja_renommee_ne_plante_pas(tmp_path):
+    """Revue (moyen) : sous Windows, renommer vers un fichier existant levait FileExistsError."""
+    import io
+    tampon = io.BytesIO()
+    Image.new("RGB", (10, 10)).save(tampon, format="PNG")
+
+    class Reponse:
+        content, headers = tampon.getvalue(), {"content-type": "binary/octet-stream"}
+
+        def raise_for_status(self):
+            return None
+
+    class Session:
+        def get(self, url, **kw):
+            return Reponse()
+
+    ce.telecharger("https://s3/x", tmp_path / "abc", session=Session())
+    assert ce.telecharger("https://s3/x", tmp_path / "abc", session=Session()) == tmp_path / "abc.png"
+
+
+def test_un_format_que_pillow_lit_mais_qu_edge_n_affiche_pas_est_ecarte(tmp_path, caplog):
+    def tel(url, chemin):
+        chemin = chemin.with_suffix(".tiff")
+        Image.new("RGB", (780, 1170)).save(chemin, format="TIFF")
+        return chemin
+
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": "https://site/x.tif"}]}
+    assert "<img" not in ce.pages(ep, tmp_path, tel=tel)[1].read_text(encoding="utf-8")
+    assert "TIFF" in caplog.text
+
+
+def test_une_image_ou_une_mise_de_mauvais_type_est_signalee_sans_planter(tmp_path, caplog):
+    ep = {**EP, "recos": [{**EP["recos"][0], "image": 1, "mise": ["double"]}]}
+    assert "<img" not in ce.pages(ep, tmp_path, tel=faux_telechargement({}))[1].read_text(encoding="utf-8")
+    assert "image" in caplog.text and "mise" in caplog.text

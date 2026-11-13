@@ -134,7 +134,7 @@ class WebReel:
             reponse.close()
 
     def avatar_youtube(self, url: str) -> str | None:
-        infos = self._ytdl(url) if self._ytdl else self._yt_dlp(url)
+        infos = _objet(self._ytdl(url) if self._ytdl else self._yt_dlp(url))  # yt-dlp peut rendre None
         return next((t["url"] for t in infos.get("thumbnails") or [] if t.get("id") == "avatar_uncropped"), None)
 
     @staticmethod
@@ -197,10 +197,14 @@ def _affiche(item: dict[str, Any], reco: dict[str, Any], web: Web, cle: str | No
 def _pochette(reco: dict[str, Any], web: Web) -> str | None:
     """Pochette d'un album, ou de l'album d'un titre."""
     pochette = None
-    if m := _premier(reco, r"deezer\.com/(?:\w+/)?album/(\d+)"):
-        pochette = _objet(web.json(f"https://api.deezer.com/album/{m[1]}")).get("cover_xl")
-    elif m := _premier(reco, r"deezer\.com/(?:\w+/)?track/(\d+)"):
-        pochette = _objet(_objet(web.json(f"https://api.deezer.com/track/{m[1]}")).get("album")).get("cover_xl")
+    try:
+        if m := _premier(reco, r"deezer\.com/(?:\w+/)?album/(\d+)"):
+            pochette = _objet(web.json(f"https://api.deezer.com/album/{m[1]}")).get("cover_xl")
+        elif m := _premier(reco, r"deezer\.com/(?:\w+/)?track/(\d+)"):
+            pochette = _objet(_objet(web.json(f"https://api.deezer.com/track/{m[1]}")).get("album")).get("cover_xl")
+    except PANNES as exc:  # Deezer en panne : Apple Music, plus bas, a encore sa chance
+        log.warning("image du carrousel : Deezer en échec pour %s (%s), essai d'Apple Music",
+                    reco.get("id", "?"), type(exc).__name__)
     if pochette and "/cover//" not in pochette:  # « /cover// » : la pochette grise par défaut
         return pochette
     # Avec ou sans le nom de l'album dans l'adresse (liens courts « /album/<id> »).
@@ -351,7 +355,8 @@ def mise_en_scene(type_: str, tailles: list[tuple[int, int]], urls: list[str] | 
     return "rond" if portrait else "carre"
 
 
-CREDITS = (("image.tmdb.org", "affiches TMDB"), ("dzcdn.net", "pochettes Deezer"),
+CREDITS = (("image.tmdb.org", "affiches TMDB"), ("dzcdn.net/images/artist/", "photos Deezer"),
+           ("dzcdn.net", "pochettes Deezer"),
            ("mzstatic.com", "Apple"), ("ytimg.com", "YouTube"), ("yt3.googleusercontent.com", "YouTube"),
            ("yt3.ggpht.com", "YouTube"),
            ("wikimedia.org", "Wikipédia"))
