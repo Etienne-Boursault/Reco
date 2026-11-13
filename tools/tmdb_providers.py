@@ -9,6 +9,7 @@ d'appel d'API. Deux outils s'en servent — `enrich_tmdb` à l'enrichissement, e
 """
 from __future__ import annotations
 
+from collections.abc import Iterable
 from urllib.parse import quote
 
 # Mapping nom-affiché-par-TMDB → URL de recherche directe + marqueur éthique.
@@ -124,3 +125,28 @@ def _provider_link(provider_name: str, title: str) -> dict | None:
         "url": f"https://duckduckgo.com/?q={quote(title + ' ' + provider_name)}",
         "ethics": "neutral",
     }
+
+
+def liens_des_plateformes(noms: Iterable[str], titre: str) -> list[dict]:
+    """Les boutons « où regarder » d'une œuvre, à partir des noms de TMDB.
+
+    Une plateforme sans recherche publique ou disparue ne donne rien. Deux
+    offres qui mènent à la même recherche (« Paramount Plus » et « … Premium »,
+    « HBO Max Amazon Channel » et « Amazon Video ») ne donnent qu'un bouton, à
+    la place du premier, avec le nom général de la plateforme quand l'une des
+    deux en a une règle exacte : la recherche ouverte est celle de la
+    plateforme, pas celle de l'offre (doublons vus sur S6-E09, 2026-11-13).
+    Commun à `enrich_tmdb` et à `refresh_watch_provider_urls`, pour que les
+    deux chemins donnent les mêmes boutons.
+    """
+    par_adresse: dict[str, dict] = {}
+    for nom in dict.fromkeys(n for n in noms if n):
+        lien = _provider_link(nom, titre)
+        if lien is None:
+            continue
+        deja = par_adresse.get(lien["url"])
+        if deja is None:
+            par_adresse[lien["url"]] = lien
+        elif nom in PROVIDER_RULES and deja["label"] not in PROVIDER_RULES:
+            deja["label"] = nom
+    return list(par_adresse.values())

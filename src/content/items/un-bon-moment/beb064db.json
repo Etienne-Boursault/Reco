@@ -14,28 +14,8 @@
   "watchProviders": [
     {
       "ethics": "neutral",
-      "name": "HBO Max",
-      "url": "https://play.max.com/search?q=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
-    },
-    {
-      "ethics": "avoid",
-      "name": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
-    },
-    {
-      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
-    },
-    {
-      "ethics": "neutral",
-      "name": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Eternal%20Sunshine%20of%20the%20Spotless%20Mind&c=movies"
-    },
-    {
-      "ethics": "avoid",
-      "name": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
     },
     {
       "ethics": "neutral",
@@ -48,14 +28,19 @@
       "url": "https://rakuten.tv/fr/search?q=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
     },
     {
-      "ethics": "indie",
-      "name": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
     },
     {
       "ethics": "neutral",
       "name": "Sooner",
       "url": "https://www.sooner.fr/catalogue?term%5B%5D=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
     },
     {
       "ethics": "neutral",
@@ -64,8 +49,13 @@
     },
     {
       "ethics": "indie",
-      "name": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Eternal%20Sunshine%20of%20the%20Spotless%20Mind"
     }
   ],
   "year": 2004
