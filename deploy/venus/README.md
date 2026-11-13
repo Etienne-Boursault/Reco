@@ -39,7 +39,10 @@ suivant le **finalise** : liens d'écoute posés par `enrich_music_links` — qu
 une URL que si Deezer, Apple Music, Spotify ou Qobuz corrobore titre ET artiste, et
 dont la passe Qobuz se coupe par `RECO_QOBUZ=0` (voir plus bas) —, fiches « où regarder »
 des films et séries par `enrich_tmdb` (clé `TMDB_API_KEY` dans `.env` ; si elle manque
-ou si TMDB répond mal, l'épisode est finalisé quand même et le message le signale),
+ou si TMDB répond mal, l'épisode est finalisé quand même et le message le signale ;
+une plateforme sans recherche publique ou disparue — Orange VOD et SFR Play depuis le
+2026-11-13 — ne reçoit aucun bouton, et deux offres qui mènent à la même recherche
+n'en reçoivent qu'un, cf. `tools/tmdb_providers.py`),
 puis conversion en œuvres et mentions par `publier_episode.py`, et un message Matrix
 qui liste **ce qui reste à faire à la main**, reco par reco. Ce qui demande un jugement
 (homonymes, livres, jeux, associations, vidéos, sites officiels) n'est jamais deviné.

@@ -59,10 +59,12 @@ def test_canal_anything_marked_avoid():
 # ===== Plateformes sans recherche publique ================================
 @pytest.mark.parametrize("name", [
     "Premiere Max", "VIVA by videofutur", "Molotov TV", "TF1+", "Disney Plus",
+    "Orange VOD", "SFR Play",
 ])
 def test_plateforme_sans_recherche_ne_recoit_aucun_lien(name):
-    """Leur recherche menait à une page introuvable (constaté le 2026-11-02) :
-    pas de lien plutôt qu'un lien mort, et surtout pas le repli DuckDuckGo."""
+    """Leur recherche menait à une page introuvable (constaté le 2026-11-02),
+    ou leur domaine a disparu (Orange VOD et SFR Play, 2026-11-13) : pas de
+    lien plutôt qu'un lien mort, et surtout pas le repli DuckDuckGo."""
     assert _provider_link(name, "Mortel") is None
 
 

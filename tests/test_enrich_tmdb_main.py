@@ -125,6 +125,27 @@ def test_tmdb_search_serie_starts_with_tv(monkeypatch):
 
 # ===== tmdb_watch_providers ================================================
 @responses.activate
+def test_two_providers_with_the_same_address_give_a_single_button(monkeypatch):
+    """« Paramount Plus » et « Paramount Plus Premium » mènent à la même
+    recherche : un seul bouton, le premier (constaté sur S6-E09, 2026-11-13)."""
+    monkeypatch.setenv("TMDB_API_KEY", "fake")
+    responses.add(
+        responses.GET,
+        "https://api.themoviedb.org/3/movie/153/watch/providers",
+        json={"results": {"FR": {
+            "link": "https://www.themoviedb.org/movie/153/watch?locale=FR",
+            "flatrate": [{"provider_name": "Paramount Plus"},
+                         {"provider_name": "Paramount Plus Premium"}],
+        }}},
+        status=200,
+    )
+    _, providers = enrich_tmdb.tmdb_watch_providers(
+        requests.Session(), "153", "movie", "Lost in Translation"
+    )
+    assert [p["label"] for p in providers] == ["Paramount Plus"]
+
+
+@responses.activate
 def test_watch_providers_returns_link_and_unique_providers(monkeypatch):
     monkeypatch.setenv("TMDB_API_KEY", "fake")
     responses.add(

@@ -162,6 +162,10 @@ def tmdb_watch_providers(
     fr = ((data or {}).get("results") or {}).get("FR") or {}
     watch_page_url = fr.get("link") or None
     seen: set[str] = set()
+    # Deux offres d'une même plateforme (« Paramount Plus » et « Paramount Plus
+    # Premium ») mènent à la même recherche : un seul bouton, le premier
+    # (doublon vu sur S6-E09, 2026-11-13).
+    adresses: set[str] = set()
     providers: list[dict] = []
     for slot in ("flatrate", "free", "ads", "rent", "buy"):
         for prov in fr.get(slot, []) or []:
@@ -171,7 +175,8 @@ def tmdb_watch_providers(
             seen.add(name)
             lien = _provider_link(name, title)
             # Plateforme sans recherche publique : rien à proposer.
-            if lien is not None:
+            if lien is not None and lien["url"] not in adresses:
+                adresses.add(lien["url"])
                 providers.append(lien)
     return watch_page_url, providers
 

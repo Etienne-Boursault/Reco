@@ -267,8 +267,10 @@ def publier_episode(source_id: str, guid: str, titre: str, chemin_episode: Path,
     resultat.branche = branche
     git.ajouter(a_publier)
     resultat.sha = git.commiter(
-        f"contenu: publier {_sans_accents(titre)}\n\n"
-        f"Pousse par la chaine de venus apres relecture. "
+        # Accents compris, comme tout l'historique depuis la règle « langue et
+        # commits » ; l'ASCII datait du 2026-09-27 (revue de #202, 2026-11-13).
+        f"contenu: publier {titre}\n\n"
+        f"Poussé par la chaîne de venus après relecture. "
         f"{len(recos)} reco(s), {len(a_publier)} fichier(s).")
     git.pousser(branche)
     if git.sha_distant(branche) != resultat.sha:
@@ -310,13 +312,6 @@ def _nettoyer(git: Git, racine: Path, publies: Sequence[str],
     except (ErreurGit, OSError) as exc:
         resultat.avertissements.append(
             f"clone non nettoyé ({type(exc).__name__}) : le prochain « git pull » peut échouer")
-
-
-def _sans_accents(texte: str) -> str:
-    """Messages de commit en ASCII, comme le reste de l'historique du dépôt."""
-    import unicodedata
-    decompose = unicodedata.normalize("NFD", texte)
-    return "".join(c for c in decompose if unicodedata.category(c) != "Mn")
 
 
 def message(titre: str, resultat: Publication) -> str:

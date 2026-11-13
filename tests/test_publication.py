@@ -481,7 +481,7 @@ def test_a_git_failure_says_what_git_said(depot):
         git._git("rev-parse", "une-reference-qui-nexiste-pas")
 
 
-def test_the_commit_message_stays_in_ascii(depot):
+def test_the_commit_message_keeps_its_accents(depot):
     _episode_complet(depot)
 
     resultat = pub.publier_episode(
@@ -489,4 +489,6 @@ def test_the_commit_message_stays_in_ascii(depot):
         depot / "src/content/episodes" / SOURCE / f"{GUID.lower()}.json", racine=depot)
 
     sujet = _git(depot, "show", "-s", "--pretty=format:%s", resultat.sha)
-    assert sujet == "contenu: publier Geraldine Nakache et Clementine Celarie"
+    assert sujet == "contenu: publier Géraldine Nakache et Clémentine Célarié"
+    corps = _git(depot, "show", "-s", "--pretty=format:%b", resultat.sha)
+    assert corps.startswith("Poussé par la chaîne de venus après relecture.")

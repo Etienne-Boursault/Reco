@@ -27,11 +27,9 @@ PROVIDER_RULES: dict[str, dict[str, str]] = {
     "YouTube":              {"url": "https://www.youtube.com/results?search_query={q}",         "ethics": "neutral"},
     "Filmo TV":             {"url": "https://www.filmotv.fr/?txtsearch={q}",                    "ethics": "neutral"},
     "Google Play Movies":   {"url": "https://play.google.com/store/search?q={q}&c=movies",      "ethics": "neutral"},
-    "Orange VOD":           {"url": "https://video.orange.fr/search?q={q}",                     "ethics": "neutral"},
     "Sooner":               {"url": "https://www.sooner.fr/catalogue?term%5B%5D={q}",           "ethics": "neutral"},
     "Pathé Home":           {"url": "https://www.pathehome.com/recherche?text={q}",             "ethics": "neutral"},
     "Rakuten TV":           {"url": "https://rakuten.tv/fr/search?q={q}",                       "ethics": "neutral"},
-    "SFR Play":             {"url": "https://www.sfrplay.fr/recherche?q={q}",                   "ethics": "neutral"},
     "M6+":                  {"url": "https://www.6play.fr/recherche?q={q}",                     "ethics": "neutral"},
     "Animation Digital Network": {"url": "https://animationdigitalnetwork.com/search?q={q}",    "ethics": "neutral"},
     "Cinemas a la Demande": {"url": "https://www.cinemasalademande.com/?s={q}",                 "ethics": "neutral"},
@@ -68,8 +66,12 @@ PROVIDER_RULES: dict[str, dict[str, str]] = {
 # tort que pas de lien : la page TMDB (`watchPage`) reste là pour ces œuvres.
 # Correspondance par sous-chaîne, insensible à la casse (« Disney Plus »,
 # « Molotov TV », « VIVA by videofutur »…).
+# Orange VOD et SFR Play rejoignent la liste le 2026-11-13 : leurs domaines
+# (video.orange.fr, www.sfrplay.fr) ne se résolvent plus, constaté en vérifiant
+# les liens de S6-E09.
 SANS_RECHERCHE: tuple[str, ...] = (
     "premiere max", "videofutur", "molotov", "tf1+", "disney",
+    "orange vod", "sfr play",
 )
 
 # Patterns appliqués DANS L'ORDRE quand le nom du provider ne match aucune
