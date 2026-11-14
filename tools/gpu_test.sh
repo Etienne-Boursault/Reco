@@ -68,7 +68,7 @@ export PATH="$HOME/.deno/bin:$PATH"
 echo "== 3/6 Env Python + faster-whisper + libs CUDA =="
 python3 -m venv ~/wh
 source ~/wh/bin/activate
-pip install -q -U pip faster-whisper yt-dlp nvidia-cublas-cu12 nvidia-cudnn-cu12
+pip install -q -U pip faster-whisper "yt-dlp[default]" nvidia-cublas-cu12 nvidia-cudnn-cu12
 
 echo "== 4/6 Chemins cuDNN/cuBLAS (via find) =="
 CUBLAS_DIR=$(dirname "$(find ~/wh -name 'libcublas.so*' | head -1)")
