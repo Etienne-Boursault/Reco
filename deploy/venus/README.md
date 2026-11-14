@@ -324,6 +324,24 @@ docker compose run --rm pipeline python -c \
   "import av, faster_whisper as w; print('av', av.__version__, 'fw', w.__version__)"
 ```
 
+Ce contrôle ne suffit pas toujours. Une reconstruction monte aussi les paquets laissés sans borne
+haute (`yt-dlp`, `anthropic`), et l'image du 2026-11-14 en a changé trois :
+
+| Paquet    | Avant      | Après      |
+|-----------|------------|------------|
+| Pillow    | (absent)   | 13         |
+| anthropic | 1.11       | 2.8        |
+| yt-dlp    | 2026.08.19 | 2026.10.26 |
+
+Depuis sa version 2026.10, yt-dlp ne résout plus seul le défi JavaScript de YouTube. Il avertit
+alors `n challenge solving failed: Some formats may be missing`. D'où `yt-dlp[default]`, qui
+installe le solveur `yt-dlp-ejs`.
+
+Après une reconstruction, vérifier aussi deux choses :
+- **yt-dlp** : `yt-dlp -F <vidéo>` ne doit afficher aucun `WARNING` ;
+- **l'extraction** : un vrai appel du modèle d'extraction, sur un court extrait, doit rendre ses
+  recos.
+
 ### Métriques du pipeline
 
 Chaque étape de la chaîne écrit ses mesures dans
