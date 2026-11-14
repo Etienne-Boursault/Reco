@@ -324,23 +324,39 @@ docker compose run --rm pipeline python -c \
   "import av, faster_whisper as w; print('av', av.__version__, 'fw', w.__version__)"
 ```
 
-Ce contrôle ne suffit pas toujours. Une reconstruction monte aussi les paquets laissés sans borne
-haute (`yt-dlp`, `anthropic`), et l'image du 2026-11-14 en a changé trois :
+Ce contrôle ne suffit pas toujours. Une reconstruction monte tout ce que ses bornes permettent :
+les paquets sans borne haute (`yt-dlp`, `anthropic`), et les autres jusqu'à leur borne. L'image du
+2026-11-14 a changé ceux-ci :
 
-| Paquet    | Avant      | Après      |
-|-----------|------------|------------|
-| Pillow    | (absent)   | 13         |
-| anthropic | 1.11       | 2.8        |
-| yt-dlp    | 2026.08.19 | 2026.10.26 |
+| Paquet    | Avant (`2026-10-02-av18`) | Après (`2026-11-14-pillow13`) |
+|-----------|---------------------------|-------------------------------|
+| Pillow    | 12.3.0 (tiré par fastembed) | 13.0.0                      |
+| fastembed | 0.8.1                     | 0.9.1                         |
+| anthropic | 1.11.0                    | 2.8.0                         |
+| yt-dlp    | 2026.08.19                | 2026.10.26                    |
 
 Depuis sa version 2026.10, yt-dlp ne résout plus seul le défi JavaScript de YouTube. Il avertit
 alors `n challenge solving failed: Some formats may be missing`. D'où `yt-dlp[default]`, qui
 installe le solveur `yt-dlp-ejs`.
 
-Après une reconstruction, vérifier aussi deux choses :
-- **yt-dlp** : `yt-dlp -F <vidéo>` ne doit afficher aucun `WARNING` ;
-- **l'extraction** : un vrai appel du modèle d'extraction, sur un court extrait, doit rendre ses
-  recos.
+Après une reconstruction, vérifier aussi, **dans le conteneur** :
+
+```sh
+# yt-dlp : aucune ligne ne doit sortir
+docker compose run --rm pipeline yt-dlp --encoding utf-8 -F \
+  "https://www.youtube.com/watch?v=rwlXWp7Lrhg" 2>&1 | grep -i "challenge solving failed"
+# l'extraction : un vrai appel du modèle configuré, qui doit lister ses recos
+docker compose run --rm pipeline python -c "
+import extract_recos as er; from common import make_anthropic_client; from modeles_llm import modele_extraction
+p = er._request_params(modele_extraction(), 'Un Bon Moment', 'Kyan, Navo', 'Allez voir le film Eternal Sunshine.')
+print([r.get('title') for r in er._parse_recos_from_content(make_anthropic_client().messages.create(**p).content)])"
+```
+
+**Revenir à l'image précédente** : remettre son étiquette dans `compose.yml`, puis
+`docker compose up -d review` **sans** `build`. Le service déclare `image:` et `build:` : un
+`docker compose build` reconstruirait les dépendances du jour sous l'ancienne étiquette et
+effacerait le repli. Ne pas supprimer l'ancienne image (`docker image prune -a`) tant que la
+nouvelle n'a pas traité un vrai épisode.
 
 ### Métriques du pipeline
 

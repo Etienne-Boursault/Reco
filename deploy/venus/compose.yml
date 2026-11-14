@@ -17,7 +17,9 @@ x-atelier: &atelier
   # une étiquette neuve pour que venus la prenne.
   #
   # 2026-11-14 : reconstruite pour Pillow 13 (failles de la 12, PR #204), qui
-  # fait monter fastembed en 0.9.1. L'image `2026-10-02-av18` reste le repli.
+  # fait monter fastembed en 0.9.1. L'image `2026-10-02-av18` reste le repli :
+  # pour y revenir, remettre son étiquette puis `up -d` SANS `build` (un build
+  # l'écraserait avec les dépendances du jour, voir README.md).
   image: reco-atelier:2026-11-14-pillow13
   build:
     context: /home/etienne/docker/reco/depot

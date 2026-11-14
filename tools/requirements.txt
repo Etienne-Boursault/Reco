@@ -29,7 +29,7 @@ av>=11,<19
 # `[default]` installe yt-dlp-ejs, le solveur des défis JavaScript de YouTube. Depuis
 # yt-dlp 2026.10, il n'est plus inclus : l'image reconstruite le 2026-11-14 avertissait
 # « n challenge solving failed: Some formats may be missing ». Avec lui, plus rien.
-yt-dlp[default]>=2026.8.19    # téléchargement audio YouTube (si pas d'audioUrl)
+yt-dlp[default]>=2026.10.26   # téléchargement audio YouTube (si pas d'audioUrl)
 requests>=2.34.2,<3          # téléchargement des enclosures audio HTTP
 
 # Étape 3 — extraction des recos via LLM
