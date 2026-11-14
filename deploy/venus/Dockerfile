@@ -11,7 +11,9 @@
 # Astro, inutile ici, et trois outils que la chaîne exige :
 #   - ffmpeg          transcribe.py convertit l'audio YouTube en mp3 ;
 #   - deno            yt-dlp en a besoin pour YouTube, sinon des formats manquent
-#                     (avertissement constaté sur venus le 2026-09-17) ;
+#                     (avertissement constaté sur venus le 2026-09-17). Depuis
+#                     yt-dlp 2026.10, il faut AUSSI son solveur yt-dlp-ejs, que
+#                     `yt-dlp[default]` installe (tools/requirements.txt) ;
 #   - git, openssh    la publication pousse sur main.
 
 FROM python:3.14-slim
