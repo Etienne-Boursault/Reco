@@ -55,9 +55,51 @@ fichiers `tools/data/playlists_*.json`, puis on relance la commande.
 
 Dans `episode.json` :
 
-- raccourcir les citations, qui doivent tenir en 3 ou 4 lignes ;
+- raccourcir les citations à la phrase qui recommande, deux ou trois lignes : sous l'image, la place
+  est comptée, et une citation trop longue fait rapetisser le texte de la page ;
 - compléter les « qui » vides ;
-- préciser `createur` si besoin : une plateforme (« Sur Apple TV »), un lieu (« au Funambule »).
+- préciser `createur` si besoin : une plateforme (« Sur Apple TV »), un lieu (« au Funambule ») ;
+- vérifier les **images**.
+
+Depuis le 2026-11-13, chaque page a un visuel (modèle validé par l'éditeur sur le canevas Design
+« Carrousel avec visuels »). La préparation écrit dans `episode.json` l'adresse de l'image de chaque
+page (`image`) et la vignette YouTube de l'épisode (`couverture`). Elle la tire des identifiants déjà
+vérifiés sur la reco, jamais d'une recherche par titre (`tools/carrousel_images.py`) :
+
+| Type | Image |
+|---|---|
+| Film, série | l'affiche TMDB dans la langue originale de l'œuvre, sinon française, sinon sans texte |
+| Album, titre | la pochette Deezer (de l'album, ou de l'album du titre), sinon Apple Music |
+| Artiste | la photo Deezer (pas la photo grise par défaut) |
+| Podcast | la vignette Apple Podcasts |
+| Chaîne YouTube | l'avatar de la chaîne |
+| Livre, BD | l'image de l'article Wikipédia, sinon celle de la fiche du livre chez le libraire |
+| Autre | l'image de partage du lien « site officiel », sinon son icône d'application |
+
+Chaque adresse est vérifiée avant d'être retenue : elle doit rendre une image qu'Edge sait afficher (pas un
+SVG, pas une page HTML), sinon la source suivante prend le relais. Les recherches se font en parallèle ;
+compter quelques minutes pour un épisode. La commande liste les pages restées **sans image**. À la
+relecture :
+
+- remplacer une image fausse ou inutilisable par une autre adresse (une photo d'artiste Deezer peut
+  être une pochette de single, une affiche originale se trouve sur TMDB) ; `null` retire l'image ;
+- deux œuvres d'une même phrase peuvent partager une page (Instagram plafonne à 20 images) : fusionner
+  les deux pages et mettre les deux adresses en liste, `"image": ["…", "…"]` ;
+- `mise` force la mise en scène, rarement utile : `affiche`, `carre`, `rond`, `double`, `photo`,
+  `cadre`, `tuile` ou `sans`. Sinon, elle se choisit d'après le type et les proportions de l'image.
+  Une valeur inconnue, ou incompatible avec le nombre d'images téléchargées, est signalée au rendu
+  et remplacée par la mise calculée ; `sans` cache l'image (elle n'est alors pas créditée).
+
+Le rendu garde les images téléchargées dans `images/` (avec `images/index.json`) : relancer
+`carrousel_episode.py` après une retouche ne les retélécharge pas. Pour forcer un nouveau
+téléchargement, supprimer l'image et sa ligne de l'index, ou changer l'adresse. Les pages d'un
+rendu précédent (`NN-couverture`, `NN-reco`, `NN-fin`) sont retirées avant chaque rendu : après une
+fusion de pages, il ne reste pas d'ancienne page en trop.
+
+Une page sans image garde le rythme du carrousel : un aplat jaune, avec un disque pour la musique.
+Sous l'image, la citation puis le titre rapetissent si le texte déborde ; le rendu signale une
+citation trop longue même au plus petit, à raccourcir.
+La page de fin cite les sources des images utilisées (TMDB, Deezer, Apple, YouTube, Wikipédia).
 
 Ensuite :
 
@@ -65,7 +107,8 @@ Ensuite :
 python -X utf8 tools/carrousel_episode.py "<dossier>"
 ```
 
-La commande produit les PNG (1080×1350), `legende-instagram.txt`, `legende-threads.txt` (500
+La commande télécharge les images dans `images/`, puis produit les PNG (1080×1350, mise en page dans
+`tools/carrousel_scenes.py`), `legende-instagram.txt`, `legende-threads.txt` (500
 caractères au plus) et `alts.json`. Il faut regarder les PNG, puis les **montrer à l'éditeur avant de
 publier**.
 

@@ -8,7 +8,8 @@ seule commande prepare tout ce qui part ailleurs que sur le site :
 
 Dans DOSSIER (par defaut Images/unebonnere.co/<date>-S6E06) :
 - `episode.json` : le carrousel Instagram/Threads (une page par mention
-  validee), a relire avant `python tools/carrousel_episode.py DOSSIER` ;
+  validée, avec l'adresse de son image, cf. carrousel_images.py), à relire
+  avant `python tools/carrousel_episode.py DOSSIER` ;
 - `plan.json` : les titres a ajouter aux playlists Spotify (puis Deezer, via
   playlists_deezer.py) et les oeuvres a ajouter aux listes SensCritique.
 
@@ -35,10 +36,12 @@ import json
 import re
 import sys
 from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import carrousel_images as ci
 import playlists_deezer
 import playlists_musique as pm
 from common import write_json_if_changed
@@ -98,11 +101,17 @@ def createur(item: dict[str, Any], reco: dict[str, Any]) -> str:
 
 
 def carrousel(ep: dict[str, Any], mentions: list[dict[str, Any]], items: dict[str, dict[str, Any]],
-              recos: dict[str, dict[str, Any]]) -> dict[str, Any]:
-    """Brouillon de `episode.json` : a relire (citations a raccourcir, « qui » manquants)."""
-    pages = []
+              recos: dict[str, dict[str, Any]],
+              image: Callable[[dict[str, Any], dict[str, Any]], str | None] | None = None) -> dict[str, Any]:
+    """Brouillon de `episode.json` : à relire (citations à raccourcir, « qui » manquants, images).
+
+    `image(item, reco)` donne l'adresse du visuel de chaque page (carrousel_images.source) ;
+    sans elle, les pages n'ont pas de clé `image`.
+    """
+    pages, paires = [], []
     for m in mentions_validees(ep, mentions):
         item, reco = items[m["itemId"]], recos.get(m["id"], {})
+        paires.append((item, reco))
         pages.append({
             "type": LIBELLES.get((item.get("types") or ["autre"])[0], "Autre"),
             "titre": typo(item["title"]),
@@ -111,11 +120,17 @@ def carrousel(ep: dict[str, Any], mentions: list[dict[str, Any]], items: dict[st
             "qui": m.get("recommendedBy") or "",
             "moment": moment(m["sourceRef"].get("timestamp")),
         })
+    if image:
+        # Une quinzaine de sources lentes (sites, yt-dlp) : en parallèle, l'ordre des pages gardé.
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            for page, url in zip(pages, pool.map(lambda paire: image(*paire), paires), strict=True):
+                page["image"] = url
     return {
         "numero": f"S{ep['season']} · E{ep['number']:02d}",
         "titre": typo(re.sub(r"\s*\(Un Bon Moment, S\d+-E\d+\)\s*$", "", ep["title"])),
         "invites": ep.get("guestsParsed") or ep.get("guests") or [],
         "lien": f"https://unebonnere.co/un-bon-moment/episode/{ep['guid']}/",
+        "couverture": ci.couverture(ep),
         "recos": pages,
     }
 
@@ -250,6 +265,16 @@ def poser_liens(paires: list[str]) -> int:
     return 0
 
 
+def _cle_tmdb() -> str | None:
+    """Clé TMDB pour les affiches ; sans elle, les films et séries restent sans image."""
+    try:
+        from enrich_tmdb import cle_api  # importé ici : son absence ne doit priver que des affiches
+        return cle_api()
+    except (ImportError, RuntimeError) as exc:  # module absent, ou clé absente (cle_api)
+        print(f"Pas de clé TMDB ({exc}) : les films et séries n'auront pas d'affiche.")
+        return None
+
+
 def preparer(code: str, sortie: Path | None) -> int:
     episodes = pm._lire(pm.EPISODES_DIR)
     ep = trouver_episode(code, episodes)
@@ -259,7 +284,8 @@ def preparer(code: str, sortie: Path | None) -> int:
     sortie = sortie or Path.home() / "Pictures" / "unebonnere.co" / f"{ep['date']}-S{ep['season']}E{ep['number']:02d}"
     sortie.mkdir(parents=True, exist_ok=True)
 
-    brouillon = carrousel(ep, mentions, items, recos)
+    web, cle_tmdb = ci.WebReel(), _cle_tmdb()
+    brouillon = carrousel(ep, mentions, items, recos, image=lambda item, reco: ci.source(item, reco, web, cle_tmdb))
     (sortie / "episode.json").write_text(json.dumps(brouillon, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     etat_sp = json.loads(pm.ETAT.read_text(encoding="utf-8"))["playlists"]
     embed = pm.Embed()
@@ -291,6 +317,9 @@ def preparer(code: str, sortie: Path | None) -> int:
         print(f"Sans lien Spotify : {r['reco']} {r['titre']}{de} -> onglet {r['onglet']}")
     for a in alertes:
         print("ALERTE :", a)
+    sans_image = [r["titre"] for r in brouillon["recos"] if not r.get("image")]
+    if sans_image:
+        print("Sans image (à poser à la main dans episode.json si besoin) :", sans_image)
     sans_qui = [r["titre"] for r in brouillon["recos"] if not r["qui"]]
     if sans_qui:
         print("Sans « qui » (a completer dans episode.json) :", sans_qui)

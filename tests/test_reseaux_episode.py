@@ -166,3 +166,58 @@ def test_lien_spotify_canonique_en_tete_et_jamais_en_double():
     assert len(reco["links"]) == 2
     with pytest.raises(SystemExit):
         re_.lien_spotify({}, "https://www.deezer.com/artist/1")
+
+
+def test_carrousel_donne_l_image_de_chaque_page_et_la_vignette_de_l_episode():
+    mentions = [mention("m1", "a", "00:05:00"), mention("m2", "b", "01:00:00")]
+    images = {"a": "https://image.tmdb.org/t/p/w780/a.jpg"}
+    ep = re_.carrousel(EP, mentions, ITEMS, {}, image=lambda item, reco: images.get(item["id"]))
+    assert ep["couverture"] == "https://i.ytimg.com/vi/x/maxresdefault.jpg"
+    assert [r["image"] for r in ep["recos"]] == ["https://image.tmdb.org/t/p/w780/a.jpg", None]
+    assert "image" not in re_.carrousel(EP, mentions, ITEMS, {})["recos"][0]
+
+
+def test_cle_tmdb_absente_laisse_les_films_sans_affiche(monkeypatch, capsys):
+    import enrich_tmdb
+
+    monkeypatch.setattr(enrich_tmdb, "cle_api", lambda: "cle")
+    assert re_._cle_tmdb() == "cle"
+
+    def absente():
+        raise RuntimeError("TMDB_API_KEY absent")
+    monkeypatch.setattr(enrich_tmdb, "cle_api", absente)
+    assert re_._cle_tmdb() is None
+    assert "Pas de clé TMDB" in capsys.readouterr().out
+
+
+def test_cle_tmdb_sans_le_module_d_enrichissement(monkeypatch, capsys):
+    import sys
+    monkeypatch.setitem(sys.modules, "enrich_tmdb", None)  # import impossible
+    assert re_._cle_tmdb() is None
+    assert "Pas de clé TMDB" in capsys.readouterr().out
+
+
+def test_carrousel_cherche_les_images_en_parallele_sans_changer_l_ordre():
+    import threading
+    import time
+    fils = set()
+
+    def image(item, reco):
+        fils.add(threading.get_ident())
+        time.sleep(0.05)
+        return "img-" + item["id"]
+
+    mentions = [mention(f"m{i}", k, f"00:0{i}:00") for i, k in enumerate("abd")]
+    ep = re_.carrousel(EP, mentions, ITEMS, {}, image=image)
+    assert [r["image"] for r in ep["recos"]] == ["img-a", "img-b", "img-d"]
+    assert len(fils) > 1
+
+
+def test_cle_tmdb_ne_masque_pas_une_vraie_erreur(monkeypatch):
+    import enrich_tmdb
+
+    def bug():
+        raise KeyError("TMDB_API_KEY mal lu")
+    monkeypatch.setattr(enrich_tmdb, "cle_api", bug)
+    with pytest.raises(KeyError):
+        re_._cle_tmdb()
