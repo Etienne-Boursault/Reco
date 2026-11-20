@@ -1,0 +1,98 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Paul Thomas Anderson",
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "334",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/334-magnolia/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:23",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3374",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/magnolia/umc.cmc.mbdys1lghcq89larr77nlxnb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=22858.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0175880/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/334"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "TMDB — où regarder",
+      "url": "https://www.themoviedb.org/movie/334/watch?locale=FR"
+    }
+  ],
+  "quote": "à priori mon film préféré, j'ai réussi à en trouver un, c'est Magnolia.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:56:23",
+  "title": "Magnolia",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Magnolia"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Magnolia"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Magnolia"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Magnolia"
+    },
+    {
+      "ethics": "neutral",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Magnolia"
+    }
+  ],
+  "year": 1999
+}

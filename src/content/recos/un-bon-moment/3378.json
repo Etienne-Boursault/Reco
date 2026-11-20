@@ -1,0 +1,116 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Gus Van Sant",
+  "enrichedAt": {
+    "links": "2026-11-20T11:40:56Z"
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "489",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/489-good-will-hunting/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:48",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3378",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/will-hunting/umc.cmc.ljmzio5szpnhca4ydns8f99q"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0119217/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/489"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=363.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/489-good-will-hunting/watch?locale=FR"
+    }
+  ],
+  "quote": "Non, Will Hunting. C'est pour moi le film parfait, quoi.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:57:48",
+  "title": "Will Hunting",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Paramount Plus",
+      "url": "https://www.paramountplus.com/fr/search/?q=Will%20Hunting"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Will%20Hunting"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Will%20Hunting"
+    },
+    {
+      "ethics": "neutral",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Will%20Hunting"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Will%20Hunting"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Will%20Hunting"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Will%20Hunting"
+    },
+    {
+      "ethics": "indie",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Will%20Hunting"
+    }
+  ],
+  "year": 1997
+}

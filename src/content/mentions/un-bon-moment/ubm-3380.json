@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:00"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3380",
+  "itemId": "644c7a68",
+  "kind": "reco",
+  "quote": "j'ai terminé ce matin une série que j'ai trouvé vraiment chouette qui s'appelle Widow's Bay",
+  "recommendedBy": "Louise Coldefy",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-bLsrJlMaaTA",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:07:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

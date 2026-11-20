@@ -1,0 +1,70 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "John Wax",
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "299255",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/299255-surveillant/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:20",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3381",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt44924447/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/299255"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000002485.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "TMDB — où regarder",
+      "url": "https://www.themoviedb.org/tv/299255/watch?locale=FR"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/browse/entity-28bb36cb-1ec8-4ef6-8fc3-17fbdd6bf387"
+    }
+  ],
+  "quote": "Surveillant sur Disney+. C'est une excellente série avec Jean-Pascal Zadi, Audrey Lamy, Benjamin…",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:07:20",
+  "title": "Surveillant",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

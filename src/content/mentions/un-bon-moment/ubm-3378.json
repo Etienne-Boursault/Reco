@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:48"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3378",
+  "itemId": "13ac09e5",
+  "kind": "reco",
+  "quote": "Non, Will Hunting. C'est pour moi le film parfait, quoi.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-bLsrJlMaaTA",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:48",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

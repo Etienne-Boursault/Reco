@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:06"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3382",
+  "itemId": "207fa49a",
+  "kind": "reco",
+  "quote": "sur Arte, j'ai vu une série qui s'appelle Camarades, qui est réalisée par un mec qui s'appelle Dominique Baumard et j'ai trouvé ça super.",
+  "recommendedBy": "Julia Piaton",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-bLsrJlMaaTA",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:08:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

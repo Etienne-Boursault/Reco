@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:27"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3370",
+  "itemId": "a1a36154",
+  "kind": "reco",
+  "quote": "Moi, je dirais La Leçon de piano de Jane Campion, parce que je n'arrive pas à me remettre de ces scènes. C'est quand même un film extraordinaire, tu l'as vu ?",
+  "recommendedBy": "Julia Piaton",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-bLsrJlMaaTA",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:55:27",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

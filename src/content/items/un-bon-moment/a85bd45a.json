@@ -1,0 +1,42 @@
+{
+  "creator": "Alejandro González Iñárritu",
+  "externalIds": {
+    "tmdb": 194662,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/194662-birdman-or-the-unexpected-virtue-of-ignorance/watch?locale=FR"
+  },
+  "id": "a85bd45a",
+  "schemaVersion": 1,
+  "title": "Birdman",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Birdman"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Birdman"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Birdman"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Birdman"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Birdman"
+    }
+  ],
+  "year": 2014
+}

@@ -1,0 +1,65 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Christopher Nolan",
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "157336",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/157336-interstellar/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:40",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3375",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70305903"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0816692/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/157336"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "TMDB — où regarder",
+      "url": "https://www.themoviedb.org/movie/157336/watch?locale=FR"
+    }
+  ],
+  "quote": "Interstellar, c'est bien aussi.",
+  "recommendedBy": "Julia Piaton",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:56:40",
+  "title": "Interstellar",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2014
+}

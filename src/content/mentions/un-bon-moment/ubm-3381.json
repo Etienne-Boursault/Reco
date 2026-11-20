@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:20"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3381",
+  "itemId": "0c5b236a",
+  "kind": "reco",
+  "quote": "Surveillant sur Disney+. C'est une excellente série avec Jean-Pascal Zadi, Audrey Lamy, Benjamin…",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-bLsrJlMaaTA",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:07:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

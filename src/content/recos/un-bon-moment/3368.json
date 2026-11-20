@@ -1,0 +1,101 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Ridley Scott",
+  "enrichedAt": {
+    "links": "2026-11-20T11:40:39Z"
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "348",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/348-alien/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:24",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3368",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/alien-le-8eme-passager/umc.cmc.419tta0vmcu3xnec7v6u44rzs"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0078748/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/348"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=62.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/348-alien/watch?locale=FR"
+    }
+  ],
+  "quote": "je lui dirais quand même de regarder Alien",
+  "recommendedBy": "Louise Coldefy",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:54:24",
+  "title": "Alien",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Alien"
+    },
+    {
+      "ethics": "neutral",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Alien"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Alien"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Alien"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Alien"
+    }
+  ],
+  "year": 1979
+}

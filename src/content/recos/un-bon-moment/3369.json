@@ -1,0 +1,85 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Vittorio De Sica",
+  "enrichedAt": {
+    "links": "2026-11-20T11:40:40Z"
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "5156",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/5156-ladri-di-biciclette/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3369",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0040522/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/5156"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=2570.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/5156-ladri-di-biciclette/watch?locale=FR"
+    }
+  ],
+  "quote": "je dirais un classique italien totalement différent genre le voleur de bicyclette ou un truc comme ça",
+  "recommendedBy": "Louise Coldefy",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:54:58",
+  "title": "Le Voleur de bicyclette",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Voleur%20de%20bicyclette"
+    },
+    {
+      "ethics": "indie",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Le%20Voleur%20de%20bicyclette"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Le%20Voleur%20de%20bicyclette"
+    }
+  ],
+  "year": 1948
+}

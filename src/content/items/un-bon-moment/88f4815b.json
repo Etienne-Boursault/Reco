@@ -1,0 +1,47 @@
+{
+  "creator": "Emir Kusturica",
+  "externalIds": {
+    "tmdb": 1075,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1075-crna-macka-beli-macor/watch?locale=FR"
+  },
+  "id": "88f4815b",
+  "schemaVersion": 1,
+  "title": "Chat noir, chat blanc",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Chat%20noir%2C%20chat%20blanc"
+    }
+  ],
+  "year": 1998
+}

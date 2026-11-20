@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:31:50",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3366",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube — chaîne",
+      "url": "https://www.youtube.com/@nardwuar"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://nardwuar.com/"
+    }
+  ],
+  "quote": "Le choc mental, si ça vous a plu, allez voir Nardwuar qui est formidable, qui fait beaucoup de chocs mentaux.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:31:50",
+  "title": "Nardwuar",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

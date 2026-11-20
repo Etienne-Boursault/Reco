@@ -1,0 +1,105 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Albert Dupontel",
+  "enrichedAt": {
+    "links": "2026-11-20T11:41:03Z"
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "200713",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/200713-9-mois-ferme/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:11",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3384",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2853614/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/200713"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=213856.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/200713-9-mois-ferme/watch?locale=FR"
+    }
+  ],
+  "quote": "9 mois ferme. Qui est exceptionnel aussi.",
+  "recommendedBy": "Louise Coldefy",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:11",
+  "title": "9 mois ferme",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=9%20mois%20ferme"
+    },
+    {
+      "ethics": "neutral",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=9%20mois%20ferme"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=9%20mois%20ferme"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=9%20mois%20ferme"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=9%20mois%20ferme"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=9%20mois%20ferme"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=9%20mois%20ferme"
+    }
+  ],
+  "year": 2013
+}

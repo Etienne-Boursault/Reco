@@ -1,0 +1,106 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Emir Kusturica",
+  "enrichedAt": {
+    "links": "2026-11-20T11:40:44Z"
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "1075",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1075-crna-macka-beli-macor/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:37",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3371",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/chat-noir-chat-blanc/umc.cmc.19kmnxm933rnakcrzbw076iaj"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0118843/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1075"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=91028.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/1075-crna-macka-beli-macor/watch?locale=FR"
+    }
+  ],
+  "quote": "peut-être un film de Kusturica, genre Chat noir, chat blanc",
+  "recommendedBy": "Julia Piaton",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:55:37",
+  "title": "Chat noir, chat blanc",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "indie",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Chat%20noir%2C%20chat%20blanc"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Chat%20noir%2C%20chat%20blanc"
+    }
+  ],
+  "year": 1998
+}

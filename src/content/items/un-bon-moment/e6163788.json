@@ -1,9 +1,15 @@
 {
   "creator": "Christopher Nolan",
+  "externalIds": {
+    "tmdb": 157336,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/157336-interstellar/watch?locale=FR"
+  },
   "id": "e6163788",
   "schemaVersion": 1,
   "title": "Interstellar",
   "types": [
     "film"
-  ]
+  ],
+  "year": 2014
 }

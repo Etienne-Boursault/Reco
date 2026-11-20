@@ -1,10 +1,42 @@
 {
   "creator": "Paul Thomas Anderson",
+  "externalIds": {
+    "tmdb": 334,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/334-magnolia/watch?locale=FR"
+  },
   "id": "11f56b55",
   "schemaVersion": 1,
   "title": "Magnolia",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Magnolia"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Magnolia"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Magnolia"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Magnolia"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Magnolia"
+    }
   ],
   "year": 1999
 }

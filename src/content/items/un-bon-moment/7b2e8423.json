@@ -1,0 +1,42 @@
+{
+  "creator": "Ridley Scott",
+  "externalIds": {
+    "tmdb": 348,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/348-alien/watch?locale=FR"
+  },
+  "id": "7b2e8423",
+  "schemaVersion": 1,
+  "title": "Alien",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Alien"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Alien"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Alien"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Alien"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Alien"
+    }
+  ],
+  "year": 1979
+}

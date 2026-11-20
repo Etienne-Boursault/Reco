@@ -1,0 +1,62 @@
+{
+  "creator": "Alfonso Cuarón",
+  "externalIds": {
+    "tmdb": 9693,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/9693-children-of-men/watch?locale=FR"
+  },
+  "id": "f94bb801",
+  "schemaVersion": 1,
+  "title": "Les Fils de l'homme",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "indie",
+      "name": "MUBI",
+      "url": "https://mubi.com/fr/films?q=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Les%20Fils%20de%20l%27homme"
+    }
+  ],
+  "year": 2006
+}
