@@ -5,8 +5,9 @@
   "creator": "Albert Dupontel",
   "episodeGuid": "yt-bLsrJlMaaTA",
   "externalIds": {
-    "tmdb": "92591",
-    "tmdbType": "movie"
+    "tmdb": "19963",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/19963-bernie/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -42,6 +43,24 @@
       "kind": "social",
       "label": "Instagram",
       "url": "https://www.instagram.com/albertdupontel/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0115658/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/19963"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "TMDB — où regarder",
+      "url": "https://www.themoviedb.org/movie/19963/watch?locale=FR"
     }
   ],
   "quote": "on peut aussi dire que Bernie c'est immense.",
