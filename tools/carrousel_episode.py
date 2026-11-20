@@ -201,6 +201,7 @@ def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> l
     vignette, adresse = _vignette(ep.get("couverture"), dossier, tel)
     if vignette:
         utilisees.append(adresse)
+    _verifier_annonce(ep)
     faites.append(sortie / "01-couverture.html")
     ecrire(faites[-1], cs.couverture(ep, _annonce(ep), vignette.resolve().as_uri() if vignette else None))
     for rang, r in enumerate(recos, 1):
@@ -219,10 +220,25 @@ def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> l
     return faites
 
 
+def _comptees(ep: dict[str, Any]) -> int:
+    """Recos portées par les pages : une page réunie compte une reco par adresse de sa liste."""
+    return sum(len(r["image"]) if isinstance(r.get("image"), list) else 1 for r in ep["recos"])
+
+
 def _annonce(ep: dict[str, Any]) -> int:
     """Nombre de recos annoncé : celui des mentions, pas celui des pages, qui baisse quand deux
-    œuvres d'une même phrase partagent une page (S6-E10 annonçait 18 recos pour 24, 2026-11-20)."""
-    return ep.get("nombreRecos") or len(ep["recos"])
+    œuvres d'une même phrase partagent une page (S6-E10 annonçait 18 recos pour 24, 2026-11-20).
+    Sans `nombreRecos` (brouillon relu avant son ajout), les pages réunies comptent leurs images."""
+    return ep.get("nombreRecos") or _comptees(ep)
+
+
+def _verifier_annonce(ep: dict[str, Any]) -> None:
+    """Signale un `nombreRecos` qui ne suit plus les pages : posé par la préparation, il ne voit
+    pas une page retirée ou ajoutée à la relecture."""
+    if ep.get("nombreRecos") and ep["nombreRecos"] != _comptees(ep):
+        log.warning("carrousel : nombreRecos (%d) annoncé, mais les pages portent %d recos ; corriger "
+                    "nombreRecos dans episode.json si une page a été retirée ou ajoutée",
+                    ep["nombreRecos"], _comptees(ep))
 
 
 def textes(ep: dict[str, Any]) -> dict[str, Any]:
@@ -241,7 +257,7 @@ def textes(ep: dict[str, Any]) -> dict[str, Any]:
     for i, r in enumerate(recos, 1):
         de = f" — {r['createur']}" if r["createur"] else ""
         qui = f" Reco de {r['qui']}, à {r['moment']}." if r["qui"] else f" À {r['moment']}."
-        alts.append(f"Reco {i} sur {n}. {r['type']} : {r['titre']}{de}. « {r['citation']} »{qui}")
+        alts.append(f"Page {i} sur {n}. {r['type']} : {r['titre']}{de}. « {r['citation']} »{qui}")
     alts.append(f"Fin : toutes les recos de l’épisode {numero} sur unebonnere.co.")
     return {
         "instagram": f"{tete}{pied} : lien en bio ⭐\n\nSite de fan, non officiel.",
