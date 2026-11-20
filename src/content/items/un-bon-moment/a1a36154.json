@@ -1,0 +1,47 @@
+{
+  "creator": "Jane Campion",
+  "externalIds": {
+    "tmdb": 713,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/713-the-piano/watch?locale=FR"
+  },
+  "id": "a1a36154",
+  "schemaVersion": 1,
+  "title": "La Leçon de piano",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=La%20Le%C3%A7on%20de%20piano"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=La%20Le%C3%A7on%20de%20piano"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Le%C3%A7on%20de%20piano"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=La%20Le%C3%A7on%20de%20piano"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=La%20Le%C3%A7on%20de%20piano"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=La%20Le%C3%A7on%20de%20piano"
+    }
+  ],
+  "year": 1993
+}

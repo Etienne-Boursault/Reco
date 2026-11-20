@@ -1,0 +1,74 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Dominique Baumard et Benjamin Charbit",
+  "enrichedAt": {
+    "links": "2026-11-20T11:41:00Z"
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "295490",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/295490-camarades/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:06",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3382",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt38973495/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/295490"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000001238.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/295490-camarades/watch?locale=FR"
+    }
+  ],
+  "quote": "sur Arte, j'ai vu une série qui s'appelle Camarades, qui est réalisée par un mec qui s'appelle Dominique Baumard et j'ai trouvé ça super.",
+  "recommendedBy": "Julia Piaton",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:08:06",
+  "title": "Camarades",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "indie",
+      "label": "Arte",
+      "url": "https://www.arte.tv/fr/search/?q=Camarades"
+    }
+  ]
+}

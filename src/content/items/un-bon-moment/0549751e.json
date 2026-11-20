@@ -1,0 +1,57 @@
+{
+  "creator": "Gus Van Sant",
+  "externalIds": {
+    "tmdb": 489,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/489-good-will-hunting/watch?locale=FR"
+  },
+  "id": "0549751e",
+  "schemaVersion": 1,
+  "title": "Will Hunting",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Paramount Plus",
+      "url": "https://www.paramountplus.com/fr/search/?q=Will%20Hunting"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Will%20Hunting"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Will%20Hunting"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Will%20Hunting"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Will%20Hunting"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Will%20Hunting"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Will%20Hunting"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Will%20Hunting"
+    }
+  ],
+  "year": 1997
+}

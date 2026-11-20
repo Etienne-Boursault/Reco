@@ -1,0 +1,81 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Jack Thorne, Stephen Graham",
+  "enrichedAt": {
+    "links": "2026-11-20T11:40:37Z"
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "249042",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/249042-adolescence/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:02",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3365",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81756069"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt31806037/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/249042"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=36351.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/249042-adolescence/watch?locale=FR"
+    }
+  ],
+  "quote": "Adolescence, oui. Incroyable. Sur Netflix.",
+  "recommendedBy": "Julia Piaton",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:02",
+  "title": "Adolescence",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Adolescence"
+    }
+  ],
+  "year": 2025
+}

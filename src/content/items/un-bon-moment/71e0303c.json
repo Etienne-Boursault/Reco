@@ -1,0 +1,52 @@
+{
+  "creator": "Albert Dupontel",
+  "externalIds": {
+    "tmdb": 200713,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/200713-9-mois-ferme/watch?locale=FR"
+  },
+  "id": "71e0303c",
+  "schemaVersion": 1,
+  "title": "9 mois ferme",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=9%20mois%20ferme"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=9%20mois%20ferme"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=9%20mois%20ferme"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=9%20mois%20ferme"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=9%20mois%20ferme"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=9%20mois%20ferme"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=9%20mois%20ferme"
+    }
+  ],
+  "year": 2013
+}

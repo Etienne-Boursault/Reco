@@ -1,0 +1,121 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Alfonso Cuarón",
+  "enrichedAt": {
+    "links": "2026-11-20T11:40:32Z"
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "9693",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/9693-children-of-men/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:36",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3362",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/les-fils-de-lhomme/umc.cmc.29nj4u6tuaexxtdi0ofkv58rp"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0206634/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/9693"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=60792.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/9693-children-of-men/watch?locale=FR"
+    }
+  ],
+  "quote": "Il y a un film qui s'appelle Les Fils de l'Homme, si vous voulez voir aussi tes plans-séquence assez fous.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:15:36",
+  "title": "Les Fils de l'homme",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "indie",
+      "label": "MUBI",
+      "url": "https://mubi.com/fr/films?q=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "indie",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Les%20Fils%20de%20l%27homme"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Les%20Fils%20de%20l%27homme"
+    }
+  ],
+  "year": 2006
+}

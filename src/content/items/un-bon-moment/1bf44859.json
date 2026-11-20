@@ -1,0 +1,27 @@
+{
+  "creator": "Seth Rogen, Evan Goldberg",
+  "externalIds": {
+    "tmdb": 247767,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/247767-the-studio/watch?locale=FR"
+  },
+  "id": "1bf44859",
+  "schemaVersion": 1,
+  "title": "The Studio",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=The%20Studio"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Studio"
+    }
+  ],
+  "year": 2025
+}

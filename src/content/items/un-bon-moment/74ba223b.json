@@ -1,0 +1,32 @@
+{
+  "creator": "Vittorio De Sica",
+  "externalIds": {
+    "tmdb": 5156,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/5156-ladri-di-biciclette/watch?locale=FR"
+  },
+  "id": "74ba223b",
+  "schemaVersion": 1,
+  "title": "Le Voleur de bicyclette",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Voleur%20de%20bicyclette"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Le%20Voleur%20de%20bicyclette"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Le%20Voleur%20de%20bicyclette"
+    }
+  ],
+  "year": 1948
+}

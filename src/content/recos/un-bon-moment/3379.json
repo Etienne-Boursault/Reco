@@ -1,0 +1,60 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Louis Clichy",
+  "enrichedAt": {
+    "links": "2026-11-20T11:40:57Z"
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "947493",
+    "tmdbType": "movie"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:06:39",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3379",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt36639956/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/947493"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=321790.html"
+    }
+  ],
+  "quote": "J'ai vu Le Corset samedi.",
+  "recommendedBy": "Louise Coldefy",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:06:39",
+  "title": "Le Corset",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

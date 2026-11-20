@@ -1,0 +1,58 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Albert Dupontel",
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "92591",
+    "tmdbType": "movie"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:05",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3373",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/bernie-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où regarder",
+      "url": "https://www.allocine.fr/film/fichefilm-15895/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/albertdupontel/"
+    }
+  ],
+  "quote": "on peut aussi dire que Bernie c'est immense.",
+  "recommendedBy": "Julia Piaton",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:56:05",
+  "title": "Bernie",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 1996
+}

@@ -1,0 +1,51 @@
+{
+  "creator": "Éric Toledano et Olivier Nakache",
+  "externalIds": {
+    "tmdb": 1404684,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1404684-juste-une-illusion/watch?locale=FR"
+  },
+  "id": "d2816f3e",
+  "schemaVersion": 1,
+  "title": "Juste une illusion",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Juste%20une%20illusion"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Juste%20une%20illusion"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Juste%20une%20illusion"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Juste%20une%20illusion"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Juste%20une%20illusion"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Juste%20une%20illusion"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Juste%20une%20illusion"
+    }
+  ]
+}

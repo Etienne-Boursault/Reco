@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:44:23"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3367",
+  "itemId": "c077f030",
+  "kind": "reco",
+  "quote": "On a un artiste de stand-up qui vient faire une chronique toutes les semaines dans Un Bon Moment. Il s'appelle Pierre Hillairet. Il joue au Théâtre du Marais tous les mercredis à 21h.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-bLsrJlMaaTA",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:44:23",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

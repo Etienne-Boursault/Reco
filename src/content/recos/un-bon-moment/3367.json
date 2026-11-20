@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "extractionHistory": [
+    {
+      "at": "2026-11-20T11:31:45+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:23",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3367",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle-pierre-hillairet.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Humorix",
+      "url": "https://humorix.fr/humoriste/pierre-hillairet/"
+    }
+  ],
+  "quote": "On a un artiste de stand-up qui vient faire une chronique toutes les semaines dans Un Bon Moment. Il s'appelle Pierre Hillairet. Il joue au Théâtre du Marais tous les mercredis à 21h.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:44:23",
+  "title": "Pierre Hillairet",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}
