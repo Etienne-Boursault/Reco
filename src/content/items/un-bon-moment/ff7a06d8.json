@@ -10,5 +10,13 @@
   "title": "Adolescence",
   "types": [
     "serie"
-  ]
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Adolescence"
+    }
+  ],
+  "year": 2025
 }

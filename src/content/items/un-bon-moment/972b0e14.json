@@ -1,9 +1,57 @@
 {
   "creator": "Jean-Marie Poiré",
+  "externalIds": {
+    "tmdb": 11687,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/11687-les-visiteurs/watch?locale=FR"
+  },
   "id": "972b0e14",
   "schemaVersion": 1,
   "title": "Les Visiteurs",
   "types": [
     "film"
-  ]
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Les%20Visiteurs"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Les%20Visiteurs"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Visiteurs"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Les%20Visiteurs"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Visiteurs"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Les%20Visiteurs"
+    },
+    {
+      "ethics": "indie",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Les%20Visiteurs"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Les%20Visiteurs"
+    }
+  ],
+  "year": 1993
 }
