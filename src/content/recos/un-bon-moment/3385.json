@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Albert Dupontel",
+  "episodeGuid": "yt-bLsrJlMaaTA",
+  "externalIds": {
+    "tmdb": "430424",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/430424/watch?locale=FR"
+  },
+  "extractors": [
+    "manual"
+  ],
+  "id": "ubm-3385",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5258850/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/430424"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=230699.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/430424/watch?locale=FR"
+    }
+  ],
+  "quote": "Au revoir là-haut, plein de super films. 9 mois ferme, qui est exceptionnel aussi.",
+  "recommendedBy": "Louise Coldefy",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:08",
+  "title": "Au revoir là-haut",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2017
+}
