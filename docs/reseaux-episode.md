@@ -84,7 +84,13 @@ relecture :
 - remplacer une image fausse ou inutilisable par une autre adresse (une photo d'artiste Deezer peut
   être une pochette de single, une affiche originale se trouve sur TMDB) ; `null` retire l'image ;
 - deux œuvres d'une même phrase peuvent partager une page (Instagram plafonne à 20 images) : fusionner
-  les deux pages et mettre les deux adresses en liste, `"image": ["…", "…"]` ;
+  les deux pages et mettre les deux adresses en liste, `"image": ["…", "…"]`. La couverture, la
+  page de fin et les légendes annoncent `nombreRecos` (le nombre de mentions, posé par la
+  préparation), pas le nombre de pages ; le compteur de chaque page (« 3 / 18 ») reste celui des
+  pages (S6-E10, 2026-11-20 : 24 recos sur 18 pages s'annonçaient « 18 recos »). Une page retirée
+  ou ajoutée à la relecture se reporte à la main dans `nombreRecos` : le rendu signale l'écart avec
+  les recos que portent les pages (une par adresse d'une page réunie). Un brouillon sans
+  `nombreRecos` compte ces adresses ;
 - `mise` force la mise en scène, rarement utile : `affiche`, `carre`, `rond`, `double`, `photo`,
   `cadre`, `tuile` ou `sans`. Sinon, elle se choisit d'après le type et les proportions de l'image.
   Une valeur inconnue, ou incompatible avec le nombre d'images téléchargées, est signalée au rendu

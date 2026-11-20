@@ -177,6 +177,13 @@ def test_carrousel_donne_l_image_de_chaque_page_et_la_vignette_de_l_episode():
     assert "image" not in re_.carrousel(EP, mentions, ITEMS, {})["recos"][0]
 
 
+def test_carrousel_garde_le_nombre_de_recos_avant_toute_reunion_de_pages():
+    # Deux œuvres d'une même phrase se réunissent à la relecture (Instagram plafonne à
+    # 20 images) : le nombre annoncé reste celui des mentions (S6-E10 annonçait 18 pour 24).
+    mentions = [mention("m1", "a", "00:05:00"), mention("m2", "b", "01:00:00")]
+    assert re_.carrousel(EP, mentions, ITEMS, {})["nombreRecos"] == 2
+
+
 def test_cle_tmdb_absente_laisse_les_films_sans_affiche(monkeypatch, capsys):
     import enrich_tmdb
 

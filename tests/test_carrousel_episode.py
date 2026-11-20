@@ -85,8 +85,46 @@ def test_textes_groupent_par_type_et_suivent_les_images(tmp_path):
     assert "lien en bio" in t["instagram"] and "https://unebonnere.co/x/" in t["threads"]
     assert t["instagram"].endswith("Site de fan, non officiel.")
     assert len(t["alts"]) == len(ce.pages(EP, tmp_path, tel=faux_telechargement({}))) == 4
-    assert t["alts"][1] == "Reco 1 sur 2. Film : Court — X. « « <b> » » Reco de Navo, à 1:10."
-    assert t["alts"][2].startswith("Reco 2 sur 2. Série : Un titre vraiment beaucoup trop long. «")
+    # « Page », comme le compteur « 1 / 2 » de l'image : une page réunie porte deux recos.
+    assert t["alts"][1] == "Page 1 sur 2. Film : Court — X. « « <b> » » Reco de Navo, à 1:10."
+    assert t["alts"][2].startswith("Page 2 sur 2. Série : Un titre vraiment beaucoup trop long. «")
+
+
+def test_nombre_annonce_est_celui_des_recos_et_non_des_pages(tmp_path):
+    # Deux pages qui portent cinq recos (paires réunies) : couverture, fin et légendes
+    # disent 5, le compteur de chaque page reste sur 2 (S6-E10 annonçait 18 pour 24).
+    ep = {**EP, "nombreRecos": 5}
+    faites = ce.pages(ep, tmp_path, tel=faux_telechargement({}))
+    lire = [f.read_text(encoding="utf-8") for f in faites]
+    assert ">5<span" in lire[0] and "Les 5 " in lire[-1]
+    assert "1 / 2" in lire[1] and "2 / 2" in lire[2]
+    t = ce.textes(ep)
+    assert t["instagram"].startswith("Les 5 recos d’Un Bon Moment") and t["threads"].startswith("Les 5 recos")
+    assert t["alts"][0].startswith("Couverture : les 5 recos")
+    assert ce.textes(EP)["instagram"].startswith("Les 2 recos")
+
+
+REUNI = {**EP, "recos": [{**EP["recos"][0], "image": ["https://a/1.jpg", "https://a/2.jpg"]}, EP["recos"][1]]}
+
+
+def test_sans_nombre_annonce_les_pages_reunies_comptent_leurs_images(tmp_path, caplog):
+    # Un brouillon relu avant l'ajout de `nombreRecos` : la page réunie (deux adresses)
+    # compte pour deux recos, sans relancer la préparation qui écraserait la relecture.
+    lire = [f.read_text(encoding="utf-8") for f in ce.pages(REUNI, tmp_path, tel=faux_telechargement({}))]
+    assert ">3<span" in lire[0] and "Les 3 " in lire[-1] and "1 / 2" in lire[1]
+    assert ce.textes(REUNI)["instagram"].startswith("Les 3 recos")
+    assert "nombreRecos" not in caplog.text
+    sans_reunion = [f.read_text(encoding="utf-8") for f in ce.pages(EP, tmp_path, tel=faux_telechargement({}))]
+    assert ">2<span" in sans_reunion[0] and "Les 2 " in sans_reunion[-1]
+
+
+def test_un_nombre_annonce_qui_ne_suit_plus_les_pages_est_signale(tmp_path, caplog):
+    # Une page retirée à la relecture après la préparation : 3 annoncées, 2 comptées.
+    ce.pages({**EP, "nombreRecos": 3}, tmp_path, tel=faux_telechargement({}))
+    assert "nombreRecos (3)" in caplog.text and "2 recos" in caplog.text
+    caplog.clear()
+    ce.pages({**REUNI, "nombreRecos": 3}, tmp_path, tel=faux_telechargement({}))
+    assert "nombreRecos" not in caplog.text
 
 
 def test_main_ecrit_pages_legendes_et_textes_alternatifs(tmp_path, monkeypatch, capsys):

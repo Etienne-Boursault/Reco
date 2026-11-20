@@ -131,6 +131,9 @@ def carrousel(ep: dict[str, Any], mentions: list[dict[str, Any]], items: dict[st
         "invites": ep.get("guestsParsed") or ep.get("guests") or [],
         "lien": f"https://unebonnere.co/un-bon-moment/episode/{ep['guid']}/",
         "couverture": ci.couverture(ep),
+        # Le nombre annoncé sur la couverture et dans les légendes : celui des mentions,
+        # que la réunion de deux œuvres sur une page ne change pas (S6-E10, 2026-11-20).
+        "nombreRecos": len(pages),
         "recos": pages,
     }
 
