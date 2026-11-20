@@ -202,7 +202,7 @@ def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> l
     if vignette:
         utilisees.append(adresse)
     faites.append(sortie / "01-couverture.html")
-    ecrire(faites[-1], cs.couverture(ep, total, vignette.resolve().as_uri() if vignette else None))
+    ecrire(faites[-1], cs.couverture(ep, _annonce(ep), vignette.resolve().as_uri() if vignette else None))
     for rang, r in enumerate(recos, 1):
         images = _images(r, dossier, rang, tel)
         mise = _mise(r, rang, [taille for _, _, taille in images], [url for url, _, _ in images])
@@ -215,22 +215,28 @@ def pages(ep: dict[str, Any], sortie: Path, tel: Telecharger | None = None) -> l
         faites.append(sortie / f"{rang + 1:02d}-reco.html")
         ecrire(faites[-1], cs.page_reco(r, rang, total, alts, mise))
     faites.append(sortie / f"{total + 2:02d}-fin.html")
-    ecrire(faites[-1], cs.fin(ep, total, ci.credits(utilisees)))
+    ecrire(faites[-1], cs.fin(ep, _annonce(ep), ci.credits(utilisees)))
     return faites
+
+
+def _annonce(ep: dict[str, Any]) -> int:
+    """Nombre de recos annoncé : celui des mentions, pas celui des pages, qui baisse quand deux
+    œuvres d'une même phrase partagent une page (S6-E10 annonçait 18 recos pour 24, 2026-11-20)."""
+    return ep.get("nombreRecos") or len(ep["recos"])
 
 
 def textes(ep: dict[str, Any]) -> dict[str, Any]:
     """Légendes Instagram et Threads, et un texte alternatif par image."""
-    recos, n = ep["recos"], len(ep["recos"])
+    recos, n, annonce = ep["recos"], len(ep["recos"]), _annonce(ep)
     groupes: dict[str, list[str]] = {}
     for r in recos:
         groupes.setdefault(EMOJIS.get(r["type"], "✨"), []).append(r["titre"])
     ordre = sorted(groupes, key=lambda e: -len(groupes[e]))  # a egalite, l'ordre d'apparition
     liste = "\n".join(f"{e} {', '.join(groupes[e])}" for e in ordre)
     numero = ep["numero"].replace(" ", "")
-    tete = f"Les {n} recos d’Un Bon Moment {numero}, avec {' et '.join(ep['invites'])} 🎙️\n\n{liste}\n\n"
+    tete = f"Les {annonce} recos d’Un Bon Moment {numero}, avec {' et '.join(ep['invites'])} 🎙️\n\n{liste}\n\n"
     pied = "Toutes les recos, au moment près et avec leurs liens"
-    alts = [(f"Couverture : les {n} recos de l’épisode {numero} d’Un Bon Moment, « {ep['titre']} », "
+    alts = [(f"Couverture : les {annonce} recos de l’épisode {numero} d’Un Bon Moment, « {ep['titre']} », "
              f"avec {' et '.join(ep['invites'])}.")]
     for i, r in enumerate(recos, 1):
         de = f" — {r['createur']}" if r["createur"] else ""
