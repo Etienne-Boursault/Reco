@@ -14,27 +14,27 @@
   "watchProviders": [
     {
       "ethics": "avoid",
-      "label": "Canal VOD",
+      "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Magnolia"
     },
     {
       "ethics": "neutral",
-      "label": "Sooner",
+      "name": "Sooner",
       "url": "https://www.sooner.fr/catalogue?term%5B%5D=Magnolia"
     },
     {
       "ethics": "avoid",
-      "label": "Amazon Video",
+      "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Magnolia"
     },
     {
       "ethics": "indie",
-      "label": "ARTE VOD",
+      "name": "ARTE VOD",
       "url": "https://www.arte.tv/fr/search/?q=Magnolia"
     },
     {
       "ethics": "neutral",
-      "label": "YouTube",
+      "name": "YouTube",
       "url": "https://www.youtube.com/results?search_query=Magnolia"
     }
   ],

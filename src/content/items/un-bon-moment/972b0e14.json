@@ -14,42 +14,42 @@
   "watchProviders": [
     {
       "ethics": "neutral",
-      "label": "Apple TV Store",
+      "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Les%20Visiteurs"
     },
     {
       "ethics": "neutral",
-      "label": "Rakuten TV",
+      "name": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Les%20Visiteurs"
     },
     {
       "ethics": "avoid",
-      "label": "Canal VOD",
+      "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Visiteurs"
     },
     {
       "ethics": "neutral",
-      "label": "Sooner",
+      "name": "Sooner",
       "url": "https://www.sooner.fr/catalogue?term%5B%5D=Les%20Visiteurs"
     },
     {
       "ethics": "avoid",
-      "label": "Amazon Video",
+      "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Visiteurs"
     },
     {
       "ethics": "neutral",
-      "label": "Pathé Home",
+      "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Les%20Visiteurs"
     },
     {
       "ethics": "indie",
-      "label": "LaCinetek",
+      "name": "LaCinetek",
       "url": "https://www.lacinetek.com/fr/?text=Les%20Visiteurs"
     },
     {
       "ethics": "indie",
-      "label": "ARTE VOD",
+      "name": "ARTE VOD",
       "url": "https://www.arte.tv/fr/search/?q=Les%20Visiteurs"
     }
   ],
