@@ -189,7 +189,7 @@ def _remove_audio(source_id: str, guid: str) -> None:
 
 
 def _signaler_trous(episode: dict[str, Any], bilan: Any, notify: Notify) -> None:
-    """Dit à l'éditeur où la machine a renoncé à retrouver un passage.
+    """Dit à l'éditeur où la machine a renoncé ou réécouté une boucle.
 
     Le comblement rattrape la plupart des trous, mais pas tous, et un trou non
     rattrapé est invisible : le transcript enchaîne deux phrases sans marquer
@@ -200,14 +200,33 @@ def _signaler_trous(episode: dict[str, Any], bilan: Any, notify: Notify) -> None
     Silencieux quand tout est comblé : un message qui arrive à chaque épisode
     sans rien à dire finit par ne plus être lu.
     """
-    if not getattr(bilan, "non_combles", None):
-        return
-    fenetres = ", ".join(f"{format_timestamp(debut)} (+{silence:.0f} s)"
-                         for debut, silence in bilan.non_combles)
-    notify(f"🕳️ {_title(episode)} : {len(bilan.non_combles)} passage(s) muet(s) que la "
-           f"réécoute n'a pas su retrouver — {fenetres}. "
-           f"La plupart sont de vrais silences ; à vérifier si l'un d'eux tombe dans "
-           f"les recommandations.")
+    if getattr(bilan, "non_combles", None):
+        fenetres = ", ".join(f"{format_timestamp(debut)} (+{silence:.0f} s)"
+                             for debut, silence in bilan.non_combles)
+        notify(f"🕳️ {_title(episode)} : {len(bilan.non_combles)} passage(s) où la "
+               f"réécoute entend plus que la transcription, sans réussir à le recaler — "
+               f"{fenetres}. Du texte y manque peut-être : à écouter si l'un d'eux "
+               f"tombe pendant les recommandations.")
+    reparees = getattr(bilan, "boucles_reparees", ())
+    non_reparees = getattr(bilan, "boucles_non_reparees", ())
+    if reparees or non_reparees:
+        def details(boucles: Any) -> str:
+            return ", ".join(f"{format_timestamp(debut)} ({nombre} lignes)"
+                             for debut, nombre in boucles)
+        morceaux = []
+        if reparees:
+            morceaux.append(f"réécoutée(s) : {details(reparees)}")
+        if non_reparees:
+            morceaux.append(f"à vérifier : {details(non_reparees)}")
+        notify(f"🔁 {_title(episode)} : boucle(s) de transcription "
+               + " ; ".join(morceaux) + ". Vérifier ces passages à la relecture.")
+    repetitions = getattr(bilan, "repetitions_suspectes", ())
+    if repetitions:
+        details = ", ".join(f"{format_timestamp(debut)}–{format_timestamp(fin)} "
+                            f"({nombre} fois : « {phrase} »)"
+                            for debut, fin, nombre, phrase in repetitions)
+        notify(f"🔁 {_title(episode)} : répétition(s) de phrase suspecte(s) — "
+               f"{details}. Réécouter ces passages avant validation.")
 
 
 def transcrire(source_id: str, notify: Notify, state: dict[str, Any],

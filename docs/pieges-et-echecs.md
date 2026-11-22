@@ -396,8 +396,8 @@ la main.
 
 ### Une boucle de Whisper efface une recommandation, et aucun contrôle ne la voit
 
-**À corriger plus tard** (constaté le 2026-10-30 sur S6-E07, rien n'est encore
-modifié dans l'outillage).
+Constaté le 2026-10-30 sur S6-E07 ; garde posée le 2026-11-01 (voir « Ce que
+fait la garde », plus bas).
 
 Entre 01:29:52 et 01:30:40, la transcription longue a écrit « Frère. » 37
 fois, une ligne par seconde. Le vrai passage tenait en 30 secondes : la
@@ -435,6 +435,100 @@ Pistes, dans l'ordre :
    complet, car il peut dégrader la ponctuation (cf. l'amorce `hotwords`).
 3. Dire dans le message Matrix quelles boucles ont été vues et réécoutées, et
    écarter les génériques connus (« Sous-titrage … »).
+
+#### Inventaire du dépôt (2026-11-01)
+
+Les 113 transcriptions de `tools/output/transcripts/` (copie locale : S6-E04 à
+S6-E07 n'y sont pas), relues sans rien modifier :
+
+| Raté | Mesure | Garde |
+|---|---|---|
+| Boucles d'au moins 8 lignes identiques | 65 dans 38 épisodes, **46 min** d'audio en tout ; la plus longue : 477 lignes, 10 min 45 s (2026-01-19, Tom Baldetti et Yassir), puis 361 lignes, 8 min 51 s (Clément Cotentin) | zones réécoutées dès 15 lignes, signalées dès 8 |
+| Suites de 5 à 7 lignes | 59, presque toutes parlées (« Bonne année ! », « ça va ? ») | aucune, sauf morceau d'une boucle |
+| Boucle en morceaux | S6-E07 : 7 « Frère. », 12 lignes de parole, 30 « Frère. » | suites de 4 lignes et plus, à moins de 20 s, réunies |
+| Phrase de 4 mots revenue 8 fois en 25 s | 32 dans 28 épisodes, hors boucles | signalée |
+| Générique inventé | « Sous-titrage Société Radio-Canada » ×8, « Sous-titrage ST' 501 » ×9, « Sous-titres par Jérémy Diaz » ×2 | retiré ; le trou laissé est réécouté |
+| Fenêtre de 30 s sautée | 37 sauts d'exactement 30 s dans 27 épisodes | comblement des trous (déjà en place) |
+| Ponctuation qui s'éteint | `large-v3` : le dernier quart tombe sous la moitié du premier dans 24 épisodes sur 98 ; `large-v3-turbo` avec amorce : 2 sur 15 | amorce `hotwords` (déjà en place) |
+| Noms d'invités | 84 noms de famille sur 198 jamais écrits tels quels, mais on appelle souvent l'invité par son prénom : la mesure ne prouve rien | seconde passe sur les citations (déjà en place) |
+
+Les boucles des anciens épisodes ne sont **pas** corrigées : leur reprise
+attend la demande de l'éditeur.
+
+#### Ce que fait la garde
+
+- `combler_trous.zones_de_boucle` réunit les morceaux d'une même boucle.
+  `reparer_boucles` remplace une zone d'au moins 15 lignes par sa réécoute,
+  sans `condition_on_previous_text`. Il le fait seulement si la réécoute
+  retrouve les deux bords, ne boucle pas elle-même, et reprend la parole prise
+  entre les morceaux. Sinon la zone reste telle quelle et part sur Matrix.
+- Les génériques inventés sont retirés avant le repérage des trous.
+- Une fenêtre non comblée n'est signalée que si sa réécoute entend au moins
+  10 mots de plus que la transcription. Les trois faux « passages muets » du
+  2026-10-30 avaient de -61 à +1 mot de plus.
+
+Essai réel sur venus (2026-11-01) : la garde a été rejouée sur la transcription
+de production de S6-E07, avec le vrai modèle pour les réécoutes. Elle a
+remplacé les 37 « Frère. » par le passage, Fiona G. et « elle est sur Inter »
+compris. En dehors de ce passage, une seule ligne change : un trou comblé à
+00:56:16.
+
+#### Les longues boucles des anciens épisodes : le bord manquait, pas la réécoute
+
+Lot du 2026-11-02 sur les 38 anciens épisodes, boucles réécoutées dès 8 lignes :
+sur 60 zones, 17 réparées, 43 refusées. Les 9 plus longues refusées ont été
+réécoutées à part et leur réécoute gardée. Toutes étaient propres ; 8 sur 9
+avaient été refusées faute de bord :
+
+- deux boucles collées (Clément Cotentin, 2022-10-10 : 26 « Cléopâtrement
+  Aurélien. », une ligne, puis 361 « Cléopâtre Aurélien. ») : chacune servait
+  de bord à l'autre ;
+- des lignes voisines mal entendues elles aussi, surtout dans les jeux de
+  chaînes de noms (« Moni Cardi Bicente Lizarazou… ») ;
+- une phrase réécoutée qui commence 3 s avant la fin de la boucle (« Bloqués »,
+  01:21:38 pour une fin à 01:21:41), hors de la tolérance de 2 s.
+
+La 9ᵉ tombait sur la musique d'un blind test : la réécoute rend trop peu de
+mots, refus voulu. La boucle de Cotentin effaçait une vraie reco, « La Morale »
+d'Orelsan (01:01:46).
+
+Depuis : les boucles séparées de moins de 6 lignes sont réunies ; si les deux
+lignes voisines ne se retrouvent pas dans la réécoute, le bord est cherché une
+ligne à la fois, jusqu'à 6 lignes plus loin, et ces lignes fausses partent avec
+la boucle ; le bord d'après peut commencer jusqu'à 5 s avant la fin. Seule une
+phrase dite une fois dans la zone compte comme parole à reprendre, et moins de
+5 mots ne retiennent rien. Rejouée hors ligne sur les 9 réécoutes gardées, la
+garde répare 6 zones (dont les deux de Cotentin, réunies) ; 3 restent refusées :
+le blind test et deux jeux de chaînes de noms dont aucun bord ne s'entend.
+
+#### Un vocabulaire de l'émission dans l'amorce : rien de gagné
+
+Mesuré le 2026-11-01 sur S6-E07. Pour chacune des 22 recos validées, on a réécouté
+l'extrait [t - 15 s, t + 25 s] deux fois : avec l'amorce de la chaîne, puis avec
+l'amorce suivie de « On y parle de YouTube, Netflix, TikTok, Instagram, Canal+,
+MyCanal, Prime Video, Disney+, Bref, Pulsions, Orelsan ». Ces termes, fixés
+avant le banc, sont ceux qui reviennent dans les recos des autres épisodes.
+
+Sur les 49 mots du titre et du créateur, l'amorce de la chaîne en retrouve 27,
+et l'amorce avec le vocabulaire 26 : « Bersinger » est perdu une fois, aucun
+nom n'est gagné. Les 22 textes varient un peu, sans mot du vocabulaire ajouté à
+tort ni boucle. Le réglage n'est pas gardé.
+
+Cela confirme la mesure du 2026-09-17 : une liste générique n'aide pas, seuls
+les noms justes aident. Or on ne les connaît qu'après l'extraction : c'est le
+rôle de la seconde passe sur les citations (`preciser_citations.py`).
+
+#### Deux pièges vus pendant l'essai
+
+- **Whisper ne redonne pas le même texte d'une machine à l'autre.** Le même
+  audio, transcrit sur 8 cœurs au lieu de tous, n'a pas refait la boucle. Il a
+  perdu le passage autrement (le comblement l'a rattrapé), et il a mis chaque
+  ligne entre « ». Une garde se vérifie donc en la rejouant sur la
+  transcription fautive (`combler()` avec de vraies réécoutes), pas en
+  retranscrivant.
+- **La transcription d'un épisode de 93 min monte à 5 à 6 Go de mémoire.** Un
+  conteneur plafonné à 6 Go a été tué au bout de 24 minutes ; à 10 Go, le pic
+  relevé était de 5,0 Go.
 
 ---
 

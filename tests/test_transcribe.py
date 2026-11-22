@@ -376,6 +376,48 @@ def test_a_passage_lost_by_the_long_transcription_is_heard_again(tmp_path, monke
     ]
 
 
+def test_a_loop_is_reheard_without_previous_text_context(tmp_path, monkeypatch):
+    seg = types.SimpleNamespace
+    appels = []
+    original = [seg(start=5409.0, text="Il est éminemment drôle ce monsieur."),
+                seg(start=5411.0, text="Un grand plaisir."),
+                *(seg(start=5412.0 + n, text="Frère.") for n in range(30)),
+                seg(start=5442.0, text="Il aurait pu se sortir les pouces et briller au firmament."),
+                seg(start=5445.0, text="Il n'a pas choisi de sortir de Suisse.")]
+    reprise = [seg(start=d, text=t) for d, t in [
+        (5409.0, "Il est éminemment drôle ce monsieur."),
+        (5411.0, "Un grand plaisir."),
+        (5412.0, "Et j'avais vu en première partie une Suissesse, Fiona G."),
+        (5420.0, "Elle est sur Inter maintenant et c'est très drôle."),
+        (5430.0, "Blaise Bersinger est un humoriste suisse très talentueux."),
+        (5439.0, "Ne l'enfonce pas non plus."),
+        (5441.6, "Il aurait pu se sortir les pouces et briller au firmament."),
+        (5445.0, "Il n'a pas choisi de sortir de Suisse."),
+    ]]
+
+    class FakeModel:
+        def __init__(self, *_a, **_k):
+            pass
+
+        def transcribe(self, _path, **options):
+            appels.append(options)
+            info = seg(language="fr", language_probability=0.99, duration=5579.0)
+            return iter(reprise if "clip_timestamps" in options else original), info
+
+    monkeypatch.setitem(sys.modules, "faster_whisper",
+                        types.SimpleNamespace(WhisperModel=FakeModel))
+    audio = tmp_path / "a.mp3"
+    audio.write_bytes(b"")
+
+    text, bilan = tr._transcribe_audio(audio, "large-v3-turbo", "fr", "Un Bon Moment.")
+
+    assert appels[1]["condition_on_previous_text"] is False
+    assert appels[1]["vad_filter"] is False
+    assert appels[1]["hotwords"] == "Un Bon Moment."
+    assert bilan.boucles_reparees == [(5412.0, 30)]
+    assert "Fiona G." in text and "Frère." not in text
+
+
 # ===== transcribe_episode ===================================================
 @pytest.fixture
 def ep_setup(tmp_path, monkeypatch):
