@@ -67,6 +67,40 @@ def test_aucune_plateforme_nest_creditee_comme_createur():
     )
 
 
+def _fiches_citees() -> dict[str, str]:
+    """Les fiches qu'au moins une mention validée désigne, par chemin relatif
+    (`<source>/<itemId>`) : celles que le site publie."""
+    citees: dict[str, str] = {}
+    for chemin in sorted((CONTENT_DIR / "mentions").rglob("*.json")):
+        doc = json.loads(chemin.read_text(encoding="utf-8"))
+        if doc.get("status") == "validated" and doc.get("itemId"):
+            citees.setdefault(f"{chemin.parent.name}/{doc['itemId']}", doc.get("id", ""))
+    return citees
+
+
+def test_aucune_fiche_publiee_ne_credite_une_plateforme():
+    """La même faute, côté fiche (relevé du 2026-11-26, PR03-Q1 A) : les recos
+    avaient été corrigées en août, mais trois fiches publiées gardaient TF1,
+    Netflix et Deezer. La fiche donne le créateur à la page de l'œuvre, à
+    son titre, à la recherche, à l'image de partage et aux œuvres similaires.
+    Une fiche qu'aucune mention validée ne désigne n'est pas publiée."""
+    citees = _fiches_citees()
+    assert len(citees) > 500
+    fautifs = []
+    for cle, mention in citees.items():
+        chemin = CONTENT_DIR / "items" / f"{cle}.json"
+        if not chemin.exists():
+            continue
+        doc = json.loads(chemin.read_text(encoding="utf-8"))
+        createur = (doc.get("creator") or "").strip()
+        if createur.lower() in PLATEFORMES:
+            fautifs.append(f"{cle} « {doc.get('title')} » ({mention}) → {createur}")
+    assert not fautifs, (
+        f"{len(fautifs)} fiche(s) publiée(s) créditent un diffuseur comme "
+        f"créateur : {fautifs[:5]}"
+    )
+
+
 @pytest.mark.parametrize("nom", sorted(PLATEFORMES))
 def test_la_liste_des_plateformes_est_en_minuscules(nom):
     """La comparaison se fait en minuscules : une entrée capitalisée ici ne
