@@ -78,6 +78,16 @@ export function pageMesurable(
 }
 
 /**
+ * Le navigateur refuse-t-il le suivi (Global Privacy Control, Do Not Track à
+ * « 1 ») ? Partagée avec `mesureNavigateur.ts` (AU-2 B, 2026-11-27).
+ */
+export function suiviRefuse(
+  navigator: Pick<Navigateur, 'globalPrivacyControl' | 'doNotTrack'>,
+): boolean {
+  return navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
+}
+
+/**
  * Câble l'envoi. Rend `false` si le signal est écarté d'emblée (page non
  * mesurable, robot déclaré, refus de suivi), `true` s'il est armé.
  */
@@ -85,8 +95,7 @@ export function cablerSignalVue(deps: Dependances): boolean {
   const { navigator, document, location, fetch } = deps;
   if (
     navigator.webdriver === true ||
-    navigator.globalPrivacyControl === true ||
-    navigator.doNotTrack === '1' ||
+    suiviRefuse(navigator) ||
     !pageMesurable(location, document)
   ) {
     return false;
