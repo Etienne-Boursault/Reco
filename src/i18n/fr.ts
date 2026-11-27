@@ -225,6 +225,8 @@ export const fr = {
   'reco.guestWork.badge': 'Leur œuvre',
   'reco.guestWork.badgeA11y':
     'Œuvre présentée par un·e invité·e ou un host de l’épisode (auto-promotion)',
+  // R4 B (27/11/2026) : date posée à la main, cf. `utils/sortieAnnoncee.ts`.
+  'reco.sortieAnnoncee': 'Sortie annoncée le {date}',
   'reco.citation.badge': 'Mentionné',
   'reco.citation.badgeA11y':
     'Œuvre mentionnée dans l’épisode mais pas explicitement recommandée',

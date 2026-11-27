@@ -20,6 +20,7 @@ import {
 import { TYPE_LABELS, episodeLabel } from '../utils/recoTypes';
 import { iconeDuType } from '../utils/iconesTypes';
 import { verbeMention } from '../utils/verbeMention';
+import { sortieAnnoncee } from '../utils/sortieAnnoncee';
 import { t } from '../i18n';
 import AudioExcerpt from './AudioExcerpt.astro';
 import OutboundLink from './OutboundLink.astro';
@@ -50,6 +51,7 @@ interface Props {
     // reco mais affichée avec un badge distinct pour ne pas la confondre
     // avec une vraie recommandation de l'équipe.
     guestWork?: boolean;
+    releaseDate?: string; // R4 B, 27/11/2026 : AAAA-MM-JJ, sortie annoncée d'un album pas encore publié
   };
   episodeTitle?: string;
   episodeNumber?: number;
@@ -280,6 +282,7 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
 // `guestWork` —, « Évoquée par » pour une citation. Règle et cas réels
 // (Pulsions recommandé par Kheiron) : `utils/verbeMention.ts`.
 const verbeMeta = verbeMention(reco);
+const sortie = sortieAnnoncee(reco.releaseDate, new Date()); // R4 B, 27/11/2026 : date absolue, rien une fois passée
 ---
 
 <li
@@ -360,6 +363,7 @@ const verbeMeta = verbeMention(reco);
     </div>
   )}
 
+  {sortie && <p class="sortie">{t('reco.sortieAnnoncee', { date: sortie })}</p>}
   {/* Une SEULE ligne de texte, plus deux éléments côte à côte : en flex, le
      numéro d'épisode se retrouvait seul sur sa ligne dès que le nom du
      recommandeur était long (« Reco de Fabrice Éboué & Alexandra Roth » puis
