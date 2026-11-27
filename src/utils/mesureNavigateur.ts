@@ -41,11 +41,13 @@
  * Aucune exception ne sort, et rien n'est journalisé : la mesure ne doit
  * jamais gêner la page (même choix que `signalVue.ts`). Le module se comporte
  * comme sans stockage : état `'indisponible'`, ligne jamais affichée, et
- * `noterPage` rend quand même les oui/non (`revenant` faux, étape de la page
- * courante seule). Choix : on envoie le signal quand même, car il est alors
- * aussi pauvre que celui d'AU-1 A (le chemin), sans rien de retenu sur la
- * personne ; l'état `'indisponible'` laisse le pied de page masquer
- * l'interrupteur, qu'il ne saurait pas tenir.
+ * `noterPage` rend `{}` (aucun oui/non : inconnu = absent, pas un « non »
+ * inventé). Il en va de même quand `getItem` marche mais que `setItem` échoue
+ * (quota plein) : rien n'est retenu, donc rien n'est affirmé (tour 2 de revue,
+ * PR #224). Choix : on envoie le signal quand même, car il est alors aussi
+ * pauvre que celui d'AU-1 A (le chemin), sans rien de retenu sur la personne ;
+ * l'état `'indisponible'` laisse le pied de page masquer l'interrupteur, qu'il
+ * ne saurait pas tenir.
  *
  * LA LIGNE ET LE PIED D'ACCORD (R-13)
  * -----------------------------------
@@ -150,11 +152,13 @@ export function creerMesure(deps: Dependances) {
     }
   }
 
-  function ecrire(contenu: Contenu): void {
+  /** Vrai si l'état est gardé ; faux si le stockage refuse (quota plein, stockage coupé). */
+  function ecrire(contenu: Contenu): boolean {
     try {
       deps.stockage().setItem(CLE, JSON.stringify(contenu));
+      return true;
     } catch {
-      /* quota ou stockage coupé : on fait comme sans stockage */
+      return false; // on fait comme sans stockage
     }
   }
 
@@ -196,8 +200,9 @@ export function creerMesure(deps: Dependances) {
     if (contenu === undefined) return {};
     const garde = contenu ?? neuf(0);
     const { etapes, signal } = avecPage(garde, chemin);
-    ecrire({ ...garde, etapes });
-    return signal;
+    // Écriture refusée (quota plein) : rien n'est retenu, chaque page enverrait `revenant: false`,
+    // un « non » inventé (tour 2 de revue, PR #224). Comme sans stockage : aucun oui/non.
+    return ecrire({ ...garde, etapes }) ? signal : {};
   }
 
   /**

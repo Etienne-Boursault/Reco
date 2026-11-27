@@ -312,7 +312,7 @@ describe('stockage qui lève : la page ne casse jamais', () => {
     expect(m.noterPage(EPISODE)).toBeNull();
   });
 
-  it('écriture refusée (quota) : on répond quand même, sans exception', () => {
+  it('écriture refusée (quota) : rien n’est retenu, donc aucun oui/non inventé, et sans exception', () => {
     const plein = {
       getItem: () => null,
       setItem: leve,
@@ -322,7 +322,10 @@ describe('stockage qui lève : la page ne casse jamais', () => {
       length: 0,
     } as Storage;
     const m = sansStockage(() => plein);
-    expect(m.noterPage(FICHE)).toEqual({ revenant: false, aVuEpisode: false, aVuFiche: true });
+    // L'état n'est jamais gardé : chaque page enverrait `revenant: false`, un « non » inventé
+    // (tour 2 de revue, PR #224). Inconnu = absent.
+    expect(m.noterPage(FICHE)).toEqual({});
+    expect(m.ouiNon(FICHE)).toBeNull();
     expect(m.ligneAAfficher()).toBe(false);
     expect(() => {
       m.refuser();
