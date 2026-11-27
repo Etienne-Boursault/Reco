@@ -26,7 +26,9 @@
  * Accessibilité : le pied est posé dans le HTML sans zone d'annonce ; seul un
  * clic annonce son résultat (`role="status"`). Le focus n'est jamais volé à
  * l'affichage de la ligne ; après un clic dans le pied ou dans la ligne, il
- * passe au bouton du pied qui remplace celui qui vient de disparaître.
+ * passe au bouton du pied qui remplace celui qui vient de disparaître, mais
+ * seulement pour une activation au clavier (`detail` à 0) : à la souris ou au
+ * toucher, le focus ne bouge pas, pour que la page ne défile pas jusqu'au pied.
  */
 import type { EtatMesure } from './mesureNavigateur';
 
@@ -72,20 +74,29 @@ export function cablerInterfaceMesure(
     cible.focus();
   };
 
-  const agir = (bouton: HTMLElement) => {
+  /**
+   * `auClavier` : le focus ne se déplace que pour une activation au clavier.
+   * La ligne est fixe en bas de la fenêtre et le pied en bas du document :
+   * `focus()` ferait défiler la page, et un lecteur qui clique « OK » à
+   * mi-page sauterait au pied (tour 2 de revue, PR #224).
+   */
+  const agir = (bouton: HTMLElement, auClavier: boolean) => {
+    const placerLeFocus = (etat: EtatMesure) => auClavier && focusDansLePied(etat);
     ligne.hidden = true;
     if (bouton.dataset.mesureAct === 'ok') {
       mesure.fermerLigne();
-      return focusDansLePied(mesure.etat());
+      return placerLeFocus(mesure.etat());
     }
     const etat = bouton.dataset.mesureAct === 'refuser' ? mesure.refuser() : mesure.accepter();
     rafraichirPied();
     // `data-refusee` / `data-active` : rien n'est annoncé si le choix n'a pas pris.
     retour.textContent = retour.dataset[etat] ?? '';
-    focusDansLePied(etat);
+    placerLeFocus(etat);
   };
 
-  doc.querySelectorAll<HTMLElement>('[data-mesure-act]').forEach((b) => b.addEventListener('click', () => agir(b)));
+  doc.querySelectorAll<HTMLElement>('[data-mesure-act]').forEach((b) =>
+    b.addEventListener('click', (e) => agir(b, (e as MouseEvent).detail === 0)),
+  );
 
   win.addEventListener('storage', () => {
     rafraichirPied();

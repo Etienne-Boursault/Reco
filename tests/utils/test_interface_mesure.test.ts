@@ -210,6 +210,16 @@ describe('la ligne de première visite', () => {
     expect(document.activeElement).toBe(bouton('refuser', q('[data-mesure-pied]')!));
   });
 
+  it.each(['ok', 'refuser'])('un clic à la souris ou au toucher sur « %s » ne déplace pas le focus (la page ne défile pas)', (act) => {
+    pageVue(monter());
+    const b = bouton(act, ligne());
+    b.focus();
+    // `detail` > 0 : un clic de souris ou de toucher ; au clavier, il vaut 0 (tour 2 de revue, PR #224).
+    b.dispatchEvent(new window.MouseEvent('click', { bubbles: true, detail: 1 }) as never);
+    expect(ligne().hidden).toBe(true);
+    expect(q('[data-mesure-pied]')!.contains(document.activeElement)).toBe(false);
+  });
+
   it('« Refuser » dans la ligne quand le pied n’a aucun bouton : le texte d’état prend le focus', () => {
     const m = monter();
     pageVue(m);
