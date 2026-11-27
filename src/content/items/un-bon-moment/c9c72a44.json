@@ -1,0 +1,36 @@
+{
+  "creator": "Brad Ingelsby",
+  "externalIds": {
+    "tmdb": 228305,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/228305-task/watch?locale=FR"
+  },
+  "id": "c9c72a44",
+  "schemaVersion": 1,
+  "title": "Task",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Task"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Task"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Task"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Task"
+    }
+  ]
+}

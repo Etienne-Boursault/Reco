@@ -1,0 +1,67 @@
+{
+  "creator": "Quentin Tarantino",
+  "externalIds": {
+    "tmdb": 16869,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/16869-inglourious-basterds/watch?locale=FR"
+  },
+  "id": "7e5c8d23",
+  "schemaVersion": 1,
+  "title": "Inglourious Basterds",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Inglourious%20Basterds"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Inglourious%20Basterds"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Inglourious%20Basterds"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Inglourious%20Basterds"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Inglourious%20Basterds"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Inglourious%20Basterds"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Inglourious%20Basterds"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Inglourious%20Basterds"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Inglourious%20Basterds"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Inglourious%20Basterds"
+    }
+  ],
+  "year": 2009
+}

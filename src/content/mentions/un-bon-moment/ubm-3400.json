@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:37"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3400",
+  "itemId": "572b937b",
+  "kind": "reco",
+  "quote": "Et allez voir le film aussi, parce qu'il y a un film qui s'appelle… Karma, le film de Guillaume Canet.",
+  "recommendedBy": "Denis Menochet",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-DNoUz4FJ_Z8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:37",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

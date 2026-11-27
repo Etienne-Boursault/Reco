@@ -1,0 +1,34 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-DNoUz4FJ_Z8",
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:10",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3389",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est magnifique que tu sois là, c'est gentil, merci Pierre, on se revoit la semaine prochaine, Pierre Hilleret au Théâtre du Marais, tous les mercredis à 21h, Pierre Hilleret.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:13:10",
+  "title": "Pierre Hilleret",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

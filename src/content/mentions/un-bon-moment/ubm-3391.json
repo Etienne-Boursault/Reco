@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:16"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3391",
+  "itemId": "348facf5",
+  "kind": "reco",
+  "quote": "En France, il y a Les Pieds sur Terre, sur France Culture, qui est aussi sur ce principe.",
+  "recommendedBy": "Reda Kateb",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-DNoUz4FJ_Z8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:16",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

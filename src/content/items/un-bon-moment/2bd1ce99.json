@@ -1,0 +1,21 @@
+{
+  "creator": "Clément Michel",
+  "externalIds": {
+    "tmdb": 660006,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/660006-madame-claude/watch?locale=FR"
+  },
+  "id": "2bd1ce99",
+  "schemaVersion": 1,
+  "title": "Claude",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Claude"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:58"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3387",
+  "itemId": "43caf779",
+  "kind": "reco",
+  "quote": "18 novembre, Jupiter, en salle.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-DNoUz4FJ_Z8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

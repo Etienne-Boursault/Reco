@@ -1,0 +1,108 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-11-27T11:31:39Z"
+  },
+  "episodeGuid": "yt-DNoUz4FJ_Z8",
+  "externalIds": {
+    "tmdb": "76757",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/76757-jupiter-ascending/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:46+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3387",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70301367"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/jupiter--le-destin-de-lunivers/umc.cmc.58lzaxvd14rk2dmblt68t0pe6"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=198721.html"
+    }
+  ],
+  "quote": "18 novembre, Jupiter, en salle.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:58",
+  "title": "Jupiter",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Jupiter"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Jupiter"
+    },
+    {
+      "ethics": "neutral",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Jupiter"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Jupiter"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Jupiter"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/catalogue?term%5B%5D=Jupiter"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jupiter"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Jupiter"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Jupiter"
+    }
+  ]
+}

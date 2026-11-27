@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Patrick Baud",
+  "episodeGuid": "yt-DNoUz4FJ_Z8",
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:08",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3401",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "SoundCloud",
+      "url": "https://soundcloud.com/patrick-baud/la-bibliotheque-de-babel-jorge-luis-borges"
+    }
+  ],
+  "quote": "Alors que là, avec la belle voix de Patrick Baud qui te lit La Bibliothèque de Babel, c'est assez exceptionnel.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:08",
+  "title": "Histoires de Nuit #1 - La Bibliothèque de Babel",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ],
+  "year": 1941
+}

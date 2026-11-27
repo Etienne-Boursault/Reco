@@ -1,0 +1,60 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Guillaume Canet",
+  "enrichedAt": {
+    "links": "2026-11-27T11:31:37Z"
+  },
+  "episodeGuid": "yt-DNoUz4FJ_Z8",
+  "externalIds": {
+    "tmdb": "1418998",
+    "tmdbType": "movie"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:46+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:37",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3400",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt35450621/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1418998"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000018384.html"
+    }
+  ],
+  "quote": "Et allez voir le film aussi, parce qu'il y a un film qui s'appelle… Karma, le film de Guillaume Canet.",
+  "recommendedBy": "Denis Menochet",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:37",
+  "title": "Karma",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}
