@@ -282,7 +282,7 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
 // `guestWork` —, « Évoquée par » pour une citation. Règle et cas réels
 // (Pulsions recommandé par Kheiron) : `utils/verbeMention.ts`.
 const verbeMeta = verbeMention(reco);
-const sortie = sortieAnnoncee(reco.releaseDate, new Date()); // R4 B, 27/11/2026 : date absolue, rien une fois passée
+const sortie = sortieAnnoncee(reco.releaseDate, new Date(), reco.types); // R4 B, 27/11/2026 : date absolue, rien une fois passée
 ---
 
 <li

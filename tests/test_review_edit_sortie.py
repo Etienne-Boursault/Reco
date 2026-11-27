@@ -290,3 +290,59 @@ def test_la_route_dit_la_date_ignoree(reco_libre, monkeypatch):
     assert "Modifications enregistrées" in flash
     assert "date ignorée : format attendu : AAAA-MM-JJ" in flash
     assert kind == "warning"
+
+
+# ---- tour 1 de revue, PR #227 : l'année déduite de la date, et le type qui n'est plus servi ----
+def test_l_annee_deduite_suit_la_date_quand_elle_change(reco_libre):
+    reco = _lire(reco_libre)
+    appliquer_sortie(reco, {"releaseDate": ["2026-12-04"]}, reco_libre, MAINTENANT)
+    assert reco["year"] == 2026
+    appliquer_sortie(reco, {"releaseDate": ["2027-01-15"]}, reco_libre, MAINTENANT)
+    assert reco["releaseDate"] == "2027-01-15" and reco["year"] == 2027
+
+
+def test_une_annee_qui_ne_venait_pas_de_la_date_n_est_jamais_touchee(reco_libre):
+    reco = _lire(reco_libre)
+    reco.update(releaseDate="2026-12-04", year=1999)
+    appliquer_sortie(reco, {"releaseDate": ["2027-01-15"]}, reco_libre, MAINTENANT)
+    assert reco["year"] == 1999
+
+
+def test_l_annee_deduite_part_avec_la_date(reco_libre):
+    reco = _lire(reco_libre)
+    reco.update(releaseDate="2026-12-04", year=2026)
+    assert appliquer_sortie(reco, {"releaseDate": [""]}, reco_libre, MAINTENANT) is None
+    assert "releaseDate" not in reco and "year" not in reco
+
+
+def test_une_annee_etrangere_reste_quand_la_date_disparait(reco_libre):
+    reco = _lire(reco_libre)
+    reco.update(releaseDate="2026-12-04", year=1999)
+    appliquer_sortie(reco, {"releaseDate": [""]}, reco_libre, MAINTENANT)
+    assert "releaseDate" not in reco and reco["year"] == 1999
+
+
+def test_un_type_qui_n_est_plus_servi_fait_retirer_la_date(reco_libre):
+    # Le champ n'est plus au formulaire pour un type hors V1 : la date posée avant resterait.
+    reco = _lire(reco_libre)
+    reco.update(types=["film"], releaseDate="2026-12-04", year=2026)
+    msg = appliquer_sortie(reco, {}, reco_libre, MAINTENANT)
+    assert msg == "date de sortie retirée : type non servi"
+    assert "releaseDate" not in reco and "year" not in reco
+
+
+def test_un_type_non_servi_sans_date_ne_dit_rien(reco_libre):
+    reco = _lire(reco_libre)
+    reco["types"] = ["film"]
+    assert appliquer_sortie(reco, {}, reco_libre, MAINTENANT) is None
+
+
+def test_apply_edit_retire_la_date_quand_le_type_change_vers_un_type_non_servi(reco_libre):
+    reco = _lire(reco_libre)
+    reco["releaseDate"] = "2026-12-04"
+    reco_libre.write_text(json.dumps(reco), encoding="utf-8")
+    avis: list[str] = []
+    apply_edit(reco_libre, {"title": ["X"], "types": ["film"]},
+               maintenant=MAINTENANT, avertissements=avis)
+    assert avis == ["date de sortie retirée : type non servi"]
+    assert "releaseDate" not in _lire(reco_libre)

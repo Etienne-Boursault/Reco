@@ -28,4 +28,9 @@ describe('RecoCard — sortie annoncée', () => {
     expect(doc.querySelector('.sortie')).toBeNull();
     expect(doc.body.textContent).not.toContain('Sortie annoncée');
   });
+
+  it('n’affiche rien pour un type que la relance ne sert pas (ceinture, PR #227)', async () => {
+    const doc = parse(await render({ ...baseReco, types: ['film'], releaseDate: '2099-03-20' }));
+    expect(doc.querySelector('.sortie')).toBeNull();
+  });
 });

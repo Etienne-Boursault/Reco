@@ -82,3 +82,18 @@ describe('sortieAnnoncee — tant que la date n’est pas passée', () => {
     expect(sortieAnnoncee('2001-01-01', new Date())).toBeNull();
   });
 });
+
+describe('sortieAnnoncee — la ceinture des types non servis (tour 1 de revue, PR #227)', () => {
+  it('rend rien pour un type que la relance ne sert pas, même avec une date à venir', () => {
+    expect(sortieAnnoncee('2099-01-01', MIDI, ['film'])).toBeNull();
+    expect(sortieAnnoncee('2099-01-01', MIDI, [])).toBeNull();
+  });
+
+  it('rend la date dès qu’un des types est servi', () => {
+    expect(sortieAnnoncee('2099-01-01', MIDI, ['film', 'livre'])).toBe('1er janvier 2099');
+  });
+
+  it('ne juge pas les types quand l’appelant n’en donne pas', () => {
+    expect(sortieAnnoncee('2099-01-01', MIDI)).toBe('1er janvier 2099');
+  });
+});

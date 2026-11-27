@@ -48,30 +48,52 @@ def fichier_suivi_par_git(chemin: Path) -> bool:
     return fini.returncode == 0
 
 
+def _annee_de_la_date(reco: dict) -> int | None:
+    """Année de la `releaseDate` actuelle, ou None."""
+    date = reco.get("releaseDate")
+    return int(date[:4]) if isinstance(date, str) and date[:4].isdigit() else None
+
+
+def _retirer_la_date(reco: dict) -> None:
+    """Retire `releaseDate` et l'année qu'elle avait donnée ; une autre année n'est pas touchée."""
+    annee = _annee_de_la_date(reco)
+    reco.pop("releaseDate", None)
+    if annee is not None and reco.get("year") == annee:
+        del reco["year"]
+
+
 def appliquer_sortie(reco: dict, data: dict, chemin: Path,
                      maintenant: datetime | None = None) -> str | None:
     """Pose, retire ou refuse `releaseDate` sur `reco` ; rend le message de refus ou None.
 
     `maintenant` est l'horloge injectée (aware) ; sans elle, l'instant présent. Le jour
-    retenu est celui de Paris. `year` est posé à l'année de la date s'il manque.
+    retenu est celui de Paris. `year` suit la date quand il manque ou qu'il venait de
+    l'ancienne date (tour 1 de revue, PR #227) ; une autre année n'est jamais touchée.
+    Un type qui n'est plus servi fait retirer la date, même si le champ n'est plus au
+    formulaire.
     """
+    if reco.get("releaseDate") and not type_servi(reco.get("types") or []):
+        _retirer_la_date(reco)
+        return "date de sortie retirée : type non servi"
     if "releaseDate" not in data:
         return None
     if fichier_suivi_par_git(chemin):
         return "date ignorée : après publication, passer par une PR de contenu"
     valeur = (data["releaseDate"] or [""])[0].strip()
     if not valeur:
-        reco.pop("releaseDate", None)
+        _retirer_la_date(reco)
         return None
     if not type_servi(reco.get("types") or []):
         return f"date ignorée : seuls {_TYPES_SERVIS} sont servis"
     aujourdhui = jour_a_paris(maintenant or datetime.now(timezone.utc))
     try:
-        reco["releaseDate"] = valider_date_sortie(valeur, aujourdhui)
+        nouvelle = valider_date_sortie(valeur, aujourdhui)
     except DateSortieInvalide as exc:
         return f"date ignorée : {exc}"
-    if reco.get("year") is None:
-        reco["year"] = int(reco["releaseDate"][:4])
+    ancienne_annee = _annee_de_la_date(reco)
+    reco["releaseDate"] = nouvelle
+    if reco.get("year") in (None, ancienne_annee):
+        reco["year"] = int(nouvelle[:4])
     return None
 
 

@@ -6,7 +6,9 @@ le seul test qui touche au fuseau remplace `ZoneInfo`, car le poste Windows n'a 
 """
 from __future__ import annotations
 
+import re
 from datetime import date, datetime, timedelta, timezone, tzinfo
+from pathlib import Path
 
 import pytest
 
@@ -170,3 +172,11 @@ def test_sans_tzdata_le_jour_est_celui_d_utc(monkeypatch):
 def test_une_heure_sans_fuseau_est_refusee():
     with pytest.raises(ValueError, match="fuseau"):
         ds.jour_a_paris(datetime(2026, 11, 26, 23, 30))
+
+
+def test_la_liste_des_types_servis_du_site_suit_celle_de_python():
+    # Tour 1 de revue, PR #227 : `sortieAnnoncee.ts` garde sa propre copie de TYPES_V1.
+    source = (Path(__file__).resolve().parent.parent / "src/utils/sortieAnnoncee.ts").read_text(encoding="utf-8")
+    trouve = re.search(r"TYPES_SERVIS = \[([^\]]*)\]", source)
+    assert trouve, "TYPES_SERVIS introuvable dans sortieAnnoncee.ts"
+    assert tuple(re.findall(r"'([^']+)'", trouve.group(1))) == ds.TYPES_V1
