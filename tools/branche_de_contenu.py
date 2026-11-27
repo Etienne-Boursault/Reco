@@ -77,7 +77,9 @@ def publier_branche(racine: Path, base: str, ecrire: Callable[[Path], object], m
 
     Rend `None` s'il n'y a rien à commiter. Lève `ErreurGit` si une commande git échoue
     ou si la branche distante ne porte pas le commit ; l'exception de `ecrire` remonte
-    telle quelle. Dans tous les cas le dossier temporaire a disparu.
+    telle quelle. Une fois la poussée faite, une vérification impossible ou une PR qui
+    n'ouvre pas ne perdent pas la branche : le résultat porte un avertissement (PR #227,
+    tour 1). Dans tous les cas le dossier temporaire a disparu.
     """
     racine = Path(racine)
     parent = Path(tempfile.mkdtemp(prefix="reco-contenu-"))
@@ -92,10 +94,23 @@ def publier_branche(racine: Path, base: str, ecrire: Callable[[Path], object], m
         sha = dans_l_arbre.commiter(message)
         nom = _nom_libre(racine, base)
         dans_l_arbre.pousser(nom)
-        if Git(racine).sha_distant(nom) != sha:
-            raise ErreurGit(f"la branche distante {nom} ne porte pas le commit attendu")
+        # Tour 1 de revue (PR #227) : une fois la branche partie, aucune erreur ne doit en perdre
+        # le nom, sinon l'appelant ne note pas la proposition et repousse les mêmes adresses.
         resultat = BrancheDeContenu(nom, sha, lien=f"branche {nom}")
-        _ouvrir_la_pr(racine, resultat, titre, corps, jeton, poster)
+        try:
+            distant = Git(racine).sha_distant(nom)
+        except ErreurGit as exc:
+            log.warning("branche %s poussée, vérification impossible : %s", nom, exc)
+            resultat.avertissements.append(f"branche non vérifiée après la poussée ({exc})")
+        else:
+            if distant != sha:
+                raise ErreurGit(f"la branche distante {nom} ne porte pas le commit attendu")
+        try:
+            _ouvrir_la_pr(racine, resultat, titre, corps, jeton, poster)
+        except Exception as exc:  # noqa: BLE001 — la branche est partie : on garde son nom.
+            log.warning("PR non ouverte pour %s : %s", nom, exc)
+            resultat.avertissements.append(
+                f"PR non ouverte ({type(exc).__name__}) : le lien de comparaison reste valable")
         return resultat
     finally:
         Git(racine)._git("worktree", "remove", "--force", str(arbre), verifier=False)

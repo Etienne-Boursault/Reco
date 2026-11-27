@@ -215,3 +215,35 @@ def test_a_refused_pull_request_falls_back_on_the_comparison_link(depot, monkeyp
     assert not resultat.pr_ouverte
     assert resultat.lien == pub.lien_comparaison("o", "d", resultat.nom)
     assert "PR non ouverte (OSError)" in resultat.avertissements[0]
+
+
+def test_a_failed_verification_after_the_push_still_returns_the_branch(depot, monkeypatch):
+    # Tour 1 de revue, PR #227 : la branche est partie ; la perdre ferait repousser les mêmes adresses.
+    reel = pub.Git.sha_distant
+    appels = []
+
+    def capricieux(self, branche):
+        appels.append(branche)
+        if len(appels) > 1:  # le premier appel est la recherche d'un nom libre
+            raise pub.ErreurGit("ls-remote coupé")
+        return reel(self, branche)
+
+    monkeypatch.setattr(pub.Git, "sha_distant", capricieux)
+
+    resultat = _publier(depot)
+
+    assert resultat.nom == "contenu/sorties-2026-11-27" and len(resultat.sha) == 40
+    assert "non vérifiée" in resultat.avertissements[0] and "ls-remote coupé" in resultat.avertissements[0]
+    assert _git(depot, "ls-remote", "origin", f"refs/heads/{resultat.nom}").split()[0] == resultat.sha
+
+
+def test_a_failure_while_opening_the_pull_request_still_returns_the_branch(depot, monkeypatch):
+    def casse(*_a, **_k):
+        raise pub.ErreurGit("remote get-url coupé")
+
+    monkeypatch.setattr(bdc, "_ouvrir_la_pr", casse)
+
+    resultat = _publier(depot, jeton="jeton-essai")
+
+    assert resultat.nom == "contenu/sorties-2026-11-27"
+    assert "PR non ouverte (ErreurGit)" in resultat.avertissements[0]
