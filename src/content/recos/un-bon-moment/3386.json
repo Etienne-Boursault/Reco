@@ -1,0 +1,81 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Bigflo & Oli",
+  "enrichedAt": {
+    "links": "2026-11-27T11:31:37Z"
+  },
+  "episodeGuid": "yt-DNoUz4FJ_Z8",
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:46+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:26",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3386",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/1cOIpFhvmwtWvG2tuC47Ha"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/933704401"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Boutique officielle",
+      "url": "https://bigfloetoli.com/products/cd-karma"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/karma/1879794796"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/karma-bigflo-oli/befu9koif67au"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube Music",
+      "url": "https://music.youtube.com/playlist?list=OLAK5uy_kajX22DNl7Hb0HZdWX6MJuGxPcZn5AG10"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube Music",
+      "url": "https://music.youtube.com/playlist?list=OLAK5uy_m0s-liPp-P-grJznpib3EumfuIjtwxJOQ"
+    }
+  ],
+  "quote": "Allez streamer sa force sur toutes les playlists et tout.",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:26",
+  "title": "Karma",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 2023
+}

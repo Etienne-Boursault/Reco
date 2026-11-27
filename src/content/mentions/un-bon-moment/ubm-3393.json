@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:55"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3393",
+  "itemId": "afd74df9",
+  "kind": "reco",
+  "quote": "Mare of Easttown avec Kate Winslet. Je ne sais pas si vous avez vu ça, qui est phénoménal.",
+  "recommendedBy": "Denis Ménochet",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-DNoUz4FJ_Z8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

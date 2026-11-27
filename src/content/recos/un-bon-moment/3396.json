@@ -1,0 +1,59 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Thomas VDB",
+  "episodeGuid": "yt-DNoUz4FJ_Z8",
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:25",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3396",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/fiascorama_0-12649220_9782283041277.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Buchet-Chastel",
+      "url": "https://www.buchetchastel.fr/catalogue/fiascorama/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/thethomasvdb/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782283041277-fiascorama-thomas-vdb/"
+    }
+  ],
+  "quote": "Il y a Fiascorama de Thomas VDB, lisez-le.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:18:25",
+  "title": "Fiascorama",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

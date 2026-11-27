@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Jorge Luis Borges",
+  "episodeGuid": "yt-DNoUz4FJ_Z8",
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:44",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3395",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Leslibraires.fr",
+      "url": "https://www.leslibraires.fr/livre/907011-fictions-jorge-luis-borges-folio"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/La_Biblioth%C3%A8que_de_Babel"
+    }
+  ],
+  "quote": "je vous la conseille, de Borges qui s'appelle La Bibliothèque de Babel, est exceptionnelle.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:16:44",
+  "title": "La Bibliothèque de Babel",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ],
+  "year": 1941
+}

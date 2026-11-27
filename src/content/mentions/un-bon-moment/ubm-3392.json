@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:01"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3392",
+  "itemId": "c5daf7a9",
+  "kind": "reco",
+  "quote": "En France, qui s'appelle La Veillée.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-DNoUz4FJ_Z8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

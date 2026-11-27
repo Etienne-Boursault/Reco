@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:20:36"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3398",
+  "itemId": "2bd1ce99",
+  "kind": "reco",
+  "quote": "Puisque je viens de jouer avec André Dussollier dans « Claude » qui sort le 2 décembre.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-DNoUz4FJ_Z8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:20:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

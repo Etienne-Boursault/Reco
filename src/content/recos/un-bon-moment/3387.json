@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Alexandre Smia",
+  "enrichedAt": {
+    "links": "2026-11-27T11:31:39Z"
+  },
+  "episodeGuid": "yt-DNoUz4FJ_Z8",
+  "externalIds": {
+    "tmdb": "1502759",
+    "tmdbType": "movie"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:46+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3387",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt37424290/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1502759"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "UGC — séances",
+      "url": "https://www.ugc.fr/film.html?id=18381"
+    }
+  ],
+  "quote": "18 novembre, Jupiter, en salle.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:58",
+  "title": "Jupiter",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2026
+}

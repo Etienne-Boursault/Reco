@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Dominique Blanc",
+  "episodeGuid": "yt-DNoUz4FJ_Z8",
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:05",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3397",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Actes Sud",
+      "url": "https://actes-sud.fr/catalogue/chantiers-je-018944"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Leslibraires.fr",
+      "url": "https://www.leslibraires.fr/livre/22456311-chantiers-je-dominique-blanc-actes-sud"
+    }
+  ],
+  "quote": "Tu te sens un peu petit quand tu lis tout ce qu'elle a accompli et tout ce qu'elle a traversé en tant qu'actrice.",
+  "recommendedBy": "Denis Ménochet",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:20:05",
+  "title": "Chantiers, je",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

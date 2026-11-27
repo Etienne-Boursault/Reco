@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-11-27T11:27:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:20:05"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3397",
+  "itemId": "0ccbfccc",
+  "kind": "reco",
+  "quote": "Tu te sens un peu petit quand tu lis tout ce qu'elle a accompli et tout ce qu'elle a traversé en tant qu'actrice.",
+  "recommendedBy": "Denis Ménochet",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-DNoUz4FJ_Z8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:20:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}
