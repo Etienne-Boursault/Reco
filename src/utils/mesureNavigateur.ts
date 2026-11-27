@@ -81,6 +81,9 @@ export interface Signal {
   aVuFiche: boolean;
 }
 
+/** Stockage coupé : aucun des trois oui/non n'est connu, aucun n'est envoyé. */
+export type SignalInconnu = Record<string, never>;
+
 export interface Dependances {
   /** Une fonction : même l'accès à `window.localStorage` peut lever. */
   stockage: () => Storage;
@@ -181,17 +184,19 @@ export function creerMesure(deps: Dependances) {
    * ne faut rien envoyer (refus, GPC, DNT). La première page mesurable crée
    * l'état ; `ne` n'est ensuite jamais réécrit.
    */
-  function noterPage(chemin: string): Signal | null {
+  function noterPage(chemin: string): Signal | SignalInconnu | null {
     if (refuseParLeNavigateur()) {
       purger();
       return null;
     }
     const contenu = lire();
     if (contenu && 'refus' in contenu) return null;
+    // Stockage coupé : on ne sait rien, on n'invente pas un « non » (« inconnu = absent »,
+    // tour 1 de revue, PR #224) ; le signal part avec le seul chemin.
+    if (contenu === undefined) return {};
     const garde = contenu ?? neuf(0);
     const { etapes, signal } = avecPage(garde, chemin);
-    // Sans stockage, `contenu` est undefined : rien n'est écrit, `revenant` reste faux.
-    if (contenu !== undefined) ecrire({ ...garde, etapes });
+    ecrire({ ...garde, etapes });
     return signal;
   }
 

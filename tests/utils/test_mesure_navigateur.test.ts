@@ -292,11 +292,12 @@ describe('stockage qui lève : la page ne casse jamais', () => {
     throw new Error('SecurityError');
   };
 
-  it('accès au stockage interdit : état « indisponible », signal sans état gardé', () => {
+  it('accès au stockage interdit : état « indisponible », signal sans oui/non', () => {
     const m = sansStockage(leve);
     expect(m.etat()).toBe('indisponible');
-    expect(m.noterPage(EPISODE)).toEqual({ revenant: false, aVuEpisode: true, aVuFiche: false });
-    expect(m.noterPage(FICHE)).toEqual({ revenant: false, aVuEpisode: false, aVuFiche: true });
+    // Inconnu = absent, pas un « non » inventé (tour 1 de revue, PR #224) : aucun des trois champs.
+    expect(m.noterPage(EPISODE)).toEqual({});
+    expect(m.noterPage(FICHE)).toEqual({});
     expect(m.ligneAAfficher()).toBe(false);
     expect(() => {
       m.ligneVue();

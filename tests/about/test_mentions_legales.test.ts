@@ -89,6 +89,12 @@ describe('/mentions-legales', () => {
       expect(texte).toContain(`${MOIS_DE_VIE} mois`);
     });
 
+    it('dit que sans stockage les trois oui/non ne partent pas', async () => {
+      const texte = visibleText(await rendre());
+
+      expect(texte).toContain('ne peut rien garder, ces trois oui/non ne partent pas');
+    });
+
     it('dit que l’empreinte est un pseudonyme et que le refus ne coupe pas la page servie', async () => {
       const texte = visibleText(await rendre());
 

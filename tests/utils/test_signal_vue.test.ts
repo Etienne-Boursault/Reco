@@ -249,6 +249,19 @@ describe('cablerSignalVue : la mesure du navigateur (AU-2 B, 2026-11-27)', () =>
     expect(stock.size).toBe(0);
   });
 
+  it('avec la vraie mesure : stockage coupé, le signal part sans oui/non (inconnu, pas « non »)', () => {
+    const m = monde({});
+    const mesure = creerMesure({
+      stockage: () => {
+        throw new Error('SecurityError');
+      },
+      maintenant: () => new Date('2026-11-27T10:00:00Z'),
+      navigator: m.navigator,
+    });
+    cablerSignalVue({ ...(m.deps as object), mesure } as never);
+    expect(balises(m)).toHaveBeenCalledWith('/api/vue', JSON.stringify({ chemin: '/a-propos' }));
+  });
+
   it('avec la vraie mesure : un revenant qui a vu une fiche', () => {
     const stock = new Map<string, string>([['reco.mesure', JSON.stringify({ ne: '2026-11-01', jour: '2026-11-26', etapes: ['episode'], ligne: 0 })]]);
     const stockage = {

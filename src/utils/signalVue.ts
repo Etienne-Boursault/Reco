@@ -65,7 +65,10 @@ interface Document2 {
 
 /** Ce que le script lit de `mesureNavigateur.ts` (type local : pas de cycle d'import). */
 interface Mesure {
-  noterPage(chemin: string): { revenant: boolean; aVuEpisode: boolean; aVuFiche: boolean } | null;
+  /** `{}` quand le stockage est coupé : les trois oui/non sont alors absents du corps. */
+  noterPage(
+    chemin: string,
+  ): { revenant?: boolean; aVuEpisode?: boolean; aVuFiche?: boolean } | null;
 }
 
 export interface Dependances {
