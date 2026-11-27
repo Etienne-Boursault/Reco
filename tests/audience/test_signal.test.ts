@@ -88,7 +88,18 @@ describe('evenementDeSignal', () => {
       sel: 's',
       maintenant: new Date('2026-11-27T10:20:30Z'),
     });
-    expect(Object.keys(ligne).sort()).toEqual(['chemin', 'hebergeur', 'nature', 'ts', 'visiteur']);
+    expect(Object.keys(ligne).sort()).toEqual([
+      'aVuEpisode',
+      'aVuFiche',
+      'chemin',
+      'hebergeur',
+      'nature',
+      'revenant',
+      'ts',
+      'visiteur',
+    ]);
+    // Sans les trois oui/non (ancien script en cache) : « inconnu », jamais « non ».
+    expect(ligne).toMatchObject({ revenant: null, aVuEpisode: null, aVuFiche: null });
     expect(ligne).toMatchObject({ ts: '2026-11-27T10:00:00.000Z', nature: 'signal', chemin: '/a-propos', hebergeur: false });
     expect(ligne.visiteur).toMatch(/^[0-9a-f]{12}$/);
   });
@@ -96,6 +107,30 @@ describe('evenementDeSignal', () => {
   it('sans sel ni adresse : empreinte nulle, jamais d’échec', () => {
     const ligne = evenementDeSignal({ chemin: '/', maintenant: new Date('2026-11-27T10:20:30Z') });
     expect(ligne).toMatchObject({ visiteur: null, hebergeur: false });
+  });
+});
+
+describe('evenementDeSignal : les trois oui/non (AU-2 B, 2026-11-27)', () => {
+  it('écrit exactement les trois oui/non reçus, rien d’autre', () => {
+    const ligne = evenementDeSignal({
+      chemin: '/',
+      ip: '203.0.113.9',
+      sel: 's',
+      maintenant: new Date('2026-11-27T10:20:30Z'),
+      revenant: true,
+      aVuEpisode: false,
+      aVuFiche: true,
+    });
+    expect(ligne).toEqual({
+      ts: '2026-11-27T10:00:00.000Z',
+      nature: 'signal',
+      chemin: '/',
+      hebergeur: false,
+      visiteur: ligne.visiteur,
+      revenant: true,
+      aVuEpisode: false,
+      aVuFiche: true,
+    });
   });
 });
 
@@ -188,6 +223,56 @@ describe('POST /api/vue : acceptation', () => {
     } finally {
       rmSync(cwd, { recursive: true, force: true });
     }
+  });
+});
+
+describe('POST /api/vue : les trois oui/non (AU-2 B, 2026-11-27)', () => {
+  const trois = { revenant: true, aVuEpisode: false, aVuFiche: true };
+  const corps = (o: Record<string, unknown>) => JSON.stringify({ chemin: '/a-propos', ...o });
+
+  it('les écrit sur la ligne, telles quelles', async () => {
+    const { signaler, ecrit } = monter();
+    const f = await envoyer(signaler, { corps: corps(trois) });
+    expect(f.statut()).toBe(204);
+    expect(ecrit[0].ligne).toMatchObject(trois);
+  });
+
+  it('un ancien script en cache, qui n’envoie que le chemin, reste accepté (champs nuls)', async () => {
+    const { signaler, ecrit } = monter();
+    const f = await envoyer(signaler);
+    expect(f.statut()).toBe(204);
+    expect(ecrit[0].ligne).toMatchObject({ revenant: null, aVuEpisode: null, aVuFiche: null });
+  });
+
+  it('un champ inconnu est ignoré : il n’entre jamais sur la ligne', async () => {
+    const { signaler, ecrit } = monter();
+    const f = await envoyer(signaler, { corps: corps({ ...trois, identifiant: 'abc', ne: '2026-01-01' }) });
+    expect(f.statut()).toBe(204);
+    expect(Object.keys(ecrit[0].ligne).sort()).toEqual([
+      'aVuEpisode',
+      'aVuFiche',
+      'chemin',
+      'hebergeur',
+      'nature',
+      'revenant',
+      'ts',
+      'visiteur',
+    ]);
+  });
+
+  it.each([
+    ['texte', { ...trois, revenant: 'true' }],
+    ['nombre', { ...trois, aVuEpisode: 1 }],
+    ['nul', { ...trois, aVuFiche: null }],
+    ['objet', { ...trois, revenant: {} }],
+    ['tableau', { ...trois, revenant: [true] }],
+    ['un seul champ présent', { revenant: true }],
+    ['deux champs présents sur trois', { revenant: true, aVuEpisode: true }],
+  ])('%s : 400, rien d’écrit', async (_nom, o) => {
+    const { signaler, ecrit } = monter();
+    const f = await envoyer(signaler, { corps: corps(o) });
+    expect(f.statut()).toBe(400);
+    expect(ecrit).toHaveLength(0);
   });
 });
 

@@ -129,6 +129,25 @@ describe('les lignes d’avant la tranche A (sans champ hebergeur) : ancien tri'
   });
 });
 
+describe('les trois oui/non du signal ne changent pas le tri (AU-2 B, 2026-11-27)', () => {
+  const combinaisons = [true, false, null].flatMap((revenant) =>
+    [true, false, null].flatMap((aVuEpisode) =>
+      [true, false, null].map((aVuFiche) => ({ revenant, aVuEpisode, aVuFiche })),
+    ),
+  );
+
+  it.each([
+    ['particulier avec signal', visite(), false, 'confirme'],
+    ['particulier sans signal', visite({ visiteur: 'bbbbbbbbbbbb' }), false, 'incertain'],
+    ['hébergeur avec signal', visite({ hebergeur: true }), true, 'incertain'],
+    ['robot déclaré avec signal', visite({ robot: true }), false, 'robot'],
+  ])('%s : même classe, quelles que soient les 27 combinaisons', (_nom, v, hebergeur, attendu) => {
+    for (const trois of combinaisons) {
+      expect(classer([v], [signal({ ...trois, hebergeur })])).toEqual([attendu]);
+    }
+  });
+});
+
 describe('estSignal', () => {
   it('ne reconnaît que nature "signal"', () => {
     expect(estSignal({ nature: 'signal' })).toBe(true);

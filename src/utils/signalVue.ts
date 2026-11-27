@@ -7,9 +7,11 @@
  * Une visite mesurée côté serveur ne dit pas si un navigateur a réellement
  * affiché la page : un robot qui sait demander du HTML passe pour un visiteur.
  * Une fois la page affichée, le navigateur envoie UN signal à `POST /api/vue`
- * (reçu par `src/lib/audience/signal.mjs`) : le chemin, rien d'autre. Aucun
- * identifiant, aucun oui/non, aucun bandeau : le serveur calcule lui-même
- * l'empreinte du jour.
+ * (reçu par `src/lib/audience/signal.mjs`) : le chemin et trois oui/non tirés
+ * de la mesure gardée dans le navigateur (`mesureNavigateur.ts`) : `revenant`,
+ * `aVuEpisode`, `aVuFiche` (AU-2 B, R-1, 2026-11-27). Rien d'autre ne quitte
+ * le navigateur : ni date de naissance de la mesure, ni identifiant. Le
+ * serveur calcule lui-même l'empreinte du jour.
  *
  * CE QUI EST ASSUMÉ
  * -----------------
@@ -24,10 +26,18 @@
  * seulement :
  *  - hors prérendu (`document.prerendering`, attente de `prerenderingchange`) ;
  *  - page visible (sinon au premier `visibilitychange` vers « visible ») ;
- *  - sans `navigator.webdriver`, sans Global Privacy Control, sans Do Not Track
- *    à « 1 » (R-2 et R-10) ;
+ *  - sans `navigator.webdriver` ;
+ *  - si la mesure y consent : `mesure.noterPage` rend `null` sous refus de la
+ *    personne, Global Privacy Control ou Do Not Track à « 1 » (R-2 et R-10), et
+ *    alors rien ne part ;
  *  - sur une page mesurable : la garde de `pageMesurable`, la même que celle du
  *    clic sortant (`/meta` et pages `noindex`, ADR 0040 et ADR 0046, R-13).
+ * `noterPage` est appelée AU MOMENT DE L'ENVOI, jamais au chargement : elle crée
+ * l'état de la mesure (le « jour de naissance » du revenant), et un document
+ * prérendu ou ouvert en arrière-plan qui n'est jamais affiché ne doit pas
+ * compter comme une visite. L'envoi a lieu une fois par document : elle est
+ * donc appelée une fois. Sous GPC ou DNT elle purge aussi l'état gardé, c'est
+ * pourquoi ces réglages ne sont plus écartés d'emblée ici.
  * Toute erreur est avalée : ni `console.error`, ni rejet non géré.
  *
  * Le corps part en `text/plain` (celui de `sendBeacon` pour une chaîne) : le
@@ -51,8 +61,14 @@ interface Document2 {
   removeEventListener(type: string, ecouteur: () => void): void;
 }
 
+/** Ce que le script lit de `mesureNavigateur.ts` (type local : pas de cycle d'import). */
+interface Mesure {
+  noterPage(chemin: string): { revenant: boolean; aVuEpisode: boolean; aVuFiche: boolean } | null;
+}
+
 export interface Dependances {
   navigator: Navigateur;
+  mesure: Mesure;
   document: Document2;
   location: { pathname: string };
   fetch: (url: string, init: RequestInit) => Promise<unknown>;
@@ -89,21 +105,19 @@ export function suiviRefuse(
 
 /**
  * Câble l'envoi. Rend `false` si le signal est écarté d'emblée (page non
- * mesurable, robot déclaré, refus de suivi), `true` s'il est armé.
+ * mesurable, robot déclaré), `true` s'il est armé (la mesure peut encore
+ * refuser au moment de l'envoi).
  */
 export function cablerSignalVue(deps: Dependances): boolean {
-  const { navigator, document, location, fetch } = deps;
-  if (
-    navigator.webdriver === true ||
-    suiviRefuse(navigator) ||
-    !pageMesurable(location, document)
-  ) {
-    return false;
-  }
+  const { navigator, document, location, fetch, mesure } = deps;
+  if (navigator.webdriver === true || !pageMesurable(location, document)) return false;
 
   const envoyer = () => {
     try {
-      const corps = JSON.stringify({ chemin: location.pathname });
+      const vu = mesure.noterPage(location.pathname);
+      if (vu === null) return; // refus, GPC ou DNT : rien ne part
+      const { revenant, aVuEpisode, aVuFiche } = vu; // champ par champ : rien d'autre ne sort
+      const corps = JSON.stringify({ chemin: location.pathname, revenant, aVuEpisode, aVuFiche });
       if (navigator.sendBeacon?.(URL_SIGNAL, corps)) return;
       // `fetch` appelé détaché : `window.fetch` refuse un `this` étranger.
       fetch(URL_SIGNAL, {

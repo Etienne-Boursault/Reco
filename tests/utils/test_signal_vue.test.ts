@@ -9,6 +9,7 @@
  */
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { creerMesure } from '../../src/utils/mesureNavigateur';
 import { cablerSignalVue, pageMesurable } from '../../src/utils/signalVue';
 
 type Option = Record<string, unknown>;
@@ -28,19 +29,26 @@ function monde(options: Option = {}) {
     doNotTrack: null as string | null,
   };
   const fetch = vi.fn(() => Promise.resolve(new Response(null, { status: 204 })));
+  const mesure = {
+    noterPage: vi.fn((_chemin: string) => ({ revenant: true, aVuEpisode: false, aVuFiche: true }) as unknown),
+  };
   const deps = {
     navigator,
     document,
     window,
     location: { pathname: '/a-propos' },
     fetch,
+    mesure,
   };
   Object.assign(deps.navigator, options.navigator);
   Object.assign(deps.document, options.document);
   if (options.location) deps.location = options.location as never;
   if (options.fetch) deps.fetch = options.fetch as never;
-  return { deps: deps as never, navigator, document, window, fetch };
+  if (options.mesure) deps.mesure = options.mesure as never;
+  return { deps: deps as never, navigator, document, window, fetch, mesure };
 }
+
+const CORPS = JSON.stringify({ chemin: '/a-propos', revenant: true, aVuEpisode: false, aVuFiche: true });
 
 const balises = (m: ReturnType<typeof monde>) => m.navigator.sendBeacon as ReturnType<typeof vi.fn>;
 const appels = (m: ReturnType<typeof monde>) => {
@@ -49,11 +57,11 @@ const appels = (m: ReturnType<typeof monde>) => {
 };
 
 describe('cablerSignalVue : envoi', () => {
-  it('envoie le chemin en JSON par sendBeacon, une fois la page visible', () => {
+  it('envoie le chemin et les trois oui/non en JSON par sendBeacon, une fois la page visible', () => {
     const m = monde();
     expect(cablerSignalVue(m.deps)).toBe(true);
     expect(balises(m)).toHaveBeenCalledTimes(1);
-    expect(balises(m)).toHaveBeenCalledWith('/api/vue', JSON.stringify({ chemin: '/a-propos' }));
+    expect(balises(m)).toHaveBeenCalledWith('/api/vue', CORPS);
     expect(m.fetch).not.toHaveBeenCalled();
   });
 
@@ -74,7 +82,7 @@ describe('cablerSignalVue : envoi', () => {
     expect(init).toMatchObject({
       method: 'POST',
       keepalive: true,
-      body: JSON.stringify({ chemin: '/a-propos' }),
+      body: CORPS,
     });
   });
 
@@ -149,23 +157,6 @@ describe('cablerSignalVue : refus', () => {
     expect(appels(m)).toBe(0);
   });
 
-  it('Global Privacy Control coupe le signal', () => {
-    const m = monde({ navigator: { globalPrivacyControl: true } });
-    expect(cablerSignalVue(m.deps)).toBe(false);
-    expect(appels(m)).toBe(0);
-  });
-
-  it('Do Not Track à « 1 » coupe le signal', () => {
-    const m = monde({ navigator: { doNotTrack: '1' } });
-    expect(cablerSignalVue(m.deps)).toBe(false);
-    expect(appels(m)).toBe(0);
-  });
-
-  it('Do Not Track à « 0 » laisse passer', () => {
-    const m = monde({ navigator: { doNotTrack: '0' } });
-    expect(cablerSignalVue(m.deps)).toBe(true);
-  });
-
   it('rien sur /meta ni sur une page noindex', () => {
     const m = monde({ location: { pathname: '/meta/annuaire' } });
     expect(cablerSignalVue(m.deps)).toBe(false);
@@ -174,6 +165,108 @@ describe('cablerSignalVue : refus', () => {
     });
     expect(cablerSignalVue(n.deps)).toBe(false);
     expect(appels(m) + appels(n)).toBe(0);
+  });
+});
+
+describe('cablerSignalVue : la mesure du navigateur (AU-2 B, 2026-11-27)', () => {
+  it('noterPage rend null (refus, GPC, DNT) : rien ne part', () => {
+    const noterPage = vi.fn(() => null);
+    const m = monde({ mesure: { noterPage } });
+    cablerSignalVue(m.deps);
+    expect(noterPage).toHaveBeenCalledTimes(1);
+    expect(appels(m)).toBe(0);
+  });
+
+  it('noterPage reçoit le chemin de la page, une seule fois', () => {
+    const m = monde({ location: { pathname: '/un-bon-moment/episode/abc' } });
+    cablerSignalVue(m.deps);
+    m.document.dispatchEvent(new Event('visibilitychange'));
+    expect(m.mesure.noterPage).toHaveBeenCalledTimes(1);
+    expect(m.mesure.noterPage).toHaveBeenCalledWith('/un-bon-moment/episode/abc');
+  });
+
+  it('seuls le chemin et les trois oui/non partent, même si noterPage rend plus', () => {
+    const noterPage = vi.fn(() => ({ revenant: false, aVuEpisode: true, aVuFiche: false, ne: '2026-01-01' }));
+    const m = monde({ mesure: { noterPage } });
+    cablerSignalVue(m.deps);
+    expect(balises(m)).toHaveBeenCalledWith(
+      '/api/vue',
+      JSON.stringify({ chemin: '/a-propos', revenant: false, aVuEpisode: true, aVuFiche: false }),
+    );
+  });
+
+  it('pas d’état créé par un document prérendu jamais affiché', () => {
+    const m = monde({ document: { prerendering: true } });
+    cablerSignalVue(m.deps);
+    expect(m.mesure.noterPage).not.toHaveBeenCalled();
+    m.document.prerendering = false;
+    m.document.dispatchEvent(new Event('prerenderingchange'));
+    expect(m.mesure.noterPage).toHaveBeenCalledTimes(1);
+  });
+
+  it('pas d’état créé par un onglet caché, tant qu’il n’est pas affiché', () => {
+    const m = monde({ document: { visibilityState: 'hidden' } });
+    cablerSignalVue(m.deps);
+    expect(m.mesure.noterPage).not.toHaveBeenCalled();
+  });
+
+  it('ni état ni envoi sur /meta, une page noindex ou un robot déclaré', () => {
+    const m = monde({ location: { pathname: '/meta' } });
+    const n = monde({ navigator: { webdriver: true } });
+    cablerSignalVue(m.deps);
+    cablerSignalVue(n.deps);
+    expect(m.mesure.noterPage).not.toHaveBeenCalled();
+    expect(n.mesure.noterPage).not.toHaveBeenCalled();
+  });
+
+  it('une exception de noterPage est avalée', () => {
+    const m = monde({
+      mesure: {
+        noterPage: () => {
+          throw new Error('stockage');
+        },
+      },
+    });
+    expect(() => cablerSignalVue(m.deps)).not.toThrow();
+    expect(appels(m)).toBe(0);
+  });
+
+  it('avec la vraie mesure : sous GPC rien ne part et l’état est purgé', () => {
+    const stock = new Map<string, string>([['reco.mesure', JSON.stringify({ ne: '2026-11-01', jour: '2026-11-27', etapes: [], ligne: 2 })]]);
+    const stockage = {
+      getItem: (c: string) => stock.get(c) ?? null,
+      setItem: (c: string, v: string) => void stock.set(c, v),
+      removeItem: (c: string) => void stock.delete(c),
+    } as unknown as Storage;
+    const m = monde({ navigator: { globalPrivacyControl: true } });
+    const mesure = creerMesure({
+      stockage: () => stockage,
+      maintenant: () => new Date('2026-11-27T10:00:00Z'),
+      navigator: m.navigator,
+    });
+    cablerSignalVue({ ...(m.deps as object), mesure } as never);
+    expect(appels(m)).toBe(0);
+    expect(stock.size).toBe(0);
+  });
+
+  it('avec la vraie mesure : un revenant qui a vu une fiche', () => {
+    const stock = new Map<string, string>([['reco.mesure', JSON.stringify({ ne: '2026-11-01', jour: '2026-11-26', etapes: ['episode'], ligne: 0 })]]);
+    const stockage = {
+      getItem: (c: string) => stock.get(c) ?? null,
+      setItem: (c: string, v: string) => void stock.set(c, v),
+      removeItem: (c: string) => void stock.delete(c),
+    } as unknown as Storage;
+    const m = monde({ location: { pathname: '/un-bon-moment/oeuvre/x' } });
+    const mesure = creerMesure({
+      stockage: () => stockage,
+      maintenant: () => new Date('2026-11-27T10:00:00Z'),
+      navigator: m.navigator,
+    });
+    cablerSignalVue({ ...(m.deps as object), mesure } as never);
+    expect(balises(m)).toHaveBeenCalledWith(
+      '/api/vue',
+      JSON.stringify({ chemin: '/un-bon-moment/oeuvre/x', revenant: true, aVuEpisode: false, aVuFiche: true }),
+    );
   });
 });
 

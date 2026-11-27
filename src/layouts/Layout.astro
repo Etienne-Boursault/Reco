@@ -258,12 +258,20 @@ const estAccueil = Astro.url.pathname === '/';
     </script>
 
     {/* Signal « page vue » (AU-1 A, 2026-11-27) : un envoi par page affichée,
-       qui distingue un navigateur d'un robot. Aucun identifiant ; même garde
-       que le clic. Voir `utils/signalVue.ts`. */}
+       qui distingue un navigateur d'un robot, avec trois oui/non de la mesure
+       gardée dans le navigateur (aucun identifiant) ; même garde que le clic. Voir `utils/signalVue.ts`. */}
     <script>
+      import { creerMesure } from '../utils/mesureNavigateur';
       import { cablerSignalVue } from '../utils/signalVue';
 
-      cablerSignalVue({ navigator, document, location, fetch });
+      // AU-2 B (2026-11-27) : la mesure reste dans le navigateur ; seuls trois
+      // oui/non partent avec le signal. `noterPage` est appelée à l'envoi.
+      const mesure = creerMesure({
+        stockage: () => window.localStorage,
+        maintenant: () => new Date(),
+        navigator,
+      });
+      cablerSignalVue({ navigator, document, location, fetch, mesure });
     </script>
   </body>
 </html>

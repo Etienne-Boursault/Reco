@@ -287,9 +287,20 @@ export function evenementDeVisite({
  * Même règle qu'une visite : tout ce qui entre est brut, tout ce qui sort est
  * catégorisé. La ligne ne porte ni statut, ni agent, ni langue : un signal
  * dit seulement « un navigateur a affiché cette page », avec l'empreinte du
- * jour et l'indication d'hébergeur de l'adresse.
+ * jour, l'indication d'hébergeur de l'adresse et, depuis AU-2 B (27/11/2026),
+ * trois oui/non gardés par le navigateur : `revenant`, `aVuEpisode`, `aVuFiche`.
+ * `null` = non communiqué (ancien script en cache) : jamais un « non » inventé.
+ * Rien d'autre du navigateur n'entre sur la ligne.
  */
-export function evenementDeSignal({ chemin, ip = null, sel = null, maintenant = new Date() }) {
+export function evenementDeSignal({
+  chemin,
+  ip = null,
+  sel = null,
+  maintenant = new Date(),
+  revenant = null,
+  aVuEpisode = null,
+  aVuFiche = null,
+}) {
   const jour = maintenant.toISOString().slice(0, 10);
   return {
     ts: heureRonde(maintenant),
@@ -297,5 +308,8 @@ export function evenementDeSignal({ chemin, ip = null, sel = null, maintenant = 
     chemin: cheminSeul(chemin),
     hebergeur: heberge(ip),
     visiteur: empreinteDuJour(ip, sel, jour),
+    revenant,
+    aVuEpisode,
+    aVuFiche,
   };
 }
