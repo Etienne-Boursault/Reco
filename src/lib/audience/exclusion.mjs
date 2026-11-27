@@ -21,6 +21,8 @@
  *
  * LIMITES ASSUMÉES
  * ----------------
+ * - Les plages CIDR ne sont pas prises en charge : une entrée qui contient `/`
+ *   est refusée au chargement, avec un avertissement qui la cite.
  * - Une visite depuis le réseau mobile (ou tout autre réseau que celui du nom)
  *   compte : la liste ne connaît que ce qu'on lui donne.
  * - Les mesures déjà écrites ne sont pas corrigées.
@@ -77,6 +79,13 @@ export function creerExclusion(options = {}) {
   const fixes = new Set();
   const noms = [];
   for (const jeton of (liste ?? '').split(',').map((s) => s.trim()).filter(Boolean)) {
+    // Une plage (`203.0.113.0/24`) ne serait ni une adresse ni un nom : elle partirait en
+    // résolution DNS, échouerait en silence et n'exclurait rien (tour 1 de revue, 27/11/2026).
+    // On la refuse en la nommant, pour que l'éditeur la corrige.
+    if (jeton.includes('/')) {
+      journal.warn?.(`[audience] exclusion : « ${jeton} » ignorée, les plages ne sont pas prises en charge (une adresse ou un nom par entrée)`);
+      continue;
+    }
     const adresse = normaliser(jeton);
     if (adresse) fixes.add(adresse);
     else noms.push(jeton.toLowerCase());

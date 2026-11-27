@@ -55,6 +55,29 @@ describe('normaliser', () => {
     });
 });
 
+describe('creerExclusion : une plage CIDR n’est pas prise en charge', () => {
+  it('l’entrée est refusée avec un avertissement qui la cite, sans résolution DNS, le reste de la liste est gardé', async () => {
+    const resolveur = faux({});
+    const t = minuteur();
+    const journal = { warn: vi.fn() };
+    const ex = creerExclusion({
+      liste: '203.0.113.0/24, 192.0.2.7, 2001:db8::/32', resolveur, planifier: t.planifier, journal,
+    });
+    await ex.pret;
+
+    expect(ex.exclut('203.0.113.9')).toBe(false);
+    expect(ex.exclut('192.0.2.7')).toBe(true);
+    expect(resolveur.resolve4).not.toHaveBeenCalled();
+    expect(resolveur.resolve6).not.toHaveBeenCalled();
+    expect(t.m.rappel).toBeUndefined();
+    expect(journal.warn).toHaveBeenCalledTimes(2);
+    const dit = journal.warn.mock.calls.map((c) => String(c[0]));
+    expect(dit[0]).toContain('203.0.113.0/24');
+    expect(dit[0]).toContain('les plages ne sont pas prises en charge');
+    expect(dit[1]).toContain('2001:db8::/32');
+  });
+});
+
 describe('creerExclusion : sans liste', () => {
   it.each([[undefined], [''], ['  ,, ']])('liste %j : rien n’est exclu, rien n’est résolu', async (liste) => {
     const resolveur = faux({});
