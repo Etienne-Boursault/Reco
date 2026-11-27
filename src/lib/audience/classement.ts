@@ -44,6 +44,10 @@ export interface Signal {
   chemin: string;
   hebergeur: boolean;
   visiteur: string | null;
+  /** Les trois oui/non du jour (`parcours.ts`) ; absents ou `null` : inconnus. */
+  revenant?: boolean | null;
+  aVuEpisode?: boolean | null;
+  aVuFiche?: boolean | null;
 }
 
 /** Ce que le tri lit d'une visite. */

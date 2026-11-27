@@ -29,6 +29,7 @@ import {
   type Colonnes,
   type Signal,
 } from './classement';
+import { compterJour, parts, sommer, type Brut, type Parcours } from './parcours';
 
 export interface Visite {
   ts: string;
@@ -54,6 +55,9 @@ export interface Clic {
   sourceId: string;
   recoId: string | null;
   ref: string | null;
+  /** Les oui/non du jour (D1). Absents des clics d'avant le 2026-11-27. */
+  aVuEpisode?: boolean | null;
+  aVuFiche?: boolean | null;
 }
 
 /** Un jour de mesure : ce que la courbe affiche. */
@@ -131,6 +135,8 @@ export interface Agregat {
   colonnes: Colonnes | null;
   /** Jours complets récents avec des visites et aucun signal : le signal est peut-être en panne. */
   panneSignal: string[];
+  /** Revenants et chemin épisode → fiche → clic : parts agrégées, `null` sous le seuil (`parcours.ts`). */
+  parcours: Parcours;
 }
 
 /**
@@ -316,6 +322,7 @@ export function agreger({
   const humaines: Visite[] = [];
   const clics: Clic[] = [];
   const parJour: Jour[] = [];
+  const brutsParcours: Brut[] = [];
 
   // Les signaux sont séparés dès la lecture : ils ne sont pas des visites.
   const lus = jours.map((jour) => {
@@ -337,6 +344,7 @@ export function agreger({
     const classes = bascule !== null && jour >= bascule ? classer(v, signaux) : null;
     const dujour = classes ? v.filter((_, i) => classes[i] !== 'robot') : v.filter(estHumaine);
     humaines.push(...dujour);
+    brutsParcours.push(compterJour(v, classes, signaux, c));
     parJour.push({
       jour,
       pages: dujour.filter(estConsultation).length,
@@ -401,5 +409,6 @@ export function agreger({
     bascule,
     colonnes: sommerColonnes(parJour.map((j) => j.colonnes)),
     panneSignal: joursEnPanne(parJour, bascule, aujourdhui),
+    parcours: parts(sommer(brutsParcours)),
   };
 }

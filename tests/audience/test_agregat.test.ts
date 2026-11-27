@@ -598,3 +598,67 @@ describe('signaux « page vue » et tri en trois colonnes', () => {
     expect(lireTrois().panneSignal).toEqual(['2026-11-29']);
   });
 });
+
+// ===== Revenants et chemin (AU-2 B, tranche D2) ============================
+describe('parcours : revenants et chemin épisode → fiche → clic', () => {
+  const NOW = new Date('2026-11-30T12:00:00Z');
+  const JOUR = '2026-11-28';
+  const lireParcours = () => agreger({ racine, sourceId: SOURCE, nbJours: 30, aujourdhui: NOW });
+  const id = (i: number) => `v${String(i).padStart(11, '0')}`;
+  const visiteDe = (i: number, jour = JOUR) =>
+    visite({ ts: `${jour}T10:00:00.000Z`, hebergeur: false, visiteur: id(i) });
+  const signalPour = (i: number, over: Record<string, unknown> = {}, jour = JOUR) => ({
+    ts: `${jour}T10:00:00.000Z`, nature: 'signal', chemin: '/un-bon-moment/films', hebergeur: false, visiteur: id(i), ...over,
+  });
+  // 40 visiteurs confirmés : 12 revenants, tous ont vu un épisode, 15 une fiche.
+  const confirmes = (jour = JOUR) => {
+    const n = Array.from({ length: 40 }, (_, i) => i);
+    return [
+      ...n.map((i) => visiteDe(i, jour)),
+      ...n.map((i) => signalPour(i, { revenant: i < 12, aVuEpisode: true, aVuFiche: i < 15 }, jour)),
+    ];
+  };
+
+  it('rend les parts des visiteurs confirmés et des clics', () => {
+    ecrire('audience', JOUR, confirmes());
+    ecrire('clicks', JOUR, [
+      ...Array.from({ length: 12 }, () => clic({ aVuEpisode: true, aVuFiche: true })),
+      ...Array.from({ length: 12 }, () => clic({ aVuEpisode: true, aVuFiche: false })),
+      ...Array.from({ length: 12 }, () => clic({ aVuEpisode: false, aVuFiche: false })),
+      clic(), // ligne d'avant D1 : champs absents, inconnue
+    ]);
+    const p = lireParcours().parcours;
+
+    expect(p.revenants).toEqual({ oui: 12, total: 40, pct: 30 });
+    expect(p.vuFiche).toEqual({ oui: 15, total: 40, pct: 37.5 });
+    expect(p.clicsEpisode).toEqual({ oui: 24, total: 36, pct: 66.7 });
+    expect(p.clicsFiche).toEqual({ oui: 12, total: 36, pct: 33.3 });
+  });
+
+  it('les jours d’avant la bascule et les visiteurs incertains n’y entrent pas', () => {
+    // Le jour de bascule est le 2e jour avec signaux : le 27 est écarté, le 28 est compté.
+    ecrire('audience', '2026-11-26', [visiteDe(0, '2026-11-26')]);
+    ecrire('audience', '2026-11-27', confirmes('2026-11-27'));
+    // 10 visiteurs d'hébergeur, avec signal : incertains, donc hors des parts.
+    const hebergeurs = Array.from({ length: 10 }, (_, k) => 40 + k);
+    ecrire('audience', JOUR, [
+      ...confirmes(),
+      ...hebergeurs.map((i) => ({ ...visiteDe(i), hebergeur: true })),
+      ...hebergeurs.map((i) => signalPour(i, { revenant: true, aVuEpisode: true, aVuFiche: true })),
+    ]);
+    ecrire('audience', '2026-11-29', confirmes('2026-11-29'));
+    const a = lireParcours();
+
+    expect(a.bascule).toBe('2026-11-28');
+    // 28 et 29 comptent (12 sur 40 chacun), le 27 non : 36 sur 120 s'il comptait.
+    expect(a.parcours.revenants).toEqual({ oui: 24, total: 80, pct: 30 });
+  });
+
+  it('trop peu de données : aucune part, sans signal comme sans clic', () => {
+    ecrire('audience', JOUR, [visiteDe(0), signalPour(0, { revenant: true })]);
+    expect(lireParcours().parcours).toEqual({
+      revenants: null, vuFiche: null, clicsEpisode: null, clicsFiche: null,
+    });
+    expect(lire().parcours.revenants).toBeNull();
+  });
+});
