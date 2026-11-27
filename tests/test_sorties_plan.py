@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 from datetime import date
 
 import pytest
@@ -282,7 +283,7 @@ def test_une_ecriture_ratee_laisse_l_ancien_fichier(tmp_path, monkeypatch):
 
     def casse(*_a, **_k):
         raise OSError("disque plein")
-    monkeypatch.setattr(sp.os, "replace", casse)
+    monkeypatch.setattr(os, "replace", casse)
     with pytest.raises(OSError):
         sp.ecrire_etat(chemin, sp.noter_relance(sp.etat_vide(), ["b"]))
     assert chemin.read_text(encoding="utf-8") == avant
