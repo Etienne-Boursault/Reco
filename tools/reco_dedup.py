@@ -134,17 +134,39 @@ def _kind_of(r: dict) -> str:
     return r.get("kind") or "reco"
 
 
+def _oeuvres_distinctes(a: dict, b: dict) -> bool:
+    """Vrai quand deux recos désignent à coup sûr deux œuvres différentes.
+
+    Il faut deux preuves à la fois : aucun type en commun, et deux créateurs
+    renseignés qui diffèrent (casse et accents ignorés). Une seule ne suffit
+    pas : une passe d'extraction peut mal choisir le type, ou mal entendre
+    le créateur, d'une même œuvre.
+
+    Demandé par Étienne le 2026-11-27 sur S6-E11 : l'album « Karma » de
+    Bigflo & Oli et le film « Karma » de Guillaume Canet, cités à 11 s
+    d'écart, s'affichaient comme « doublons probables ».
+    """
+    types_a, types_b = set(a.get("types") or []), set(b.get("types") or [])
+    createur_a = normalize_text(a.get("creator") or "")
+    createur_b = normalize_text(b.get("creator") or "")
+    return (bool(types_a) and bool(types_b) and not types_a & types_b
+            and bool(createur_a) and bool(createur_b) and createur_a != createur_b)
+
+
 def _can_match(a: dict, b: dict, sim: float, time_window_sec: int) -> bool:
     """Décide si deux recos forment un appariement valide.
 
     - Toujours séparées par `episodeGuid` (jamais inter-épisode).
     - Toujours séparées par `kind` (reco vs citation pas mélangés).
+    - Séparées quand ce sont deux œuvres distinctes (`_oeuvres_distinctes`).
     - Similarité >= 0.80 obligatoire.
     - Tolérance [0.70 ; 0.80) : OK seulement si Δt ≤ time_window_sec.
     """
     if a.get("episodeGuid") != b.get("episodeGuid"):
         return False
     if _kind_of(a) != _kind_of(b):
+        return False
+    if _oeuvres_distinctes(a, b):
         return False
     if sim >= DEFAULT_TITLE_THRESHOLD:
         return True

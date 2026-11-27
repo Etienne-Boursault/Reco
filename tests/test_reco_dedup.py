@@ -187,6 +187,36 @@ def test_cluster_separates_reco_from_citation():
     assert clusters == []
 
 
+def test_cluster_separe_deux_oeuvres_de_types_et_createurs_differents():
+    # S6-E11 (27/11) : l'album « Karma » de Bigflo & Oli et le film « Karma »
+    # de Guillaume Canet, cités à 11 s d'écart, sont deux œuvres distinctes.
+    recos = [
+        _r("ubm-1", "Karma", ts="00:00:26", types=["album"], creator="Bigflo & Oli"),
+        _r("ubm-2", "Karma", ts="00:00:37", types=["film"], creator="Guillaume Canet"),
+    ]
+    assert cluster_recos(recos) == []
+
+
+@pytest.mark.parametrize("a, b", [
+    # Même type : sans doute la même œuvre, créateur mal entendu par une passe.
+    ({"types": ["film"], "creator": "Guillaume Canet"},
+     {"types": ["film"], "creator": "Guillaume Canné"}),
+    # Types en partie communs.
+    ({"types": ["album", "film"], "creator": "Bigflo & Oli"},
+     {"types": ["film"], "creator": "Guillaume Canet"}),
+    # Même créateur, à la casse et aux accents près : type mal choisi par une passe.
+    ({"types": ["livre"], "creator": "Éric Judor"},
+     {"types": ["film"], "creator": "eric judor"}),
+    # Un créateur manquant : rien ne prouve que ce sont deux œuvres.
+    ({"types": ["album"], "creator": "Bigflo & Oli"}, {"types": ["film"]}),
+    # Types manquants.
+    ({"creator": "Bigflo & Oli"}, {"types": ["film"], "creator": "Guillaume Canet"}),
+])
+def test_cluster_garde_le_doublon_sans_preuve_de_deux_oeuvres(a, b):
+    recos = [_r("ubm-1", "Karma", **a), _r("ubm-2", "Karma", **b)]
+    assert len(cluster_recos(recos)) == 1
+
+
 def test_cluster_separates_by_episode_guid():
     recos = [
         _r("ubm-1", "Mortel", guid="ep-1"),
