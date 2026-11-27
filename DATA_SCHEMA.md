@@ -70,6 +70,7 @@ d'une fiche fusionnée à celui de la fiche qui la remplace (ADR 0053).
   "creator": "Éric Rochant",
   "type": "serie",                       // film|serie|livre|bd|musique|album|podcast|jeu|spectacle|lieu|autre
   "year": 2015,
+  "releaseDate": "2026-11-20",           // facultatif : sortie annoncée, AAAA-MM-JJ (voir ci-dessous)
   "recommendedBy": "Navo",               // qui recommande
   "quote": "Une série d'espionnage incroyable, vraiment.",
   "timestamp": "01:12:30",
@@ -81,6 +82,18 @@ d'une fiche fusionnée à celui de la fiche qui la remplace (ADR 0053).
   "status": "draft"                      // draft | validated | discarded (écarté)
 }
 ```
+
+**`releaseDate`** (facultatif, décision « R4 B », 27/11/2026) : la date de sortie
+annoncée d'une œuvre pas encore publiée, par exemple un album annoncé dans l'épisode.
+- Format `AAAA-MM-JJ`, un vrai jour de calendrier (`2026-02-30` est refusé). Validé par
+  Zod dans `src/content.config.ts` et par `tools/date_sortie.py`, qui refuse en plus
+  une date à plus de 3 ans.
+- **Remplie par l'éditeur seul**, dans « Corriger » et avant la publication : jamais
+  devinée par le pipeline (règle 4 ci-dessous).
+- Du jour de la sortie à J+30, la chaîne relance chaque jour la recherche de liens.
+  Elle ne le fait que pour les types servis en V1 : `album`, `musique`, `livre`, `jeu`.
+  Films, séries et artistes n'en bénéficient pas encore.
+- Avant cette date, la carte de la reco affiche « Sortie annoncée le … ».
 
 ## 4. Item (œuvre) — une fiche par œuvre
 

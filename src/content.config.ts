@@ -192,6 +192,11 @@ const recos = defineCollection({
     creator: z.string().optional(), // auteur·rice / réalisateur·rice / artiste
     types: z.array(recoType).min(1),
     year: z.number().int().optional(),
+    // Sortie annoncée d'une œuvre pas encore publiée (R4 B, 27/11/2026) : la chaîne
+    // relance la recherche de liens du jour J à J+30. `AAAA-MM-JJ`, jour de calendrier
+    // réel ; remplie par l'éditeur seul, jamais devinée (DATA_SCHEMA.md, règle 4).
+    // Validateur Python : tools/date_sortie.py (il y ajoute l'horizon de 3 ans).
+    releaseDate: z.iso.date().optional(),
     recommendedBy: z.string().optional(), // Kyan / Navo / invité…
     quote: z.string().optional(), // citation ou contexte dans l'épisode
     timestamp: z.string().optional(), // ex: "01:12:30"
