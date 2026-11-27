@@ -274,7 +274,9 @@ def message_trouvaille(doc: dict[str, Any], labels: list[str], lien_pr: str) -> 
     return (f"🗓️ « {doc['title']} » : {trouves} après sa sortie du {_jj_mm(doc)} "
             f"({', '.join(labels)}). À relire : {lien_pr}\n"
             "La PR ne change que la reco : l'œuvre et les recos sœurs ne suivent pas, et il reste "
-            "à ajouter l'œuvre aux playlists de l'épisode.")
+            "à ajouter l'œuvre aux playlists de l'épisode.\n"
+            "Si la PR est refermée sans fusion, il faut supprimer sa branche : sinon la relance la "
+            "croit encore ouverte (tour 2 de revue, PR #227).")
 
 
 def message_sablier(doc: dict[str, Any]) -> str:

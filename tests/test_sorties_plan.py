@@ -329,6 +329,12 @@ def test_le_message_de_trouvaille_donne_les_liens_la_pr_et_le_rappel_des_playlis
     assert "playlists" in m and "œuvre" in m and "recos sœurs" in m
 
 
+def test_le_message_de_trouvaille_dit_de_supprimer_la_branche_d_une_pr_refermee():
+    # Sans jeton GitHub, la relance ne voit pas la fermeture : seule la branche supprimée la prévient.
+    m = sp.message_trouvaille(reco(), ["Deezer"], "lien")
+    assert "refermée sans fusion" in m and "supprimer sa branche" in m
+
+
 def test_le_message_de_trouvaille_au_singulier():
     m = sp.message_trouvaille(reco(), ["Deezer"], "lien")
     assert "1 lien trouvé après" in m and "liens" not in m.split("playlists")[0]
