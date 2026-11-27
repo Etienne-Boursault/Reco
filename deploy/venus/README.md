@@ -107,6 +107,47 @@ Le créer sur GitHub → *Settings* → *Developer settings* → *Personal acces
 **Pull requests : Read and write**. Puis l'ajouter au `.env` : `RECO_GITHUB_TOKEN=…`.
 Aucune autre permission n'est nécessaire : la poussée passe par la clé, pas par le jeton.
 
+## Relancer la recherche de liens à la sortie d'une œuvre : `RECO_SORTIES_ANNONCEES=1`
+
+Décision « R4 B », 27/11/2026. Quand l'éditeur note une **date de sortie annoncée**
+(`releaseDate`) sur une reco, par exemple un album pas encore publié, les liens d'écoute
+n'existent pas encore au moment de la publication. L'étape `tools/sorties_annoncees.py`
+les cherche donc après coup, sans que personne y pense.
+
+- **Quand** : une fois par jour, au premier passage de `tick.sh` après 6 h à Paris, du jour
+  de la sortie à J+30. Inerte sans `RECO_SORTIES_ANNONCEES=1` dans le `.env` : la
+  retirer la coupe au passage suivant, sans commit. L'état (jours traités, relances,
+  propositions) est dans `tools/output/pipeline/sorties-annoncees.json`.
+- **Comment** : les passes de recherche tournent sur une **copie d'`origin/main`**, dans un
+  dossier à part (`tools/branche_de_contenu.py`). Le clone vivant n'est jamais écrit, ni son
+  `HEAD`, ni son index : la page de validation peut rester ouverte, et un fichier que
+  l'éditeur vient de sauvegarder ne risque rien. C'est la seconde façon de pousser, à côté
+  de `publication.py` (qui, lui, commite dans le clone). Même clé de dépôt, même jeton
+  `RECO_GITHUB_TOKEN` (sans lui, le message porte le lien de comparaison).
+- **Ce que voit l'éditeur** :
+  - une PR `contenu/sorties-AAAA-MM-JJ` (`-2`, `-3`… si le nom est pris), une seule par jour
+    pour toutes les recos, qu'il n'a qu'à fusionner ;
+  - un message Matrix 🗓️ « liens trouvés après sa sortie du … » par reco ;
+  - un message ⏳ « sortie annoncée, aucun lien trouvé en … » quand la recherche a déjà été
+    faite, sans résultat (une seule fois par reco) ;
+  - un message ⚠️ quand une reco est sautée parce que l'éditeur l'a modifiée dans le clone
+    (sa PR de liens ferait échouer le `pull`), quand une passe tombe en panne, ou quand la
+    publication échoue. Chaque panne n'est signalée qu'une fois.
+- **Ce qu'elle ne refait jamais** : un lien retiré à la relecture (`linksRejected`) ne revient
+  pas, et une adresse déjà proposée par une PR, même refermée, n'est pas reproposée. Tant
+  qu'une PR de liens attend sa fusion, la reco est sautée.
+- **Limites de la V1** :
+  - seuls les types `album`, `musique`, `livre` et `jeu` sont servis ; les **films et les
+    séries attendent** (leurs passes passent par TMDB, écartées exprès) ;
+  - la relance ne va pas plus loin que la reco : **l'œuvre** (`year`, alias) et **les recos
+    sœurs** de la même œuvre ne suivent pas, ni les playlists de l'épisode.
+- **Essai sans rien écrire** : `docker compose run --rm -T pipeline python
+  sorties_annoncees.py --apercu` affiche ce que l'étape ferait. Aucun état écrit, aucune
+  branche, rien d'envoyé ; il ignore la variable et l'heure.
+- **Code de sortie** : 0, ou 1 si l'état est illisible, si `git fetch` échoue (réessayé au
+  passage suivant) ou si la publication échoue ; `tick.sh` le journalise sans arrêter le
+  passage.
+
 ## Où sont les choses
 
 | Chemin sur venus | Rôle | Sauvegardé |
@@ -131,6 +172,7 @@ SPOTIFY_CLIENT_ID=…            # liens Spotify ; absents, le rapport dit « no
 SPOTIFY_CLIENT_SECRET=…
 RECO_SPOTIFY=0                 # sans Premium, l'API répond 403 : liens posés à la publication (docs/reseaux-episode.md)
 RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le message porte le lien de comparaison
+RECO_SORTIES_ANNONCEES=1       # relance quotidienne des liens à la sortie annoncée ; absent, l'étape ne fait rien
 RECO_KUMA_PUSH_URL=…           # moniteur « push » Uptime Kuma ; absent, aucun ping n'est envoyé
 ```
 

@@ -26,6 +26,11 @@ Trois contraintes ont dicté la forme :
 La finalisation garde ses passes : elles ne cherchent plus que les plateformes
 encore absentes, et servent de filet pour une reco ajoutée ou retitrée pendant
 la relecture.
+
+Relance après la publication (R4 B, 27/11/2026) : pour une reco à date de sortie
+annoncée (`releaseDate`), `sorties_annoncees.py` reprend ces passes chaque jour, de la
+sortie à J+30. Il importe d'ici `_travailler_sur_copie`, `_passes_par_defaut` et `_urls` :
+les renommer casse cette étape.
 """
 from __future__ import annotations
 
