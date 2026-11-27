@@ -90,7 +90,10 @@ export function estSignal(ligne: object): ligne is Signal {
 function visiteursConfirmes(visites: LigneVisite[], signaux: Signal[]): Set<string> {
   const pages = new Map<string, LigneVisite[]>();
   for (const v of visites) {
-    if (v.visiteur) pages.set(v.visiteur, [...(pages.get(v.visiteur) ?? []), v]);
+    if (!v.visiteur) continue;
+    const liste = pages.get(v.visiteur);
+    if (liste) liste.push(v);
+    else pages.set(v.visiteur, [v]);
   }
   const confirmes = new Set<string>();
   for (const s of signaux) {

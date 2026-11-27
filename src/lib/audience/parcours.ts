@@ -117,7 +117,9 @@ export function compterJour(
   const parVisiteur = new Map<string, Signal[]>();
   for (const s of signaux) {
     if (s.visiteur && confirmes.has(s.visiteur)) {
-      parVisiteur.set(s.visiteur, [...(parVisiteur.get(s.visiteur) ?? []), s]);
+      const liste = parVisiteur.get(s.visiteur);
+      if (liste) liste.push(s);
+      else parVisiteur.set(s.visiteur, [s]);
     }
   }
   for (const liste of parVisiteur.values()) {
