@@ -280,3 +280,22 @@ export function evenementDeVisite({
     dureeMs: typeof dureeMs === 'number' ? Math.round(dureeMs) : null,
   };
 }
+
+/**
+ * La ligne d'un signal « page vue » (AU-1 A, 2026-11-27), reçu par `signal.mjs`.
+ *
+ * Même règle qu'une visite : tout ce qui entre est brut, tout ce qui sort est
+ * catégorisé. La ligne ne porte ni statut, ni agent, ni langue : un signal
+ * dit seulement « un navigateur a affiché cette page », avec l'empreinte du
+ * jour et l'indication d'hébergeur de l'adresse.
+ */
+export function evenementDeSignal({ chemin, ip = null, sel = null, maintenant = new Date() }) {
+  const jour = maintenant.toISOString().slice(0, 10);
+  return {
+    ts: heureRonde(maintenant),
+    nature: 'signal',
+    chemin: cheminSeul(chemin),
+    hebergeur: heberge(ip),
+    visiteur: empreinteDuJour(ip, sel, jour),
+  };
+}

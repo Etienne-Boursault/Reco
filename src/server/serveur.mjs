@@ -11,6 +11,7 @@ import http from 'node:http';
 import { join } from 'node:path';
 
 import { hoteDe, mesurerVisite, sourcesDe } from '../lib/audience/mesure.mjs';
+import { creerSignal } from '../lib/audience/signal.mjs';
 import { envelopper } from './compression.mjs';
 import { METHODES_STATIQUES, fichierPour, servirFichier } from './fichiers.mjs';
 import { chargerRedirections, rediriger } from './redirections.mjs';
@@ -18,6 +19,9 @@ import { chargerRedirections, rediriger } from './redirections.mjs';
 /** Le domaine public et les sources connues — voir `lib/audience/mesure.mjs`. */
 const HOTE_DU_SITE = hoteDe(process.env.SITE_URL);
 const SOURCES_CONNUES = sourcesDe(process.env.RECO_SOURCES);
+
+/** Le gestionnaire de `POST /api/vue` : une seule table de limitation pour tout le processus. */
+const SIGNALER_VUE = creerSignal({ sourcesConnues: SOURCES_CONNUES });
 
 /**
  * Traite une requête : fichier construit si l'URL en désigne un, sinon Astro.
@@ -27,7 +31,7 @@ const SOURCES_CONNUES = sourcesDe(process.env.RECO_SOURCES);
  * route à la demande ne doit jamais masquer un fichier réellement construit.
  */
 export function traiter(handler, racine, req, res, mesurer = mesurerVisite,
-  redirections = new Map()) {
+  redirections = new Map(), signaler = SIGNALER_VUE) {
   // La mesure se pose AVANT tout aiguillage, pour couvrir aussi bien une page
   // servie depuis le disque qu'une route à la demande ou un 404. Elle
   // n'écrit rien tout de suite : elle s'abonne à la fin de la réponse, quand
@@ -35,6 +39,11 @@ export function traiter(handler, racine, req, res, mesurer = mesurerVisite,
   //
   // Injectable pour que les tests du serveur n'écrivent pas sur le disque.
   mesurer?.(req, res, { hoteDuSite: HOTE_DU_SITE, sourcesConnues: SOURCES_CONNUES });
+
+  // Le signal « page vue » (AU-1 A, 2026-11-27) se traite ici, en Node, et non
+  // dans Astro : il doit partager l'empreinte du jour des visites. Toute
+  // méthode y va, le gestionnaire répond 405 aux autres.
+  if ((req.url || '').split('?')[0] === '/api/vue') return signaler(req, res);
 
   // Une fiche fusionnée n'a plus de page : son adresse renvoie au survivant.
   if (rediriger(redirections, req, res)) return undefined;
@@ -101,9 +110,9 @@ export function repondre404(res, racine, { lire = readFileSync } = {}) {
  * moment de l'appel finit toujours par pointer sur le vrai dossier.
  */
 export function creerServeur(handler, racine, mesurer = mesurerVisite,
-  redirections = chargerRedirections()) {
+  redirections = chargerRedirections(), signaler = SIGNALER_VUE) {
   return http.createServer(
-    (req, res) => traiter(handler, racine, req, res, mesurer, redirections));
+    (req, res) => traiter(handler, racine, req, res, mesurer, redirections, signaler));
 }
 
 /**

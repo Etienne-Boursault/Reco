@@ -148,6 +148,51 @@ describe('traiter — qui répond ?', () => {
   });
 });
 
+describe('/api/vue : aiguillage du signal (AU-1 A)', () => {
+  /** Monte un serveur dont le signal est une doublure qui note ce qu'elle reçoit. */
+  async function monterAvecSignal() {
+    const appels: Appels = { recu: [] };
+    const signaux: string[] = [];
+    const signaler = (req: any, res: any) => {
+      signaux.push(`${req.method} ${req.url}`);
+      res.writeHead(204);
+      res.end();
+    };
+    const serveur = creerServeur(fauxHandler(appels, 'page'), racine, sansMesure, undefined, signaler);
+    const { port, arreter } = await demarrer(serveur);
+    arreterCourant = arreter;
+    return { port, appels, signaux };
+  }
+
+  it('POST /api/vue va au signal, jamais au gestionnaire Astro', async () => {
+    const { port, appels, signaux } = await monterAvecSignal();
+    const r = await demander(port, '/api/vue', { methode: 'POST' });
+    expect(r.statut).toBe(204);
+    expect(signaux).toEqual(['POST /api/vue']);
+    expect(appels.recu).toEqual([]);
+  });
+
+  it('la chaîne de requête ne détourne pas l’aiguillage ; toute méthode atteint le signal (qui répond 405)', async () => {
+    const { port, signaux } = await monterAvecSignal();
+    await demander(port, '/api/vue?x=1', { methode: 'GET' });
+    expect(signaux).toEqual(['GET /api/vue?x=1']);
+  });
+
+  it('une autre route /api/ reste au gestionnaire', async () => {
+    const { port, appels, signaux } = await monterAvecSignal();
+    await demander(port, '/api/vue-autre', { methode: 'POST' });
+    expect(signaux).toEqual([]);
+    expect(appels.recu).toEqual(['POST /api/vue-autre']);
+  });
+
+  it('sans signaleur injecté, le vrai gère /api/vue : sans Origin, 403', async () => {
+    const { port, appels } = await monter('page');
+    const r = await demander(port, '/api/vue', { methode: 'POST' });
+    expect(r.statut).toBe(403);
+    expect(appels.recu).toEqual([]);
+  });
+});
+
 describe('fermerProprement', () => {
   it('ferme le serveur et sort avec 0 sur le signal', async () => {
     const ferme = vi.fn((rappel: () => void) => rappel());
