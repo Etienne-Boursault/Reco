@@ -29,8 +29,8 @@ Cloudflare (13335) est la sortie de WARP, Apple (714, 6185) celle d'iCloud
 Private Relay, Akamai (20940, 36183) et Fastly (54113) en portent d'autres.
 Mesuré le 2026-11-27 : la liste contient bien AS20940, AS36183 et AS54113. Les
 classer « hébergeur » ferait sortir des lecteurs réels du compte des visiteurs,
-sans que personne ne le voie. `ASN_EXCLUS` les retire ; `--relais-apple` retire
-en plus les plages publiées par Apple pour iCloud Private Relay
+sans que personne ne le voie. `ASN_EXCLUS` les retire ; `--relais-apple`, OBLIGATOIRE
+(le script refuse de construire sans, tour 1 de revue du 27/11), retire en plus les plages publiées par Apple pour iCloud Private Relay
 (https://mask-api.icloud.com/egress-ip-ranges.csv), qui peuvent traîner dans
 d'autres ASN.
 
@@ -220,15 +220,20 @@ def main(argv: list[str] | None = None) -> int:
     parseur = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parseur.add_argument("--asn", type=Path, required=True, help="ASN.txt de X4BNet")
     parseur.add_argument("--dbip", type=Path, required=True, help="CSV.gz DB-IP IP to ASN")
-    parseur.add_argument("--relais-apple", type=Path, help="egress-ip-ranges.csv d'Apple")
+    parseur.add_argument(
+        "--relais-apple",
+        type=Path,
+        required=True,
+        help="egress-ip-ranges.csv d'Apple (obligatoire : R-8, sans lui des lecteurs réels "
+        "d'iCloud Private Relay seraient classés hébergeur)",
+    )
     parseur.add_argument("--edition", default=edition_courante(), help="AAAA-MM")
     parseur.add_argument("--sortie", type=Path, default=SORTIE)
     args = parseur.parse_args(argv)
 
     v4, v6 = lire_plages(args.dbip, asn_retenus(args.asn))
-    if args.relais_apple is not None:
-        relais4, relais6 = lire_relais(args.relais_apple)
-        v4, v6 = soustraire(v4, relais4), soustraire(v6, relais6)
+    relais4, relais6 = lire_relais(args.relais_apple)
+    v4, v6 = soustraire(v4, relais4), soustraire(v6, relais6)
     if not v4 or not v6:
         raise SystemExit("[table-hebergeurs] sources illisibles ou vides : rien écrit")
 

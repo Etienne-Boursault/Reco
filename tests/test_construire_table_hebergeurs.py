@@ -75,7 +75,10 @@ def _ip4(texte: str) -> int:
 def sources(tmp_path):
     asn = tmp_path / "ASN.txt"
     asn.write_text(ASN_TXT, encoding="utf-8")
-    return asn, _ecrire_dbip(tmp_path / "dbip.csv.gz")
+    relais = tmp_path / "egress.csv"
+    # Une plage qui ne touche aucune des sources : l'option est obligatoire, pas son effet.
+    relais.write_text("192.0.2.0/24,GB,,,\n", encoding="utf-8")
+    return asn, _ecrire_dbip(tmp_path / "dbip.csv.gz"), relais
 
 
 def _decoder(brut: bytes):
@@ -235,7 +238,16 @@ def test_encoder_ecrit_le_format_recoheb1():
 
 
 def test_main_ecrit_une_table_reproductible(sources, tmp_path):
-    argv = ["--asn", str(sources[0]), "--dbip", str(sources[1]), "--edition", "2026-11"]
+    argv = [
+        "--asn",
+        str(sources[0]),
+        "--dbip",
+        str(sources[1]),
+        "--relais-apple",
+        str(sources[2]),
+        "--edition",
+        "2026-11",
+    ]
     a, b = tmp_path / "a.bin.gz", tmp_path / "b.bin.gz"
     assert cth.main([*argv, "--sortie", str(a)]) == 0
     assert cth.main([*argv, "--sortie", str(b)]) == 0
@@ -250,9 +262,31 @@ def test_main_refuse_une_source_sans_plage(tmp_path):
     asn = tmp_path / "ASN.txt"
     asn.write_text("AS13335 # Cloudflare\n", encoding="utf-8")
     dbip = _ecrire_dbip(tmp_path / "x.csv.gz")
+    relais = tmp_path / "egress.csv"
+    relais.write_text("192.0.2.0/24,GB,,,\n", encoding="utf-8")
     with pytest.raises(SystemExit):
-        cth.main(["--asn", str(asn), "--dbip", str(dbip), "--sortie", str(tmp_path / "s")])
+        cth.main(
+            [
+                "--asn",
+                str(asn),
+                "--dbip",
+                str(dbip),
+                "--relais-apple",
+                str(relais),
+                "--sortie",
+                str(tmp_path / "s"),
+            ]
+        )
     assert not (tmp_path / "s").exists()
+
+
+def test_main_refuse_de_construire_sans_les_relais_d_apple(sources, tmp_path):
+    # R-8 : sans les plages d'iCloud Private Relay, de vrais lecteurs seraient classés « hébergeur ».
+    sortie = tmp_path / "s"
+    with pytest.raises(SystemExit) as erreur:
+        cth.main(["--asn", str(sources[0]), "--dbip", str(sources[1]), "--sortie", str(sortie)])
+    assert erreur.value.code == 2
+    assert not sortie.exists()
 
 
 def test_edition_par_defaut_est_le_mois_courant():
