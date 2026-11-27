@@ -308,11 +308,11 @@ def test_une_annee_qui_ne_venait_pas_de_la_date_n_est_jamais_touchee(reco_libre)
     assert reco["year"] == 1999
 
 
-def test_l_annee_deduite_part_avec_la_date(reco_libre):
+def test_une_annee_posee_avant_la_date_reste_quand_la_date_est_retiree(reco_libre):
     reco = _lire(reco_libre)
     reco.update(releaseDate="2026-12-04", year=2026)
     assert appliquer_sortie(reco, {"releaseDate": [""]}, reco_libre, MAINTENANT) is None
-    assert "releaseDate" not in reco and "year" not in reco
+    assert "releaseDate" not in reco and reco["year"] == 2026
 
 
 def test_une_annee_etrangere_reste_quand_la_date_disparait(reco_libre):
@@ -328,7 +328,7 @@ def test_un_type_qui_n_est_plus_servi_fait_retirer_la_date(reco_libre):
     reco.update(types=["film"], releaseDate="2026-12-04", year=2026)
     msg = appliquer_sortie(reco, {}, reco_libre, MAINTENANT)
     assert msg == "date de sortie retirée : type non servi"
-    assert "releaseDate" not in reco and "year" not in reco
+    assert "releaseDate" not in reco and reco["year"] == 2026
 
 
 def test_un_type_non_servi_sans_date_ne_dit_rien(reco_libre):

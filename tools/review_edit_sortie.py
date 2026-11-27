@@ -55,11 +55,9 @@ def _annee_de_la_date(reco: dict) -> int | None:
 
 
 def _retirer_la_date(reco: dict) -> None:
-    """Retire `releaseDate` et l'année qu'elle avait donnée ; une autre année n'est pas touchée."""
-    annee = _annee_de_la_date(reco)
+    """Retire `releaseDate` sans toucher à `year` : l'année a pu être posée avant la date
+    (éditeur, enrichissement), rien ne dit qu'elle en venait (tour 2 de revue, PR #227)."""
     reco.pop("releaseDate", None)
-    if annee is not None and reco.get("year") == annee:
-        del reco["year"]
 
 
 def appliquer_sortie(reco: dict, data: dict, chemin: Path,
@@ -68,9 +66,9 @@ def appliquer_sortie(reco: dict, data: dict, chemin: Path,
 
     `maintenant` est l'horloge injectée (aware) ; sans elle, l'instant présent. Le jour
     retenu est celui de Paris. `year` suit la date quand il manque ou qu'il venait de
-    l'ancienne date (tour 1 de revue, PR #227) ; une autre année n'est jamais touchée.
-    Un type qui n'est plus servi fait retirer la date, même si le champ n'est plus au
-    formulaire.
+    l'ancienne date (tour 1 de revue, PR #227) ; une autre année n'est jamais touchée, et
+    `year` n'est jamais retiré avec la date (tour 2). Un type qui n'est plus servi fait
+    retirer la date, même si le champ n'est plus au formulaire.
     """
     if reco.get("releaseDate") and not type_servi(reco.get("types") or []):
         _retirer_la_date(reco)
