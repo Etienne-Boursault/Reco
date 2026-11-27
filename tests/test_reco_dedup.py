@@ -187,6 +187,65 @@ def test_cluster_separates_reco_from_citation():
     assert clusters == []
 
 
+def test_cluster_separe_deux_oeuvres_de_types_et_createurs_differents():
+    # S6-E11 (27/11) : l'album « Karma » de Bigflo & Oli et le film « Karma »
+    # de Guillaume Canet, cités à 11 s d'écart, sont deux œuvres distinctes.
+    recos = [
+        _r("ubm-1", "Karma", ts="00:00:26", types=["album"], creator="Bigflo & Oli"),
+        _r("ubm-2", "Karma", ts="00:00:37", types=["film"], creator="Guillaume Canet"),
+    ]
+    assert cluster_recos(recos) == []
+
+
+@pytest.mark.parametrize("a, b", [
+    # Même type : sans doute la même œuvre, créateur mal entendu par une passe.
+    ({"types": ["film"], "creator": "Guillaume Canet"},
+     {"types": ["film"], "creator": "Guillaume Canné"}),
+    # Types en partie communs.
+    ({"types": ["album", "film"], "creator": "Bigflo & Oli"},
+     {"types": ["film"], "creator": "Guillaume Canet"}),
+    # Même créateur, à la casse et aux accents près : type mal choisi par une passe.
+    ({"types": ["livre"], "creator": "Éric Judor"},
+     {"types": ["film"], "creator": "eric judor"}),
+    # Un créateur manquant : rien ne prouve que ce sont deux œuvres.
+    ({"types": ["album"], "creator": "Bigflo & Oli"}, {"types": ["film"]}),
+    # Types manquants.
+    ({"creator": "Bigflo & Oli"}, {"types": ["film"], "creator": "Guillaume Canet"}),
+    # « autre » veut dire « aucun type choisi » : ce n'est pas une preuve.
+    ({"types": ["autre"], "creator": "Frédéric Garcia"},
+     {"types": ["serie"], "creator": "Frédéric Garsia"}),
+    # Types proches : une passe hésite entre eux pour une même œuvre.
+    ({"types": ["musique"], "creator": "Bigflo & Oli"},
+     {"types": ["album"], "creator": "Orelsan"}),
+    ({"types": ["film"], "creator": "Guillaume Canet"},
+     {"types": ["serie"], "creator": "Brad Ingelsby"}),
+    ({"types": ["livre"], "creator": "Riad Sattouf"},
+     {"types": ["bd"], "creator": "Jul"}),
+    # Graphies d'un même créateur.
+    ({"types": ["album"], "creator": "Bigflo & Oli"},
+     {"types": ["film"], "creator": "Bigflo et Oli"}),
+    ({"types": ["album"], "creator": "Orelsan"},
+     {"types": ["film"], "creator": "Orelsan feat. Stromae"}),
+    ({"types": ["album"], "creator": "Guillaume Canet"},
+     {"types": ["film"], "creator": "Guillaume Canné"}),
+])
+def test_cluster_garde_le_doublon_sans_preuve_de_deux_oeuvres(a, b):
+    recos = [_r("ubm-1", "Karma", **a), _r("ubm-2", "Karma", **b)]
+    assert len(cluster_recos(recos)) == 1
+
+
+def test_cluster_une_troisieme_reco_ne_recolle_pas_deux_oeuvres_distinctes():
+    # Une troisième passe, sans créateur, ressemble aux deux : elle rejoint
+    # l'une des deux, jamais les deux à la fois.
+    album = _r("ubm-1", "Karma", ts="00:00:26", types=["album"], creator="Bigflo & Oli")
+    film = _r("ubm-2", "Karma", ts="00:00:37", types=["film"], creator="Guillaume Canet")
+    autre_passe = _r("ubm-3", "Karma", ts="00:00:30")
+    clusters = cluster_recos([album, film, autre_passe])
+    assert len(clusters) == 1
+    ids = {m["id"] for m in clusters[0].members}
+    assert ids == {"ubm-1", "ubm-3"}
+
+
 def test_cluster_separates_by_episode_guid():
     recos = [
         _r("ubm-1", "Mortel", guid="ep-1"),
