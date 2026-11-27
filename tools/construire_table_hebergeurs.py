@@ -30,7 +30,8 @@ Private Relay, Akamai (20940, 36183) et Fastly (54113) en portent d'autres.
 Mesuré le 2026-11-27 : la liste contient bien AS20940, AS36183 et AS54113. Les
 classer « hébergeur » ferait sortir des lecteurs réels du compte des visiteurs,
 sans que personne ne le voie. `ASN_EXCLUS` les retire ; `--relais-apple`, OBLIGATOIRE
-(le script refuse de construire sans, tour 1 de revue du 27/11), retire en plus les plages publiées par Apple pour iCloud Private Relay
+(le script refuse de construire sans, tour 1 de revue du 27/11), retire en plus les
+plages publiées par Apple pour iCloud Private Relay
 (https://mask-api.icloud.com/egress-ip-ranges.csv), qui peuvent traîner dans
 d'autres ASN.
 
