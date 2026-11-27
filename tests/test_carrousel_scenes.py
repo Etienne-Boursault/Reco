@@ -29,9 +29,18 @@ def test_chaque_mise_en_scene_a_son_cadre():
     assert "width: 660px" in cs.page_reco(R, 1, 2, IMG, "cadre")
     assert "#f6f4ee" in cs.page_reco(R, 1, 2, IMG, "tuile")
     photo = cs.page_reco(R, 1, 2, IMG, "photo")
-    assert "margin-top: -60px" in photo and "blur(" not in photo
+    assert "margin-top: -84px" in photo and "blur(" not in photo
     double = cs.page_reco(R, 1, 2, IMG + [("file:///b.jpg", "Autre")], "double")
     assert "file:///b.jpg" in double and double.count("width: 400px") == 2
+
+
+def test_le_titre_garde_la_place_de_ses_accents_dans_chaque_mise():
+    # S6-E11 (27/11) : sur une grande photo, le bloc du texte (overflow hidden)
+    # commençait au ras du titre et rognait les accents des capitales (MÔME).
+    for mise in ("affiche", "carre", "rond", "double", "photo", "cadre", "tuile", "sans"):
+        images = IMG + [("file:///b.jpg", "Autre")] if mise == "double" else IMG
+        page = cs.page_reco(R, 1, 2, images, mise)
+        assert "padding: 0 " not in page.split("data-bas", 1)[1].split(">", 1)[0], mise
 
 
 def test_page_sans_image_garde_le_rythme():
