@@ -29,6 +29,8 @@ export interface Visite {
   provenance: string | null;
   langue: string | null;
   pays: string | null;
+  /** Adresse d'un hébergeur ou d'un VPN (AU-1 A). Absent avant le 2026-11-27. */
+  hebergeur?: boolean;
   visiteur: string | null;
   dureeMs: number | null;
 }

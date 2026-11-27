@@ -24,6 +24,7 @@ import {
   estRobot,
   estUnePage,
   evenementDeVisite,
+  heberge,
   heureRonde,
   langue,
   pays,
@@ -206,6 +207,27 @@ describe('langue', () => {
   });
 });
 
+// ===== L'hébergeur =========================================================
+describe('heberge', () => {
+  it('interroge la table pour une adresse', () => {
+    // AU-1 A (2026-11-27) : un booléen, jamais l'adresse elle-même.
+    expect(heberge('8.8.8.8', { resoudre: () => true })).toBe(true);
+    expect(heberge('8.8.8.8', { resoudre: () => false })).toBe(false);
+  });
+
+  it('n’interroge pas la table sans adresse', () => {
+    let appels = 0;
+    const resoudre = () => { appels += 1; return true; };
+    expect(heberge(null, { resoudre })).toBe(false);
+    expect(appels).toBe(0);
+  });
+
+  it('lit la table embarquée par défaut', () => {
+    expect(heberge('2.28.0.1')).toBe(true); // Hetzner
+    expect(heberge('90.1.2.3')).toBe(false);
+  });
+});
+
 // ===== Le pays =============================================================
 describe('pays', () => {
   it('lit l’en-tête posé par un intermédiaire', () => {
@@ -340,6 +362,12 @@ describe('evenementDeVisite', () => {
     expect(serialise).not.toContain('utm_source');
   });
 
+  it('marque une adresse d’hébergeur sans la conserver', () => {
+    expect(evenement({ ip: '2.28.0.1' })).toMatchObject({ hebergeur: true });
+    expect(evenement()).toMatchObject({ hebergeur: false });
+    expect(JSON.stringify(evenement({ ip: '2.28.0.1' }))).not.toContain('2.28.0.1');
+  });
+
   it('n’a pas de champ de parcours', () => {
     // Écarté explicitement : une séquence de pages est plus identifiante que
     // leur somme.
@@ -363,6 +391,7 @@ describe('evenementDeVisite', () => {
     const e = evenementDeVisite({ chemin: '/', maintenant: new Date('2026-08-25T00:00:00Z') });
     expect(e.provenance).toBeNull();
     expect(e.pays).toBeNull();
+    expect(e.hebergeur).toBe(false);
     expect(e.visiteur).toBeNull();
     expect(e.dureeMs).toBeNull();
     expect(e.langue).toBeNull();

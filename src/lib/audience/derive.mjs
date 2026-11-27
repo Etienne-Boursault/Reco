@@ -24,6 +24,18 @@
  * bien plus identifiant que leur somme, pour un gain faible — arbitrage de
  * l'éditeur, 2026-08-25.
  *
+ * ARBITRAGE EN COURS DE CHANGEMENT (AU-2 B, 2026-11-27) : l'éditeur a décidé
+ * de garder dans le navigateur un identifiant de mesure (13 mois, refusable,
+ * qui ne le quitte jamais ; seuls des oui/non accompagnent le signal). Cette
+ * décision remplace celle du 2026-08-25, mais elle n'est pas encore codée :
+ * ce module n'écrit toujours aucun identifiant de parcours.
+ *
+ * L'HÉBERGEUR (AU-1 A, 2026-11-27)
+ * --------------------------------
+ * Chaque ligne porte un booléen `hebergeur` : l'adresse est-elle celle d'un
+ * centre de données ou d'un VPN ? Il sert à séparer les robots des visiteurs.
+ * Lu dans une table embarquée (`hebergeurs.mjs`), l'adresse n'est pas écrite.
+ *
  * Pas de poids de réponse non plus. `server.mjs` compresse, et la compression
  * retire `Content-Length` — il annonçait la taille EN CLAIR. Le champ aurait
  * donc été vide pour toutes les pages HTML, c'est-à-dire précisément celles
@@ -34,6 +46,7 @@
  */
 import { createHash } from 'node:crypto';
 import { paysDeIP } from './geoip.mjs';
+import { estHebergeur } from './hebergeurs.mjs';
 
 /**
  * Ce qui n'est pas une page : on ne compte pas les feuilles de style.
@@ -204,6 +217,11 @@ export function pays(entetes, ip = null, { resoudre = paysDeIP } = {}) {
   return ip ? resoudre(ip) : null;
 }
 
+/** L'adresse appartient-elle à un hébergeur ? Faux sans adresse. */
+export function heberge(ip, { resoudre = estHebergeur } = {}) {
+  return ip ? resoudre(ip) : false;
+}
+
 /**
  * Un identifiant de visiteur qui ne survit pas à la journée.
  *
@@ -257,6 +275,7 @@ export function evenementDeVisite({
     provenance: provenance(entetes.referer, hoteDuSite),
     langue: langue(entetes['accept-language']),
     pays: pays(entetes, ip),
+    hebergeur: heberge(ip),
     visiteur: empreinteDuJour(ip, sel, jour),
     dureeMs: typeof dureeMs === 'number' ? Math.round(dureeMs) : null,
   };
