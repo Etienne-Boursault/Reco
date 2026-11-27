@@ -1,0 +1,82 @@
+---
+/**
+ * GrapheJours.astro : les deux graphes par jour de `/audience`, les visiteurs
+ * puis les robots.
+ *
+ * Extrait de `src/routes/audience.astro` le 27/11/2026, sans changement, pour
+ * libérer de la place à la PR d'audience (AU-1 A / AU-2 B) : la page touchait
+ * le plafond de 500 lignes.
+ *
+ * Les styles (`.graphe`, `.barres`, `.barre`, `.axe`, `.legende`) sont restés
+ * dans le `<style is:inline>` de la page, qui est autonome et sans portée :
+ * le composant n'en a pas, pour que le HTML rendu soit identique à l'avant.
+ */
+import type { Agregat } from '../../lib/audience/agregat';
+
+interface Props {
+  jours: Agregat['jours'];
+}
+const { jours } = Astro.props;
+
+const maxVisiteurs = Math.max(1, ...jours.map((j) => j.visiteurs));
+const maxRobots = Math.max(1, ...jours.map((j) => j.robots));
+
+/** La hauteur d'une barre, en pourcentage du maximum du jeu. */
+function hauteur(valeur: number, max: number): number {
+  if (max <= 0) return 0;
+  return Math.max(2, Math.round((valeur / max) * 100));
+}
+
+/** Un jour au format court, pour l'axe du graphique. */
+function jourCourt(iso: string): string {
+  const [, m, d] = iso.split('-');
+  return `${d}/${m}`;
+}
+---
+
+<section class="graphe">
+  {/* Les visiteurs, et non les pages : une page vue de plus ne dit pas
+      qu'une personne de plus est venue, et les robots, souvent dix fois
+      plus nombreux, écrasaient l'échelle. Le détail reste au survol. */}
+  <h2>Visiteurs par jour</h2>
+  <div class="barres">
+    {jours.map((j) => (
+      <div class="barre" title={`${j.jour} — ${j.visiteurs} visiteurs, ${j.pages} pages vues, ${j.robots} passages de robots`}>
+        <span class="nombre">{j.visiteurs || ''}</span>
+        <i style={`height:${hauteur(j.visiteurs, maxVisiteurs)}%`}></i>
+      </div>
+    ))}
+  </div>
+  <div class="axe">
+    <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
+    <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
+  </div>
+  <p class="legende">
+    Personnes distinctes ayant ouvert au moins une page dans la journée,
+    hors robots et hors erreurs. Les pages préchargées au survol d’un
+    lien ne comptent pas comme vues.
+  </p>
+</section>
+
+<section class="graphe">
+  {/* À part, sur sa propre échelle : empilés avec les visiteurs, les
+      robots les écrasaient. */}
+  <h2>Passages de robots par jour</h2>
+  <div class="barres robots">
+    {jours.map((j) => (
+      <div class="barre" title={`${j.jour} — ${j.robots} passages de robots`}>
+        <span class="nombre">{j.robots || ''}</span>
+        <i style={`height:${hauteur(j.robots, maxRobots)}%`}></i>
+      </div>
+    ))}
+  </div>
+  <div class="axe">
+    <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
+    <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
+  </div>
+  <p class="legende">
+    Requêtes qui se déclarent robots (moteurs, aperçus de liens,
+    aspirateurs), et celles qui se disent navigateurs sans annoncer de
+    langue — ce qu’un vrai navigateur fait toujours.
+  </p>
+</section>

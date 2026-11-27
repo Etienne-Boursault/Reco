@@ -29,6 +29,7 @@ import { acces } from '../lib/audience/acces.mjs';
 import { agreger, sourcesDisponibles } from '../lib/audience/agregat';
 import { editionTable } from '../lib/audience/geoip.mjs';
 import { nbJoursDemande, perimetreDemande } from '../lib/audience/vue';
+import GrapheJours from '../components/audience/GrapheJours.astro';
 import type { Agregat, Compte } from '../lib/audience/agregat';
 
 const decision = acces(Astro.url.searchParams.get('cle'));
@@ -88,22 +89,7 @@ Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
 const nf = new Intl.NumberFormat('fr-FR');
 const fmt = (n: number) => nf.format(n);
 
-/** La hauteur d'une barre, en pourcentage du maximum du jeu. */
-function hauteur(valeur: number, max: number): number {
-  if (max <= 0) return 0;
-  return Math.max(2, Math.round((valeur / max) * 100));
-}
-
-const jours = donnees?.jours ?? [];
-const maxVisiteurs = Math.max(1, ...jours.map((j) => j.visiteurs));
-const maxRobots = Math.max(1, ...jours.map((j) => j.robots));
 const aucuneDonnee = !erreur && (donnees?.jours.length ?? 0) === 0;
-
-/** Un jour au format court, pour l'axe du graphique. */
-function jourCourt(iso: string): string {
-  const [, m, d] = iso.split('-');
-  return `${d}/${m}`;
-}
 
 const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[] = donnees
   ? [
@@ -354,52 +340,7 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
           </div>
         )}
 
-        <section class="graphe">
-          {/* Les visiteurs, et non les pages : une page vue de plus ne dit pas
-              qu'une personne de plus est venue, et les robots, souvent dix fois
-              plus nombreux, écrasaient l'échelle. Le détail reste au survol. */}
-          <h2>Visiteurs par jour</h2>
-          <div class="barres">
-            {jours.map((j) => (
-              <div class="barre" title={`${j.jour} — ${j.visiteurs} visiteurs, ${j.pages} pages vues, ${j.robots} passages de robots`}>
-                <span class="nombre">{j.visiteurs || ''}</span>
-                <i style={`height:${hauteur(j.visiteurs, maxVisiteurs)}%`}></i>
-              </div>
-            ))}
-          </div>
-          <div class="axe">
-            <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
-            <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
-          </div>
-          <p class="legende">
-            Personnes distinctes ayant ouvert au moins une page dans la journée,
-            hors robots et hors erreurs. Les pages préchargées au survol d’un
-            lien ne comptent pas comme vues.
-          </p>
-        </section>
-
-        <section class="graphe">
-          {/* À part, sur sa propre échelle : empilés avec les visiteurs, les
-              robots les écrasaient. */}
-          <h2>Passages de robots par jour</h2>
-          <div class="barres robots">
-            {jours.map((j) => (
-              <div class="barre" title={`${j.jour} — ${j.robots} passages de robots`}>
-                <span class="nombre">{j.robots || ''}</span>
-                <i style={`height:${hauteur(j.robots, maxRobots)}%`}></i>
-              </div>
-            ))}
-          </div>
-          <div class="axe">
-            <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
-            <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
-          </div>
-          <p class="legende">
-            Requêtes qui se déclarent robots (moteurs, aperçus de liens,
-            aspirateurs), et celles qui se disent navigateurs sans annoncer de
-            langue — ce qu’un vrai navigateur fait toujours.
-          </p>
-        </section>
+        <GrapheJours jours={donnees.jours} />
 
         {donnees.paysIndisponible && (
           <div class="avis">

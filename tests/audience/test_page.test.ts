@@ -69,11 +69,17 @@ async function corpsAvecMesures(
       if (!contenu.length) continue;
       const dossier = path.join(racine, 'tools', 'output', genre, 'un-bon-moment');
       mkdirSync(dossier, { recursive: true });
-      writeFileSync(
-        path.join(dossier, `${JOUR}.jsonl`),
-        contenu.map((l) => `${JSON.stringify(l)}\n`).join(''),
-        'utf8',
-      );
+      // Un fichier par jour, comme la mesure : le jour d'une ligne est son `ts`.
+      for (const jour of new Set(contenu.map((l) => String(l.ts).slice(0, 10)))) {
+        writeFileSync(
+          path.join(dossier, `${jour}.jsonl`),
+          contenu
+            .filter((l) => String(l.ts).startsWith(jour))
+            .map((l) => `${JSON.stringify(l)}\n`)
+            .join(''),
+          'utf8',
+        );
+      }
     }
     process.chdir(racine);
     return await corps(query);
@@ -269,5 +275,41 @@ describe('?entetes=1', () => {
 
   it('reste absent sans le paramètre', async () => {
     expect(await corps(`?cle=${CLE}`)).not.toContain('En-têtes reçus par le serveur');
+  });
+});
+
+// ===== Les graphes par jour ================================================
+describe('graphes par jour', () => {
+  it('rend les deux graphes tels qu’avant leur extraction dans GrapheJours', async () => {
+    // Garde de l'extraction E0 (27/11/2026) : le HTML des deux sections
+    // « graphe » est enregistré en instantané, avec les dates rendues neutres
+    // (les mesures datent d'hier) et l'attribut de portée d'Astro retiré.
+    const hier = JOUR;
+    const avantHier = new Date(Date.parse(JOUR) - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const html = await corpsAvecMesures({
+      audience: [
+        VISITE,
+        { ...VISITE, visiteur: 'bbbbbbbbbbbb', chemin: '/un-bon-moment/series' },
+        { ...VISITE, robot: true },
+        { ...VISITE, robot: true, visiteur: null },
+        { ...VISITE, ts: `${avantHier}T09:00:00.000Z` },
+      ],
+    });
+    const sections = html.match(/<section class="graphe">[\s\S]*?<\/section>/g) ?? [];
+    const [aaaa, mm, jj] = hier.split('-');
+    const [, mmAvant, jjAvant] = avantHier.split('-');
+
+    expect(sections).toHaveLength(2);
+    expect(
+      sections
+        .join('\n')
+        .replace(/ data-astro-cid-\w+/g, '')
+        // L'indentation du texte change avec l'emplacement du source ; le navigateur la replie.
+        .replace(/\s+/g, ' ')
+        .replaceAll(`${aaaa}-${mm}-${jj}`, 'JOUR-1')
+        .replaceAll(avantHier, 'JOUR-2')
+        .replaceAll(`${jj}/${mm}`, 'JJ1/MM1')
+        .replaceAll(`${jjAvant}/${mmAvant}`, 'JJ2/MM2'),
+    ).toMatchSnapshot();
   });
 });
