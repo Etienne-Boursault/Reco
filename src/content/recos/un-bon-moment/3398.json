@@ -8,9 +8,8 @@
   },
   "episodeGuid": "yt-DNoUz4FJ_Z8",
   "externalIds": {
-    "tmdb": "660006",
-    "tmdbType": "movie",
-    "watchPage": "https://www.themoviedb.org/movie/660006-madame-claude/watch?locale=FR"
+    "tmdb": "1568223",
+    "tmdbType": "movie"
   },
   "extractionHistory": [
     {
@@ -26,20 +25,27 @@
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-3398",
   "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
-      "kind": "streaming",
-      "label": "Netflix",
-      "url": "https://www.netflix.com/title/81381634"
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt39328361/"
     },
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "AlloCiné",
-      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=273915.html"
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1568223"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "UGC — séances",
+      "url": "https://www.ugc.fr/film_claude_18038.html"
     }
   ],
   "quote": "Puisque je viens de jouer avec André Dussollier dans « Claude » qui sort le 2 décembre.",
@@ -52,11 +58,5 @@
   "types": [
     "film"
   ],
-  "watchProviders": [
-    {
-      "ethics": "neutral",
-      "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Claude"
-    }
-  ]
+  "year": 2026
 }

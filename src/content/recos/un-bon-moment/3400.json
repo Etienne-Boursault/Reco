@@ -25,6 +25,7 @@
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-3400",
   "kind": "reco",
   "links": [
@@ -56,5 +57,6 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
-  ]
+  ],
+  "year": 2026
 }
