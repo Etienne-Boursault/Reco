@@ -42,6 +42,7 @@ Provider = Literal["anthropic", "openai"]
 from dotenv import load_dotenv
 
 import extraction_mesures as _mesures
+import graphies
 import telemetry
 from common import (
     TOOLS_DIR,
@@ -732,8 +733,8 @@ def _persist_recos(source_id: str, guid: str,
         path = target_dir / f"{index:04d}.json"
         if write_json_if_changed(path, full):
             new_count += 1
-            log.info("  + NEW %s — « %s » (extractor=%s)",
-                     path.name, reco["title"], provider)
+            graphies.garder_brouillon(source_id, full)  # registre des graphies, R6 A (2026-11-27)
+            log.info("  + NEW %s — « %s » (extractor=%s)", path.name, reco["title"], provider)
         existing_map[key] = path
         index += 1
 

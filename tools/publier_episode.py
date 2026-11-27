@@ -43,6 +43,7 @@ from dataclasses import asdict, dataclass, field
 from typing import Any
 
 import common
+import graphies
 from common import log, read_json, recos_dir_for
 from domain.services.identity import generate_item_id
 from repository._base import write_json_idempotent
@@ -163,6 +164,8 @@ def preparer(source_id: str, guid: str, *, apply: bool = False) -> Plan:
         item_repo.upsert(item)
     for mention_id, payload in new_mentions:
         write_json_idempotent(mentions_dir / source_id / f"{mention_id}.json", payload)
+    # L'épisode est relu : ses graphies corrigées serviront aux suivants (R6 A, 2026-11-27).
+    graphies.noter_episode(source_id, guid, recos)
     return plan
 
 

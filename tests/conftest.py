@@ -154,6 +154,17 @@ def _telemetrie_coupee(monkeypatch):
     telemetry.reset_cache()
 
 
+@pytest.fixture(autouse=True)
+def _registre_des_graphies_isole(tmp_path, monkeypatch):
+    """Aucun test n'écrit dans le vrai registre des graphies (tools/output).
+
+    L'extraction et la publication l'alimentent (décision R6 A, 2026-11-27) :
+    sans ce détour, tout test qui les appelle écrirait des brouillons réels.
+    """
+    import graphies
+    monkeypatch.setattr(graphies, "_dossier", lambda: tmp_path / "graphies")
+
+
 @pytest.fixture
 def metrics_db(tmp_path, monkeypatch):
     """Télémétrie active sur une base temporaire ; rend son chemin."""

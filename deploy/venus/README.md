@@ -17,6 +17,14 @@ aucun portable ne soit allumé, venus :
    (ancien → nouveau) : la relecture tranche, en particulier quand c'est la fiche qui
    se trompe ou quand l'invité a dit le titre français.
 
+**Le registre des graphies** (décision R6 A du 2026-11-27, `tools/graphies.py`) : l'extraction
+garde le brouillon d'origine de chaque reco neuve, et la publication d'un épisode relu compare
+ce brouillon à la version validée. Chaque nom propre corrigé (« Hilleret » → « Hillairet ») entre
+au registre, `tools/output/graphies/registre.json`, hors de Git. Aux épisodes suivants, la page de
+validation affiche « Graphie déjà corrigée » dans l'encadré « À vérifier » quand la forme fautive
+revient. Elle ne fait que proposer : la correction reste à faire dans « Corriger ». Seules les
+recos extraites après la mise en service y entrent, et une reco écartée n'y entre pas.
+
 La relecture reste humaine : la page de validation est le serveur de relecture
 habituel, sur <http://192.168.1.59:8000> depuis le réseau local, ou
 <http://10.8.0.1:8000> par le VPN.
