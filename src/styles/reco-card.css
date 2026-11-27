@@ -183,6 +183,15 @@
     min-width: 0;
     overflow-wrap: break-word;
   }
+  /* Sortie annoncée (R4 B, 27/11/2026) : même gris que `.meta`, le contraste
+     du site est déjà éprouvé. Texte seul, aucune couleur de rappel. */
+  .sortie {
+    margin: 0;
+    padding-top: 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
   /* TEXTE COURANT, et non une rangée flex : en flex, « #8 » devenait un item
      à part entière et se retrouvait seul sur sa ligne dès que le nom du
      recommandeur était long. Le repli suit maintenant les mots. */

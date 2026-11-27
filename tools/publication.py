@@ -82,10 +82,11 @@ class Git:
     def __init__(self, racine: Path) -> None:
         self.racine = Path(racine)
 
-    def _git(self, *args: str, verifier: bool = True) -> str:
+    def _git(self, *args: str, verifier: bool = True, admis: Sequence[int] = (0,)) -> str:
+        """`admis` : les codes de sortie qui ne sont pas une erreur (`git grep` rend 1 sans résultat)."""
         fini = subprocess.run(["git", *args], cwd=self.racine, capture_output=True,
                               text=True, encoding="utf-8", errors="replace", check=False)
-        if verifier and fini.returncode != 0:
+        if verifier and fini.returncode not in admis:
             raise ErreurGit(f"git {' '.join(args)} → {fini.returncode} : "
                             f"{(fini.stderr or fini.stdout).strip()[:300]}")
         return (fini.stdout or "").strip()

@@ -55,6 +55,14 @@ fi
 if outil a-publier; then
   outil publier || horodater "publication en échec"
 fi
+# Relance des sorties annoncées (R4 B, 27/11/2026) : une fois par jour, après 6 h à
+# Paris (l'étape se l'impose), elle cherche les liens des recos dont la date de sortie
+# annoncée est arrivée, sur une copie d'origin/main, et pousse la branche
+# `contenu/sorties-AAAA-MM-JJ`. Sans verrou ni arrêt de la page de validation : elle ne
+# touche jamais au clone. Inerte sans RECO_SORTIES_ANNONCEES=1 dans le .env.
+docker compose run --rm -T pipeline \
+  python sorties_annoncees.py --notifier matrix \
+  || horodater "relance des sorties annoncées en échec"
 # Le commentaire YouTube attend que la page de l'épisode soit en ligne : la
 # sonde répond « oui » dès la PR fusionnée, l'étape repasse tant que le
 # déploiement n'a pas fini. Inerte sans RECO_YT_COMMENTAIRES=1 dans le .env.

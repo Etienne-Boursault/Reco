@@ -155,6 +155,28 @@ n'ajoute pas de doublons.
 
 ---
 
+## Relance des sorties annoncées (R4 B, 27/11/2026)
+
+Une reco peut porter `releaseDate` (voir `../DATA_SCHEMA.md`) : la chaîne relance chaque
+jour, de la sortie à J+30, la recherche de liens. Modules :
+
+- `date_sortie.py` : le validateur de la date, la fenêtre de relance et les types servis (pur).
+- `review_edit_sortie.py` : la saisie de la date dans « Corriger », avec ses deux gardes.
+  `year` suit la date quand il en venait et que la date change d'année, mais reste quand la date est retirée (PR #227) ; un type qui n'est plus servi fait retirer la date
+  (« date de sortie retirée : type non servi »).
+- `branche_de_contenu.py` : commit et poussée dans un dossier à part, sans toucher au clone vivant.
+- `sorties_plan.py` : le choix des recos du jour et les messages 🗓️ ⏳ ⚠️ (pur).
+- `sorties_propositions.py` : une PR de liens attend-elle encore ? (adresses sur `origin/main`, état de la PR
+  par l'API GitHub, sinon la branche ; PR #227).
+- `sorties_annoncees.py` : l'étape, appelée par `deploy/venus/tick.sh` ; `--apercu`
+  n'écrit ni n'envoie rien et ne fait pas de `git fetch`. Variables et exploitation : `../deploy/venus/README.md`.
+
+Limites de la V1 : seuls `album`, `musique`, `livre` et `jeu` sont servis (les films et
+les séries attendent), et la relance ne suit ni l'œuvre (`year`, alias), ni les recos
+sœurs de la même œuvre, ni les playlists de l'épisode.
+
+---
+
 ## Limites & risques connus
 
 - **Coût API** : l'extraction appelle le modèle (défaut `claude-sonnet-4-6`) une
