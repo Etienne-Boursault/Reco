@@ -210,6 +210,10 @@ répond 404 et la mesure ne distingue pas les visiteurs.
 - `RECO_AUDIENCE_SALT` (≥ 16 caractères) — sale l'empreinte quotidienne du
   visiteur ; l'adresse IP n'est jamais écrite.
 - `RECO_SOURCES` (CSV de slugs) — rattache chaque chemin à sa source.
+- `RECO_AUDIENCE_EXCLURE` (CSV de noms d'hôte et d'adresses IP) — adresses à ne
+  pas mesurer (les vôtres). Les noms sont résolus au démarrage puis toutes les
+  5 minutes ; une requête venue d'une adresse listée n'écrit ni visite, ni
+  signal, ni clic. Vide ou absente : rien n'est exclu.
 
 Les fichiers de mesure sont supprimés au bout de 13 mois par le serveur
 (`src/server/retention.mjs`, ADR 0052).
