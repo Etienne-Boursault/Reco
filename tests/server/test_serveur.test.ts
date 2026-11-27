@@ -14,6 +14,8 @@ import path from 'node:path';
 // @ts-expect-error — module `.mjs` sans déclaration de types
 import { creerServeur, fermerProprement, repondre404, traiter } from '../../src/server/serveur.mjs';
 import { demander, demarrer } from './_client';
+// @ts-expect-error — module `.mjs` sans déclaration de types
+import { PIXEL_GIF_BASE64 } from '../../src/lib/tracking/pixel.mjs';
 
 const LONG = 'Il pleure dans mon cœur comme il pleut sur la ville. '.repeat(60);
 
@@ -215,10 +217,14 @@ describe('adresse exclue (R-14, 27/11/2026)', () => {
     expect(appels.recu).toEqual([]);
   });
 
-  it('le pixel GET et la chaîne de requête sont traités de même', async () => {
+  it('le pixel GET d’une adresse exclue rend le même GIF 1×1 que click.ts, sans atteindre Astro', async () => {
     const { port, appels } = await monterAvecExclusion();
     const r = await demander(port, '/api/click?url=x', { entetes: { 'x-forwarded-for': MOI } });
-    expect(r.statut).toBe(204);
+    // Un 204 casserait l'`<img>` de repli sans JavaScript (tour 1 de revue, PR #224).
+    expect(r.statut).toBe(200);
+    expect(r.entetes['content-type']).toBe('image/gif');
+    expect(r.entetes['cache-control']).toContain('no-store');
+    expect(r.brut.equals(Buffer.from(PIXEL_GIF_BASE64, 'base64'))).toBe(true);
     expect(appels.recu).toEqual([]);
   });
 

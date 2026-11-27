@@ -13,6 +13,7 @@ import { join } from 'node:path';
 import { creerExclusion } from '../lib/audience/exclusion.mjs';
 import { adresseCliente, hoteDe, mesurerVisite, sourcesDe } from '../lib/audience/mesure.mjs';
 import { creerSignal } from '../lib/audience/signal.mjs';
+import { ENTETES_PIXEL, PIXEL_GIF } from '../lib/tracking/pixel.mjs';
 import { envelopper } from './compression.mjs';
 import { METHODES_STATIQUES, fichierPour, servirFichier } from './fichiers.mjs';
 import { chargerRedirections, rediriger } from './redirections.mjs';
@@ -51,10 +52,17 @@ export function traiter(handler, racine, req, res, mesurer = mesurerVisite,
 
   // Le clic sortant (`/api/click`) passe par Astro, qui ne partage pas l'état
   // de ce processus : l'exclusion de l'éditeur (R-14, 27/11/2026) se tranche
-  // donc ici, avec la même adresse que les visites. 204 pour toute méthode.
+  // donc ici, avec la même adresse que les visites. 204 pour toute méthode,
+  // sauf le pixel GET de repli : il rend le même GIF que `click.ts`, pour ne
+  // pas casser l'`<img>` (tour 1 de revue, PR #224).
   if ((req.url || '').split('?')[0] === '/api/click' && exclut(adresseCliente(req))) {
-    res.writeHead(204);
-    res.end();
+    if (req.method === 'GET') {
+      res.writeHead(200, ENTETES_PIXEL);
+      res.end(PIXEL_GIF);
+    } else {
+      res.writeHead(204);
+      res.end();
+    }
     return undefined;
   }
 

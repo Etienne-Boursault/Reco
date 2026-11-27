@@ -33,6 +33,7 @@ import { tryClientAddress } from '../../lib/http/clientAddress.js';
 import { resolveClientIp } from '../../lib/http/resolveClientIp.js';
 import { recordClickStatus } from '../../lib/tracking/metrics.js';
 import { CLICK_LIMITS } from '../../lib/tracking/types.js';
+import { ENTETES_PIXEL, PIXEL_GIF } from '../../lib/tracking/pixel.mjs';
 
 /**
  * Endpoint SSR strict. En `output: 'hybrid'` + adapter installé, le forker
@@ -46,17 +47,6 @@ import { CLICK_LIMITS } from '../../lib/tracking/types.js';
  * Issue : CR senior C25-1.
  */
 // export const prerender = false;
-
-// B-LOW-15 : ces constantes sont déjà privées (module-local, pas export).
-// On retire le préfixe `_` qui était un faux signal de privacy : la vraie
-// portée privée vient de l'absence d'`export`.
-// GIF 1×1 transparent — 43 bytes encodés base64 (header + LZW + trailer).
-const PIXEL_GIF_BASE64 = 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-const PIXEL_GIF = Buffer.from(PIXEL_GIF_BASE64, 'base64');
-// B-NIT-12 : on précalcule la taille en bytes (Buffer.byteLength sur un
-// Buffer == .length, mais on documente clairement l'intention "size sur
-// le wire" plutôt qu'un cast `String(.length)` ambigu).
-const PIXEL_GIF_BYTE_LENGTH = Buffer.byteLength(PIXEL_GIF);
 
 // B-HIGH-1 : cap de la taille du body POST (8 KiB) — au-delà on rejette
 // 413 sans même tenter de lire le body. Évite qu'un attaquant remplisse
@@ -258,14 +248,5 @@ export const GET: APIRoute = (ctx) => {
 
   // Pixel GET : toujours retourner le GIF même IP indéterminable, pour ne pas
   // casser l'`<img>` côté client.
-  return new Response(PIXEL_GIF, {
-    status: 200,
-    headers: {
-      'Content-Type': 'image/gif',
-      'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
-      // B-NIT-12 : Buffer.byteLength précalculé module-scope (intention claire,
-      // pas de re-conversion à chaque requête).
-      'Content-Length': String(PIXEL_GIF_BYTE_LENGTH),
-    },
-  });
+  return new Response(PIXEL_GIF, { status: 200, headers: ENTETES_PIXEL });
 };
