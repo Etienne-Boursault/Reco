@@ -148,7 +148,7 @@ def _forme_ok(etat: dict[str, Any]) -> bool:
     return all(
         isinstance(p, dict) and isinstance(p.get("branche"), str) and isinstance(p.get("sha"), str)
         and isinstance(p.get("adresses"), list) and isinstance(p.get("derniere", []), list)
-        and isinstance(p.get("externalIds", {}), dict)
+        and isinstance(p.get("externalIds", {}), dict) and isinstance(p.get("annonce", ""), str)
         for p in etat["propositions"].values())
 
 
@@ -196,9 +196,12 @@ def noter_relance(etat: dict[str, Any], cles: Iterable[str],
 
 def noter_proposition(etat: dict[str, Any], cle: str, branche: str, sha: str,
                       adresses: Iterable[str],
-                      externes: Mapping[str, Any] | None = None) -> dict[str, Any]:
+                      externes: Mapping[str, Any] | None = None,
+                      annonce: str | None = None) -> dict[str, Any]:
     """Note la branche et le commit de la dernière PR, ses adresses (`derniere`), et cumule les
-    adresses et les `externalIds` proposés : une PR refermée ne les fait jamais revenir."""
+    adresses et les `externalIds` proposés : une PR refermée ne les fait jamais revenir.
+    `annonce` est le message 🗓️ (lien de la PR compris) tant qu'il n'est pas parti : il est
+    retenté au passage suivant (`annonces_en_attente`, tour 2 de revue, PR #227)."""
     neuf = copy.deepcopy(etat)
     adresses = list(adresses)
     ancienne = neuf["propositions"].get(cle, {})
@@ -206,6 +209,20 @@ def noter_proposition(etat: dict[str, Any], cle: str, branche: str, sha: str,
     cumul = anciennes + [a for a in adresses if a not in anciennes]
     neuf["propositions"][cle] = {"branche": branche, "sha": sha, "adresses": cumul, "derniere": adresses,
                                  "externalIds": {**ancienne.get("externalIds", {}), **(externes or {})}}
+    if annonce is not None:
+        neuf["propositions"][cle]["annonce"] = annonce
+    return neuf
+
+
+def annonces_en_attente(etat: dict[str, Any]) -> dict[str, str]:
+    """Clé -> message 🗓️ d'une PR dont l'annonce n'est pas encore partie."""
+    return {cle: p["annonce"] for cle, p in etat["propositions"].items() if p.get("annonce")}
+
+
+def noter_annonce_envoyee(etat: dict[str, Any], cle: str) -> dict[str, Any]:
+    """Le message 🗓️ de cette clé est parti : plus rien à retenter."""
+    neuf = copy.deepcopy(etat)
+    neuf["propositions"].get(cle, {}).pop("annonce", None)
     return neuf
 
 

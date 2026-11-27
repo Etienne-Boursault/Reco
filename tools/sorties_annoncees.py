@@ -193,6 +193,9 @@ def relancer(racine: Path, *, source: str = "un-bon-moment", notify: Notify, che
     for doc in sp.sabliers(docs, jour, etat):
         if envoyer(sp.message_sablier(doc)):
             etat = sp.noter_signal(etat, "sablier", sp.cle_de(doc))
+    for cle, texte in sp.annonces_en_attente(etat).items():  # un message 🗓️ qui n'était pas parti
+        if envoyer(texte):
+            etat = sp.noter_annonce_envoyee(etat, cle)
     if passes is None:
         passes = [p for p in _passes_par_defaut() if p[0] in PASSES_RETENUES]
     pannes: dict[str, str] = {}
@@ -265,13 +268,17 @@ def _proposer(racine: Path, jour: date, trouvees: list[tuple[str, dict[str, Any]
     etat = sp.effacer_erreur(etat, "publication")
     if resultat is None:
         return etat, 0
-    for cle, fusion, adresses in trouvees:  # d'abord l'état, ensuite Matrix
-        etat = sp.noter_proposition(etat, cle, resultat.nom, resultat.sha, adresses,
-                                    _ids_nouveaux(fusion, recos[cle][1]))
+    annonces = {}
     for cle, fusion, adresses in trouvees:
         labels = [lien.get("label") or lien["url"] for lien in fusion["links"] if lien["url"] in adresses]
-        envoyer("\n".join([sp.message_trouvaille(recos[cle][1], labels, resultat.lien),
-                           *resultat.avertissements]))
+        annonces[cle] = "\n".join([sp.message_trouvaille(recos[cle][1], labels, resultat.lien),
+                                   *resultat.avertissements])
+    for cle, fusion, adresses in trouvees:  # d'abord l'état (avec l'annonce à retenter), ensuite Matrix
+        etat = sp.noter_proposition(etat, cle, resultat.nom, resultat.sha, adresses,
+                                    _ids_nouveaux(fusion, recos[cle][1]), annonces[cle])
+    for cle in annonces:
+        if envoyer(annonces[cle]):
+            etat = sp.noter_annonce_envoyee(etat, cle)
     return etat, 0
 
 
