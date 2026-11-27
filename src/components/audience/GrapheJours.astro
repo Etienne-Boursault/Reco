@@ -14,9 +14,11 @@
  * Tranche E1 (AU-2 B, 27/11/2026) : avant la bascule, les deux graphes d'avant
  * (« humains, ancien tri » et robots) ; après, trois courbes en visiteurs-jours
  * (confirmés, incertains, robots) à la place ; les jours d'avant la bascule
- * gardent leur ancienne mesure dans le graphe « humains (ancien tri) », limité
- * à ces jours (constat du tour 1 de revue, 27/11/2026 : ils n'avaient plus
- * aucune barre, contre ce que dit `PanneauTri.astro`).
+ * gardent leur ancienne mesure dans les graphes « humains (ancien tri) » et
+ * robots, limités à ces jours (constat du tour 1 de revue, 27/11/2026 : ils
+ * n'avaient plus aucune barre, contre ce que dit `PanneauTri.astro` ; tour 2 :
+ * les robots de ces jours avaient disparu, et l'infobulle d'un jour d'après
+ * annonçait encore des nombres alors que sa barre est retirée).
  */
 import type { Agregat } from '../../lib/audience/agregat';
 import type { Colonnes } from '../../lib/audience/classement';
@@ -41,7 +43,9 @@ const maxSerie = (cle: keyof Colonnes) =>
 const avantBascule = trois ? jours.filter((j) => j.colonnes === null) : jours;
 const avantLaBascule = (j: Agregat['jours'][number]) => !trois || j.colonnes === null;
 const maxVisiteurs = Math.max(1, ...avantBascule.map((j) => j.visiteurs));
-const maxRobots = Math.max(1, ...jours.map((j) => j.robots));
+const maxRobots = Math.max(1, ...avantBascule.map((j) => j.robots));
+/** L'infobulle d'un jour d'après la bascule, dont la barre est retirée : aucun nombre de l'ancienne mesure. */
+const titreApres = (j: Agregat['jours'][number]) => `${jourCourt(j.jour)} : compté en trois colonnes`;
 
 /** La hauteur d'une barre, en pourcentage du maximum du jeu. */
 function hauteur(valeur: number, max: number): number {
@@ -64,7 +68,7 @@ function jourCourt(iso: string): string {
   <h2>Visiteurs par jour, humains (ancien tri)</h2>
   <div class="barres">
     {jours.map((j) => (
-      <div class="barre" title={`${j.jour} — ${j.visiteurs} visiteurs, ${j.pages} pages vues, ${j.robots} passages de robots`}>
+      <div class="barre" title={avantLaBascule(j) ? `${j.jour} — ${j.visiteurs} visiteurs, ${j.pages} pages vues, ${j.robots} passages de robots` : titreApres(j)}>
         {avantLaBascule(j) && <span class="nombre">{j.visiteurs || ''}</span>}
         {avantLaBascule(j) && <i style={`height:${hauteur(j.visiteurs, maxVisiteurs)}%`}></i>}
       </div>
@@ -83,16 +87,17 @@ function jourCourt(iso: string): string {
 </section>
 )}
 
-{!trois && (
+{(!trois || avantBascule.length > 0) && (
 <section class="graphe">
   {/* À part, sur sa propre échelle : empilés avec les visiteurs, les
-      robots les écrasaient. */}
+      robots les écrasaient. Après la bascule, comme le graphe des humains :
+      limité aux jours d'avant elle. */}
   <h2>Passages de robots par jour</h2>
   <div class="barres robots">
     {jours.map((j) => (
-      <div class="barre" title={`${j.jour} — ${j.robots} passages de robots`}>
-        <span class="nombre">{j.robots || ''}</span>
-        <i style={`height:${hauteur(j.robots, maxRobots)}%`}></i>
+      <div class="barre" title={avantLaBascule(j) ? `${j.jour} — ${j.robots} passages de robots` : titreApres(j)}>
+        {avantLaBascule(j) && <span class="nombre">{j.robots || ''}</span>}
+        {avantLaBascule(j) && <i style={`height:${hauteur(j.robots, maxRobots)}%`}></i>}
       </div>
     ))}
   </div>
@@ -127,6 +132,6 @@ function jourCourt(iso: string): string {
       <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
       <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
     </div>
-    <p class="legende">{s.legende} Les jours sans barre datent d’avant le tri en trois colonnes : leur ancienne mesure est dans le graphe « humains (ancien tri) ».</p>
+    <p class="legende">{s.legende} Les jours sans barre datent d’avant le tri en trois colonnes : leur ancienne mesure est dans les graphes « humains (ancien tri) » et « Passages de robots par jour ».</p>
   </section>
 ))}

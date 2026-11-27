@@ -355,9 +355,9 @@ describe('tri en trois colonnes', () => {
 
     expect(html).toContain(`Tri en trois colonnes depuis le ${dateFr(jourRel(3))}`);
     for (const nom of ['Confirmés', 'Incertains', 'Robots']) expect(html).toContain(nom);
-    // Les trois courbes, plus l'ancien graphe limité aux jours d'avant la bascule.
-    expect(brut.match(/<section class="graphe">/g)).toHaveLength(4);
-    expect(html).not.toContain('Passages de robots par jour');
+    // Les trois courbes, plus les deux anciens graphes (humains, robots) limités aux jours d'avant la bascule.
+    expect(brut.match(/<section class="graphe">/g)).toHaveLength(5);
+    expect(html).toContain('Passages de robots par jour');
     expect(html).toContain('visiteurs-jours');
     expect(html).toContain('confirmés et incertains');
     expect(html).toContain('adresse d’hébergeur');
@@ -382,6 +382,27 @@ describe('tri en trois colonnes', () => {
     expect(barres(confirmes).length).toBeGreaterThan(0);
     expect(barres(confirmes).length).toBeLessThan(jours);
     expect(confirmes).toContain('ancien tri');
+    // La légende ne renvoie qu'à des graphes qui montrent vraiment l'ancienne mesure (humains ET robots).
+    expect(confirmes).toContain('Passages de robots par jour');
+  });
+
+  it('après la bascule : les robots d’avant gardent leur graphe limité aux jours d’avant, et les jours d’après ont une infobulle neutre', async () => {
+    const brut = await corpsAvecMesures({
+      audience: [...apresBascule(), visiteDe(7, jourRel(8)), { ...visiteDe(8, jourRel(8)), robot: true }],
+    });
+    const sections = brut.match(/<section class="graphe">[\s\S]*?<\/section>/g) ?? [];
+    const robots = sections.find((x) => x.includes('<h2>Passages de robots par jour</h2>')) ?? '';
+    const ancien = sections.find((x) => x.includes('humains (ancien tri)')) ?? '';
+    const barres = (x: string) => x.match(/<i style="height:\d+%"/g) ?? [];
+
+    // Mêmes jours d'avant que le graphe des humains : 8, 5 et 4.
+    expect(barres(robots)).toHaveLength(3);
+    expect(robots).toContain('<span class="nombre">1</span>');
+    for (const graphe of [ancien, robots]) {
+      // Un jour d'après : barre retirée, donc aucune infobulle qui annonce des nombres.
+      expect(graphe.match(/compté en trois colonnes/g)).toHaveLength((graphe.match(/<div class="barre"/g) ?? []).length - 3);
+      expect(graphe.match(/passages de robots/g)).toHaveLength(3);
+    }
   });
 
   it('avertit visiblement quand un jour récent a des visites et aucun signal', async () => {
