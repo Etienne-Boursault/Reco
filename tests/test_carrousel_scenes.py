@@ -1,6 +1,8 @@
 """Tests de tools/carrousel_scenes.py : le HTML des pages du carrousel avec visuels."""
 from __future__ import annotations
 
+import re
+
 import carrousel_scenes as cs
 
 R = {"type": "Film", "titre": "The Father", "createur": "Florian Zeller",
@@ -40,7 +42,13 @@ def test_le_titre_garde_la_place_de_ses_accents_dans_chaque_mise():
     for mise in ("affiche", "carre", "rond", "double", "photo", "cadre", "tuile", "sans"):
         images = IMG + [("file:///b.jpg", "Autre")] if mise == "double" else IMG
         page = cs.page_reco(R, 1, 2, images, mise)
-        assert "padding: 0 " not in page.split("data-bas", 1)[1].split(">", 1)[0], mise
+        style = page.split("data-bas", 1)[1].split(">", 1)[0]
+        haut, _, bas = (int(v) for v in re.search(r"padding: (\d+)px (\d+)px (\d+)px", style).groups())
+        # Les accents de Bebas Neue dépassent de 0,122 em, soit 18 px à 150 px.
+        assert haut >= 24, mise
+        remontee = re.search(r"margin-top: -(\d+)px", style)
+        if remontee:  # la remontée compense la marge : la place du texte ne change pas
+            assert 1350 - 640 + int(remontee.group(1)) - haut - bas == cs.place(mise), mise
 
 
 def test_page_sans_image_garde_le_rythme():
