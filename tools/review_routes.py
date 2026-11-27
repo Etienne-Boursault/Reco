@@ -19,7 +19,7 @@ from common import (
 )
 from reco_dedup_merge import BACKUP_DIR
 from review_actions import SAVE_ACTIONS, apply_review_action
-from review_edit import apply_edit, apply_reenrich
+from review_edit import apply_edit, apply_reenrich, retour_edition
 from review_guests import handle_rename_guest as _handle_rename_guest_fn
 from review_handler_base import (
     _MAX_POST_BYTES,
@@ -321,7 +321,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, LienRoutesMixin,
                 pre_edit = copy.deepcopy(read_json(path))
             except (OSError, ValueError):
                 pre_edit = None
-        ok, guid = apply_edit(path, data)
+        ok, guid = apply_edit(path, data, avertissements=(avis := []))
         if not ok:
             try:
                 existing = read_json(path)
@@ -362,7 +362,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, LienRoutesMixin,
         # décision) : seul ce fichier a changé, inutile de tout relire.
         refresh_reco_in_cache(self.source_id, path)
         log.info("Édité : %s", reco_id)
-        return guid, "Modifications enregistrées.", "success"
+        return (guid, *retour_edition(avis))
 
     def _handle_undo_save(self, data: dict) -> None:
         """POST /undo-save : dépile la dernière décision de relecture (Valider /

@@ -8,9 +8,11 @@ from __future__ import annotations
 import html
 import os
 import re
+from datetime import datetime
 from pathlib import Path
 
 from common import log, read_json, write_json_if_changed
+from review_edit_sortie import appliquer_sortie
 from review_links import AUTO_PLATFORMS_BY_TYPE
 
 # Types de reco autorisés (mirror de domain.RecoType — gardé synchronisé).
@@ -92,10 +94,14 @@ def is_reenrichable(reco: dict) -> bool:
     return any(t in ("film", "serie", "musique", "album", "artiste") for t in types)
 
 
-def apply_edit(path: Path, data: dict) -> tuple[bool, str]:
+def apply_edit(path: Path, data: dict, maintenant: datetime | None = None,
+               avertissements: list[str] | None = None) -> tuple[bool, str]:
     """Applique POST /edit : valide, mute le JSON, écrit.
 
     Retourne (ok, guid) — ok=False si validation rejette.
+    R4 B (27/11/2026) : `maintenant` est l'horloge injectée pour la date de sortie ; un
+    refus de cette date (« date ignorée : … ») est ajouté à `avertissements`, et le reste
+    de la reco est enregistré.
     """
     title = (data.get("title") or [""])[0].strip()
     creator = (data.get("creator") or [""])[0].strip()
@@ -224,8 +230,18 @@ def apply_edit(path: Path, data: dict) -> tuple[bool, str]:
         reco["linkOverrides"] = new_overrides
     elif "linkOverrides" in reco:
         del reco["linkOverrides"]
+    refus = appliquer_sortie(reco, data, path, maintenant)
+    if refus and avertissements is not None:
+        avertissements.append(refus)
     write_json_if_changed(path, reco)
     return True, guid
+
+
+def retour_edition(avertissements: list[str]) -> tuple[str, str]:
+    """(message, genre) du flash après un « Corriger » réussi ; un refus de date l'orne."""
+    if avertissements:
+        return f"Modifications enregistrées ({' ; '.join(avertissements)}).", "warning"
+    return "Modifications enregistrées.", "success"
 
 
 def _kind_for(statuses: list[str]) -> str:

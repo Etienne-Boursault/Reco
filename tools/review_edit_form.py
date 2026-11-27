@@ -14,6 +14,7 @@ import html
 import urllib.parse
 
 from review_edit import EXT_FIELDS, RECO_TYPES, TYPE_EMOJIS, TYPE_LABELS
+from review_edit_sortie import champ_sortie
 from review_links import AUTO_PLATFORMS_BY_TYPE, auto_url, auto_urls_for
 
 
@@ -408,6 +409,7 @@ def render_edit_form(
           {creators_dl}</label>
         {recby_block}
         <div class="types-box">{type_boxes}</div>
+        {champ_sortie(r)}
         {details_block}
         {type_radio_block}
         <div class="edit-actions">
