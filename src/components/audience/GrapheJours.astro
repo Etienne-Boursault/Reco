@@ -13,7 +13,10 @@
  *
  * Tranche E1 (AU-2 B, 27/11/2026) : avant la bascule, les deux graphes d'avant
  * (« humains, ancien tri » et robots) ; après, trois courbes en visiteurs-jours
- * (confirmés, incertains, robots) à la place.
+ * (confirmés, incertains, robots) à la place ; les jours d'avant la bascule
+ * gardent leur ancienne mesure dans le graphe « humains (ancien tri) », limité
+ * à ces jours (constat du tour 1 de revue, 27/11/2026 : ils n'avaient plus
+ * aucune barre, contre ce que dit `PanneauTri.astro`).
  */
 import type { Agregat } from '../../lib/audience/agregat';
 import type { Colonnes } from '../../lib/audience/classement';
@@ -34,7 +37,10 @@ const series: { cle: keyof Colonnes; titre: string; legende: string }[] = [
 const maxSerie = (cle: keyof Colonnes) =>
   Math.max(1, ...jours.map((j) => j.colonnes?.[cle].visiteursJours ?? 0));
 
-const maxVisiteurs = Math.max(1, ...jours.map((j) => j.visiteurs));
+/** Après la bascule, l'ancien graphe ne garde que les jours d'avant elle. */
+const avantBascule = trois ? jours.filter((j) => j.colonnes === null) : jours;
+const avantLaBascule = (j: Agregat['jours'][number]) => !trois || j.colonnes === null;
+const maxVisiteurs = Math.max(1, ...avantBascule.map((j) => j.visiteurs));
 const maxRobots = Math.max(1, ...jours.map((j) => j.robots));
 
 /** La hauteur d'une barre, en pourcentage du maximum du jeu. */
@@ -50,7 +56,7 @@ function jourCourt(iso: string): string {
 }
 ---
 
-{!trois && (<>
+{(!trois || avantBascule.length > 0) && (
 <section class="graphe">
   {/* Les visiteurs, et non les pages : une page vue de plus ne dit pas
       qu'une personne de plus est venue, et les robots, souvent dix fois
@@ -59,8 +65,8 @@ function jourCourt(iso: string): string {
   <div class="barres">
     {jours.map((j) => (
       <div class="barre" title={`${j.jour} — ${j.visiteurs} visiteurs, ${j.pages} pages vues, ${j.robots} passages de robots`}>
-        <span class="nombre">{j.visiteurs || ''}</span>
-        <i style={`height:${hauteur(j.visiteurs, maxVisiteurs)}%`}></i>
+        {avantLaBascule(j) && <span class="nombre">{j.visiteurs || ''}</span>}
+        {avantLaBascule(j) && <i style={`height:${hauteur(j.visiteurs, maxVisiteurs)}%`}></i>}
       </div>
     ))}
   </div>
@@ -72,9 +78,12 @@ function jourCourt(iso: string): string {
     Personnes distinctes ayant ouvert au moins une page dans la journée,
     hors robots et hors erreurs. Les pages préchargées au survol d’un
     lien ne comptent pas comme vues.
+    {trois && ' Après la bascule, les trois courbes suivantes remplacent celle-ci : seuls les jours d’avant le tri en trois colonnes gardent une barre ici.'}
   </p>
 </section>
+)}
 
+{!trois && (
 <section class="graphe">
   {/* À part, sur sa propre échelle : empilés avec les visiteurs, les
       robots les écrasaient. */}
@@ -97,7 +106,7 @@ function jourCourt(iso: string): string {
     langue — ce qu’un vrai navigateur fait toujours.
   </p>
 </section>
-</>)}
+)}
 
 {trois && series.map((s) => (
   <section class="graphe">
@@ -107,8 +116,9 @@ function jourCourt(iso: string): string {
         const e = j.colonnes?.[s.cle];
         return (
           <div class="barre" title={e ? `${j.jour} — ${e.visiteursJours} visiteurs-jours, ${e.visites} visites` : `${j.jour} — avant le tri en trois colonnes`}>
-            <span class="nombre">{e?.visiteursJours || ''}</span>
-            <i style={`height:${hauteur(e?.visiteursJours ?? 0, maxSerie(s.cle))}%`}></i>
+            {/* Un jour d'avant la bascule n'a pas de barre : `hauteur(0)` en rendrait une de 2 %, comme un vrai zéro. */}
+            {e && <span class="nombre">{e.visiteursJours || ''}</span>}
+            {e && <i style={`height:${hauteur(e.visiteursJours, maxSerie(s.cle))}%`}></i>}
           </div>
         );
       })}
@@ -117,6 +127,6 @@ function jourCourt(iso: string): string {
       <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
       <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
     </div>
-    <p class="legende">{s.legende} Les jours sans barre datent d’avant le tri en trois colonnes.</p>
+    <p class="legende">{s.legende} Les jours sans barre datent d’avant le tri en trois colonnes : leur ancienne mesure est dans le graphe « humains (ancien tri) ».</p>
   </section>
 ))}

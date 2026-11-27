@@ -355,13 +355,33 @@ describe('tri en trois colonnes', () => {
 
     expect(html).toContain(`Tri en trois colonnes depuis le ${dateFr(jourRel(3))}`);
     for (const nom of ['Confirmés', 'Incertains', 'Robots']) expect(html).toContain(nom);
-    expect(brut.match(/<section class="graphe">/g)).toHaveLength(3);
-    expect(html).not.toContain('Visiteurs par jour');
+    // Les trois courbes, plus l'ancien graphe limité aux jours d'avant la bascule.
+    expect(brut.match(/<section class="graphe">/g)).toHaveLength(4);
+    expect(html).not.toContain('Passages de robots par jour');
     expect(html).toContain('visiteurs-jours');
     expect(html).toContain('confirmés et incertains');
     expect(html).toContain('adresse d’hébergeur');
     expect(html).toContain('Safari');
     expect(html).not.toContain('script du signal');
+  });
+
+  it('après la bascule : les jours d’avant gardent leur visiteurs (ancien tri), sans barre dans les trois courbes', async () => {
+    const brut = await corpsAvecMesures({
+      audience: [...apresBascule(), visiteDe(7, jourRel(8)), visiteDe(8, jourRel(8))],
+    });
+    const sections = brut.match(/<section class="graphe">[\s\S]*?<\/section>/g) ?? [];
+    const ancien = sections.find((x) => x.includes('ancien tri')) ?? '';
+    const confirmes = sections.find((x) => x.includes('Confirmés par jour')) ?? '';
+    const barres = (x: string) => x.match(/<i style="height:\d+%"/g) ?? [];
+
+    // Jours d'avant : 8 (2 visiteurs), 5 et 4 (1 chacun) ; aucun jour d'après n'y figure.
+    expect(barres(ancien)).toHaveLength(3);
+    expect(ancien).toContain('<span class="nombre">2</span>');
+    // Les trois courbes : une barre par jour d'après la bascule seulement, pas de faux zéro de 2 %.
+    const jours = (confirmes.match(/<div class="barre"/g) ?? []).length;
+    expect(barres(confirmes).length).toBeGreaterThan(0);
+    expect(barres(confirmes).length).toBeLessThan(jours);
+    expect(confirmes).toContain('ancien tri');
   });
 
   it('avertit visiblement quand un jour récent a des visites et aucun signal', async () => {
