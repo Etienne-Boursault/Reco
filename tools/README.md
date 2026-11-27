@@ -162,6 +162,8 @@ jour, de la sortie à J+30, la recherche de liens. Modules :
 
 - `date_sortie.py` : le validateur de la date, la fenêtre de relance et les types servis (pur).
 - `review_edit_sortie.py` : la saisie de la date dans « Corriger », avec ses deux gardes.
+  `year` suit la date quand il en venait (PR #227) ; un type qui n'est plus servi fait retirer la date
+  (« date de sortie retirée : type non servi »).
 - `branche_de_contenu.py` : commit et poussée dans un dossier à part, sans toucher au clone vivant.
 - `sorties_plan.py` : le choix des recos du jour et les messages 🗓️ ⏳ ⚠️ (pur).
 - `sorties_propositions.py` : une PR de liens attend-elle encore ? (adresses sur `origin/main`, état de la PR
