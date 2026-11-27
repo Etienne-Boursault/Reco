@@ -2,14 +2,15 @@
  * src/pages/api/click.ts — Endpoint tracking clics sortants.
  *
  * Deux entrées :
- *  - POST JSON : `{url, category, sourceId, recoId?, ref?, bot_trap?}`,
+ *  - POST JSON : `{url, category, sourceId, recoId?, ref?, bot_trap?, revenant?,
+ *    aVuEpisode?, aVuFiche?}` (les trois oui/non vont ensemble, D1),
  *    appelé via `navigator.sendBeacon` ou `fetch(keepalive:true)` depuis
  *    le script global injecté dans Layout.astro.
  *  - GET pixel : `?url=…&cat=…&src=…&reco=…&ref=…`, fallback no-JS, renvoie
  *    un GIF transparent 1×1 (43 bytes). Sert aussi pour les browsers très
  *    anciens sans `sendBeacon`.
  *
- * Privacy (ADR 0046) : `Sec-GPC: 1` → 204 silencieux, pas de cookie, IP
+ * Privacy (ADR 0046) : `Sec-GPC: 1` ou `DNT: 1` (D1, R-10) → 204 silencieux, pas de cookie, IP
  * hashée+saltée pour rate-limit uniquement (jamais persistée).
  *
  * Sécurité (CR senior) :
@@ -185,6 +186,7 @@ export const POST: APIRoute = async (ctx) => {
   const origin = request.headers.get('origin');
   const referer = request.headers.get('referer');
   const secGpc = request.headers.get('sec-gpc');
+  const dnt = request.headers.get('dnt');
 
   const result = handleClick({
     payload,
@@ -193,6 +195,7 @@ export const POST: APIRoute = async (ctx) => {
     selfOrigin: selfOriginOf(request, ctx.site),
     ip,
     secGpc,
+    dnt,
     // H25-3 : POST NE doit PAS accepter Referer comme fallback CSRF.
     allowReferer: false,
   });
@@ -227,6 +230,7 @@ export const GET: APIRoute = (ctx) => {
   const origin = request.headers.get('origin');
   const referer = request.headers.get('referer');
   const secGpc = request.headers.get('sec-gpc');
+  const dnt = request.headers.get('dnt');
 
   // H25-6 : sur GET pixel, on délègue au handler avec allowReferer=true.
   // Si origin/CSRF échoue → handler renvoie 403 ; on enregistre la métrique
@@ -239,6 +243,7 @@ export const GET: APIRoute = (ctx) => {
       selfOrigin: selfOriginOf(request, ctx.site),
       ip,
       secGpc,
+      dnt,
       allowReferer: true,
     });
     recordClickStatus(result.status);

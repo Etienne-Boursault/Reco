@@ -200,61 +200,23 @@ const estAccueil = Astro.url.pathname === '/';
 
     {/* Tracking clics sortants (item #25 / ADR 0046).
        Délégation `click` sur tout `[data-track="click"]`. Envoie un beacon
-       à `/api/click` (sendBeacon prioritaire, fetch keepalive en fallback).
-       Respecte `navigator.globalPrivacyControl` : silencieux si opt-out.
+       à `/api/click` avec l'URL, la source et trois oui/non de la mesure
+       gardée dans le navigateur (`revenant`, `aVuEpisode`, `aVuFiche` ; aucun
+       identifiant, D1, R-1, AU-2 B, 2026-11-27). Rien ne part sous refus,
+       Global Privacy Control ou Do Not Track (R-10) : l'état est lu au clic.
        Si l'endpoint n'existe pas (mode static), l'erreur réseau est
-       avalée — le clic suit son cours normalement. */}
+       avalée — le clic suit son cours normalement. Voir `utils/clicSortant.ts`. */}
     <script>
-      import { pageMesurable } from '../utils/signalVue';
+      import { cablerClicSortant } from '../utils/clicSortant';
+      import { creerMesure } from '../utils/mesureNavigateur';
 
-      (() => {
-        // `globalPrivacyControl` (spec GPC) n'est pas encore dans lib.dom :
-        // on l'annote plutot que de caster en `any`, pour garder la garde
-        // de confidentialite verifiee par le compilateur.
-        const nav: Navigator & { globalPrivacyControl?: boolean } = navigator;
-        if (nav.globalPrivacyControl === true) return;
-        // F-H-1 — pas de suivi sur `/meta/*` ni sur les pages `noindex` : la
-        // garde est partagée avec le signal « page vue » (`utils/signalVue.ts`,
-        // AU-1 A, 2026-11-27). Cf. ADR 0040, ADR 0046, cross-fixer MX-1.
-        if (!pageMesurable(location, document)) return;
-        document.addEventListener(
-          'click',
-          (e) => {
-            const el = e.target;
-            if (!(el instanceof Element)) return;
-            const a = el.closest('a[data-track="click"]');
-            if (!(a instanceof HTMLAnchorElement)) return;
-            const href = a.href;
-            const category = a.dataset.category;
-            const sourceId = a.dataset.sourceId;
-            if (!href || !category || !sourceId) return;
-            const payload = {
-              url: href,
-              category,
-              sourceId,
-              recoId: a.dataset.recoId || null,
-              ref: location.pathname,
-            };
-            try {
-              const body = JSON.stringify(payload);
-              if (nav.sendBeacon) {
-                // Beacon utilise text/plain par défaut — le serveur parse text+JSON.
-                nav.sendBeacon('/api/click', new Blob([body], { type: 'application/json' }));
-                return;
-              }
-              fetch('/api/click', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body,
-                keepalive: true,
-              }).catch(() => {});
-            } catch {
-              /* silencieux — le clic doit aboutir quoi qu'il arrive */
-            }
-          },
-          { capture: true, passive: true },
-        );
-      })();
+      // Mesure en lecture seule ici : seul le signal « page vue » crée l'état.
+      const mesure = creerMesure({
+        stockage: () => window.localStorage,
+        maintenant: () => new Date(),
+        navigator,
+      });
+      cablerClicSortant({ navigator, document, location, fetch, mesure });
     </script>
 
     {/* Signal « page vue » (AU-1 A, 2026-11-27) : un envoi par page affichée,

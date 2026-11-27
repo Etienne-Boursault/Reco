@@ -329,3 +329,46 @@ describe('stockage qui lève : la page ne casse jamais', () => {
     }).not.toThrow();
   });
 });
+
+describe('ouiNon : lecture seule pour le clic sortant (D1, R-1)', () => {
+  it('sans état : null, et rien n’est créé', () => {
+    expect(mesureLe('2026-11-27').ouiNon(FICHE)).toBeNull();
+    expect(localStorage.getItem(CLE)).toBeNull();
+  });
+
+  it('rend les trois oui/non du jour, la page courante comptée, sans rien écrire', () => {
+    mesureLe('2026-11-20').noterPage(EPISODE);
+    // Le lendemain, le signal n'est pas encore parti : seule la page courante compte.
+    const m = mesureLe('2026-11-27');
+    const avant = localStorage.getItem(CLE);
+    expect(m.ouiNon(FICHE)).toEqual({ revenant: true, aVuEpisode: false, aVuFiche: true });
+    expect(localStorage.getItem(CLE)).toBe(avant);
+  });
+
+  it('reprend les étapes déjà vues le jour même', () => {
+    const m = mesureLe('2026-11-27');
+    m.noterPage(EPISODE);
+    expect(m.ouiNon(FICHE)).toEqual({ revenant: false, aVuEpisode: true, aVuFiche: true });
+    expect(m.ouiNon('/ubm/invite/x')).toEqual({ revenant: false, aVuEpisode: true, aVuFiche: false });
+  });
+
+  it('refus, GPC, DNT : null', () => {
+    const m = mesureLe('2026-11-27');
+    m.noterPage(EPISODE);
+    m.refuser();
+    expect(m.ouiNon(FICHE)).toBeNull();
+    expect(mesureLe('2026-11-27', { globalPrivacyControl: true }).ouiNon(FICHE)).toBeNull();
+    expect(mesureLe('2026-11-27', { doNotTrack: '1' }).ouiNon(FICHE)).toBeNull();
+  });
+
+  it('stockage qui lève : null, sans exception', () => {
+    const m = creerMesure({
+      stockage: () => {
+        throw new Error('coupé');
+      },
+      maintenant: () => new Date(),
+      navigator: {},
+    });
+    expect(m.ouiNon(FICHE)).toBeNull();
+  });
+});

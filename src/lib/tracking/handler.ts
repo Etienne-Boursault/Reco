@@ -4,14 +4,21 @@
  * Séparé de `src/pages/api/click.ts` pour être testable sans Astro.
  *
  * Couches d'acceptation (court-circuit dès le premier rejet) :
- *  1. `Sec-GPC` truthy (`'1'`, `'true'`, `1`, `true`) → 204 silencieux
- *     (respect du Global Privacy Control, cohérent ADR 0040, M25-8).
+ *  1. `Sec-GPC` truthy (`'1'`, `'true'`, `1`, `true`) ou `DNT: 1` → 204
+ *     silencieux (respect du Global Privacy Control, cohérent ADR 0040,
+ *     M25-8 ; DNT traité comme GPC depuis D1, R-10, AU-2 B, 2026-11-27).
  *  2. Origin (POST strict, GET tolère Referer en fallback — H25-3 / H25-6).
  *  3. Honeypot rempli → 204 silencieux.
  *  4. Validation Zod du payload.
  *  5. Garde-fou date : si `getUTCFullYear()` NaN → 400 (H25-7).
  *  6. Rate-limit IP (60 clicks/min).
  *  7. Append via `ClickStorage` injecté (R-P1-14).
+ *
+ * Ce que la ligne de clic garde en plus de l'URL cliquée : trois oui/non
+ * (`revenant`, `aVuEpisode`, `aVuFiche`), tirés de la mesure gardée dans le
+ * navigateur, ou `null` si l'ancien script n'en a pas envoyé (D1, R-1). Aucun
+ * identifiant, aucune date de naissance de la mesure, aucun parcours : ils
+ * permettent seulement de compter, en parts, le chemin épisode → fiche → clic.
  *
  * Codes : 204 (ok — pas de body pour réduire poids), 400 (validation),
  *         403 (origin), 429 (rate-limit), 500 (IO).
@@ -32,6 +39,8 @@ export interface HandleClickOptions {
   ip: string;
   /** Header `Sec-GPC` (`'1'`, `'true'` = opt-out — truthy check M25-8). */
   secGpc: string | null;
+  /** Header `DNT` : `'1'` = refus, comme `Sec-GPC` (D1, R-10). */
+  dnt?: string | null;
   /**
    * Si `true`, `referer` peut compléter `origin` pour la vérif same-origin
    * (cas du pixel GET où certains browsers ne joignent pas Origin). False
@@ -87,8 +96,8 @@ export function handleClick(opts: HandleClickOptions): HandleClickResult {
   const limiter = opts.rateLimiter ?? defaultRateLimiter;
   const now = opts.now ?? Date.now();
 
-  // 1. Global Privacy Control — silent opt-out, pas de log, pas de write.
-  if (isGpcOptOut(opts.secGpc)) {
+  // 1. Global Privacy Control ou Do Not Track — silent opt-out, pas de log, pas de write.
+  if (isGpcOptOut(opts.secGpc) || opts.dnt?.trim() === '1') {
     return { status: 204 };
   }
 
@@ -148,6 +157,9 @@ export function handleClick(opts: HandleClickOptions): HandleClickResult {
     sourceId: data.sourceId,
     recoId: data.recoId ?? null,
     ref: sanitizeRef(data.ref ?? null),
+    revenant: data.revenant ?? null,
+    aVuEpisode: data.aVuEpisode ?? null,
+    aVuFiche: data.aVuFiche ?? null,
   };
 
   const storage = opts.storage ?? new JsonlClickStorage(opts.cwd);

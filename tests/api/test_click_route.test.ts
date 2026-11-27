@@ -189,6 +189,41 @@ describe('POST /api/click', () => {
     expect(res.status).toBe(204);
   });
 
+  it('DNT = 1 : 204 sans écriture, DNT absent : la ligne est écrite avec les trois oui/non (D1)', async () => {
+    const route = await loadRoute();
+    const { listDailyFiles, readDailyEvents } = await import('../../src/lib/tracking/storage.ts');
+    const envoyer = (headers: Record<string, string>) =>
+      route.POST(
+        ctxFor(
+          makeRequest('POST', {
+            body: validJsonBody({ revenant: false, aVuEpisode: true, aVuFiche: true }),
+            headers: { 'content-type': 'application/json', origin: SELF, ...headers },
+          }),
+        ),
+      );
+    expect((await envoyer({ dnt: '1' })).status).toBe(204);
+    expect(listDailyFiles('un-bon-moment', CWD)).toHaveLength(0);
+    expect((await envoyer({})).status).toBe(204);
+    const lignes = listDailyFiles('un-bon-moment', CWD).flatMap(readDailyEvents);
+    expect(lignes).toHaveLength(1);
+    expect(lignes[0]).toMatchObject({ revenant: false, aVuEpisode: true, aVuFiche: true });
+  });
+
+  it('GET pixel avec DNT = 1 : GIF renvoyé, aucune écriture (D1)', async () => {
+    const route = await loadRoute();
+    const { listDailyFiles } = await import('../../src/lib/tracking/storage.ts');
+    const res = await route.GET(
+      ctxFor(
+        makeRequest('GET', {
+          headers: { origin: SELF, dnt: '1' },
+          query: { url: 'https://themoviedb.org/movie/42', cat: 'tmdb', src: 'un-bon-moment' },
+        }),
+      ),
+    );
+    expect(res.status).toBe(200);
+    expect(listDailyFiles('un-bon-moment', CWD)).toHaveLength(0);
+  });
+
   it('URL > 2048 chars : warn + 400 (validator reject)', async () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const route = await loadRoute();

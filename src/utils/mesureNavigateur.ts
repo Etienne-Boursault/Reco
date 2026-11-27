@@ -53,6 +53,13 @@
  * Deux onglets ouverts à la première visite partagent le même état : un seul
  * `ne`, et la ligne ne dure pas plus de deux pages en tout.
  *
+ * LE CLIC SORTANT (D1, R-1, 2026-11-27)
+ * -------------------------------------
+ * `ouiNon(chemin)` rend les trois mêmes oui/non au clic sur un lien d'œuvre
+ * (`clicSortant.ts`), en LECTURE SEULE : elle ne crée ni ne modifie jamais
+ * l'état, que seule `noterPage` crée. `null` sans état, sous refus, GPC, DNT
+ * ou stockage coupé : le clic part alors sans oui/non.
+ *
  * Ordre d'appel attendu (C2) sur une page mesurable : `noterPage`, puis
  * `ligneAAfficher`, puis `ligneVue` si elle est affichée. Les dépendances sont
  * injectées : le module ne touche ni à `window`, ni à l'horloge.
@@ -180,15 +187,35 @@ export function creerMesure(deps: Dependances) {
     }
     const contenu = lire();
     if (contenu && 'refus' in contenu) return null;
-    const etape = etapeDuChemin(chemin);
     const garde = contenu ?? neuf(0);
-    const etapes = etape && !garde.etapes.includes(etape) ? [...garde.etapes, etape] : garde.etapes;
+    const { etapes, signal } = avecPage(garde, chemin);
     // Sans stockage, `contenu` est undefined : rien n'est écrit, `revenant` reste faux.
     if (contenu !== undefined) ecrire({ ...garde, etapes });
+    return signal;
+  }
+
+  /**
+   * Les trois oui/non pour un clic sortant (D1, R-1, 2026-11-27), en LECTURE
+   * SEULE : seule `noterPage` crée l'état. `null` sans état, sous refus, GPC,
+   * DNT ou stockage coupé : le clic part alors sans oui/non.
+   */
+  function ouiNon(chemin: string): Signal | null {
+    if (refuseParLeNavigateur()) return null;
+    const contenu = lire();
+    return contenu && !('refus' in contenu) ? avecPage(contenu, chemin).signal : null;
+  }
+
+  /** Les étapes du jour, la page courante comprise, et le signal qui en découle. */
+  function avecPage(garde: Garde, chemin: string): { etapes: Etape[]; signal: Signal } {
+    const etape = etapeDuChemin(chemin);
+    const etapes = etape && !garde.etapes.includes(etape) ? [...garde.etapes, etape] : garde.etapes;
     return {
-      revenant: garde.ne < aujourdhui(),
-      aVuEpisode: etapes.includes('episode'),
-      aVuFiche: etapes.includes('fiche'),
+      etapes,
+      signal: {
+        revenant: garde.ne < aujourdhui(),
+        aVuEpisode: etapes.includes('episode'),
+        aVuFiche: etapes.includes('fiche'),
+      },
     };
   }
 
@@ -218,6 +245,7 @@ export function creerMesure(deps: Dependances) {
   return {
     etat,
     noterPage,
+    ouiNon,
     refuser,
     accepter,
     ligneAAfficher,
