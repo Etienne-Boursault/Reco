@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import json
 import subprocess
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -20,7 +20,7 @@ from review_edit_sortie import (
     fichier_suivi_par_git,
 )
 
-MAINTENANT = datetime(2026, 11, 27, 12, 0, tzinfo=timezone.utc)
+MAINTENANT = datetime(2026, 11, 27, 12, 0, tzinfo=UTC)
 
 
 def _git(dossier: Path, *args: str) -> None:
@@ -146,7 +146,7 @@ def test_fichier_suivi_refuse_la_date(reco_suivie):
 
 def test_l_horloge_injectee_fixe_l_horizon(reco_libre):
     reco = _lire(reco_libre)
-    tard = datetime(2029, 1, 1, tzinfo=timezone.utc)
+    tard = datetime(2029, 1, 1, tzinfo=UTC)
     assert appliquer_sortie(reco, {"releaseDate": ["2030-01-01"]}, reco_libre, tard) is None
     assert reco["releaseDate"] == "2030-01-01"
 

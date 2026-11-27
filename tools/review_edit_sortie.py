@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import html
 import subprocess
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from common import log
@@ -83,7 +83,7 @@ def appliquer_sortie(reco: dict, data: dict, chemin: Path,
         return None
     if not type_servi(reco.get("types") or []):
         return f"date ignorée : seuls {_TYPES_SERVIS} sont servis"
-    aujourdhui = jour_a_paris(maintenant or datetime.now(timezone.utc))
+    aujourdhui = jour_a_paris(maintenant or datetime.now(UTC))
     try:
         nouvelle = valider_date_sortie(valeur, aujourdhui)
     except DateSortieInvalide as exc:

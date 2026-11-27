@@ -7,7 +7,7 @@ le seul test qui touche au fuseau remplace `ZoneInfo`, car le poste Windows n'a 
 from __future__ import annotations
 
 import re
-from datetime import date, datetime, timedelta, timezone, tzinfo
+from datetime import UTC, date, datetime, timedelta, tzinfo
 from pathlib import Path
 
 import pytest
@@ -152,10 +152,10 @@ class _FauxFuseau(tzinfo):
 def test_le_jour_est_celui_de_paris_pas_celui_d_utc(monkeypatch):
     monkeypatch.setattr(ds, "ZoneInfo", _FauxFuseau)
     # 23 h 30 UTC le 26 = 0 h 30 à Paris le 27.
-    maintenant = datetime(2026, 11, 26, 23, 30, tzinfo=timezone.utc)
+    maintenant = datetime(2026, 11, 26, 23, 30, tzinfo=UTC)
     assert ds.jour_a_paris(maintenant) == date(2026, 11, 27)
     # 22 h 59 UTC : Paris n'a pas encore changé de jour.
-    assert ds.jour_a_paris(datetime(2026, 11, 26, 22, 59, tzinfo=timezone.utc)) == date(2026, 11, 26)
+    assert ds.jour_a_paris(datetime(2026, 11, 26, 22, 59, tzinfo=UTC)) == date(2026, 11, 26)
 
 
 def test_sans_tzdata_le_jour_est_celui_d_utc(monkeypatch):
@@ -165,7 +165,7 @@ def test_sans_tzdata_le_jour_est_celui_d_utc(monkeypatch):
         raise ZoneInfoNotFoundError("Europe/Paris")
 
     monkeypatch.setattr(ds, "ZoneInfo", _absent)
-    maintenant = datetime(2026, 11, 26, 23, 30, tzinfo=timezone.utc)
+    maintenant = datetime(2026, 11, 26, 23, 30, tzinfo=UTC)
     assert ds.jour_a_paris(maintenant) == date(2026, 11, 26)
 
 

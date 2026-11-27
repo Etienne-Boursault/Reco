@@ -20,8 +20,8 @@ est toujours un paramètre, pour qu'un test fixe le jour.
 from __future__ import annotations
 
 import re
-from datetime import date, datetime, timezone
-from typing import Iterable
+from collections.abc import Iterable
+from datetime import UTC, date, datetime
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 #: Types dont la recherche de liens est relancée (V1). Doit rester inclus dans ce que
@@ -93,5 +93,5 @@ def jour_a_paris(maintenant: datetime) -> date:
     try:
         fuseau = ZoneInfo("Europe/Paris")
     except ZoneInfoNotFoundError:
-        fuseau = timezone.utc
+        fuseau = UTC
     return maintenant.astimezone(fuseau).date()
