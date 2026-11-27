@@ -164,6 +164,8 @@ jour, de la sortie à J+30, la recherche de liens. Modules :
 - `review_edit_sortie.py` : la saisie de la date dans « Corriger », avec ses deux gardes.
 - `branche_de_contenu.py` : commit et poussée dans un dossier à part, sans toucher au clone vivant.
 - `sorties_plan.py` : le choix des recos du jour et les messages 🗓️ ⏳ ⚠️ (pur).
+- `sorties_propositions.py` : une PR de liens attend-elle encore ? (adresses sur `origin/main`, état de la PR
+  par l'API GitHub, sinon la branche ; PR #227).
 - `sorties_annoncees.py` : l'étape, appelée par `deploy/venus/tick.sh` ; `--apercu`
   n'écrit ni n'envoie rien et ne fait pas de `git fetch`. Variables et exploitation : `../deploy/venus/README.md`.
 

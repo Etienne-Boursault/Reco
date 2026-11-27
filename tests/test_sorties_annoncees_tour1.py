@@ -6,15 +6,21 @@ remplacés) : le fichier d'origine est à son plafond de 500 lignes.
 """
 from __future__ import annotations
 
+import io
+import json
 from datetime import UTC, datetime, timedelta
+from urllib.parse import parse_qs, urlsplit
 
 import pytest
 
+import common
+import publication as pub
 import sorties_annoncees as sa
 import sorties_plan as sp
+import sorties_propositions as spr
 import test_sorties_annoncees as base
 from publication import ErreurGit
-from test_sorties_annoncees import CLE, URL_A, Banc, _ecrire_reco, _git
+from test_sorties_annoncees import CHEMIN, CLE, ENV, URL_A, URL_B, Banc, Passe, _ecrire_reco, _git
 
 # Les fixtures du banc, reprises telles quelles (un import par nom ferait « redéfinir » le paramètre).
 depot, banc, paris = base.depot, base.banc, base.paris
@@ -67,7 +73,7 @@ def test_un_ls_remote_qui_echoue_se_signale_comme_une_panne_git(banc, monkeypatc
 
     def casse(_racine, _nom):
         raise ErreurGit("ls-remote coupé")
-    monkeypatch.setattr(sa, "branche_distante_presente", casse)
+    monkeypatch.setattr(spr, "branche_distante_presente", casse)
     assert banc.lancer() == 1
     assert "ls-remote coupé" in banc.messages[0] and banc.etat()["dernier_jour"] is None
 
@@ -126,3 +132,172 @@ def test_apercu_ne_fait_pas_de_fetch_et_lit_l_origin_main_local(banc, monkeypatc
     commandes.clear()
     banc.lancer()
     assert "fetch" in commandes
+
+
+# --- une proposition refermée ou fusionnée autrement ne reste pas « en attente » ---------------
+
+BRANCHE = "contenu/sorties-2026-11-26"
+JETON = {**ENV, "RECO_GITHUB_TOKEN": "jeton-d-essai"}
+
+
+def _proposition_en_attente(banc, depot, urls=(URL_A,), externes=None) -> str:
+    """Une branche de contenu poussée, jamais fusionnée, et sa proposition dans l'état."""
+    _git(depot, "checkout", "-q", "-b", BRANCHE)
+    _ecrire_reco(depot, CHEMIN, links=[{"url": u, "label": "Deezer", "kind": "streaming"} for u in urls])
+    _git(depot, "commit", "-qam", "liens")
+    sha = _git(depot, "rev-parse", "HEAD")
+    _git(depot, "push", "-q", "origin", BRANCHE)
+    _git(depot, "checkout", "-q", "main")
+    sp.ecrire_etat(banc.chemin_etat, sp.noter_proposition(sp.etat_vide(), CLE, BRANCHE, sha, list(urls), externes))
+    return sha
+
+
+class Github:
+    """Remplace la lecture de l'API REST : rend ce qu'on lui donne, et note les appels."""
+
+    def __init__(self, reponse=None, erreur: Exception | None = None) -> None:
+        self.reponse, self.erreur, self.appels = reponse, erreur, []
+
+    def __call__(self, url: str, jeton: str):
+        self.appels.append((url, jeton))
+        if self.erreur:
+            raise self.erreur
+        return self.reponse
+
+
+@pytest.fixture
+def github_distant(monkeypatch):
+    monkeypatch.setattr(pub.Git, "url_distante", lambda self: "git@github.com:o/d.git")
+
+
+def test_une_fusion_par_squash_ferme_la_proposition_par_les_adresses(banc, depot):
+    # Le commit de la branche n'est jamais ancêtre de main, mais ses adresses y sont.
+    _proposition_en_attente(banc, depot)
+    _ecrire_reco(depot, CHEMIN, links=[{"url": URL_A, "label": "Deezer", "kind": "streaming"}])
+    _git(depot, "commit", "-qam", "squash")
+    _git(depot, "push", "-q", "origin", "main")
+    passe = Passe(URL_B)
+    banc.lancer([("musique", passe)])
+    assert passe.appels == 1
+
+
+def test_sans_jeton_une_pr_refermee_sans_fusion_reste_en_attente(banc, depot):
+    _proposition_en_attente(banc, depot)
+    passe = Passe(URL_B)
+    banc.lancer([("musique", passe)])
+    assert passe.appels == 0  # l'ancienne règle : branche présente, commit pas ancêtre
+
+
+def test_une_pr_refermee_sans_fusion_rend_la_reco_relancable_avec_les_seules_adresses_nouvelles(
+        banc, depot, github_distant):
+    _proposition_en_attente(banc, depot)
+    github = Github([{"state": "closed", "merged_at": None}])
+    assert banc.lancer([("musique", Passe(URL_A, URL_B))], env=JETON, lire=github) == 0
+    [(url, jeton)] = github.appels
+    assert jeton == "jeton-d-essai"
+    adresse = urlsplit(url)
+    assert adresse.path == "/repos/o/d/pulls"
+    assert parse_qs(adresse.query) == {"head": ["o:" + BRANCHE], "state": ["all"]}
+    ecrit = json.loads((banc.publieur.dossier / CHEMIN).read_text(encoding="utf-8"))
+    assert [lien["url"] for lien in ecrit["links"]] == [URL_B]
+
+
+def test_une_pr_encore_ouverte_garde_la_reco_en_attente(banc, depot, github_distant):
+    _proposition_en_attente(banc, depot)
+    passe = Passe(URL_B)
+    banc.lancer([("musique", passe)], env=JETON, lire=Github([{"state": "open"}]))
+    assert passe.appels == 0
+
+
+@pytest.mark.parametrize("github", [Github(erreur=OSError("API coupée")), Github([])])
+def test_sans_reponse_utile_de_l_api_l_ancienne_regle_s_applique(banc, depot, github_distant, github):
+    _proposition_en_attente(banc, depot)
+    passe = Passe(URL_B)
+    banc.lancer([("musique", passe)], env=JETON, lire=github)
+    assert passe.appels == 0 and len(github.appels) == 1
+
+
+def test_seules_les_propositions_des_recos_dans_leur_fenetre_sont_testees(banc, depot, github_distant):
+    _proposition_en_attente(banc, depot)
+    github = Github([{"state": "open"}])
+    banc.maintenant = datetime(2026, 12, 21, 8, 0, tzinfo=UTC)  # J+31 : fenêtre fermée
+    banc.lancer([("musique", Passe(URL_B))], env=JETON, lire=github)
+    assert github.appels == []
+
+
+def test_la_lecture_de_l_api_par_defaut_envoie_le_jeton_et_lit_la_liste(monkeypatch):
+    vu = {}
+
+    class Reponse(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_exc):
+            return False
+
+    def ouvrir(requete, timeout):
+        vu.update(url=requete.full_url, auth=requete.get_header("Authorization"), delai=timeout)
+        return Reponse(b'[{"state": "closed"}]')
+
+    monkeypatch.setattr(spr.urllib.request, "urlopen", ouvrir)
+    assert spr._lire_api("https://api.github.com/repos/o/d/pulls?state=all", "jeton") == [{"state": "closed"}]
+    assert vu["auth"] == "Bearer jeton" and vu["delai"] == pub.DELAI_API
+
+
+# --- les identifiants refusés ne reviennent pas ----------------------------------------------
+
+class PasseAvecIdentifiant(Passe):
+    """Comme `Passe`, mais la reco gagne aussi un `externalIds`."""
+
+    def __call__(self, source: str, ids: set[str]) -> None:
+        super().__call__(source, ids)
+        for rid in ids:
+            chemin = common.RECOS_DIR / source / f"{rid}.json"
+            doc = json.loads(chemin.read_text(encoding="utf-8"))
+            doc["externalIds"] = {"deezerAlbum": "123"}
+            chemin.write_text(json.dumps(doc), encoding="utf-8")
+
+
+def test_la_proposition_garde_les_identifiants_poses(banc):
+    banc.lancer([("musique", PasseAvecIdentifiant(URL_A))])
+    assert banc.etat()["propositions"][CLE]["externalIds"] == {"deezerAlbum": "123"}
+    ecrit = json.loads((banc.publieur.dossier / CHEMIN).read_text(encoding="utf-8"))
+    assert ecrit["externalIds"] == {"deezerAlbum": "123"}
+
+
+def test_un_identifiant_deja_propose_ne_revient_pas_avec_une_autre_adresse(banc):
+    sp.ecrire_etat(banc.chemin_etat, sp.noter_proposition(
+        sp.etat_vide(), CLE, BRANCHE, "abc", [URL_A], {"deezerAlbum": "123"}))
+    banc.lancer([("musique", PasseAvecIdentifiant(URL_A, URL_B))])
+    ecrit = json.loads((banc.publieur.dossier / CHEMIN).read_text(encoding="utf-8"))
+    assert [lien["url"] for lien in ecrit["links"]] == [URL_B] and "externalIds" not in ecrit
+
+
+def test_un_identifiant_different_de_celui_refuse_est_propose(banc):
+    sp.ecrire_etat(banc.chemin_etat, sp.noter_proposition(
+        sp.etat_vide(), CLE, BRANCHE, "abc", [URL_A], {"deezerAlbum": "999"}))
+    banc.lancer([("musique", PasseAvecIdentifiant(URL_A, URL_B))])
+    ecrit = json.loads((banc.publieur.dossier / CHEMIN).read_text(encoding="utf-8"))
+    assert ecrit["externalIds"] == {"deezerAlbum": "123"}
+
+
+# --- le sablier ne part pas si l'éditeur a posé un lien -------------------------------------
+
+def _jusqu_a_la_fermeture(banc) -> None:
+    banc.lancer([("musique", Passe())])  # première relance : aucun lien trouvé
+    banc.maintenant = datetime(2026, 12, 21, 8, 0, tzinfo=UTC)  # J+31
+
+
+def test_le_sablier_part_quand_la_reco_n_a_pas_change(banc):
+    _jusqu_a_la_fermeture(banc)
+    banc.lancer([("musique", Passe())])
+    assert [m for m in banc.messages if m.startswith("⏳")]
+
+
+def test_le_sablier_ne_part_pas_si_l_editeur_a_pose_un_lien_a_la_main(banc, depot):
+    _jusqu_a_la_fermeture(banc)
+    _ecrire_reco(depot, CHEMIN, links=[{"url": URL_B, "label": "Apple Music", "kind": "streaming"}])
+    _git(depot, "commit", "-qam", "lien posé à la main")
+    _git(depot, "push", "-q", "origin", "main")
+    banc.lancer([("musique", Passe())])
+    assert not [m for m in banc.messages if m.startswith("⏳")]

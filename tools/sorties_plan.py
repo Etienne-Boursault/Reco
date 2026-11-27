@@ -17,7 +17,9 @@ Règles qui ne se devinent pas :
 - Une reco modifiée dans le clone est sautée, car sa PR ferait échouer le prochain
   `pull --ff-only` ; elle est signalée une seule fois par clé (remarque 12).
 - Le signal ⏳ ne vaut que pour une reco relancée au moins une fois : une date vieille de
-  deux ans, jamais relancée, ne dit rien (remarque 5).
+  deux ans, jamais relancée, ne dit rien (remarque 5). Il ne part pas non plus si l'éditeur
+  a posé un lien à la main depuis la première relance (tour 1 de revue, PR #227) : l'état
+  garde les adresses de la reco à sa première relance (`liens_au_depart`).
 - Un message ne se marque envoyé (`noter_signal`) qu'après son envoi : un envoi raté est
   retenté au passage suivant.
 - Un état illisible arrête l'étape sans réécriture (famille F22) : `EtatIllisible`.
@@ -26,7 +28,7 @@ from __future__ import annotations
 
 import copy
 import json
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -66,6 +68,12 @@ def _sortie(doc: dict[str, Any]) -> date | None:
         return None
 
 
+def en_fenetre(doc: dict[str, Any], aujourdhui: date) -> bool:
+    """La reco est relançable et sa fenêtre (J à J+30) est ouverte aujourd'hui."""
+    sortie = _sortie(doc)
+    return sortie is not None and dans_la_fenetre(sortie, aujourdhui)
+
+
 def proposition_en_attente(branche_existe: bool, commit_ancetre: bool) -> bool:
     """Vrai tant que la branche existe sur GitHub et que son commit n'est pas dans `origin/main`."""
     return branche_existe and not commit_ancetre
@@ -80,9 +88,8 @@ def plan_du_jour(recos: Iterable[dict[str, Any]], aujourdhui: date, etat: dict[s
     a_relancer: list[dict[str, Any]] = []
     sautees: list[dict[str, Any]] = []
     for doc in recos:
-        sortie = _sortie(doc)
         cle = cle_de(doc)
-        if sortie is None or not dans_la_fenetre(sortie, aujourdhui) or cle not in sur_origin:
+        if not en_fenetre(doc, aujourdhui) or cle not in sur_origin:
             continue
         if cle in modifiees:
             if not deja_signale(etat, "sautee", cle):
@@ -101,29 +108,47 @@ def sabliers(recos: Iterable[dict[str, Any]], aujourdhui: date,
         sortie = _sortie(doc)
         if (sortie is not None and fenetre_fermee(sortie, aujourdhui)
                 and cle in etat["relancees"] and cle not in etat["propositions"]
-                and not deja_signale(etat, "sablier", cle)):
+                and not deja_signale(etat, "sablier", cle) and not _lien_pose_a_la_main(doc, etat)):
             resultat.append(doc)
     return resultat
+
+
+def _lien_pose_a_la_main(doc: dict[str, Any], etat: dict[str, Any]) -> bool:
+    """La reco porte une adresse qu'elle n'avait pas à sa première relance."""
+    depart = etat["liens_au_depart"].get(cle_de(doc))
+    if depart is None:  # état d'avant la correction : on ne sait pas
+        return False
+    return bool(set(_adresses(doc)) - set(depart))
+
+
+def _adresses(doc: dict[str, Any]) -> list[str]:
+    return [lien["url"] for lien in doc.get("links") or []
+            if isinstance(lien, dict) and lien.get("url")]
 
 
 # --- l'état -----------------------------------------------------------------------
 
 def etat_vide() -> dict[str, Any]:
     """`dernier_jour` : AAAA-MM-JJ du dernier passage ; `propositions` : clé -> {branche, sha,
-    adresses} (adresses cumulées, jamais retirées) ; `relancees` : clés cherchées au moins une
-    fois ; `signaux` : « genre:clé » déjà envoyés ; `erreurs` : clé -> dernière panne."""
-    return {"dernier_jour": None, "propositions": {}, "relancees": [], "signaux": [], "erreurs": {}}
+    adresses, derniere, externalIds} (`adresses` cumulées et jamais retirées, `derniere` : celles de
+    la dernière PR, `externalIds` cumulés) ; `relancees` : clés cherchées au moins une fois ;
+    `liens_au_depart` : clé -> adresses de la reco à sa première relance ; `signaux` :
+    « genre:clé » déjà envoyés ; `erreurs` : clé -> dernière panne."""
+    return {"dernier_jour": None, "propositions": {}, "relancees": [], "signaux": [], "erreurs": {},
+            "liens_au_depart": {}}
 
 
 def _forme_ok(etat: dict[str, Any]) -> bool:
     if not (etat["dernier_jour"] is None or isinstance(etat["dernier_jour"], str)):
         return False
     if not (isinstance(etat["relancees"], list) and isinstance(etat["signaux"], list)
-            and isinstance(etat["erreurs"], dict) and isinstance(etat["propositions"], dict)):
+            and isinstance(etat["erreurs"], dict) and isinstance(etat["propositions"], dict)
+            and isinstance(etat["liens_au_depart"], dict)):
         return False
     return all(
         isinstance(p, dict) and isinstance(p.get("branche"), str) and isinstance(p.get("sha"), str)
-        and isinstance(p.get("adresses"), list)
+        and isinstance(p.get("adresses"), list) and isinstance(p.get("derniere", []), list)
+        and isinstance(p.get("externalIds", {}), dict)
         for p in etat["propositions"].values())
 
 
@@ -158,20 +183,35 @@ def jour_deja_traite(etat: dict[str, Any], aujourdhui: date) -> bool:
     return etat["dernier_jour"] == aujourdhui.isoformat()
 
 
-def noter_relance(etat: dict[str, Any], cles: Iterable[str]) -> dict[str, Any]:
+def noter_relance(etat: dict[str, Any], cles: Iterable[str],
+                  liens: Mapping[str, Iterable[str]] | None = None) -> dict[str, Any]:
+    """Note les recos cherchées ; `liens` (clé -> adresses de la reco) n'est gardé qu'à la première relance."""
     neuf = copy.deepcopy(etat)
+    for cle, adresses in (liens or {}).items():
+        if cle not in neuf["relancees"]:
+            neuf["liens_au_depart"][cle] = sorted(set(adresses))
     neuf["relancees"] = sorted(set(neuf["relancees"]) | set(cles))
     return neuf
 
 
 def noter_proposition(etat: dict[str, Any], cle: str, branche: str, sha: str,
-                      adresses: Iterable[str]) -> dict[str, Any]:
-    """Note la branche et le commit de la dernière PR, et cumule les adresses proposées."""
+                      adresses: Iterable[str],
+                      externes: Mapping[str, Any] | None = None) -> dict[str, Any]:
+    """Note la branche et le commit de la dernière PR, ses adresses (`derniere`), et cumule les
+    adresses et les `externalIds` proposés : une PR refermée ne les fait jamais revenir."""
     neuf = copy.deepcopy(etat)
-    anciennes = neuf["propositions"].get(cle, {}).get("adresses", [])
+    adresses = list(adresses)
+    ancienne = neuf["propositions"].get(cle, {})
+    anciennes = ancienne.get("adresses", [])
     cumul = anciennes + [a for a in adresses if a not in anciennes]
-    neuf["propositions"][cle] = {"branche": branche, "sha": sha, "adresses": cumul}
+    neuf["propositions"][cle] = {"branche": branche, "sha": sha, "adresses": cumul, "derniere": adresses,
+                                 "externalIds": {**ancienne.get("externalIds", {}), **(externes or {})}}
     return neuf
+
+
+def identifiants_deja_proposes(etat: dict[str, Any], cle: str) -> dict[str, Any]:
+    """Les `externalIds` déjà proposés pour cette reco (une PR refusée ne les ramène pas)."""
+    return dict(etat["propositions"].get(cle, {}).get("externalIds", {}))
 
 
 def adresses_nouvelles(etat: dict[str, Any], cle: str, adresses: Iterable[str]) -> list[str]:

@@ -12,6 +12,7 @@ ordre. Elle lit les recos sur `origin/main` (`git show`), cherche sur une copie,
 un worktree détaché (`branche_de_contenu.publier_branche`). Une reco modifiée dans le clone est
 sautée (sa PR ferait échouer le prochain `pull --ff-only`). Une poussée ratée ne laisse rien : la
 reco est reprise le lendemain. Un lien de `linksRejected` ne revient jamais (`fusionner`).
+Une PR qui n'attend plus (fusionnée, même par squash, ou refermée) : `sorties_propositions.py`.
 
 Cadence : une fois par jour, au premier passage à partir de 6 h à Paris (repli UTC, à partir de
 5 h, sans `tzdata`). Sans `RECO_SORTIES_ANNONCEES=1`, l'étape s'arrête aussitôt. `--apercu`
@@ -40,15 +41,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import common
 import sorties_plan as sp
-from branche_de_contenu import (
-    branche_distante_presente,
-    est_ancetre_de_origin_main,
-    publier_branche,
-)
+from branche_de_contenu import publier_branche
 from common import write_json_if_changed
 from date_sortie import jour_a_paris
 from liens_avant_relecture import _passes_par_defaut, _travailler_sur_copie, _urls, fusionner
 from publication import ErreurGit, Git
+from sorties_propositions import Lire, propositions_en_attente
 
 log = logging.getLogger("sorties_annoncees")
 
@@ -104,8 +102,20 @@ def _chercher(source: str, docs: dict[str, dict[str, Any]], passes: Sequence[tup
         if nouvelles:
             fusion["links"] = [lien for lien in fusion["links"]
                                if lien["url"] in nouvelles or lien["url"] in _urls(doc)]
+            # Un identifiant déjà proposé (PR refusée) ne revient pas avec une autre adresse.
+            refuses = sp.identifiants_deja_proposes(etat, cle)
+            gardes = {k: v for k, v in _ids_nouveaux(fusion, doc).items() if refuses.get(k) != v}
+            fusion["externalIds"] = {**(doc.get("externalIds") or {}), **gardes}
+            if not fusion["externalIds"]:
+                del fusion["externalIds"]
             trouvees.append((cle, fusion, nouvelles))
     return trouvees
+
+
+def _ids_nouveaux(fusion: dict[str, Any], doc: dict[str, Any]) -> dict[str, Any]:
+    """Les `externalIds` que la recherche a ajoutés à la reco d'origine."""
+    avant = doc.get("externalIds") or {}
+    return {k: v for k, v in (fusion.get("externalIds") or {}).items() if k not in avant}
 
 
 def _surveiller(passes: Sequence[tuple[str, Passe]], pannes: dict[str, str]) -> list[tuple[str, Passe]]:
@@ -141,7 +151,7 @@ def relancer(racine: Path, *, source: str = "un-bon-moment", notify: Notify, che
              passes: Sequence[tuple[str, Passe]] | None = None,
              publier: Callable[..., Any] = publier_branche,
              poster: Callable[..., dict[str, Any]] | None = None,
-             afficher: Notify = print) -> int:
+             lire: Lire | None = None, afficher: Notify = print) -> int:
     """Le passage du jour. Rend 0, ou 1 si l'état, git ou la publication a échoué."""
     if not apercu and env.get(VARIABLE) != "1":
         log.info("étape inactive (%s absent)", VARIABLE)
@@ -165,9 +175,8 @@ def relancer(racine: Path, *, source: str = "un-bon-moment", notify: Notify, che
         recos, illisibles = _recos_sur_origin(git, source)
         # Pas `git.modifications()` : `_git` retire l'espace de tête de « ␣M chemin » et fausse le premier chemin.
         changees = set(git._git("diff", "--name-only", "-z", "HEAD").split("\0"))
-        en_attente = {cle for cle, p in etat["propositions"].items()
-                      if sp.proposition_en_attente(branche_distante_presente(racine, p["branche"]),
-                                                   est_ancetre_de_origin_main(racine, p["sha"]))}
+        en_attente = propositions_en_attente(racine, git, etat, recos, jour,
+                                             jeton=env.get("RECO_GITHUB_TOKEN", ""), lire=lire)
     except ErreurGit as exc:  # le jour n'est pas noté : on réessaie au passage suivant
         return _fin(apercu, chemin_etat, _panne(etat, "git", str(exc), envoyer), 1)
     etat = sp.effacer_erreur(sp.noter_jour(etat, jour), "git")
@@ -176,7 +185,8 @@ def relancer(racine: Path, *, source: str = "un-bon-moment", notify: Notify, che
     docs = [doc for _, doc in recos.values()]
     plan = sp.plan_du_jour(docs, jour, etat, sur_origin=set(recos), modifiees=modifiees,
                            en_attente=en_attente)
-    etat = sp.noter_relance(etat, (sp.cle_de(d) for d in plan.a_relancer))
+    etat = sp.noter_relance(etat, (sp.cle_de(d) for d in plan.a_relancer),
+                            {sp.cle_de(d): _urls(d) for d in plan.a_relancer})
     for doc in plan.modifiees:
         if envoyer(sp.message_modifiee(doc)):
             etat = sp.noter_signal(etat, "sautee", sp.cle_de(doc))
@@ -255,8 +265,9 @@ def _proposer(racine: Path, jour: date, trouvees: list[tuple[str, dict[str, Any]
     etat = sp.effacer_erreur(etat, "publication")
     if resultat is None:
         return etat, 0
-    for cle, _fusion, adresses in trouvees:  # d'abord l'état, ensuite Matrix
-        etat = sp.noter_proposition(etat, cle, resultat.nom, resultat.sha, adresses)
+    for cle, fusion, adresses in trouvees:  # d'abord l'état, ensuite Matrix
+        etat = sp.noter_proposition(etat, cle, resultat.nom, resultat.sha, adresses,
+                                    _ids_nouveaux(fusion, recos[cle][1]))
     for cle, fusion, adresses in trouvees:
         labels = [lien.get("label") or lien["url"] for lien in fusion["links"] if lien["url"] in adresses]
         envoyer("\n".join([sp.message_trouvaille(recos[cle][1], labels, resultat.lien),

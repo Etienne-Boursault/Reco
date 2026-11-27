@@ -134,8 +134,16 @@ les cherche donc après coup, sans que personne y pense.
     (sa PR de liens ferait échouer le `pull`), quand une passe tombe en panne, ou quand la
     publication échoue. Chaque panne n'est signalée qu'une fois.
 - **Ce qu'elle ne refait jamais** : un lien retiré à la relecture (`linksRejected`) ne revient
-  pas, et une adresse déjà proposée par une PR, même refermée, n'est pas reproposée. Tant
-  qu'une PR de liens attend sa fusion, la reco est sautée.
+  pas, et une adresse ou un identifiant (`externalIds`) déjà proposés par une PR, même
+  refermée, ne sont pas reproposés. Tant qu'une PR de liens attend, la reco est sautée.
+  Une PR **n'attend plus** (tour 1 de revue, PR #227) dès que ses adresses figurent dans la
+  reco d'`origin/main` (fusion de toute sorte, squash et rebase compris) ; sinon, avec
+  `RECO_GITHUB_TOKEN`, dès que GitHub la dit fermée ou fusionnée ; sans jeton, quand sa
+  branche a disparu ou que son commit est dans `origin/main`. Une PR refermée sans fusion
+  laisse donc la reco relançable, avec les seules adresses nouvelles. Seules les recos encore
+  dans leur fenêtre sont testées, ce qui borne le nombre d'appels à GitHub.
+- **Le ⏳ ne part pas** si l'éditeur a posé un lien à la main depuis la première relance (un
+  lien que la reco n'avait pas ce jour-là).
 - **Limites de la V1** :
   - seuls les types `album`, `musique`, `livre` et `jeu` sont servis ; les **films et les
     séries attendent** (leurs passes passent par TMDB, écartées exprès) ;

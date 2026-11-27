@@ -152,7 +152,8 @@ def test_les_adresses_s_accumulent_d_une_proposition_a_l_autre():
     cle = "x/y"
     etat = sp.noter_proposition(sp.etat_vide(), cle, "b1", "s1", ["u1"])
     etat = sp.noter_proposition(etat, cle, "b2", "s2", ["u2", "u1"])
-    assert etat["propositions"][cle] == {"branche": "b2", "sha": "s2", "adresses": ["u1", "u2"]}
+    assert etat["propositions"][cle] == {"branche": "b2", "sha": "s2", "adresses": ["u1", "u2"],
+                                         "derniere": ["u2", "u1"], "externalIds": {}}
 
 
 # --- le signal ⏳ -----------------------------------------------------------------
@@ -203,7 +204,8 @@ def test_l_etat_vide_a_toutes_ses_cles_et_n_est_pas_partage():
     a, b = sp.etat_vide(), sp.etat_vide()
     a["relancees"].append("x")
     assert b["relancees"] == []
-    assert set(a) == {"dernier_jour", "propositions", "relancees", "signaux", "erreurs"}
+    assert set(a) == {"dernier_jour", "propositions", "relancees", "signaux", "erreurs",
+                      "liens_au_depart"}
 
 
 def test_les_fonctions_de_l_etat_ne_modifient_pas_leur_argument():
@@ -345,3 +347,59 @@ def test_le_message_de_reco_sautee_explique_comment_la_reprendre():
 def test_le_message_de_panne_porte_la_cle_et_le_message():
     m = sp.message_panne("un-bon-moment/ubm-3348", "délai dépassé")
     assert m.startswith("⚠️") and "un-bon-moment/ubm-3348" in m and "délai dépassé" in m
+
+
+# --- tour 1 de revue, PR #227 -------------------------------------------------------
+
+def test_une_proposition_garde_les_adresses_de_sa_derniere_pr_et_cumule_les_identifiants():
+    etat = sp.noter_proposition(sp.etat_vide(), "x/y", "b1", "s1", ["u1"], {"deezer": "1"})
+    etat = sp.noter_proposition(etat, "x/y", "b2", "s2", ["u2"], {"itunes": "2"})
+    p = etat["propositions"]["x/y"]
+    assert p["derniere"] == ["u2"] and p["adresses"] == ["u1", "u2"]
+    assert p["externalIds"] == {"deezer": "1", "itunes": "2"}
+
+
+def test_les_identifiants_proposes_se_lisent_ensemble_avec_les_adresses():
+    etat = sp.noter_proposition(sp.etat_vide(), "x/y", "b", "s", ["u"], {"deezer": "1"})
+    assert sp.identifiants_deja_proposes(etat, "x/y") == {"deezer": "1"}
+    assert sp.identifiants_deja_proposes(etat, "autre") == {}
+
+
+def test_en_fenetre_dit_si_la_reco_est_relancable_aujourd_hui():
+    assert sp.en_fenetre(reco(releaseDate="2026-11-20"), AUJOURDHUI)
+    assert not sp.en_fenetre(reco(releaseDate="2026-10-27"), AUJOURDHUI)  # J+31
+    assert not sp.en_fenetre(reco(releaseDate="2026-11-28"), AUJOURDHUI)  # demain
+    assert not sp.en_fenetre(reco(status="draft"), AUJOURDHUI)
+
+
+def test_la_premiere_relance_garde_les_liens_de_depart_et_la_suivante_ne_les_change_pas():
+    etat = sp.noter_relance(sp.etat_vide(), ["x/y"], {"x/y": ["u2", "u1"]})
+    assert etat["liens_au_depart"] == {"x/y": ["u1", "u2"]}
+    etat = sp.noter_relance(etat, ["x/y"], {"x/y": ["u1", "u2", "u3"]})
+    assert etat["liens_au_depart"] == {"x/y": ["u1", "u2"]}
+
+
+def test_pas_de_sablier_si_l_editeur_a_pose_un_lien_depuis_la_premiere_relance():
+    r = reco(releaseDate="2026-10-27", links=[{"url": "https://a/1"}])
+    etat = sp.noter_relance(sp.etat_vide(), [sp.cle_de(r)], {sp.cle_de(r): ["https://a/1"]})
+    assert sp.sabliers([r], AUJOURDHUI, etat) == [r]  # rien de nouveau : le signal part
+    r_pose = reco(releaseDate="2026-10-27", links=[{"url": "https://a/1"}, {"url": "https://a/2"}])
+    assert sp.sabliers([r_pose], AUJOURDHUI, etat) == []
+
+
+def test_un_etat_ancien_sans_liens_de_depart_garde_l_ancien_comportement():
+    r = reco(releaseDate="2026-10-27", links=[{"url": "https://a/1"}])
+    etat = sp.noter_relance(sp.etat_vide(), [sp.cle_de(r)])  # aucun lien de départ noté
+    assert sp.sabliers([r], AUJOURDHUI, etat) == [r]
+
+
+def test_un_champ_de_proposition_de_forme_fausse_rend_l_etat_illisible(tmp_path):
+    chemin = tmp_path / "etat.json"
+    chemin.write_text(json.dumps({"propositions": {"x/y": {"branche": "b", "sha": "s", "adresses": [],
+                                                           "externalIds": ["pas un objet"]}}}),
+                      encoding="utf-8")
+    with pytest.raises(sp.EtatIllisible):
+        sp.lire_etat(chemin)
+    chemin.write_text(json.dumps({"liens_au_depart": []}), encoding="utf-8")
+    with pytest.raises(sp.EtatIllisible):
+        sp.lire_etat(chemin)

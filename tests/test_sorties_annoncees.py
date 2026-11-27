@@ -189,7 +189,7 @@ def test_un_lien_trouve_donne_une_pr_une_proposition_et_un_message(banc):
     assert "🗓️" in message and "(Deezer)" in message and "pull/1" in message
     etat = banc.etat()
     assert etat["propositions"][CLE] == {"branche": "contenu/sorties-2026-11-27", "sha": "abc",
-                                         "adresses": [URL_A]}
+                                         "adresses": [URL_A], "derniere": [URL_A], "externalIds": {}}
     assert etat["relancees"] == [CLE] and etat["dernier_jour"] == "2026-11-27"
 
 
