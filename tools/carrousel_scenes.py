@@ -180,7 +180,9 @@ def _scene(mise: str, images: list[tuple[str, str]], type_: str, rang: int, tota
 def page_reco(r: dict, rang: int, total: int, images: list[tuple[str, str]], mise: str) -> str:
     """Une page de reco : `images` = [(adresse, texte alternatif)], `mise` = sa mise en scène."""
     titre, citation = ajuster(r, mise if images else "sans")
-    marge = {"photo": "padding: 0 88px 80px; margin-top: -60px; position: relative",
+    # Photo : 24 px de marge en haut, compensés par la remontée, pour que le
+    # bloc (overflow hidden) ne rogne pas les accents des capitales (S6-E11, 27/11).
+    marge = {"photo": "padding: 24px 88px 80px; margin-top: -84px; position: relative",
              "sans": "padding: 64px 88px 80px"}.get(mise if images else "sans", "padding: 24px 88px 80px")
     createur = f'<div style="font-size: 36px; color: #c9c7c0">{E(r["createur"])}</div>' if r.get("createur") else ""
     qui = (f'<span>Reco de <strong>{E(r["qui"])}</strong></span><span aria-hidden="true" style="color: #6f6e78">·'
