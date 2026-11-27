@@ -205,29 +205,18 @@ const estAccueil = Astro.url.pathname === '/';
        Si l'endpoint n'existe pas (mode static), l'erreur réseau est
        avalée — le clic suit son cours normalement. */}
     <script>
+      import { pageMesurable } from '../utils/signalVue';
+
       (() => {
         // `globalPrivacyControl` (spec GPC) n'est pas encore dans lib.dom :
         // on l'annote plutot que de caster en `any`, pour garder la garde
         // de confidentialite verifiee par le compilateur.
         const nav: Navigator & { globalPrivacyControl?: boolean } = navigator;
         if (nav.globalPrivacyControl === true) return;
-        // F-H-1 — Skip tracking sur :
-        //   1. les pages du méta-site (`/meta/*`), white-listées explicitement
-        //      (privacy : pas de signal d'audience sur l'annuaire),
-        //   2. les pages `noindex` (regex stricte sur `content="noindex"` ou
-        //      `content="noindex,*` pour éviter qu'un `description="...noindex
-        //      legacy..."` ne déclenche le filtre par accident).
-        // Cf. ADR 0040, ADR 0046, cross-fixer MX-1.
-        if (location.pathname === '/meta' || location.pathname.startsWith('/meta/')) {
-          return;
-        }
-        const robots = document.querySelector('meta[name="robots"]');
-        if (robots) {
-          const content = (robots.getAttribute('content') ?? '').trim().toLowerCase();
-          if (content === 'noindex' || content.startsWith('noindex,') || content.startsWith('noindex ')) {
-            return;
-          }
-        }
+        // F-H-1 — pas de suivi sur `/meta/*` ni sur les pages `noindex` : la
+        // garde est partagée avec le signal « page vue » (`utils/signalVue.ts`,
+        // AU-1 A, 2026-11-27). Cf. ADR 0040, ADR 0046, cross-fixer MX-1.
+        if (!pageMesurable(location, document)) return;
         document.addEventListener(
           'click',
           (e) => {
@@ -266,6 +255,15 @@ const estAccueil = Astro.url.pathname === '/';
           { capture: true, passive: true },
         );
       })();
+    </script>
+
+    {/* Signal « page vue » (AU-1 A, 2026-11-27) : un envoi par page affichée,
+       qui distingue un navigateur d'un robot. Aucun identifiant ; même garde
+       que le clic. Voir `utils/signalVue.ts`. */}
+    <script>
+      import { cablerSignalVue } from '../utils/signalVue';
+
+      cablerSignalVue({ navigator, document, location, fetch });
     </script>
   </body>
 </html>
