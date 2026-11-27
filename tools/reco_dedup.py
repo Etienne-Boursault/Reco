@@ -134,23 +134,60 @@ def _kind_of(r: dict) -> str:
     return r.get("kind") or "reco"
 
 
+# Types entre lesquels une passe d'extraction hésite pour une même œuvre.
+# « autre » (aucun type choisi) n'est jamais une preuve : il est retiré.
+_FAMILLES_DE_TYPES = (
+    {"musique", "album", "artiste", "spectacle"},
+    {"film", "serie", "video", "chaine", "spectacle", "podcast"},
+    {"livre", "bd", "article"},
+    {"jeu", "application"},
+)
+_MOTS_DE_LIAISON = {"et", "and", "feat", "ft", "featuring", "x", "avec"}
+_SEUIL_CREATEUR = 0.80
+
+
+def _types_proches(types_a: set[str], types_b: set[str]) -> bool:
+    """Vrai si un type de chaque côté est le même, ou de la même famille."""
+    return any(ta == tb or any({ta, tb} <= f for f in _FAMILLES_DE_TYPES)
+               for ta in types_a for tb in types_b)
+
+
+def _mots_du_createur(createur: str | None) -> list[str]:
+    return [m for m in normalize_text(createur).split() if m not in _MOTS_DE_LIAISON]
+
+
+def _createurs_differents(a: str | None, b: str | None) -> bool:
+    """Vrai si deux créateurs renseignés ne sont pas deux graphies du même.
+
+    Sont tenus pour le même : « Bigflo & Oli » et « Bigflo et Oli », un nom
+    contenu dans l'autre (« Orelsan » et « Orelsan feat. Stromae »), et un nom
+    mal entendu (« Canet », « Canné », à partir de 80 % de ressemblance).
+    """
+    mots_a, mots_b = _mots_du_createur(a), _mots_du_createur(b)
+    if not mots_a or not mots_b:
+        return False
+    if set(mots_a) <= set(mots_b) or set(mots_b) <= set(mots_a):
+        return False
+    return SequenceMatcher(None, " ".join(mots_a), " ".join(mots_b)).ratio() < _SEUIL_CREATEUR
+
+
 def _oeuvres_distinctes(a: dict, b: dict) -> bool:
     """Vrai quand deux recos désignent à coup sûr deux œuvres différentes.
 
-    Il faut deux preuves à la fois : aucun type en commun, et deux créateurs
-    renseignés qui diffèrent (casse et accents ignorés). Une seule ne suffit
-    pas : une passe d'extraction peut mal choisir le type, ou mal entendre
-    le créateur, d'une même œuvre.
+    Il faut deux preuves à la fois : des types sans rien de proche, et deux
+    créateurs renseignés qui ne sont pas deux graphies du même. Une seule ne
+    suffit pas : une passe d'extraction peut mal choisir le type, ou mal
+    entendre le créateur, d'une même œuvre.
 
     Demandé par Étienne le 2026-11-27 sur S6-E11 : l'album « Karma » de
     Bigflo & Oli et le film « Karma » de Guillaume Canet, cités à 11 s
     d'écart, s'affichaient comme « doublons probables ».
     """
-    types_a, types_b = set(a.get("types") or []), set(b.get("types") or [])
-    createur_a = normalize_text(a.get("creator") or "")
-    createur_b = normalize_text(b.get("creator") or "")
-    return (bool(types_a) and bool(types_b) and not types_a & types_b
-            and bool(createur_a) and bool(createur_b) and createur_a != createur_b)
+    types_a = set(a.get("types") or []) - {"autre"}
+    types_b = set(b.get("types") or []) - {"autre"}
+    if not types_a or not types_b or _types_proches(types_a, types_b):
+        return False
+    return _createurs_differents(a.get("creator"), b.get("creator"))
 
 
 def _can_match(a: dict, b: dict, sim: float, time_window_sec: int) -> bool:
@@ -202,10 +239,20 @@ def cluster_recos(
             i = parent[i]
         return i
 
-    def union(i: int, j: int) -> None:
+    def union(i: int, j: int) -> bool:
+        """Joint les groupes de i et j, sauf s'ils réuniraient deux œuvres
+        distinctes : une troisième reco qui ressemble aux deux rejoint l'une,
+        jamais les deux à la fois (revue de la PR #218)."""
         ri, rj = find(i), find(j)
-        if ri != rj:
-            parent[rj] = ri
+        if ri == rj:
+            return True
+        groupe_i = [k for k in range(n) if find(k) == ri]
+        groupe_j = [k for k in range(n) if find(k) == rj]
+        if any(_oeuvres_distinctes(actives[x], actives[y])
+               for x in groupe_i for y in groupe_j):
+            return False
+        parent[rj] = ri
+        return True
 
     matched: list[tuple[int, int, float]] = []
     for i in range(n):
@@ -217,8 +264,8 @@ def cluster_recos(
                 continue
             if not _can_match(actives[i], actives[j], sim, time_window_sec):
                 continue
-            union(i, j)
-            matched.append((i, j, sim))
+            if union(i, j):
+                matched.append((i, j, sim))
 
     groups: dict[int, list[int]] = {}
     for i in range(n):
