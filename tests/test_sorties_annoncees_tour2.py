@@ -13,7 +13,7 @@ import sorties_annoncees as sa
 import sorties_plan as sp
 import test_sorties_annoncees as base
 from publication import ErreurGit
-from test_sorties_annoncees import CLE, Banc, Passe
+from test_sorties_annoncees import CLE, Passe
 
 depot, banc, paris = base.depot, base.banc, base.paris
 
