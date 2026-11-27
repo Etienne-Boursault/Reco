@@ -10,6 +10,7 @@
 import { getCollection } from 'astro:content';
 import { t } from '../i18n';
 import SupportLinks from './SupportLinks.astro';
+import MesureAudience from './MesureAudience.astro';
 import { siteConfig } from '../config/site';
 import { chargerListes } from '../lib/listes/donnees';
 
@@ -66,6 +67,9 @@ const listes = chargerListes(primaryId) ? `/${primaryId}/listes` : null;
       ))}
     </nav>
   )}
+  {/* Mesure d'audience : interrupteur et ligne de première visite (AU-2 B,
+     2026-11-27), sur chaque page. */}
+  <MesureAudience />
   <p>{tagline}</p>
 </footer>
 

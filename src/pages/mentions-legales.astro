@@ -15,6 +15,18 @@
  * `src/lib/tracking/` et `src/lib/reports/`. Modifier l'un sans l'autre rend
  * la page mensongère.
  *
+ * LA MESURE D'AUDIENCE (AU-2 B, 2026-11-27)
+ * -----------------------------------------
+ * La section « données personnelles » décrit, champ par champ, la ligne de
+ * visite et la ligne de signal (`derive.mjs`, `signal.mjs`), la ligne de clic
+ * (`tracking/handler.ts`), la table des hébergeurs (`hebergeurs.mjs`), l'entrée
+ * unique du navigateur et sa durée (`mesureNavigateur.ts` : clé `CLE`, 13 mois
+ * sans prolongation), le refus, GPC et DNT (`interfaceMesure.ts`,
+ * `signalVue.ts`). L'empreinte d'un jour est un PSEUDONYME : avec le sel et une
+ * adresse IP, on la recalcule. Le refus coupe ce que le navigateur envoie, pas
+ * la ligne de visite du serveur (C2b). Le test `test_mentions_legales` lit les
+ * clés des lignes dans le code : un champ ajouté sans mot ici le fait échouer.
+ *
  * L'éditeur est un particulier qui a choisi l'anonymat que la LCEN permet aux
  * éditeurs non professionnels : son identité est connue de l'hébergeur, et
  * n'est pas publiée ici (arbitrage du 2026-10-22).
@@ -23,9 +35,10 @@ import Layout from '../layouts/Layout.astro';
 import { t } from '../i18n';
 import { siteConfig } from '../config/site';
 import { MOIS_COORDONNEES, MOIS_MESURES } from '../server/retention.mjs';
+import { CLE, MOIS_DE_VIE } from '../utils/mesureNavigateur';
 
 const contact = siteConfig.contactEmail;
-const MISE_A_JOUR = '22 octobre 2026';
+const MISE_A_JOUR = '27 novembre 2026';
 ---
 
 <Layout title={t('legal.title')} description={t('legal.subtitle')}>
@@ -68,32 +81,105 @@ const MISE_A_JOUR = '22 octobre 2026';
     <section aria-labelledby="donnees">
       <h2 id="donnees">Données personnelles</h2>
       <p>
-        <strong>Aucun cookie, aucun traceur, aucune publicité.</strong> Le site
-        ne dépose rien dans votre navigateur et ne fait appel à aucun service de
-        statistiques. Le responsable de traitement est l’éditeur, joignable à
-        l’adresse ci-dessus.
+        <strong>Aucun cookie, aucune publicité, aucun service de statistiques
+        extérieur.</strong> Le site garde une seule entrée dans le stockage
+        local de votre navigateur, décrite plus bas. Le responsable de
+        traitement est l’éditeur, joignable à l’adresse ci-dessus.
       </p>
 
-      <h3>Mesure de fréquentation</h3>
+      <h3>Mesure de fréquentation : ce que le serveur note</h3>
       <p>
-        Le serveur du site note chaque page servie : son adresse, l’heure
-        arrondie, le type d’appareil (« mobile » ou « ordinateur »), la langue
-        du navigateur, le domaine du site d’où vous venez, le pays, et un
-        identifiant valable une seule journée. Cet identifiant est une empreinte
-        de votre adresse IP, mêlée à un secret et à la date : il permet de
-        compter les visiteurs d’un jour sans les suivre d’un jour à l’autre.
-        L’adresse IP elle-même n’est jamais enregistrée, et le pays est déduit
-        sur le serveur, sans interroger aucun service extérieur.
+        Pour chaque page servie, le serveur écrit une ligne : l’adresse de la
+        page, l’heure arrondie à l’heure, le code de réponse, le temps de
+        réponse, si le visiteur ressemble à un robot, si la page a seulement été
+        préchargée, le type d’appareil (« mobile » ou « ordinateur »), la langue
+        du navigateur sur deux lettres, le domaine du site d’où vous venez, le
+        pays, et un oui/non : l’adresse IP est-elle celle d’un hébergeur (centre
+        de données ou VPN) ? La ligne porte aussi une empreinte, valable une
+        seule journée.
       </p>
       <p>
-        Les clics vers une plateforme (librairie, service de streaming…) sont
-        comptés de la même façon : lien suivi, type de plateforme, page de
-        départ, date — sans aucun identifiant.
+        Cette empreinte est calculée à partir de votre adresse IP, d’un secret
+        et de la date. Elle permet de compter les visiteurs d’un jour sans les
+        suivre d’un jour à l’autre. C’est un pseudonyme, pas une donnée
+        anonyme : l’éditeur ne peut relier vos visites d’une même journée que
+        s’il connaît votre adresse IP. L’adresse IP elle-même n’est jamais
+        enregistrée, et le pays est déduit sur le serveur, sans interroger aucun
+        service extérieur.
       </p>
+      <p>
+        Pour savoir si une adresse est celle d’un hébergeur, le serveur la
+        compare à une table embarquée : rien n’est envoyé à un tiers. Seul le
+        oui/non est écrit.
+      </p>
+
+      <h3>Le signal « page vue »</h3>
+      <p>
+        Une fois la page affichée, votre navigateur envoie au site un petit
+        signal « page vue ». Il sert à distinguer un navigateur d’un robot. Il
+        porte l’adresse de la page et trois réponses oui/non : êtes-vous déjà
+        venu un autre jour ? Avez-vous vu une page d’épisode le jour même ?
+        Avez-vous vu une fiche d’œuvre le jour même ? Le serveur en fait une
+        ligne : l’heure arrondie, l’adresse de la page, le oui/non d’hébergeur,
+        l’empreinte du jour et ces trois réponses. Le tableau d’audience n’en
+        tire que des parts, jamais le parcours d’une personne.
+      </p>
+
+      <h3>Ce qui est gardé dans votre navigateur</h3>
+      <p>
+        Le site écrit une seule entrée dans le stockage local de votre
+        navigateur, nommée <code>{CLE}</code>. Ce n’est pas un cookie. Elle garde
+        la date de votre première visite, les étapes vues le jour même (page
+        d’épisode, fiche d’œuvre) et l’état de la ligne d’information du pied
+        de page. Elle dure {MOIS_DE_VIE} mois au plus, sans prolongation : passé
+        ce délai, elle est effacée et repart à zéro.
+      </p>
+      <p>
+        Rien de cette entrée ne quitte votre navigateur. Seuls trois oui/non
+        (déjà venu, a vu un épisode, a vu une fiche le jour même)
+        accompagnent le signal « page vue » et le clic vers une plateforme.
+        Si votre navigateur ne peut rien garder, ces trois oui/non ne partent
+        pas : le signal ne porte alors que l’adresse de la page.
+      </p>
+
+      <h3>Les clics vers une plateforme</h3>
+      <p>
+        Pour un clic vers une plateforme (librairie, service de streaming…), le
+        serveur écrit le lien suivi, le type de plateforme, le podcast et la
+        recommandation concernés, la page de départ, la date et l’heure, et les
+        trois oui/non quand le navigateur les connaît. Aucune adresse IP, aucun
+        identifiant. Pour le signal comme pour les clics, votre adresse IP sert
+        aussi un instant, en mémoire seulement et sans être écrite, à limiter
+        les envois répétés.
+      </p>
+
+      <h3>Refuser la mesure</h3>
+      <p>
+        Un clic suffit : « Désactiver » dans le pied de chaque page, ou
+        « Refuser » dans la ligne d’information de la première visite. Le
+        navigateur n’envoie alors plus rien (ni signal, ni oui/non avec les
+        clics) et l’entrée ne garde que votre refus, sans date ni étape. Vous
+        pouvez « Réactiver » plus tard. Si votre navigateur signale Global
+        Privacy Control ou Do Not Track, la mesure est désactivée d’office :
+        rien n’est envoyé et ce qui était gardé est effacé. Si votre navigateur
+        ne peut rien garder (navigation privée, stockage coupé), il ne peut pas
+        retenir un refus : ces deux réglages restent alors le moyen de refuser.
+      </p>
+      <p>
+        Un refus, Global Privacy Control et Do Not Track n’empêchent pas le
+        serveur de compter la page qu’il vous sert, comme pour une visite sans
+        JavaScript : la ligne décrite plus haut est écrite, sans signal ni
+        oui/non.
+      </p>
+
+      <h3>Pourquoi, et sur quel fondement</h3>
       <p>
         Ces mesures servent uniquement à savoir quelles pages sont lues et si le
-        site remplit son rôle (intérêt légitime de l’éditeur). Elles sont
-        supprimées automatiquement au bout de {MOIS_MESURES} mois.
+        site remplit son rôle : c’est l’intérêt légitime de l’éditeur. La CNIL
+        dispense de consentement la mesure d’audience limitée au site, dans ses
+        lignes directrices du 17 septembre 2020. C’est le cas ici : rien n’est
+        croisé avec d’autres données ni partagé avec un tiers. Les lignes du
+        serveur sont supprimées automatiquement au bout de {MOIS_MESURES} mois.
       </p>
 
       <h3>Signalements d’erreur</h3>
@@ -129,10 +215,11 @@ const MISE_A_JOUR = '22 octobre 2026';
       <h3>Vos droits</h3>
       <p>
         Vous pouvez demander l’accès à vos données, leur rectification, leur
-        effacement ou vous opposer à leur traitement en écrivant à l’adresse de
-        contact. Les mesures de fréquentation ne contenant ni nom ni adresse IP,
-        elles ne permettent pas de retrouver vos visites. En cas de désaccord,
-        vous pouvez saisir la <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.
+        effacement ou vous opposer à leur traitement (article 21 du RGPD) en
+        écrivant à l’adresse de contact. Pour la mesure de fréquentation,
+        l’opposition se fait en un clic, sans rien écrire : « Désactiver » dans
+        le pied de chaque page. Les mesures ne contiennent ni nom ni adresse IP.
+        En cas de désaccord, vous pouvez saisir la <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.
       </p>
     </section>
 
@@ -169,6 +256,15 @@ const MISE_A_JOUR = '22 octobre 2026';
           Géolocalisation par pays :
           <a href="https://db-ip.com" rel="noopener">IP Geolocation by DB-IP</a>,
           sous licence <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.
+        </li>
+        <li>
+          Repérage des hébergeurs :
+          <a href="https://github.com/X4BNet/lists_vpn" rel="noopener">X4BNet lists_vpn</a>
+          (licence MIT) et <a href="https://db-ip.com" rel="noopener">IP to ASN Lite</a> de
+          DB-IP, sous licence <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>
+          (<a href="https://db-ip.com" rel="noopener">https://db-ip.com</a>).
+          Les adresses sont comparées à une table locale ; rien n’est envoyé à
+          ces services.
         </li>
       </ul>
     </section>

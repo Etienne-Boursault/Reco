@@ -11,8 +11,9 @@
  *
  * LA RÈGLE
  * --------
- * Le manifeste du projet dit : « Aucun tracker tiers. Aucun cookie marketing.
- * Aucun cookie analytique. » Ce module s'y tient, et va plus loin : chaque
+ * Le manifeste du projet dit : « Aucun tracker tiers. Aucun cookie. Une mesure
+ * propre au site, refusable en un clic » (révisé par AU-2 B, 2026-11-27). Ce
+ * module s'y tient, et va plus loin : chaque
  * en-tête est réduit à une CATÉGORIE avant d'être écrit, jamais conservé tel
  * quel. Un agent utilisateur complet, un référent complet, une IP : ce sont
  * des empreintes. « mobile », « google.com », un condensat salé du jour : ce
@@ -20,9 +21,24 @@
  *
  * CE QU'ON NE FAIT PAS
  * --------------------
- * Pas de reconstitution de parcours. Relier deux pages d'un même visiteur est
- * bien plus identifiant que leur somme, pour un gain faible — arbitrage de
- * l'éditeur, 2026-08-25.
+ * Pas de reconstitution de parcours par personne. Relier deux pages d'un même
+ * visiteur est bien plus identifiant que leur somme, pour un gain faible —
+ * arbitrage de l'éditeur, 2026-08-25.
+ *
+ * RÉVISÉ PAR AU-2 B (2026-11-27) : l'éditeur a décidé de mesurer aussi les
+ * revenants et le chemin épisode → fiche → clic. Le navigateur garde pour cela
+ * une entrée de stockage local (`reco.mesure`, 13 mois sans prolongation,
+ * refusable en un clic) qui ne le quitte JAMAIS : aucun identifiant n'existe.
+ * Seuls trois oui/non (`revenant`, `aVuEpisode`, `aVuFiche`) accompagnent le
+ * signal « page vue » (`evenementDeSignal`, plus bas) et le clic. La ligne de
+ * visite, elle, ne porte toujours aucun parcours ; les mentions légales
+ * décrivent chaque champ, et un test les relit contre les clés de ces lignes.
+ *
+ * L'HÉBERGEUR (AU-1 A, 2026-11-27)
+ * --------------------------------
+ * Chaque ligne porte un booléen `hebergeur` : l'adresse est-elle celle d'un
+ * centre de données ou d'un VPN ? Il sert à séparer les robots des visiteurs.
+ * Lu dans une table embarquée (`hebergeurs.mjs`), l'adresse n'est pas écrite.
  *
  * Pas de poids de réponse non plus. `server.mjs` compresse, et la compression
  * retire `Content-Length` — il annonçait la taille EN CLAIR. Le champ aurait
@@ -34,6 +50,7 @@
  */
 import { createHash } from 'node:crypto';
 import { paysDeIP } from './geoip.mjs';
+import { estHebergeur } from './hebergeurs.mjs';
 
 /**
  * Ce qui n'est pas une page : on ne compte pas les feuilles de style.
@@ -204,6 +221,11 @@ export function pays(entetes, ip = null, { resoudre = paysDeIP } = {}) {
   return ip ? resoudre(ip) : null;
 }
 
+/** L'adresse appartient-elle à un hébergeur ? Faux sans adresse. */
+export function heberge(ip, { resoudre = estHebergeur } = {}) {
+  return ip ? resoudre(ip) : false;
+}
+
 /**
  * Un identifiant de visiteur qui ne survit pas à la journée.
  *
@@ -257,7 +279,41 @@ export function evenementDeVisite({
     provenance: provenance(entetes.referer, hoteDuSite),
     langue: langue(entetes['accept-language']),
     pays: pays(entetes, ip),
+    hebergeur: heberge(ip),
     visiteur: empreinteDuJour(ip, sel, jour),
     dureeMs: typeof dureeMs === 'number' ? Math.round(dureeMs) : null,
+  };
+}
+
+/**
+ * La ligne d'un signal « page vue » (AU-1 A, 2026-11-27), reçu par `signal.mjs`.
+ *
+ * Même règle qu'une visite : tout ce qui entre est brut, tout ce qui sort est
+ * catégorisé. La ligne ne porte ni statut, ni agent, ni langue : un signal
+ * dit seulement « un navigateur a affiché cette page », avec l'empreinte du
+ * jour, l'indication d'hébergeur de l'adresse et, depuis AU-2 B (27/11/2026),
+ * trois oui/non gardés par le navigateur : `revenant`, `aVuEpisode`, `aVuFiche`.
+ * `null` = non communiqué (ancien script en cache) : jamais un « non » inventé.
+ * Rien d'autre du navigateur n'entre sur la ligne.
+ */
+export function evenementDeSignal({
+  chemin,
+  ip = null,
+  sel = null,
+  maintenant = new Date(),
+  revenant = null,
+  aVuEpisode = null,
+  aVuFiche = null,
+}) {
+  const jour = maintenant.toISOString().slice(0, 10);
+  return {
+    ts: heureRonde(maintenant),
+    nature: 'signal',
+    chemin: cheminSeul(chemin),
+    hebergeur: heberge(ip),
+    visiteur: empreinteDuJour(ip, sel, jour),
+    revenant,
+    aVuEpisode,
+    aVuFiche,
   };
 }

@@ -10,7 +10,10 @@ import { readFileSync } from 'node:fs';
 import http from 'node:http';
 import { join } from 'node:path';
 
-import { hoteDe, mesurerVisite, sourcesDe } from '../lib/audience/mesure.mjs';
+import { creerExclusion } from '../lib/audience/exclusion.mjs';
+import { adresseCliente, hoteDe, mesurerVisite, sourcesDe } from '../lib/audience/mesure.mjs';
+import { creerSignal } from '../lib/audience/signal.mjs';
+import { ENTETES_PIXEL, PIXEL_GIF } from '../lib/tracking/pixel.mjs';
 import { envelopper } from './compression.mjs';
 import { METHODES_STATIQUES, fichierPour, servirFichier } from './fichiers.mjs';
 import { chargerRedirections, rediriger } from './redirections.mjs';
@@ -18,6 +21,12 @@ import { chargerRedirections, rediriger } from './redirections.mjs';
 /** Le domaine public et les sources connues — voir `lib/audience/mesure.mjs`. */
 const HOTE_DU_SITE = hoteDe(process.env.SITE_URL);
 const SOURCES_CONNUES = sourcesDe(process.env.RECO_SOURCES);
+
+/** Les adresses de l'éditeur, à ne pas mesurer (`RECO_AUDIENCE_EXCLURE`, R-14). */
+const EXCLUSION = creerExclusion();
+
+/** Le gestionnaire de `POST /api/vue` : une seule table de limitation pour tout le processus. */
+const SIGNALER_VUE = creerSignal({ sourcesConnues: SOURCES_CONNUES, exclut: EXCLUSION.exclut });
 
 /**
  * Traite une requête : fichier construit si l'URL en désigne un, sinon Astro.
@@ -27,14 +36,35 @@ const SOURCES_CONNUES = sourcesDe(process.env.RECO_SOURCES);
  * route à la demande ne doit jamais masquer un fichier réellement construit.
  */
 export function traiter(handler, racine, req, res, mesurer = mesurerVisite,
-  redirections = new Map()) {
+  redirections = new Map(), signaler = SIGNALER_VUE, exclut = EXCLUSION.exclut) {
   // La mesure se pose AVANT tout aiguillage, pour couvrir aussi bien une page
   // servie depuis le disque qu'une route à la demande ou un 404. Elle
   // n'écrit rien tout de suite : elle s'abonne à la fin de la réponse, quand
   // le statut et le poids sont connus. Voir `src/lib/audience/mesure.mjs`.
   //
   // Injectable pour que les tests du serveur n'écrivent pas sur le disque.
-  mesurer?.(req, res, { hoteDuSite: HOTE_DU_SITE, sourcesConnues: SOURCES_CONNUES });
+  mesurer?.(req, res, { hoteDuSite: HOTE_DU_SITE, sourcesConnues: SOURCES_CONNUES, exclut });
+
+  // Le signal « page vue » (AU-1 A, 2026-11-27) se traite ici, en Node, et non
+  // dans Astro : il doit partager l'empreinte du jour des visites. Toute
+  // méthode y va, le gestionnaire répond 405 aux autres.
+  if ((req.url || '').split('?')[0] === '/api/vue') return signaler(req, res);
+
+  // Le clic sortant (`/api/click`) passe par Astro, qui ne partage pas l'état
+  // de ce processus : l'exclusion de l'éditeur (R-14, 27/11/2026) se tranche
+  // donc ici, avec la même adresse que les visites. 204 pour toute méthode,
+  // sauf le pixel GET de repli : il rend le même GIF que `click.ts`, pour ne
+  // pas casser l'`<img>` (tour 1 de revue, PR #224).
+  if ((req.url || '').split('?')[0] === '/api/click' && exclut(adresseCliente(req))) {
+    if (req.method === 'GET') {
+      res.writeHead(200, ENTETES_PIXEL);
+      res.end(PIXEL_GIF);
+    } else {
+      res.writeHead(204);
+      res.end();
+    }
+    return undefined;
+  }
 
   // Une fiche fusionnée n'a plus de page : son adresse renvoie au survivant.
   if (rediriger(redirections, req, res)) return undefined;
@@ -101,9 +131,9 @@ export function repondre404(res, racine, { lire = readFileSync } = {}) {
  * moment de l'appel finit toujours par pointer sur le vrai dossier.
  */
 export function creerServeur(handler, racine, mesurer = mesurerVisite,
-  redirections = chargerRedirections()) {
+  redirections = chargerRedirections(), signaler = SIGNALER_VUE, exclut = EXCLUSION.exclut) {
   return http.createServer(
-    (req, res) => traiter(handler, racine, req, res, mesurer, redirections));
+    (req, res) => traiter(handler, racine, req, res, mesurer, redirections, signaler, exclut));
 }
 
 /**

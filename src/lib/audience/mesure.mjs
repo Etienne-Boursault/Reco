@@ -108,12 +108,15 @@ export function mesurerVisite(req, res, options = {}) {
     sourcesConnues = null,
     ecrire = enregistrer,
     horloge = Date.now,
+    exclut = null,
   } = options;
 
   const debut = horloge();
   const chemin = req.url || '/';
 
   if (!estUnePage(chemin, req.method)) return () => {};
+  // L'éditeur ne se compte pas (R-14, 27/11/2026) : `exclusion.mjs`.
+  if (exclut?.(adresseCliente(req))) return () => {};
 
   const surFin = () => {
     try {

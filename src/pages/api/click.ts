@@ -2,14 +2,15 @@
  * src/pages/api/click.ts — Endpoint tracking clics sortants.
  *
  * Deux entrées :
- *  - POST JSON : `{url, category, sourceId, recoId?, ref?, bot_trap?}`,
+ *  - POST JSON : `{url, category, sourceId, recoId?, ref?, bot_trap?, revenant?,
+ *    aVuEpisode?, aVuFiche?}` (les trois oui/non vont ensemble, D1),
  *    appelé via `navigator.sendBeacon` ou `fetch(keepalive:true)` depuis
  *    le script global injecté dans Layout.astro.
  *  - GET pixel : `?url=…&cat=…&src=…&reco=…&ref=…`, fallback no-JS, renvoie
  *    un GIF transparent 1×1 (43 bytes). Sert aussi pour les browsers très
  *    anciens sans `sendBeacon`.
  *
- * Privacy (ADR 0046) : `Sec-GPC: 1` → 204 silencieux, pas de cookie, IP
+ * Privacy (ADR 0046) : `Sec-GPC: 1` ou `DNT: 1` (D1, R-10) → 204 silencieux, pas de cookie, IP
  * hashée+saltée pour rate-limit uniquement (jamais persistée).
  *
  * Sécurité (CR senior) :
@@ -32,6 +33,7 @@ import { tryClientAddress } from '../../lib/http/clientAddress.js';
 import { resolveClientIp } from '../../lib/http/resolveClientIp.js';
 import { recordClickStatus } from '../../lib/tracking/metrics.js';
 import { CLICK_LIMITS } from '../../lib/tracking/types.js';
+import { ENTETES_PIXEL, PIXEL_GIF } from '../../lib/tracking/pixel.mjs';
 
 /**
  * Endpoint SSR strict. En `output: 'hybrid'` + adapter installé, le forker
@@ -45,17 +47,6 @@ import { CLICK_LIMITS } from '../../lib/tracking/types.js';
  * Issue : CR senior C25-1.
  */
 // export const prerender = false;
-
-// B-LOW-15 : ces constantes sont déjà privées (module-local, pas export).
-// On retire le préfixe `_` qui était un faux signal de privacy : la vraie
-// portée privée vient de l'absence d'`export`.
-// GIF 1×1 transparent — 43 bytes encodés base64 (header + LZW + trailer).
-const PIXEL_GIF_BASE64 = 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-const PIXEL_GIF = Buffer.from(PIXEL_GIF_BASE64, 'base64');
-// B-NIT-12 : on précalcule la taille en bytes (Buffer.byteLength sur un
-// Buffer == .length, mais on documente clairement l'intention "size sur
-// le wire" plutôt qu'un cast `String(.length)` ambigu).
-const PIXEL_GIF_BYTE_LENGTH = Buffer.byteLength(PIXEL_GIF);
 
 // B-HIGH-1 : cap de la taille du body POST (8 KiB) — au-delà on rejette
 // 413 sans même tenter de lire le body. Évite qu'un attaquant remplisse
@@ -185,6 +176,7 @@ export const POST: APIRoute = async (ctx) => {
   const origin = request.headers.get('origin');
   const referer = request.headers.get('referer');
   const secGpc = request.headers.get('sec-gpc');
+  const dnt = request.headers.get('dnt');
 
   const result = handleClick({
     payload,
@@ -193,6 +185,7 @@ export const POST: APIRoute = async (ctx) => {
     selfOrigin: selfOriginOf(request, ctx.site),
     ip,
     secGpc,
+    dnt,
     // H25-3 : POST NE doit PAS accepter Referer comme fallback CSRF.
     allowReferer: false,
   });
@@ -227,6 +220,7 @@ export const GET: APIRoute = (ctx) => {
   const origin = request.headers.get('origin');
   const referer = request.headers.get('referer');
   const secGpc = request.headers.get('sec-gpc');
+  const dnt = request.headers.get('dnt');
 
   // H25-6 : sur GET pixel, on délègue au handler avec allowReferer=true.
   // Si origin/CSRF échoue → handler renvoie 403 ; on enregistre la métrique
@@ -239,6 +233,7 @@ export const GET: APIRoute = (ctx) => {
       selfOrigin: selfOriginOf(request, ctx.site),
       ip,
       secGpc,
+      dnt,
       allowReferer: true,
     });
     recordClickStatus(result.status);
@@ -253,14 +248,5 @@ export const GET: APIRoute = (ctx) => {
 
   // Pixel GET : toujours retourner le GIF même IP indéterminable, pour ne pas
   // casser l'`<img>` côté client.
-  return new Response(PIXEL_GIF, {
-    status: 200,
-    headers: {
-      'Content-Type': 'image/gif',
-      'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
-      // B-NIT-12 : Buffer.byteLength précalculé module-scope (intention claire,
-      // pas de re-conversion à chaque requête).
-      'Content-Length': String(PIXEL_GIF_BYTE_LENGTH),
-    },
-  });
+  return new Response(PIXEL_GIF, { status: 200, headers: ENTETES_PIXEL });
 };

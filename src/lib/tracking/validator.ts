@@ -46,8 +46,15 @@ export const clickPayloadSchema = z
     sourceId: slug,
     recoId: slug.optional().nullable(),
     ref: z.string().max(CLICK_LIMITS.refMax, 'ref trop long').optional().nullable(),
+    revenant: z.boolean().optional(),
+    aVuEpisode: z.boolean().optional(),
+    aVuFiche: z.boolean().optional(),
   })
-  .strict();
+  .strict()
+  .refine(
+    (p) => [p.revenant, p.aVuEpisode, p.aVuFiche].filter((v) => v !== undefined).length % 3 === 0,
+    { message: 'revenant, aVuEpisode et aVuFiche vont ensemble', path: ['revenant'] },
+  );
 
 export type ClickPayload = z.infer<typeof clickPayloadSchema>;
 
@@ -64,6 +71,9 @@ export const clickEventSchema = z
     sourceId: slug,
     recoId: slug.nullable().optional(),
     ref: z.string().max(CLICK_LIMITS.refMax).nullable().optional(),
+    revenant: z.boolean().nullable().optional(),
+    aVuEpisode: z.boolean().nullable().optional(),
+    aVuFiche: z.boolean().nullable().optional(),
     cohort: z
       .string()
       .max(CLICK_LIMITS.cohortMax)

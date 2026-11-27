@@ -14,6 +14,8 @@ import path from 'node:path';
 // @ts-expect-error — module `.mjs` sans déclaration de types
 import { creerServeur, fermerProprement, repondre404, traiter } from '../../src/server/serveur.mjs';
 import { demander, demarrer } from './_client';
+// @ts-expect-error — module `.mjs` sans déclaration de types
+import { PIXEL_GIF_BASE64 } from '../../src/lib/tracking/pixel.mjs';
 
 const LONG = 'Il pleure dans mon cœur comme il pleut sur la ville. '.repeat(60);
 
@@ -145,6 +147,110 @@ describe('traiter — qui répond ?', () => {
     expect(appels.recu).toEqual(['GET undefined']);
     expect(res.writeHead).toHaveBeenCalledWith(404, expect.any(Object));
     rmSync(vide, { recursive: true, force: true });
+  });
+});
+
+describe('/api/vue : aiguillage du signal (AU-1 A)', () => {
+  /** Monte un serveur dont le signal est une doublure qui note ce qu'elle reçoit. */
+  async function monterAvecSignal() {
+    const appels: Appels = { recu: [] };
+    const signaux: string[] = [];
+    const signaler = (req: any, res: any) => {
+      signaux.push(`${req.method} ${req.url}`);
+      res.writeHead(204);
+      res.end();
+    };
+    const serveur = creerServeur(fauxHandler(appels, 'page'), racine, sansMesure, undefined, signaler);
+    const { port, arreter } = await demarrer(serveur);
+    arreterCourant = arreter;
+    return { port, appels, signaux };
+  }
+
+  it('POST /api/vue va au signal, jamais au gestionnaire Astro', async () => {
+    const { port, appels, signaux } = await monterAvecSignal();
+    const r = await demander(port, '/api/vue', { methode: 'POST' });
+    expect(r.statut).toBe(204);
+    expect(signaux).toEqual(['POST /api/vue']);
+    expect(appels.recu).toEqual([]);
+  });
+
+  it('la chaîne de requête ne détourne pas l’aiguillage ; toute méthode atteint le signal (qui répond 405)', async () => {
+    const { port, signaux } = await monterAvecSignal();
+    await demander(port, '/api/vue?x=1', { methode: 'GET' });
+    expect(signaux).toEqual(['GET /api/vue?x=1']);
+  });
+
+  it('une autre route /api/ reste au gestionnaire', async () => {
+    const { port, appels, signaux } = await monterAvecSignal();
+    await demander(port, '/api/vue-autre', { methode: 'POST' });
+    expect(signaux).toEqual([]);
+    expect(appels.recu).toEqual(['POST /api/vue-autre']);
+  });
+
+  it('sans signaleur injecté, le vrai gère /api/vue : sans Origin, 403', async () => {
+    const { port, appels } = await monter('page');
+    const r = await demander(port, '/api/vue', { methode: 'POST' });
+    expect(r.statut).toBe(403);
+    expect(appels.recu).toEqual([]);
+  });
+});
+
+describe('adresse exclue (R-14, 27/11/2026)', () => {
+  const MOI = '192.0.2.7';
+
+  /** Serveur dont `exclut` ne connaît que MOI ; le signal et la mesure sont des doublures. */
+  async function monterAvecExclusion() {
+    const appels: Appels = { recu: [] };
+    const mesures: any[] = [];
+    const mesurer = (_req: any, _res: any, options: any) => { mesures.push(options); return () => {}; };
+    const exclut = (ip: string | null) => ip === MOI;
+    const serveur = creerServeur(fauxHandler(appels, 'page'), racine, mesurer, undefined, undefined, exclut);
+    const { port, arreter } = await demarrer(serveur);
+    arreterCourant = arreter;
+    return { port, appels, mesures };
+  }
+
+  it('un clic sortant venu d’une adresse exclue reçoit 204 sans atteindre Astro', async () => {
+    const { port, appels } = await monterAvecExclusion();
+    const r = await demander(port, '/api/click', { methode: 'POST', entetes: { 'x-forwarded-for': MOI } });
+    expect(r.statut).toBe(204);
+    expect(appels.recu).toEqual([]);
+  });
+
+  it('le pixel GET d’une adresse exclue rend le même GIF 1×1 que click.ts, sans atteindre Astro', async () => {
+    const { port, appels } = await monterAvecExclusion();
+    const r = await demander(port, '/api/click?url=x', { entetes: { 'x-forwarded-for': MOI } });
+    // Un 204 casserait l'`<img>` de repli sans JavaScript (tour 1 de revue, PR #224).
+    expect(r.statut).toBe(200);
+    expect(r.entetes['content-type']).toBe('image/gif');
+    expect(r.entetes['cache-control']).toContain('no-store');
+    expect(r.brut.equals(Buffer.from(PIXEL_GIF_BASE64, 'base64'))).toBe(true);
+    expect(appels.recu).toEqual([]);
+  });
+
+  it('un clic d’une autre adresse atteint Astro', async () => {
+    const { port, appels } = await monterAvecExclusion();
+    await demander(port, '/api/click', { methode: 'POST', entetes: { 'x-forwarded-for': '192.0.2.8' } });
+    expect(appels.recu).toEqual(['POST /api/click']);
+  });
+
+  it('une adresse exclue ne change pas les autres routes : la page est servie', async () => {
+    const { port } = await monterAvecExclusion();
+    const r = await demander(port, '/index.html', { entetes: { 'x-forwarded-for': MOI } });
+    expect(r.texte).toContain('pleure');
+  });
+
+  it('la mesure reçoit `exclut` avec ses autres options', async () => {
+    const { port, mesures } = await monterAvecExclusion();
+    await demander(port, '/index.html');
+    expect(typeof mesures[0].exclut).toBe('function');
+    expect(mesures[0].exclut(MOI)).toBe(true);
+  });
+
+  it('par défaut, rien n’est exclu (variable absente) : le clic va à Astro', async () => {
+    const { port, appels } = await monter('page');
+    await demander(port, '/api/click', { methode: 'POST', entetes: { 'x-forwarded-for': MOI } });
+    expect(appels.recu).toEqual(['POST /api/click']);
   });
 });
 

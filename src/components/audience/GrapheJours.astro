@@ -1,0 +1,137 @@
+---
+/**
+ * GrapheJours.astro : les deux graphes par jour de `/audience`, les visiteurs
+ * puis les robots.
+ *
+ * Extrait de `src/routes/audience.astro` le 27/11/2026, sans changement, pour
+ * libérer de la place à la PR d'audience (AU-1 A / AU-2 B) : la page touchait
+ * le plafond de 500 lignes.
+ *
+ * Les styles (`.graphe`, `.barres`, `.barre`, `.axe`, `.legende`) sont restés
+ * dans le `<style is:inline>` de la page, qui est autonome et sans portée :
+ * le composant n'en a pas, pour que le HTML rendu soit identique à l'avant.
+ *
+ * Tranche E1 (AU-2 B, 27/11/2026) : avant la bascule, les deux graphes d'avant
+ * (« humains, ancien tri » et robots) ; après, trois courbes en visiteurs-jours
+ * (confirmés, incertains, robots) à la place ; les jours d'avant la bascule
+ * gardent leur ancienne mesure dans les graphes « humains (ancien tri) » et
+ * robots, limités à ces jours (constat du tour 1 de revue, 27/11/2026 : ils
+ * n'avaient plus aucune barre, contre ce que dit `PanneauTri.astro` ; tour 2 :
+ * les robots de ces jours avaient disparu, et l'infobulle d'un jour d'après
+ * annonçait encore des nombres alors que sa barre est retirée).
+ */
+import type { Agregat } from '../../lib/audience/agregat';
+import type { Colonnes } from '../../lib/audience/classement';
+
+interface Props {
+  jours: Agregat['jours'];
+  /** Vrai une fois le tri en trois colonnes en service (AU-2 B, 27/11/2026). */
+  trois?: boolean;
+}
+const { jours, trois = false } = Astro.props;
+
+/** Les trois courbes d'après la bascule, en visiteurs-jours ; une barre vide = jour d'avant. */
+const series: { cle: keyof Colonnes; titre: string; legende: string }[] = [
+  { cle: 'confirmes', titre: 'Confirmés par jour', legende: 'Visiteurs-jours dont le navigateur a envoyé le signal « page vue ».' },
+  { cle: 'incertains', titre: 'Incertains par jour', legende: 'Visiteurs-jours sans signal, depuis une adresse de particulier : personne de réel, ou un navigateur qui bloque le signal.' },
+  { cle: 'robots', titre: 'Robots par jour', legende: 'Visiteurs-jours déclarés robots, sans langue, ou venus d’un hébergeur sans signal.' },
+];
+const maxSerie = (cle: keyof Colonnes) =>
+  Math.max(1, ...jours.map((j) => j.colonnes?.[cle].visiteursJours ?? 0));
+
+/** Après la bascule, l'ancien graphe ne garde que les jours d'avant elle. */
+const avantBascule = trois ? jours.filter((j) => j.colonnes === null) : jours;
+const avantLaBascule = (j: Agregat['jours'][number]) => !trois || j.colonnes === null;
+const maxVisiteurs = Math.max(1, ...avantBascule.map((j) => j.visiteurs));
+const maxRobots = Math.max(1, ...avantBascule.map((j) => j.robots));
+/** L'infobulle d'un jour d'après la bascule, dont la barre est retirée : aucun nombre de l'ancienne mesure. */
+const titreApres = (j: Agregat['jours'][number]) => `${jourCourt(j.jour)} : compté en trois colonnes`;
+
+/** La hauteur d'une barre, en pourcentage du maximum du jeu. */
+function hauteur(valeur: number, max: number): number {
+  if (max <= 0) return 0;
+  return Math.max(2, Math.round((valeur / max) * 100));
+}
+
+/** Un jour au format court, pour l'axe du graphique. */
+function jourCourt(iso: string): string {
+  const [, m, d] = iso.split('-');
+  return `${d}/${m}`;
+}
+---
+
+{(!trois || avantBascule.length > 0) && (
+<section class="graphe">
+  {/* Les visiteurs, et non les pages : une page vue de plus ne dit pas
+      qu'une personne de plus est venue, et les robots, souvent dix fois
+      plus nombreux, écrasaient l'échelle. Le détail reste au survol. */}
+  <h2>Visiteurs par jour, humains (ancien tri)</h2>
+  <div class="barres">
+    {jours.map((j) => (
+      <div class="barre" title={avantLaBascule(j) ? `${j.jour} — ${j.visiteurs} visiteurs, ${j.pages} pages vues, ${j.robots} passages de robots` : titreApres(j)}>
+        {avantLaBascule(j) && <span class="nombre">{j.visiteurs || ''}</span>}
+        {avantLaBascule(j) && <i style={`height:${hauteur(j.visiteurs, maxVisiteurs)}%`}></i>}
+      </div>
+    ))}
+  </div>
+  <div class="axe">
+    <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
+    <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
+  </div>
+  <p class="legende">
+    Personnes distinctes ayant ouvert au moins une page dans la journée,
+    hors robots et hors erreurs. Les pages préchargées au survol d’un
+    lien ne comptent pas comme vues.
+    {trois && ' Après la bascule, les trois courbes suivantes remplacent celle-ci : seuls les jours d’avant le tri en trois colonnes gardent une barre ici.'}
+  </p>
+</section>
+)}
+
+{(!trois || avantBascule.length > 0) && (
+<section class="graphe">
+  {/* À part, sur sa propre échelle : empilés avec les visiteurs, les
+      robots les écrasaient. Après la bascule, comme le graphe des humains :
+      limité aux jours d'avant elle. */}
+  <h2>Passages de robots par jour</h2>
+  <div class="barres robots">
+    {jours.map((j) => (
+      <div class="barre" title={avantLaBascule(j) ? `${j.jour} — ${j.robots} passages de robots` : titreApres(j)}>
+        {avantLaBascule(j) && <span class="nombre">{j.robots || ''}</span>}
+        {avantLaBascule(j) && <i style={`height:${hauteur(j.robots, maxRobots)}%`}></i>}
+      </div>
+    ))}
+  </div>
+  <div class="axe">
+    <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
+    <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
+  </div>
+  <p class="legende">
+    Requêtes qui se déclarent robots (moteurs, aperçus de liens,
+    aspirateurs), et celles qui se disent navigateurs sans annoncer de
+    langue — ce qu’un vrai navigateur fait toujours.
+  </p>
+</section>
+)}
+
+{trois && series.map((s) => (
+  <section class="graphe">
+    <h2>{s.titre}</h2>
+    <div class={`barres ${s.cle}`}>
+      {jours.map((j) => {
+        const e = j.colonnes?.[s.cle];
+        return (
+          <div class="barre" title={e ? `${j.jour} — ${e.visiteursJours} visiteurs-jours, ${e.visites} visites` : `${j.jour} — avant le tri en trois colonnes`}>
+            {/* Un jour d'avant la bascule n'a pas de barre : `hauteur(0)` en rendrait une de 2 %, comme un vrai zéro. */}
+            {e && <span class="nombre">{e.visiteursJours || ''}</span>}
+            {e && <i style={`height:${hauteur(e.visiteursJours, maxSerie(s.cle))}%`}></i>}
+          </div>
+        );
+      })}
+    </div>
+    <div class="axe">
+      <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
+      <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
+    </div>
+    <p class="legende">{s.legende} Les jours sans barre datent d’avant le tri en trois colonnes : leur ancienne mesure est dans les graphes « humains (ancien tri) » et « Passages de robots par jour ».</p>
+  </section>
+))}

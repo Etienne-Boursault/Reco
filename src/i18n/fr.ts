@@ -40,10 +40,27 @@ export const fr = {
   'footer.follow': 'Nous suivre',
   'footer.support': 'Soutenir le projet',
 
+  // Mesure d’audience (AU-2 B, 2026-11-27) : la ligne de première visite et
+  // l’interrupteur du pied de page (`MesureAudience.astro`).
+  'mesure.label': 'Mesure d’audience',
+  'mesure.ligne': 'Ce site compte ses visites, sans publicité ni pistage entre sites.',
+  'mesure.savoir': 'En savoir plus',
+  'mesure.refuser': 'Refuser',
+  'mesure.ok': 'OK',
+  'mesure.aucun': 'sans JavaScript, seules les pages servies sont comptées.',
+  'mesure.active': 'active',
+  'mesure.refusee': 'désactivée',
+  'mesure.navigateur': 'désactivée par le réglage de votre navigateur.',
+  'mesure.indisponible': 'active, mais ce navigateur ne peut pas garder un refus.',
+  'mesure.desactiver': 'Désactiver',
+  'mesure.reactiver': 'Réactiver',
+  'mesure.retour.refusee': 'Mesure désactivée',
+  'mesure.retour.active': 'Mesure réactivée',
+
   // À propos (item #22)
   'about.title': 'À propos de Reco',
   'about.subtitle':
-    'Reco rassemble les œuvres recommandées dans des podcasts, sans tracker, sans Amazon, avec des liens vers des librairies indépendantes.',
+    'Reco rassemble les œuvres recommandées dans des podcasts, sans tracker tiers, sans Amazon, avec des liens vers des librairies indépendantes.',
   'about.section.who': 'Qui sommes-nous',
   'about.section.why': 'Pourquoi Reco',
   'about.section.how': 'Comment ça marche',
@@ -393,7 +410,7 @@ export const fr = {
   // Méta-site (item #24) — source-internet.fr
   'meta.title': 'Source internet — l’annuaire des podcasts Reco',
   'meta.subtitle':
-    'Les podcasts qui partagent leurs recommandations en JSON ouvert, sans tracker, sans Amazon.',
+    'Les podcasts qui partagent leurs recommandations en JSON ouvert, sans tracker tiers, sans Amazon.',
   'meta.metaTitle': 'Source internet — annuaire des podcasts Reco',
   'meta.podcastCount.one': '{count} podcast indexé',
   'meta.podcastCount.many': '{count} podcasts indexés',
@@ -415,9 +432,9 @@ export const fr = {
   'stats.title': 'Statistiques publiques',
   'stats.metaTitle': 'Statistiques publiques',
   'stats.subtitle':
-    'Tout le catalogue Reco en un coup d’œil — sans tracker, calculé build-time.',
+    'Tout le catalogue Reco en un coup d’œil — sans tracker tiers, calculé build-time.',
   'stats.subtitle.source':
-    'Statistiques de {source} — sans tracker, calculé build-time.',
+    'Statistiques de {source} — sans tracker tiers, calculé build-time.',
   'stats.heading.global': 'Vue d’ensemble',
   'stats.heading.topGuests': 'Invités les plus prolifiques',
   'stats.heading.topWorks': 'Œuvres les plus mentionnées',
@@ -446,7 +463,7 @@ export const fr = {
     'Compteurs publics Reco : podcasts, épisodes, recommandations, œuvres uniques, invités.',
   'stats.generatedAt': 'Calculé le {date}',
   'stats.privacyNote':
-    'Données calculées au build, agrégées, anonymes — aucun tracker ne court côté visiteur.',
+    'Données calculées au build, agrégées, anonymes — aucun tracker tiers ne court côté visiteur.',
   'stats.back.source': 'retour au podcast',
 } as const;
 

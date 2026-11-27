@@ -240,3 +240,39 @@ describe('configuration', () => {
     expect(sourcesDe('  ,  ')).toBeNull();
   });
 });
+
+describe('adresse exclue (R-14, 27/11/2026)', () => {
+  const exclut = (ip: string | null) => ip === '203.0.113.7';
+
+  it('une requête dont l’adresse est exclue n’écrit rien', () => {
+    const ecrire = vi.fn();
+    const { req, res } = couple();
+    mesurerVisite(req, res, { ecrire, exclut });
+    res.emit('finish');
+    expect(ecrire).not.toHaveBeenCalled();
+  });
+
+  it('l’adresse est celle de adresseCliente : le dernier saut de x-forwarded-for', () => {
+    const ecrire = vi.fn();
+    const { req, res } = couple('/un-bon-moment/films', { 'x-forwarded-for': '203.0.113.7, 198.51.100.1' });
+    mesurerVisite(req, res, { ecrire, exclut });
+    res.emit('finish');
+    expect(ecrire).toHaveBeenCalledTimes(1);
+  });
+
+  it('le dernier saut fait foi : exclue quand c’est lui', () => {
+    const ecrire = vi.fn();
+    const { req, res } = couple('/un-bon-moment/films', { 'x-forwarded-for': '198.51.100.1, 203.0.113.7' });
+    mesurerVisite(req, res, { ecrire, exclut });
+    res.emit('finish');
+    expect(ecrire).not.toHaveBeenCalled();
+  });
+
+  it('sans `exclut`, comportement inchangé : tout est compté', () => {
+    const ecrire = vi.fn();
+    const { req, res } = couple();
+    mesurerVisite(req, res, { ecrire });
+    res.emit('finish');
+    expect(ecrire).toHaveBeenCalledTimes(1);
+  });
+});

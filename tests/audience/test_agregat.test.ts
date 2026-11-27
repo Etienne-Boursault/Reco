@@ -9,65 +9,14 @@
  * compte comme visiteur, et surtout ce qui n'est jamais recousu.
  */
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { agreger, estSonde, sourcesDisponibles } from '../../src/lib/audience/agregat';
+import { agreger, sourcesDisponibles } from '../../src/lib/audience/agregat';
+import { AUJOURDHUI, SOURCE, clic, ecrire, effacerLaRacine, installerLaRacine, lire, racine, visite } from './_agregat_aide';
 
-let racine: string;
-const SOURCE = 'un-bon-moment';
-const AUJOURDHUI = new Date('2026-08-25T12:00:00Z');
-
-function visite(over: Record<string, unknown> = {}) {
-  return {
-    ts: '2026-08-25T10:00:00.000Z',
-    chemin: '/un-bon-moment/films',
-    statut: 200,
-    robot: false,
-    appareil: 'ordinateur',
-    provenance: null,
-    langue: 'fr',
-    pays: null,
-    visiteur: 'aaaaaaaaaaaa',
-    dureeMs: 20,
-    ...over,
-  };
-}
-
-function clic(over: Record<string, unknown> = {}) {
-  return {
-    ts: '2026-08-25T10:05:00.000Z',
-    url: 'https://www.themoviedb.org/movie/1',
-    category: 'tmdb',
-    sourceId: SOURCE,
-    recoId: 'ubm-1',
-    ref: '/un-bon-moment/films',
-    ...over,
-  };
-}
-
-function ecrire(
-  genre: 'audience' | 'clicks',
-  jour: string,
-  lignes: unknown[],
-  source = SOURCE,
-) {
-  const dossier = path.join(racine, 'tools', 'output', genre, source);
-  mkdirSync(dossier, { recursive: true });
-  writeFileSync(
-    path.join(dossier, `${jour}.jsonl`),
-    lignes.map((l) => JSON.stringify(l)).join('\n') + '\n',
-    'utf8',
-  );
-}
-
-function lire(nbJours = 30) {
-  return agreger({ racine, sourceId: SOURCE, nbJours, aujourdhui: AUJOURDHUI });
-}
-
-beforeEach(() => { racine = mkdtempSync(path.join(tmpdir(), 'reco-agregat-')); });
-afterEach(() => rmSync(racine, { recursive: true, force: true }));
+beforeEach(installerLaRacine);
+afterEach(effacerLaRacine);
 
 // ===== Sans données ========================================================
 describe('sans aucune mesure', () => {
@@ -418,104 +367,5 @@ describe('robustesse', () => {
       visite({ dureeMs: 10 }), visite({ dureeMs: 20 }), visite({ dureeMs: 90 }),
     ]);
     expect(lire().dureeMedianeMs).toBe(20);
-  });
-});
-
-describe('ce qui compte comme une visite', () => {
-  it('un préchargement au survol n’est pas une page vue, mais son auteur est un visiteur', () => {
-    ecrire('audience', '2026-08-25', [
-      visite({ chemin: '/un-bon-moment/films' }),
-      visite({ chemin: '/un-bon-moment/oeuvre/a', prechargement: true }),
-      visite({ chemin: '/un-bon-moment/oeuvre/b', prechargement: true }),
-    ]);
-    const a = lire();
-    expect(a.pagesVues).toBe(1);
-    expect(a.prechargements).toBe(2);
-    expect(a.visiteurs).toBe(1);
-    expect(a.topPages).toEqual([{ cle: '/un-bon-moment/films', n: 1 }]);
-    expect(a.jours[0]).toMatchObject({ pages: 1, visiteurs: 1, prechargements: 2 });
-  });
-
-  it('un navigateur qui n’obtient que des erreurs n’est pas un visiteur', () => {
-    // Un robot déguisé en navigateur sonde `/wp-login.php` : 404 sur 404.
-    ecrire('audience', '2026-08-25', [
-      visite({ visiteur: 'humain' }),
-      visite({ chemin: '/wp-login.php', statut: 404, visiteur: 'sonde' }),
-      visite({ chemin: '/.env', statut: 404, visiteur: 'sonde' }),
-    ]);
-    const a = lire();
-    expect(a.visiteurs).toBe(1);
-    expect(a.pagesVues).toBe(1);
-    // Des sondes de failles, pas des liens morts : comptées à part.
-    expect(a.erreurs404).toHaveLength(0);
-    expect(a.sondes).toBe(2);
-  });
-
-  it('tient pour robot une requête sans langue', () => {
-    // Le 2026-10-22, la moitié des pages vues n'annonçaient aucune langue.
-    ecrire('audience', '2026-08-25', [
-      visite({ visiteur: 'humain' }),
-      visite({ chemin: '/', langue: null, visiteur: 'faux-chrome' }),
-    ]);
-    const a = lire();
-    expect(a.visiteurs).toBe(1);
-    expect(a.pagesVues).toBe(1);
-    expect(a.visitesRobots).toBe(1);
-    expect(a.jours[0]).toMatchObject({ visiteurs: 1, robots: 1 });
-  });
-
-  it('garde les vrais liens morts à côté des sondes', () => {
-    ecrire('audience', '2026-08-25', [
-      visite({ chemin: '/backend/.env', statut: 404 }),
-      visite({ chemin: '/xmlrpc.php', statut: 404 }),
-      visite({ chemin: '/un-bon-moment/oeuvre/disparue/', statut: 404 }),
-      visite({ chemin: '/un-bon-moment/oeuvre/disparue', statut: 404 }),
-    ]);
-    const a = lire();
-    expect(a.erreurs404).toEqual([{ cle: '/un-bon-moment/oeuvre/disparue', n: 2 }]);
-    expect(a.sondes).toBe(2);
-  });
-
-  it('reconnaît les sondes vues en production le 2026-10-22', () => {
-    // Elles occupaient encore toute la liste après le premier filtre.
-    for (const chemin of [
-      '/_profiler/phpinfo', '/env', '/config/aws.yml', '/docker-compose.yml', '/phpinfo',
-      '/config.env', '/config.yaml', '/credentials', '/Dockerfile', '/sendgrid.env',
-      '/credentials.ini',
-    ]) {
-      expect(estSonde(chemin), chemin).toBe(true);
-    }
-    // Les pages du site, et un vrai lien mort, n'en sont pas.
-    for (const chemin of [
-      '/', '/mentions-legales', '/un-bon-moment/oeuvre/0099e3e6', '/un-bon-moment/recos',
-      '/environnement', '/un-bon-moment/episode/yt-dpM43BlLhZI',
-    ]) {
-      expect(estSonde(chemin), chemin).toBe(false);
-    }
-  });
-
-  it('compte /a-propos et /a-propos/ comme une seule page', () => {
-    ecrire('audience', '2026-08-25', [
-      visite({ chemin: '/a-propos' }),
-      visite({ chemin: '/a-propos/' }),
-      visite({ chemin: '/' }),
-    ]);
-    expect(lire().topPages).toEqual([
-      { cle: '/a-propos', n: 2 },
-      { cle: '/', n: 1 },
-    ]);
-  });
-
-  it('n’affiche pas le site lui-même dans les provenances', () => {
-    // Sans `SITE_URL` au démarrage, le serveur notait chaque clic interne.
-    ecrire('audience', '2026-08-25', [
-      visite({ provenance: 'unebonnere.co' }),
-      visite({ provenance: 'www.unebonnere.co' }),
-      visite({ provenance: 'unebonnereco.fr' }),
-    ]);
-    const a = agreger({
-      racine, sourceId: SOURCE, aujourdhui: AUJOURDHUI, hoteDuSite: 'unebonnere.co',
-    });
-    expect(a.provenances).toEqual([{ cle: 'unebonnereco.fr', n: 1 }]);
   });
 });

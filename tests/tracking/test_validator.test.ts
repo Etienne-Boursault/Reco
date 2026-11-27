@@ -117,3 +117,32 @@ describe('clickPayloadSchema edge cases', () => {
     expect(res.success).toBe(false);
   });
 });
+
+describe('clickPayloadSchema : les trois oui/non (D1, R-1, AU-2 B)', () => {
+  const base = { url: 'https://x.com', category: 'other' as const, sourceId: 'src' };
+  const ouiNon = { revenant: true, aVuEpisode: false, aVuFiche: true };
+
+  it('accepte les trois champs présents, booléens', () => {
+    const res = clickPayloadSchema.safeParse({ ...base, ...ouiNon });
+    expect(res.success).toBe(true);
+    expect(res.data).toMatchObject(ouiNon);
+  });
+
+  it('accepte leur absence (ancien script en cache)', () => {
+    expect(clickPayloadSchema.safeParse(base).success).toBe(true);
+  });
+
+  it.each(['revenant', 'aVuEpisode', 'aVuFiche'])('rejette %s seul ou manquant (champ à moitié présent)', (manque) => {
+    const { [manque]: _, ...reste } = ouiNon as Record<string, boolean>;
+    expect(clickPayloadSchema.safeParse({ ...base, ...reste }).success).toBe(false);
+    expect(clickPayloadSchema.safeParse({ ...base, [manque]: true }).success).toBe(false);
+  });
+
+  it.each([['oui'], [1], [0], [null], [{}], [[]]])('rejette un type faux (%j)', (faux) => {
+    expect(clickPayloadSchema.safeParse({ ...base, ...ouiNon, aVuFiche: faux }).success).toBe(false);
+  });
+
+  it('garde sa règle : un champ inconnu est rejeté', () => {
+    expect(clickPayloadSchema.safeParse({ ...base, ...ouiNon, ne: '2026-11-27' }).success).toBe(false);
+  });
+});

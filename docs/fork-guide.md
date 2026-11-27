@@ -200,7 +200,14 @@ prompt, qui ont produit l'essentiel des corrections de ce corpus. Cf. §8 ter.
   Sans abonnement, `RECO_SPOTIFY=0` coupe l'API sans retirer les identifiants.
 - `RECO_QUIET=1` — réduit la verbosité des CLIs (optionnel).
 
-### Mesure d'audience sans traceur (`/audience`)
+### Mesure d'audience sans tracker tiers (`/audience`)
+
+Depuis AU-2 B (27/11/2026), le navigateur garde une entrée de stockage local
+(`reco.mesure`, 13 mois sans prolongation) et n'envoie que trois oui/non ; un refus en un
+clic dans le pied de page, GPC et DNT coupent l'envoi. **Si vous forkez, adaptez vos
+mentions légales** : `src/pages/mentions-legales.astro` décrit chaque champ écrit et son
+test (`tests/about/test_mentions_legales.test.ts`) le relit contre le code. Crédits à
+conserver : X4BNet `lists_vpn` (MIT) et DB-IP IP to ASN Lite (CC BY 4.0, https://db-ip.com).
 
 À poser au **runtime** (chez Infomaniak : en préfixe de la commande
 d'exécution, l'hébergeur n'a pas d'écran de variables). Sans elles, la page
@@ -210,6 +217,12 @@ répond 404 et la mesure ne distingue pas les visiteurs.
 - `RECO_AUDIENCE_SALT` (≥ 16 caractères) — sale l'empreinte quotidienne du
   visiteur ; l'adresse IP n'est jamais écrite.
 - `RECO_SOURCES` (CSV de slugs) — rattache chaque chemin à sa source.
+- `RECO_AUDIENCE_EXCLURE` (CSV de noms d'hôte et d'adresses IP) — adresses à ne
+  pas mesurer (les vôtres). Les noms sont résolus au démarrage puis toutes les
+  5 minutes ; une requête venue d'une adresse listée n'écrit ni visite, ni
+  signal, ni clic. Les plages (`203.0.113.0/24`) ne sont pas prises en charge :
+  une entrée avec `/` est refusée et signalée dans le journal. Vide ou absente :
+  rien n'est exclu.
 
 Les fichiers de mesure sont supprimés au bout de 13 mois par le serveur
 (`src/server/retention.mjs`, ADR 0052).
@@ -628,7 +641,10 @@ forkes pour publier UN podcast, ignore cette section.
 
 Mesure agrégée et anonyme des clics sortants vers TMDB, Spotify, IMDB,
 YouTube, librairies indépendantes. Aucun cookie, aucun tiers — beacon
-posté vers `/api/click` (SSR opt-in).
+posté vers `/api/click` (SSR opt-in). Depuis AU-2 B (27/11/2026) le clic porte
+trois oui/non (déjà venu, a vu un épisode, a vu une fiche le jour même), tirés de
+l'entrée `reco.mesure` du navigateur, et aucun identifiant ; `Sec-GPC: 1` et
+`DNT: 1` donnent un 204 sans écriture.
 
 ### Variables d'environnement
 

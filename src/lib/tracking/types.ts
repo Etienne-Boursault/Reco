@@ -8,7 +8,9 @@
  *
  * Privacy-first (cohérent ADR 0034) : aucune IP en clair, aucun cookie,
  * aucun fingerprint. Le `ipHash` n'existe que pour le rate-limit in-memory ;
- * il n'est PAS persisté.
+ * il n'est PAS persisté. La ligne porte trois oui/non (`revenant`,
+ * `aVuEpisode`, `aVuFiche`, D1, R-1, AU-2 B, 2026-11-27) et aucun identifiant :
+ * ni parcours, ni date de naissance de la mesure.
  */
 
 export const CLICK_CATEGORIES = [
@@ -33,6 +35,14 @@ export interface ClickEvent {
   recoId: string | null;
   /** Référent de la page (path uniquement, pas le query — privacy). */
   ref: string | null;
+  /**
+   * Trois oui/non de la mesure du navigateur, `null` quand l'ancien script en
+   * cache ne les a pas envoyés (jamais un « non » inventé). Optionnels à la
+   * lecture : les lignes d'avant D1 n'ont pas ces clés.
+   */
+  revenant?: boolean | null;
+  aVuEpisode?: boolean | null;
+  aVuFiche?: boolean | null;
   /**
    * Réservé (R-P2-19) — cohorte optionnelle (max 32 chars slug). Pas encore
    * exposé côté API publique ; le champ est accepté lors de la lecture JSONL

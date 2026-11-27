@@ -17,80 +17,17 @@
  *  - GET pixel IP null → toujours renvoie le GIF
  *  - GET pixel avec URL trop longue → 400 mais GIF retourné
  *
+ * Les cas GET (pixel) et l'origine derrière un proxy sont dans
+ * `test_click_route_pixel.test.ts` (fichier coupé, tour 1 de revue, PR #224) ;
+ * montage partagé dans `_click_aide.ts`.
+ *
  * Cible : 100 % de coverage sur src/pages/api/click.ts.
  */
 
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { mkdtempSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { CWD, SELF, ctxFor, installerLeCwd, loadRoute, makeRequest, validJsonBody } from './_click_aide';
 
-const SELF = 'https://reco.example';
-let CWD: string;
-
-// Le module endpoint instancie un JsonlClickStorage avec `process.cwd()` par
-// défaut. On stub `process.cwd` AVANT d'importer le module pour rediriger
-// les écritures dans un tmpdir isolé.
-beforeEach(() => {
-  CWD = mkdtempSync(join(tmpdir(), 'reco-click-route-'));
-  process.env.TRACKING_IP_SALT = 'test-salt-for-tracking-route-1234567890';
-  process.env.RECO_QUIET = '1';
-  vi.spyOn(process, 'cwd').mockReturnValue(CWD);
-  vi.resetModules();
-});
-
-async function loadRoute() {
-  const route = await import('../../src/pages/api/click.ts');
-  // CRUCIAL : on importe metrics depuis le MÊME graphe de modules que la
-  // route (après resetModules dans beforeEach). Sinon `recordClickStatus`
-  // côté route et `getClickMetrics` côté test pointent vers des Map différentes.
-  const metrics = await import('../../src/lib/tracking/metrics.ts');
-  metrics.resetClickMetrics();
-  return { ...route, metrics };
-}
-
-function makeRequest(
-  method: 'POST' | 'GET',
-  opts: {
-    body?: string | null;
-    headers?: Record<string, string>;
-    query?: Record<string, string>;
-  } = {},
-): Request {
-  const url = new URL(`${SELF}/api/click`);
-  for (const [k, v] of Object.entries(opts.query ?? {})) url.searchParams.set(k, v);
-  return new Request(url.toString(), {
-    method,
-    headers: opts.headers,
-    body: opts.body ?? undefined,
-  });
-}
-
-function ctxFor(
-  request: Request,
-  clientAddress: string | null = '203.0.113.7',
-  site?: URL,
-) {
-  return {
-    request,
-    url: new URL(request.url),
-    clientAddress,
-    // Astro pose `site` depuis `astro.config.mjs` — donc depuis `SITE_URL`.
-    // Les tests qui ne le passent pas vérifient le comportement de repli.
-    site,
-  } as unknown as Parameters<Awaited<ReturnType<typeof loadRoute>>['POST']>[0];
-}
-
-function validJsonBody(over: Record<string, unknown> = {}) {
-  return JSON.stringify({
-    url: 'https://themoviedb.org/movie/42',
-    category: 'tmdb',
-    sourceId: 'un-bon-moment',
-    recoId: 'ubm-0001',
-    ref: '/un-bon-moment/episode/abc',
-    ...over,
-  });
-}
+beforeEach(installerLeCwd);
 
 describe('POST /api/click', () => {
   it('happy path JSON → 204', async () => {
@@ -187,6 +124,41 @@ describe('POST /api/click', () => {
     });
     const res = await route.POST(ctxFor(req));
     expect(res.status).toBe(204);
+  });
+
+  it('DNT = 1 : 204 sans écriture, DNT absent : la ligne est écrite avec les trois oui/non (D1)', async () => {
+    const route = await loadRoute();
+    const { listDailyFiles, readDailyEvents } = await import('../../src/lib/tracking/storage.ts');
+    const envoyer = (headers: Record<string, string>) =>
+      route.POST(
+        ctxFor(
+          makeRequest('POST', {
+            body: validJsonBody({ revenant: false, aVuEpisode: true, aVuFiche: true }),
+            headers: { 'content-type': 'application/json', origin: SELF, ...headers },
+          }),
+        ),
+      );
+    expect((await envoyer({ dnt: '1' })).status).toBe(204);
+    expect(listDailyFiles('un-bon-moment', CWD)).toHaveLength(0);
+    expect((await envoyer({})).status).toBe(204);
+    const lignes = listDailyFiles('un-bon-moment', CWD).flatMap(readDailyEvents);
+    expect(lignes).toHaveLength(1);
+    expect(lignes[0]).toMatchObject({ revenant: false, aVuEpisode: true, aVuFiche: true });
+  });
+
+  it('GET pixel avec DNT = 1 : GIF renvoyé, aucune écriture (D1)', async () => {
+    const route = await loadRoute();
+    const { listDailyFiles } = await import('../../src/lib/tracking/storage.ts');
+    const res = await route.GET(
+      ctxFor(
+        makeRequest('GET', {
+          headers: { origin: SELF, dnt: '1' },
+          query: { url: 'https://themoviedb.org/movie/42', cat: 'tmdb', src: 'un-bon-moment' },
+        }),
+      ),
+    );
+    expect(res.status).toBe(200);
+    expect(listDailyFiles('un-bon-moment', CWD)).toHaveLength(0);
   });
 
   it('URL > 2048 chars : warn + 400 (validator reject)', async () => {
@@ -314,179 +286,6 @@ describe('POST /api/click', () => {
       },
     });
     const res = await route.POST(ctxFor(req));
-    expect(res.status).toBe(204);
-  });
-});
-
-describe('GET /api/click (pixel)', () => {
-  it('happy path → renvoie GIF 43 bytes', async () => {
-    const route = await loadRoute();
-    const req = makeRequest('GET', {
-      headers: {
-        origin: SELF,
-      },
-      query: {
-        url: 'https://themoviedb.org/movie/42',
-        cat: 'tmdb',
-        src: 'un-bon-moment',
-        reco: 'ubm-0001',
-        ref: '/page',
-      },
-    });
-    const res = await route.GET(ctxFor(req));
-    expect(res.status).toBe(200);
-    expect(res.headers.get('content-type')).toBe('image/gif');
-    const buf = Buffer.from(await res.arrayBuffer());
-    expect(res.headers.get('content-length')).toBe(String(buf.length));
-    expect(buf.length).toBeGreaterThan(0);
-    // GIF signature
-    expect(buf.subarray(0, 3).toString('ascii')).toBe('GIF');
-  });
-
-  it('GET sans Origin mais Referer same-origin → 204 interne, GIF renvoyé', async () => {
-    const route = await loadRoute();
-    const req = makeRequest('GET', {
-      headers: { referer: `${SELF}/some/page` },
-      query: { url: 'https://x.example/', cat: 'other', src: 'src' },
-    });
-    const res = await route.GET(ctxFor(req));
-    expect(res.status).toBe(200);
-    const m = route.metrics.getClickMetrics();
-    expect(m.byStatus['204']).toBe(1);
-  });
-
-  it('GET Origin invalide → 403 interne, GIF renvoyé quand même', async () => {
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const route = await loadRoute();
-    const req = makeRequest('GET', {
-      headers: { origin: 'https://evil.example' },
-      query: { url: 'https://x.example/', cat: 'other', src: 'src' },
-    });
-    const res = await route.GET(ctxFor(req));
-    expect(res.status).toBe(200); // GIF toujours renvoyé
-    const m = route.metrics.getClickMetrics();
-    expect(m.byStatus['403']).toBe(1);
-    warn.mockRestore();
-  });
-
-  it('GET payload invalide → 400 interne, GIF renvoyé, warn loggé', async () => {
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const route = await loadRoute();
-    const req = makeRequest('GET', {
-      headers: { origin: SELF },
-      query: { url: 'javascript:alert(1)', cat: 'other', src: 'src' },
-    });
-    const res = await route.GET(ctxFor(req));
-    expect(res.status).toBe(200);
-    expect(route.metrics.getClickMetrics().byStatus['400']).toBe(1);
-    expect(warn).toHaveBeenCalled();
-    warn.mockRestore();
-  });
-
-  it('GET avec bot_trap → 204 silencieux', async () => {
-    const route = await loadRoute();
-    const req = makeRequest('GET', {
-      headers: { origin: SELF },
-      query: {
-        url: 'https://x.example/',
-        cat: 'other',
-        src: 'src',
-        bot_trap: 'pwn',
-      },
-    });
-    const res = await route.GET(ctxFor(req));
-    expect(res.status).toBe(200);
-    expect(route.metrics.getClickMetrics().byStatus['204']).toBe(1);
-  });
-
-  it('GET IP null → toujours GIF, metric 204', async () => {
-    const route = await loadRoute();
-    const req = makeRequest('GET', {
-      headers: { origin: SELF },
-      query: { url: 'https://x.example/', cat: 'other', src: 'src' },
-    });
-    const res = await route.GET(ctxFor(req, null));
-    expect(res.status).toBe(200);
-    expect(route.metrics.getClickMetrics().byStatus['204']).toBe(1);
-  });
-
-  it('GET url > 2048 chars → warn + GIF + 400 interne', async () => {
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const route = await loadRoute();
-    const url = 'https://x.example/' + 'a'.repeat(3000);
-    const req = makeRequest('GET', {
-      headers: { origin: SELF },
-      query: { url, cat: 'other', src: 'src' },
-    });
-    const res = await route.GET(ctxFor(req));
-    expect(res.status).toBe(200);
-    expect(warn).toHaveBeenCalled();
-    warn.mockRestore();
-  });
-});
-
-describe('derrière un proxy — l’origine attendue vient de SITE_URL', () => {
-  // CE QUE CES TESTS PROTÈGENT
-  //
-  // L'hébergeur termine TLS devant l'application et lui parle en clair :
-  // `request.url` porte donc `http://<hôte interne>`, quand le navigateur
-  // annonce `Origin: https://unebonnere.co`. La comparaison échouait
-  // toujours, et l'endpoint répondait 403 à CHAQUE clic — sans que rien ne
-  // le signale, `sendBeacon` avalant l'erreur. Le tracking a paru
-  // fonctionner pendant des semaines en n'enregistrant rien.
-  //
-  // Reproduit en local le 2026-08-25 : ajouter `X-Forwarded-Proto: https`
-  // n'y changeait rien, `@astrojs/node` en mode middleware ne le lit pas.
-
-  const SITE = new URL('https://unebonnere.co');
-
-  function requeteDerriereProxy(origin: string) {
-    // L'URL que voit le serveur : hôte interne, en clair.
-    return new Request('http://10.0.0.4:3000/api/click', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', origin },
-      body: validJsonBody(),
-    });
-  }
-
-  it('accepte le domaine public alors que la requête arrive en clair', async () => {
-    const route = await loadRoute();
-    const res = await route.POST(
-      ctxFor(requeteDerriereProxy('https://unebonnere.co'), '203.0.113.7', SITE),
-    );
-
-    expect(res.status).toBe(204);
-  });
-
-  it('refuse toujours une origine étrangère', async () => {
-    // Le correctif ne doit pas désarmer la protection CSRF.
-    const route = await loadRoute();
-    const res = await route.POST(
-      ctxFor(requeteDerriereProxy('https://pirate.example'), '203.0.113.7', SITE),
-    );
-
-    expect(res.status).toBe(403);
-  });
-
-  it('refuse le même domaine sur un autre protocole', async () => {
-    const route = await loadRoute();
-    const res = await route.POST(
-      ctxFor(requeteDerriereProxy('http://unebonnere.co'), '203.0.113.7', SITE),
-    );
-
-    expect(res.status).toBe(403);
-  });
-
-  it('sans site configuré, retombe sur l’URL de la requête', async () => {
-    // Développement et tests : pas de proxy, `request.url` est exact.
-    const route = await loadRoute();
-    const req = new Request('http://localhost:4321/api/click', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', origin: 'http://localhost:4321' },
-      body: validJsonBody(),
-    });
-    const res = await route.POST(ctxFor(req));
-
     expect(res.status).toBe(204);
   });
 });

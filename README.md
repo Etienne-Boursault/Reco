@@ -108,14 +108,28 @@ npm start        # node --env-file-if-exists=.env ./server.mjs
 la page d'accueil part en 2,6 Mo au lieu de 200 Ko.
 
 **Fréquentation** — en SSR, chaque requête traverse `server.mjs` : le site peut se mesurer
-lui-même, sans tracker, sans cookie et sans tiers. `/audience` lit ces mesures. Trois
-variables l'activent ; sans elles la page répond 404 et rien d'identifiable n'est écrit :
+lui-même, sans tracker tiers, sans cookie et sans service extérieur. `/audience` lit ces
+mesures. Depuis AU-2 B (27/11/2026), le navigateur garde une seule entrée de stockage local,
+`reco.mesure` (date de première visite, étapes vues le jour même, état de la ligne
+d'information ; 13 mois sans prolongation) : elle ne quitte jamais le navigateur, seuls trois
+oui/non (déjà venu, a vu un épisode, a vu une fiche le jour même) accompagnent le signal
+« page vue » et le clic. Un refus en un clic dans le pied de page, Global Privacy Control et
+Do Not Track coupent ces envois ; le serveur compte toujours la page servie. L'empreinte d'un
+jour est un pseudonyme (avec le sel et une adresse IP, on la recalcule). Les mentions légales
+(`src/pages/mentions-legales.astro`) décrivent chaque champ écrit, et un test les relit contre
+le code. Trois variables activent la mesure ; sans elles la page répond 404 et rien
+d'identifiable n'est écrit :
 
 | Variable | Rôle | Sans elle |
 |---|---|---|
 | `RECO_AUDIENCE_KEY` | ouvre `/audience?cle=…` (≥ 16 signes) | la page n'existe pas |
 | `RECO_AUDIENCE_SALT` | sale l'identifiant de visiteur du jour (≥ 16 signes) | les pages sont comptées, pas les visiteurs |
 | `RECO_SOURCES` | les sources mesurées, ex. `un-bon-moment` | aucun chemin n'est rattaché à une source |
+| `RECO_AUDIENCE_EXCLURE` | adresses de l'éditeur à ne pas mesurer : noms d'hôte (DNS dynamique) et adresses IP, séparés par des virgules ; les noms sont résolus au démarrage puis toutes les 5 min ; les plages (`203.0.113.0/24`) ne sont pas prises en charge : une entrée avec `/` est refusée et signalée dans le journal | rien n'est exclu |
+
+Une requête venue d'une adresse exclue n'écrit ni visite, ni signal « page vue », ni clic.
+Une visite depuis un autre réseau (mobile) compte ; les mesures déjà écrites ne sont pas
+corrigées ; une adresse qui change compte encore au plus 5 min, plus le délai du DNS dynamique.
 
 La clé transite dans l'URL pour qu'un signet suffise : c'est un secret partagé, du niveau
 d'un lien non listé, **pas** une authentification. Ce que la mesure retient et ce qu'elle
