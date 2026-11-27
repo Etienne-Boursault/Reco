@@ -10,13 +10,29 @@
  * Les styles (`.graphe`, `.barres`, `.barre`, `.axe`, `.legende`) sont restés
  * dans le `<style is:inline>` de la page, qui est autonome et sans portée :
  * le composant n'en a pas, pour que le HTML rendu soit identique à l'avant.
+ *
+ * Tranche E1 (AU-2 B, 27/11/2026) : avant la bascule, les deux graphes d'avant
+ * (« humains, ancien tri » et robots) ; après, trois courbes en visiteurs-jours
+ * (confirmés, incertains, robots) à la place.
  */
 import type { Agregat } from '../../lib/audience/agregat';
+import type { Colonnes } from '../../lib/audience/classement';
 
 interface Props {
   jours: Agregat['jours'];
+  /** Vrai une fois le tri en trois colonnes en service (AU-2 B, 27/11/2026). */
+  trois?: boolean;
 }
-const { jours } = Astro.props;
+const { jours, trois = false } = Astro.props;
+
+/** Les trois courbes d'après la bascule, en visiteurs-jours ; une barre vide = jour d'avant. */
+const series: { cle: keyof Colonnes; titre: string; legende: string }[] = [
+  { cle: 'confirmes', titre: 'Confirmés par jour', legende: 'Visiteurs-jours dont le navigateur a envoyé le signal « page vue ».' },
+  { cle: 'incertains', titre: 'Incertains par jour', legende: 'Visiteurs-jours sans signal, depuis une adresse de particulier : personne de réel, ou un navigateur qui bloque le signal.' },
+  { cle: 'robots', titre: 'Robots par jour', legende: 'Visiteurs-jours déclarés robots, sans langue, ou venus d’un hébergeur sans signal.' },
+];
+const maxSerie = (cle: keyof Colonnes) =>
+  Math.max(1, ...jours.map((j) => j.colonnes?.[cle].visiteursJours ?? 0));
 
 const maxVisiteurs = Math.max(1, ...jours.map((j) => j.visiteurs));
 const maxRobots = Math.max(1, ...jours.map((j) => j.robots));
@@ -34,11 +50,12 @@ function jourCourt(iso: string): string {
 }
 ---
 
+{!trois && (<>
 <section class="graphe">
   {/* Les visiteurs, et non les pages : une page vue de plus ne dit pas
       qu'une personne de plus est venue, et les robots, souvent dix fois
       plus nombreux, écrasaient l'échelle. Le détail reste au survol. */}
-  <h2>Visiteurs par jour</h2>
+  <h2>Visiteurs par jour, humains (ancien tri)</h2>
   <div class="barres">
     {jours.map((j) => (
       <div class="barre" title={`${j.jour} — ${j.visiteurs} visiteurs, ${j.pages} pages vues, ${j.robots} passages de robots`}>
@@ -80,3 +97,26 @@ function jourCourt(iso: string): string {
     langue — ce qu’un vrai navigateur fait toujours.
   </p>
 </section>
+</>)}
+
+{trois && series.map((s) => (
+  <section class="graphe">
+    <h2>{s.titre}</h2>
+    <div class={`barres ${s.cle}`}>
+      {jours.map((j) => {
+        const e = j.colonnes?.[s.cle];
+        return (
+          <div class="barre" title={e ? `${j.jour} — ${e.visiteursJours} visiteurs-jours, ${e.visites} visites` : `${j.jour} — avant le tri en trois colonnes`}>
+            <span class="nombre">{e?.visiteursJours || ''}</span>
+            <i style={`height:${hauteur(e?.visiteursJours ?? 0, maxSerie(s.cle))}%`}></i>
+          </div>
+        );
+      })}
+    </div>
+    <div class="axe">
+      <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
+      <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
+    </div>
+    <p class="legende">{s.legende} Les jours sans barre datent d’avant le tri en trois colonnes.</p>
+  </section>
+))}

@@ -1,0 +1,114 @@
+---
+/**
+ * PanneauTri.astro : ce que `/audience` dit du tri des visiteurs (AU-1 A,
+ * AU-2 B, 27/11/2026, tranche E1) : l'avis de bascule, l'avis de panne, les
+ * trois tuiles, les revenants et le chemin épisode → fiche → clic.
+ *
+ * Les chiffres viennent de l'agrégat, qui décide de tout (`classement.ts`,
+ * `parcours.ts`) ; ce composant ne fait que les écrire. Les styles sont ceux
+ * de la page (`.avis`, `.chiffres`, `.tuile`, `.liste`, `.legende`).
+ *
+ * Une part `null` est écrite « trop peu de données », jamais un zéro (R-13).
+ * Seules des parts sont montrées : jamais le parcours d'une personne.
+ */
+import type { Agregat } from '../../lib/audience/agregat';
+import type { Part } from '../../lib/audience/parcours';
+
+interface Props {
+  donnees: Agregat;
+}
+const { colonnes, bascule, panneSignal, parcours } = Astro.props.donnees;
+
+const nf = new Intl.NumberFormat('fr-FR');
+const dateFr = (iso: string) => iso.split('-').reverse().join('/');
+const jourFr = (iso: string) => dateFr(iso).slice(0, 5);
+const pct = (p: Part) => `${p.pct.toLocaleString('fr-FR')} %`;
+const TROP_PEU = 'trop peu de données (moins de 10 par case)';
+
+const tuiles = colonnes
+  ? [
+      { nom: 'Confirmés', e: colonnes.confirmes },
+      { nom: 'Incertains', e: colonnes.incertains },
+      { nom: 'Robots', e: colonnes.robots },
+    ]
+  : [];
+
+const chemin: { part: Part | null; sujet: string; phrase: string }[] = [
+  { part: parcours.vuFiche, sujet: 'Fiche ouverte, parmi ceux qui ont vu un épisode', phrase: 'de ceux qui ont vu un épisode ont ouvert une fiche' },
+  { part: parcours.clicsEpisode, sujet: 'Clics venus d’un visiteur qui avait vu un épisode', phrase: 'des clics viennent d’un visiteur qui avait vu un épisode' },
+  { part: parcours.clicsFiche, sujet: 'Clics venus d’un visiteur qui avait vu une fiche', phrase: 'des clics viennent d’un visiteur qui avait vu une fiche' },
+];
+---
+
+{bascule ? (
+  <div class="avis">
+    <strong>Tri en trois colonnes depuis le {dateFr(bascule)}.</strong> Avant
+    cette date, une seule courbe : « humains (ancien tri) ».
+  </div>
+) : (
+  <div class="avis">
+    <strong>Le tri en trois colonnes commencera avec les premiers signaux.</strong>
+    Jusque-là, une seule courbe : « humains (ancien tri) ».
+  </div>
+)}
+
+{panneSignal.length > 0 && (
+  <div class="avis">
+    <strong>
+      Aucun signal reçu le {panneSignal.map(jourFr).join(' et le ')} alors que
+      des visites ont été comptées :
+    </strong> le script du signal est peut-être en panne.
+  </div>
+)}
+
+{colonnes && (
+  <div class="chiffres" style="margin-bottom: 0.9rem;">
+    {tuiles.map((t) => (
+      <div class="tuile">
+        <span class="valeur">{nf.format(t.e.visiteursJours)}</span>
+        <span class="label">{t.nom} (visiteurs-jours) · {nf.format(t.e.visites)} visites</span>
+      </div>
+    ))}
+  </div>
+)}
+
+<div class="chiffres" style="margin-bottom: 0.9rem;">
+  <div class="tuile">
+    <span class="valeur">{parcours.revenants ? pct(parcours.revenants) : '—'}</span>
+    <span class="label">des visiteurs confirmés étaient déjà venus{parcours.revenants ? '' : ` : ${TROP_PEU}`}</span>
+  </div>
+</div>
+
+{colonnes ? (
+  <p class="legende">
+    Confirmés, incertains et robots se comptent en visiteurs-jours : une
+    personne qui revient trois jours compte trois fois. Pages vues, visiteurs
+    et clics pour 100 visiteurs portent sur les confirmés et incertains
+    ensemble ; « visiteurs » compte ceux dont une page s’est ouverte sans
+    erreur, il peut donc être un peu plus bas que confirmés + incertains. Une
+    adresse d’hébergeur (centre de données, VPN, résolveur public) sans signal
+    compte en robots.
+  </p>
+) : (
+  <p class="legende">
+    Pour l’instant, « visiteurs » et « passages de robots » suivent l’ancien
+    tri (humains / robots déclarés ou sans langue).
+  </p>
+)}
+
+<section class="liste" style="margin: 1.1rem 0 2.5rem;">
+  <h2>Du premier épisode au clic</h2>
+  <p class="note">
+    des parts seulement, jamais le parcours d’une personne ; l’ordre des étapes
+    n’est pas mesuré
+  </p>
+  <ol>
+    {chemin.map((c) => (
+      <li><span>{c.part ? `${pct(c.part)} ${c.phrase}` : `${c.sujet} : ${TROP_PEU}`}</span></li>
+    ))}
+  </ol>
+  <p class="note" style="margin: 0.9rem 0 0;">
+    Safari efface la mémoire du navigateur au bout de 7 jours : les revenants
+    sur iPhone sont sous-comptés.
+  </p>
+</section>

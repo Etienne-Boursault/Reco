@@ -313,3 +313,80 @@ describe('graphes par jour', () => {
     ).toMatchSnapshot();
   });
 });
+
+// ===== Le tri en trois colonnes (AU-1 A / AU-2 B, tranche E1) ==============
+describe('tri en trois colonnes', () => {
+  const jourRel = (n: number) =>
+    new Date(Date.now() - n * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const id = (i: number) => `v${String(i).padStart(11, '0')}`;
+  const visiteDe = (i: number, jour: string) => ({
+    ...VISITE, ts: `${jour}T10:00:00.000Z`, hebergeur: false, visiteur: id(i),
+  });
+  const signalDe = (i: number, jour: string, over: Record<string, unknown> = {}) => ({
+    ts: `${jour}T10:00:00.000Z`, nature: 'signal', chemin: VISITE.chemin,
+    hebergeur: false, visiteur: id(i), ...over,
+  });
+  // Le 1er jour de signaux est tenu pour incomplet : la bascule est le suivant.
+  const apresBascule = (n = 3) => {
+    const nombre = Array.from({ length: n }, (_, i) => i);
+    return [
+      visiteDe(0, jourRel(5)), // un jour sans signal d'abord : le jour de signaux suivant n'est plus le 1er lu
+      visiteDe(0, jourRel(4)), signalDe(0, jourRel(4)),
+      ...nombre.map((i) => visiteDe(i, jourRel(3))),
+      ...nombre.map((i) => signalDe(i, jourRel(3), { revenant: i < 12, aVuEpisode: true, aVuFiche: i < 15 })),
+    ];
+  };
+  const dateFr = (iso: string) => iso.split('-').reverse().join('/');
+  // Le texte lu, sans balises ni retours à la ligne du source.
+  const lu = (html: string) => html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+
+  it('avant la bascule : une seule courbe « ancien tri » et l’attente des signaux', async () => {
+    const html = lu(await corpsAvecMesures({ audience: [VISITE] }));
+
+    expect(html).toContain('humains (ancien tri)');
+    expect(html).toContain('commencera avec les premiers signaux');
+    expect(html).not.toContain('Tri en trois colonnes depuis');
+    expect(html).not.toContain('Confirmés');
+  });
+
+  it('après la bascule : trois tuiles, trois courbes, la date, les mesures dites', async () => {
+    const brut = await corpsAvecMesures({ audience: apresBascule() });
+    const html = lu(brut);
+
+    expect(html).toContain(`Tri en trois colonnes depuis le ${dateFr(jourRel(3))}`);
+    for (const nom of ['Confirmés', 'Incertains', 'Robots']) expect(html).toContain(nom);
+    expect(brut.match(/<section class="graphe">/g)).toHaveLength(3);
+    expect(html).not.toContain('Visiteurs par jour');
+    expect(html).toContain('visiteurs-jours');
+    expect(html).toContain('confirmés et incertains');
+    expect(html).toContain('adresse d’hébergeur');
+    expect(html).toContain('Safari');
+    expect(html).not.toContain('script du signal');
+  });
+
+  it('avertit visiblement quand un jour récent a des visites et aucun signal', async () => {
+    const sansSignal = Array.from({ length: 5 }, (_, i) => visiteDe(i, jourRel(1)));
+    const html = lu(await corpsAvecMesures({ audience: [...apresBascule(), ...sansSignal] }));
+
+    expect(html).toContain(`Aucun signal reçu le ${jourRel(1).split('-').reverse().slice(0, 2).join('/')}`);
+    expect(html).toContain('peut-être en panne');
+  });
+
+  it('dit « trop peu de données » plutôt qu’un zéro, et rend les parts connues', async () => {
+    const peu = lu(await corpsAvecMesures({ audience: apresBascule(3) }));
+    const assez = lu(await corpsAvecMesures({ audience: apresBascule(40) }));
+
+    expect(peu).toContain('trop peu de données (moins de 10 par case)');
+    expect(peu).not.toMatch(/\b0 %/);
+    expect(assez).toContain('30 % des visiteurs confirmés étaient déjà venus');
+    expect(assez).toContain('37,5 % de ceux qui ont vu un épisode ont ouvert une fiche');
+  });
+
+  it('crédite la table des hébergeurs avec ses deux sources', async () => {
+    const html = await corps(`?cle=${CLE}`);
+
+    expect(html).toContain('X4BNet');
+    expect(html).toContain('lists_vpn');
+    expect(html).toContain('IP to ASN Lite');
+  });
+});

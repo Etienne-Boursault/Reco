@@ -24,12 +24,23 @@
  * adresses e-mail de visiteurs, lisibles par quiconque connaissait l'URL.
  * Découvrabilité n'est pas accès. Cf. `src/lib/audience/acces.mjs` pour ce que
  * cette clé vaut, et ce qu'elle ne vaut pas.
+ *
+ * LE TRI DES VISITEURS (AU-1 A, AU-2 B, 2026-11-27)
+ * -------------------------------------------------
+ * Une fois les premiers signaux « page vue » reçus, les visiteurs se rangent en
+ * confirmés, incertains et robots (`classement.ts`), en visiteurs-jours ;
+ * avant, une seule courbe « humains (ancien tri) ». `PanneauTri.astro` écrit
+ * les avis, les tuiles et le chemin en parts ; `GrapheJours.astro` les courbes.
+ * Les indicateurs du haut portent sur confirmés + incertains (R-6). Les crédits
+ * des deux tables embarquées (pays, hébergeurs) sont dans le pied de page.
  */
 import { acces } from '../lib/audience/acces.mjs';
 import { agreger, sourcesDisponibles } from '../lib/audience/agregat';
 import { editionTable } from '../lib/audience/geoip.mjs';
+import { editionTable as editionHebergeurs } from '../lib/audience/hebergeurs.mjs';
 import { nbJoursDemande, perimetreDemande } from '../lib/audience/vue';
 import GrapheJours from '../components/audience/GrapheJours.astro';
+import PanneauTri from '../components/audience/PanneauTri.astro';
 import type { Agregat, Compte } from '../lib/audience/agregat';
 
 const decision = acces(Astro.url.searchParams.get('cle'));
@@ -66,6 +77,7 @@ const nbJours = nbJoursDemande(Astro.url.searchParams.get('jours'));
 // politesse : la table embarquée en vient. `null` si elle n'a pas été
 // construite — un fork peut s'en passer.
 const editionPays = editionTable();
+const editionHeberg = editionHebergeurs();
 
 const entetesRecus = Astro.url.searchParams.get('entetes') === '1'
   ? [...Astro.request.headers.keys()].sort()
@@ -183,6 +195,7 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
       min-height: 2px;
     }
     .robots .barre i { background: var(--muted); }
+    .incertains .barre i { background: var(--alerte); }
     .barre .nombre {
       color: var(--muted); font-size: 0.65rem; text-align: center;
       font-variant-numeric: tabular-nums; line-height: 1.2;
@@ -340,7 +353,9 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
           </div>
         )}
 
-        <GrapheJours jours={donnees.jours} />
+        <PanneauTri donnees={donnees} />
+
+        <GrapheJours jours={donnees.jours} trois={donnees.colonnes !== null} />
 
         {donnees.paysIndisponible && (
           <div class="avis">
@@ -432,6 +447,18 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
           href="https://creativecommons.org/licenses/by/4.0/" rel="noopener noreferrer"
           target="_blank">CC BY 4.0</a>. Une géolocalisation par IP situe un
           réseau, pas une personne, et se trompe derrière un VPN.
+        </>
+      )}
+      {editionHeberg && (
+        <>
+          {' '}Réseaux d’hébergeurs : <a href="https://github.com/X4BNet/lists_vpn"
+          rel="noopener noreferrer" target="_blank">X4BNet lists_vpn</a> (MIT) ;
+          correspondance des adresses : <a href="https://db-ip.com/db/download/ip-to-asn-lite"
+          rel="noopener noreferrer" target="_blank">DB-IP IP to ASN Lite</a>
+          (<a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener noreferrer"
+          target="_blank">CC BY 4.0</a>), <a href="https://db-ip.com"
+          rel="noopener noreferrer" target="_blank">https://db-ip.com</a>,
+          édition {editionHeberg}.
         </>
       )}
     </footer>
