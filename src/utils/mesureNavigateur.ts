@@ -66,10 +66,11 @@
  */
 import { suiviRefuse } from './signalVue';
 
-const CLE = 'reco.mesure';
+/** Exportées : le test des mentions légales cite le code, pas une copie. */
+export const CLE = 'reco.mesure';
 /** La ligne reste sur deux pages. */
 const PAGES_DE_LIGNE = 2;
-const MOIS_DE_VIE = 13;
+export const MOIS_DE_VIE = 13;
 
 export type Etape = 'episode' | 'fiche';
 export type EtatMesure = 'active' | 'refusee' | 'navigateur' | 'indisponible';

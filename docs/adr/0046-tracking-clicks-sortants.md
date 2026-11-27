@@ -336,3 +336,22 @@ réversible vers un visiteur.
 
 Couverture cible : 100 % sur les nouveaux fichiers `src/lib/tracking/*` et
 `tools/aggregate_clicks.py`.
+
+## Révisé par AU-2 B (27/11/2026)
+
+Le passé reste tel qu'écrit ci-dessus ; ce qui change :
+
+- **La ligne de clic porte trois oui/non** : `revenant`, `aVuEpisode`, `aVuFiche`, tirés de
+  l'entrée `reco.mesure` du navigateur (le jour même, page courante comprise). `null` si
+  l'ancien script en cache ne les envoie pas ou si la mesure ne connaît rien ; les lignes
+  d'avant n'ont pas ces clés. Tous présents ou tous absents (validateur). Toujours aucun
+  identifiant, aucune IP, aucune date de première visite.
+- **DNT est traité comme GPC** : `DNT: 1` donne, comme `Sec-GPC`, un 204 sans écriture
+  (gestionnaire), et le script ne part pas si la mesure est refusée, désactivée par GPC ou DNT
+  (lu au clic, pas seulement au chargement).
+- **Le script de clic est extrait de `Layout.astro`** dans `src/utils/clicSortant.ts`
+  (testable) ; si `sendBeacon` rend `false`, le clic se replie sur `fetch`.
+- **Exclusion de l'éditeur** : une requête `/api/click` venue d'une adresse exclue
+  (`RECO_AUDIENCE_EXCLURE`) reçoit 204 avant d'atteindre Astro (`serveur.mjs`).
+- « Aucun cookie, aucun tracker tiers » reste vrai ; le manifeste dit désormais « Aucun
+  cookie. Une mesure propre au site, refusable en un clic » (ADR 0040, même révision).

@@ -9,7 +9,7 @@
  * `/statistics` du Manager existe mais reste vide, sans même un message.
  *
  * Le site est pourtant son propre serveur : `src/lib/audience/` compte les
- * visites au passage, sans tracker ni cookie, et cette page les lit.
+ * visites au passage, sans tracker tiers ni cookie, et cette page les lit.
  *
  * RENDUE À LA DEMANDE
  * -------------------
@@ -434,9 +434,9 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
     </main>
 
     <footer>
-      Mesuré sans tracker, sans cookie et sans tiers. Aucun en-tête n’est
-      conservé tel quel, l’identifiant de visiteur ne survit pas à la journée,
-      et les parcours ne sont pas reconstitués — voir
+      Mesuré sans tracker tiers, sans cookie et sans service extérieur. Aucun
+      en-tête n’est conservé tel quel, l’empreinte de visiteur (un pseudonyme)
+      ne survit pas à la journée, et les parcours ne sont pas reconstitués — voir
       <code>src/lib/audience/derive.mjs</code>.
       {editionPays && (
         <>

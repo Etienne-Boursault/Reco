@@ -108,8 +108,17 @@ npm start        # node --env-file-if-exists=.env ./server.mjs
 la page d'accueil part en 2,6 Mo au lieu de 200 Ko.
 
 **Fréquentation** — en SSR, chaque requête traverse `server.mjs` : le site peut se mesurer
-lui-même, sans tracker, sans cookie et sans tiers. `/audience` lit ces mesures. Trois
-variables l'activent ; sans elles la page répond 404 et rien d'identifiable n'est écrit :
+lui-même, sans tracker tiers, sans cookie et sans service extérieur. `/audience` lit ces
+mesures. Depuis AU-2 B (27/11/2026), le navigateur garde une seule entrée de stockage local,
+`reco.mesure` (date de première visite, étapes vues le jour même, état de la ligne
+d'information ; 13 mois sans prolongation) : elle ne quitte jamais le navigateur, seuls trois
+oui/non (déjà venu, a vu un épisode, a vu une fiche le jour même) accompagnent le signal
+« page vue » et le clic. Un refus en un clic dans le pied de page, Global Privacy Control et
+Do Not Track coupent ces envois ; le serveur compte toujours la page servie. L'empreinte d'un
+jour est un pseudonyme (avec le sel et une adresse IP, on la recalcule). Les mentions légales
+(`src/pages/mentions-legales.astro`) décrivent chaque champ écrit, et un test les relit contre
+le code. Trois variables activent la mesure ; sans elles la page répond 404 et rien
+d'identifiable n'est écrit :
 
 | Variable | Rôle | Sans elle |
 |---|---|---|

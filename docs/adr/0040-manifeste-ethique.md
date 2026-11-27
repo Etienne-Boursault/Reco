@@ -112,3 +112,23 @@ peut traduire en copiant `fr.ts → en.ts`.
 - Revisite recommandée : 2027-06 (vérifier que la liste d'éditeurs
   Bolloré est à jour, que les librairies indés référencées existent
   toujours, et que les ADR référencées sont stables).
+
+## Révisé par AU-2 B (27/11/2026)
+
+Étienne a décidé de mesurer aussi les revenants et le chemin épisode → fiche → clic, par
+l'état gardé dans le navigateur (plan AU-2 B de la PR d'audience). Ce qui change dans
+l'engagement « vie privée » du manifeste :
+
+- « Aucun tracker tiers. Aucun cookie marketing. Aucun cookie analytique. » devient
+  « Aucun tracker tiers. Aucun cookie. Une mesure propre au site, refusable en un clic. »
+  (`manifeste.astro` et `docs/manifeste-ethique.md`).
+- Le site garde une seule entrée de stockage local, `reco.mesure` : date de première visite,
+  étapes vues le jour même, état de la ligne d'information. 13 mois au plus, sans
+  prolongation. Elle ne quitte jamais le navigateur : seuls trois oui/non (déjà venu, a vu un
+  épisode, a vu une fiche le jour même) accompagnent le signal « page vue » et le clic.
+- Le refus tient en un clic dans le pied de chaque page ; Global Privacy Control et Do Not
+  Track sont respectés d'office. Le serveur compte toujours la page qu'il sert.
+- Les pages `noindex` et `/meta` n'envoient pas de signal (garde `pageMesurable`).
+- Inchangé : aucun tiers, aucune adresse IP écrite, aucun fingerprinting.
+- L'arbitrage du 25/08/2026 (« pas de reconstitution de parcours ») reste vrai pour une
+  personne : la page d'audience ne montre que des parts, jamais le parcours de quelqu'un.

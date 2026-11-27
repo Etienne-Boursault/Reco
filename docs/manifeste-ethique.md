@@ -69,7 +69,9 @@ revue humaine et par signalement.
 
 ## 4. Vie privée & RGPD
 
-**Aucun tracker tiers. Aucun cookie marketing. Aucun cookie analytique.**
+**Aucun tracker tiers. Aucun cookie. Une mesure propre au site, refusable en un clic.**
+(Phrase révisée par AU-2 B, 27/11/2026 : le site garde une entrée de stockage local, non
+cookie, pour sa mesure d'audience ; voir les mentions légales.)
 
 - Polices auto-hébergées (Inter via `@fontsource`) — pas de Google Fonts
   (cf. ADR 0029 §Anton retiré 2026-06-11).

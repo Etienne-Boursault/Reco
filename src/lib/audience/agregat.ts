@@ -11,9 +11,12 @@
  *
  * CE QUE CE MODULE NE FAIT PAS
  * ----------------------------
- * Il ne relie jamais deux visites entre elles. Les identifiants de visiteur
- * sont comptés par jour, dans un ensemble, puis oubliés — on obtient un
- * nombre, jamais une trajectoire.
+ * Il ne relie jamais deux jours entre eux ni ne reconstitue la trajectoire
+ * d'une personne. Les identifiants de visiteur sont comptés par jour, dans un
+ * ensemble, puis oubliés — on obtient un nombre. Depuis AU-2 B (2026-11-27),
+ * il compte aussi des PARTS (revenants, chemin épisode → fiche → clic) à
+ * partir des trois oui/non du signal et du clic (`parcours.ts`), jamais sous
+ * le seuil de 10 par case, jamais le parcours d'une personne.
  */
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
