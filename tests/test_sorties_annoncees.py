@@ -416,3 +416,4 @@ def test_apercu_sans_origine_rend_1_sans_ecrire_ni_envoyer(tmp_path):
     banc = Banc(vide, tmp_path)
     assert banc.lancer(apercu=True) == 1
     assert not banc.chemin_etat.exists() and not banc.messages
+

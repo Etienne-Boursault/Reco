@@ -165,7 +165,7 @@ jour, de la sortie à J+30, la recherche de liens. Modules :
 - `branche_de_contenu.py` : commit et poussée dans un dossier à part, sans toucher au clone vivant.
 - `sorties_plan.py` : le choix des recos du jour et les messages 🗓️ ⏳ ⚠️ (pur).
 - `sorties_annoncees.py` : l'étape, appelée par `deploy/venus/tick.sh` ; `--apercu`
-  n'écrit ni n'envoie rien. Variables et exploitation : `../deploy/venus/README.md`.
+  n'écrit ni n'envoie rien et ne fait pas de `git fetch`. Variables et exploitation : `../deploy/venus/README.md`.
 
 Limites de la V1 : seuls `album`, `musique`, `livre` et `jeu` sont servis (les films et
 les séries attendent), et la relance ne suit ni l'œuvre (`year`, alias), ni les recos

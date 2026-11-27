@@ -143,10 +143,15 @@ les cherche donc après coup, sans que personne y pense.
     sœurs** de la même œuvre ne suivent pas, ni les playlists de l'épisode.
 - **Essai sans rien écrire** : `docker compose run --rm -T pipeline python
   sorties_annoncees.py --apercu` affiche ce que l'étape ferait. Aucun état écrit, aucune
-  branche, rien d'envoyé ; il ignore la variable et l'heure.
-- **Code de sortie** : 0, ou 1 si l'état est illisible, si `git fetch` échoue (réessayé au
-  passage suivant) ou si la publication échoue ; `tick.sh` le journalise sans arrêter le
-  passage.
+  branche, rien d'envoyé, et **aucun `git fetch`** (tour 1 de revue, PR #227) : il lit
+  l'`origin/main` de la dernière récupération, celle du dernier passage de `tick.sh` ; il
+  ignore la variable et l'heure.
+- **Code de sortie** : 0, ou 1 si l'état est illisible, si une commande git échoue (`fetch`,
+  lecture d'`origin/main`, `ls-remote` ; réessayé au passage suivant, le jour n'est pas
+  noté) ou si la publication échoue ; `tick.sh` le journalise sans arrêter le passage.
+  Une reco dont le JSON est illisible sur `origin/main` est sautée et signalée une fois (⚠️),
+  elle ne fait pas échouer l'étape. Un message ⚠️ qui n'a pas pu partir sur Matrix est
+  renvoyé au passage suivant.
 
 ## Où sont les choses
 

@@ -16,7 +16,8 @@ reco est reprise le lendemain. Un lien de `linksRejected` ne revient jamais (`fu
 Cadence : une fois par jour, au premier passage à partir de 6 h à Paris (repli UTC, à partir de
 5 h, sans `tzdata`). Sans `RECO_SORTIES_ANNONCEES=1`, l'étape s'arrête aussitôt. `--apercu`
 ignore la cadence et la variable, cherche sur la copie et affiche ; il n'écrit rien (ni état, ni
-commit, ni poussée) et n'envoie aucun message. Les passes retenues sont celles des types servis
+commit, ni poussée, pas même un `git fetch` : il lit l'`origin/main` déjà récupéré) et n'envoie
+aucun message. Les passes retenues sont celles des types servis
 (`date_sortie.TYPES_V1`) : musique, boutique, jeux, YouTube Music. Les décisions de l'état et des
 messages vivent dans `sorties_plan.py`.
 
@@ -72,16 +73,22 @@ def _ouvert(maintenant: datetime) -> bool:
         return maintenant.astimezone(UTC).hour >= 5
 
 
-def _recos_sur_origin(git: Git, source: str) -> dict[str, tuple[str, dict[str, Any]]]:
-    """`{clé: (chemin, reco)}` des recos de `origin/main` qui portent une `releaseDate`."""
+def _recos_sur_origin(git: Git, source: str) -> tuple[dict[str, tuple[str, dict[str, Any]]], list[str]]:
+    """`({clé: (chemin, reco)}, chemins illisibles)` des recos de `origin/main` qui portent une
+    `releaseDate`. Un JSON illisible est sauté et rendu à part : il ne fait pas tomber l'étape."""
     sortie = git._git("grep", "-l", "-z", "-e", "releaseDate", "origin/main", "--",
                       f"{RECOS_REL}/{source}", verifier=False)
-    recos = {}
+    recos: dict[str, tuple[str, dict[str, Any]]] = {}
+    illisibles = []
     for brut in filter(None, sortie.split("\0")):
         chemin = brut.removeprefix("origin/main:")
-        doc = json.loads(git._git("show", f"origin/main:{chemin}"))
-        recos[sp.cle_de(doc)] = (chemin, doc)
-    return recos
+        try:
+            doc = json.loads(git._git("show", f"origin/main:{chemin}"))
+            recos[sp.cle_de(doc)] = (chemin, doc)
+        except (ValueError, AttributeError):  # JSON faux, ou pas un objet
+            log.error("reco illisible sur origin/main : %s", chemin)
+            illisibles.append(chemin)
+    return recos, illisibles
 
 
 def _chercher(source: str, docs: dict[str, dict[str, Any]], passes: Sequence[tuple[str, Passe]],
@@ -153,17 +160,19 @@ def relancer(racine: Path, *, source: str = "un-bon-moment", notify: Notify, che
     envoyer = (lambda _texte: False) if apercu else _envoyer(notify)
     git = Git(racine)
     try:
-        git._git("fetch", "origin")
-    except ErreurGit as exc:
+        if not apercu:  # « n'écrit rien » : l'aperçu lit l'origin/main de la dernière récupération
+            git._git("fetch", "origin")
+        recos, illisibles = _recos_sur_origin(git, source)
+        # Pas `git.modifications()` : `_git` retire l'espace de tête de « ␣M chemin » et fausse le premier chemin.
+        changees = set(git._git("diff", "--name-only", "-z", "HEAD").split("\0"))
+        en_attente = {cle for cle, p in etat["propositions"].items()
+                      if sp.proposition_en_attente(branche_distante_presente(racine, p["branche"]),
+                                                   est_ancetre_de_origin_main(racine, p["sha"]))}
+    except ErreurGit as exc:  # le jour n'est pas noté : on réessaie au passage suivant
         return _fin(apercu, chemin_etat, _panne(etat, "git", str(exc), envoyer), 1)
-    etat = sp.noter_jour(etat, jour)
-    recos = _recos_sur_origin(git, source)
-    # Pas `git.modifications()` : `_git` retire l'espace de tête de « ␣M chemin » et fausse le premier chemin.
-    changees = set(git._git("diff", "--name-only", "-z", "HEAD").split("\0"))
+    etat = sp.effacer_erreur(sp.noter_jour(etat, jour), "git")
+    etat = _signaler_illisibles(etat, illisibles, envoyer)
     modifiees = {cle for cle, (chemin, _) in recos.items() if chemin in changees}
-    en_attente = {cle for cle, p in etat["propositions"].items()
-                  if sp.proposition_en_attente(branche_distante_presente(racine, p["branche"]),
-                                               est_ancetre_de_origin_main(racine, p["sha"]))}
     docs = [doc for _, doc in recos.values()]
     plan = sp.plan_du_jour(docs, jour, etat, sur_origin=set(recos), modifiees=modifiees,
                            en_attente=en_attente)
@@ -179,7 +188,7 @@ def relancer(racine: Path, *, source: str = "un-bon-moment", notify: Notify, che
     pannes: dict[str, str] = {}
     trouvees = _chercher(source, {sp.cle_de(d): d for d in plan.a_relancer},
                          _surveiller(passes, pannes), etat) if plan.a_relancer else []
-    for nom, _ in passes:
+    for nom, _ in passes if plan.a_relancer else ():  # sans passe tournée, une panne n'est ni neuve ni réparée
         if nom in pannes:
             etat = _panne(etat, f"passe {nom}", pannes[nom], envoyer)
         else:
@@ -197,10 +206,21 @@ def relancer(racine: Path, *, source: str = "un-bon-moment", notify: Notify, che
 
 def _panne(etat: dict[str, Any], cle: str, message: str,
            envoyer: Callable[[str], bool]) -> dict[str, Any]:
-    """Note la panne et la signale une seule fois par clé."""
-    etat, premiere = sp.noter_erreur(etat, cle, message)
-    if premiere:
-        envoyer(sp.message_panne(cle, message))
+    """Note la panne et la signale une seule fois par clé : un message qui n'est pas parti ne la
+    marque pas signalée, le passage suivant le renvoie."""
+    neuf, premiere = sp.noter_erreur(etat, cle, message)
+    if not premiere or envoyer(sp.message_panne(cle, message)):
+        return neuf
+    return etat
+
+
+def _signaler_illisibles(etat: dict[str, Any], illisibles: list[str],
+                         envoyer: Callable[[str], bool]) -> dict[str, Any]:
+    """Une reco JSON illisible sur origin/main est signalée une fois, jusqu'à ce qu'elle se relise."""
+    for chemin in illisibles:
+        etat = _panne(etat, f"reco {chemin}", "JSON illisible sur origin/main, reco sautée", envoyer)
+    for cle in [c for c in etat["erreurs"] if c.startswith("reco ") and c[5:] not in illisibles]:
+        etat = sp.effacer_erreur(etat, cle)
     return etat
 
 
