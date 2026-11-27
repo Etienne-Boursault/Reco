@@ -519,3 +519,82 @@ describe('ce qui compte comme une visite', () => {
     expect(a.provenances).toEqual([{ cle: 'unebonnereco.fr', n: 1 }]);
   });
 });
+
+// ===== Le tri en trois colonnes (AU-1 A, tranche B3) =======================
+describe('signaux « page vue » et tri en trois colonnes', () => {
+  const NOW = new Date('2026-11-30T12:00:00Z');
+  const lireTrois = () => agreger({ racine, sourceId: SOURCE, nbJours: 30, aujourdhui: NOW });
+  const nouvelle = (jour: string, over: Record<string, unknown> = {}) =>
+    visite({ ts: `${jour}T10:00:00.000Z`, hebergeur: false, ...over });
+  const signalDe = (jour: string, over: Record<string, unknown> = {}) => ({
+    ts: `${jour}T10:00:00.000Z`,
+    nature: 'signal',
+    chemin: '/un-bon-moment/films',
+    hebergeur: false,
+    visiteur: 'aaaaaaaaaaaa',
+    ...over,
+  });
+
+  it('une ligne de signal ne compte jamais comme visite', () => {
+    ecrire('audience', '2026-11-27', [nouvelle('2026-11-27'), signalDe('2026-11-27')]);
+    const a = lireTrois();
+
+    expect(a.jours[0].robots).toBe(0);
+    expect(a.visitesRobots).toBe(0);
+    expect(a.pagesVues).toBe(1);
+    expect(a.jours[0].signaux).toBe(1);
+    expect(a.topPages).toEqual([{ cle: '/un-bon-moment/films', n: 1 }]);
+  });
+
+  it('sans signal : pas de bascule, pas de colonnes, ancien tri', () => {
+    ecrire('audience', '2026-11-27', [
+      nouvelle('2026-11-27'),
+      nouvelle('2026-11-27', { visiteur: 'bbbbbbbbbbbb', hebergeur: true }),
+    ]);
+    const a = lireTrois();
+
+    expect(a.bascule).toBeNull();
+    expect(a.colonnes).toBeNull();
+    expect(a.jours[0].colonnes).toBeNull();
+    expect(a.jours[0].robots).toBe(0);
+    expect(a.panneSignal).toEqual([]);
+  });
+
+  it('la bascule est le premier jour complet avec signaux ; avant, l’ancien compte seul', () => {
+    ecrire('audience', '2026-11-26', [nouvelle('2026-11-26', { hebergeur: true })]);
+    ecrire('audience', '2026-11-27', [nouvelle('2026-11-27'), signalDe('2026-11-27')]);
+    ecrire('audience', '2026-11-28', [
+      nouvelle('2026-11-28'),
+      signalDe('2026-11-28'),
+      nouvelle('2026-11-28', { visiteur: 'bbbbbbbbbbbb' }),
+      nouvelle('2026-11-28', { visiteur: 'cccccccccccc', hebergeur: true }),
+    ]);
+    const a = lireTrois();
+
+    expect(a.bascule).toBe('2026-11-28');
+    expect(a.jours.map((j) => j.colonnes === null)).toEqual([true, true, false]);
+    // Avant la bascule, un hébergeur reste compté comme avant (R-7).
+    expect(a.jours[0].robots).toBe(0);
+    // Après : confirmé, incertain, et l'hébergeur sans signal est un robot.
+    expect(a.jours[2].colonnes).toEqual({
+      confirmes: { visiteursJours: 1, visites: 1 },
+      incertains: { visiteursJours: 1, visites: 1 },
+      robots: { visiteursJours: 1, visites: 1 },
+    });
+    expect(a.jours[2].robots).toBe(1);
+    expect(a.jours[2].visiteurs).toBe(2);
+    expect(a.colonnes?.confirmes.visites).toBe(1);
+    expect(a.visitesRobots).toBe(1);
+  });
+
+  it('avertit quand un jour complet récent a des visites mais aucun signal', () => {
+    ecrire('audience', '2026-11-27', [nouvelle('2026-11-27'), signalDe('2026-11-27')]);
+    ecrire('audience', '2026-11-28', [nouvelle('2026-11-28'), signalDe('2026-11-28')]);
+    const chaque = ['a', 'b', 'c', 'd', 'e'].map((x) =>
+      nouvelle('2026-11-29', { visiteur: x.repeat(12) }),
+    );
+    ecrire('audience', '2026-11-29', chaque);
+
+    expect(lireTrois().panneSignal).toEqual(['2026-11-29']);
+  });
+});

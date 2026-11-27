@@ -18,6 +18,18 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import {
+  cheminNormalise,
+  classer,
+  compterColonnes,
+  dateDeBascule,
+  estSignal,
+  joursEnPanne,
+  sommerColonnes,
+  type Colonnes,
+  type Signal,
+} from './classement';
+
 export interface Visite {
   ts: string;
   chemin: string;
@@ -53,6 +65,10 @@ export interface Jour {
   /** Pages préchargées au survol d'un lien, jamais comptées comme vues. */
   prechargements: number;
   clics: number;
+  /** Lignes « page vue » du jour : jamais comptées comme visites. */
+  signaux: number;
+  /** Les trois colonnes ; `null` avant la bascule (ancien tri : `visiteurs`, `robots`). */
+  colonnes: Colonnes | null;
 }
 
 export interface Compte {
@@ -109,6 +125,12 @@ export interface Agregat {
   sondes: number;
   plateformes: Compte[];
   dureeMedianeMs: number | null;
+  /** Premier jour complet (UTC) qui porte des signaux ; `null` tant qu'il n'y en a pas. */
+  bascule: string | null;
+  /** Les trois colonnes sommées sur les jours d'après la bascule ; `null` sans eux. */
+  colonnes: Colonnes | null;
+  /** Jours complets récents avec des visites et aucun signal : le signal est peut-être en panne. */
+  panneSignal: string[];
 }
 
 /**
@@ -154,11 +176,6 @@ const SONDE = new RegExp(
 
 export function estSonde(chemin: string): boolean {
   return SONDE.test(chemin);
-}
-
-/** `/a-propos` et `/a-propos/` sont la même page : une seule ligne. */
-function cheminNormalise(chemin: string): string {
-  return chemin.length > 1 ? chemin.replace(/\/+$/, '') || '/' : chemin;
 }
 
 /**
@@ -296,29 +313,44 @@ export function agreger({
   ].filter((j) => j >= depuis).sort();
 
   const visites: Visite[] = [];
+  const humaines: Visite[] = [];
   const clics: Clic[] = [];
   const parJour: Jour[] = [];
 
-  for (const jour of jours) {
-    const v = dossiers.flatMap((d) => lireJsonl<Visite>(join(d.visites, `${jour}.jsonl`)));
+  // Les signaux sont séparés dès la lecture : ils ne sont pas des visites.
+  const lus = jours.map((jour) => {
+    const lignes = dossiers.flatMap((d) => lireJsonl<Visite | Signal>(join(d.visites, `${jour}.jsonl`)));
+    return {
+      jour,
+      v: lignes.filter((l) => !estSignal(l)) as Visite[],
+      signaux: lignes.filter(estSignal) as Signal[],
+    };
+  });
+  const bascule = dateDeBascule(lus.map((l) => ({ jour: l.jour, signaux: l.signaux.length })));
+
+  for (const { jour, v, signaux } of lus) {
     const c = dossiers.flatMap((d) => lireJsonl<Clic>(join(d.clics, `${jour}.jsonl`)));
     visites.push(...v);
     clics.push(...c);
 
-    const humaines = v.filter(estHumaine);
+    // Avant la bascule : l'ancien tri seul. Après : la table de `classement.ts`.
+    const classes = bascule !== null && jour >= bascule ? classer(v, signaux) : null;
+    const dujour = classes ? v.filter((_, i) => classes[i] !== 'robot') : v.filter(estHumaine);
+    humaines.push(...dujour);
     parJour.push({
       jour,
-      pages: humaines.filter(estConsultation).length,
+      pages: dujour.filter(estConsultation).length,
       // Les identifiants ne sont comparés qu'À L'INTÉRIEUR d'une journée : le
       // sel change de portée chaque jour, deux jours ne se recousent pas.
-      visiteurs: compterVisiteurs(humaines),
-      robots: v.length - humaines.length,
-      prechargements: humaines.filter((x) => x.prechargement).length,
+      visiteurs: compterVisiteurs(dujour),
+      robots: v.length - dujour.length,
+      prechargements: dujour.filter((x) => x.prechargement).length,
       clics: c.length,
+      signaux: signaux.length,
+      colonnes: classes ? compterColonnes(v, classes) : null,
     });
   }
 
-  const humaines = visites.filter(estHumaine);
   const consultees = humaines.filter(estConsultation);
   const introuvables = visites.filter((v) => v.statut === 404);
   // Additionner les visiteurs de chaque jour, et non dédoublonner sur la
@@ -366,5 +398,8 @@ export function agreger({
     dureeMedianeMs: mediane(
       consultees.map((v) => v.dureeMs).filter((d): d is number => typeof d === 'number'),
     ),
+    bascule,
+    colonnes: sommerColonnes(parJour.map((j) => j.colonnes)),
+    panneSignal: joursEnPanne(parJour, bascule, aujourdhui),
   };
 }
