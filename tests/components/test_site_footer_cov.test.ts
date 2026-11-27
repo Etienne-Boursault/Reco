@@ -126,3 +126,12 @@ describe('SiteFooter — ligne « Nous suivre »', () => {
     }
   });
 });
+
+describe('SiteFooter — mesure d’audience (AU-2 B, 2026-11-27)', () => {
+  it('monte l’interrupteur et la ligne de première visite, avant la tagline', async () => {
+    const html = await render();
+    expect(html).toContain('data-mesure-pied');
+    expect(html).toContain('data-mesure-ligne');
+    expect(html.indexOf('data-mesure-pied')).toBeLessThan(html.indexOf('Projet ouvert et duplicable'));
+  });
+});

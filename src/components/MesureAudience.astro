@@ -1,0 +1,156 @@
+---
+/**
+ * MesureAudience.astro : ce que le visiteur voit de la mesure d'audience
+ * (« AU-2 B », 2026-11-27).
+ *
+ * Précision d'Étienne, le 27/11 à 11 h 19 : « Je veux que ça soit
+ * transparent pour l'utilisateur, il faut que l'utilisateur puisse opt-out
+ * plus facilement qu'en allant dans une page difficile d'accès du site »
+ * (choix « Pied de page + une ligne »). Trois morceaux, montés par SiteFooter :
+ *
+ *  - la LIGNE de première visite (fixe en bas, non bloquante, sans piège de
+ *    focus) : elle reste sur deux pages ou jusqu'au premier clic ;
+ *  - l'INTERRUPTEUR du pied de page, présent sur chaque page : « active ·
+ *    Désactiver », puis « désactivée · Réactiver », sur place ;
+ *  - un RETOUR annoncé (`role="status"`) pour le seul clic.
+ *
+ * Tout le texte est rendu ici, dans le HTML, et `utils/interfaceMesure.ts`
+ * ne fait que montrer le bon morceau (`hidden`) selon l'état de la mesure.
+ * Sans script, seule la mention `data-pour="aucun"` reste affichée : elle dit
+ * que les pages servies sont quand même comptées (le serveur compte la visite,
+ * c'est le signal « page vue » du navigateur qui ne part pas).
+ *
+ * « Refuser » ou « Désactiver » n'arrête rien sur la page en cours : le signal
+ * de la page est peut-être déjà parti (assumé), c'est la page suivante qui n'en
+ * envoie plus. Aucun bouton n'est mis en avant pour pousser à accepter.
+ */
+import { t } from '../i18n';
+
+// Section des mentions légales qui décrit les données ; la tranche de
+// documentation (E2) y ajoutera la mesure d'audience.
+const MENTIONS = '/mentions-legales#donnees';
+---
+
+<p class="mesure-pied" data-mesure-pied>
+  <span>{t('mesure.label')} :</span>
+  <span data-pour="aucun">{t('mesure.aucun')}</span>
+  <span data-pour="active" hidden>
+    {t('mesure.active')} · <button type="button" data-mesure-act="refuser">{t('mesure.desactiver')}</button>
+  </span>
+  <span data-pour="refusee" hidden>
+    {t('mesure.refusee')} · <button type="button" data-mesure-act="accepter">{t('mesure.reactiver')}</button>
+  </span>
+  <span data-pour="navigateur" hidden>{t('mesure.navigateur')}</span>
+  <span data-pour="indisponible" hidden>{t('mesure.indisponible')}</span>
+  <a href={MENTIONS}>{t('mesure.savoir')}</a>
+</p>
+
+<p
+  class="visually-hidden"
+  role="status"
+  data-mesure-retour
+  data-refusee={t('mesure.retour.refusee')}
+  data-active={t('mesure.retour.active')}
+>
+</p>
+
+<div class="mesure-ligne" role="region" aria-label={t('mesure.label')} data-mesure-ligne hidden>
+  <p>
+    {t('mesure.ligne')} <a href={MENTIONS}>{t('mesure.savoir')}</a>
+  </p>
+  <div class="mesure-boutons">
+    <button type="button" class="mesure-bouton" data-mesure-act="refuser">{t('mesure.refuser')}</button>
+    <button type="button" class="mesure-bouton" data-mesure-act="ok">{t('mesure.ok')}</button>
+  </div>
+</div>
+
+<style>
+  .mesure-pied {
+    margin: 0 0 0.6rem;
+  }
+  /* Même allure que les liens du pied de page : soulignés, cible de 44 px
+     par un pseudo-élément (le soulignement reste porté par la bordure). */
+  .mesure-pied a,
+  .mesure-pied button {
+    position: relative;
+    padding: 0;
+    font: inherit;
+    color: var(--text);
+    background: none;
+    border: 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 25%, transparent);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .mesure-pied a::after,
+  .mesure-pied button::after {
+    content: '';
+    position: absolute;
+    inset: -11px -4px;
+  }
+  .mesure-pied a:hover,
+  .mesure-pied button:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* La ligne : fixe, non bloquante, au-dessus de l'encoche des téléphones
+     (`safe-area-inset-bottom`). `hidden` ne suffit pas face à `display`. */
+  .mesure-ligne {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 40;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    background: var(--surface);
+    color: var(--text);
+    border-top: 1px solid color-mix(in oklab, var(--text) 25%, transparent);
+    font-size: 0.9rem;
+  }
+  .mesure-ligne[hidden] {
+    display: none;
+  }
+  .mesure-ligne p {
+    margin: 0;
+    flex: 1 1 18rem;
+  }
+  .mesure-ligne a {
+    color: var(--text);
+    text-decoration: underline;
+  }
+  .mesure-boutons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  /* « Refuser » et « OK » : exactement le même poids. */
+  .mesure-bouton {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 1.1rem;
+    font: inherit;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--text);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .mesure-bouton:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+</style>
+
+<style is:global>
+  /* WCAG 2.4.11 : la ligne ne masque ni le contenu qui prend le focus, ni le
+     bas de la page, tant qu'elle est affichée. */
+  html:has(.mesure-ligne:not([hidden])) {
+    scroll-padding-bottom: 9rem;
+  }
+  html:has(.mesure-ligne:not([hidden])) body {
+    padding-bottom: 9rem;
+  }
+</style>

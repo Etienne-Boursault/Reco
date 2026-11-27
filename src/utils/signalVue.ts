@@ -38,6 +38,8 @@
  * compter comme une visite. L'envoi a lieu une fois par document : elle est
  * donc appelée une fois. Sous GPC ou DNT elle purge aussi l'état gardé, c'est
  * pourquoi ces réglages ne sont plus écartés d'emblée ici.
+ * Après l'envoi, `apresEnvoi` (facultatif) rend la main à l'interface de la
+ * mesure, qui n'affiche la ligne de première visite qu'à ce moment-là.
  * Toute erreur est avalée : ni `console.error`, ni rejet non géré.
  *
  * Le corps part en `text/plain` (celui de `sendBeacon` pour une chaîne) : le
@@ -72,6 +74,12 @@ export interface Dependances {
   document: Document2;
   location: { pathname: string };
   fetch: (url: string, init: RequestInit) => Promise<unknown>;
+  /**
+   * Rappelé juste après `noterPage` (et l'envoi), même quand rien ne part : la
+   * ligne de première visite et le pied de page lisent l'état que `noterPage`
+   * vient de créer (`interfaceMesure.ts`, AU-2 B, 2026-11-27).
+   */
+  apresEnvoi?: () => void;
 }
 
 const URL_SIGNAL = '/api/vue';
@@ -109,7 +117,7 @@ export function suiviRefuse(
  * refuser au moment de l'envoi).
  */
 export function cablerSignalVue(deps: Dependances): boolean {
-  const { navigator, document, location, fetch, mesure } = deps;
+  const { navigator, document, location, fetch, mesure, apresEnvoi } = deps;
   if (navigator.webdriver === true || !pageMesurable(location, document)) return false;
 
   const envoyer = () => {
@@ -128,6 +136,12 @@ export function cablerSignalVue(deps: Dependances): boolean {
       }).catch(() => {});
     } catch {
       /* silencieux : la mesure ne doit jamais gêner la page */
+    } finally {
+      try {
+        apresEnvoi?.();
+      } catch {
+        /* l'interface ne doit pas non plus gêner la page */
+      }
     }
   };
 

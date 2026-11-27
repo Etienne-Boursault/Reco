@@ -298,3 +298,54 @@ describe('pageMesurable : la garde commune au signal et au clic', () => {
     expect(pageMesurable({ pathname: '/p' }, document)).toBe(true);
   });
 });
+
+describe('cablerSignalVue : le rappel `apresEnvoi` (la ligne et le pied de la mesure, AU-2 B)', () => {
+  it('est rappelé une fois, après noterPage et l’envoi', () => {
+    const m = monde();
+    const ordre: string[] = [];
+    m.mesure.noterPage.mockImplementation(() => {
+      ordre.push('noterPage');
+      return { revenant: false, aVuEpisode: false, aVuFiche: false };
+    });
+    (m.navigator.sendBeacon as ReturnType<typeof vi.fn>).mockImplementation(() => {
+      ordre.push('envoi');
+      return true;
+    });
+    cablerSignalVue({ ...(m.deps as object), apresEnvoi: () => ordre.push('apres') } as never);
+    expect(ordre).toEqual(['noterPage', 'envoi', 'apres']);
+  });
+
+  it('est rappelé aussi quand rien ne part (refus, GPC, DNT) : le pied doit se mettre à jour', () => {
+    const m = monde({ mesure: { noterPage: vi.fn(() => null) } });
+    const apresEnvoi = vi.fn();
+    cablerSignalVue({ ...(m.deps as object), apresEnvoi } as never);
+    expect(appels(m)).toBe(0);
+    expect(apresEnvoi).toHaveBeenCalledTimes(1);
+  });
+
+  it('n’est pas rappelé quand le signal est écarté d’emblée (robot, /meta) : pas de ligne', () => {
+    const m = monde({ navigator: { webdriver: true } });
+    const apresEnvoi = vi.fn();
+    cablerSignalVue({ ...(m.deps as object), apresEnvoi } as never);
+    expect(apresEnvoi).not.toHaveBeenCalled();
+  });
+
+  it('une erreur du rappel ne remonte pas, et le signal est déjà parti', () => {
+    const m = monde();
+    expect(() =>
+      cablerSignalVue({
+        ...(m.deps as object),
+        apresEnvoi: () => {
+          throw new Error('interface cassée');
+        },
+      } as never),
+    ).not.toThrow();
+    expect(balises(m)).toHaveBeenCalledTimes(1);
+  });
+
+  it('reste facultatif (le script d’une page sans pied de page)', () => {
+    const m = monde();
+    expect(cablerSignalVue(m.deps)).toBe(true);
+    expect(balises(m)).toHaveBeenCalledTimes(1);
+  });
+});

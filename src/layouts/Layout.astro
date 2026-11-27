@@ -262,6 +262,7 @@ const estAccueil = Astro.url.pathname === '/';
        gardée dans le navigateur (aucun identifiant) ; même garde que le clic. Voir `utils/signalVue.ts`. */}
     <script>
       import { creerMesure } from '../utils/mesureNavigateur';
+      import { cablerInterfaceMesure } from '../utils/interfaceMesure';
       import { cablerSignalVue } from '../utils/signalVue';
 
       // AU-2 B (2026-11-27) : la mesure reste dans le navigateur ; seuls trois
@@ -271,7 +272,10 @@ const estAccueil = Astro.url.pathname === '/';
         maintenant: () => new Date(),
         navigator,
       });
-      cablerSignalVue({ navigator, document, location, fetch, mesure });
+      // La ligne de première visite et l'interrupteur du pied (`MesureAudience.astro`)
+      // se branchent sur la même mesure ; la ligne n'apparaît qu'après l'envoi du signal.
+      const { apresEnvoi } = cablerInterfaceMesure(document, window, mesure);
+      cablerSignalVue({ navigator, document, location, fetch, mesure, apresEnvoi });
     </script>
   </body>
 </html>

@@ -40,6 +40,23 @@ export const fr = {
   'footer.follow': 'Nous suivre',
   'footer.support': 'Soutenir le projet',
 
+  // Mesure d’audience (AU-2 B, 2026-11-27) : la ligne de première visite et
+  // l’interrupteur du pied de page (`MesureAudience.astro`).
+  'mesure.label': 'Mesure d’audience',
+  'mesure.ligne': 'Ce site compte ses visites, sans publicité ni pistage entre sites.',
+  'mesure.savoir': 'En savoir plus',
+  'mesure.refuser': 'Refuser',
+  'mesure.ok': 'OK',
+  'mesure.aucun': 'sans JavaScript, seules les pages servies sont comptées.',
+  'mesure.active': 'active',
+  'mesure.refusee': 'désactivée',
+  'mesure.navigateur': 'désactivée par le réglage de votre navigateur.',
+  'mesure.indisponible': 'active, mais ce navigateur ne peut pas garder un refus.',
+  'mesure.desactiver': 'Désactiver',
+  'mesure.reactiver': 'Réactiver',
+  'mesure.retour.refusee': 'Mesure désactivée',
+  'mesure.retour.active': 'Mesure réactivée',
+
   // À propos (item #22)
   'about.title': 'À propos de Reco',
   'about.subtitle':
