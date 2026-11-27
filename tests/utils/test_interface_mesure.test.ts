@@ -191,13 +191,33 @@ describe('la ligne de première visite', () => {
     expect(ligne().hidden).toBe(true);
   });
 
-  it('« Refuser » ferme la ligne, met le pied à jour et n’emporte pas le focus dans le pied', () => {
+  it('« Refuser » dans la ligne ferme la ligne, met le pied à jour et lui passe le focus (clavier)', () => {
     pageVue(monter());
+    bouton('refuser', ligne()).focus();
     bouton('refuser', ligne()).click();
     expect(ligne().hidden).toBe(true);
     expect(etatAffiche()).toEqual(['refusee']);
     expect(retour()).toBe('Mesure désactivée');
-    expect(document.activeElement).not.toBe(bouton('accepter'));
+    // Sans cela, le focus tomberait sur `body` avec la ligne qui se cache (constat du tour 1, PR #224).
+    expect(document.activeElement).toBe(bouton('accepter', q('[data-mesure-pied]')!));
+  });
+
+  it('« OK » dans la ligne passe le focus au bouton « Désactiver » du pied', () => {
+    pageVue(monter());
+    bouton('ok').focus();
+    bouton('ok').click();
+    expect(ligne().hidden).toBe(true);
+    expect(document.activeElement).toBe(bouton('refuser', q('[data-mesure-pied]')!));
+  });
+
+  it('« Refuser » dans la ligne quand le pied n’a aucun bouton : le texte d’état prend le focus', () => {
+    const m = monter();
+    pageVue(m);
+    m.navigator.globalPrivacyControl = true; // le choix ne prend pas : l'état devient « navigateur »
+    bouton('refuser', ligne()).click();
+    const texte = q('[data-pour="navigateur"]')!;
+    expect(texte.getAttribute('tabindex')).toBe('-1');
+    expect(document.activeElement).toBe(texte);
   });
 
   it('un refus déjà donné : pas de ligne, et la ligne ouverte se ferme', () => {

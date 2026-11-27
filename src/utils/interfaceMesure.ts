@@ -25,8 +25,8 @@
  *
  * Accessibilité : le pied est posé dans le HTML sans zone d'annonce ; seul un
  * clic annonce son résultat (`role="status"`). Le focus n'est jamais volé à
- * l'affichage de la ligne ; après un clic dans le pied, il passe au bouton qui
- * remplace celui qui vient de disparaître.
+ * l'affichage de la ligne ; après un clic dans le pied ou dans la ligne, il
+ * passe au bouton du pied qui remplace celui qui vient de disparaître.
  */
 import type { EtatMesure } from './mesureNavigateur';
 
@@ -58,14 +58,31 @@ export function cablerInterfaceMesure(
     });
   };
 
+  /**
+   * Le focus passe au bouton du pied de l'état courant, ou, s'il n'y en a pas
+   * (GPC, stockage coupé), à son texte, rendu focalisable. Sans cela, le
+   * focus d'un bouton qui disparaît (ligne cachée, ou bouton du pied remplacé)
+   * tombe sur `body` : un clavier perd sa place (tour 1 de revue, PR #224).
+   */
+  const focusDansLePied = (etat: EtatMesure) => {
+    const cible =
+      pied.querySelector<HTMLElement>(`[data-pour="${etat}"] button`) ?? pied.querySelector<HTMLElement>(`[data-pour="${etat}"]`);
+    if (!cible) return;
+    if (cible.tagName !== 'BUTTON') cible.tabIndex = -1;
+    cible.focus();
+  };
+
   const agir = (bouton: HTMLElement) => {
     ligne.hidden = true;
-    if (bouton.dataset.mesureAct === 'ok') return mesure.fermerLigne();
+    if (bouton.dataset.mesureAct === 'ok') {
+      mesure.fermerLigne();
+      return focusDansLePied(mesure.etat());
+    }
     const etat = bouton.dataset.mesureAct === 'refuser' ? mesure.refuser() : mesure.accepter();
     rafraichirPied();
     // `data-refusee` / `data-active` : rien n'est annoncé si le choix n'a pas pris.
     retour.textContent = retour.dataset[etat] ?? '';
-    if (pied.contains(bouton)) pied.querySelector<HTMLElement>(`[data-pour="${etat}"] button`)?.focus();
+    focusDansLePied(etat);
   };
 
   doc.querySelectorAll<HTMLElement>('[data-mesure-act]').forEach((b) => b.addEventListener('click', () => agir(b)));
