@@ -48,6 +48,7 @@ from pathlib import Path
 from typing import Any
 
 import common
+import graphies
 import liens_avant_relecture as _liens_avant
 import modeles_llm
 import telemetry
@@ -333,8 +334,8 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
             calage = _resume_calage(kwargs["caleur"](source_id, guid, apply=True))
     except Exception as exc:  # noqa: BLE001
         log.warning("Citations non calées pour %s : %s", guid, exc)
-
-    precisees = f" {citations} citation(s) précisée(s)." if citations else ""
+    graphies.garder_brouillons_episode(source_id, guid)  # R6 A (2026-11-27) : après réécoute et calage
+    precisees =f" {citations} citation(s) précisée(s)." if citations else ""
     calage = f"\n{calage}" if calage else ""
     link = f"{kwargs['review_url'].rstrip('/')}/ep?guid={urllib.parse.quote(guid, safe='')}"
     notify(f"✅ {_title(episode)} : {count} reco(s) à valider.{precisees}{calage}\n{link}")

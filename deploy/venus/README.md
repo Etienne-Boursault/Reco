@@ -17,6 +17,19 @@ aucun portable ne soit allumé, venus :
    (ancien → nouveau) : la relecture tranche, en particulier quand c'est la fiche qui
    se trompe ou quand l'invité a dit le titre français.
 
+**Le registre des graphies** (décision R6 A du 2026-11-27, `tools/graphies.py`) : en fin de
+traitement d'un épisode, après la réécoute et le calage des citations (sinon leurs corrections
+automatiques passeraient pour des corrections de relecture), la chaîne garde le brouillon de chaque
+reco encore à relire ; un nouveau passage l'écrase tant que la reco n'est pas relue. La publication
+d'un épisode relu compare ce brouillon à la version validée : chaque nom propre corrigé
+(« Hilleret » → « Hillairet ») entre au registre, `tools/output/graphies/registre.json`, hors de
+Git. Les petits mots courants (« Le » → « Les ») n'y entrent pas, et un brouillon d'un autre épisode
+(identifiant de reco réutilisé) est ignoré. Aux épisodes suivants, la page de validation affiche
+« Graphie déjà corrigée » dans l'encadré « À vérifier » quand la forme fautive revient, tant que la
+reco n'est pas validée et que la bonne graphie n'est dans aucun de ses champs. Elle ne fait que
+proposer : la correction reste à faire dans « Corriger ». Seuls les épisodes traités après la mise
+en service y entrent, et une reco écartée n'y entre pas.
+
 La relecture reste humaine : la page de validation est le serveur de relecture
 habituel, sur <http://192.168.1.59:8000> depuis le réseau local, ou
 <http://10.8.0.1:8000> par le VPN.

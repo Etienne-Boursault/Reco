@@ -13,6 +13,7 @@ import html
 import urllib.parse
 from pathlib import Path
 
+import graphies
 from common import (
     list_episode_files,
     load_source,
@@ -278,7 +279,7 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str,
                   or _parse_guests(ep.get("title", ""), hosts))
     tcl = _yt_timecode_link_parts(r, ep)  # #4 : un seul calcul de secs
     header = _reco_header(r, ep, tcl.html, edit_origin)
-    signals = reco_signals(r, ep, hosts, parsed)
+    signals = reco_signals(r, ep, hosts, parsed, graphies.charger())
     ctx_html = _reco_context_block(r, ep, source_id, tcl.secs)
     quote_html = _reco_quote_block(r)
     boxes = _reco_checkboxes(

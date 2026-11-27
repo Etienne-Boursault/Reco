@@ -18,6 +18,7 @@ import re
 import urllib.parse
 from typing import Any
 
+import graphies
 from review_guests import split_names
 from review_render_common import _fmt, _parse_guests, _ts_seconds, _yt_id
 from review_signals import reco_signals
@@ -65,7 +66,7 @@ def reco_entry(r: dict, ep: dict, hosts: list[str],
         "time": _fmt(secs) if secs is not None else "",
         "who": ", ".join(split_names(r.get("recommendedBy", ""))),
         "state": entry_state(r),
-        "signals": len(reco_signals(r, ep, hosts, parsed)),
+        "signals": len(reco_signals(r, ep, hosts, parsed, graphies.charger())),
     }
 
 
@@ -205,7 +206,7 @@ def _todo_card(ep: dict, recs: list[dict], hosts: list[str]) -> str:
     n_draft = sum(1 for r in recs if entry_state(r) == "draft")
     parsed = ep.get("guestsParsed") or _parse_guests(ep.get("title", ""), hosts)
     n_sig = sum(1 for r in recs if entry_state(r) == "draft"
-                and reco_signals(r, ep, hosts, parsed))
+                and reco_signals(r, ep, hosts, parsed, graphies.charger()))
     treated = len(recs) - n_draft
     pct = round(100 * treated / len(recs)) if recs else 0
     vid = _yt_id(ep.get("youtubeUrl", ""))

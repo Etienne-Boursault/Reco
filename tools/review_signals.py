@@ -23,6 +23,7 @@ from typing import NamedTuple
 # `episode_people` est ré-exporté (tests, appelants historiques) : le repérage
 # des personnes de l'épisode et du prénom seul vit dans review_guests, partagé
 # avec `collect_guests` (review_guests ne peut pas importer ce module : cycle).
+from graphies import propositions
 from review_guests import episode_people, split_names
 from review_guests import fold_name as _fold
 from review_guests import partial_match as _partial_match
@@ -170,9 +171,27 @@ def render_signals(signals: list[Signal]) -> str:
             f'<ul>{"".join(items)}</ul></div>')
 
 
+def _graphie_signals(r: dict, registre: list[dict]) -> list[Signal]:
+    """Une faute de Whisper déjà corrigée dans un épisode précédent (R6 A, 2026-11-27).
+
+    Proposée seulement : un nom proche peut désigner une autre personne. Rien
+    sur une reco déjà validée : sa relecture est faite.
+    """
+    if r.get("status") == "validated":
+        return []
+    return [Signal("graphie", f"Graphie déjà corrigée : « {fausse} » → « {juste} » "
+                              f"(vue {vu} fois).")
+            for fausse, juste, vu in propositions(r, registre)]
+
+
 def reco_signals(r: dict, ep: dict, hosts: list[str],
-                 parsed: list[str] | None = None) -> list[Signal]:
-    """Liste ordonnée des points à vérifier pour une reco (vide si rien)."""
+                 parsed: list[str] | None = None,
+                 registre: list[dict] | None = None) -> list[Signal]:
+    """Liste ordonnée des points à vérifier pour une reco (vide si rien).
+
+    `registre` : les graphies déjà corrigées (`graphies.charger()`), lues par
+    l'appelant pour que ce module reste sans I/O.
+    """
     if r.get("status") == "discarded":
         return []
     people = episode_people(ep, hosts, parsed)
@@ -183,4 +202,5 @@ def reco_signals(r: dict, ep: dict, hosts: list[str],
     if not (r.get("quote") or "").strip():
         out.append(Signal("no-quote", "Pas de citation : écoute le passage."))
     out += _timing_signals(r, ep)
+    out += _graphie_signals(r, registre or [])
     return out
