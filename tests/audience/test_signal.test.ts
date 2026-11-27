@@ -517,3 +517,24 @@ describe('POST /api/vue : écriture et minuit (R-13)', () => {
     expect(journal.warn).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('adresse exclue (R-14, 27/11/2026)', () => {
+  it('répond 204 sans rien écrire ni compter', async () => {
+    const { signaler, ecrit } = monter({ exclut: (ip: string) => ip === '203.0.113.9' });
+    const f = await envoyer(signaler);
+    expect(f.statut()).toBe(204);
+    expect(ecrit).toHaveLength(0);
+  });
+
+  it('une autre adresse est comptée', async () => {
+    const { signaler, ecrit } = monter({ exclut: () => false });
+    await envoyer(signaler);
+    expect(ecrit).toHaveLength(1);
+  });
+
+  it('une adresse exclue passe quand même après les contrôles d’origine : sans Origin, 403', async () => {
+    const { signaler } = monter({ exclut: () => true });
+    const f = await envoyer(signaler, { entetes: {} });
+    expect(f.statut()).toBe(403);
+  });
+});

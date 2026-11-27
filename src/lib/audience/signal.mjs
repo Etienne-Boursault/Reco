@@ -127,6 +127,7 @@ export function creerSignal(options = {}) {
     parMinute = 30,
     maxEmpreintes = 10_000,
     maxLignesJour = 20_000,
+    exclut = null,
   } = options;
 
   const table = new Map(); // empreinte -> { debut, n } ; les plus anciennes tombent
@@ -152,6 +153,8 @@ export function creerSignal(options = {}) {
 
       const maintenant = new Date(horloge());
       const ip = adresseCliente(req);
+      // L'éditeur ne se compte pas (R-14, 27/11/2026) : 204 sans rien écrire.
+      if (exclut?.(ip)) return repondre(res, 204);
       const sel = options.sel ?? process.env.RECO_AUDIENCE_SALT ?? null;
 
       if (Number(entetes['content-length']) > maxCorps) {

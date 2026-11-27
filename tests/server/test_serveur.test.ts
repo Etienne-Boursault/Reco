@@ -193,6 +193,61 @@ describe('/api/vue : aiguillage du signal (AU-1 A)', () => {
   });
 });
 
+describe('adresse exclue (R-14, 27/11/2026)', () => {
+  const MOI = '192.0.2.7';
+
+  /** Serveur dont `exclut` ne connaît que MOI ; le signal et la mesure sont des doublures. */
+  async function monterAvecExclusion() {
+    const appels: Appels = { recu: [] };
+    const mesures: any[] = [];
+    const mesurer = (_req: any, _res: any, options: any) => { mesures.push(options); return () => {}; };
+    const exclut = (ip: string | null) => ip === MOI;
+    const serveur = creerServeur(fauxHandler(appels, 'page'), racine, mesurer, undefined, undefined, exclut);
+    const { port, arreter } = await demarrer(serveur);
+    arreterCourant = arreter;
+    return { port, appels, mesures };
+  }
+
+  it('un clic sortant venu d’une adresse exclue reçoit 204 sans atteindre Astro', async () => {
+    const { port, appels } = await monterAvecExclusion();
+    const r = await demander(port, '/api/click', { methode: 'POST', entetes: { 'x-forwarded-for': MOI } });
+    expect(r.statut).toBe(204);
+    expect(appels.recu).toEqual([]);
+  });
+
+  it('le pixel GET et la chaîne de requête sont traités de même', async () => {
+    const { port, appels } = await monterAvecExclusion();
+    const r = await demander(port, '/api/click?url=x', { entetes: { 'x-forwarded-for': MOI } });
+    expect(r.statut).toBe(204);
+    expect(appels.recu).toEqual([]);
+  });
+
+  it('un clic d’une autre adresse atteint Astro', async () => {
+    const { port, appels } = await monterAvecExclusion();
+    await demander(port, '/api/click', { methode: 'POST', entetes: { 'x-forwarded-for': '192.0.2.8' } });
+    expect(appels.recu).toEqual(['POST /api/click']);
+  });
+
+  it('une adresse exclue ne change pas les autres routes : la page est servie', async () => {
+    const { port } = await monterAvecExclusion();
+    const r = await demander(port, '/index.html', { entetes: { 'x-forwarded-for': MOI } });
+    expect(r.texte).toContain('pleure');
+  });
+
+  it('la mesure reçoit `exclut` avec ses autres options', async () => {
+    const { port, mesures } = await monterAvecExclusion();
+    await demander(port, '/index.html');
+    expect(typeof mesures[0].exclut).toBe('function');
+    expect(mesures[0].exclut(MOI)).toBe(true);
+  });
+
+  it('par défaut, rien n’est exclu (variable absente) : le clic va à Astro', async () => {
+    const { port, appels } = await monter('page');
+    await demander(port, '/api/click', { methode: 'POST', entetes: { 'x-forwarded-for': MOI } });
+    expect(appels.recu).toEqual(['POST /api/click']);
+  });
+});
+
 describe('fermerProprement', () => {
   it('ferme le serveur et sort avec 0 sur le signal', async () => {
     const ferme = vi.fn((rappel: () => void) => rappel());
