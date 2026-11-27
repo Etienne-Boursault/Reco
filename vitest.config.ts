@@ -63,7 +63,14 @@ export default getViteConfig({
       // dépôt sans un seul test parce que ce glob ne le voyait pas — un
       // fichier qui sert chaque visiteur, hors de toute mesure. Ajouté ici
       // pour que l'oubli ne puisse pas se reproduire en silence.
-      include: ['src/**/*.ts', 'src/**/*.astro', 'src/server/**/*.mjs'],
+      // AU-1 A (2026-11-27) : `src/lib/audience/*.mjs` (derive, geoip, mesure…)
+      // n'était pas mesuré. Il entre pour que `hebergeurs.mjs` le soit.
+      include: [
+        'src/**/*.ts',
+        'src/**/*.astro',
+        'src/server/**/*.mjs',
+        'src/lib/audience/**/*.mjs',
+      ],
       // NB : v8 n'instrumente pas les `<script>` client des `.astro` — ils ne
       // comptent ni au numérateur ni au dénominateur. La logique client qui
       // mérite d'être testée doit donc être extraite dans un module `.ts`
