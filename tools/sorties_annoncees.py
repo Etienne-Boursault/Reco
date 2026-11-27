@@ -75,7 +75,7 @@ def _recos_sur_origin(git: Git, source: str) -> tuple[dict[str, tuple[str, dict[
     """`({clé: (chemin, reco)}, chemins illisibles)` des recos de `origin/main` qui portent une
     `releaseDate`. Un JSON illisible est sauté et rendu à part : il ne fait pas tomber l'étape."""
     sortie = git._git("grep", "-l", "-z", "-e", "releaseDate", "origin/main", "--",
-                      f"{RECOS_REL}/{source}", verifier=False)
+                      f"{RECOS_REL}/{source}", admis=(0, 1))  # 1 : aucune reco ; 128 : vraie panne
     recos: dict[str, tuple[str, dict[str, Any]]] = {}
     illisibles = []
     for brut in filter(None, sortie.split("\0")):

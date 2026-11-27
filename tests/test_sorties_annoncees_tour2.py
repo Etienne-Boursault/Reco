@@ -57,3 +57,17 @@ def test_l_etat_d_avant_sans_annonce_reste_lisible(banc):
     etat = sp.noter_proposition(etat, CLE, "b", "s", ["u"], annonce="texte")
     assert sp.annonces_en_attente(etat) == {CLE: "texte"}
     assert sp.annonces_en_attente(sp.noter_annonce_envoyee(etat, CLE)) == {}
+
+
+# --- git grep : seuls les codes 0 et 1 sont admis ---------------------------------------------
+
+def test_un_git_grep_qui_echoue_n_est_pas_lu_comme_aucune_reco(banc, depot):
+    _git = base._git
+    _git(depot, "update-ref", "-d", "refs/remotes/origin/main")  # git grep rend 128
+    with pytest.raises(ErreurGit):
+        sa._recos_sur_origin(sa.Git(depot), "un-bon-moment")
+    assert banc.lancer(apercu=True) == 1  # la panne git déjà en place, sans envoi ni état
+
+
+def test_un_git_grep_sans_resultat_rend_aucune_reco(depot):
+    assert sa._recos_sur_origin(sa.Git(depot), "source-inconnue") == ({}, [])
