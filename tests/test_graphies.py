@@ -33,6 +33,18 @@ def _reco(**champs):
     return base
 
 
+def _draft(**champs):
+    return _reco(status="draft", **champs)
+
+
+def _ecrire_reco(tmp_path, monkeypatch, nom, reco):
+    """Une reco dans un dossier de recos temporaire (`common.RECOS_DIR`)."""
+    recos = tmp_path / "recos"
+    (recos / SOURCE).mkdir(parents=True, exist_ok=True)
+    monkeypatch.setattr(common, "RECOS_DIR", recos)
+    (recos / SOURCE / nom).write_text(json.dumps(reco), encoding="utf-8")
+
+
 # ----- corrections : ce que la relecture a changé --------------------------
 
 def test_un_nom_propre_corrige_est_retenu():
@@ -74,25 +86,99 @@ def test_dans_une_citation_seuls_les_noms_propres_comptent():
         {"fausse": "Wally", "juste": "Waly", "champ": "quote"}]
 
 
+def test_un_petit_mot_courant_n_est_pas_une_graphie():
+    avant = _reco(title="Le Misérables")
+    apres = _reco(title="Les Misérables")
+    assert graphies.corrections(avant, apres) == []
+
+
+def test_une_forme_fautive_de_moins_de_quatre_signes_est_ecartee():
+    assert graphies.corrections(_reco(creator="Bob"), _reco(creator="Rob")) == []
+
+
+def test_une_forme_fautive_de_mots_courants_est_ecartee_meme_longue():
+    avant = _reco(title="De la")
+    apres = _reco(title="Des Lois")
+    assert graphies.corrections(avant, apres) == []
+
+
+def test_le_filtre_des_noms_propres_vaut_pour_tous_les_champs():
+    avant = _reco(title="Hilleret et fils")
+    apres = _reco(title="hillairet et fils")
+    assert graphies.corrections(avant, apres) == []
+
+
 def test_une_simple_casse_n_est_pas_retenue():
     assert graphies.corrections(_reco(creator="orelsan"), _reco(creator="Orelsan")) == []
 
 
 # ----- brouillon gardé à l'extraction --------------------------------------
 
-def test_le_brouillon_d_origine_n_est_jamais_ecrase(sortie):
-    graphies.garder_brouillon(SOURCE, _reco(creator="Pierre Hilleret"))
-    graphies.garder_brouillon(SOURCE, _reco(creator="Pierre Hillairet"))
-    garde = json.loads((sortie / "brouillons" / SOURCE / "ubm-0001.json")
-                       .read_text(encoding="utf-8"))
-    assert garde["creator"] == "Pierre Hilleret"
+def _lu(sortie, reco_id="ubm-0001"):
+    return json.loads((sortie / "brouillons" / SOURCE / f"{reco_id}.json")
+                      .read_text(encoding="utf-8"))
+
+
+def test_un_nouveau_passage_ecrase_le_brouillon_d_une_reco_encore_a_relire(sortie):
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    assert graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hillairet")) is True
+    garde = _lu(sortie)
+    assert garde["creator"] == "Pierre Hillairet"
+    assert garde["episodeGuid"] == GUID
     assert "links" not in garde
+
+
+def test_le_brouillon_d_une_reco_relue_n_est_jamais_ecrase(sortie):
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    for statut in ("validated", "discarded"):
+        assert graphies.garder_brouillon(
+            SOURCE, _reco(status=statut, creator="Pierre Hillairet")) is False
+    assert _lu(sortie)["creator"] == "Pierre Hilleret"
+
+
+def test_une_reco_sans_statut_compte_comme_un_brouillon(sortie):
+    reco = _draft(creator="Pierre Hilleret")
+    del reco["status"]
+    assert graphies.garder_brouillon(SOURCE, reco) is True
+
+
+def test_le_brouillon_de_l_episode_ne_garde_que_ses_recos_en_brouillon(
+        tmp_path, monkeypatch, sortie):
+    _ecrire_reco(tmp_path, monkeypatch, "0001.json", _draft(creator="Pierre Hilleret"))
+    _ecrire_reco(tmp_path, monkeypatch, "0002.json", _draft(id="ubm-0002", episodeGuid="yt-autre"))
+    _ecrire_reco(tmp_path, monkeypatch, "0003.json", _reco(id="ubm-0003"))
+    _ecrire_reco(tmp_path, monkeypatch, "0004.json", ["pas", "une", "reco"])
+    assert graphies.garder_brouillons_episode(SOURCE, GUID) == 1
+    assert _lu(sortie)["creator"] == "Pierre Hilleret"
+    assert sorted(p.name for p in (sortie / "brouillons" / SOURCE).iterdir()) == ["ubm-0001.json"]
+
+
+def test_une_reco_illisible_ne_bloque_pas_les_brouillons_des_autres(
+        tmp_path, monkeypatch, sortie, caplog):
+    _ecrire_reco(tmp_path, monkeypatch, "0001.json", _draft())
+    (common.RECOS_DIR / SOURCE / "0002.json").write_text("{pas du json", encoding="utf-8")
+    assert graphies.garder_brouillons_episode(SOURCE, GUID) == 1
+    assert "0002.json" in caplog.text and GUID in caplog.text
+
+
+def test_pas_de_dossier_de_recos_pas_de_brouillon(tmp_path, monkeypatch, sortie):
+    monkeypatch.setattr(common, "RECOS_DIR", tmp_path / "absent")
+    assert graphies.garder_brouillons_episode(SOURCE, GUID) == 0
+
+
+def test_un_dossier_de_recos_illisible_est_journalise(monkeypatch, sortie, caplog):
+    class Illisible:
+        def glob(self, _motif):
+            raise OSError("accès refusé")
+    monkeypatch.setattr(common, "recos_dir_for", lambda _source: Illisible())
+    assert graphies.garder_brouillons_episode(SOURCE, GUID) == 0
+    assert GUID in caplog.text
 
 
 # ----- enregistrer : à la finalisation --------------------------------------
 
 def test_la_finalisation_remplit_le_registre(sortie):
-    graphies.garder_brouillon(SOURCE, _reco(creator="Pierre Hilleret"))
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
     n = graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")])
     assert n == 1
     assert graphies.charger() == [{
@@ -101,10 +187,10 @@ def test_la_finalisation_remplit_le_registre(sortie):
 
 
 def test_une_meme_correction_vue_deux_fois_se_cumule(sortie):
-    graphies.garder_brouillon(SOURCE, _reco(creator="Pierre Hilleret"))
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
     graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")])
-    graphies.garder_brouillon(SOURCE, _reco(id="ubm-0002", episodeGuid="yt-def",
-                                            quote="Hilleret est génial."))
+    graphies.garder_brouillon(SOURCE, _draft(id="ubm-0002", episodeGuid="yt-def",
+                                             quote="Hilleret est génial."))
     graphies.enregistrer(SOURCE, "yt-def", [_reco(id="ubm-0002", episodeGuid="yt-def",
                                                   quote="Hillairet est génial.")])
     [entree] = graphies.charger()
@@ -114,18 +200,44 @@ def test_une_meme_correction_vue_deux_fois_se_cumule(sortie):
 
 
 def test_un_episode_finalise_deux_fois_ne_compte_qu_une_fois(sortie):
-    graphies.garder_brouillon(SOURCE, _reco(creator="Pierre Hilleret"))
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
     graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")])
     assert graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")]) == 0
     assert graphies.charger()[0]["vu"] == 1
 
 
 def test_une_reco_ecartee_ou_sans_brouillon_est_ignoree(sortie):
-    graphies.garder_brouillon(SOURCE, _reco(creator="Pierre Hilleret"))
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
     ecartee = _reco(creator="Pierre Hillairet", status="discarded")
     sans_brouillon = _reco(id="ubm-0009", creator="Jean Valjean")
     assert graphies.enregistrer(SOURCE, GUID, [ecartee, sans_brouillon]) == 0
     assert graphies.charger() == []
+
+
+def test_un_brouillon_d_un_autre_episode_est_ignore(sortie, caplog):
+    """Les identifiants de reco sont réutilisés après une suppression."""
+    graphies.garder_brouillon(SOURCE, _draft(episodeGuid="yt-ancien", creator="Pierre Hilleret"))
+    assert graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")]) == 0
+    assert graphies.charger() == []
+    assert "ubm-0001" in caplog.text and "yt-ancien" in caplog.text
+
+
+def test_un_brouillon_sans_episode_est_ignore(sortie):
+    chemin = sortie / "brouillons" / SOURCE / "ubm-0001.json"
+    chemin.parent.mkdir(parents=True)
+    chemin.write_text(json.dumps({"creator": "Pierre Hilleret"}), encoding="utf-8")
+    assert graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")]) == 0
+
+
+def test_un_brouillon_illisible_ne_bloque_pas_les_autres_recos(sortie, caplog):
+    graphies.garder_brouillon(SOURCE, _draft(id="ubm-0002", creator="Pierre Hilleret"))
+    (sortie / "brouillons" / SOURCE / "ubm-0001.json").write_text("{pas du json", encoding="utf-8")
+    (sortie / "brouillons" / SOURCE / "ubm-0003.json").write_text("[1, 2]", encoding="utf-8")
+    recos = [_reco(creator="Pierre Hillairet"),
+             _reco(id="ubm-0003", creator="Jean"),
+             _reco(id="ubm-0002", creator="Pierre Hillairet")]
+    assert graphies.enregistrer(SOURCE, GUID, recos) == 1
+    assert "ubm-0001" in caplog.text and "ubm-0003" in caplog.text
 
 
 def test_registre_absent_ou_illisible_vaut_vide(sortie):
@@ -156,9 +268,23 @@ def test_pas_de_proposition_quand_la_bonne_graphie_est_la():
     assert graphies.propositions(reco, REGISTRE) == []
 
 
-def test_la_casse_n_empeche_pas_la_proposition():
+def test_une_forme_fautive_a_majuscule_se_cherche_avec_sa_casse():
+    """Remplace `test_la_casse_n_empeche_pas_la_proposition` : « Les » n'est pas « les »."""
     reco = _reco(status="draft", title="hilleret")
-    assert graphies.propositions(reco, REGISTRE) == [("Hilleret", "Hillairet", 2)]
+    assert graphies.propositions(reco, REGISTRE) == []
+    assert graphies.propositions(_reco(status="draft", title="Hilleret"), REGISTRE) == [
+        ("Hilleret", "Hillairet", 2)]
+
+
+def test_une_forme_fautive_en_minuscules_se_cherche_sans_tenir_compte_de_la_casse():
+    registre = [{"fausse": "gat buzzy", "juste": "Get Busy", "vu": 1}]
+    assert graphies.propositions(_reco(status="draft", title="GAT BUZZY"), registre) == [
+        ("gat buzzy", "Get Busy", 1)]
+
+
+def test_pas_de_proposition_si_la_bonne_graphie_est_dans_un_autre_champ():
+    reco = _reco(status="draft", creator="Hillairet", quote="Un film de Hilleret.")
+    assert graphies.propositions(reco, REGISTRE) == []
 
 
 # ----- erreurs : le registre ne bloque jamais la chaîne ----------------------
@@ -167,7 +293,7 @@ def test_un_brouillon_impossible_a_ecrire_ne_bloque_pas(sortie, monkeypatch, cap
     def refuse(*_a, **_k):
         raise OSError("disque plein")
     monkeypatch.setattr(graphies, "write_json_if_changed", refuse)
-    graphies.garder_brouillon(SOURCE, _reco())
+    graphies.garder_brouillon(SOURCE, _draft())
     assert "ubm-0001" in caplog.text
 
 
@@ -185,8 +311,81 @@ def test_noter_un_episode_journalise_une_panne_sans_la_remonter(monkeypatch, cap
 
 
 def test_noter_un_episode_rend_les_nouveautes(sortie):
-    graphies.garder_brouillon(SOURCE, _reco(creator="Pierre Hilleret"))
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
     assert graphies.noter_episode(SOURCE, GUID, [_reco(creator="Pierre Hillairet")]) == 1
+
+
+def test_le_registre_ne_garde_que_les_entrees_utilisables(sortie, caplog):
+    sortie.mkdir(parents=True)
+    bonne = {"fausse": "Hilleret", "juste": "Hillairet", "champs": ["creator"],
+             "episodes": [GUID], "vu": 1}
+    brutes = [bonne, "texte", None, {"fausse": "Hilleret"}, {"fausse": "", "juste": "x"},
+              {"fausse": 3, "juste": "x"}, {"fausse": "Navo", "juste": "Bruno Muschio"},
+              {"fausse": "Gat", "juste": "Get", "champs": "creator", "episodes": 4, "vu": True}]
+    (sortie / "registre.json").write_text(json.dumps({"entrees": brutes}), encoding="utf-8")
+    assert graphies.charger() == [
+        bonne,
+        {"fausse": "Navo", "juste": "Bruno Muschio", "champs": [], "episodes": [], "vu": 0},
+        {"fausse": "Gat", "juste": "Get", "champs": [], "episodes": [], "vu": 0}]
+    assert "5 entrée(s) mal formée(s)" in caplog.text
+
+
+def test_des_entrees_qui_ne_sont_pas_une_liste_valent_vide(sortie, caplog):
+    sortie.mkdir(parents=True)
+    (sortie / "registre.json").write_text(json.dumps({"entrees": {"a": 1}}), encoding="utf-8")
+    assert graphies.charger() == []
+    assert "pas une liste" in caplog.text
+
+
+def test_un_registre_sans_entrees_vaut_vide(sortie):
+    sortie.mkdir(parents=True)
+    (sortie / "registre.json").write_text("{}", encoding="utf-8")
+    assert graphies.charger() == []
+
+
+def test_un_registre_mal_forme_ne_bloque_pas_la_mise_a_jour(sortie):
+    sortie.mkdir(parents=True)
+    (sortie / "registre.json").write_text(json.dumps({"entrees": ["texte", {"fausse": "x"}]}),
+                                          encoding="utf-8")
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    assert graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")]) == 1
+    assert [e["fausse"] for e in graphies.charger()] == ["Hilleret"]
+
+
+# ----- le cache de la relecture ------------------------------------------------
+
+def test_le_registre_n_est_relu_que_s_il_change(sortie, monkeypatch):
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")])
+    lectures = []
+    lire = graphies._lire
+    monkeypatch.setattr(graphies, "_lire", lambda: lectures.append(1) or lire())
+    premiere = graphies.charger()
+    assert graphies.charger() is premiere
+    assert len(lectures) == 1
+
+
+def test_le_cache_suit_une_mise_a_jour_du_registre(sortie):
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")])
+    assert graphies.charger()[0]["vu"] == 1
+    graphies.garder_brouillon(SOURCE, _draft(id="ubm-0002", episodeGuid="yt-def",
+                                             creator="Paul Hilleret"))
+    graphies.enregistrer(SOURCE, "yt-def", [_reco(id="ubm-0002", episodeGuid="yt-def",
+                                                  creator="Paul Hillairet")])
+    assert graphies.charger()[0]["vu"] == 2
+
+
+def test_enregistrer_ne_modifie_pas_la_liste_du_cache(sortie):
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")])
+    en_cache = graphies.charger()
+    photo = json.loads(json.dumps(en_cache))
+    graphies.garder_brouillon(SOURCE, _draft(id="ubm-0002", episodeGuid="yt-def",
+                                             quote="Hilleret est génial."))
+    graphies.enregistrer(SOURCE, "yt-def", [_reco(id="ubm-0002", episodeGuid="yt-def",
+                                                  quote="Hillairet est génial.")])
+    assert en_cache == photo
 
 
 def test_une_entree_incomplete_du_registre_est_ignoree():
@@ -195,15 +394,38 @@ def test_une_entree_incomplete_du_registre_est_ignoree():
 
 # ----- branchements ------------------------------------------------------------
 
-def test_l_extraction_garde_le_brouillon_d_une_reco_neuve(tmp_path, monkeypatch):
+def test_l_extraction_ne_garde_pas_encore_le_brouillon(tmp_path, monkeypatch):
+    """Avant la réécoute et le calage des citations, le brouillon serait trop tôt."""
     import extract_recos
     recos = tmp_path / "recos"
     (recos / "un-bon-moment").mkdir(parents=True)
     monkeypatch.setattr(common, "RECOS_DIR", recos)
     extract_recos._persist_recos("un-bon-moment", "EP001",
                                  [{"title": "Get Buzzy", "type": "album", "creator": "Hilleret"}])
-    [garde] = (tmp_path / "graphies" / "brouillons" / "un-bon-moment").glob("*.json")
-    assert json.loads(garde.read_text(encoding="utf-8"))["creator"] == "Hilleret"
+    assert not (tmp_path / "graphies").exists()
+
+
+def test_la_chaine_garde_le_brouillon_apres_la_reecoute_et_le_calage(tmp_path, monkeypatch):
+    import traiter_nouveaux_episodes as chaine
+    ordre = []
+
+    def preciseur(*_a, **_k):
+        ordre.append("réécoute")
+        return type("R", (), {"precisees": []})()
+
+    def caleur(*_a, **_k):
+        ordre.append("calage")
+
+    monkeypatch.setattr(chaine, "_resume_calage", lambda _r: "")
+    monkeypatch.setattr(chaine, "_remove_audio", lambda *_a: None)
+    monkeypatch.setattr(graphies, "garder_brouillons_episode",
+                        lambda source, guid: ordre.append(("brouillons", source, guid)))
+    chaine._extract_one(SOURCE, tmp_path / "ep.json", {"guid": GUID, "title": "Ep"},
+                        {"lastErrors": {}, "extracted": []}, lambda msg: ordre.append("notify"),
+                        extractor=lambda *_a, **_k: 1, client=None, source=None,
+                        model="m", secours=None, preciseur=preciseur, caleur=caleur,
+                        review_url="http://relecture")
+    assert ordre == ["réécoute", "calage", ("brouillons", SOURCE, GUID), "notify"]
 
 
 def test_la_publication_d_un_episode_remplit_le_registre(tmp_path, monkeypatch):
@@ -215,7 +437,7 @@ def test_la_publication_d_un_episode_remplit_le_registre(tmp_path, monkeypatch):
         (content / sub / SOURCE).mkdir(parents=True)
     reco = _reco(sourceId=SOURCE, creator="Pierre Hillairet")
     (content / "recos" / SOURCE / "0001.json").write_text(json.dumps(reco), encoding="utf-8")
-    graphies.garder_brouillon(SOURCE, _reco(creator="Pierre Hilleret"))
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
     plan = publier_episode.preparer(SOURCE, GUID, apply=True)
     assert not plan.errors
     assert graphies.charger()[0]["juste"] == "Hillairet"
@@ -230,7 +452,7 @@ def test_la_simulation_de_publication_n_ecrit_pas_le_registre(tmp_path, monkeypa
         (content / sub / SOURCE).mkdir(parents=True)
     reco = _reco(sourceId=SOURCE, creator="Pierre Hillairet")
     (content / "recos" / SOURCE / "0001.json").write_text(json.dumps(reco), encoding="utf-8")
-    graphies.garder_brouillon(SOURCE, _reco(creator="Pierre Hilleret"))
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
     publier_episode.preparer(SOURCE, GUID, apply=False)
     assert graphies.charger() == []
 
@@ -243,6 +465,13 @@ def test_la_relecture_affiche_la_graphie_deja_corrigee():
     assert graphie.message == "Graphie déjà corrigée : « Hilleret » → « Hillairet » (vue 2 fois)."
     assert review_signals.reco_signals(reco, {"title": "Épisode"}, [], []) == [
         s for s in signaux if s.kind != "graphie"]
+
+
+def test_une_reco_validee_n_affiche_plus_de_graphie():
+    import review_signals
+    reco = _reco(status="validated", creator="Hilleret")
+    signaux = review_signals.reco_signals(reco, {"title": "Épisode"}, [], [], registre=REGISTRE)
+    assert [s for s in signaux if s.kind == "graphie"] == []
 
 
 def test_le_vrai_registre_vit_hors_de_git_dans_tools_output():

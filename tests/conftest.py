@@ -163,6 +163,7 @@ def _registre_des_graphies_isole(tmp_path, monkeypatch):
     """
     import graphies
     monkeypatch.setattr(graphies, "_dossier", lambda: tmp_path / "graphies")
+    monkeypatch.setitem(graphies._cache, "cle", None)  # pas de lecture gardée d'un autre test
 
 
 @pytest.fixture

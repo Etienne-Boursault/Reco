@@ -174,8 +174,11 @@ def render_signals(signals: list[Signal]) -> str:
 def _graphie_signals(r: dict, registre: list[dict]) -> list[Signal]:
     """Une faute de Whisper déjà corrigée dans un épisode précédent (R6 A, 2026-11-27).
 
-    Proposée seulement : un nom proche peut désigner une autre personne.
+    Proposée seulement : un nom proche peut désigner une autre personne. Rien
+    sur une reco déjà validée : sa relecture est faite.
     """
+    if r.get("status") == "validated":
+        return []
     return [Signal("graphie", f"Graphie déjà corrigée : « {fausse} » → « {juste} » "
                               f"(vue {vu} fois).")
             for fausse, juste, vu in propositions(r, registre)]
