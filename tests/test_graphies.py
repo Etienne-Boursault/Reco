@@ -481,3 +481,167 @@ def test_le_vrai_registre_vit_hors_de_git_dans_tools_output():
 def test_noter_un_episode_sans_correction_ne_dit_rien(sortie):
     assert graphies.noter_episode(SOURCE, GUID, [_reco()]) == 0
     assert graphies.charger() == []
+
+
+# ----- tour 2 de la revue de la PR #217 --------------------------------------
+
+def _registre_ecrit(sortie, contenu):
+    sortie.mkdir(parents=True, exist_ok=True)
+    chemin = sortie / "registre.json"
+    chemin.write_text(contenu, encoding="utf-8")
+    return chemin
+
+
+def test_un_registre_illisible_n_est_jamais_ecrase(sortie, caplog):
+    chemin = _registre_ecrit(sortie, "{pas du json")
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    assert graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")]) == 0
+    assert chemin.read_text(encoding="utf-8") == "{pas du json"
+    assert "registre.json" in caplog.text and GUID in caplog.text and SOURCE in caplog.text
+
+
+def test_un_registre_dont_les_entrees_ne_sont_pas_une_liste_n_est_pas_ecrase(sortie):
+    contenu = json.dumps({"entrees": {"a": 1}})
+    chemin = _registre_ecrit(sortie, contenu)
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    assert graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")]) == 0
+    assert chemin.read_text(encoding="utf-8") == contenu
+
+
+def test_un_registre_illisible_n_est_pas_mis_en_cache(sortie):
+    chemin = _registre_ecrit(sortie, "{pas du json")
+    assert graphies.charger() == []
+    bonne = {"fausse": "Hilleret", "juste": "Hillairet", "champs": [], "episodes": [], "vu": 3}
+    chemin.write_text(json.dumps({"entrees": [bonne]}), encoding="utf-8")
+    assert graphies.charger() == [bonne]
+
+
+def test_un_echec_passager_de_lecture_ne_fait_pas_oublier_le_registre(sortie, monkeypatch):
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")])
+    assert graphies.charger()[0]["fausse"] == "Hilleret"
+    lire = graphies._lire
+
+    def refuse():
+        raise graphies.RegistreIllisible("verrouillé")
+    monkeypatch.setattr(graphies, "_lire", refuse)
+    # Le fichier n'a pas changé : seul un cache à jour le dirait, et il ne doit
+    # pas masquer l'échec suivant ; on force donc la relecture.
+    graphies._cache["cle"] = None
+    assert graphies.charger() == []
+    monkeypatch.setattr(graphies, "_lire", lire)
+    assert graphies.charger()[0]["fausse"] == "Hilleret"
+
+
+def test_les_entrees_mal_formees_restent_dans_le_fichier_reecrit(sortie):
+    mal_formees = ["texte", {"fausse": "x"}]
+    chemin = _registre_ecrit(sortie, json.dumps({"entrees": mal_formees}))
+    graphies.garder_brouillon(SOURCE, _draft(creator="Pierre Hilleret"))
+    assert graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")]) == 1
+    ecrites = json.loads(chemin.read_text(encoding="utf-8"))["entrees"]
+    assert ecrites[0]["fausse"] == "Hilleret"
+    assert ecrites[1:] == mal_formees
+
+
+def test_un_champ_qui_n_est_pas_une_chaine_est_ignore_sans_perdre_l_episode(sortie, caplog):
+    graphies.garder_brouillon(SOURCE, _draft(id="ubm-0001", creator=5, title="Gat Buzzy"))
+    graphies.garder_brouillon(SOURCE, _draft(id="ubm-0002", creator="Pierre Hilleret"))
+    recos = [_reco(id="ubm-0001", creator="Pierre Hillairet", title="Get Busy"),
+             _reco(id="ubm-0002", creator="Pierre Hillairet")]
+    assert graphies.enregistrer(SOURCE, GUID, recos) == 2
+    assert sorted(e["fausse"] for e in graphies.charger()) == ["Gat Buzzy", "Hilleret"]
+    assert "ubm-0001" in caplog.text and "creator" in caplog.text
+    assert SOURCE in caplog.text and "ubm-0001.json" in caplog.text
+
+
+def test_un_champ_de_la_reco_validee_qui_n_est_pas_une_chaine_est_ignore(sortie, caplog):
+    graphies.garder_brouillon(SOURCE, _draft(id="ubm-0001", quote="Hilleret"))
+    graphies.garder_brouillon(SOURCE, _draft(id="ubm-0002", creator="Pierre Hilleret"))
+    recos = [_reco(id="ubm-0001", quote=["liste"]),
+             _reco(id="ubm-0002", creator="Pierre Hillairet")]
+    assert graphies.enregistrer(SOURCE, GUID, recos) == 1
+    assert "ubm-0001" in caplog.text and "quote" in caplog.text
+
+
+def test_une_forme_fautive_en_capitales_se_trouve_dans_un_titre_en_capitales():
+    reco = _reco(status="draft", title="LE FILM DE HILLERET")
+    assert graphies.propositions(reco, REGISTRE) == [("Hilleret", "Hillairet", 2)]
+    assert graphies.propositions(_reco(status="draft", title="film de hilleret"), REGISTRE) == []
+    assert graphies.propositions(_reco(status="draft", title="HILLERETS"), REGISTRE) == []
+
+
+def test_une_ancienne_entree_courte_ou_banale_n_est_plus_proposee():
+    registre = [{"fausse": "Le", "juste": "Les", "vu": 4},
+                {"fausse": "Léa", "juste": "Lea", "vu": 1},
+                {"fausse": "Le De", "juste": "Les Des", "vu": 1}]
+    reco = _reco(status="draft", title="Le Léa Le De")
+    assert graphies.propositions(reco, registre) == []
+
+
+def test_un_brouillon_non_garde_cite_la_source_et_le_fichier(sortie, monkeypatch, caplog):
+    def refuse(*_a, **_k):
+        raise OSError("disque plein")
+    monkeypatch.setattr(graphies, "write_json_if_changed", refuse)
+    graphies.garder_brouillon(SOURCE, _draft())
+    assert SOURCE in caplog.text and "ubm-0001.json" in caplog.text
+
+
+def test_un_brouillon_illisible_cite_la_source_et_le_fichier(sortie, caplog):
+    chemin = sortie / "brouillons" / SOURCE / "ubm-0001.json"
+    chemin.parent.mkdir(parents=True)
+    chemin.write_text("{pas du json", encoding="utf-8")
+    graphies.enregistrer(SOURCE, GUID, [_reco(creator="Pierre Hillairet")])
+    assert SOURCE in caplog.text and "ubm-0001.json" in caplog.text
+
+
+def test_une_erreur_inattendue_sur_une_reco_n_arrete_pas_les_autres(
+        tmp_path, monkeypatch, sortie, caplog):
+    _ecrire_reco(tmp_path, monkeypatch, "0001.json", _draft())
+    _ecrire_reco(tmp_path, monkeypatch, "0002.json", _draft(id="ubm-0002"))
+    reel = graphies.garder_brouillon
+
+    def casse(source_id, reco):
+        if reco["id"] == "ubm-0001":
+            raise TypeError("inattendu")
+        return reel(source_id, reco)
+    monkeypatch.setattr(graphies, "garder_brouillon", casse)
+    assert graphies.garder_brouillons_episode(SOURCE, GUID) == 1
+    assert SOURCE in caplog.text and GUID in caplog.text and "0001.json" in caplog.text
+
+
+def _lancer_chaine(tmp_path, monkeypatch, *, preciseur, caleur):
+    import traiter_nouveaux_episodes as chaine
+    messages = []
+    monkeypatch.setattr(chaine, "_remove_audio", lambda *_a: None)
+    monkeypatch.setattr(chaine, "_resume_calage", lambda _r: "")
+    chaine._extract_one(SOURCE, tmp_path / "ep.json", {"guid": GUID, "title": "Ep"},
+                        {"lastErrors": {}, "extracted": []}, messages.append,
+                        extractor=lambda *_a, **_k: 1, client=None, source=None,
+                        model="m", secours=None, preciseur=preciseur, caleur=caleur,
+                        review_url="http://relecture")
+    return messages
+
+
+def test_la_reecoute_et_le_calage_en_panne_n_empechent_ni_brouillon_ni_notification(
+        tmp_path, monkeypatch, sortie):
+    _ecrire_reco(tmp_path, monkeypatch, "0001.json", _draft(creator="Pierre Hilleret"))
+
+    def panne(*_a, **_k):
+        raise RuntimeError("panne")
+    messages = _lancer_chaine(tmp_path, monkeypatch, preciseur=panne, caleur=panne)
+    assert _lu(sortie)["creator"] == "Pierre Hilleret"
+    assert len(messages) == 1 and "1 reco(s) à valider" in messages[0]
+
+
+def test_une_erreur_interne_des_brouillons_n_empeche_pas_la_notification(
+        tmp_path, monkeypatch, sortie):
+    _ecrire_reco(tmp_path, monkeypatch, "0001.json", _draft())
+
+    def casse(*_a, **_k):
+        raise KeyError("inattendu")
+    monkeypatch.setattr(graphies, "garder_brouillon", casse)
+    messages = _lancer_chaine(
+        tmp_path, monkeypatch,
+        preciseur=lambda *_a, **_k: type("R", (), {"precisees": []})(),
+        caleur=lambda *_a, **_k: type("C", (), {"calees": []})())
+    assert len(messages) == 1 and "reco(s) à valider" in messages[0]

@@ -21,6 +21,17 @@ Trois temps :
      remplacé seul : « Navo » et « Bruno Muschio » sont la même personne, un
      remplacement aveugle casserait.
 
+Limites connues, voulues ou hors de portée :
+  - une forme fautive de moins de 4 signes, comme « Léa », n'entre pas au
+    registre (compromis voulu : elle signalerait presque toutes les cartes) ;
+  - une extraction lancée à la main par `extract_recos.py`, hors de la chaîne,
+    ne garde pas de brouillon ;
+  - une reco corrigée sans être validée, puis réextraite, prend son texte
+    corrigé comme brouillon.
+
+Un registre qui existe mais ne se lit pas n'est jamais réécrit : la publication
+suivante le laisse intact au lieu de l'écraser avec les seules nouveautés.
+
 Les petits mots courants n'entrent jamais au registre (« Le » → « Les » dans
 « Le Misérables ») : une forme fautive de moins de 4 signes, ou faite
 uniquement de mots courants, signalerait presque toutes les cartes.
@@ -90,8 +101,8 @@ def garder_brouillon(source_id: str, reco: dict[str, Any]) -> bool:
     except OSError as exc:
         # L'extraction passe avant le registre : la reco est écrite, seul son
         # brouillon manquera à la comparaison.
-        log.warning("Brouillon de %s non gardé (%s) : sa relecture n'alimentera pas "
-                    "le registre des graphies.", reco_id, exc)
+        log.warning("Brouillon de %s non gardé (source %s, fichier %s : %s) : sa relecture "
+                    "n'alimentera pas le registre des graphies.", reco_id, source_id, chemin, exc)
     return True
 
 
@@ -106,19 +117,18 @@ def garder_brouillons_episode(source_id: str, guid: str) -> int:
     gardees = 0
     try:
         chemins = sorted(common.recos_dir_for(source_id).glob("*.json"))
-    except OSError as exc:
-        log.warning("Brouillons de l'épisode %s non gardés : dossier des recos illisible (%s).",
-                    guid, exc)
+    except (OSError, ValueError, TypeError, KeyError) as exc:
+        log.warning("Brouillons de l'épisode %s (source %s) non gardés : dossier des recos "
+                    "illisible (%s).", guid, source_id, exc)
         return 0
     for chemin in chemins:
         try:
             reco = read_json(chemin)
-        except (OSError, ValueError) as exc:
-            log.warning("Reco %s illisible (%s) : son brouillon n'est pas gardé "
-                        "(épisode %s).", chemin.name, exc, guid)
-            continue
-        if isinstance(reco, dict) and reco.get("episodeGuid") == guid:
-            gardees += garder_brouillon(source_id, reco)
+            if isinstance(reco, dict) and reco.get("episodeGuid") == guid:
+                gardees += garder_brouillon(source_id, reco)
+        except Exception as exc:  # noqa: BLE001 — jamais d'erreur vers la chaîne
+            log.warning("Reco %s illisible ou inattendue (source %s, épisode %s : %s) : "
+                        "son brouillon n'est pas gardé.", chemin, source_id, guid, exc)
     return gardees
 
 
@@ -179,27 +189,34 @@ def _entree_valide(entree: Any) -> dict[str, Any] | None:
             "vu": vu if isinstance(vu, int) and not isinstance(vu, bool) else 0}
 
 
-def _lire() -> list[dict[str, Any]]:
-    """Les entrées utilisables du fichier, lu sans cache ; vide s'il est absent ou illisible."""
+class RegistreIllisible(Exception):
+    """Le fichier du registre existe mais ne se lit pas : on n'y écrit rien."""
+
+
+def _lire() -> tuple[list[dict[str, Any]], list[Any]]:
+    """(entrées utilisables, entrées mal formées telles quelles), lues sans cache.
+
+    Un registre absent vaut vide ; un registre qui existe sans se lire lève
+    `RegistreIllisible`. Les entrées mal formées sont rendues pour qu'une
+    réécriture les garde au lieu de les effacer sans trace.
+    """
     chemin = _registre()
     if not chemin.exists():
-        return []
+        return [], []
     try:
         brutes = read_json(chemin).get("entrees")
     except (OSError, ValueError, AttributeError) as exc:
-        log.warning("Registre des graphies illisible (%s) : ignoré. %s", chemin, exc)
-        return []
+        raise RegistreIllisible(f"{chemin} illisible ({exc})") from exc
     if brutes is None:
-        return []
+        return [], []
     if not isinstance(brutes, list):
-        log.warning("Registre des graphies : « entrees » n'est pas une liste (%s) : ignoré.",
-                    chemin)
-        return []
+        raise RegistreIllisible(f"{chemin} : « entrees » n'est pas une liste")
     entrees = [e for e in map(_entree_valide, brutes) if e is not None]
-    if len(entrees) < len(brutes):
-        log.warning("Registre des graphies : %d entrée(s) mal formée(s) ignorée(s) (%s).",
-                    len(brutes) - len(entrees), chemin)
-    return entrees
+    ecartees = [b for b in brutes if _entree_valide(b) is None]
+    if ecartees:
+        log.warning("Registre des graphies : %d entrée(s) mal formée(s) ignorée(s), "
+                    "gardées telles quelles dans le fichier (%s).", len(ecartees), chemin)
+    return entrees, ecartees
 
 
 # Dernière lecture : (chemin, date de modification, taille) -> entrées.
@@ -219,7 +236,13 @@ def charger() -> list[dict[str, Any]]:
         return []
     cle = (str(chemin), stat.st_mtime_ns, stat.st_size)
     if _cache["cle"] != cle:
-        _cache["entrees"] = _lire()
+        try:
+            _cache["entrees"] = _lire()[0]
+        except RegistreIllisible as exc:
+            # Un échec de lecture ne se met jamais en cache : le prochain appel relit.
+            _cache["cle"] = None
+            log.warning("Registre des graphies ignoré pour la relecture : %s", exc)
+            return []
         _cache["cle"] = cle
     return _cache["entrees"]
 
@@ -232,7 +255,12 @@ def enregistrer(source_id: str, guid: str, recos: list[dict[str, Any]]) -> int:
     registre) ne dit rien, et un brouillon illisible ou d'un autre épisode
     (identifiant de reco réutilisé) est passé, sans toucher aux autres recos.
     """
-    entrees = _lire()
+    try:
+        entrees, ecartees = _lire()
+    except RegistreIllisible as exc:
+        log.error("Registre des graphies non mis à jour (source %s, épisode %s) : %s ; "
+                  "fichier laissé intact.", source_id, guid, exc)
+        return 0
     index = {(e["fausse"], e["juste"]): e for e in entrees}
     nouveautes = 0
     for reco in recos:
@@ -241,6 +269,7 @@ def enregistrer(source_id: str, guid: str, recos: list[dict[str, Any]]) -> int:
         brouillon = _brouillon_de(source_id, reco["id"], guid)
         if brouillon is None:
             continue
+        reco = _champs_texte(reco, source_id, reco["id"], f"reco validée de l'épisode {guid}")
         for c in corrections(brouillon, reco):
             entree = index.get((c["fausse"], c["juste"]))
             if entree is None:
@@ -256,7 +285,7 @@ def enregistrer(source_id: str, guid: str, recos: list[dict[str, Any]]) -> int:
                 nouveautes += 1
     if nouveautes:
         _dossier().mkdir(parents=True, exist_ok=True)
-        write_json_if_changed(_registre(), {"version": 1, "entrees": entrees})
+        write_json_if_changed(_registre(), {"version": 1, "entrees": entrees + ecartees})
     return nouveautes
 
 
@@ -268,18 +297,36 @@ def _brouillon_de(source_id: str, reco_id: str, guid: str) -> dict[str, Any] | N
     try:
         brouillon = read_json(chemin)
     except (OSError, ValueError) as exc:
-        log.warning("Brouillon de %s illisible (%s) : cette reco n'alimente pas "
-                    "le registre des graphies.", reco_id, exc)
+        log.warning("Brouillon de %s illisible (source %s, fichier %s : %s) : cette reco "
+                    "n'alimente pas le registre des graphies.", reco_id, source_id, chemin, exc)
         return None
     if not isinstance(brouillon, dict):
-        log.warning("Brouillon de %s mal formé : cette reco n'alimente pas "
-                    "le registre des graphies.", reco_id)
+        log.warning("Brouillon de %s mal formé (source %s, fichier %s) : cette reco "
+                    "n'alimente pas le registre des graphies.", reco_id, source_id, chemin)
         return None
     if brouillon.get("episodeGuid") != guid:
-        log.warning("Brouillon de %s ignoré : il vient de l'épisode %s, pas de %s "
-                    "(identifiant de reco réutilisé).", reco_id, brouillon.get("episodeGuid"), guid)
+        log.warning("Brouillon de %s ignoré (source %s, fichier %s) : il vient de l'épisode %s, "
+                    "pas de %s (identifiant de reco réutilisé).",
+                    reco_id, source_id, chemin, brouillon.get("episodeGuid"), guid)
         return None
-    return brouillon
+    return _champs_texte(brouillon, source_id, reco_id, f"brouillon {chemin}")
+
+
+def _champs_texte(donnees: dict[str, Any], source_id: str, reco_id: str,
+                  origine: str) -> dict[str, Any]:
+    """Les données sans les champs textuels qui ne sont pas une chaîne (avertissement).
+
+    Un fichier écrit à la main ou par une version future peut porter
+    `"creator": 5` : le champ est ignoré pour cette reco, et les autres recos de
+    l'épisode comptent quand même.
+    """
+    propres = dict(donnees)
+    for champ in CHAMPS:
+        if champ in propres and not isinstance(propres[champ], str):
+            log.warning("Champ %s de %s ignoré (source %s, %s) : %s au lieu d'une chaîne.",
+                        champ, reco_id, source_id, origine, type(propres[champ]).__name__)
+            del propres[champ]
+    return propres
 
 
 def noter_episode(source_id: str, guid: str, recos: list[dict[str, Any]]) -> int:
@@ -297,7 +344,11 @@ def noter_episode(source_id: str, guid: str, recos: list[dict[str, Any]]) -> int
 # ----- 3. les propositions de la relecture ----------------------------------
 
 def _contient(texte: str, forme: str, *, casse: bool = False) -> bool:
-    return re.search(rf"(?<!\w){re.escape(forme)}(?!\w)", texte,
+    """Vrai si la forme est dans le texte, mot entier. Avec `casse`, la forme telle
+    quelle ou toute en capitales (« HILLERET »), jamais en minuscules."""
+    formes = [forme, forme.upper()] if casse else [forme]
+    motif = "|".join(map(re.escape, formes))
+    return re.search(rf"(?<!\w)(?:{motif})(?!\w)", texte,
                      0 if casse else re.IGNORECASE) is not None
 
 
@@ -308,13 +359,15 @@ def propositions(reco: dict[str, Any],
     Pas de proposition quand un des champs porte déjà la bonne graphie : la
     citation peut citer les deux (« Hillairet, pas Hilleret »), et la fiche
     peut déjà avoir été corrigée dans un autre champ. Une forme fautive à
-    majuscule se cherche avec sa casse : « Les » n'est pas « les ».
+    majuscule se cherche avec sa casse, ou toute en capitales : « Les » n'est pas
+    « les ». Une entrée trop courte ou banale, déjà au registre d'avant le filtre
+    de `_distinctive`, n'est jamais proposée.
     """
     textes = [reco.get(champ) or "" for champ in CHAMPS]
     trouvees: list[tuple[str, str, int]] = []
     for entree in registre:
         fausse, juste = entree.get("fausse") or "", entree.get("juste") or ""
-        if not fausse or not juste:
+        if not fausse or not juste or not _distinctive(_MOT.findall(fausse)):
             continue
         if any(_contient(t, juste) for t in textes):
             continue
