@@ -2,6 +2,7 @@
   "agentReview": {
     "reviewedByHuman": true
   },
+  "creator": "Sébastien Kheroufi",
   "episodeGuid": "yt-DNoUz4FJ_Z8",
   "extractionHistory": [
     {
@@ -19,13 +20,26 @@
   ],
   "id": "ubm-3399",
   "kind": "reco",
-  "links": [],
-  "quote": "La mort du môme à partir du 6 novembre.",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "La Colline",
+      "url": "https://www.colline.fr/spectacles/la-mort-du-mome"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Festival d'Automne",
+      "url": "https://www.festival-automne.com/fr/edition-2026/sebastien-kheroufi-la-mort-du-mome"
+    }
+  ],
+  "quote": "La mort du Môme à partir du 6 novembre.",
   "recommendedBy": "Reda Kateb",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:57",
-  "title": "La Mort du môme",
+  "title": "La mort du Môme",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

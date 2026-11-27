@@ -20,7 +20,20 @@
   ],
   "id": "ubm-3395",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782070366149/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/La_Biblioth%C3%A8que_de_Babel"
+    }
+  ],
   "quote": "je vous la conseille, de Borges qui s'appelle La Bibliothèque de Babel, est exceptionnelle.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

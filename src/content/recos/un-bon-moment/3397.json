@@ -20,9 +20,22 @@
   ],
   "id": "ubm-3397",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Actes Sud",
+      "url": "https://actes-sud.fr/catalogue/chantiers-je-018944"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782330181499/"
+    }
+  ],
   "quote": "Tu te sens un peu petit quand tu lis tout ce qu'elle a accompli et tout ce qu'elle a traversé en tant qu'actrice.",
-  "recommendedBy": "Denis Menochet",
+  "recommendedBy": "Denis Ménochet",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:05",

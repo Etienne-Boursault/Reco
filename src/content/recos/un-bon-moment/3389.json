@@ -20,13 +20,26 @@
   "guestWork": true,
   "id": "ubm-3389",
   "kind": "reco",
-  "links": [],
-  "quote": "C'est magnifique que tu sois là, c'est gentil, merci Pierre, on se revoit la semaine prochaine, Pierre Hilleret au Théâtre du Marais, tous les mercredis à 21h, Pierre Hilleret.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle-pierre-hillairet.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Humorix",
+      "url": "https://humorix.fr/humoriste/pierre-hillairet/"
+    }
+  ],
+  "quote": "C'est magnifique que tu sois là, c'est gentil, merci Pierre, on se revoit la semaine prochaine, Pierre Hillairet au Théâtre du Marais, tous les mercredis à 21h, Pierre Hillairet.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:13:10",
-  "title": "Pierre Hilleret",
+  "title": "Pierre Hillairet",
   "transcriptSource": "youtube",
   "types": [
     "artiste"
