@@ -212,9 +212,9 @@ def test_un_cache_des_cases_illisible_dit_reseaux_inconnu(monde, tmp_path):
 
 
 def test_le_lien_de_la_page_vient_de_reco_review_url(monde, monkeypatch):
-    monkeypatch.setenv("RECO_REVIEW_URL", "http://exemple.local:8000/")
+    monkeypatch.setenv("RECO_REVIEW_URL", "https://relecture.example/")
     assert _lancer() == 0
-    assert _corps(monde).endswith("\nhttp://exemple.local:8000/bord")
+    assert _corps(monde).endswith("\nhttps://relecture.example/bord")
 
 
 def test_sans_reco_review_url_le_message_n_a_pas_de_lien(monde):
