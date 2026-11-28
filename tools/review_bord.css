@@ -307,4 +307,5 @@ h1, h2, h3 {
 
 .bord-signalements { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .bord-signalements li { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.bord-signalements li[data-conclusion="echec"] > :nth-child(2) { color: var(--alerte); font-weight: 600; }
 .bord-signalements li > :first-child { font-weight: 600; overflow-wrap: anywhere; }

@@ -18,7 +18,10 @@ from pathlib import Path
 
 import pytest
 
+import bord_distant
+import bord_github
 import bord_reseaux
+import bord_systeme
 import review_handler_base
 import review_render
 import review_routes_bord
@@ -44,6 +47,8 @@ def corpus(tmp_path, monkeypatch):
     monkeypatch.setattr(review_handler_base, "ALLOW_LAN", False)
     monkeypatch.delenv(recorder.ENV_DB, raising=False)
     monkeypatch.setenv("RECO_BORD_DIR", str(tmp_path / "bord"))
+    # Aucun rafraîchissement détaché pendant les tests (GitHub serait appelé pour de bon).
+    monkeypatch.setattr(bord_distant, "_lancer", lambda *a, **k: False)
     for env in ("RECO_REVIEW_URL", "RECO_REVIEW_HOTES", "RECO_AUDIENCE_KEY"):
         monkeypatch.delenv(env, raising=False)
 
@@ -161,6 +166,25 @@ def test_get_bord_une_forme_inattendue_de_signalements_reste_inconnue(corpus, mo
     page = corps.decode("utf-8")
     assert code == 200
     assert "Signalements : inconnu" in page and "signalements : inconnu" in page
+
+
+def test_get_bord_lit_github_et_le_systeme_une_seule_fois_chacun(monkeypatch):
+    appels = []
+    github = {"etat": "ok", "donnees": {"ci": {"conclusion": "failure", "date": None,
+                                                "adresse": "https://github.com/a/b/actions/runs/1"},
+                                        "deploiement": None}, "age": 5}
+    systeme = {"couts": None, "modeles": None, "image": "reco-atelier:essai-1"}
+    monkeypatch.setattr(bord_github, "lire", lambda **kw: appels.append("github") or github)
+    monkeypatch.setattr(bord_systeme, "lire",
+                        lambda source_id, **kw: appels.append(("systeme", source_id)) or systeme)
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert sorted(map(str, appels)) == sorted(["github", str(("systeme", SOURCE))])
+    assert 'data-conclusion="echec"' in page and "reco-atelier:essai-1" in page
+
+
+def test_get_bord_sans_cache_github_dit_inconnu():
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert "GitHub : pas encore lu" in page
 
 
 def test_get_bord_sans_cle_d_audience_le_dit(corpus):

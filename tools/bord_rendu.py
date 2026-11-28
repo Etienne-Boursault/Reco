@@ -35,6 +35,7 @@ from pathlib import Path
 
 import bord_rendu_audience
 import bord_rendu_blocs as blocs
+import bord_rendu_systeme
 from review_render_common import _flash_banner
 
 _ICI = Path(__file__).parent
@@ -91,7 +92,8 @@ def _entete(titre: str, chaine: dict, maintenant: datetime) -> str:
 def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
                 recents: list[dict] | None, coches: dict[str, dict[str, str]] | None,
                 maintenant: datetime | None = None, flash: str | None = None,
-                flash_kind: str = "info", audience: dict | None = None) -> str:
+                flash_kind: str = "info", audience: dict | None = None,
+                github: dict | None = None, systeme: dict | None = None) -> str:
     """La page entière.
 
     - `titre` : le titre de la source ;
@@ -100,7 +102,9 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
     - `recents` : `bord_reseaux.episodes_recents(...)` (None : état illisible) ;
     - `coches` : `bord_reseaux.lire()` (None : `EtatIllisible`) ;
     - `flash`, `flash_kind` : le message après une case cochée (redirection 303) ;
-    - `audience` : `bord_distant.lire()`, qui ne lit que le cache (None : inconnu).
+    - `audience` : `bord_distant.lire()`, qui ne lit que le cache (None : inconnu) ;
+    - `github` : `bord_github.lire()`, de même (None : inconnu) ;
+    - `systeme` : `bord_systeme.lire(source_id)` : coûts, modèles, image (None : inconnu).
     """
     maintenant = maintenant or datetime.now(UTC)
     contenu_afaire, nb_afaire = blocs.bloc_afaire(afaire)
@@ -111,8 +115,8 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
         ("audience", "Audience", bord_rendu_audience.bloc_audience(audience), None),
         ("reseaux", "Réseaux", contenu_reseaux + blocs.bloc_attente("Sorties à venir")
          + blocs.bloc_signalements(audience), nb_reseaux),
-        ("systeme", "Système", blocs.bloc_attente("Santé et versions")
-         + blocs.bloc_attente("Coûts et modèles") + blocs.bloc_attente("Liens morts")
+        ("systeme", "Système", bord_rendu_systeme.bloc_sante(github, systeme)
+         + bord_rendu_systeme.bloc_couts(systeme) + blocs.bloc_attente("Liens morts")
          + blocs.bloc_attente("Graphies apprises"), None),
     ]
     nav = "".join(f'<a href="#bord-{cle}">{titre_col}{" " + _nb(nb) if nb else ""}</a>'

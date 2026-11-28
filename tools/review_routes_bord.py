@@ -7,7 +7,9 @@ Décision : tableau de bord, R2 B du 27/11/2026 ; TB-1 C du 28/11/2026 (plan
 
 - `GET  /bord`          — la page (`bord_rendu.rendre_bord`), avec le message
   d'une redirection (`?flash=…&kind=…`) ; l'audience vient du cache de
-  `bord_distant.lire()` (tranche 2c), jamais d'un appel réseau pendant le rendu ;
+  `bord_distant.lire()` (tranche 2c), jamais d'un appel réseau pendant le rendu ; de
+  même GitHub (`bord_github.lire()`) ; coûts, modèles et image par `bord_systeme.lire()`
+  (tranche 3d-1) ;
 - `POST /bord/reseau`   — coche ou décoche une case des réseaux
   (`bord_reseaux.cocher`) ; JSON `{kind, message}` pour le script de la page,
   sinon une redirection 303 vers `/bord` ;
@@ -29,8 +31,10 @@ from pathlib import Path
 import bord_afaire
 import bord_chaine
 import bord_distant
+import bord_github
 import bord_rendu
 import bord_reseaux
+import bord_systeme
 import review_render
 import review_render_page
 from common import log
@@ -74,12 +78,14 @@ class BordRoutesMixin:
             coches = None  # la page le signale ; aucune case ne s'y écrira
         # Le cache seul, jamais le réseau : un rafraîchissement part détaché (2b).
         audience = bord_distant.lire()
+        github = bord_github.lire()  # de même (3a)
+        systeme = bord_systeme.lire(self.source_id)  # disque local, rien d'écrit (3b)
         self._send(200, bord_rendu.rendre_bord(
             titre=source.get("title", self.source_id),
             afaire=bord_afaire.a_faire(
                 episodes=episodes, groups=groups, recents=recents, coches=coches,
                 signalements=bord_afaire.lignes_signalements(audience)),
-            audience=audience,
+            audience=audience, github=github, systeme=systeme,
             chaine=bord_chaine.etat_chaine(self.source_id), recents=recents,
             coches=coches, flash=qs.get("flash", [""])[0] or None,
             flash_kind=kind if kind in _GENRES else "info"))
