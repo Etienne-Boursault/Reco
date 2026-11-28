@@ -182,11 +182,14 @@ menu des sections passe à gauche et la chaîne à droite ; sous 900 px, une col
 onglets. Le choix « Vue : auto · 39" · 13" · téléphone » reste gardé dans le navigateur. La
 page se recharge toute seule toutes les 5 minutes.
 
-- **À faire d'abord** : les épisodes à relire, la PR de publication à fusionner, les réseaux
-  pas encore faits des 3 derniers épisodes publiés, le nombre de signalements en attente.
+- **À faire d'abord** : les épisodes à relire, les PR de publication à fusionner (lues sur
+  GitHub ; sans lecture de GitHub, l'état de la chaîne), les réseaux pas encore faits des 3
+  derniers épisodes publiés, le nombre de signalements en attente, le nombre de liens morts
+  du dernier rapport, les PR de sorties à fusionner. Une PR porte un bouton « Ouvrir la PR »
+  vers `github.com` seulement.
   Les signalements disent « inconnu » tant que l'audience n'est pas « à jour » (une lecture
-  ratée garde les anciens chiffres, pas la ligne) ; les liens morts et les sorties le disent
-  tant que leurs blocs n'existent pas.
+  ratée garde les anciens chiffres, pas la ligne) ; les sorties disent « inconnu » tant que
+  GitHub n'est pas lu, les liens morts tant qu'aucun contrôle du lundi n'a écrit son résumé.
 - **Chaîne** : l'épisode en cours et ses étapes (détecté, transcrit, extrait, finalisé,
   publié), les erreurs en cours et les 5 derniers passages de `tick.sh`. Chaque passage note
   dans `tools/output/bord/passages.jsonl` les étapes lancées et celles en échec (200 lignes
@@ -218,7 +221,20 @@ page se recharge toute seule toutes les 5 minutes.
   âge.
 - **Signalements**, dans la colonne des réseaux : les 5 derniers en attente, avec leur reco,
   leur catégorie et leur date, jamais le nom, l'adresse ni le texte ; « + N autres » au-delà.
-- **Système** viendra avec la PR suivante.
+- **Sorties à venir**, dans la colonne des réseaux (tranche 3d-2, 28/11/2026) : titre, date et
+  jours restants des recos validées qui sortent dans les 30 jours ; « déjà sortie, en relance »
+  jusqu'à 30 jours après la date.
+- **Système** : **Santé et versions** (la CI de `main`, le dernier déploiement, l'image de la
+  chaîne selon `compose.yml`), **Coûts et modèles** (7 jours et 7 jours d'avant, modèles
+  d'extraction et de secours), **Liens morts** (nombre, date du rapport et son âge, « ancien »
+  au-delà de 8 jours, 10 adresses au plus) et **Graphies apprises** (les 5 plus vues). Un bloc
+  qui n'a pas pu être lu dit « inconnu », jamais « aucun » ni « 0 $ ». GitHub se lit par son
+  API publique : `RECO_GITHUB_TOKEN` est **facultatif** ; sans lui, les appels sont anonymes,
+  environ 24 par heure sous la limite de 60 (le dernier essai en échec s'affiche : « limite de
+  débit atteinte »). Le résumé des liens morts, `tools/output/bord/liens.json`, est écrit par
+  le contrôle du lundi (`verifier_liens.sh`, vu par `review` dans le même dépôt monté) : avant le
+  premier lundi suivant la mise en service, le bloc dit « inconnu ». Mise en service :
+  `docker compose restart review` sous le verrou du tick, une fois le `git pull` passé.
 
 Les polices de la page (Bebas Neue, Inter, licence OFL) sont servies par le serveur lui-même
 (`/polices/…`, `tools/review_polices/`), sans appel extérieur. `RECO_BORD_DIR` déplace
@@ -236,7 +252,7 @@ change : `docker compose restart review` sous le verrou du tick, une fois le `gi
 | `~/docker/reco/.env` | clés (droits 600) | oui |
 | `~/docker/reco/depot/` | clone du dépôt ; `tools/output/` y garde transcriptions et états | oui |
 | `~/docker/reco/logs/tick-AAAA-MM.log` | journal des passages | oui |
-| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées), `distant.json` (dernière audience lue), `distant.log` (sortie du rafraîchissement) | oui |
+| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées), `distant.json` (dernières lectures de l'audience et de GitHub), `distant.log` (sortie du rafraîchissement), `liens.json` (résumé du contrôle des liens du lundi) | oui |
 | `~/.cache/reco/` | modèle Whisper (1,6 Go), caches yt-dlp — se retéléchargent | **non**, volontairement |
 | `~/.ssh/reco_deploy` | clé de dépôt (écriture sur ce dépôt seul), droits 600 | **non** : la sauvegarde ne couvre que `~/docker`. Une clé perdue se régénère et se redéclare sur GitHub |
 
@@ -252,7 +268,7 @@ TMDB_API_KEY=…                 # « où regarder » des films et séries ; abs
 SPOTIFY_CLIENT_ID=…            # liens Spotify ; absents, le rapport dit « no-credentials » et non « aucun lien »
 SPOTIFY_CLIENT_SECRET=…
 RECO_SPOTIFY=0                 # sans Premium, l'API répond 403 : liens posés à la publication (docs/reseaux-episode.md)
-RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le message porte le lien de comparaison
+RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le message porte le lien de comparaison ; /bord lit GitHub sans lui (appels anonymes, 60 par heure)
 RECO_SORTIES_ANNONCEES=1       # relance quotidienne des liens à la sortie annoncée ; absent, l'étape ne fait rien
 RECO_KUMA_PUSH_URL=…           # moniteur « push » Uptime Kuma ; absent, aucun ping n'est envoyé
 RECO_AUDIENCE_KEY=…            # la même clé que chez l'hébergeur : /bord lit l'audience par GET /api/bord ; absente, la page dit « clé absente »

@@ -18,6 +18,12 @@ def _page(dist, chemin, *hrefs):
                        encoding="utf-8")
 
 
+@pytest.fixture(autouse=True)
+def bord(tmp_path, monkeypatch):
+    # Le résumé du tableau de bord ne s'écrit jamais dans le vrai `tools/output/bord/`.
+    monkeypatch.setenv("RECO_BORD_DIR", str(tmp_path / "bord"))
+
+
 @pytest.fixture
 def dist(tmp_path, monkeypatch):
     # Le site se lit dans SITE_URL : la CI le fixe à https://example.com.

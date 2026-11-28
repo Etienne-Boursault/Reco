@@ -163,6 +163,44 @@ def test_tout_publie_montre_le_dernier_publie_meme_sans_sa_fiche(corpus):
     assert etapes["publie"]["source"] == "état de la chaîne"
 
 
+MERGE = "2026-11-27T10:00:00Z"
+
+
+def test_une_pr_fusionnee_suffit_a_dire_publie_meme_si_le_clone_n_est_pas_a_jour(corpus):
+    """Tour 1, M2 : `published` ne dit pas la fusion ; `merged_at` de la PR la dit, avec son heure."""
+    _episode(corpus, "yt-DNoUz4FJ_Z8", "2026-11-20")
+    _etat(corpus, extracted=["yt-DNoUz4FJ_Z8"])
+    sans = bord_chaine.etat_chaine(SOURCE)
+    assert _par_cle(sans)["publie"]["etat"] == "a_venir"
+    avec = bord_chaine.etat_chaine(SOURCE, fusionnees={"contenu/yt-dnouz4fj-z8": MERGE})
+    assert avec["episode"]["guid"] == "yt-DNoUz4FJ_Z8"
+    assert _par_cle(avec)["publie"] == {"cle": "publie", "libelle": "Publié", "etat": "fait",
+                                        "heure": MERGE, "source": "PR fusionnée"}
+
+
+def test_une_pr_fusionnee_sort_l_episode_de_ceux_en_cours(corpus):
+    _episode(corpus, "yt-Vieux", "2026-11-01")
+    _episode(corpus, "yt-Fusionne", "2026-11-20")
+    _etat(corpus)
+    etat = bord_chaine.etat_chaine(SOURCE, fusionnees={"contenu/yt-fusionne": MERGE})
+    assert etat["episode"]["guid"] == "yt-Fusionne"
+    assert _par_cle(etat)["publie"]["etat"] == "fait"
+
+
+def test_une_pr_fusionnee_dit_publie_meme_sans_etat_de_la_chaine(corpus):
+    _episode(corpus, "yt-A", "2026-11-20")
+    etat = bord_chaine.etat_chaine(SOURCE, fusionnees={"contenu/yt-a": MERGE})
+    assert _par_cle(etat)["publie"]["source"] == "PR fusionnée"
+    assert _par_cle(etat)["extrait"]["etat"] == "inconnu"
+
+
+def test_un_episode_deja_publie_garde_la_source_de_l_etat_de_la_chaine(corpus):
+    _episode(corpus, "yt-A", "2026-11-20")
+    _etat(corpus, published=["yt-A"])
+    etat = bord_chaine.etat_chaine(SOURCE, fusionnees={"contenu/yt-a": MERGE})
+    assert _par_cle(etat)["publie"]["source"] == "état de la chaîne"
+
+
 def test_sans_aucun_episode(corpus):
     etat = bord_chaine.etat_chaine(SOURCE)
     assert etat["episode"] is None and etat["etapes"] == []

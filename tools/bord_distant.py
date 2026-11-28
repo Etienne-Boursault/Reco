@@ -13,8 +13,11 @@ Le serveur de relecture n'a qu'un fil, et le délai d'urllib ne borne pas la
 résolution DNS : un appel réseau dans le rendu figerait toute la relecture.
 `lire()` lit donc `<RECO_BORD_DIR>/distant.json` et, quand le dernier essai a
 plus de 10 min, lance `python bord_distant.py rafraichir` détaché, sans l'attendre.
-Le rafraîchissement prend `distant.lock` sans attendre : deux ne tournent jamais
-ensemble. Après un échec, on ne réessaie pas avant 10 min (F6), et la dernière
+Le rafraîchissement prend `distant.lock`, qu'il attend au plus 60 s : deux ne tournent jamais
+ensemble. Cette attente est celle du processus détaché seulement ; le serveur de relecture
+n'appelle jamais `rafraichir_source` (M1 du tour 1, 28/11/2026 : l'audience et GitHub périmés
+ensemble lançaient deux processus, et celui de GitHub rendait « occupé » sans noter son essai, à
+chaque affichage). Après un échec, on ne réessaie pas avant 10 min (F6), et la dernière
 valeur lue reste, avec son heure.
 
 POURQUOI AUCUNE REDIRECTION
@@ -38,6 +41,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from collections.abc import Callable
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -59,6 +63,12 @@ _DELAI = 10
 #: Échéance de toute la lecture de la réponse (F3 du tour 1, 28/11/2026) : `_DELAI`
 #: ne vaut que pour chaque lecture, donc une réponse goutte à goutte tiendrait le verrou.
 _ECHEANCE = 30
+#: Attente du verrou par le processus détaché (M1 du tour 1). Une lecture de l'audience dure au plus
+#: `_ECHEANCE` + `_DELAI`, soit environ 40 s ; celle de GitHub fait quatre appels en série, donc jusqu'à
+#: quatre fois plus : l'attente peut alors finir en « occupé ». Ce cas ne note pas d'essai (tour 2, F-b) :
+#: écrire sans le verrou risquerait d'écraser l'entrée de l'autre source, que son détenteur réécrit.
+#: Le prochain affichage relance donc un processus, et un seul par affichage.
+_ATTENTE_VERROU = 60
 _TAILLE_MAX = 2_000_000
 #: Au-delà, `distant.log` repart de zéro (M1 du tour 1).
 _JOURNAL_MAX = 200_000
@@ -166,14 +176,17 @@ def _date(valeur: Any) -> datetime:
     return date
 
 
-def _lire_cache() -> dict[str, Any]:
-    """Tout `distant.json` ; `{}` sans fichier ; `CacheIllisible` s'il est abîmé."""
+def _lire_cache(source: str = SOURCE) -> dict[str, Any]:
+    """Tout `distant.json` ; `{}` sans fichier ; `CacheIllisible` s'il est abîmé.
+
+    Seule l'entrée de `source` est contrôlée : les autres (GitHub, 3a) sont gardées telles quelles.
+    """
     chemin = _chemin()
     if not chemin.exists():
         return {}
     try:
         cache = common.read_json(chemin)
-        entree = cache.get(SOURCE) if isinstance(cache, dict) else None
+        entree = cache.get(source) if isinstance(cache, dict) else None
         if not isinstance(cache, dict) or (entree is not None and not (
                 isinstance(entree, dict) and isinstance(entree.get("etat"), str)
                 and _date(entree.get("essai"))
@@ -190,25 +203,37 @@ def _perime(entree: dict[str, Any] | None, maintenant: datetime) -> bool:
 
 
 def rafraichir(*, maintenant: datetime | None = None) -> str:
-    """Relit le site si le cache est périmé, sous verrou ; rend l'état obtenu.
+    """Relit le site si le cache est périmé, sous verrou ; rend l'état obtenu."""
+    return rafraichir_source(SOURCE, _appeler, maintenant=maintenant)
 
-    Rend aussi `occupe` (un autre rafraîchissement tient le verrou), `frais` (un
+
+def rafraichir_source(source: str, appeler: Callable[[], tuple[str, str | None, dict[str, Any] | None]],
+                      *, maintenant: datetime | None = None,
+                      cumuler: Callable[[dict[str, Any], dict[str, Any] | None], dict[str, Any]]
+                      | None = None) -> str:
+    """Relit `source` par `appeler()` si son cache est périmé, sous verrou ; rend l'état obtenu.
+
+    Même cache, même verrou et même fraîcheur pour toutes les sources (3a : `bord_github`).
+    Attend le verrou au plus `_ATTENTE_VERROU` : à n'appeler que depuis le processus détaché.
+    `cumuler(nouvelles, anciennes)` : après un succès, réunit les données lues et celles de l'entrée
+    précédente, lue sous le même verrou (tour 2, F-a : les PR fusionnées de GitHub s'accumulent).
+    Rend aussi `occupe` (un autre rafraîchissement tient encore le verrou), `frais` (un
     essai de moins de 10 min) ou `cache-illisible` (rien n'est écrit).
     """
     maintenant = maintenant or datetime.now(UTC)
     dossier().mkdir(parents=True, exist_ok=True)
     try:
-        with filelock.FileLock(str(dossier() / "distant.lock"), timeout=0):
+        with filelock.FileLock(str(dossier() / "distant.lock"), timeout=_ATTENTE_VERROU):
             try:
-                cache = _lire_cache()
+                cache = _lire_cache(source)
             except CacheIllisible as exc:
-                log.warning("bord : %s, rafraîchissement de %s abandonné", exc, SOURCE)
+                log.warning("bord : %s, rafraîchissement de %s abandonné", exc, source)
                 return "cache-illisible"
-            avant = cache.get(SOURCE)
+            avant = cache.get(source)
             if not _perime(avant, maintenant):
                 return "frais"
             try:
-                etat, detail, donnees = _appeler()
+                etat, detail, donnees = appeler()
             except Exception as exc:  # noqa: BLE001
                 # Tour 1, M2 : une `ValueError` (clé finie par un retour chariot), une `RecursionError`
                 # (JSON très imbriqué)... Jamais le message (la clé a pu y passer), et
@@ -216,18 +241,22 @@ def rafraichir(*, maintenant: datetime | None = None) -> str:
                 etat, detail, donnees = "panne", type(exc).__name__, None
             quand = maintenant.isoformat(timespec="seconds")
             avant = avant or {}
-            cache[SOURCE] = {"etat": etat, "detail": detail, "essai": quand,
+            if etat == "ok" and cumuler:
+                donnees = cumuler(donnees, avant.get("donnees"))
+            cache[source] = {"etat": etat, "detail": detail, "essai": quand,
                              "lu": quand if etat == "ok" else avant.get("lu"),
                              "donnees": donnees if etat == "ok" else avant.get("donnees")}
             common.write_json_if_changed(_chemin(), cache)
-            log.info("bord : %s relue sur le site, état %s (%s)", SOURCE, etat, detail or "-")
+            log.info("bord : %s relue sur le site, état %s (%s)", source, etat, detail or "-")
             return etat
     except filelock.Timeout:
         return "occupe"
 
 
-def _lancer() -> bool:
+def _lancer(script: Path | None = None, source: str = SOURCE) -> bool:
     """Lance `rafraichir` dans un processus détaché, sans l'attendre.
+
+    `script` : le module à lancer (par défaut celui-ci ; `bord_github.py` pour GitHub).
 
     Ses sorties vont dans `distant.log`, en ajout (tour 1, M1 : sinon une erreur
     imprévue ne se voyait nulle part). Il ne reçoit la clé que par l'environnement,
@@ -239,11 +268,11 @@ def _lancer() -> bool:
         with open(dossier() / "distant.log", "ab") as journal:
             if os.fstat(journal.fileno()).st_size > _JOURNAL_MAX:
                 journal.truncate(0)
-            subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "rafraichir"],
+            subprocess.Popen([sys.executable, str(script or Path(__file__).resolve()), "rafraichir"],
                              stdin=subprocess.DEVNULL, stdout=journal,
                              stderr=subprocess.STDOUT, close_fds=True, start_new_session=True)
     except OSError as exc:
-        log.warning("bord : rafraîchissement non lancé pour %s (%s)", SOURCE, type(exc).__name__)
+        log.warning("bord : rafraîchissement non lancé pour %s (%s)", source, type(exc).__name__)
         return False
     return True
 

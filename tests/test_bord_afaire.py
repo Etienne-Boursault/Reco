@@ -157,3 +157,230 @@ def test_signalements_en_attente_rend_la_liste_lue():
     assert ba.signalements_en_attente(_audience(signalements=_en_attente(2))) ==         _en_attente(2)["enAttente"]
     assert ba.signalements_en_attente(_audience()) == []
     assert ba.signalements_en_attente(None) is None
+
+
+# ---- Publication, sorties et liens morts (tranche 3d-2) ---------------------
+
+PR_URL = "https://github.com/Etienne-Boursault/Reco/pull/"
+
+
+def _pr(numero, branche, titre="Un titre", groupe="episodes", adresse=None):
+    return {"numero": numero, "titre": titre, "branche": branche, "groupe": groupe,
+            "date": "2026-11-28T08:00:00Z", "adresse": adresse or f"{PR_URL}{numero}"}
+
+
+def _github(episodes=(), sorties=(), coupee=False, etat="ok", ouvertes="defaut",
+            fusionnees="aucune", depot="Etienne-Boursault/Reco"):
+    if ouvertes == "defaut":
+        ouvertes = {"episodes": list(episodes), "sorties": list(sorties), "coupee": coupee}
+    return {"etat": etat, "donnees": {"depot": depot, "ouvertes": ouvertes,
+                                      "fusionnees": [] if fusionnees == "aucune" else fusionnees}}
+
+
+def _recent(guid, episode, fusionne=False):
+    return {"guid": guid, "fusionne": fusionne, "episode": episode}
+
+
+def test_la_ligne_de_publication_passe_d_inconnu_a_un_nombre_depuis_github():
+    avant = [i for i in _appel(recents=None, coches=None,
+                               publication=ba.lignes_publication(None, None))
+             if i["bloc"] == "publication"]
+    assert _textes(avant) == ["publication : inconnu"] and avant[0]["inconnu"]
+    recents = [_recent("yt-11", EP11), _recent("yt-12", EP12)]
+    github = _github(episodes=[_pr(41, "contenu/yt-11"), _pr(42, "contenu/yt-12", "Douze")])
+    items = _appel(recents=recents, coches={"yt-11": TOUT_COCHE, "yt-12": TOUT_COCHE},
+                   publication=ba.lignes_publication(github, recents))
+    assert _textes(items) == ["fusionner la PR de S6·E11 (#41)", "fusionner la PR de S6·E12 (#42)"]
+    assert not any(i["inconnu"] for i in items)
+    assert [i["href"] for i in items] == [f"{PR_URL}41", f"{PR_URL}42"]
+
+
+def test_la_pr_se_cherche_sous_le_slug_du_guid_pas_sous_le_guid_brut():
+    """Tour 1, F1 : `publication.py` pousse `contenu/<slugify(guid)>`, le guid brut garde ses majuscules."""
+    ep = {**EP11, "guid": "yt-DNoUz4FJ_Z8"}
+    recents = [_recent("yt-DNoUz4FJ_Z8", ep)]
+    github = _github(episodes=[_pr(41, "contenu/yt-dnouz4fj-z8", "Titre de la PR")])
+    assert ba.lignes_publication(github, recents) == [
+        ("fusionner la PR de S6·E11 (#41)", f"{PR_URL}41")]
+
+
+def test_un_episode_pousse_sans_pr_ouverte_dit_d_ouvrir_la_pr_avec_le_lien_de_comparaison():
+    """Tour 1, E2 : venus pousse la branche sans ouvrir de PR (pas de jeton)."""
+    recents = [_recent("yt-DNoUz4FJ_Z8", {**EP11, "guid": "yt-DNoUz4FJ_Z8"})]
+    lignes = ba.lignes_publication(_github(), recents)
+    compare = "https://github.com/Etienne-Boursault/Reco/compare/main...contenu/yt-dnouz4fj-z8"
+    assert lignes == [("ouvrir puis fusionner la PR de S6·E11", compare + "?expand=1")]
+    items = _appel(recents=recents, coches={"yt-DNoUz4FJ_Z8": TOUT_COCHE}, publication=lignes)
+    assert len(items) == 1 and not items[0]["inconnu"] and items[0]["href"].startswith(
+        "https://github.com/")
+
+
+@pytest.mark.parametrize("depot", [None, "", 12, "pas un depot", "a/b/c", "a/b?x=1", "a b/c",
+                                   "https://evil.test/a/b"])
+def test_le_lien_de_comparaison_n_existe_que_pour_un_depot_sur(depot):
+    lignes = ba.lignes_publication(_github(depot=depot), [_recent("yt-11", EP11)])
+    assert lignes == [("ouvrir puis fusionner la PR de S6·E11", None)]
+
+
+def test_un_episode_dont_la_pr_est_fusionnee_ne_donne_aucune_ligne_meme_si_le_clone_est_en_retard():
+    """Tour 1, E2 : l'épisode est publié, seul le clone n'a pas encore tiré."""
+    recents = [_recent("yt-11", EP11)]
+    github = _github(fusionnees=[_pr(40, "contenu/yt-11"), "pas une PR", {"numero": 3}])
+    assert ba.lignes_publication(github, recents) == []
+    # Un clone à jour (`fusionne`) suffit aussi, même si la liste des PR fusionnées manque.
+    assert ba.lignes_publication(_github(), [_recent("yt-11", EP11, fusionne=True)]) == []
+
+
+def test_une_pr_de_contenu_faite_a_la_main_est_une_vraie_tache():
+    """Tour 2, M-2 : une PR ouverte reste à fusionner ou à fermer ; elle compte, avec son lien."""
+    import bord_rendu_blocs as bb
+    github = _github(episodes=[_pr(41, "contenu/yt-11"),
+                               _pr(60, "contenu/liens-rebelle", "Liens de Rebelle"),
+                               _pr(61, "contenu/autre", "<b>Autre</b>")])
+    lignes = ba.lignes_publication(github, [_recent("yt-11", EP11)])
+    assert lignes == [("fusionner la PR de S6·E11 (#41)", f"{PR_URL}41"),
+                      ("fusionner la PR #60 : Liens de Rebelle", f"{PR_URL}60"),
+                      ("fusionner la PR #61 : <b>Autre</b>", f"{PR_URL}61")]
+    contenu, nb = bb.bloc_afaire(_appel(recents=[_recent("yt-11", EP11)],
+                                        coches={"yt-11": TOUT_COCHE}, publication=lignes))
+    assert nb == 3 and "data-inconnu" not in contenu
+    assert "&lt;b&gt;Autre&lt;/b&gt;" in contenu and "<b>" not in contenu
+
+
+def test_le_titre_d_une_pr_a_la_main_est_coupe_a_l_affichage():
+    import bord_rendu_blocs as bb
+    lignes = ba.lignes_publication(_github(episodes=[_pr(60, "contenu/x", "é" * 500)]), [])
+    contenu, _ = bb.bloc_afaire(_appel(publication=lignes))
+    assert "é" * 500 not in contenu and "…" in contenu
+
+
+def test_une_pr_ouverte_n_affiche_jamais_rien_a_faire():
+    import bord_rendu_blocs as bb
+    lignes = ba.lignes_publication(_github(episodes=[_pr(60, "contenu/x")]), [])
+    assert "Rien à faire" not in bb.bloc_afaire(_appel(publication=lignes))[0]
+
+
+def test_sans_etat_de_la_chaine_les_pr_ouvertes_se_listent_et_la_publication_est_inconnue():
+    """Tour 2, M-2 : `recents` illisible. Aucun « ouvrir puis fusionner », une note grisée qui ne compte pas."""
+    import bord_rendu_blocs as bb
+    lignes = ba.lignes_publication(_github(episodes=[_pr(41, "contenu/yt-11")]), None)
+    assert lignes == [ba.Note("publication des épisodes : inconnu"),
+                      ("fusionner la PR #41 : Un titre", f"{PR_URL}41")]
+    contenu, nb = bb.bloc_afaire(_appel(recents=None, coches=None, publication=lignes))
+    assert nb == 1 and contenu.count("data-inconnu") == 2     # la note et « réseaux : inconnu »
+    seul = ba.lignes_publication(_github(), None)
+    assert seul == [ba.Note("publication des épisodes : inconnu")]
+    assert "Rien à faire" not in bb.bloc_afaire(_appel(publication=seul))[0]
+
+
+def test_les_pr_fusionnees_non_lues_ne_font_jamais_dire_d_ouvrir_la_pr():
+    """Tour 2, M-1 : « inconnu » n'est pas « aucune » ; une PR peut déjà être fusionnée."""
+    import bord_rendu_blocs as bb
+    recents = [_recent("yt-11", EP11), _recent("yt-12", EP12, fusionne=True)]
+    lignes = ba.lignes_publication(_github(fusionnees=None), recents)
+    assert lignes == [ba.Note("publication de S6·E11 : inconnu (PR fusionnées non lues)")]
+    contenu, nb = bb.bloc_afaire(_appel(recents=recents, publication=lignes,
+                                        coches={"yt-11": TOUT_COCHE, "yt-12": TOUT_COCHE}))
+    assert nb == 0 and "data-inconnu" in contenu and "Rien à faire" not in contenu
+    # Une PR ouverte reste une preuve : « fusionner la PR », même sans la liste des fusionnées.
+    ouverte = _github(fusionnees=None, episodes=[_pr(41, "contenu/yt-11")])
+    assert ba.lignes_publication(ouverte, recents) == [
+        ("fusionner la PR de S6·E11 (#41)", f"{PR_URL}41")]
+
+
+def test_les_branches_fusionnees_se_lisent_meme_apres_une_panne():
+    assert ba.branches_fusionnees(_github(fusionnees=[_pr(1, "contenu/a")], etat="panne")) \
+        == {"contenu/a": "2026-11-28T08:00:00Z"}
+    for github in (None, "texte", {}, {"donnees": None}, _github(fusionnees=None),
+                   _github(fusionnees="x")):
+        assert ba.branches_fusionnees(github) is None
+
+
+def test_sans_github_lisible_la_publication_retombe_sur_l_etat_de_la_chaine():
+    recents = [{"guid": "yt-11", "fusionne": False, "episode": EP11}]
+    for github in (None, _github(etat="panne"), {"etat": "ok", "donnees": None},
+                   _github(ouvertes=None), _github(ouvertes="texte"),
+                   _github(ouvertes={"episodes": "x", "sorties": [], "coupee": False}),
+                   _github(ouvertes={"episodes": [3], "sorties": [], "coupee": False})):
+        assert ba.lignes_publication(github, recents) is None
+    items = _appel(recents=recents, coches={"yt-11": TOUT_COCHE},
+                   publication=ba.lignes_publication(None, recents))
+    assert _textes(items) == ["fusionner la PR de S6·E11"] and not items[0]["inconnu"]
+
+
+def test_une_liste_de_pr_coupee_le_dit():
+    """Tour 1, F6 : le nombre manquant est inconnu ; la ligne est grisée et ne compte pas."""
+    import bord_rendu_blocs as bb
+    lignes = ba.lignes_publication(_github(coupee=True), [_recent("yt-11", EP11)])
+    assert lignes[-1] == "d'autres PR ouvertes ne sont pas listées"
+    items = _appel(recents=[_recent("yt-11", EP11)], coches={"yt-11": TOUT_COCHE},
+                   publication=lignes)
+    assert bb.bloc_afaire(items)[1] == 1  # la ligne « ouvrir… » compte, pas la note
+    assert bb.bloc_afaire(_appel(publication=[lignes[-1]]))[1] == 0
+
+
+def test_une_pr_sans_branche_n_est_rapprochee_d_aucun_episode():
+    pr = {"numero": 5, "adresse": f"{PR_URL}5"}
+    assert ba.lignes_publication(_github(episodes=[pr]), []) == [
+        ("fusionner la PR #5 : sans titre", f"{PR_URL}5")]
+
+
+def test_la_ligne_des_sorties_passe_d_inconnu_a_un_nombre_depuis_github():
+    avant = _appel(sorties=ba.lignes_sorties(None))
+    assert _textes(avant) == ["sorties : inconnu"] and avant[0]["inconnu"]
+    github = _github(sorties=[_pr(50, "contenu/sorties-2026-12", "Les sorties de décembre",
+                                  "sorties")])
+    apres = _appel(sorties=ba.lignes_sorties(github))
+    assert _textes(apres) == ["fusionner la PR des sorties : Les sorties de décembre (#50)"]
+    assert not apres[0]["inconnu"] and apres[0]["href"] == f"{PR_URL}50"
+    assert ba.lignes_sorties(_github()) == []
+    assert ba.lignes_sorties(_github(etat="limite")) is None
+    assert ba.lignes_sorties(_github(ouvertes=None)) is None
+
+
+def test_la_ligne_des_liens_morts_passe_d_inconnu_a_un_nombre():
+    avant = _appel(liens=ba.lignes_liens(None))
+    assert _textes(avant) == ["liens morts : inconnu"] and avant[0]["inconnu"]
+    liens = {"date": "2026-11-25", "age": 4, "ancien": False, "morts": 3, "liste": []}
+    apres = _appel(liens=ba.lignes_liens({"liens": liens}))
+    assert _textes(apres) == ["3 liens morts"] and not apres[0]["inconnu"]
+    assert ba.lignes_liens({"liens": {**liens, "morts": 1}}) == ["1 lien mort"]
+    assert ba.lignes_liens({"liens": {**liens, "morts": 0}}) == []
+
+
+def test_des_liens_morts_d_un_rapport_ancien_le_disent():
+    """Tour 1, F8 : une ligne grisée qui ne compte pas, même si le rapport disait 0."""
+    import bord_rendu_blocs as bb
+    liens = {"date": "2026-11-10", "age": 19, "ancien": True, "morts": 2, "liste": []}
+    assert ba.lignes_liens({"liens": liens}) == ["liens morts : rapport ancien du 10/11"]
+    assert ba.lignes_liens({"liens": {**liens, "morts": 0}}) == [
+        "liens morts : rapport ancien du 10/11"]
+    assert ba.lignes_liens({"liens": {**liens, "date": "?"}}) == ["liens morts : rapport ancien"]
+    items = _appel(liens=ba.lignes_liens({"liens": liens}))
+    assert bb.bloc_afaire(items)[1] == 0 and items[0]["inconnu"]
+
+
+@pytest.mark.parametrize("contenu", [{}, {"liens": None}, {"liens": "texte"},
+                                     {"liens": {"morts": "3"}}, {"liens": {"morts": True}}])
+def test_une_forme_inattendue_des_liens_reste_inconnue(contenu):
+    assert ba.lignes_liens(contenu) is None
+
+
+def test_une_ligne_inconnue_est_grisee_et_ne_compte_pas():
+    import bord_rendu_blocs as bb
+    items = _appel(liens=ba.lignes_liens(None), sorties=ba.lignes_sorties(None),
+                   signalements=["2 signalements en attente"])
+    contenu, nb = bb.bloc_afaire(items)
+    assert nb == 1 and contenu.count("data-inconnu") == 2
+
+
+def test_le_lien_d_une_pr_ne_vaut_que_pour_github():
+    import bord_rendu_blocs as bb
+    bon = {"bloc": "publication", "texte": "x", "guid": None, "inconnu": False,
+           "href": f"{PR_URL}1"}
+    for mauvais in ("javascript:alert(1)", "http://github.com/a", "https://autre.test/a",
+                    '"><script>', "https://[pas-une-ip", None):
+        contenu, _ = bb.bloc_afaire([{**bon, "href": mauvais}])
+        assert "<a " not in contenu
+    contenu, _ = bb.bloc_afaire([bon])
+    assert f'href="{PR_URL}1"' in contenu and "Ouvrir la PR" in contenu

@@ -18,7 +18,12 @@ from pathlib import Path
 
 import pytest
 
+import bord_chaine
+import bord_contenu
+import bord_distant
+import bord_github
 import bord_reseaux
+import bord_systeme
 import review_handler_base
 import review_render
 import review_routes_bord
@@ -44,6 +49,8 @@ def corpus(tmp_path, monkeypatch):
     monkeypatch.setattr(review_handler_base, "ALLOW_LAN", False)
     monkeypatch.delenv(recorder.ENV_DB, raising=False)
     monkeypatch.setenv("RECO_BORD_DIR", str(tmp_path / "bord"))
+    # Aucun rafraîchissement détaché pendant les tests (GitHub serait appelé pour de bon).
+    monkeypatch.setattr(bord_distant, "_lancer", lambda *a, **k: False)
     for env in ("RECO_REVIEW_URL", "RECO_REVIEW_HOTES", "RECO_AUDIENCE_KEY"):
         monkeypatch.delenv(env, raising=False)
 
@@ -161,6 +168,86 @@ def test_get_bord_une_forme_inattendue_de_signalements_reste_inconnue(corpus, mo
     page = corps.decode("utf-8")
     assert code == 200
     assert "Signalements : inconnu" in page and "signalements : inconnu" in page
+
+
+def test_get_bord_lit_github_et_le_systeme_une_seule_fois_chacun(monkeypatch):
+    appels = []
+    github = {"etat": "ok", "donnees": {"ci": {"conclusion": "failure", "date": None,
+                                                "adresse": "https://github.com/a/b/actions/runs/1"},
+                                        "deploiement": None}, "age": 5}
+    systeme = {"couts": None, "modeles": None, "image": "reco-atelier:essai-1"}
+    monkeypatch.setattr(bord_github, "lire", lambda **kw: appels.append("github") or github)
+    monkeypatch.setattr(bord_systeme, "lire",
+                        lambda source_id, **kw: appels.append(("systeme", source_id)) or systeme)
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert sorted(map(str, appels)) == sorted(["github", str(("systeme", SOURCE))])
+    assert 'data-conclusion="echec"' in page and "reco-atelier:essai-1" in page
+
+
+def test_get_bord_lit_le_contenu_une_seule_fois_et_remplit_les_lignes_d_a_faire(monkeypatch):
+    appels = []
+    contenu = {"sorties": {"liste": [{"id": "r", "titre": "Un film à venir", "date": "2026-12-01",
+                                      "jours": 3, "relancee": False}], "total": 1,
+                           "illisibles": 0},
+               "graphies": {"total": 1, "ecartees": 0,
+                            "plus_vues": [{"fausse": "Kaffka", "juste": "Kafka", "vu": 2}]},
+               "liens": {"date": "2026-11-25", "age": 3, "ancien": False, "morts": 2,
+                         "nouveaux": 0, "inconnus": 0, "vivants": 5,
+                         "liste": [{"url": "https://exemple.test/mort", "reponse": "404",
+                                    "recos": ["r"]}]}}
+    pr = {"numero": 7, "titre": "Sorties", "branche": "contenu/sorties-x", "groupe": "sorties",
+          "date": "2026-11-28T08:00:00Z", "adresse": "https://github.com/a/b/pull/7"}
+    github = {"etat": "ok", "donnees": {"ouvertes": {"episodes": [], "sorties": [pr],
+                                                     "coupee": False},
+                                        "ci": None, "deploiement": None}, "age": 5}
+    monkeypatch.setattr(bord_contenu, "lire",
+                        lambda source_id, **kw: appels.append(source_id) or contenu)
+    monkeypatch.setattr(bord_github, "lire", lambda **kw: github)
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert appels == [SOURCE]
+    assert "Un film à venir" in page and "Kaffka" in page
+    assert 'href="https://exemple.test/mort"' in page
+    assert "2 liens morts" in page and "fusionner la PR des sorties : Sorties (#7)" in page
+    assert 'href="https://github.com/a/b/pull/7"' in page
+    assert "data-attente" not in page
+
+
+def test_get_bord_passe_les_prs_fusionnees_a_la_chaine_et_a_la_publication(monkeypatch):
+    """Tour 1, M2 : une seule lecture de GitHub, partagée par la chaîne et « À faire d'abord »."""
+    vus = []
+    original = bord_chaine.etat_chaine
+    monkeypatch.setattr(bord_chaine, "etat_chaine",
+                        lambda source_id, **kw: vus.append(kw) or original(source_id, **kw))
+    pr = {"numero": 3, "titre": "T", "branche": "contenu/ep-001", "groupe": "episodes",
+          "date": "2026-11-27T10:00:00Z", "adresse": "https://github.com/a/b/pull/3"}
+    github = {"etat": "ok", "donnees": {"depot": "a/b", "ouvertes": {"episodes": [], "sorties": [],
+                                                                      "coupee": False},
+                                        "fusionnees": [pr], "ci": None, "deploiement": None},
+              "age": 5}
+    monkeypatch.setattr(bord_github, "lire", lambda **kw: github)
+    # Clone en retard : ni l'un ni l'autre n'y est revenu.
+    monkeypatch.setattr(bord_reseaux, "episodes_recents", lambda *a: [
+        {"guid": "ep-001", "fusionne": False, "episode": {"season": 6, "number": 1}},
+        {"guid": "ep-002", "fusionne": False, "episode": {"season": 6, "number": 2}}])
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert vus == [{"fusionnees": {"contenu/ep-001": "2026-11-27T10:00:00Z"}}]
+    # ep-001 : PR fusionnée, rien à faire ; ep-002 : poussé sans PR, à ouvrir (lien de comparaison).
+    assert "ouvrir puis fusionner la PR de S6·E2" in page
+    assert 'href="https://github.com/a/b/compare/main...contenu/ep-002?expand=1"' in page
+    assert "fusionner la PR de S6·E1" not in page
+
+
+def test_get_bord_sans_contenu_lisible_dit_inconnu(monkeypatch):
+    monkeypatch.setattr(bord_contenu, "lire",
+                        lambda source_id, **kw: {"sorties": None, "graphies": None, "liens": None})
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert "liens morts : inconnu" in page and "sorties : inconnu" in page
+    assert "Liens morts : inconnu" in page and "Sorties à venir : inconnu" in page
+
+
+def test_get_bord_sans_cache_github_dit_inconnu():
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert "GitHub : pas encore lu" in page
 
 
 def test_get_bord_sans_cle_d_audience_le_dit(corpus):
