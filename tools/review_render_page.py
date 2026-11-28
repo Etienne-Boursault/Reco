@@ -127,7 +127,9 @@ def _render_index(source_id: str) -> str:
                    f'agent : <b>{n_doubts}</b></a>' if n_doubts else "")
     # Le tableau de pilotage est l'autre porte d'entrée de la relecture (vue
     # transversale, triable) : sans lien ici, il faudrait connaître l'URL.
-    table_link = ' · <a class="doubts-link" href="/tableau">📊 Tableau de pilotage</a>'
+    table_link = (' · <a class="doubts-link" href="/tableau">📊 Tableau de pilotage</a>'
+                  # Tableau de bord, R2 B du 27/11/2026 : `/` reste la relecture.
+                  ' · <a class="doubts-link" href="/bord">🧭 Tableau de bord</a>')
     subtitle = (f"<b>{todo}</b> recos à relire · {len(episodes)} épisodes "
                 f"({n_with} avec recos).{doubts_link}{table_link}")
     return _rr._shell(source.get("title", source_id), subtitle, inner)

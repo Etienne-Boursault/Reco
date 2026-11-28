@@ -64,7 +64,7 @@ PLAFONDS = {
     "tools/repository/migration/reco_parser.py": 508,
     "tools/review_client_keyboard.js": 622,
     "tools/review_doubts.py": 562,
-    "tools/review_routes.py": 594,
+    "tools/review_routes.py": 593,
     "tools/traiter_nouveaux_episodes.py": 651,
 }
 

@@ -14,9 +14,20 @@
  * Une ligne « inconnu » est grisée par sa couleur et un trait pointillé, jamais
  * par l'opacité, qui ferait tomber ce rapport sous 4,5.
  *
- * POLICES. Bebas Neue et Inter seront servies en local (tranche 1e) ; d'ici là,
- * les piles de repli.
+ * POLICES. Bebas Neue et Inter (jeu latin, copiées de `@fontsource`, licence
+ * OFL dans `review_polices/`) sont servies par `GET /polices/…`
+ * (`review_routes_bord.py`, liste fixe) : la CSP refuse Google Fonts. Une police
+ * absente laisse la pile de repli.
  */
+
+@font-face { font-family: "Bebas Neue"; font-weight: 400; font-display: swap;
+  src: url("/polices/bebas-neue-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: Inter; font-weight: 400; font-display: swap;
+  src: url("/polices/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: Inter; font-weight: 600; font-display: swap;
+  src: url("/polices/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: Inter; font-weight: 700; font-display: swap;
+  src: url("/polices/inter-latin-700-normal.woff2") format("woff2"); }
 
 html {
   --fond: #0e0e10; --carte: #17171c; --texte: #f6f4ee; --mut: #9a99a3;
