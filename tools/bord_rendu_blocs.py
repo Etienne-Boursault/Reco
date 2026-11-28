@@ -141,12 +141,20 @@ def etat_entete(passages: list[dict] | None, maintenant: datetime,
 
 
 def _est_github(adresse: Any) -> bool:
-    """Vrai pour `https://github.com/…` seulement (F21)."""
+    """Vrai pour `https://github.com/…` seulement (F21).
+
+    Revue globale, S2 : une adresse « evil.com, barre oblique inverse, @github.com » se lit
+    `github.com` pour `urlparse`, mais le navigateur ouvre evil.com. Toute adresse qui porte une
+    barre oblique inverse ou un `@` est donc refusée, et `netloc`
+    doit être exactement `github.com` (ni port, ni identifiants).
+    """
+    if not isinstance(adresse, str) or "\\" in adresse or "@" in adresse:
+        return False
     try:
-        u = urlparse(adresse) if isinstance(adresse, str) else None
-        return u is not None and u.scheme == "https" and u.hostname == "github.com"
+        u = urlparse(adresse)
     except ValueError:
         return False
+    return u.scheme == "https" and u.netloc == "github.com"
 
 
 def _carte(contenu: str, classe: str = "bord-carte") -> str:
@@ -214,6 +222,11 @@ def bloc_chaine(chaine: dict) -> str:
         tete = (f'<span class="bord-etiquette">L\'épisode de la semaine</span>'
                 f'<h3 class="bord-episode">{_texte(nom)}</h3>'
                 f'<ol class="bord-etapes">{"".join(_etape(e) for e in etapes)}</ol>')
+    illisibles = chaine.get("fiches_illisibles")
+    if isinstance(illisibles, int) and illisibles > 0:  # revue globale, D9 (F22)
+        s = "s" if illisibles > 1 else ""
+        tete += (f'<p class="bord-alerte" role="alert">{illisibles} fiche{s} d\'épisode '
+                 f'illisible{s} : l\'épisode montré peut ne pas être le dernier.</p>')
     erreurs = chaine.get("erreurs") or []
     etat_lu = bool(chaine.get("etat_lu"))
     if erreurs:

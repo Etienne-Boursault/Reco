@@ -58,8 +58,9 @@ def _lire_etat(source_id: str) -> dict[str, Any] | None:
     return etat if isinstance(etat, dict) else None
 
 
-def _episodes_yt(source_id: str) -> list[dict[str, Any]]:
-    out = []
+def _episodes_yt(source_id: str) -> tuple[list[dict[str, Any]], int]:
+    """Les fiches `yt-…` lisibles, et le nombre de fiches illisibles (F22 : une fiche sautée se compte)."""
+    out, illisibles = [], 0
     for path in common.list_episode_files(source_id):
         if not path.name.startswith("yt-"):
             continue
@@ -67,10 +68,11 @@ def _episodes_yt(source_id: str) -> list[dict[str, Any]]:
             episode = common.read_json(path)
         except (OSError, ValueError) as exc:
             common.log.warning("bord_chaine : fiche d'épisode illisible (%s) : %s", path, exc)
+            illisibles += 1
             continue
         if isinstance(episode, dict) and str(episode.get("guid", "")).startswith("yt-"):
             out.append(episode)
-    return out
+    return out, illisibles
 
 
 def _episode_en_cours(episodes: list[dict[str, Any]], etat: dict[str, Any] | None,
@@ -202,7 +204,7 @@ def etat_chaine(source_id: str, *, db_path: Path | None = None, nb_passages: int
     """
     etat = _lire_etat(source_id)
     fusions = fusionnees or {}
-    fiches = _episodes_yt(source_id)
+    fiches, illisibles = _episodes_yt(source_id)
     fusionnes = [e["guid"] for e in fiches if branche_de(e["guid"]) in fusions]
     choix = _episode_en_cours(fiches, etat, fusionnes)
     if db_path is None:
@@ -220,6 +222,9 @@ def etat_chaine(source_id: str, *, db_path: Path | None = None, nb_passages: int
     # par ordre alphabétique et cacherait la dernière (tour 1, M1).
     erreurs = [str(m) for m in signalees.values()] if isinstance(signalees, dict) else []
     # `etat_lu` : l'état a été lu, même sans épisode à montrer (tour 1, F3).
+    # Revue globale, D9 : sans le compte des fiches illisibles, un épisode plus ancien passerait
+    # pour « l'épisode de la semaine ».
     return {"episode": episode, "etapes": liste, "erreurs": erreurs, "etat_lu": etat is not None,
+            "fiches_illisibles": illisibles,
             "passages": lire_passages(bord_dir() / "passages.jsonl", nb_passages),
             "en_cours": lire_en_cours(bord_dir() / "en-cours")}

@@ -215,6 +215,21 @@ def test_les_erreurs_de_la_chaine_sont_rendues(corpus):
         "⚠️ un", "⚠️ deux", "trois", "⚠️ la transcription a échoué"]
 
 
+def test_une_fiche_illisible_est_comptee_et_pas_seulement_sautee(corpus):
+    """Revue globale, D9 (F22) : sans ce compte, un épisode plus ancien passe pour « l'épisode de la semaine »."""
+    _episode(corpus, "yt-Vieux", "2026-11-01")
+    (corpus / "episodes" / SOURCE / "yt-abime.json").write_text("{", encoding="utf-8")
+    (corpus / "episodes" / SOURCE / "yt-autre.json").write_bytes(bytes([0xFF, 0xFE]))
+    etat = bord_chaine.etat_chaine(SOURCE)
+    assert etat["fiches_illisibles"] == 2 and etat["episode"]["guid"] == "yt-Vieux"
+    assert bord_chaine.etat_chaine(SOURCE, db_path=corpus / "x")["fiches_illisibles"] == 2
+
+
+def test_sans_fiche_abimee_le_compte_est_zero(corpus):
+    _episode(corpus, "yt-A", "2026-11-20")
+    assert bord_chaine.etat_chaine(SOURCE)["fiches_illisibles"] == 0
+
+
 def test_etat_lu_se_dit_sans_dependre_d_un_episode(corpus):
     # Tour 1, F3 : sans épisode, un état lu reste lu.
     assert bord_chaine.etat_chaine(SOURCE)["etat_lu"] is False

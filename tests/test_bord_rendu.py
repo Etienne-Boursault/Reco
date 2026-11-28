@@ -290,6 +290,18 @@ def test_chaine_montre_l_episode_et_ses_etapes():
     assert 'title="source : fiche de l&#x27;épisode"' in contenu
 
 
+def test_chaine_dit_les_fiches_illisibles():
+    """Revue globale, D9 : une fiche sautée se compte et se dit (F22)."""
+    assert "illisible" not in bb.bloc_chaine(_chaine())
+    assert "illisible" not in bb.bloc_chaine({k: v for k, v in _chaine().items()
+                                              if k != "fiches_illisibles"})
+    un = bb.bloc_chaine(_chaine(fiches_illisibles=1))
+    assert "1 fiche d'épisode illisible" in un and 'role="alert"' in un
+    assert "3 fiches d'épisode illisibles" in bb.bloc_chaine(_chaine(fiches_illisibles=3))
+    sans_episode = bb.bloc_chaine(_chaine(episode=None, etapes=[], fiches_illisibles=1))
+    assert "Aucun épisode en cours." in sans_episode and "1 fiche d'épisode illisible" in sans_episode
+
+
 def test_chaine_une_etape_inconnue_et_une_heure_illisible():
     chaine = _chaine(etapes=[_etape("extrait", "Extrait", etat="inconnu", source="inconnu"),
                              _etape("transcrit", "Transcrit", heure="hier")])
