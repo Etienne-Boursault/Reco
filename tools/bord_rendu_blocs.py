@@ -1,0 +1,258 @@
+"""bord_rendu_blocs.py — les blocs HTML de la page `/bord` du tableau de bord.
+
+Décision : tableau de bord, R2 B du 27/11/2026 ; TB-1 C du 28/11/2026, vue
+39 pouces par défaut (plan `pr-tableau-de-bord.md`, § 5 et § 6, relectures R10
+et R22).
+
+Rendu pur, sans disque ni réseau : chaque bloc reçoit les données déjà lues par
+`bord_afaire`, `bord_chaine` et `bord_reseaux`, et rend du HTML.
+
+L'ÉCHAPPEMENT (R10)
+-------------------
+La CSP du serveur admet les scripts en ligne, et rien n'est authentifié : tout
+texte passe par `_texte` (échappé, coupé à `LONGUEUR` signes), une valeur mise
+en attribut est échappée ou prise dans une liste fixe. Aucun bloc de cette PR ne
+met d'adresse venue des données dans un `href` : le seul lien, vers la
+relecture, est un chemin du serveur dont le guid est encodé.
+
+Une donnée absente s'affiche « inconnu », jamais « rien » ni « aucune » (F11).
+"""
+from __future__ import annotations
+
+import html
+import urllib.parse
+from datetime import UTC, datetime, timedelta
+from typing import Any
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+
+from bord_afaire import _libelle
+from bord_reseaux import LIBELLES, RESEAUX
+from review_render_focus import short_title
+
+#: Longueur maximale d'un texte venu des données (messages d'erreur, titres).
+LONGUEUR = 160
+#: Au-delà, la chaîne est « en retard » : le même seuil que le moniteur Kuma.
+RETARD = timedelta(hours=2, minutes=30)
+
+_JOURS = ("lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche")
+_MOIS = ("janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+         "septembre", "octobre", "novembre", "décembre")
+_BLOCS = {"relecture": "Relecture", "publication": "Publication", "reseaux": "Réseaux",
+          "signalements": "Signalements", "liens": "Liens morts", "sorties": "Sorties"}
+_ETATS = ("fait", "a_venir", "inconnu")
+
+
+def _fuseau():
+    """L'heure de Paris ; repli sur UTC sans `tzdata` (même choix que `date_sortie`)."""
+    try:
+        return ZoneInfo("Europe/Paris")
+    except ZoneInfoNotFoundError:
+        return UTC
+
+
+def _texte(valeur: Any, n: int = LONGUEUR) -> str:
+    """Un texte des données, coupé à `n` signes puis échappé."""
+    s = "" if valeur is None else str(valeur)
+    return html.escape(s if len(s) <= n else s[:n] + "…")
+
+
+def _instant(iso: Any) -> datetime | None:
+    """Un horodatage ISO ; sans fuseau, il est en UTC (télémétrie) ; None s'il est illisible."""
+    try:
+        t = datetime.fromisoformat(str(iso))
+    except ValueError:
+        return None
+    return t if t.tzinfo else t.replace(tzinfo=UTC)
+
+
+def _heure(iso: Any, *, jour: bool = False) -> str | None:
+    """« 10 h 04 », ou « dim. 10 h 04 » ; None si l'horodatage est illisible."""
+    t = _instant(iso)
+    if t is None:
+        return None
+    t = t.astimezone(_fuseau())
+    debut = f"{_JOURS[t.weekday()][:3]}. " if jour else ""
+    return f"{debut}{t.hour:02d} h {t.minute:02d}"
+
+
+def date_du_jour(maintenant: datetime) -> str:
+    """« dimanche 29 novembre »."""
+    t = maintenant.astimezone(_fuseau())
+    return f"{_JOURS[t.weekday()]} {t.day} {_MOIS[t.month - 1]}"
+
+
+def _depuis(ecart: timedelta) -> str:
+    minutes = int(ecart.total_seconds() // 60)
+    if minutes < 1:
+        return "à l'instant"
+    if minutes < 60:
+        return f"il y a {minutes} min"
+    return f"il y a {minutes // 60} h {minutes % 60:02d}"
+
+
+def _duree(debut: Any, fin: Any) -> str:
+    a, b = _instant(debut), _instant(fin)
+    if a is None or b is None:
+        return "?"
+    s = int((b - a).total_seconds())
+    return f"{s} s" if s < 60 else f"{s // 60} min {s % 60:02d}"
+
+
+def _noms(valeur: Any) -> list[str]:
+    """Les noms d'étapes d'un passage ; une valeur qui n'est pas une liste n'en a aucun."""
+    return [_texte(v, 40) for v in valeur] if isinstance(valeur, list) else []
+
+
+def etat_entete(passages: list[dict] | None, maintenant: datetime) -> tuple[str, str]:
+    """`(état, texte)` de la pastille d'en-tête ; état : `ok`, `alerte` ou `inconnu`."""
+    if passages is None:
+        return "inconnu", "Chaîne : état inconnu"
+    if not passages:
+        return "inconnu", "Chaîne : aucun passage noté"
+    dernier = passages[0]
+    fin = _instant(dernier.get("fin"))
+    if fin is None:
+        return "inconnu", "Chaîne : état inconnu"
+    ecart = maintenant - fin
+    quand = "passage " + _depuis(ecart)
+    echecs = _noms(dernier.get("echecs"))
+    if echecs:
+        pluriel = "s" if len(echecs) > 1 else ""
+        return "alerte", f"Chaîne : {len(echecs)} étape{pluriel} en échec · {quand}"
+    if ecart > RETARD:
+        return "alerte", f"Chaîne en retard · {quand}"
+    return "ok", f"Chaîne en marche · {quand}"
+
+
+def _carte(contenu: str, classe: str = "bord-carte") -> str:
+    return f'<div class="{classe}">{contenu}</div>'
+
+
+# ---- À faire d'abord -------------------------------------------------------
+
+def bloc_afaire(items: list[dict]) -> tuple[str, int]:
+    """La liste de `bord_afaire.a_faire` ; le compte exclut les lignes « inconnu »."""
+    if not items:
+        return '<p class="bord-vide">Rien à faire.</p>', 0
+    lignes = []
+    for item in items:
+        bloc = str(item.get("bloc"))
+        inconnu = " data-inconnu" if item.get("inconnu") else ""
+        lien = ""
+        if bloc == "relecture" and item.get("guid"):
+            href = "/ep?guid=" + urllib.parse.quote(str(item["guid"]), safe="")
+            lien = f'<a class="bord-bouton" href="{html.escape(href)}">Ouvrir la relecture</a>'
+        lignes.append(
+            f'<li class="bord-tache" data-bloc="{html.escape(bloc)}"{inconnu}>'
+            f'<span class="bord-tache-bloc">{_texte(_BLOCS.get(bloc, bloc), 40)}</span>'
+            f'<span class="bord-tache-texte">{_texte(item.get("texte"))}</span>{lien}</li>')
+    nb = sum(1 for i in items if not i.get("inconnu"))
+    return f'<ul class="bord-taches">{"".join(lignes)}</ul>', nb
+
+
+# ---- Chaîne ---------------------------------------------------------------
+
+def _etape(e: dict) -> str:
+    etat = e.get("etat") if e.get("etat") in _ETATS else "inconnu"
+    if etat == "fait":
+        quand = _heure(e.get("heure"), jour=True) if e.get("heure") else None
+        quand = quand or "fait"
+    else:
+        quand = "à venir" if etat == "a_venir" else "inconnu"
+    return (f'<li class="bord-etape" data-etat="{etat}" '
+            f'title="source : {_texte(e.get("source"), 40)}">'
+            f'<span class="bord-etape-nom">{_texte(e.get("libelle"), 40)}</span>'
+            f'<span class="bord-etape-quand">{html.escape(quand)}</span></li>')
+
+
+def _passage(p: dict) -> str:
+    lancees, echecs = _noms(p.get("lancees")), _noms(p.get("echecs"))
+    texte = (_heure(p.get("debut")) or "?") + " · "
+    texte += ("lancé : " + ", ".join(lancees)) if lancees else "rien de neuf"
+    if echecs:
+        texte += " · en échec : " + ", ".join(echecs)
+    return (f'<li data-echec="{1 if echecs else 0}"><span>{texte}</span>'
+            f'<span class="bord-mut">{_duree(p.get("debut"), p.get("fin"))}</span></li>')
+
+
+def bloc_chaine(chaine: dict) -> str:
+    """Le bloc de `bord_chaine.etat_chaine` : épisode, étapes, erreurs, passages."""
+    episode = chaine.get("episode")
+    etapes = chaine.get("etapes") or []
+    if episode is None:
+        tete = '<p class="bord-vide">Aucun épisode en cours.</p>'
+    else:
+        nom = short_title(episode.get("titre")) or episode.get("guid")
+        tete = (f'<span class="bord-etiquette">L\'épisode de la semaine</span>'
+                f'<h3 class="bord-episode">{_texte(nom)}</h3>'
+                f'<ol class="bord-etapes">{"".join(_etape(e) for e in etapes)}</ol>')
+    erreurs = chaine.get("erreurs") or []
+    etat_lu = any(e.get("source") == "état de la chaîne" for e in etapes)
+    if erreurs:
+        bas = ('<ul class="bord-erreurs">'
+               + "".join(f"<li>{_texte(m)}</li>" for m in erreurs) + "</ul>")
+    else:
+        bas = (f'<p class="bord-mut">Erreurs en cours : '
+               f'{"aucune" if etat_lu else "inconnu"}.</p>')
+    passages = chaine.get("passages")
+    if passages is None:
+        liste = '<p class="bord-mut">Derniers passages : inconnu.</p>'
+    elif not passages:
+        liste = '<p class="bord-mut">Aucun passage noté.</p>'
+    else:
+        liste = f'<ul class="bord-passages">{"".join(_passage(p) for p in passages)}</ul>'
+    return (_carte(tete)
+            + _carte(f'<span class="bord-etiquette">Derniers passages</span>{liste}{bas}'))
+
+
+# ---- Réseaux --------------------------------------------------------------
+
+def _case(guid: str, nom: str, reseau: str, date: str | None) -> str:
+    fait = date is not None
+    quand = _instant(date) if fait else None
+    titre = f' title="coché le {quand.astimezone(_fuseau()):%d/%m}"' if quand else ""
+    action = "décocher" if fait else "marquer comme fait"
+    libelle = _texte(f"{LIBELLES[reseau]}, {nom} : {action}")
+    return ('<form method="post" action="/bord/reseau" class="bord-case-form">'
+            f'<input type="hidden" name="guid" value="{html.escape(guid)}">'
+            f'<input type="hidden" name="reseau" value="{reseau}">'
+            f'<input type="hidden" name="fait" value="{0 if fait else 1}">'
+            f'<button type="submit" class="bord-case" data-fait="{1 if fait else 0}"'
+            f'{titre} aria-label="{libelle}">{"✓" if fait else "À faire"}</button></form>')
+
+
+def bloc_reseaux(recents: list[dict] | None,
+                 coches: dict[str, dict[str, str]] | None) -> tuple[str, int | None]:
+    """Les six cases des 3 derniers publiés ; le compte des cases à faire (None : inconnu)."""
+    if recents is None:
+        return '<p class="bord-mut">Épisodes publiés : inconnu.</p>', None
+    if not recents:
+        return '<p class="bord-vide">Aucun épisode publié.</p>', 0
+    alerte = ""
+    if coches is None:
+        alerte = ('<p class="bord-alerte" role="alert">Le fichier des cases est illisible : '
+                  "il n'est pas réécrit, et les cases sont refusées.</p>")
+    noms = [str(_libelle(str(r["guid"]), r.get("episode"))) for r in recents]
+    entete = "".join(f'<th scope="col">{_texte(n, 40)}</th>' for n in noms)
+    lignes, nb = [], 0
+    for reseau in RESEAUX:
+        cellules = []
+        for r, nom in zip(recents, noms, strict=True):
+            if coches is None:
+                cellules.append('<td class="bord-mut">inconnu</td>')
+                continue
+            date = coches.get(r["guid"], {}).get(reseau)
+            nb += date is None
+            cellules.append(f"<td>{_case(str(r['guid']), nom, reseau, date)}</td>")
+        lignes.append(f'<tr><th scope="row">{LIBELLES[reseau]}</th>{"".join(cellules)}</tr>')
+    table = (f'<table class="bord-reseaux"><thead><tr><th scope="col">Réseau</th>{entete}'
+             f'</tr></thead><tbody>{"".join(lignes)}</tbody></table>')
+    return alerte + _carte(table, "bord-carte bord-carte-table"), (None if coches is None else nb)
+
+
+# ---- Places en attente ----------------------------------------------------
+
+def bloc_attente(titre: str) -> str:
+    """Une place réservée à un bloc qui viendra plus tard (audience, système…)."""
+    return (f'<div class="bord-carte" data-attente><span class="bord-etiquette">{_texte(titre)}'
+            '</span><p class="bord-mut">en attente</p></div>')
