@@ -116,6 +116,17 @@ if [ ! -e "${SEMAINE}" ]; then
   fi
 fi
 
+# Le message du dimanche soir (tableau de bord, R2 B du 27/11/2026, TB-1 C du 28/11/2026) :
+# le dimanche à partir de 20 h (heure de venus, celle de Paris), le script envoie ce qu'il
+# reste à faire, une fois par semaine ; il revérifie lui-même le jour et l'heure, et reste
+# inerte sans RECO_RAPPEL_DIMANCHE=1 dans le .env. Avant `noter_passage`, pour compter dans
+# le suivi ; un échec est noté et n'arrête rien. `[ … -ge 20 ]` lit « 08 » en décimal.
+if [ "$(date +%u)" = 7 ] && [ "$(date +%H)" -ge 20 ]; then
+  docker compose run --rm -T pipeline \
+    python rappel_dimanche.py --notifier matrix \
+    || echec rappel-dimanche "message du dimanche soir en échec"
+fi
+
 noter_passage || horodater "suivi des passages impossible dans ${BORD}" || true
 
 # Moniteur « push » Uptime Kuma : sans lui, une chaîne qui s'arrête ne se

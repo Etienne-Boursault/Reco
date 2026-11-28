@@ -39,6 +39,15 @@ case " ${FAUX_ECHEC:-} " in *" $dernier "*) exit 1 ;; esac
 case "$dernier" in a-*) exit 1 ;; esac
 exit 0
 """
+# `date` : seuls le jour (`+%u`) et l'heure (`+%H`) se fixent (FAUX_JOUR, FAUX_HEURE ; par
+# défaut un lundi à midi) ; le reste va au vrai `date`, dont le chemin est posé à l'écriture.
+_FAUX_DATE = """#!/bin/sh
+case "$*" in
+  "+%u") printf '%s\\n' "${FAUX_JOUR:-1}" ;;
+  "+%H") printf '%s\\n' "${FAUX_HEURE:-12}" ;;
+  *) exec @VRAI_DATE@ "$@" ;;
+esac
+"""
 _FAUX_OUTIL = """#!/bin/sh
 printf '%s %s\\n' "$(basename "$0")" "$*" >>"$FAUX_JOURNAL"
 exit 0
@@ -69,7 +78,9 @@ def _preparer(tmp_path: Path) -> tuple[Path, dict[str, str]]:
     script.write_text(texte, encoding="utf-8")
     faux = tmp_path / "bin"
     faux.mkdir()
-    for nom, corps in (("docker", _FAUX_DOCKER), ("git", _FAUX_OUTIL), ("curl", _FAUX_OUTIL)):
+    faux_date = _FAUX_DATE.replace("@VRAI_DATE@", shutil.which("date") or "/bin/date")
+    for nom, corps in (("docker", _FAUX_DOCKER), ("git", _FAUX_OUTIL), ("curl", _FAUX_OUTIL),
+                       ("date", faux_date)):
         (faux / nom).write_text(corps, encoding="utf-8")
         (faux / nom).chmod(0o755)
     env = {k: v for k, v in os.environ.items() if k != "RECO_BORD_DIR"}
@@ -161,3 +172,45 @@ def test_un_passage_se_signale_en_cours_puis_efface_son_fichier(tmp_path):
     pendant = (tmp_path / "appels.txt.en-cours").read_text(encoding="utf-8").strip()
     assert pendant == ligne["debut"]
     assert not (bord / "en-cours").exists()
+
+
+RAPPEL = "rappel_dimanche.py --notifier matrix"
+
+
+@pytest.mark.skipif(_SANS_ESSAI, reason="sh ou flock absent, ou Windows")
+@pytest.mark.parametrize(("jour", "heure"), [("7", "20"), ("7", "21"), ("7", "23")])
+def test_le_rappel_part_le_dimanche_a_partir_de_20h(tmp_path, jour, heure):
+    script, env = _preparer(tmp_path)
+    env.update(RECO_BORD_DIR=str(tmp_path / "bord"), FAUX_JOUR=jour, FAUX_HEURE=heure)
+    assert _lancer(script, env).returncode == 0
+    appels = (tmp_path / "appels.txt").read_text(encoding="utf-8").splitlines()
+    assert sum(RAPPEL in a for a in appels) == 1
+
+
+@pytest.mark.skipif(_SANS_ESSAI, reason="sh ou flock absent, ou Windows")
+@pytest.mark.parametrize(("jour", "heure"), [("7", "19"), ("7", "08"), ("7", "09"), ("7", "00"),
+                                              ("6", "23"), ("1", "20")])
+def test_le_rappel_ne_part_ni_un_autre_jour_ni_avant_20h(tmp_path, jour, heure):
+    # « 08 » et « 09 » : lus en décimal par `[ -ge ]`, sans erreur d'octal.
+    script, env = _preparer(tmp_path)
+    env.update(RECO_BORD_DIR=str(tmp_path / "bord"), FAUX_JOUR=jour, FAUX_HEURE=heure)
+    res = _lancer(script, env)
+    assert res.returncode == 0, res.stderr
+    assert RAPPEL not in (tmp_path / "appels.txt").read_text(encoding="utf-8")
+    journal = next((tmp_path / "reco" / "logs").glob("tick-*.log")).read_text(encoding="utf-8")
+    assert "rappel-dimanche" not in journal and "bad number" not in journal.lower()
+
+
+@pytest.mark.skipif(_SANS_ESSAI, reason="sh ou flock absent, ou Windows")
+def test_l_echec_du_rappel_est_note_et_n_arrete_pas_la_chaine(tmp_path):
+    script, env = _preparer(tmp_path)
+    bord = tmp_path / "bord"
+    env.update(RECO_BORD_DIR=str(bord), FAUX_JOUR="7", FAUX_HEURE="20", FAUX_ECHEC="matrix")
+    res = _lancer(script, env)
+    assert res.returncode == 0, res.stderr
+    [ligne] = _lignes(bord / "passages.jsonl")
+    # `sorties_annoncees.py --notifier matrix` finit aussi par « matrix » : il échoue avec lui.
+    assert ligne["echecs"][-1] == "rappel-dimanche"
+    assert "curl " in (tmp_path / "appels.txt").read_text(encoding="utf-8")
+    journal = next((tmp_path / "reco" / "logs").glob("tick-*.log")).read_text(encoding="utf-8")
+    assert "message du dimanche soir en échec" in journal
