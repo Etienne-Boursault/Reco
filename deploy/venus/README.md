@@ -44,8 +44,10 @@ elle, comme le fait déjà `/audience` (`src/lib/audience/`).
 **La garde des hôtes** (tableau de bord, 28/11/2026, `tools/review_handler_base.py`) ferme
 le « DNS rebinding » : une page piégée qui parle au serveur sous son propre nom de domaine
 reçoit un 403, en lecture comme en écriture. Sont admis une adresse IP littérale, un nom en
-`.local`, `localhost`, l'hôte de `RECO_REVIEW_URL` et les noms de `RECO_REVIEW_HOTES`. Un
-signet sous un autre nom recevrait « Forbidden » : ajouter ce nom à `RECO_REVIEW_HOTES`, puis
+`.local`, `localhost`, l'hôte de `RECO_REVIEW_URL` et les noms de `RECO_REVIEW_HOTES`.
+`RECO_REVIEW_URL` et `RECO_REVIEW_HOTES` ne comptent qu'en mode réseau local (`ALLOW_LAN`) :
+en mode local strict, seuls `localhost` et le bouclage passent, quoi que disent ces deux
+variables. Un signet sous un autre nom recevrait « Forbidden » : ajouter ce nom à `RECO_REVIEW_HOTES`, puis
 `docker compose up -d --force-recreate review` sous le verrou du tick. Chaque refus est
 journalisé avec le `Host` reçu. Un moniteur HTTP qui appellerait la page par un nom de
 conteneur serait refusé de même.
@@ -231,7 +233,7 @@ RECO_SPOTIFY=0                 # sans Premium, l'API répond 403 : liens posés 
 RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le message porte le lien de comparaison
 RECO_SORTIES_ANNONCEES=1       # relance quotidienne des liens à la sortie annoncée ; absent, l'étape ne fait rien
 RECO_KUMA_PUSH_URL=…           # moniteur « push » Uptime Kuma ; absent, aucun ping n'est envoyé
-RECO_REVIEW_HOTES=…            # facultatif : autres noms admis par la garde des hôtes (virgules ou espaces)
+RECO_REVIEW_HOTES=…            # facultatif : autres noms admis par la garde des hôtes (virgules ou espaces) ; lu seulement en mode réseau local (ALLOW_LAN)
 ```
 
 ### Changer de modèle d'extraction : `RECO_MODELE_EXTRACTION`

@@ -64,7 +64,8 @@ def _host_name(netloc: str | None) -> str | None:
 
 def _extra_hosts() -> set[str]:
     """L'hôte de RECO_REVIEW_URL et les noms de RECO_REVIEW_HOTES (virgules),
-    relus à chaque requête."""
+    relus à chaque requête. Lus seulement en mode réseau local (`ALLOW_LAN`) :
+    en mode local strict, `_host_allowed` ne les consulte pas (tour 1, F6)."""
     raw = re.split(r"[,\s]+", os.environ.get("RECO_REVIEW_HOTES", ""))
     url = os.environ.get("RECO_REVIEW_URL", "")
     try:
