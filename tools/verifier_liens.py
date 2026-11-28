@@ -16,6 +16,11 @@ Deux modes :
 
 Rien n'est jamais retiré du corpus : le rapport nomme la reco, la plateforme et
 la réponse obtenue, et l'éditeur décide (décision LV-3 du 2026-11-02).
+
+Le mode `externes` écrit aussi un RÉSUMÉ, `liens.json` dans le dossier du tableau de bord
+(`bord_reseaux.dossier()`, sous `tools/output/bord/`) : le rapport complet vit hors du dépôt
+sur venus, que `/bord` ne voit pas. Décision : tableau de bord, R2 B du 27/11/2026 ;
+TB-1 C du 28/11/2026. Le résumé est atomique et sa panne ne fait jamais échouer le rapport.
 """
 from __future__ import annotations
 
@@ -35,6 +40,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
+import bord_reseaux
+from common import atomic_write_text, log
 from link_check import ProbeResult, fetch_via_urllib, verify_url
 
 # Le site lui-même : celui du build (la CI construit avec https://example.com).
@@ -48,6 +55,8 @@ PAUSE_HOTE = 1.0
 SITES_EN_PARALLELE = 8
 # Un message Matrix lisible : au-delà, le rapport complet fait foi.
 MESSAGE_MAX = 15
+# Le résumé du tableau de bord garde les premières mortes seulement, avec le total (F23).
+RESUME_MAX = 10
 
 _HREF = re.compile(r'<a\b[^>]*?\bhref="([^"]+)"', re.IGNORECASE)
 
@@ -190,6 +199,23 @@ def en_markdown(rapport: Rapport) -> str:
     return "\n".join(lignes) + "\n"
 
 
+def ecrire_resume(rapport: Rapport) -> None:
+    """Écrit `liens.json` pour `/bord` : comptes, et les mortes, nouvelles d'abord, coupées à
+    `RESUME_MAX` (`morts` donne le total). Une panne d'écriture se journalise, sans arrêter le rapport."""
+    ordre = sorted(rapport.morts, key=lambda u: (u not in rapport.nouveaux, u))
+    resume = {"date": rapport.date, "morts": len(rapport.morts),
+              "nouveaux": len(rapport.nouveaux),
+              "inconnus": sum(rapport.inconnus_par_site.values()), "vivants": rapport.vivants,
+              "liste": [{"url": u, "reponse": rapport.morts[u]["reponse"],
+                         "recos": rapport.morts[u]["recos"]} for u in ordre[:RESUME_MAX]]}
+    try:
+        dossier = bord_reseaux.dossier()
+        dossier.mkdir(parents=True, exist_ok=True)
+        atomic_write_text(dossier / "liens.json", json.dumps(resume, ensure_ascii=False, indent=1))
+    except OSError as exc:
+        log.warning("résumé des liens morts non écrit (%s : %s)", type(exc).__name__, exc)
+
+
 def message(rapport: Rapport, chemin_rapport: str) -> str | None:
     """Message Matrix, ou None quand aucun lien n'est mort depuis la dernière fois."""
     if not rapport.nouveaux:
@@ -238,6 +264,7 @@ def _cmd_externes(args: argparse.Namespace) -> int:
     md.write_text(en_markdown(rapport), encoding="utf-8")
     (sortie / f"liens-{rapport.date}.json").write_text(
         json.dumps(rapport.__dict__, ensure_ascii=False, indent=1), encoding="utf-8")
+    ecrire_resume(rapport)
     tmp = etat_p.with_suffix(".tmp")
     tmp.write_text(json.dumps({"date": rapport.date, "morts": sorted(rapport.morts)}),
                    encoding="utf-8")
