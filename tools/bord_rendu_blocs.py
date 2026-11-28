@@ -212,13 +212,16 @@ def _case(guid: str, nom: str, reseau: str, date: str | None) -> str:
     quand = _instant(date) if fait else None
     titre = f' title="coché le {quand.astimezone(_fuseau()):%d/%m}"' if quand else ""
     action = "décocher" if fait else "marquer comme fait"
-    libelle = _texte(f"{LIBELLES[reseau]}, {nom} : {action}")
+    # Tour 1, F5 : on coupe le nom, jamais l'action ; le script relit `data-nom`.
+    nom_lu = _texte(f"{LIBELLES[reseau]}, {nom}", 60)
+    libelle = f"{nom_lu} : {action}"
     return ('<form method="post" action="/bord/reseau" class="bord-case-form">'
             f'<input type="hidden" name="guid" value="{html.escape(guid)}">'
             f'<input type="hidden" name="reseau" value="{reseau}">'
             f'<input type="hidden" name="fait" value="{0 if fait else 1}">'
             f'<button type="submit" class="bord-case" data-fait="{1 if fait else 0}"'
-            f'{titre} aria-label="{libelle}">{"✓" if fait else "À faire"}</button></form>')
+            f'{titre} aria-label="{libelle}" data-nom="{nom_lu}">'
+            f'{"✓" if fait else "À faire"}</button></form>')
 
 
 def bloc_reseaux(recents: list[dict] | None,

@@ -344,7 +344,19 @@ def test_reseaux_une_case_a_cocher_est_un_formulaire_post():
     assert '<input type="hidden" name="reseau" value="instagram">' in forme
     assert '<input type="hidden" name="fait" value="1">' in forme
     assert ('<button type="submit" class="bord-case" data-fait="0" '
-            'aria-label="Instagram, S6·E11 : marquer comme fait">À faire</button>') in forme
+            'aria-label="Instagram, S6·E11 : marquer comme fait" '
+            'data-nom="Instagram, S6·E11">À faire</button>') in forme
+
+
+def test_reseaux_un_long_titre_garde_l_action_dans_le_libelle():
+    # Tour 1, F5 : on coupe le nom, jamais l'action lue par le lecteur d'écran.
+    titre = "Un titre : très long, avec un deux-points " + "x" * 200
+    ep = {"guid": "yt-11", "title": titre}
+    contenu, _ = bb.bloc_reseaux([_recent(episode=ep)], {})
+    cellule = contenu.split('name="reseau" value="instagram">', 1)[1].split("</form>", 1)[0]
+    nom = re.search(r'data-nom="(.*?)"', cellule).group(1)
+    assert len(nom) <= 60 + len("…") and nom.startswith("Instagram, ")
+    assert f'aria-label="{nom} : marquer comme fait"' in cellule
 
 
 def test_reseaux_une_case_cochee_se_decoche():
@@ -355,6 +367,7 @@ def test_reseaux_une_case_cochee_se_decoche():
     assert '<input type="hidden" name="fait" value="0">' in cellule
     assert 'data-fait="1"' in cellule
     assert 'aria-label="Deezer, S6·E11 : décocher"' in cellule
+    assert 'data-nom="Deezer, S6·E11"' in cellule
     assert 'title="coché le 28/11"' in cellule
     assert ">✓</button>" in cellule
 

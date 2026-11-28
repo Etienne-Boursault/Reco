@@ -26,14 +26,14 @@ const VUES =
   '<button type="button" data-vue-choix="xx">piège</button>' +
   '</div></div></header>';
 
-function caseHtml(fait: boolean): string {
+function caseHtml(fait: boolean, nom = 'Instagram, S6-E07'): string {
   return '<form method="post" action="/bord/reseau" class="bord-case-form">' +
     '<input type="hidden" name="guid" value="g-1">' +
     '<input type="hidden" name="reseau" value="instagram">' +
     `<input type="hidden" name="fait" value="${fait ? 0 : 1}">` +
     `<button type="submit" class="bord-case" data-fait="${fait ? 1 : 0}"` +
     `${fait ? ' title="coché le 01/11"' : ''} ` +
-    `aria-label="Instagram, S6-E07 : ${fait ? 'décocher' : 'marquer comme fait'}">` +
+    `aria-label="${nom} : ${fait ? 'décocher' : 'marquer comme fait'}" data-nom="${nom}">` +
     `${fait ? '✓' : 'À faire'}</button></form>`;
 }
 
@@ -177,6 +177,18 @@ describe('les cases des réseaux, sans recharger la page', () => {
     expect(document.querySelectorAll('.flash')).toHaveLength(1);
     expect(document.querySelector('.flash')!.className).toBe('flash flash-info');
     expect(document.querySelector('.flash')!.textContent).toBe('Instagram : à faire.');
+  });
+
+  it('le libellé repris après un clic vient de data-nom, même si le nom contient « : »', async () => {
+    // Tour 1, F5 : plus de regex sur l'ancien libellé.
+    monter(caseHtml(false, 'Instagram, Titre : suite : fin'));
+    fetchMock.mockResolvedValue(reponse({ kind: 'success' }));
+    const { form, bouton } = laCase();
+    bouton.setAttribute('aria-label', 'Instagram, Titre : suite : fin'); // libellé coupé
+    envoyer(form);
+    await tick();
+    expect(bouton.getAttribute('aria-label')).toBe('Instagram, Titre : suite : fin : décocher');
+    expect(bouton.getAttribute('data-nom')).toBe('Instagram, Titre : suite : fin');
   });
 
   it('un succès sans message ne touche pas au bandeau', async () => {

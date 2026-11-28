@@ -56,7 +56,8 @@
     b.setAttribute('data-fait', fait ? '1' : '0');
     b.textContent = fait ? '✓' : 'À faire';
     const action = fait ? 'décocher' : 'marquer comme fait';
-    b.setAttribute('aria-label', b.getAttribute('aria-label').replace(/ : [^:]*$/, ' : ' + action));
+    // Le nom vient de `data-nom` (tour 1, F5) : pas de regex sur l'ancien libellé.
+    b.setAttribute('aria-label', b.getAttribute('data-nom') + ' : ' + action);
     if (fait) {
       const d = new Date();
       const jj = (n) => String(n).padStart(2, '0');
