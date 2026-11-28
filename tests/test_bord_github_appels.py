@@ -50,6 +50,14 @@ def test_le_dernier_deploiement_saute_les_executions_skipped(monkeypatch, bord):
     assert deploiement["conclusion"] == "failure" and deploiement["adresse"].endswith("/runs/22")
 
 
+def test_la_derniere_ci_saute_les_executions_annulees(monkeypatch, bord):
+    """Revue globale, D10 : `ci.yml` annule l'exécution en cours quand une nouvelle démarre."""
+    _serveur(monkeypatch, *_tout(ci=_execs("cancelled", "cancelled", "failure", "success")))
+    bg.rafraichir(maintenant=MAINTENANT)
+    ci = _cache(bord)["github"]["donnees"]["ci"]
+    assert ci["conclusion"] == "failure" and ci["adresse"].endswith("/runs/22")
+
+
 def test_que_des_executions_skipped_gardent_la_plus_recente(monkeypatch, bord):
     _serveur(monkeypatch, *_tout(deploiement=_execs("skipped", "skipped")))
     bg.rafraichir(maintenant=MAINTENANT)

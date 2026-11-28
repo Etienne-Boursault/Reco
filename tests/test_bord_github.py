@@ -176,7 +176,7 @@ def test_ci_et_deploiement_rendent_conclusion_date_et_adresse(monkeypatch, bord)
     assert adresses == [
         f"{base}/pulls?state=open&per_page=100",
         f"{base}/pulls?state=closed&sort=updated&direction=desc&per_page=30",
-        f"{base}/actions/workflows/ci.yml/runs?branch=main&event=push&status=completed&per_page=1",
+        f"{base}/actions/workflows/ci.yml/runs?branch=main&event=push&status=completed&per_page=10",
         f"{base}/actions/workflows/deploy.yml/runs?branch=main&status=completed&per_page=10"]
 
 
