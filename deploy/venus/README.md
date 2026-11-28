@@ -195,7 +195,8 @@ page se recharge toute seule toutes les 5 minutes.
   dans `tools/output/bord/passages.jsonl` les étapes lancées et celles en échec (200 lignes
   gardées). Les étapes suivies sont l'extraction, la recherche de liens, la finalisation, la
   publication, le commentaire YouTube et le message du dimanche ; la détection et la
-  transcription n'y sont pas (elles tournent à chaque passage), donc un passage qui n'a fait
+  transcription n'y sont pas (elles tournent à chaque passage), ni la relance des sorties
+  annoncées (`sorties_annoncees.py` n'appelle pas `lance`, revue globale, tour 2, T2-7), donc un passage qui n'a fait
   qu'elles s'affiche « aucune étape suivie » (et non « rien de neuf », faux pour une
   transcription de 45 min : revue globale, M5). Une écriture ratée est journalisée et n'arrête pas la chaîne. L'en-tête dit « en
   retard » au-delà de 2 h 30 sans passage terminé, le seuil de Kuma. Comme `tick.sh` ne note un

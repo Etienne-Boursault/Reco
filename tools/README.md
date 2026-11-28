@@ -191,8 +191,9 @@ exploitation : `../deploy/venus/README.md`. Modules :
   appelé par `deploy/venus/tick.sh` ; `--apercu` lit le cache : sans appel réseau, sans envoi ni écriture. Variable et exploitation : `../deploy/venus/README.md`.
 - `bord_chaine.py` : l'épisode en cours, ses étapes et les passages de `tick.sh`
   (`passages.jsonl`, que `lance` de `tick.sh` remplit : un passage sans étape suivie dit « aucune
-  étape suivie », car la détection et la transcription n'en sont pas, revue globale, M5) ; une fiche d'épisode illisible est comptée et dite (« 1 fiche d'épisode
-  illisible »), sinon un épisode plus ancien passerait pour celui de la semaine (revue globale, D9).
+  étape suivie », car la détection et la transcription n'en sont pas, revue globale, M5) ; une fiche d'épisode illisible, ou lisible mais qui n'est pas une fiche YouTube (fichier `yt-*` dont
+  le contenu n'est pas un objet ou dont le `guid` ne commence pas par `yt-`), est comptée et dite (« 1 fiche d'épisode
+  illisible », T2-5), sinon un épisode plus ancien passerait pour celui de la semaine (revue globale, D9).
 - `bord_reseaux.py` : les cases des réseaux (`reseaux.json`), pour les 3 derniers publiés ; la
   vérification de la publication regarde les 10 derniers (`N_PUBLICATION`, revue globale, E1).
 - `bord_distant.py` : l'audience du site, lue par `GET /api/bord` avec `RECO_AUDIENCE_KEY` ;
@@ -201,7 +202,9 @@ exploitation : `../deploy/venus/README.md`. Modules :
   remis à zéro au-delà de 200 Ko). Chaque lancement inscrit son heure dans `lance-<source>`
   (`lance-audience`, `lance-github`) : tant qu'il date de moins de 2 min (`LANCEMENT_MIN`), aucun
   autre ne part, donc une page appelée en boucle n'empile pas de processus (revue globale, M1).
-  Un marqueur illisible compte comme absent. Des données « ok » de plus de 20 min (2 fois la
+  Un marqueur illisible ou daté du futur compte comme absent (T2-2). Pendant ces 2 min, la page dit
+  « lancée » (`relance` vrai) tant que le lancement est en route ; un lancement raté laisse son
+  marqueur, noté « echec », et la page dit qu'il n'a pas pu être lancé (T2-1). Des données « ok » de plus de 20 min (2 fois la
   fraîcheur, `donnees_perimees`) sont dites « Périmé » pour l'audience comme pour Santé ; leurs
   lignes de « À faire d'abord » et du message du dimanche restent des tâches, avec
   « (données du jj/mm) » (revue globale, M2).
@@ -228,7 +231,7 @@ une ligne « inconnu » de « À faire d'abord » est grisée et ne compte pas.
 
 **Les durées et les dates** (revue globale, 28/11/2026) : une durée passe aux jours dès 48 h (« il y a 2 j 7 h »),
 le premier du mois s'écrit « mardi 1er décembre », et un passage de la chaîne qui n'est pas du jour même
-(heure de Paris) porte son jour (« sam. 23 h 05 »). Le déploiement est « réussi » et la CI « réussie » ; une ligne
+(heure de Paris) porte son jour (« sam. 23 h 05 »), ou sa date (« 22/11 10 h 00 ») au-delà de 6 jours (T2-6). Le déploiement est « réussi » et la CI « réussie » ; une ligne
 « ouvrir puis fusionner la PR de … » (branche poussée, aucune PR) a un bouton « Créer la PR », les autres « Ouvrir la PR ».
 
 **Les largeurs** : 39 pouces à partir de 2 200 px (cinq colonnes) ; en dessous, 13 pouces (menu, colonne
@@ -254,7 +257,8 @@ fusionnées n'ont pas été lues ; toute autre PR `contenu/*` ouverte, faite à 
 ancien, est une tâche, « fusionner la PR #N : titre », car une PR ouverte est à fusionner ou à fermer ;
 la vérification porte sur les 10 derniers publiés, pas sur les 3 des cases des réseaux, car la chaîne
 ne crée pas de PR et un épisode non fusionné ne doit pas disparaître en vieillissant ; au-delà, une
-note grisée dit « N épisodes plus anciens non vérifiés » (seuls comptent ceux absents du clone) ;
+note grisée dit « N épisodes plus anciens non vérifiés » (seuls comptent ceux absents du clone), aussi
+sans GitHub lisible (T2-4) ;
 sans GitHub lisible, l'état de la chaîne ; sans état de la chaîne, les PR ouvertes se listent et
 « publication des épisodes : inconnu » est grisée), `sorties` (PR ouvertes de sorties `contenu/sorties-*` ; les
 relances partent seules, rien à faire pour Étienne : décision du 28/11/2026) et `liens` (nombre
@@ -264,7 +268,7 @@ pas). L'étape « Publié » de la chaîne se lit aussi sur la PR fusionnée (sa
 Les PR fusionnées s'accumulent d'une lecture à l'autre (par branche, la date de fusion la plus
 récente, 200 au plus) : la fenêtre de GitHub ne compte que les 30 PR fermées les plus récentes, et une
 panne de cet appel garde la liste d'avant, mais les PR fusionnées se disent alors « non lues » : « inconnu »
-(revue globale, D4), jamais « ouvrir puis fusionner » sur une liste peut-être incomplète. Limite connue : une branche `contenu/<slug>` réutilisée pour
+(revue globale, D4), jamais « ouvrir puis fusionner » sur une liste peut-être incomplète. La chaîne, elle, lit la liste gardée malgré la panne : une PR fusionnée le reste, et « Publié » ne repasse pas à « à venir » (T2-3). Limite connue : une branche `contenu/<slug>` réutilisée pour
 un nouvel épisode est masquée par sa PR fusionnée d'avant (même branche, donc « fusionné ») ; rien n'est
 codé contre cela, la chaîne ne réutilise pas de branche.
 
