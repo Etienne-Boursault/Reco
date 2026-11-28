@@ -52,7 +52,10 @@ export interface FenetreBord {
   clics: number;
   clicsPour100Visiteurs: number | null;
   pages: Compte[];
+  /** Le nombre de pages de la fenêtre, pour que le rendu dise « + N autres » (F23). */
+  pagesTotal: number;
   provenances: Compte[];
+  provenancesTotal: number;
 }
 
 export interface JourBord {
@@ -101,7 +104,9 @@ function fenetre(a: Agregat | null): FenetreBord | null {
     clics: a.clics,
     clicsPour100Visiteurs: a.clicsPour100Visiteurs,
     pages: a.topPages.slice(0, PREMIERES),
+    pagesTotal: a.topPages.length,
     provenances: a.provenances.slice(0, PREMIERES),
+    provenancesTotal: a.provenances.length,
   };
 }
 

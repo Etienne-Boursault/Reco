@@ -83,11 +83,20 @@ describe('resumerBord : les fenêtres de 7 et 30 jours', () => {
       du: '2026-11-22', au: '2026-11-28', tri: 'trois-colonnes', bascule: '2026-11-25',
       panneSignal: ['2026-11-27'], colonnes: COLONNES, pagesVues: 12, visiteurs: 6,
       visitesRobots: 40, clics: 2, clicsPour100Visiteurs: 33.3,
-      pages: compte(5),
-      provenances: compte(5).map((c) => ({ ...c, cle: `site-${c.n}.test` })),
+      pages: compte(5), pagesTotal: 7,
+      provenances: compte(5).map((c) => ({ ...c, cle: `site-${c.n}.test` })), provenancesTotal: 6,
     });
     expect(r.trente?.visiteurs).toBe(30);
     expect(r.trente?.du).toBe('2026-10-30');
+  });
+
+  it('envoie le total des pages et des provenances, pour que la page dise « + N autres » (F23)', () => {
+    const exact = resumer({ sept: lecture(agregat({ topPages: compte(5), provenances: compte(2) })) });
+    expect(exact.sept).toMatchObject({ pages: compte(5), pagesTotal: 5, provenancesTotal: 2 });
+
+    const plus = resumer({ sept: lecture(agregat({ topPages: compte(9) })) });
+    expect(plus.sept?.pages).toHaveLength(5);
+    expect(plus.sept?.pagesTotal).toBe(9);
   });
 
   it('dit « ancien tri » avant la bascule, sans colonnes', () => {
