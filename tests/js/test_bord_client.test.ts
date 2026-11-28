@@ -210,20 +210,33 @@ describe('les cases des réseaux, sans recharger la page', () => {
     expect(document.querySelector('.flash')!.textContent).toBe("La case n'a pas été enregistrée.");
   });
 
-  it('si fetch échoue ou ne rend pas de JSON, le formulaire part à l\'ancienne (303)', async () => {
+  it('si fetch est rejeté (panne réseau), le formulaire part à l\'ancienne (303)', async () => {
     vi.spyOn(console, 'warn').mockImplementation(() => {});
-    for (const panne of [
-      () => Promise.reject(new TypeError('réseau')),
-      () => Promise.resolve(new Response('<html>403</html>', { status: 403 })),
-    ]) {
+    monter(caseHtml(false));
+    fetchMock.mockRejectedValueOnce(new TypeError('réseau'));
+    const { form, bouton } = laCase();
+    const soumettre = vi.spyOn(form, 'submit').mockImplementation(() => {});
+    envoyer(form);
+    await tick();
+    expect(soumettre).toHaveBeenCalledTimes(1);
+    expect(bouton.dataset.fait).toBe('0');
+  });
+
+  it('un refus qui n\'est pas du JSON (403, 413) ne relance pas de POST classique', async () => {
+    // Tour 1, F4 : la page ne doit pas être remplacée par « Forbidden ».
+    for (const status of [403, 413, 200]) {
       monter(caseHtml(false));
-      fetchMock.mockImplementationOnce(panne);
+      fetchMock.mockResolvedValueOnce(new Response('Forbidden', { status }));
       const { form, bouton } = laCase();
       const soumettre = vi.spyOn(form, 'submit').mockImplementation(() => {});
       envoyer(form);
       await tick();
-      expect(soumettre).toHaveBeenCalledTimes(1);
+      expect(soumettre).not.toHaveBeenCalled();
       expect(bouton.dataset.fait).toBe('0');
+      expect(bouton.disabled).toBe(false);
+      expect(document.querySelector('.flash')!.className).toBe('flash flash-error');
+      expect(document.querySelector('.flash')!.textContent)
+        .toBe("La case n'a pas été enregistrée.");
     }
   });
 

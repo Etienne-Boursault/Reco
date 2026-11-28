@@ -12,9 +12,10 @@
  *   le garde dans `localStorage["bord-vue"]` (relu par le script de `<head>`).
  *   Un stockage refusé n'empêche pas de changer de vue pour cette page.
  * - Les cases des réseaux : le formulaire part en `fetch` (`Accept: JSON`), et
- *   la case change sans recharger. Si `fetch` échoue ou ne rend pas de JSON,
- *   le formulaire repart à l'ancienne : sans risque, `fait` porte la valeur
- *   voulue, pas une bascule.
+ *   la case change sans recharger. Si `fetch` est rejeté (panne réseau), le
+ *   formulaire repart à l'ancienne : sans risque, `fait` porte la valeur
+ *   voulue, pas une bascule. Une réponse qui n'est pas du JSON (403, 413)
+ *   laisse la case telle quelle et affiche une erreur (tour 1, F4).
  */
 (() => {
   const racine = document.documentElement;
@@ -70,25 +71,29 @@
     const b = form.querySelector('button.bord-case');
     const voulu = form.elements.namedItem('fait').value === '1';
     b.disabled = true;
+    let r;
     try {
-      const r = await fetch(form.action, {
+      r = await fetch(form.action, {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: new URLSearchParams(new FormData(form)),
       });
-      const data = await r.json();
-      if (!r.ok || data.kind === 'error') {
-        message(data.message || "La case n'a pas été enregistrée.", 'error');
-        return;
-      }
-      poserCase(form, voulu);
-      if (data.message) message(data.message, data.kind);
     } catch (e) {
+      // Seule une panne du réseau relance le formulaire classique (tour 1, F4).
       console.warn('bord : envoi de la case en direct impossible, envoi classique', e);
       form.submit();
-    } finally {
       b.disabled = false;
+      return;
     }
+    // Un refus qui n'est pas du JSON (403, 413) laisse la case telle quelle.
+    const data = await r.json().catch(() => null);
+    if (!data || !r.ok || data.kind === 'error') {
+      message((data && data.message) || "La case n'a pas été enregistrée.", 'error');
+    } else {
+      poserCase(form, voulu);
+      if (data.message) message(data.message, data.kind);
+    }
+    b.disabled = false;
   }
 
   document.addEventListener('click', (e) => {
