@@ -72,6 +72,9 @@ def _episodes_yt(source_id: str) -> tuple[list[dict[str, Any]], int]:
             continue
         if isinstance(episode, dict) and str(episode.get("guid", "")).startswith("yt-"):
             out.append(episode)
+        else:  # tour 2, T2-5 : un fichier `yt-*` qui n'est pas une fiche d'épisode YouTube se compte
+            common.log.warning("bord_chaine : fiche d'épisode mal formée (%s)", path)
+            illisibles += 1
     return out, illisibles
 
 

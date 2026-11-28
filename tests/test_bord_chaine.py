@@ -225,6 +225,18 @@ def test_une_fiche_illisible_est_comptee_et_pas_seulement_sautee(corpus):
     assert bord_chaine.etat_chaine(SOURCE, db_path=corpus / "x")["fiches_illisibles"] == 2
 
 
+def test_une_fiche_lisible_mais_mal_formee_est_comptee_comme_illisible(corpus):
+    """Tour 2, T2-5 (F22) : un fichier `yt-*` est une fiche d'épisode ; s'il n'en est pas une, il se compte."""
+    _episode(corpus, "yt-A", "2026-11-20")
+    dossier = corpus / "episodes" / SOURCE
+    (dossier / "yt-liste.json").write_text("[1, 2]", encoding="utf-8")
+    (dossier / "yt-autre-guid.json").write_text('{"guid": "rss-12", "date": "2026-11-21"}',
+                                                encoding="utf-8")
+    (dossier / "yt-sans-guid.json").write_text("{}", encoding="utf-8")
+    etat = bord_chaine.etat_chaine(SOURCE)
+    assert etat["fiches_illisibles"] == 3 and etat["episode"]["guid"] == "yt-A"
+
+
 def test_sans_fiche_abimee_le_compte_est_zero(corpus):
     _episode(corpus, "yt-A", "2026-11-20")
     assert bord_chaine.etat_chaine(SOURCE)["fiches_illisibles"] == 0
