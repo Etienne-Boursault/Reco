@@ -258,8 +258,10 @@ signalement en attente · 3 liens morts ».
   l'heure. Inerte sans `RECO_RAPPEL_DIMANCHE=1` dans le `.env`.
 - **Le texte** est celui de la colonne « À faire d'abord » de `/bord`. Le script relit
   lui-même l'audience et GitHub avant d'écrire : une source qui ne répond pas donne « inconnu
-  (données du jj/mm) », jamais un silence. Des lignes « inconnu » seules n'envoient rien (le
-  journal du passage les cite).
+  (données du jj/mm) », jamais un silence ; un bloc en panne alors que sa source répond dit
+  seulement « inconnu ». Si toutes les lignes sont « inconnu », le message part quand même,
+  sous la forme « 🗒️ Rien de sûr cette semaine : réseaux : inconnu · … » (se taire se lirait
+  « rien à faire »). Seule une liste vide ne dit rien.
 - **Une fois par semaine** : `tools/output/bord/rappel.json` garde la semaine ISO envoyée.
   Rien à dire, ou un envoi raté : la semaine n'est pas marquée, le passage suivant revérifie.
 - **Code de sortie** : 0, ou 1 si `rappel.json` est illisible (rien n'est envoyé ni écrit : le
@@ -267,8 +269,8 @@ signalement en attente · 3 liens morts ».
   s'écrit pas (le message repartira). `tick.sh` le note comme échec `rappel-dimanche` sans arrêter
   le passage.
 - **Essai** : `docker compose run --rm -T pipeline python rappel_dimanche.py --apercu` affiche
-  le message, quel que soit le jour, l'heure ou l'interrupteur. Rien n'est envoyé, aucun état
-  n'est écrit.
+  le message à partir du cache, sans appel réseau, sans envoi ni écriture, quel que soit le
+  jour, l'heure ou l'interrupteur.
 
 ## Où sont les choses
 

@@ -188,7 +188,7 @@ exploitation : `../deploy/venus/README.md`. Modules :
   `bord_client.js`, recopiés en ligne (la CSP n'admet que du style et du script en ligne).
 - `bord_afaire.py` : la liste « À faire d'abord » (pure), que reprend le rappel du dimanche (`a_faire_depuis`).
 - `rappel_dimanche.py` : le message Matrix du dimanche soir (une fois par semaine, `bord/rappel.json`),
-  appelé par `deploy/venus/tick.sh` ; `--apercu` n'envoie ni n'écrit rien. Variable et exploitation : `../deploy/venus/README.md`.
+  appelé par `deploy/venus/tick.sh` ; `--apercu` lit le cache : sans appel réseau, sans envoi ni écriture. Variable et exploitation : `../deploy/venus/README.md`.
 - `bord_chaine.py` : l'épisode en cours, ses étapes et les passages de `tick.sh`
   (`passages.jsonl`).
 - `bord_reseaux.py` : les cases des réseaux (`reseaux.json`), pour les 3 derniers publiés.

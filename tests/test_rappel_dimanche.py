@@ -8,6 +8,7 @@ est fixé à UTC+1 (le poste Windows n'a pas `tzdata`), Matrix est un faux, et
 from __future__ import annotations
 
 import json
+import logging
 from datetime import UTC, datetime, timedelta, timezone
 from types import SimpleNamespace
 
@@ -141,12 +142,16 @@ def test_rien_a_dire_n_envoie_rien_et_ne_marque_pas_la_semaine(monde):
     assert monde.sender.envoyes == [] and not monde.etat.exists()
 
 
-def test_des_lignes_inconnues_seules_n_envoient_rien_mais_se_journalisent(monde, caplog):
+def test_des_lignes_inconnues_seules_envoient_un_message_qui_ne_dit_pas_rien_a_faire(monde, monkeypatch):
+    # Revue, M1 : se taire se lirait « rien à faire » (F22). Le message part, sous une autre forme.
+    monkeypatch.setenv("RECO_REVIEW_URL", "https://relecture.example")
     monde.groups, monde.audience, monde.github, monde.contenu = {}, None, None, None
-    caplog.set_level("INFO")
     assert _lancer() == 0
-    assert monde.sender.envoyes == [] and not monde.etat.exists()
-    assert "signalements : inconnu" in caplog.text
+    corps = _corps(monde)
+    assert corps.startswith("🗒️ Rien de sûr cette semaine : ")
+    assert "signalements : inconnu" in corps and "Il te reste" not in corps
+    assert corps.endswith("\nhttps://relecture.example/bord")
+    assert json.loads(monde.etat.read_text(encoding="utf-8"))["semaine"] == "2026-W48"
 
 
 def test_une_ligne_inconnue_se_dit_dans_un_message_qui_part_pour_une_vraie_tache(monde):
@@ -197,6 +202,14 @@ def test_des_donnees_distantes_perimees_disent_inconnu_avec_leur_date(monde):
     assert "sorties : inconnu (données du 26/11)" in corps
 
 
+def test_une_ligne_inconnue_d_une_source_ok_n_a_pas_de_date(monde):
+    # Revue, F2 : un bloc en panne isolée (source `ok`) ne porte pas la date du jour.
+    monde.audience = {**AUDIENCE, "donnees": {"signalements": {"etat": "erreur"}}}
+    assert _lancer() == 0
+    corps = _corps(monde)
+    assert "signalements : inconnu" in corps and "(données du" not in corps
+
+
 def test_la_date_des_donnees_se_lit_a_paris(monde):
     # 23 h 30 UTC le 27 est déjà le 28 à 0 h 30 à Paris (UTC+1 forcé ici).
     monde.audience = {"etat": "panne", "lu": "2026-11-27T23:30:00+00:00", "donnees": None}
@@ -240,6 +253,14 @@ def test_le_rafraichissement_journalise_le_type_jamais_le_message(monde, monkeyp
     assert "RuntimeError" in caplog.text and "clé secrète" not in caplog.text
 
 
+def test_le_script_ne_reconfigure_pas_le_journal_racine(monde, monkeypatch):
+    # Revue, F4 : `basicConfig` doublait chaque ligne (le journal `reco` a déjà sa sortie).
+    racine = logging.getLogger()
+    monkeypatch.setattr(racine, "handlers", [])
+    assert _lancer() == 0
+    assert racine.handlers == []
+
+
 def test_apercu_affiche_sans_envoyer_ni_ecrire_et_ignore_jour_heure_et_interrupteur(
         monde, monkeypatch, capsys):
     monkeypatch.delenv("RECO_RAPPEL_DIMANCHE")
@@ -254,9 +275,39 @@ def test_apercu_affiche_sans_envoyer_ni_ecrire_et_ignore_jour_heure_et_interrupt
 
 
 def test_apercu_dit_quand_il_n_y_a_rien_a_dire(monde, capsys):
-    monde.groups, monde.audience, monde.github, monde.contenu = {}, None, None, None
+    monde.groups, monde.contenu = {}, {"liens": {"date": "2026-11-23", "age": 6, "ancien": False, "morts": 0}}
+    monde.audience = {**AUDIENCE, "donnees": {"signalements": {"etat": "lu", "enAttente": []}}}
+    monde.github = {**GITHUB, "donnees": {**GITHUB["donnees"], "ouvertes": {
+        "episodes": [], "sorties": [], "coupee": False}}}
     assert rd.main(["--apercu"], maintenant=DIMANCHE_20H05) == 0
     assert "rien à dire" in capsys.readouterr().out
+
+
+def test_apercu_montre_le_message_de_rien_de_sur(monde, capsys):
+    monde.groups, monde.audience, monde.github, monde.contenu = {}, None, None, None
+    assert rd.main(["--apercu"], maintenant=DIMANCHE_20H05) == 0
+    assert capsys.readouterr().out.startswith("🗒️ Rien de sûr cette semaine : ")
+    assert not monde.etat.exists()
+
+
+def _instantane(dossier):
+    return {str(f.relative_to(dossier)): (f.stat().st_size, f.stat().st_mtime_ns)
+            for f in dossier.rglob("*")}
+
+
+def test_apercu_ne_rafraichit_rien_et_n_ecrit_aucun_fichier(monde, monkeypatch, capsys):
+    # Revue, F1 (famille F19) : l'aperçu lit le cache seulement, sans réseau ni écriture.
+    dossier = monde.etat.parent
+    dossier.mkdir(parents=True)
+    (dossier / "distant.json").write_text("{}", encoding="utf-8")
+    avant, relancer = _instantane(dossier), []
+    for module, donnees in ((bord_distant, monde.audience), (bord_github, monde.github)):
+        monkeypatch.setattr(module, "lire", lambda d=donnees, **kw: relancer.append(kw.get("relancer")) or d)
+    assert rd.main(["--apercu"], maintenant=DIMANCHE_20H05) == 0
+    assert capsys.readouterr().out.startswith("🗒️ Il te reste : ")
+    assert monde.rafraichis == []
+    assert relancer == [False, False]
+    assert _instantane(dossier) == avant
 
 
 def test_sans_notifier_ni_apercu_le_script_refuse(monde):

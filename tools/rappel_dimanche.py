@@ -13,10 +13,12 @@ revérifie lui-même le jour et l'heure (Paris), et reste inerte sans `RECO_RAPP
 - Une fois par semaine : `rappel.json` (dossier de `RECO_BORD_DIR`) garde la semaine ISO
   envoyée. Un état illisible n'envoie rien, n'écrit rien et sort en erreur. Rien à dire, ou
   un envoi raté : la semaine n'est pas marquée, le passage suivant revérifie.
-- Des lignes « inconnu » seules ne font pas un message (rien de concret à faire), mais
-  elles sont journalisées : ni « rien à faire » dit à tort, ni message qui n'apprend rien.
-- `--apercu` affiche le texte, sans rien envoyer ni écrire de l'état, et ignore le jour,
-  l'heure et l'interrupteur.
+- Des lignes « inconnu » seules partent quand même, sous une autre forme (« Rien de sûr cette
+  semaine : … ») : se taire se lirait « rien à faire » (revue de la PR 4, M1). Seule une
+  liste vide reste silencieuse.
+- `--apercu` affiche le texte à partir du cache, sans appel réseau, sans envoi ni écriture
+  (ni de l'état, ni du cache : revue de la PR 4, F1), et ignore le jour, l'heure et
+  l'interrupteur.
 - L'envoi passe par le `MatrixSender` de la chaîne (`poll_rss._build_sender`) et non par
   `build_notify`, qui avale l'échec d'un envoi ; non configuré, il compte comme raté.
 """
@@ -24,7 +26,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import logging
 import os
 from datetime import UTC, datetime
 from typing import Any
@@ -99,17 +100,24 @@ def _lignes(source_id: str, fuseau) -> tuple[list[str], int]:
         audience=lus["audience"], github=lus["github"], contenu=bord_contenu.lire(source_id))
     lignes, taches = [], 0
     for item in items:
-        texte, lu = item["texte"], (lus.get(_SOURCES_DATEES.get(item["bloc"], "")) or {}).get("lu")
-        if item["inconnu"] and lu and texte.endswith("inconnu"):
+        texte = item["texte"]
+        source = lus.get(_SOURCES_DATEES.get(item["bloc"], "")) or {}
+        lu = source.get("lu")
+        # Une source `ok` dont un bloc est en panne isolée n'a pas de « données du » à citer (F2).
+        if item["inconnu"] and lu and source.get("etat") != "ok" and texte.endswith("inconnu"):
             texte += f" (données du {bord_distant._date(lu).astimezone(fuseau):%d/%m})"
         lignes.append(texte)
         taches += not item["inconnu"]
     return lignes, taches
 
 
-def _message(lignes: list[str]) -> str:
-    """Le texte, avec le lien de `/bord` si `RECO_REVIEW_URL` est posée."""
-    texte = "🗒️ Il te reste : " + " · ".join(lignes)
+def _message(lignes: list[str], taches: int) -> str:
+    """Le texte, avec le lien de `/bord` si `RECO_REVIEW_URL` est posée.
+
+    Sans aucune vraie tâche, le message dit qu'on ne sait rien de sûr (M1), jamais « rien à faire ».
+    """
+    debut = "🗒️ Il te reste : " if taches else "🗒️ Rien de sûr cette semaine : "
+    texte = debut + " · ".join(lignes)
     url = os.environ.get("RECO_REVIEW_URL", "").rstrip("/")
     return f"{texte}\n{url}/bord" if url else texte
 
@@ -123,7 +131,6 @@ def main(argv: list[str] | None = None, *, maintenant: datetime | None = None) -
     args = parser.parse_args(argv)
     if not (args.apercu or args.notifier):
         parser.error("--notifier matrix (ou --apercu) est requis")
-    logging.basicConfig(level=logging.INFO, format="%(message)s")
     fuseau = _fuseau()
     paris = (maintenant or datetime.now(UTC)).astimezone(fuseau)
     annee, semaine_iso, jour = paris.isocalendar()
@@ -137,15 +144,15 @@ def main(argv: list[str] | None = None, *, maintenant: datetime | None = None) -
         except bord_reseaux.EtatIllisible as exc:
             log.error("rappel : %s, rien n'est envoyé ni écrit", exc)
             return 1
-    _rafraichir()
+    if not args.apercu:  # l'aperçu ne lit que le cache : aucun appel réseau, aucune écriture (F1)
+        _rafraichir()
     lignes, taches = _lignes(args.source, fuseau)
-    if not taches:
-        log.info("rappel : rien à dire (%s), semaine %s non marquée", " · ".join(lignes) or "aucune ligne",
-                 semaine)
+    if not lignes:
+        log.info("rappel : rien à dire, semaine %s non marquée", semaine)
         if args.apercu:
             print("rien à dire : aucun message ne partirait")
         return 0
-    texte = _message(lignes)
+    texte = _message(lignes, taches)
     if args.apercu:
         print(texte)
         return 0
