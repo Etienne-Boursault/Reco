@@ -8,13 +8,14 @@ dossiers temporaires : les chemins se résolvent à l'appel (`common.RECOS_DIR`,
 from __future__ import annotations
 
 import json
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
 
 import bord_contenu
 import common
+import date_sortie
 
 MAINTENANT = datetime(2026, 11, 28, 12, 0, tzinfo=UTC)
 SOURCE = "un-bon-moment"
@@ -183,6 +184,15 @@ def test_le_resume_des_liens_avec_son_age(monde):
         "date": "2026-11-24", "age": 4, "ancien": False, "morts": 12, "nouveaux": 2,
         "inconnus": 5, "vivants": 900,
         "liste": [{"url": "https://a.example/", "reponse": "HTTP 404", "recos": ["r1"]}]}
+
+
+def test_l_age_du_rapport_se_compte_en_jours_de_paris(monde, monkeypatch):
+    """Revue globale, D7 : à 23 h 30 UTC il est déjà le lendemain à Paris (fuseau simulé : le
+    poste Windows n'a pas `tzdata`, comme dans `test_date_sortie.py`)."""
+    monkeypatch.setattr(date_sortie, "ZoneInfo", lambda _nom: timezone(timedelta(hours=1)))
+    _liens(monde, RESUME)
+    tard = datetime(2026, 11, 28, 23, 30, tzinfo=UTC)          # 29/11 à 0 h 30 à Paris
+    assert bord_contenu.lire(SOURCE, maintenant=tard)["liens"]["age"] == 5
 
 
 @pytest.mark.parametrize(("date", "ancien"), [("2026-11-20", False), ("2026-11-19", True)])
