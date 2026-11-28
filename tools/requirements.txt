@@ -45,8 +45,9 @@ filelock>=4.0.9,<5          # verrou inter-processus (cf. tools/review_lock.py)
 pillow>=13.0.0,<14  # 13.0.0 corrige les failles signalées par l'audit des dépendances (GHSA-f2g6-542v-9j58…)
 
 # Fuseau de Paris (tableau de bord, rappel du dimanche : heure d'envoi, dates affichées). Sans
-# elle, `zoneinfo` ne trouve rien dans l'image slim et le fuseau retombe sur UTC : le message
-# du dimanche partirait à 21 h l'hiver. Prise en compte à la prochaine reconstruction de l'image.
+# elle, `zoneinfo` ne trouve rien dans l'image slim et le fuseau retombe sur UTC : l'hiver, le
+# passage de 20 h 05 (19 h 05 UTC) n'enverrait rien et le message ne partirait qu'à 22 h 05, ou pas
+# du tout si ce passage est sauté. Prise en compte à la prochaine reconstruction de l'image.
 tzdata>=2026.1,<2027
 
 # Tests — parsing HTML structurel (review_server)
