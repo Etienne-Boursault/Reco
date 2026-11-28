@@ -38,7 +38,8 @@ noter_passage() {
     && printf '{"debut":"%s","fin":"%s","lancees":[%s],"echecs":[%s]}\n' \
       "${DEBUT}" "$(date -Iseconds)" "${LANCEES}" "${ECHECS}" >>"${BORD}/passages.jsonl" \
     && tail -n 200 "${BORD}/passages.jsonl" >"${BORD}/passages.jsonl.tmp" \
-    && mv "${BORD}/passages.jsonl.tmp" "${BORD}/passages.jsonl"     && rm -f "${BORD}/en-cours"
+    && mv "${BORD}/passages.jsonl.tmp" "${BORD}/passages.jsonl" \
+    && rm -f "${BORD}/en-cours"
 }
 outil() {
   docker compose run --rm -T pipeline \
@@ -49,8 +50,8 @@ horodater "passage"
 # Le passage tourne : le tableau de bord le sait par ce fichier, que `noter_passage`
 # efface à la fin (tour 1, F8 repris : sans lui, une longue transcription faisait crier
 # au retard). Resté après un échec de la note, il passe pour un passage bloqué.
-{ mkdir -p "${BORD}" && printf '%s
-' "${DEBUT}" >"${BORD}/en-cours"; }   || horodater "suivi du passage en cours impossible" || true
+{ mkdir -p "${BORD}" && printf '%s\n' "${DEBUT}" >"${BORD}/en-cours"; } \
+  || horodater "suivi du passage en cours impossible" || true
 git -C depot pull --ff-only --quiet \
   || echec git-pull "git pull impossible : passage sur la copie locale"
 outil detecter   || echec detecter "détection en échec"
