@@ -44,6 +44,12 @@ filelock>=4.0.9,<5          # verrou inter-processus (cf. tools/review_lock.py)
 # Arrivait jusqu'ici par fastembed : la déclarer évite qu'elle disparaisse avec lui.
 pillow>=13.0.0,<14  # 13.0.0 corrige les failles signalées par l'audit des dépendances (GHSA-f2g6-542v-9j58…)
 
+# Fuseau de Paris (tableau de bord, rappel du dimanche : heure d'envoi, dates affichées). Sans
+# elle, `zoneinfo` ne trouve rien dans l'image slim et le fuseau retombe sur UTC : l'hiver, le
+# passage de 20 h 05 (19 h 05 UTC) n'enverrait rien et le message ne partirait qu'à 22 h 05, ou pas
+# du tout si ce passage est sauté. Prise en compte à la prochaine reconstruction de l'image.
+tzdata>=2026.1,<2027
+
 # Tests — parsing HTML structurel (review_server)
 beautifulsoup4>=4.15.0,<5  # assertions DOM robustes aux changements de markup
 responses>=0.26.3,<1         # mock des appels HTTP `requests` (enrich, fetch, ocr, transcribe)

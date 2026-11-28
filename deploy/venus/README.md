@@ -244,6 +244,34 @@ n'écrit que dans ce dossier, jamais dans le corpus, et ne prend aucun verrou de
 elle s'arrête une à deux minutes pendant l'extraction et la finalisation. Après une PR qui la
 change : `docker compose restart review` sous le verrou du tick, une fois le `git pull` passé.
 
+### Le message du dimanche soir : `RECO_RAPPEL_DIMANCHE=1`
+
+Décisions R2 B du 27/11/2026, TB-1 C et TB-2 B du 28/11/2026. Le dimanche soir, un message
+dans le salon Matrix de Reco dit ce qu'il reste à faire, avec le lien de `/bord` (si
+`RECO_REVIEW_URL` est posée ; sans elle, pas de lien). Exemple : « 🗒️ Il te reste : relire
+S6·E12 (14 recos) · fusionner la PR de S6·E11 · réseaux de S6·E11 : Deezer, SensCritique · 1
+signalement en attente · 3 liens morts ».
+
+- **Quand** : le premier passage de `tick.sh` à partir de 20 h le dimanche (heure de Paris),
+  donc celui de 20 h 05, ou de 22 h 05 si le premier était occupé. Pas de rattrapage le lundi.
+  `tick.sh` ne lance l'étape qu'à ce moment, et `tools/rappel_dimanche.py` revérifie le jour et
+  l'heure. Inerte sans `RECO_RAPPEL_DIMANCHE=1` dans le `.env`.
+- **Le texte** est celui de la colonne « À faire d'abord » de `/bord`. Le script relit
+  lui-même l'audience et GitHub avant d'écrire : une source qui ne répond pas donne « inconnu
+  (données du jj/mm) », jamais un silence ; un bloc en panne alors que sa source répond dit
+  seulement « inconnu ». Si toutes les lignes sont « inconnu », le message part quand même,
+  sous la forme « 🗒️ Rien de sûr cette semaine : réseaux : inconnu · … » (se taire se lirait
+  « rien à faire »). Seule une liste vide ne dit rien.
+- **Une fois par semaine** : `tools/output/bord/rappel.json` garde la semaine ISO envoyée.
+  Rien à dire, ou un envoi raté : la semaine n'est pas marquée, le passage suivant revérifie.
+- **Code de sortie** : 0, ou 1 si `rappel.json` est illisible (rien n'est envoyé ni écrit : le
+  réparer ou le retirer), si Matrix n'est pas configuré ou refuse le message, ou si l'état ne
+  s'écrit pas (le message repartira). `tick.sh` le note comme échec `rappel-dimanche` sans arrêter
+  le passage.
+- **Essai** : `docker compose run --rm -T pipeline python rappel_dimanche.py --apercu` affiche
+  le message à partir du cache, sans appel réseau, sans envoi ni écriture, quel que soit le
+  jour, l'heure ou l'interrupteur.
+
 ## Où sont les choses
 
 | Chemin sur venus | Rôle | Sauvegardé |
@@ -270,6 +298,7 @@ SPOTIFY_CLIENT_SECRET=…
 RECO_SPOTIFY=0                 # sans Premium, l'API répond 403 : liens posés à la publication (docs/reseaux-episode.md)
 RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le message porte le lien de comparaison ; /bord lit GitHub sans lui (appels anonymes, 60 par heure)
 RECO_SORTIES_ANNONCEES=1       # relance quotidienne des liens à la sortie annoncée ; absent, l'étape ne fait rien
+RECO_RAPPEL_DIMANCHE=1        # message Matrix du dimanche soir à partir de 20 h ; absent, l'étape ne fait rien
 RECO_KUMA_PUSH_URL=…           # moniteur « push » Uptime Kuma ; absent, aucun ping n'est envoyé
 RECO_AUDIENCE_KEY=…            # la même clé que chez l'hébergeur : /bord lit l'audience par GET /api/bord ; absente, la page dit « clé absente »
 RECO_REVIEW_HOTES=…            # facultatif : autres noms admis par la garde des hôtes (virgules ou espaces) ; lu seulement en mode réseau local (ALLOW_LAN)

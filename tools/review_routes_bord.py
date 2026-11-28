@@ -84,12 +84,9 @@ class BordRoutesMixin:
         contenu = bord_contenu.lire(self.source_id)  # fichiers locaux, une seule fois (3c)
         self._send(200, bord_rendu.rendre_bord(
             titre=source.get("title", self.source_id),
-            afaire=bord_afaire.a_faire(
+            afaire=bord_afaire.a_faire_depuis(
                 episodes=episodes, groups=groups, recents=recents, coches=coches,
-                signalements=bord_afaire.lignes_signalements(audience),
-                publication=bord_afaire.lignes_publication(github, recents),
-                sorties=bord_afaire.lignes_sorties(github),
-                liens=bord_afaire.lignes_liens(contenu)),
+                audience=audience, github=github, contenu=contenu),
             audience=audience, github=github, systeme=systeme, contenu=contenu,
             chaine=bord_chaine.etat_chaine(
                 self.source_id, fusionnees=bord_afaire.branches_fusionnees(github)),
