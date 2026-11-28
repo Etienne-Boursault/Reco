@@ -213,7 +213,7 @@ page se recharge toute seule toutes les 5 minutes.
   `RECO_AUDIENCE_KEY` (ci-dessous) : la page ne lit que le cache
   `tools/output/bord/distant.json`, et le relit sur le site en arrière-plan quand il a plus de
   10 minutes. En tête, l'état et l'âge : « À jour · lu il y a 12 min », ou clé absente, clé
-  refusée (celle de venus n'est pas celle du site), site injoignable, réponse illisible, cache
+  refusée (le site répond « introuvable » : clé différente, clé absente du site, ou route pas encore là), site injoignable, réponse illisible, cache
   illisible (à effacer à la main). Après une panne, les derniers chiffres restent, avec leur
   âge.
 - **Signalements**, dans la colonne des réseaux : les 5 derniers en attente, avec leur reco,
@@ -236,7 +236,7 @@ change : `docker compose restart review` sous le verrou du tick, une fois le `gi
 | `~/docker/reco/.env` | clés (droits 600) | oui |
 | `~/docker/reco/depot/` | clone du dépôt ; `tools/output/` y garde transcriptions et états | oui |
 | `~/docker/reco/logs/tick-AAAA-MM.log` | journal des passages | oui |
-| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées), `distant.json` (dernière audience lue) | oui |
+| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées), `distant.json` (dernière audience lue), `distant.log` (sortie du rafraîchissement) | oui |
 | `~/.cache/reco/` | modèle Whisper (1,6 Go), caches yt-dlp — se retéléchargent | **non**, volontairement |
 | `~/.ssh/reco_deploy` | clé de dépôt (écriture sur ce dépôt seul), droits 600 | **non** : la sauvegarde ne couvre que `~/docker`. Une clé perdue se régénère et se redéclare sur GitHub |
 

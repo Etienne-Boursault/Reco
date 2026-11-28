@@ -192,7 +192,8 @@ exploitation : `../deploy/venus/README.md`. Modules :
 - `bord_reseaux.py` : les cases des réseaux (`reseaux.json`), pour les 3 derniers publiés.
 - `bord_distant.py` : l'audience du site, lue par `GET /api/bord` avec `RECO_AUDIENCE_KEY` ;
   la page ne lit que le cache `distant.json`, `python tools/bord_distant.py rafraichir` le
-  relit (lancé détaché par la page quand il a 10 min).
+  relit (lancé détaché par la page quand il a 10 min, sa sortie ajoutée à `distant.log`,
+  remis à zéro au-delà de 200 Ko).
 - `bord_rendu_audience.py` : la colonne Audience (pure) ; `bord_rendu_blocs.bloc_signalements`
   et `bord_afaire.lignes_signalements` lisent les signalements dans le même état.
 - `review_polices/` : Bebas Neue et Inter en WOFF2, copiées de `@fontsource`, licence OFL.
