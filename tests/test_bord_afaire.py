@@ -170,11 +170,11 @@ def _pr(numero, branche, titre="Un titre", groupe="episodes", adresse=None):
 
 
 def _github(episodes=(), sorties=(), coupee=False, etat="ok", ouvertes="defaut",
-            fusionnees=None, depot="Etienne-Boursault/Reco"):
+            fusionnees="aucune", depot="Etienne-Boursault/Reco"):
     if ouvertes == "defaut":
         ouvertes = {"episodes": list(episodes), "sorties": list(sorties), "coupee": coupee}
     return {"etat": etat, "donnees": {"depot": depot, "ouvertes": ouvertes,
-                                      "fusionnees": fusionnees}}
+                                      "fusionnees": [] if fusionnees == "aucune" else fusionnees}}
 
 
 def _recent(guid, episode, fusionne=False):
@@ -208,8 +208,8 @@ def test_un_episode_pousse_sans_pr_ouverte_dit_d_ouvrir_la_pr_avec_le_lien_de_co
     """Tour 1, E2 : venus pousse la branche sans ouvrir de PR (pas de jeton)."""
     recents = [_recent("yt-DNoUz4FJ_Z8", {**EP11, "guid": "yt-DNoUz4FJ_Z8"})]
     lignes = ba.lignes_publication(_github(), recents)
-    assert lignes == [("ouvrir puis fusionner la PR de S6·E11",
-                       "https://github.com/Etienne-Boursault/Reco/compare/main...contenu/yt-dnouz4fj-z8")]
+    compare = "https://github.com/Etienne-Boursault/Reco/compare/main...contenu/yt-dnouz4fj-z8"
+    assert lignes == [("ouvrir puis fusionner la PR de S6·E11", compare + "?expand=1")]
     items = _appel(recents=recents, coches={"yt-DNoUz4FJ_Z8": TOUT_COCHE}, publication=lignes)
     assert len(items) == 1 and not items[0]["inconnu"] and items[0]["href"].startswith(
         "https://github.com/")
@@ -231,23 +231,68 @@ def test_un_episode_dont_la_pr_est_fusionnee_ne_donne_aucune_ligne_meme_si_le_cl
     assert ba.lignes_publication(_github(), [_recent("yt-11", EP11, fusionne=True)]) == []
 
 
-def test_une_pr_de_contenu_faite_a_la_main_n_est_pas_une_publication_d_episode():
-    """Tour 1, F2 : une ligne grisée la compte, elle n'est pas une tâche."""
+def test_une_pr_de_contenu_faite_a_la_main_est_une_vraie_tache():
+    """Tour 2, M-2 : une PR ouverte reste à fusionner ou à fermer ; elle compte, avec son lien."""
     import bord_rendu_blocs as bb
-    github = _github(episodes=[_pr(41, "contenu/yt-11"), _pr(60, "contenu/liens-rebelle"),
-                               _pr(61, "contenu/autre")])
+    github = _github(episodes=[_pr(41, "contenu/yt-11"),
+                               _pr(60, "contenu/liens-rebelle", "Liens de Rebelle"),
+                               _pr(61, "contenu/autre", "<b>Autre</b>")])
     lignes = ba.lignes_publication(github, [_recent("yt-11", EP11)])
     assert lignes == [("fusionner la PR de S6·E11 (#41)", f"{PR_URL}41"),
-                      "autres PR de contenu ouvertes : 2"]
+                      ("fusionner la PR #60 : Liens de Rebelle", f"{PR_URL}60"),
+                      ("fusionner la PR #61 : <b>Autre</b>", f"{PR_URL}61")]
     contenu, nb = bb.bloc_afaire(_appel(recents=[_recent("yt-11", EP11)],
                                         coches={"yt-11": TOUT_COCHE}, publication=lignes))
-    assert nb == 1 and contenu.count("data-inconnu") == 1
+    assert nb == 3 and "data-inconnu" not in contenu
+    assert "&lt;b&gt;Autre&lt;/b&gt;" in contenu and "<b>" not in contenu
+
+
+def test_le_titre_d_une_pr_a_la_main_est_coupe_a_l_affichage():
+    import bord_rendu_blocs as bb
+    lignes = ba.lignes_publication(_github(episodes=[_pr(60, "contenu/x", "é" * 500)]), [])
+    contenu, _ = bb.bloc_afaire(_appel(publication=lignes))
+    assert "é" * 500 not in contenu and "…" in contenu
+
+
+def test_une_pr_ouverte_n_affiche_jamais_rien_a_faire():
+    import bord_rendu_blocs as bb
+    lignes = ba.lignes_publication(_github(episodes=[_pr(60, "contenu/x")]), [])
+    assert "Rien à faire" not in bb.bloc_afaire(_appel(publication=lignes))[0]
+
+
+def test_sans_etat_de_la_chaine_les_pr_ouvertes_se_listent_et_la_publication_est_inconnue():
+    """Tour 2, M-2 : `recents` illisible. Aucun « ouvrir puis fusionner », une note grisée qui ne compte pas."""
+    import bord_rendu_blocs as bb
+    lignes = ba.lignes_publication(_github(episodes=[_pr(41, "contenu/yt-11")]), None)
+    assert lignes == [ba.Note("publication des épisodes : inconnu"),
+                      ("fusionner la PR #41 : Un titre", f"{PR_URL}41")]
+    contenu, nb = bb.bloc_afaire(_appel(recents=None, coches=None, publication=lignes))
+    assert nb == 1 and contenu.count("data-inconnu") == 2     # la note et « réseaux : inconnu »
+    seul = ba.lignes_publication(_github(), None)
+    assert seul == [ba.Note("publication des épisodes : inconnu")]
+    assert "Rien à faire" not in bb.bloc_afaire(_appel(publication=seul))[0]
+
+
+def test_les_pr_fusionnees_non_lues_ne_font_jamais_dire_d_ouvrir_la_pr():
+    """Tour 2, M-1 : « inconnu » n'est pas « aucune » ; une PR peut déjà être fusionnée."""
+    import bord_rendu_blocs as bb
+    recents = [_recent("yt-11", EP11), _recent("yt-12", EP12, fusionne=True)]
+    lignes = ba.lignes_publication(_github(fusionnees=None), recents)
+    assert lignes == [ba.Note("publication de S6·E11 : inconnu (PR fusionnées non lues)")]
+    contenu, nb = bb.bloc_afaire(_appel(recents=recents, publication=lignes,
+                                        coches={"yt-11": TOUT_COCHE, "yt-12": TOUT_COCHE}))
+    assert nb == 0 and "data-inconnu" in contenu and "Rien à faire" not in contenu
+    # Une PR ouverte reste une preuve : « fusionner la PR », même sans la liste des fusionnées.
+    ouverte = _github(fusionnees=None, episodes=[_pr(41, "contenu/yt-11")])
+    assert ba.lignes_publication(ouverte, recents) == [
+        ("fusionner la PR de S6·E11 (#41)", f"{PR_URL}41")]
 
 
 def test_les_branches_fusionnees_se_lisent_meme_apres_une_panne():
     assert ba.branches_fusionnees(_github(fusionnees=[_pr(1, "contenu/a")], etat="panne")) \
         == {"contenu/a": "2026-11-28T08:00:00Z"}
-    for github in (None, "texte", {}, {"donnees": None}, _github(), _github(fusionnees="x")):
+    for github in (None, "texte", {}, {"donnees": None}, _github(fusionnees=None),
+                   _github(fusionnees="x")):
         assert ba.branches_fusionnees(github) is None
 
 
@@ -274,10 +319,10 @@ def test_une_liste_de_pr_coupee_le_dit():
     assert bb.bloc_afaire(_appel(publication=[lignes[-1]]))[1] == 0
 
 
-def test_une_pr_sans_branche_est_comptee_parmi_les_autres():
+def test_une_pr_sans_branche_n_est_rapprochee_d_aucun_episode():
     pr = {"numero": 5, "adresse": f"{PR_URL}5"}
-    assert ba.lignes_publication(_github(episodes=[pr]), None) == [
-        "autres PR de contenu ouvertes : 1"]
+    assert ba.lignes_publication(_github(episodes=[pr]), []) == [
+        ("fusionner la PR #5 : sans titre", f"{PR_URL}5")]
 
 
 def test_la_ligne_des_sorties_passe_d_inconnu_a_un_nombre_depuis_github():

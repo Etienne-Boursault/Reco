@@ -223,11 +223,20 @@ ou si c'est du `https` vers `github.com` (PR, CI, déploiement) ; sinon elle res
 échappé. Les lignes de « À faire d'abord » : `publication` (chaque épisode récent se rapproche de sa
 branche `contenu/<slug>` : « fusionner la PR de S6·E12 » si elle est ouverte, rien si elle est fusionnée,
 « ouvrir puis fusionner la PR de S6·E12 » avec le lien de comparaison si la branche est poussée sans PR,
-comme sur venus sans jeton GitHub ; les autres PR `contenu/*` ouvertes ne sont comptées que dans une
-ligne grisée ; sans GitHub lisible, l'état de la chaîne), `sorties` (PR ouvertes de sorties `contenu/sorties-*` ; les
+comme sur venus sans jeton GitHub, et « publication de S6·E12 : inconnu » (grisée) si les PR
+fusionnées n'ont pas été lues ; toute autre PR `contenu/*` ouverte, faite à la main ou d'un épisode plus
+ancien, est une tâche, « fusionner la PR #N : titre », car une PR ouverte est à fusionner ou à fermer ;
+sans GitHub lisible, l'état de la chaîne ; sans état de la chaîne, les PR ouvertes se listent et
+« publication des épisodes : inconnu » est grisée), `sorties` (PR ouvertes de sorties `contenu/sorties-*` ; les
 relances partent seules, rien à faire pour Étienne : décision du 28/11/2026) et `liens` (nombre
 de liens morts du dernier rapport ; au-delà de 8 jours, une ligne grisée « rapport ancien » qui ne compte
 pas). L'étape « Publié » de la chaîne se lit aussi sur la PR fusionnée (sa date de fusion).
+
+Les PR fusionnées s'accumulent d'une lecture à l'autre (par branche, la date de fusion la plus
+récente, 200 au plus) : la fenêtre de GitHub ne compte que les 30 PR fermées les plus récentes, et une
+panne de cet appel garde la liste d'avant. Limite connue : une branche `contenu/<slug>` réutilisée pour
+un nouvel épisode est masquée par sa PR fusionnée d'avant (même branche, donc « fusionné ») ; rien n'est
+codé contre cela, la chaîne ne réutilise pas de branche.
 
 Les états vivent sous `tools/output/bord/` (`RECO_BORD_DIR` pour les essais), hors de Git.
 

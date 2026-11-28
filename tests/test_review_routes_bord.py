@@ -233,7 +233,7 @@ def test_get_bord_passe_les_prs_fusionnees_a_la_chaine_et_a_la_publication(monke
     assert vus == [{"fusionnees": {"contenu/ep-001": "2026-11-27T10:00:00Z"}}]
     # ep-001 : PR fusionnée, rien à faire ; ep-002 : poussé sans PR, à ouvrir (lien de comparaison).
     assert "ouvrir puis fusionner la PR de S6·E2" in page
-    assert 'href="https://github.com/a/b/compare/main...contenu/ep-002"' in page
+    assert 'href="https://github.com/a/b/compare/main...contenu/ep-002?expand=1"' in page
     assert "fusionner la PR de S6·E1" not in page
 
 

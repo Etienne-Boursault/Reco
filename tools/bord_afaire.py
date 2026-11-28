@@ -22,9 +22,11 @@ LES LIGNES DE LA PR 3 (tranche 3d-2)
   (28/11/2026) : venus n'a pas de `RECO_GITHUB_TOKEN`, il pousse `contenu/<slugify(guid)>` sans
   ouvrir de PR. Chaque épisode récent se rapproche donc de sa branche : une PR ouverte donne
   « fusionner la PR de … », une PR fusionnée ne donne rien (seul le clone est en retard), ni l'une
-  ni l'autre donne « ouvrir puis fusionner la PR de … » avec le lien de comparaison. Une PR
-  `contenu/*` ouverte qui ne correspond à aucun épisode récent (faite à la main) n'est pas une
-  publication : elle est comptée dans une ligne grisée, sans lien (le choix le plus simple) ;
+  ni l'autre donne « ouvrir puis fusionner la PR de … » avec le lien de comparaison. Tour 2 (M-1,
+  M-2) : une donnée non lue se dit « inconnu », jamais un fait ni une action : sans les PR
+  fusionnées lues, pas de « ouvrir puis fusionner » mais une ligne grisée ; une PR `contenu/*`
+  ouverte qui ne correspond à aucun épisode récent (faite à la main, épisode plus ancien) est une
+  vraie tâche, « fusionner la PR #N », car une PR ouverte est à fusionner ou à fermer ;
 - sorties : les PR ouvertes de sorties (`contenu/sorties-*`) à fusionner, lues de même ;
   « inconnu » si GitHub n'est pas lisible. Choix du 28/11/2026 : les recos « à relancer »
   se relancent seules chaque jour, il n'y a rien à faire pour Étienne ;
@@ -39,6 +41,7 @@ from datetime import date
 from typing import Any
 
 from bord_reseaux import LIBELLES, RESEAUX, branche_de
+from publication import lien_comparaison
 from review_render_focus import _ep_label, entry_state, short_title
 
 #: `propriétaire/nom` en caractères sûrs : seul un dépôt de cette forme entre dans un lien.
@@ -175,7 +178,7 @@ def _comparaison(depot: Any, branche: str) -> str | None:
     """Le lien de comparaison de la branche poussée, seulement pour un dépôt `propriétaire/nom` sûr."""
     if not isinstance(depot, str) or not _DEPOT.fullmatch(depot):
         return None
-    return f"https://github.com/{depot}/compare/main...{branche}"
+    return lien_comparaison(*depot.split("/"), branche)
 
 
 def lignes_publication(github: dict | None, recents: list[dict] | None) -> list | None:
@@ -183,14 +186,17 @@ def lignes_publication(github: dict | None, recents: list[dict] | None) -> list 
 
     Chaque épisode récent se rapproche de sa branche `contenu/<slugify(guid)>` (tour 1, E2, F1) :
     PR ouverte, « fusionner la PR » ; PR fusionnée ou épisode revenu dans le clone, rien ;
-    sinon « ouvrir puis fusionner la PR », avec le lien de comparaison. Les autres PR ouvertes
-    de contenu (faites à la main, F2) ne sont pas des épisodes : une ligne grisée les compte.
+    sinon « ouvrir puis fusionner la PR », avec le lien de comparaison, sauf si les PR fusionnées
+    n'ont pas été lues : la ligne est alors grisée, « inconnu » (tour 2, M-1). Les autres PR de
+    contenu ouvertes (faites à la main, épisode plus ancien) sont des tâches : « fusionner la PR #N »
+    (tour 2, M-2). Sans état de la chaîne (`recents` à None), elles se listent aussi, avec une ligne
+    grisée « publication des épisodes : inconnu ».
     Une liste coupée par l'API (100 PR) le dit, sans pouvoir dire combien de PR manquent.
     """
     ouvertes = _ouvertes(github)
     if ouvertes is None:
         return None
-    fusionnees = branches_fusionnees(github) or {}
+    fusionnees = branches_fusionnees(github)      # None : les PR fusionnées n'ont pas été lues
     depot = github["donnees"].get("depot")
     par_branche = {pr.get("branche"): pr for pr in ouvertes["episodes"]}
     lignes: list = []
@@ -202,11 +208,18 @@ def lignes_publication(github: dict | None, recents: list[dict] | None) -> list 
         if pr:
             vues.add(branche)
             lignes.append((f"fusionner la PR de {nom} (#{pr.get('numero')})", pr.get("adresse")))
-        elif not r["fusionne"] and branche not in fusionnees:
-            lignes.append((f"ouvrir puis fusionner la PR de {nom}", _comparaison(depot, branche)))
-    autres = sum(1 for pr in ouvertes["episodes"] if pr.get("branche") not in vues)
-    if autres:
-        lignes.append(Note(f"autres PR de contenu ouvertes : {autres}"))
+        elif not r["fusionne"]:
+            if fusionnees is None:     # tour 2, M-1 : « inconnu » n'est pas « aucune »
+                lignes.append(Note(f"publication de {nom} : inconnu (PR fusionnées non lues)"))
+            elif branche not in fusionnees:
+                lignes.append((f"ouvrir puis fusionner la PR de {nom}",
+                               _comparaison(depot, branche)))
+    if recents is None:
+        lignes.append(Note("publication des épisodes : inconnu"))
+    for pr in ouvertes["episodes"]:    # tour 2, M-2 : une PR ouverte est toujours une vraie tâche
+        if pr.get("branche") not in vues:
+            lignes.append((f"fusionner la PR #{pr.get('numero')} : {pr.get('titre') or 'sans titre'}",
+                           pr.get("adresse")))
     if ouvertes.get("coupee"):
         lignes.append(Note("d'autres PR ouvertes ne sont pas listées"))
     return lignes
