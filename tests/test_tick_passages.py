@@ -185,6 +185,9 @@ def test_le_rappel_part_le_dimanche_a_partir_de_20h(tmp_path, jour, heure):
     assert _lancer(script, env).returncode == 0
     appels = (tmp_path / "appels.txt").read_text(encoding="utf-8").splitlines()
     assert sum(RAPPEL in a for a in appels) == 1
+    # Revue de la PR 4, F3 : le suivi des passages note l'étape lancée.
+    [ligne] = _lignes(tmp_path / "bord" / "passages.jsonl")
+    assert "rappel-dimanche" in ligne["lancees"]
 
 
 @pytest.mark.skipif(_SANS_ESSAI, reason="sh ou flock absent, ou Windows")
@@ -199,6 +202,8 @@ def test_le_rappel_ne_part_ni_un_autre_jour_ni_avant_20h(tmp_path, jour, heure):
     assert RAPPEL not in (tmp_path / "appels.txt").read_text(encoding="utf-8")
     journal = next((tmp_path / "reco" / "logs").glob("tick-*.log")).read_text(encoding="utf-8")
     assert "rappel-dimanche" not in journal and "bad number" not in journal.lower()
+    [ligne] = _lignes(tmp_path / "bord" / "passages.jsonl")
+    assert "rappel-dimanche" not in ligne["lancees"]
 
 
 @pytest.mark.skipif(_SANS_ESSAI, reason="sh ou flock absent, ou Windows")

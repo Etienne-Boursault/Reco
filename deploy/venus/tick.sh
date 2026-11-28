@@ -120,8 +120,10 @@ fi
 # le dimanche à partir de 20 h (heure de venus, celle de Paris), le script envoie ce qu'il
 # reste à faire, une fois par semaine ; il revérifie lui-même le jour et l'heure, et reste
 # inerte sans RECO_RAPPEL_DIMANCHE=1 dans le .env. Avant `noter_passage`, pour compter dans
-# le suivi ; un échec est noté et n'arrête rien. `[ … -ge 20 ]` lit « 08 » en décimal.
+# le suivi (`lance` le note dans `passages.jsonl`) ; un échec est noté et n'arrête rien.
+# `[ … -ge 20 ]` lit « 08 » en décimal.
 if [ "$(date +%u)" = 7 ] && [ "$(date +%H)" -ge 20 ]; then
+  lance rappel-dimanche
   docker compose run --rm -T pipeline \
     python rappel_dimanche.py --notifier matrix \
     || echec rappel-dimanche "message du dimanche soir en échec"
