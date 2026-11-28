@@ -351,9 +351,9 @@ def test_chaine_les_derniers_passages():
     lignes = re.findall(r'<li data-echec="(\d)"><span>(.*?)</span><span class="bord-mut">'
                         r'(.*?)</span></li>', contenu)
     assert lignes == [
-        ("0", "10 h 17 · rien de neuf", "41 s"),
+        ("0", "10 h 17 · aucune étape suivie", "41 s"),
         ("1", "08 h 17 · lancé : extraire, chercher-liens · en échec : publier", "3 min 12"),
-        ("0", "? · rien de neuf", "?"),
+        ("0", "? · aucune étape suivie", "?"),
     ]
 
 

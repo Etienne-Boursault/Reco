@@ -144,6 +144,22 @@ def signalements_en_attente(audience: dict | None) -> list[dict] | None:
     return liste
 
 
+def total_signalements(audience: dict | None) -> int | None:
+    """Combien de signalements attendent, ou None (inconnu).
+
+    Le site n'envoie que les 5 plus récents et leur total `total` (tableau de bord, revue
+    globale, S4). Un cache d'avant ce champ, ou un total qui n'est pas un entier au moins égal
+    à la liste envoyée, se rabat sur la longueur de la liste.
+    """
+    liste = signalements_en_attente(audience)
+    if liste is None:
+        return None
+    total = audience["donnees"]["signalements"].get("total")
+    if isinstance(total, int) and not isinstance(total, bool) and total >= len(liste):
+        return total
+    return len(liste)
+
+
 def lignes_signalements(audience: dict | None) -> list[str] | None:
     """La ligne des signalements, depuis `bord_distant.lire()` ; None : inconnu.
 
@@ -153,10 +169,9 @@ def lignes_signalements(audience: dict | None) -> list[str] | None:
     donnees = (audience or {}).get("donnees")
     if not audience or audience.get("etat") != "ok" or not donnees:
         return None
-    liste = signalements_en_attente(audience)
-    if liste is None:
+    n = total_signalements(audience)
+    if n is None:
         return None
-    n = len(liste)
     return [f"{n} signalement{'s' if n > 1 else ''} en attente"] if n else []
 
 

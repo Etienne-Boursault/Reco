@@ -13,6 +13,7 @@ import re
 
 import pytest
 
+import bord_afaire as ba
 import bord_distant
 import bord_rendu_audience as bra
 import bord_rendu_blocs as bb
@@ -371,6 +372,36 @@ def test_signalements_coupes_disent_combien_restent():
     assert bloc.count("<li") == bb.SIGNALEMENTS_MAX
     assert "ubm-0" in bloc and f"ubm-{bb.SIGNALEMENTS_MAX}" not in bloc  # les plus récents
     assert f"+ {8 - bb.SIGNALEMENTS_MAX} autres" in bloc
+
+
+def _aud_total(envoyes, total):
+    """Le site n'envoie que les 5 plus récents, avec le total (revue globale, S4)."""
+    aud = _aud(_sig(envoyes))
+    aud["donnees"]["signalements"]["total"] = total
+    return aud
+
+
+def test_signalements_coupes_par_le_site_disent_combien_restent_d_apres_le_total():
+    bloc = bb.bloc_signalements(_aud_total(5, 8))
+    assert bloc.count("<li") == 5 and "+ 3 autres" in bloc
+
+
+def test_la_ligne_a_faire_compte_le_total_du_site_pas_la_liste_coupee():
+    assert ba.lignes_signalements(_aud_total(5, 8)) == ["8 signalements en attente"]
+
+
+@pytest.mark.parametrize("total", ["beaucoup", True, 2, -1, None])
+def test_un_total_absent_ou_faux_se_rabat_sur_la_liste(total):
+    """Un cache d'avant S4 n'a pas `total` ; un total qui n'est pas un entier plausible est écarté."""
+    aud = _aud_total(5, total)
+    assert ba.lignes_signalements(aud) == ["5 signalements en attente"]
+    assert "+ " not in bb.bloc_signalements(aud)
+
+
+def test_signalements_ok_mais_anciens_se_disent_perimes():
+    bloc = bb.bloc_signalements(_aud(_sig(1), age=3 * 3600))
+    assert "Périmé" in bloc and "données d'il y a 3 h 00" in bloc
+    assert "Périmé" not in bb.bloc_signalements(_aud(_sig(1), age=60))
 
 
 def test_signalements_aucun_en_attente():

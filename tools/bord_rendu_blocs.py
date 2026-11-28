@@ -28,7 +28,8 @@ from typing import Any
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from bord_afaire import _libelle, signalements_en_attente
+import bord_distant
+from bord_afaire import _libelle, signalements_en_attente, total_signalements
 from bord_reseaux import LIBELLES, RESEAUX
 from review_render_focus import short_title
 
@@ -202,9 +203,12 @@ def _etape(e: dict) -> str:
 
 
 def _passage(p: dict) -> str:
+    # Seules les étapes notées par `lance` (tick.sh) comptent : la détection et la transcription
+    # n'en sont pas, un passage qui n'a fait qu'elles ne dit donc pas « rien de neuf » (revue
+    # globale, M5).
     lancees, echecs = _noms(p.get("lancees")), _noms(p.get("echecs"))
     texte = (_heure(p.get("debut")) or "?") + " · "
-    texte += ("lancé : " + ", ".join(lancees)) if lancees else "rien de neuf"
+    texte += ("lancé : " + ", ".join(lancees)) if lancees else "aucune étape suivie"
     if echecs:
         texte += " · en échec : " + ", ".join(echecs)
     return (f'<li data-echec="{1 if echecs else 0}"><span>{texte}</span>'
@@ -328,9 +332,11 @@ def bloc_signalements(audience: dict | None) -> str:
     if audience.get("etat") != "ok" and isinstance(age, int):
         perime = (f'<p class="bord-mut">Liste des données d\'{_depuis(timedelta(seconds=age))}'
                   " : l'audience n'a pas pu être relue.</p>")
+    elif bord_distant.donnees_perimees(audience):  # même seuil que le bloc Audience (revue globale, M2)
+        perime = (f'<p class="bord-mut">Périmé : liste des données d\'{_depuis(timedelta(seconds=age))}.</p>')
     if not liste:
         return _carte(titre + '<p class="bord-vide">Aucun signalement en attente.</p>' + perime)
-    reste = len(liste) - SIGNALEMENTS_MAX
+    reste = total_signalements(audience) - min(len(liste), SIGNALEMENTS_MAX)
     autres = f'<p class="bord-mut">+ {reste} autres</p>' if reste > 0 else ""
     lignes = "".join(_signalement(s) for s in liste[:SIGNALEMENTS_MAX])
     return _carte(f'{titre}<ul class="bord-signalements">{lignes}</ul>{autres}{perime}')
