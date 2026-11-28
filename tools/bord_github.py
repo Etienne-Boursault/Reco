@@ -21,9 +21,12 @@ LES PR : SEULES CELLES DU DÉPÔT
 Une PR d'un fork peut s'appeler `contenu/x` sans venir de la chaîne : on ne garde que
 `head.repo.full_name` égal au dépôt (R4). Les PR d'épisode (`contenu/<guid>`) sont séparées des
 sorties annoncées (`contenu/sorties-…`, R3). Les autres branches ne sont pas du tableau de bord.
-Les PR fusionnées viennent des 30 PR fermées les plus récemment modifiées : c'est une fenêtre,
-pas un historique ; « publié » se lit sur `merged_at` (R7). Les 100 d'avant pesaient 1,9 Mo
-pour une limite de 2 Mo (mesuré le 28/11/2026, tour 1, E1).
+Les PR fusionnées viennent des 30 PR fermées les plus récemment modifiées (« publié » se lit sur
+`merged_at`, R7 ; les 100 d'avant pesaient 1,9 Mo pour une limite de 2 Mo, mesuré le 28/11/2026,
+tour 1, E1). Cette fenêtre glisse, mais la liste gardée est cumulative (tour 2, F-a, 28/11/2026) :
+chaque lecture réussie y ajoute les PR lues à celles du cache, par branche, avec la date de fusion la
+plus récente, et garde les 200 plus récentes. Une PR fusionnée le reste, donc une panne de l'appel
+des fermées garde la liste d'avant (et se note dans `pannes`). Les autres blocs sont des instantanés.
 Les PR ouvertes portent `coupee: true` si la page de l'API était pleine (F23).
 
 Toute branche `contenu/*` hors `sorties-` est rangée dans `episodes`, car ce module ne lit pas le
@@ -73,6 +76,8 @@ _HOTE = urlsplit(API_GITHUB).hostname
 _PAGE = 100
 _PAGE_FERMEES = 30
 _TITRE_MAX = 200
+#: Les PR fusionnées gardées d'une lecture à l'autre (tour 2, F-a).
+_FUSIONNEES_MAX = 200
 LIBELLES = {"ok": "à jour", "inconnu": "inconnu", "panne": "panne",
             "limite": "limite de débit atteinte", "reponse-illisible": "réponse illisible",
             "cache-illisible": "cache illisible"}
@@ -199,6 +204,28 @@ def _bloc(fabrique: Any, brut: Any, depot: str) -> Any:
         return None
 
 
+def _cumuler(donnees: dict[str, Any], avant: dict[str, Any] | None) -> dict[str, Any]:
+    """Les PR fusionnées lues réunies à celles du cache, par branche, les 200 plus récentes (F-a).
+
+    Un bloc `fusionnees` à `None` (panne) garde celui d'avant ; sans liste d'avant, il reste `None`.
+    Une entrée abîmée du cache est laissée de côté, jamais recopiée.
+    """
+    anciennes = (avant or {}).get("fusionnees")
+    nouvelles = donnees["fusionnees"]
+    if nouvelles is None and not isinstance(anciennes, list):
+        return donnees
+    par_branche: dict[str, tuple[datetime, dict[str, Any]]] = {}
+    for pr in [*(anciennes if isinstance(anciennes, list) else []), *(nouvelles or [])]:
+        try:
+            branche, quand = pr["branche"], bd._date(pr["date"])
+            if branche not in par_branche or quand >= par_branche[branche][0]:
+                par_branche[branche] = (quand, pr)
+        except (KeyError, TypeError, ValueError):
+            log.warning("bord : github, une PR fusionnée du cache est illisible, laissée de côté")
+    recentes = sorted(par_branche.values(), key=lambda t: t[0], reverse=True)[:_FUSIONNEES_MAX]
+    return {**donnees, "fusionnees": [pr for _, pr in recentes]}
+
+
 def _appeler() -> tuple[str, str | None, dict[str, Any] | None]:
     """Les quatre appels, chacun isolé : (état, détail sans secret, données ou None)."""
     depot = _depot()
@@ -237,7 +264,7 @@ def _appeler() -> tuple[str, str | None, dict[str, Any] | None]:
 
 def rafraichir(*, maintenant: datetime | None = None) -> str:
     """Relit GitHub si le cache est périmé, sous le verrou de `bord_distant`."""
-    return bd.rafraichir_source(SOURCE, _appeler, maintenant=maintenant)
+    return bd.rafraichir_source(SOURCE, _appeler, maintenant=maintenant, cumuler=_cumuler)
 
 
 def lire(*, maintenant: datetime | None = None, relancer: bool = True) -> dict[str, Any]:
@@ -248,7 +275,7 @@ def lire(*, maintenant: datetime | None = None, relancer: bool = True) -> dict[s
     pas), `panne`, `limite`, `reponse-illisible` ou `cache-illisible` ; il dit le dernier essai, et
     `donnees` reste celles d'avant une panne (`lu`, `age`). `donnees` :
     `{"depot", "ouvertes": {"episodes": [PR], "sorties": [PR], "coupee"} | None,
-    "fusionnees": [PR] | None, "ci": course | None, "deploiement": course | None,
+    "fusionnees": [PR] | None (cumulative, 200 au plus), "ci": course | None, "deploiement": course | None,
     "pannes": {bloc: {"etat", "detail"}}, "jeton": "refuse" | None}` ;
     PR = `{"numero", "titre", "branche", "groupe", "date", "adresse"}` ;
     course = `{"conclusion", "date", "adresse"}`. Un bloc `None` est inconnu.

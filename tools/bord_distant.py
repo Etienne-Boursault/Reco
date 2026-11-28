@@ -63,8 +63,11 @@ _DELAI = 10
 #: Échéance de toute la lecture de la réponse (F3 du tour 1, 28/11/2026) : `_DELAI`
 #: ne vaut que pour chaque lecture, donc une réponse goutte à goutte tiendrait le verrou.
 _ECHEANCE = 30
-#: Attente du verrou par le processus détaché : une lecture dure au plus `_ECHEANCE` + `_DELAI`, soit
-#: environ 40 s, donc le second processus passe après le premier (M1 du tour 1).
+#: Attente du verrou par le processus détaché (M1 du tour 1). Une lecture de l'audience dure au plus
+#: `_ECHEANCE` + `_DELAI`, soit environ 40 s ; celle de GitHub fait quatre appels en série, donc jusqu'à
+#: quatre fois plus : l'attente peut alors finir en « occupé ». Ce cas ne note pas d'essai (tour 2, F-b) :
+#: écrire sans le verrou risquerait d'écraser l'entrée de l'autre source, que son détenteur réécrit.
+#: Le prochain affichage relance donc un processus, et un seul par affichage.
 _ATTENTE_VERROU = 60
 _TAILLE_MAX = 2_000_000
 #: Au-delà, `distant.log` repart de zéro (M1 du tour 1).
@@ -205,11 +208,15 @@ def rafraichir(*, maintenant: datetime | None = None) -> str:
 
 
 def rafraichir_source(source: str, appeler: Callable[[], tuple[str, str | None, dict[str, Any] | None]],
-                      *, maintenant: datetime | None = None) -> str:
+                      *, maintenant: datetime | None = None,
+                      cumuler: Callable[[dict[str, Any], dict[str, Any] | None], dict[str, Any]]
+                      | None = None) -> str:
     """Relit `source` par `appeler()` si son cache est périmé, sous verrou ; rend l'état obtenu.
 
     Même cache, même verrou et même fraîcheur pour toutes les sources (3a : `bord_github`).
     Attend le verrou au plus `_ATTENTE_VERROU` : à n'appeler que depuis le processus détaché.
+    `cumuler(nouvelles, anciennes)` : après un succès, réunit les données lues et celles de l'entrée
+    précédente, lue sous le même verrou (tour 2, F-a : les PR fusionnées de GitHub s'accumulent).
     Rend aussi `occupe` (un autre rafraîchissement tient encore le verrou), `frais` (un
     essai de moins de 10 min) ou `cache-illisible` (rien n'est écrit).
     """
@@ -234,6 +241,8 @@ def rafraichir_source(source: str, appeler: Callable[[], tuple[str, str | None, 
                 etat, detail, donnees = "panne", type(exc).__name__, None
             quand = maintenant.isoformat(timespec="seconds")
             avant = avant or {}
+            if etat == "ok" and cumuler:
+                donnees = cumuler(donnees, avant.get("donnees"))
             cache[source] = {"etat": etat, "detail": detail, "essai": quand,
                              "lu": quand if etat == "ok" else avant.get("lu"),
                              "donnees": donnees if etat == "ok" else avant.get("donnees")}
