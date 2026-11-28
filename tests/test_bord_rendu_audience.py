@@ -8,6 +8,7 @@ dictionnaire (forme de la note 2b du journal), sans disque ni réseau.
 """
 from __future__ import annotations
 
+import html
 import re
 
 import pytest
@@ -194,13 +195,31 @@ def test_une_page_trop_longue_est_coupee_a_quatre_vingts_signes():
     assert longue[:80] + "…" in bloc and "B" * 2 not in bloc
 
 
-def test_une_liste_venue_coupee_par_le_site_le_dit():
-    cinq = [{"cle": f"/p{n}", "n": 10 - n} for n in range(5)]
-    bloc = _bloc(donnees=_donnees(sept=_fenetre(pages=cinq, provenances=[])))
-    assert bloc.count("bord-liste-coupee") == 1
-    assert "5 premières" in bloc
+def _cinq():
+    return [{"cle": f"/p{n}", "n": 10 - n} for n in range(5)]
+
+
+def test_une_liste_de_cinq_dont_le_total_est_cinq_n_est_pas_coupee():
+    bloc = _bloc(donnees=_donnees(sept=_fenetre(pages=_cinq(), pagesTotal=5, provenances=[],
+                                                 provenancesTotal=0)))
+    assert "autres" not in bloc and "premières" not in bloc
     assert re.findall(r"/p(\d)", bloc) == ["0", "1", "2", "3", "4"]  # l'ordre de l'API
     assert "Aucune provenance" in bloc
+
+
+def test_une_liste_coupee_dit_combien_restent():
+    """Tour 1, M5 (F23) : « + N autres », le total vient du site."""
+    sept = _fenetre(pages=_cinq(), pagesTotal=7,
+                    provenances=[{"cle": "a.test", "n": 1}], provenancesTotal=1)
+    bloc = _bloc(donnees=_donnees(sept=sept))
+    assert bloc.count("+ 2 autres") == 1 and "autres" in bloc and "premières" not in bloc
+
+
+def test_sans_total_du_site_aucune_phrase_inventee():
+    bloc = _bloc(donnees=_donnees(sept=_fenetre(pages=_cinq())))
+    assert "autres" not in bloc and "premières" not in bloc
+    bloc = _bloc(donnees=_donnees(sept=_fenetre(pages=_cinq(), pagesTotal="beaucoup")))
+    assert "autres" not in bloc
 
 
 def test_les_jours_ou_le_signal_semble_en_panne():
@@ -244,7 +263,7 @@ def test_lu_a_l_instant():
 
 @pytest.mark.parametrize(("etat", "detail", "attendu"), [
     ("cle-absente", None, "Clé absente sur venus"),
-    ("cle-refusee", "HTTP 404", "Clé refusée par le site"),
+    ("cle-refusee", "HTTP 404", "Le site répond « introuvable »"),
     ("panne", "TimeoutError", "Site injoignable"),
     ("reponse-illisible", "JSON invalide", "Réponse illisible"),
     ("cache-illisible", None, "distant.json"),
@@ -256,6 +275,40 @@ def test_chaque_etat_a_son_message_sans_donnees(etat, detail, attendu):
     assert "bord-chiffre-valeur" not in bloc
     if detail:
         assert detail in bloc
+
+
+def test_une_cle_refusee_dit_les_trois_causes_possibles():
+    """Tour 1, F2 : tout 404 est lu « clé refusée », or le site répond 404 aussi sans la route."""
+    bloc = _bloc(etat="cle-refusee", donnees=None, detail="HTTP 404")
+    assert "diffère de celle du site" in bloc
+    assert "le site n'a pas la clé" in bloc
+    assert "pas encore la route" in bloc
+
+
+def test_la_premiere_lecture_n_est_annoncee_que_si_elle_est_lancee():
+    """Tour 1, F4."""
+    lancee = {**_audience(etat="inconnu", donnees=None), "relance": True}
+    assert "la première lecture est lancée" in bra.bloc_audience(lancee)
+    non = bra.bloc_audience(_audience(etat="inconnu", donnees=None))
+    assert "n'a pas pu être lancée" in non and "première lecture" not in non
+
+
+def test_le_cache_illisible_donne_le_vrai_chemin_echappe(monkeypatch, tmp_path):
+    """Tour 1, F7 : le chemin que lit `bord_distant`, pas un chemin fixe."""
+    monkeypatch.setenv("RECO_BORD_DIR", str(tmp_path / "a&b<i>"))
+    bloc = _bloc(etat="cache-illisible", donnees=None)
+    assert html.escape(str(tmp_path / "a&b<i>" / "distant.json")) in bloc
+    assert "<i>" not in bloc and "tools/output/bord" not in bloc
+
+
+@pytest.mark.parametrize("champ", ["bascule", "panneSignal"])
+def test_les_dates_de_bascule_et_de_panne_sont_verifiees_avant_d_entrer_dans_la_page(champ):
+    """Tour 1, F1 : une valeur qui n'est pas une date n'entre jamais dans le HTML."""
+    valeur = "3" + CHARGE if champ == "bascule" else [CHARGE]  # « 3… » > du : la note s'affiche
+    bloc = _bloc(donnees=_donnees(sept=_fenetre(**{champ: valeur}),
+                                  trente=_fenetre(**{champ: valeur})))
+    assert "<script>alert" not in bloc and '"><script>' not in bloc
+    assert "depuis le ?" in bloc if champ == "bascule" else "le ?" in bloc
 
 
 def test_un_etat_inconnu_du_rendu_est_echappe():
@@ -341,3 +394,14 @@ def test_signalements_neutralisent_l_injection():
                                        "date": CHARGE}]))
     assert "<script>alert" not in bloc and '"><script>' not in bloc
     assert "&lt;script&gt;" in bloc
+
+
+@pytest.mark.parametrize("sig", [
+    {"etat": "lu", "enAttente": "pas une liste"},
+    {"etat": "lu", "enAttente": [{"recoId": "x"}, "texte"]},
+    ["pas", "un", "objet"],
+])
+def test_signalements_de_forme_inattendue_restent_inconnus(sig):
+    """Tour 1, M3."""
+    bloc = bb.bloc_signalements({"etat": "ok", "age": 1, "donnees": {"signalements": sig}})
+    assert "Signalements : inconnu" in bloc

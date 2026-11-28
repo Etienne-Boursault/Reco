@@ -20,8 +20,8 @@ CE QUE DIT LE BLOC
   Les barres sont en CSS (rien à télécharger, aucun script) et cachées au lecteur
   d'écran, qui lit le tableau qui les double.
 - Les 5 premières pages et provenances, en texte seul, coupées à 80 signes et
-  échappées (R10), dans l'ordre de l'API ; une liste de 5 a pu être coupée par le
-  site, et la page le dit (F23).
+  échappées (R10), dans l'ordre de l'API ; si le site en a plus (`pagesTotal`,
+  `provenancesTotal`), la page dit « + N autres » (F23, tour 1, M5).
 - Le lien vers `/audience`, sans la clé (« s'ouvre depuis ton signet »).
 
 Une réponse de forme inattendue (un champ manquant) ne casse pas la page : le bloc
@@ -30,6 +30,7 @@ le dit, et l'erreur est journalisée.
 from __future__ import annotations
 
 import html
+import re
 from datetime import date, timedelta
 from typing import Any
 
@@ -39,21 +40,23 @@ from common import log
 
 #: Longueur d'une page ou d'une provenance (§ 3).
 LONGUEUR_CLE = 80
-#: Le site n'envoie que les 5 premières (`resume.ts`, `PREMIERES`).
-PREMIERES = 5
+_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
 _SERIES = (("confirmes", "Confirmés"), ("incertains", "Incertains"), ("robots", "Robots"))
 _ANCIEN = (("humains", "Humains (ancien tri)", "visiteurs", "visiteurs"),
            ("robots", "Passages de robots", "robots", "visitesRobots"))
 _MESSAGES = {
     "inconnu": "Pas encore lu : la première lecture est lancée, elle s'affiche au "
                "prochain rechargement.",
+    "inconnu-sans-lancement": "Pas encore lu : la lecture n'a pas pu être lancée.",
     "cle-absente": "Clé absente sur venus : poser RECO_AUDIENCE_KEY dans le .env du "
                    "serveur de relecture, puis recréer le conteneur.",
-    "cle-refusee": "Clé refusée par le site : celle de venus n'est pas celle du site.",
+    # Tour 1, F2 : le site répond 404 aussi quand il n'a pas la clé ou pas la route.
+    "cle-refusee": "Le site répond « introuvable » : la clé de venus diffère de celle du "
+                   "site, ou le site n'a pas la clé, ou il n'a pas encore la route /api/bord.",
     "panne": "Site injoignable.",
     "reponse-illisible": "Réponse illisible du site.",
     "cache-illisible": "Le cache de l'audience est illisible et n'est pas réécrit : "
-                       "effacer tools/output/bord/distant.json pour relancer la lecture.",
+                       "effacer {chemin} pour relancer la lecture.",
 }
 
 
@@ -67,13 +70,17 @@ def _n(v: Any) -> str:
 
 
 def _jj_mm(iso: Any) -> str:
-    s = str(iso)[:10]
-    return f"{s[8:10]}/{s[5:7]}"
+    """« jj/mm » d'une date ISO ; « ? » sinon : la valeur vient du site, elle n'entre pas telle quelle."""
+    s = str(iso)
+    return f"{s[8:10]}/{s[5:7]}" if _DATE.match(s) else "?"
 
 
 def _etat(audience: dict) -> str:
     etat = str(audience.get("etat") or "inconnu")
-    message = _MESSAGES.get(etat, f"État : {_texte(audience.get('libelle') or etat, 40)}.")
+    cle = "inconnu-sans-lancement" if etat == "inconnu" and not audience.get("relance") else etat
+    message = _MESSAGES.get(cle, f"État : {_texte(audience.get('libelle') or etat, 40)}.")
+    if etat == "cache-illisible":  # le chemin que lit `bord_distant`, pas un chemin fixe (F7)
+        message = message.format(chemin=html.escape(str(bord_distant._chemin())))
     detail = audience.get("detail")
     if detail:
         message = f"{message.removesuffix('.')} ({_texte(detail, 40)})."
@@ -178,7 +185,7 @@ def _graphes(d: dict, ancien: bool) -> str:
                    [(cle, nom, lecture(cle)) for cle, nom in _SERIES])
 
 
-def _liste(titre: str, vide: str, comptes: list[dict]) -> str:
+def _liste(titre: str, vide: str, comptes: list[dict], total: Any) -> str:
     if not comptes:
         corps = f'<p class="bord-mut">{vide}</p>'
     else:
@@ -186,9 +193,8 @@ def _liste(titre: str, vide: str, comptes: list[dict]) -> str:
                  + "".join(f'<li><span>{_texte(c["cle"], LONGUEUR_CLE)}</span>'
                            f'<span class="bord-mut">{_n(c["n"])}</span></li>' for c in comptes)
                  + "</ol>")
-        if len(comptes) >= PREMIERES:
-            corps += (f'<p class="bord-mut bord-liste-coupee">Les {PREMIERES} premières '
-                      "seulement : le site n'envoie pas la suite.</p>")
+        if isinstance(total, int) and not isinstance(total, bool) and total > len(comptes):
+            corps += f'<p class="bord-mut bord-liste-coupee">+ {total - len(comptes)} autres</p>'
     return f'<div class="bord-carte"><span class="bord-etiquette">{titre}</span>{corps}</div>'
 
 
@@ -221,8 +227,10 @@ def _chiffres(d: dict) -> str:
         haut += f'<p class="bord-clics">Clics pour 100 visiteurs · {clics}</p>'
     listes = ""
     if sept:
-        listes = (_liste("Pages les plus vues, 7 jours", "Aucune page vue.", sept["pages"])
-                  + _liste("Provenances, 7 jours", "Aucune provenance.", sept["provenances"]))
+        listes = (_liste("Pages les plus vues, 7 jours", "Aucune page vue.", sept["pages"],
+                         sept.get("pagesTotal"))
+                  + _liste("Provenances, 7 jours", "Aucune provenance.", sept["provenances"],
+                           sept.get("provenancesTotal")))
     return (f'<div class="bord-carte bord-audience-haut">{haut}</div>'
             + _graphes(d, ancien) + listes)
 
