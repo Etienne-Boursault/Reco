@@ -90,10 +90,13 @@ export function readReport(sourceId: string, reportId: string, cwd: string = pro
  * - Ignore les fichiers `.tmp` (écritures en cours).
  * - Trie par `submittedAt` desc (le plus récent en tête).
  * - Filtrage par `status` optionnel.
+ * - `sautes` (optionnel) reçoit le nom de chaque fichier illisible, sans changer la liste
+ *   rendue : un appelant qui ne peut pas se permettre d'ignorer un fichier le lit
+ *   (`/api/bord`, tableau de bord, tour 1, M4).
  */
 export function listReports(
   sourceId: string,
-  opts: { status?: ReportStatus; cwd?: string } = {},
+  opts: { status?: ReportStatus; cwd?: string; sautes?: string[] } = {},
 ): Report[] {
   const dir = reportsDirFor(sourceId, opts.cwd);
   if (!existsSync(dir)) return [];
@@ -106,8 +109,9 @@ export function listReports(
       if (opts.status && r.status !== opts.status) continue;
       out.push(r);
     } catch {
-      // Fichier corrompu : on skip silencieusement (la lecture admin doit
-      // rester robuste à un report mal-formé isolé).
+      // Fichier corrompu : on le saute (la lecture admin doit rester robuste à un
+      // report mal-formé isolé), et on le dit à qui le demande.
+      opts.sautes?.push(name);
     }
   }
   out.sort((a, b) => (a.submittedAt < b.submittedAt ? 1 : -1));

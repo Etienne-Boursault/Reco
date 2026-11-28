@@ -7,6 +7,8 @@ des cinq colonnes, au centre.
 
 Rendu pur : la route (`review_routes_bord`, tranche 1e) lit les données et les
 passe ici ; aucune lecture de disque, sauf le style et le script de la page.
+L'audience (tranche 2c) arrive de même : la route appelle une seule fois
+`bord_distant.lire()`, qui sert aussi à la ligne « signalements » d'À faire.
 
 LA VUE
 ------
@@ -31,6 +33,7 @@ import html
 from datetime import UTC, datetime
 from pathlib import Path
 
+import bord_rendu_audience
 import bord_rendu_blocs as blocs
 from review_render_common import _flash_banner
 
@@ -88,7 +91,7 @@ def _entete(titre: str, chaine: dict, maintenant: datetime) -> str:
 def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
                 recents: list[dict] | None, coches: dict[str, dict[str, str]] | None,
                 maintenant: datetime | None = None, flash: str | None = None,
-                flash_kind: str = "info") -> str:
+                flash_kind: str = "info", audience: dict | None = None) -> str:
     """La page entière.
 
     - `titre` : le titre de la source ;
@@ -96,7 +99,8 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
     - `chaine` : `bord_chaine.etat_chaine(source_id)` ;
     - `recents` : `bord_reseaux.episodes_recents(...)` (None : état illisible) ;
     - `coches` : `bord_reseaux.lire()` (None : `EtatIllisible`) ;
-    - `flash`, `flash_kind` : le message après une case cochée (redirection 303).
+    - `flash`, `flash_kind` : le message après une case cochée (redirection 303) ;
+    - `audience` : `bord_distant.lire()`, qui ne lit que le cache (None : inconnu).
     """
     maintenant = maintenant or datetime.now(UTC)
     contenu_afaire, nb_afaire = blocs.bloc_afaire(afaire)
@@ -104,9 +108,9 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
     colonnes = [
         ("afaire", "À faire d'abord", contenu_afaire, nb_afaire),
         ("chaine", "Chaîne", blocs.bloc_chaine(chaine), None),
-        ("audience", "Audience", blocs.bloc_attente("Audience du site"), None),
+        ("audience", "Audience", bord_rendu_audience.bloc_audience(audience), None),
         ("reseaux", "Réseaux", contenu_reseaux + blocs.bloc_attente("Sorties à venir")
-         + blocs.bloc_attente("Signalements"), nb_reseaux),
+         + blocs.bloc_signalements(audience), nb_reseaux),
         ("systeme", "Système", blocs.bloc_attente("Santé et versions")
          + blocs.bloc_attente("Coûts et modèles") + blocs.bloc_attente("Liens morts")
          + blocs.bloc_attente("Graphies apprises"), None),

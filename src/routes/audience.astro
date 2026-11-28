@@ -35,13 +35,12 @@
  * des deux tables embarquées (pays, hébergeurs) sont dans le pied de page.
  */
 import { acces } from '../lib/audience/acces.mjs';
-import { agreger, sourcesDisponibles } from '../lib/audience/agregat';
 import { editionTable } from '../lib/audience/geoip.mjs';
 import { editionTable as editionHebergeurs } from '../lib/audience/hebergeurs.mjs';
-import { nbJoursDemande, perimetreDemande } from '../lib/audience/vue';
+import { lireAudience, nbJoursDemande } from '../lib/audience/vue';
 import GrapheJours from '../components/audience/GrapheJours.astro';
 import PanneauTri from '../components/audience/PanneauTri.astro';
-import type { Agregat, Compte } from '../lib/audience/agregat';
+import type { Compte } from '../lib/audience/agregat';
 
 const decision = acces(Astro.url.searchParams.get('cle'));
 
@@ -54,15 +53,19 @@ if (!decision.ouvert) {
   });
 }
 
-// Périmètre et fenêtre sont décidés dans `vue.ts` : rien de ce qui vit dans un
-// `.astro` n'est mesuré par la couverture, et se tromper de périmètre avait
-// déjà rendu l'accueil et les 404 invisibles.
+// Périmètre, fenêtre et lecture sont décidés dans `vue.ts` : rien de ce qui vit
+// dans un `.astro` n'est mesuré par la couverture, et se tromper de périmètre
+// avait déjà rendu l'accueil et les 404 invisibles. `lireAudience` est aussi la
+// lecture de `/api/bord` : les deux ne peuvent pas diverger (R9, 28/11/2026).
 const filtre = Astro.url.searchParams.get('source') || null;
-const { sources: source, libelle } = perimetreDemande(
-  filtre,
-  sourcesDisponibles(process.cwd()),
-);
 const nbJours = nbJoursDemande(Astro.url.searchParams.get('jours'));
+const { libelle, donnees, erreur } = lireAudience({
+  racine: process.cwd(),
+  filtre,
+  nbJours,
+  site: Astro.site,
+  url: Astro.url,
+});
 
 // `?entetes=1` — outil de diagnostic pour la géolocalisation.
 //
@@ -82,16 +85,6 @@ const editionHeberg = editionHebergeurs();
 const entetesRecus = Astro.url.searchParams.get('entetes') === '1'
   ? [...Astro.request.headers.keys()].sort()
   : null;
-
-let donnees: Agregat | null = null;
-let erreur: string | null = null;
-try {
-  // `Astro.site` : derrière le proxy, `Astro.url` n'a pas le domaine public (constaté le 2026-10-22).
-  const hoteDuSite = Astro.site?.hostname ?? Astro.url.hostname;
-  donnees = agreger({ racine: process.cwd(), sourceId: source, nbJours, hoteDuSite });
-} catch (e) {
-  erreur = e instanceof Error ? e.message : String(e);
-}
 
 Astro.response.headers.set('Cache-Control', 'no-store');
 // La clé est dans l'URL : sans cela, un lien sortant la ferait fuir.

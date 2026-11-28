@@ -24,6 +24,14 @@
  * lien de partage non listé. Pour des données plus sensibles, il faudrait
  * autre chose.
  *
+ * LA MÊME CLÉ, DANS UN EN-TÊTE, POUR `/api/bord`
+ * ----------------------------------------------
+ * Le tableau de bord de venus lit l'audience par `GET /api/bord`
+ * (`src/routes/api-bord.ts` ; tableau de bord, R2 B du 27/11/2026). Il envoie
+ * la même clé, mais dans l'en-tête `X-Reco-Cle`, jamais dans l'URL : une
+ * machine n'a pas besoin de signet, et une URL finit dans les journaux. Une
+ * seconde clé a été écartée : un secret de plus à poser chez l'hébergeur.
+ *
  * Sans clé configurée, la page n'existe pas : mieux vaut une absence qu'une
  * porte ouverte par oubli.
  */

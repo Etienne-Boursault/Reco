@@ -450,15 +450,32 @@ def test_reseaux_compte_en_tete_de_colonne():
 
 # ---- Les places en attente ------------------------------------------------
 
-def test_l_audience_et_le_systeme_ont_leur_place_en_attente():
+def _colonne(page, cle):
+    return page.split(f'id="bord-{cle}"', 1)[1].split("</section>", 1)[0]
+
+
+def test_le_systeme_et_les_sorties_ont_leur_place_en_attente():
     page = _page()
-    audience = page.split('id="bord-audience"', 1)[1].split("</section>", 1)[0]
-    assert "data-attente" in audience and "PR 2" not in audience
-    assert "en attente" in audience
-    systeme = page.split('id="bord-systeme"', 1)[1].split("</section>", 1)[0]
+    systeme = _colonne(page, "systeme")
     assert "data-attente" in systeme and "Liens morts" in systeme
-    reseaux = page.split('id="bord-reseaux"', 1)[1].split("</section>", 1)[0]
+    reseaux = _colonne(page, "reseaux")
     assert "Sorties à venir" in reseaux and "Signalements" in reseaux
+
+
+def test_l_audience_remplit_le_centre_et_sans_elle_dit_inconnu():
+    audience = _colonne(_page(audience={"etat": "cle-absente", "donnees": None}), "audience")
+    assert "data-attente" not in audience
+    assert 'data-etat="cle-absente"' in audience and "Clé absente" in audience
+    assert 'data-etat="inconnu"' in _colonne(_page(), "audience")
+
+
+def test_les_signalements_vont_dans_la_colonne_des_reseaux():
+    # Le détail du bloc : `test_bord_rendu_audience.py`.
+    sig = {"etat": "lu", "enAttente": [{"id": "rep-0", "recoId": "ubm-0",
+                                        "categorie": "error", "date": "2026-11-27"}]}
+    reseaux = _colonne(_page(audience={"etat": "ok", "donnees": {"signalements": sig}}),
+                       "reseaux")
+    assert "ubm-0" in reseaux and "Signalements" in reseaux
 
 
 def test_bloc_attente_echappe_son_titre():
