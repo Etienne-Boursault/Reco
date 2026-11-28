@@ -213,11 +213,17 @@ def _passage(p: dict, maintenant: datetime | None = None) -> str:
     # n'en sont pas, un passage qui n'a fait qu'elles ne dit donc pas « rien de neuf » (revue
     # globale, M5).
     lancees, echecs = _noms(p.get("lancees")), _noms(p.get("echecs"))
-    # Le jour, quand le passage n'est pas du jour même (heure de Paris) : « sam. 23 h 05 ».
+    # Le jour, quand le passage n'est pas du jour même (heure de Paris) : « sam. 23 h 05 ». Au-delà
+    # de 6 jours un nom de jour serait ambigu : « 22/11 10 h 00 » (tour 2, T2-6).
     debut = _instant(p.get("debut"))
-    autre_jour = (debut is not None and maintenant is not None and
-                  debut.astimezone(_fuseau()).date() != maintenant.astimezone(_fuseau()).date())
-    texte = (_heure(p.get("debut"), jour=autre_jour) or "?") + " · "
+    ecart = 0
+    if debut is not None and maintenant is not None:
+        ecart = (maintenant.astimezone(_fuseau()).date() - debut.astimezone(_fuseau()).date()).days
+    if ecart > 6:
+        heure = f"{debut.astimezone(_fuseau()):%d/%m} {_heure(p.get('debut'))}"
+    else:
+        heure = _heure(p.get("debut"), jour=ecart != 0)
+    texte = (heure or "?") + " · "
     texte += ("lancé : " + ", ".join(lancees)) if lancees else "aucune étape suivie"
     if echecs:
         texte += " · en échec : " + ", ".join(echecs)

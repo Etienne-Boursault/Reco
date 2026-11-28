@@ -109,9 +109,16 @@ def _textes_passages(contenu):
 
 def test_un_passage_d_hier_porte_son_jour_et_celui_d_aujourd_hui_non():
     chaine = _chaine("2026-11-29T10:17:00+00:00", "2026-11-28T23:05:00+00:00",
-                     "2026-11-22T10:00:00+00:00", "pas une date")
+                     "2026-11-23T10:00:00+00:00", "pas une date")
     contenu = bb.bloc_chaine(chaine, MAINTENANT)
-    assert _textes_passages(contenu) == ["10 h 17", "sam. 23 h 05", "dim. 10 h 00", "?"]
+    assert _textes_passages(contenu) == ["10 h 17", "sam. 23 h 05", "lun. 10 h 00", "?"]
+
+
+def test_au_dela_de_6_jours_un_passage_porte_sa_date_et_non_son_nom_de_jour():
+    """Tour 2, T2-6 : « dim. » seul serait ambigu entre deux dimanches."""
+    contenu = bb.bloc_chaine(_chaine("2026-11-22T10:00:00+00:00", "2026-11-01T10:05:00+00:00"),
+                             MAINTENANT)
+    assert _textes_passages(contenu) == ["22/11 10 h 00", "01/11 10 h 05"]
 
 
 def test_le_jour_d_un_passage_se_compte_dans_le_fuseau_de_la_page(monkeypatch):
