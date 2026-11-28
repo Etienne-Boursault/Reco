@@ -15,8 +15,11 @@ Rend, sans rien écrire :
     `tick.sh` ne note un passage qu'à sa fin).
 
 Relecture du plan, R7 (28/11/2026) : l'étape `detecter` n'est pas mesurée, donc
-« Détecté » n'a jamais d'heure ; « Publié » vient de `published` (la PR fusionnée,
-`merged_at`, viendra en PR 3). Une donnée absente donne « inconnu », jamais
+« Détecté » n'a jamais d'heure ; « Publié » vient de `published`, puis de la PR fusionnée
+(`merged_at`, tour 1 de la PR 3, M2) : la route passe `fusionnees` (`{branche: date}`, lue une
+seule fois dans `bord_github`), et un épisode dont la branche `contenu/<slug>` y figure est
+publié à la date de fusion, même si l'état de la chaîne ou le clone ne le disent pas. Une
+donnée absente donne « inconnu », jamais
 « fait » ni « à venir ». Les heures viennent toutes de la télémétrie
 (`stage_attempts`, dernière tentative réussie), lue en `mode=ro`.
 
@@ -31,12 +34,14 @@ from pathlib import Path
 from typing import Any
 
 import common
+from bord_reseaux import branche_de
 from bord_reseaux import dossier as bord_dir
 
 INCONNU = "inconnu"
 _FICHE = "fiche de l'épisode"
 _ETAT = "état de la chaîne"
 _TELEMETRIE = "télémétrie"
+_PR_FUSIONNEE = "PR fusionnée"
 _TRANSCRIT = {"auto", "validated"}
 
 
@@ -68,10 +73,14 @@ def _episodes_yt(source_id: str) -> list[dict[str, Any]]:
     return out
 
 
-def _episode_en_cours(episodes: list[dict[str, Any]], etat: dict[str, Any] | None
-                      ) -> tuple[str, dict[str, Any] | None] | None:
-    """(guid, fiche ou None) de l'épisode à montrer, ou None s'il n'y en a aucun."""
+def _episode_en_cours(episodes: list[dict[str, Any]], etat: dict[str, Any] | None,
+                      fusionnes: list[str]) -> tuple[str, dict[str, Any] | None] | None:
+    """(guid, fiche ou None) de l'épisode à montrer, ou None s'il n'y en a aucun.
+
+    `fusionnes` : les guids dont la PR est fusionnée, publiés même absents de `published`.
+    """
     publies = [str(g) for g in (etat or {}).get("published") or []]
+    publies += [g for g in fusionnes if g not in publies]
     fiches = {e["guid"]: e for e in episodes}
 
     def date(e: dict[str, Any]) -> str:
@@ -130,8 +139,8 @@ def _selon_etat(cle: str, libelle: str, liste: str, guid: str, etat: dict[str, A
 
 
 def etapes(guid: str, fiche: dict[str, Any] | None, etat: dict[str, Any] | None,
-           heures: dict[str, str]) -> list[dict[str, Any]]:
-    """Les cinq étapes de l'épisode, de « Détecté » à « Publié »."""
+           heures: dict[str, str], fusion: str | None = None) -> list[dict[str, Any]]:
+    """Les cinq étapes de l'épisode, de « Détecté » à « Publié » ; `fusion` : date de fusion de sa PR."""
     if fiche is not None:
         detecte = _etape("detecte", "Détecté", "fait", None, _FICHE)
         transcrit = fiche.get("transcriptStatus") in _TRANSCRIT
@@ -140,12 +149,15 @@ def etapes(guid: str, fiche: dict[str, Any] | None, etat: dict[str, Any] | None,
     else:  # seul un épisode publié est montré sans fiche : la publication l'a retirée
         detecte = _etape("detecte", "Détecté", "fait", None, _ETAT)
         transcription = _etape("transcrit", "Transcrit", "fait", heures.get("transcribe"), _ETAT)
+    publie = _selon_etat("publie", "Publié", "published", guid, etat, None)
+    if fusion and publie["etat"] != "fait":  # tour 1, M2 : la PR fusionnée suffit
+        publie = _etape("publie", "Publié", "fait", fusion, _PR_FUSIONNEE)
     return [
         detecte,
         transcription,
         _selon_etat("extrait", "Extrait", "extracted", guid, etat, heures.get("extract")),
         _selon_etat("finalise", "Finalisé", "finalized", guid, etat, heures.get("finalize")),
-        _selon_etat("publie", "Publié", "published", guid, etat, None),
+        publie,
     ]
 
 
@@ -182,11 +194,17 @@ def lire_en_cours(path: Path) -> str | None:
         return None
 
 
-def etat_chaine(source_id: str, *, db_path: Path | None = None,
-                nb_passages: int = 5) -> dict[str, Any]:
-    """Tout le bloc « Chaîne » : épisode en cours, étapes, erreurs, derniers passages."""
+def etat_chaine(source_id: str, *, db_path: Path | None = None, nb_passages: int = 5,
+                fusionnees: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Tout le bloc « Chaîne » : épisode en cours, étapes, erreurs, derniers passages.
+
+    `fusionnees` : `{branche: date de fusion}` de `bord_afaire.branches_fusionnees` (M2).
+    """
     etat = _lire_etat(source_id)
-    choix = _episode_en_cours(_episodes_yt(source_id), etat)
+    fusions = fusionnees or {}
+    fiches = _episodes_yt(source_id)
+    fusionnes = [e["guid"] for e in fiches if branche_de(e["guid"]) in fusions]
+    choix = _episode_en_cours(fiches, etat, fusionnes)
     if db_path is None:
         from telemetry.recorder import default_db_path
         db_path = default_db_path()
@@ -195,7 +213,8 @@ def etat_chaine(source_id: str, *, db_path: Path | None = None,
         guid, fiche = choix
         episode = {"guid": guid, "titre": (fiche or {}).get("title"),
                    "date": (fiche or {}).get("date")}
-        liste = etapes(guid, fiche, etat, heures_etapes(db_path, source_id, guid))
+        liste = etapes(guid, fiche, etat, heures_etapes(db_path, source_id, guid),
+                       fusions.get(branche_de(guid)))
     signalees = (etat or {}).get("lastErrors")
     # Toutes : l'état est écrit trié par clé, un plafond garderait les premières
     # par ordre alphabétique et cacherait la dernière (tour 1, M1).

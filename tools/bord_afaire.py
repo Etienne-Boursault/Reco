@@ -38,9 +38,7 @@ import re
 from datetime import date
 from typing import Any
 
-from bord_reseaux import LIBELLES, RESEAUX
-from common import slugify
-from publication import PREFIXE_BRANCHE
+from bord_reseaux import LIBELLES, RESEAUX, branche_de
 from review_render_focus import _ep_label, entry_state, short_title
 
 #: `propriétaire/nom` en caractères sûrs : seul un dépôt de cette forme entre dans un lien.
@@ -160,8 +158,8 @@ def _ouvertes(github: dict | None) -> dict | None:
     return ouvertes
 
 
-def branches_fusionnees(github: dict | None) -> set[str] | None:
-    """Les branches dont une PR est fusionnée (`bord_github.lire()`), ou None si le bloc manque.
+def branches_fusionnees(github: dict | None) -> dict[str, Any] | None:
+    """`{branche: date de fusion}` des PR fusionnées (`bord_github.lire()`), ou None si le bloc manque.
 
     Une PR fusionnée le reste : des données gardées après une panne servent donc aussi.
     """
@@ -169,7 +167,8 @@ def branches_fusionnees(github: dict | None) -> set[str] | None:
     liste = donnees.get("fusionnees") if isinstance(donnees, dict) else None
     if not isinstance(liste, list):
         return None
-    return {pr["branche"] for pr in liste if isinstance(pr, dict) and pr.get("branche")}
+    return {pr["branche"]: pr.get("date") for pr in liste
+            if isinstance(pr, dict) and pr.get("branche")}
 
 
 def _comparaison(depot: Any, branche: str) -> str | None:
@@ -191,13 +190,13 @@ def lignes_publication(github: dict | None, recents: list[dict] | None) -> list 
     ouvertes = _ouvertes(github)
     if ouvertes is None:
         return None
-    fusionnees = branches_fusionnees(github) or set()
+    fusionnees = branches_fusionnees(github) or {}
     depot = github["donnees"].get("depot")
     par_branche = {pr.get("branche"): pr for pr in ouvertes["episodes"]}
     lignes: list = []
     vues = set()
     for r in recents or []:
-        branche = PREFIXE_BRANCHE + slugify(r["guid"])
+        branche = branche_de(r["guid"])
         nom = _libelle(r["guid"], r["episode"])
         pr = par_branche.get(branche)
         if pr:

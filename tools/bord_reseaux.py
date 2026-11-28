@@ -98,6 +98,11 @@ def cocher(state: dict[str, Any] | None, guid: str, reseau: str, fait: bool, *,
     return cases
 
 
+def branche_de(guid: str) -> str:
+    """La branche que `publication.py` pousse pour cet épisode : `contenu/<slugify(guid)>`."""
+    return f"{PREFIXE_BRANCHE}{slugify(guid)}"
+
+
 def _episode_sur_la_branche(source_id: str, guid: str) -> dict[str, Any] | None:
     """Le JSON de l'épisode tel que poussé sur `origin/contenu/<slug>`, ou None."""
     slug = slugify(guid)

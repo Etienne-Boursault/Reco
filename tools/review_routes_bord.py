@@ -91,7 +91,9 @@ class BordRoutesMixin:
                 sorties=bord_afaire.lignes_sorties(github),
                 liens=bord_afaire.lignes_liens(contenu)),
             audience=audience, github=github, systeme=systeme, contenu=contenu,
-            chaine=bord_chaine.etat_chaine(self.source_id), recents=recents,
+            chaine=bord_chaine.etat_chaine(
+                self.source_id, fusionnees=bord_afaire.branches_fusionnees(github)),
+            recents=recents,
             coches=coches, flash=qs.get("flash", [""])[0] or None,
             flash_kind=kind if kind in _GENRES else "info"))
 

@@ -246,7 +246,7 @@ def test_une_pr_de_contenu_faite_a_la_main_n_est_pas_une_publication_d_episode()
 
 def test_les_branches_fusionnees_se_lisent_meme_apres_une_panne():
     assert ba.branches_fusionnees(_github(fusionnees=[_pr(1, "contenu/a")], etat="panne")) \
-        == {"contenu/a"}
+        == {"contenu/a": "2026-11-28T08:00:00Z"}
     for github in (None, "texte", {}, {"donnees": None}, _github(), _github(fusionnees="x")):
         assert ba.branches_fusionnees(github) is None
 
