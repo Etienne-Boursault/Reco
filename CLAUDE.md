@@ -11,6 +11,7 @@
 - Keep files under 500 lines
 - Validate input at system boundaries
 - Une liste coupée à l'affichage (`[:N]`) l'est selon un ordre voulu (date, gravité), jamais selon l'ordre d'un dictionnaire, et dit combien d'éléments restent (« + N autres ») : famille F23 de `docs/capitalisation-constats.md`
+- Une lecture ratée (fichier illisible, dossier absent, fichier sauté) se dit « inconnu », jamais « vide » ni « aucun » : un lecteur qui saute un fichier le compte et le fait remonter. Famille F22 de `docs/capitalisation-constats.md`
 
 ## Build & Test
 
