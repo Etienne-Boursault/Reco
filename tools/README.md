@@ -190,6 +190,11 @@ exploitation : `../deploy/venus/README.md`. Modules :
 - `bord_chaine.py` : l'épisode en cours, ses étapes et les passages de `tick.sh`
   (`passages.jsonl`).
 - `bord_reseaux.py` : les cases des réseaux (`reseaux.json`), pour les 3 derniers publiés.
+- `bord_distant.py` : l'audience du site, lue par `GET /api/bord` avec `RECO_AUDIENCE_KEY` ;
+  la page ne lit que le cache `distant.json`, `python tools/bord_distant.py rafraichir` le
+  relit (lancé détaché par la page quand il a 10 min).
+- `bord_rendu_audience.py` : la colonne Audience (pure) ; `bord_rendu_blocs.bloc_signalements`
+  et `bord_afaire.lignes_signalements` lisent les signalements dans le même état.
 - `review_polices/` : Bebas Neue et Inter en WOFF2, copiées de `@fontsource`, licence OFL.
 
 Les états vivent sous `tools/output/bord/` (`RECO_BORD_DIR` pour les essais), hors de Git.

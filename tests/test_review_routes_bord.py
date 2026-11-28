@@ -44,7 +44,7 @@ def corpus(tmp_path, monkeypatch):
     monkeypatch.setattr(review_handler_base, "ALLOW_LAN", False)
     monkeypatch.delenv(recorder.ENV_DB, raising=False)
     monkeypatch.setenv("RECO_BORD_DIR", str(tmp_path / "bord"))
-    for env in ("RECO_REVIEW_URL", "RECO_REVIEW_HOTES"):
+    for env in ("RECO_REVIEW_URL", "RECO_REVIEW_HOTES", "RECO_AUDIENCE_KEY"):
         monkeypatch.delenv(env, raising=False)
 
     def ecrire(chemin: Path, donnees: dict) -> None:
@@ -112,6 +112,34 @@ def test_get_bord_rend_la_page():
     assert 'action="/bord/reseau"' in page
     assert "Mortel" not in page  # rien du contenu des recos, seulement leur compte
     assert "relire" in page
+
+
+def test_get_bord_lit_l_audience_et_compte_les_signalements(corpus, monkeypatch):
+    """L'audience vient du cache de `bord_distant` (frais : rien n'est relancé)."""
+    from datetime import UTC, datetime
+
+    monkeypatch.setenv("RECO_AUDIENCE_KEY", "fausse-cle-audience-123")
+    quand = datetime.now(UTC).isoformat(timespec="seconds")
+    donnees = {"genere": quand, "perimetre": "tout le site", "sept": None, "trente": None,
+               "jours": [], "erreur": None,
+               "signalements": {"etat": "lu", "enAttente": [
+                   {"id": "rep-1", "recoId": "ubm-1", "categorie": "error",
+                    "date": "2026-11-27T10:00:00.000Z"}]}}
+    (corpus / "bord").mkdir(parents=True, exist_ok=True)
+    (corpus / "bord" / "distant.json").write_text(json.dumps({"audience": {
+        "etat": "ok", "detail": None, "essai": quand, "lu": quand, "donnees": donnees}}),
+        encoding="utf-8")
+    code, _, corps = _requete("GET", "/bord")
+    page = corps.decode("utf-8")
+    assert code == 200
+    assert 'data-etat="ok"' in page and "ubm-1" in page
+    assert "1 signalement en attente" in page
+    assert "fausse-cle-audience-123" not in page
+
+
+def test_get_bord_sans_cle_d_audience_le_dit(corpus):
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert 'data-etat="cle-absente"' in page and "signalements : inconnu" in page
 
 
 def test_get_bord_affiche_le_message_de_la_redirection():

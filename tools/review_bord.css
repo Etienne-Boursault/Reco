@@ -10,6 +10,10 @@
  * (`html[data-vue="13"]`, `html[data-vue="telephone"]`), et en `auto` par la
  * largeur (13 pouces sous 2 200 px, téléphone sous 900 px).
  *
+ * L'AUDIENCE (tranche 2c). Ses grands chiffres et ses barres se règlent sur
+ * `--h1` et `--h2` : ils suivent la vue sans variable de plus. Le graphique est
+ * caché au lecteur d'écran (`aria-hidden`), qui lit le tableau `.bord-lecteur`.
+ *
  * CONTRASTE. Le texte discret `#9a99a3` sur `#17171c` fait 6,3:1 (AA : 4,5).
  * Une ligne « inconnu » est grisée par sa couleur et un trait pointillé, jamais
  * par l'opacité, qui ferait tomber ce rapport sous 4,5.
@@ -39,7 +43,8 @@ html {
   --taille: 17px; --h1: 88px; --h2: 44px; --h3: 34px;
   --nav-aff: none; --nav-dir: column; --nav-haut: auto; --nav-top: 0;
   --nav-bord: 0; --nav-pad: 0; --onglet-bord: transparent;
-  --grille-cols: minmax(0, 1.25fr) repeat(4, minmax(0, 1fr));
+  /* L'audience, au centre, est la colonne la plus large (TB-1 C, 28/11/2026). */
+  --grille-cols: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1.9fr) repeat(2, minmax(0, 1fr));
   --grille-zones: "afaire chaine audience reseaux systeme"; --grille-gap: 40px;
   --defile: auto; --col-haut: 100%; --ancre: 0;
   background: var(--fond);
@@ -247,3 +252,59 @@ h1, h2, h3 {
 .bord-case[data-fait="1"] { border-color: transparent; color: var(--ok); }
 .bord-case:hover { background: #1f1f26; }
 .bord-case:disabled { cursor: progress; }
+
+/* ---- Audience (tranche 2c) ---------------------------------------------- */
+
+.bord-audience-etat { display: flex; align-items: center; gap: 10px; margin: 0; font-weight: 600; }
+.bord-audience-etat:not([data-etat="ok"]):not([data-etat="inconnu"]) { color: var(--alerte); }
+.bord-audience-etat:not([data-etat="ok"]):not([data-etat="inconnu"]) > .bord-pastille { background: var(--alerte); }
+.bord-fenetre { display: flex; flex-direction: column; gap: 8px; }
+.bord-chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 12px 24px; }
+.bord-chiffre { display: flex; flex-direction: column; min-width: 0; }
+.bord-chiffre-valeur {
+  font-family: var(--titre); font-size: calc(var(--h1) * 1.1); line-height: .95;
+  font-variant-numeric: tabular-nums; color: var(--texte);
+}
+.bord-fenetre-trente .bord-chiffre-valeur { font-size: var(--h2); color: var(--mut); }
+.bord-chiffre-nom { font-size: 14px; color: var(--mut); }
+.bord-clics { margin: 0; font-weight: 600; }
+
+.bord-graphe {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px;
+  height: calc(var(--h1) * 3);
+}
+.bord-jour { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.bord-jour > span { font-size: 13px; color: var(--mut); text-align: center; }
+.bord-barre {
+  flex: 1; display: flex; flex-direction: column-reverse; border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid var(--trait-fort);
+}
+.bord-jour[data-mesure="non"] .bord-barre,
+.bord-jour[data-mesure="ancien"] .bord-barre { border: 1px dashed var(--trait-fort); border-radius: 6px; }
+.bord-seg { display: block; flex: none; }
+[data-serie="confirmes"], [data-serie="humains"] { --serie: var(--ok); }
+[data-serie="incertains"] { --serie: var(--accent); }
+[data-serie="robots"] { --serie: var(--mut); }
+.bord-seg { background: var(--serie); }
+.bord-legende { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.bord-legende li::before {
+  content: ""; display: inline-block; width: .8em; height: .8em; margin-right: 6px;
+  border-radius: 2px; background: var(--serie);
+}
+/* Le tableau qui double le graphique : lu au lecteur d'écran, hors de la vue. */
+.bord-lecteur {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+.bord-classement { margin: 0; padding-left: 1.6em; display: flex; flex-direction: column; gap: 6px; }
+.bord-classement li span:first-child { overflow-wrap: anywhere; }
+.bord-classement li { display: list-item; }
+.bord-classement li > .bord-mut { float: right; margin-left: 12px; font-variant-numeric: tabular-nums; }
+.bord-audience-lien { margin: 0; }
+
+/* ---- Signalements ------------------------------------------------------- */
+
+.bord-signalements { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.bord-signalements li { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.bord-signalements li > :first-child { font-weight: 600; overflow-wrap: anywhere; }

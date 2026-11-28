@@ -103,3 +103,36 @@ def test_des_cases_illisibles_rendent_les_reseaux_inconnus_pas_la_publication():
     assert [(i["bloc"], i["inconnu"]) for i in items] == [("publication", False),
                                                           ("reseaux", True)]
     assert items[1]["texte"] == "réseaux : inconnu"
+
+
+# ---- Les signalements, lus par l'audience (tranche 2c) --------------------
+
+def _audience(etat="ok", signalements=None):
+    sig = {"etat": "lu", "enAttente": []} if signalements is None else signalements
+    return {"etat": etat, "donnees": {"signalements": sig}}
+
+
+def _en_attente(n):
+    return {"etat": "lu", "enAttente": [{"id": f"rep-{k}", "recoId": "r", "categorie": "error",
+                                          "date": "2026-11-27T10:00:00.000Z"} for k in range(n)]}
+
+
+def test_la_ligne_des_signalements_passe_d_inconnu_a_un_nombre():
+    avant = _appel(signalements=ba.lignes_signalements(None))
+    assert _textes(avant) == ["signalements : inconnu"] and avant[0]["inconnu"]
+    apres = _appel(signalements=ba.lignes_signalements(_audience(signalements=_en_attente(3))))
+    assert _textes(apres) == ["3 signalements en attente"] and not apres[0]["inconnu"]
+    un = ba.lignes_signalements(_audience(signalements=_en_attente(1)))
+    assert un == ["1 signalement en attente"]
+
+
+def test_aucun_signalement_en_attente_ne_fait_aucune_ligne():
+    assert ba.lignes_signalements(_audience()) == []
+
+
+def test_les_signalements_restent_inconnus_si_l_audience_n_est_pas_a_jour():
+    # Des données gardées après une panne ne disent pas ce qui attend maintenant.
+    assert ba.lignes_signalements(_audience("panne", _en_attente(2))) is None
+    assert ba.lignes_signalements({"etat": "ok", "donnees": None}) is None
+    assert ba.lignes_signalements(_audience(signalements={"etat": "inconnu",
+                                                          "enAttente": []})) is None

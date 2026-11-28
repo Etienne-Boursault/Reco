@@ -183,8 +183,10 @@ onglets. Le choix « Vue : auto · 39" · 13" · téléphone » reste gardé dan
 page se recharge toute seule toutes les 5 minutes.
 
 - **À faire d'abord** : les épisodes à relire, la PR de publication à fusionner, les réseaux
-  pas encore faits des 3 derniers épisodes publiés. Les signalements, les liens morts et les
-  sorties disent « inconnu » tant que leurs blocs n'existent pas.
+  pas encore faits des 3 derniers épisodes publiés, le nombre de signalements en attente.
+  Les signalements disent « inconnu » tant que l'audience n'est pas « à jour » (une lecture
+  ratée garde les anciens chiffres, pas la ligne) ; les liens morts et les sorties le disent
+  tant que leurs blocs n'existent pas.
 - **Chaîne** : l'épisode en cours et ses étapes (détecté, transcrit, extrait, finalisé,
   publié), les erreurs en cours et les 5 derniers passages de `tick.sh`. Chaque passage note
   dans `tools/output/bord/passages.jsonl` les étapes lancées et celles en échec (200 lignes
@@ -201,7 +203,22 @@ page se recharge toute seule toutes les 5 minutes.
   recharger la page ; sans script, le formulaire part et la page revient avec un message. Les
   cases vivent dans `tools/output/bord/reseaux.json`. Un fichier abîmé n'est jamais réécrit :
   la page le signale, et aucune case ne s'enregistre tant qu'il n'est pas réparé ou retiré.
-- **Audience** et **Système** viendront avec les PR suivantes.
+- **Audience** (tranche 2c, 28/11/2026), la colonne la plus large : confirmés, incertains et
+  robots en visiteurs-jours sur 7 jours en grand, ceux de 30 jours en dessous ; 7 barres
+  empilées (un jour sans fichier de mesure est « pas de mesure », jamais zéro), doublées d'un
+  tableau pour le lecteur d'écran ; les 5 premières pages et provenances, en texte seul ; les
+  clics pour 100 visiteurs ; les jours où le signal semble en panne ; le lien vers `/audience`,
+  sans la clé (il s'ouvre depuis le signet). Avant la bascule du tri, « ancien tri » : humains
+  et passages de robots seulement. Les chiffres viennent de `GET /api/bord` du site, avec
+  `RECO_AUDIENCE_KEY` (ci-dessous) : la page ne lit que le cache
+  `tools/output/bord/distant.json`, et le relit sur le site en arrière-plan quand il a plus de
+  10 minutes. En tête, l'état et l'âge : « À jour · lu il y a 12 min », ou clé absente, clé
+  refusée (celle de venus n'est pas celle du site), site injoignable, réponse illisible, cache
+  illisible (à effacer à la main). Après une panne, les derniers chiffres restent, avec leur
+  âge.
+- **Signalements**, dans la colonne des réseaux : les 5 derniers en attente, avec leur reco,
+  leur catégorie et leur date, jamais le nom, l'adresse ni le texte ; « + N autres » au-delà.
+- **Système** viendra avec la PR suivante.
 
 Les polices de la page (Bebas Neue, Inter, licence OFL) sont servies par le serveur lui-même
 (`/polices/…`, `tools/review_polices/`), sans appel extérieur. `RECO_BORD_DIR` déplace
@@ -219,7 +236,7 @@ change : `docker compose restart review` sous le verrou du tick, une fois le `gi
 | `~/docker/reco/.env` | clés (droits 600) | oui |
 | `~/docker/reco/depot/` | clone du dépôt ; `tools/output/` y garde transcriptions et états | oui |
 | `~/docker/reco/logs/tick-AAAA-MM.log` | journal des passages | oui |
-| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées) | oui |
+| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées), `distant.json` (dernière audience lue) | oui |
 | `~/.cache/reco/` | modèle Whisper (1,6 Go), caches yt-dlp — se retéléchargent | **non**, volontairement |
 | `~/.ssh/reco_deploy` | clé de dépôt (écriture sur ce dépôt seul), droits 600 | **non** : la sauvegarde ne couvre que `~/docker`. Une clé perdue se régénère et se redéclare sur GitHub |
 
@@ -238,6 +255,7 @@ RECO_SPOTIFY=0                 # sans Premium, l'API répond 403 : liens posés 
 RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le message porte le lien de comparaison
 RECO_SORTIES_ANNONCEES=1       # relance quotidienne des liens à la sortie annoncée ; absent, l'étape ne fait rien
 RECO_KUMA_PUSH_URL=…           # moniteur « push » Uptime Kuma ; absent, aucun ping n'est envoyé
+RECO_AUDIENCE_KEY=…            # la même clé que chez l'hébergeur : /bord lit l'audience par GET /api/bord ; absente, la page dit « clé absente »
 RECO_REVIEW_HOTES=…            # facultatif : autres noms admis par la garde des hôtes (virgules ou espaces) ; lu seulement en mode réseau local (ALLOW_LAN)
 ```
 

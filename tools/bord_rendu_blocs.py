@@ -5,7 +5,8 @@ Décision : tableau de bord, R2 B du 27/11/2026 ; TB-1 C du 28/11/2026, vue
 et R22).
 
 Rendu pur, sans disque ni réseau : chaque bloc reçoit les données déjà lues par
-`bord_afaire`, `bord_chaine` et `bord_reseaux`, et rend du HTML.
+`bord_afaire`, `bord_chaine`, `bord_reseaux` et, pour les signalements,
+`bord_distant` (tranche 2c), et rend du HTML.
 
 L'ÉCHAPPEMENT (R10)
 -------------------
@@ -264,6 +265,50 @@ def bloc_reseaux(recents: list[dict] | None,
     table = (f'<table class="bord-reseaux"><thead><tr><th scope="col">Réseau</th>{entete}'
              f'</tr></thead><tbody>{"".join(lignes)}</tbody></table>')
     return alerte + _carte(table, "bord-carte bord-carte-table"), (None if coches is None else nb)
+
+
+# ---- Signalements ---------------------------------------------------------
+
+#: Les signalements montrés ; au-delà, « + N autres » (F23). L'API les trie du
+#: plus récent au plus ancien : ce sont donc les derniers arrivés.
+SIGNALEMENTS_MAX = 5
+_CATEGORIES = {"error": "Erreur", "inappropriate": "Contenu inapproprié",
+               "suggestion": "Suggestion", "broken-link": "Lien mort"}
+
+
+def _signalement(s: dict) -> str:
+    quand = _instant(s.get("date"))
+    jour = f"{quand.astimezone(_fuseau()):%d/%m}" if quand else _texte(s.get("date"), 30)
+    categorie = str(s.get("categorie"))
+    return (f'<li><span>reco {_texte(s.get("recoId"), 60)}</span>'
+            f'<span>{_texte(_CATEGORIES.get(categorie, categorie), 40)}</span>'
+            f'<span class="bord-mut">{jour}</span></li>')
+
+
+def bloc_signalements(audience: dict | None) -> str:
+    """Les signalements en attente, lus avec l'audience (`bord_distant.lire()`).
+
+    Tranche 2c (28/11/2026) : la reco, la catégorie et la date, jamais plus (F15 :
+    le fichier d'un signalement porte le nom, l'adresse et le texte de la personne).
+    Des données gardées après une panne restent, marquées par leur âge.
+    """
+    titre = '<span class="bord-etiquette">Signalements</span>'
+    donnees = (audience or {}).get("donnees") or {}
+    signalements = donnees.get("signalements") or {}
+    if signalements.get("etat") != "lu":
+        return _carte(titre + '<p class="bord-mut">Signalements : inconnu.</p>')
+    age = audience.get("age")
+    perime = ""
+    if audience.get("etat") != "ok" and isinstance(age, int):
+        perime = (f'<p class="bord-mut">Liste des données d\'{_depuis(timedelta(seconds=age))}'
+                  " : l'audience n'a pas pu être relue.</p>")
+    liste = signalements.get("enAttente") or []
+    if not liste:
+        return _carte(titre + '<p class="bord-vide">Aucun signalement en attente.</p>' + perime)
+    reste = len(liste) - SIGNALEMENTS_MAX
+    autres = f'<p class="bord-mut">+ {reste} autres</p>' if reste > 0 else ""
+    lignes = "".join(_signalement(s) for s in liste[:SIGNALEMENTS_MAX])
+    return _carte(f'{titre}<ul class="bord-signalements">{lignes}</ul>{autres}{perime}')
 
 
 # ---- Places en attente ----------------------------------------------------

@@ -76,6 +76,22 @@ def _textes(bloc: str, nom: str, textes: list[str] | None) -> list[dict]:
     return [_item(bloc, t) for t in textes]
 
 
+def lignes_signalements(audience: dict | None) -> list[str] | None:
+    """La ligne des signalements, depuis `bord_distant.lire()` ; None : inconnu.
+
+    Tranche 2c (28/11/2026) : seul un dernier essai réussi (`ok`) dit ce qui attend
+    maintenant ; des données gardées après une panne laissent la ligne « inconnu ».
+    """
+    donnees = (audience or {}).get("donnees")
+    if not audience or audience.get("etat") != "ok" or not donnees:
+        return None
+    signalements = donnees.get("signalements") or {}
+    if signalements.get("etat") != "lu":
+        return None
+    n = len(signalements.get("enAttente") or [])
+    return [f"{n} signalement{'s' if n > 1 else ''} en attente"] if n else []
+
+
 def a_faire(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
             recents: list[dict] | None, coches: dict[str, dict[str, str]] | None,
             signalements: list[str] | None = None, liens: list[str] | None = None,
