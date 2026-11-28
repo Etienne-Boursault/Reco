@@ -143,3 +143,17 @@ def test_un_suivi_impossible_n_arrete_pas_la_chaine(tmp_path):
     assert "curl " in appels, "le ping Kuma, après le suivi, n'a pas eu lieu"
     journal = next((tmp_path / "reco" / "logs").glob("tick-*.log")).read_text(encoding="utf-8")
     assert "suivi des passages impossible" in journal
+
+
+@pytest.mark.skipif(_SANS_ESSAI, reason="sh ou flock absent, ou Windows")
+def test_un_passage_se_signale_en_cours_puis_efface_son_fichier(tmp_path):
+    # Tour 1, F8 repris : le tableau de bord sait qu'un passage tourne, donc ne crie pas
+    # au retard pendant une longue transcription.
+    script, env = _preparer(tmp_path)
+    bord = tmp_path / "bord"
+    env["RECO_BORD_DIR"] = str(bord)
+    assert _lancer(script, env).returncode == 0
+    [ligne] = _lignes(bord / "passages.jsonl")
+    pendant = (tmp_path / "appels.txt.en-cours").read_text(encoding="utf-8").strip()
+    assert pendant == ligne["debut"]
+    assert not (bord / "en-cours").exists()

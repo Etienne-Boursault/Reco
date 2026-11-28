@@ -156,8 +156,8 @@ def test_un_style_ou_un_script_absent_ne_casse_pas_la_page(monkeypatch, tmp_path
 
 # ---- L'état de la chaîne, en tête -----------------------------------------
 
-def _etat_entete(passages):
-    page = _page(chaine=_chaine(passages=passages))
+def _etat_entete(passages, en_cours=None):
+    page = _page(chaine=_chaine(passages=passages, en_cours=en_cours))
     m = re.search(r'<span class="bord-etat-chaine" data-etat="(\w+)">(.*?)</span></span>', page)
     return m.group(1), html.unescape(re.sub(r"<[^>]+>", "", m.group(2)))
 
@@ -166,21 +166,50 @@ def test_la_chaine_est_en_marche_apres_un_passage_recent():
     assert _etat_entete([_passage()]) == ("ok", "Chaîne en marche · passage il y a 33 min")
 
 
-def test_la_chaine_est_en_retard_au_dela_de_deux_heures_et_demie_depuis_le_debut():
-    # Commencé il y a 2 h 40, fini il y a 1 h 40 : l'écart se mesure depuis le début.
-    vieux = _passage(debut="2026-11-29T08:11:00+00:00", fin="2026-11-29T09:11:00+00:00")
-    assert _etat_entete([vieux]) == ("alerte", "Chaîne en retard · passage il y a 1 h 40")
+def test_la_chaine_est_en_retard_au_dela_de_deux_heures_et_demie():
+    vieux = _passage(fin="2026-11-29T08:20:00+00:00")
+    assert _etat_entete([vieux]) == ("alerte", "Chaîne en retard · passage il y a 2 h 31")
 
 
-def test_un_long_passage_ne_fait_pas_passer_la_chaine_en_retard():
-    # Tour 1, F8 : commencé il y a 2 h 10, fini il y a 1 h 40 (30 min de transcription).
-    long = _passage(debut="2026-11-29T08:41:00+00:00", fin="2026-11-29T09:11:00+00:00")
-    assert _etat_entete([long]) == ("ok", "Chaîne en marche · passage il y a 1 h 40")
+# Tour 1, F8 repris : le passage en cours se connaît par le fichier `en-cours` de tick.sh.
+_FINI_IL_Y_A_2H45 = _passage(debut="2026-11-29T07:50:00+00:00", fin="2026-11-29T08:06:00+00:00")
 
 
-def test_un_debut_illisible_se_mesure_depuis_la_fin():
-    passage = _passage(debut="pas une date", fin="2026-11-29T08:20:00+00:00")
-    assert _etat_entete([passage]) == ("alerte", "Chaîne en retard · passage il y a 2 h 31")
+def test_un_passage_en_cours_depuis_quarante_minutes_n_est_pas_un_retard():
+    assert _etat_entete([_FINI_IL_Y_A_2H45], "2026-11-29T10:11:00+00:00") == (
+        "ok", "Chaîne : passage en cours depuis 40 min")
+
+
+def test_un_passage_en_cours_depuis_trois_heures_est_bloque():
+    ancien = _passage(debut="2026-11-29T05:50:00+00:00", fin="2026-11-29T06:00:00+00:00")
+    assert _etat_entete([ancien], "2026-11-29T07:51:00+00:00") == (
+        "alerte", "Chaîne en retard · passage bloqué depuis 3 h 00")
+
+
+def test_un_passage_en_cours_sans_passage_note_compte():
+    assert _etat_entete([], "2026-11-29T10:41:00+00:00") == (
+        "ok", "Chaîne : passage en cours depuis 10 min")
+    assert _etat_entete(None, "2026-11-29T10:41:00+00:00") == (
+        "ok", "Chaîne : passage en cours depuis 10 min")
+    assert _etat_entete([], "2026-11-29T10:50:50+00:00") == (
+        "ok", "Chaîne : passage en cours depuis 1 min")
+
+
+def test_un_en_cours_plus_ancien_que_la_derniere_fin_est_ignore():
+    # Fichier resté d'un passage dont la note a réussi à moitié : la fin le périme.
+    assert _etat_entete([_passage()], "2026-11-29T10:00:00+00:00") == (
+        "ok", "Chaîne en marche · passage il y a 33 min")
+
+
+def test_un_en_cours_illisible_est_ignore():
+    assert _etat_entete([_passage()], "pas une date") == (
+        "ok", "Chaîne en marche · passage il y a 33 min")
+    assert _etat_entete([], "pas une date") == ("inconnu", "Chaîne : aucun passage noté")
+
+
+def test_les_echecs_du_dernier_passage_priment_sur_le_passage_en_cours():
+    etat, texte = _etat_entete([_passage(echecs=["publier"])], "2026-11-29T10:45:00+00:00")
+    assert (etat, texte) == ("alerte", "Chaîne : 1 étape en échec · passage il y a 33 min")
 
 
 def test_un_passage_en_echec_se_voit_en_tete():

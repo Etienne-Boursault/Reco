@@ -10,7 +10,9 @@ Rend, sans rien écrire :
     du clone jusqu'à la fusion de la PR, on n'a alors que son guid) ;
   - ses étapes, chacune avec son état, son heure et la source qui le dit ;
   - les dernières erreurs signalées par la chaîne ;
-  - les derniers passages de `deploy/venus/tick.sh`, lus dans `passages.jsonl`.
+  - les derniers passages de `deploy/venus/tick.sh`, lus dans `passages.jsonl`, et le
+    début du passage qui tourne, lu dans `en-cours` (tour 1, F8 repris, 28/11/2026 :
+    `tick.sh` ne note un passage qu'à sa fin).
 
 Relecture du plan, R7 (28/11/2026) : l'étape `detecter` n'est pas mesurée, donc
 « Détecté » n'a jamais d'heure ; « Publié » vient de `published` (la PR fusionnée,
@@ -19,7 +21,7 @@ Relecture du plan, R7 (28/11/2026) : l'étape `detecter` n'est pas mesurée, don
 (`stage_attempts`, dernière tentative réussie), lue en `mode=ro`.
 
 Le dossier du bord (`tools/output/bord/`) se règle par `RECO_BORD_DIR`
-(`bord_reseaux.dossier`), comme dans `tick.sh`, qui y écrit `passages.jsonl`.
+(`bord_reseaux.dossier`), comme dans `tick.sh`, qui y écrit `passages.jsonl` et `en-cours`.
 """
 from __future__ import annotations
 
@@ -169,6 +171,17 @@ def lire_passages(path: Path, n: int) -> list[dict[str, Any]] | None:
     return passages
 
 
+def lire_en_cours(path: Path) -> str | None:
+    """Début du passage en cours (fichier écrit par `tick.sh`), ou None s'il manque ou est illisible."""
+    try:
+        return path.read_text(encoding="utf-8").strip()
+    except FileNotFoundError:
+        return None
+    except (OSError, UnicodeDecodeError) as exc:
+        common.log.warning("bord_chaine : fichier du passage en cours illisible (%s) : %s", path, exc)
+        return None
+
+
 def etat_chaine(source_id: str, *, db_path: Path | None = None,
                 nb_passages: int = 5) -> dict[str, Any]:
     """Tout le bloc « Chaîne » : épisode en cours, étapes, erreurs, derniers passages."""
@@ -189,4 +202,5 @@ def etat_chaine(source_id: str, *, db_path: Path | None = None,
     erreurs = [str(m) for m in signalees.values()] if isinstance(signalees, dict) else []
     # `etat_lu` : l'état a été lu, même sans épisode à montrer (tour 1, F3).
     return {"episode": episode, "etapes": liste, "erreurs": erreurs, "etat_lu": etat is not None,
-            "passages": lire_passages(bord_dir() / "passages.jsonl", nb_passages)}
+            "passages": lire_passages(bord_dir() / "passages.jsonl", nb_passages),
+            "en_cours": lire_en_cours(bord_dir() / "en-cours")}

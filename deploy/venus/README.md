@@ -189,8 +189,13 @@ page se recharge toute seule toutes les 5 minutes.
   publié), les erreurs en cours et les 5 derniers passages de `tick.sh`. Chaque passage note
   dans `tools/output/bord/passages.jsonl` les étapes lancées et celles en échec (200 lignes
   gardées). Une écriture ratée est journalisée et n'arrête pas la chaîne. L'en-tête dit « en
-  retard » quand le dernier passage a commencé il y a plus de 2 h 30 (la durée d'un passage
-  compte donc dans l'écart ; Kuma, lui, compte depuis le dernier ping).
+  retard » au-delà de 2 h 30 sans passage terminé, le seuil de Kuma. Comme `tick.sh` ne note un
+  passage qu'à sa fin, il écrit le début du passage dans `tools/output/bord/en-cours` dès qu'il
+  tient le verrou, et l'efface en notant la fin : tant que le fichier est plus récent que le
+  dernier passage noté, l'en-tête dit « passage en cours depuis … » au lieu de « en retard »
+  (tour 1, F8, 28/11/2026). Au-delà de 2 h 30, le passage est dit « bloqué » ; un fichier resté
+  après une note ratée finit de même par le dire. Les échecs du dernier passage terminé
+  passent avant.
 - **Réseaux** : une case par réseau (Instagram, Threads, Spotify, Deezer, SensCritique,
   YouTube) et par épisode, pour les 3 derniers publiés. Un clic la coche ou la décoche, sans
   recharger la page ; sans script, le formulaire part et la page revient avec un message. Les
@@ -214,7 +219,7 @@ change : `docker compose restart review` sous le verrou du tick, une fois le `gi
 | `~/docker/reco/.env` | clés (droits 600) | oui |
 | `~/docker/reco/depot/` | clone du dépôt ; `tools/output/` y garde transcriptions et états | oui |
 | `~/docker/reco/logs/tick-AAAA-MM.log` | journal des passages | oui |
-| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages, écrit par `tick.sh`), `reseaux.json` (cases cochées) | oui |
+| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées) | oui |
 | `~/.cache/reco/` | modèle Whisper (1,6 Go), caches yt-dlp — se retéléchargent | **non**, volontairement |
 | `~/.ssh/reco_deploy` | clé de dépôt (écriture sur ce dépôt seul), droits 600 | **non** : la sauvegarde ne couvre que `~/docker`. Une clé perdue se régénère et se redéclare sur GitHub |
 

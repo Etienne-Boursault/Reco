@@ -31,8 +31,7 @@ from review_render_focus import short_title
 
 #: Longueur maximale d'un texte venu des données (messages d'erreur, titres).
 LONGUEUR = 160
-#: Au-delà, depuis le début du dernier passage, la chaîne est « en retard » (le seuil
-#: de Kuma, qui compte lui depuis le dernier ping, donc depuis la fin d'un passage).
+#: Au-delà, la chaîne est « en retard » : le même seuil que le moniteur Kuma.
 RETARD = timedelta(hours=2, minutes=30)
 
 _JOURS = ("lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche")
@@ -104,26 +103,36 @@ def _noms(valeur: Any) -> list[str]:
     return [_texte(v, 40) for v in valeur] if isinstance(valeur, list) else []
 
 
-def etat_entete(passages: list[dict] | None, maintenant: datetime) -> tuple[str, str]:
-    """`(état, texte)` de la pastille d'en-tête ; état : `ok`, `alerte` ou `inconnu`."""
-    if passages is None:
-        return "inconnu", "Chaîne : état inconnu"
-    if not passages:
-        return "inconnu", "Chaîne : aucun passage noté"
-    dernier = passages[0]
-    fin = _instant(dernier.get("fin"))
-    if fin is None:
-        return "inconnu", "Chaîne : état inconnu"
-    ecart = maintenant - fin
-    quand = "passage " + _depuis(ecart)
-    echecs = _noms(dernier.get("echecs"))
-    if echecs:
-        pluriel = "s" if len(echecs) > 1 else ""
-        return "alerte", f"Chaîne : {len(echecs)} étape{pluriel} en échec · {quand}"
-    # Tour 1, F8 : l'écart se mesure depuis le début du passage, pas depuis sa fin :
-    # un passage qui transcrit pendant plus de 30 min ne fait pas crier au retard.
-    debut = _instant(dernier.get("debut")) or fin
-    if maintenant - debut > RETARD:
+def etat_entete(passages: list[dict] | None, maintenant: datetime,
+                en_cours: str | None = None) -> tuple[str, str]:
+    """`(état, texte)` de la pastille d'en-tête ; état : `ok`, `alerte` ou `inconnu`.
+
+    `en_cours` est le début du passage qui tourne (fichier `en-cours` de `tick.sh`).
+    Tour 1, F8 repris (28/11/2026) : `tick.sh` ne note un passage qu'à sa fin ; sans
+    ce fichier, une longue transcription faisait crier au retard une chaîne qui tourne.
+    Il ne compte que s'il est lisible et plus récent que la fin du dernier passage noté
+    (sinon il est périmé) ; passé `RETARD`, le passage est dit bloqué.
+    """
+    debut = _instant(en_cours)
+    dernier = passages[0] if passages else None
+    fin = _instant(dernier.get("fin")) if dernier else None
+    if dernier is None and debut is None:
+        return "inconnu", "Chaîne : état inconnu" if passages is None else "Chaîne : aucun passage noté"
+    if dernier is not None:
+        if fin is None:
+            return "inconnu", "Chaîne : état inconnu"
+        quand = "passage " + _depuis(maintenant - fin)
+        echecs = _noms(dernier.get("echecs"))
+        if echecs:
+            pluriel = "s" if len(echecs) > 1 else ""
+            return "alerte", f"Chaîne : {len(echecs)} étape{pluriel} en échec · {quand}"
+    if debut is not None and (fin is None or debut > fin):
+        ecart = maintenant - debut
+        depuis = _depuis(max(ecart, timedelta(minutes=1))).removeprefix("il y a ")
+        if ecart > RETARD:
+            return "alerte", f"Chaîne en retard · passage bloqué depuis {depuis}"
+        return "ok", f"Chaîne : passage en cours depuis {depuis}"
+    if maintenant - fin > RETARD:
         return "alerte", f"Chaîne en retard · {quand}"
     return "ok", f"Chaîne en marche · {quand}"
 

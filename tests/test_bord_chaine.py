@@ -243,6 +243,24 @@ def test_un_journal_illisible_donne_des_passages_inconnus(corpus):
     assert bord_chaine.etat_chaine(SOURCE)["passages"] is None
 
 
+def test_le_passage_en_cours_se_lit_dans_le_fichier_en_cours(corpus):
+    dossier = corpus / "output" / "bord"
+    dossier.mkdir(parents=True)
+    (dossier / "en-cours").write_text("2026-11-29T10:11:00+01:00\n", encoding="utf-8")
+    assert bord_chaine.etat_chaine(SOURCE)["en_cours"] == "2026-11-29T10:11:00+01:00"
+
+
+def test_sans_fichier_en_cours_aucun_passage_n_est_en_cours(corpus):
+    assert bord_chaine.etat_chaine(SOURCE)["en_cours"] is None
+
+
+def test_un_fichier_en_cours_illisible_donne_aucun_passage_en_cours(corpus):
+    dossier = corpus / "output" / "bord"
+    dossier.mkdir(parents=True)
+    (dossier / "en-cours").write_bytes(b"\xff\xfe\xfa")
+    assert bord_chaine.etat_chaine(SOURCE)["en_cours"] is None
+
+
 def test_la_base_se_choisit_a_l_appel(corpus):
     _episode(corpus, "yt-A", "2026-11-20")
     _etat(corpus)

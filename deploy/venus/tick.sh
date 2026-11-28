@@ -23,6 +23,7 @@ horodater() { printf '%s — %s\n' "$(date -Iseconds)" "$*"; }
 # Suivi des passages pour le tableau de bord (R2 B du 27/11/2026, TB-1 C du
 # 28/11/2026) : une ligne JSON par passage dans passages.jsonl (début, fin, étapes
 # lancées parce que leur sonde a répondu oui, étapes en échec), les 200 dernières.
+# Pendant le passage, `en-cours` porte son début (effacé à la fin de la note).
 # Le dossier est sous tools/output/, que Git ignore et que le conteneur de la page
 # voit. Une erreur du suivi ne doit jamais arrêter la chaîne : l'écriture finit par
 # `|| true`, et chaque variable a une valeur avant d'être lue (set -u).
@@ -37,7 +38,7 @@ noter_passage() {
     && printf '{"debut":"%s","fin":"%s","lancees":[%s],"echecs":[%s]}\n' \
       "${DEBUT}" "$(date -Iseconds)" "${LANCEES}" "${ECHECS}" >>"${BORD}/passages.jsonl" \
     && tail -n 200 "${BORD}/passages.jsonl" >"${BORD}/passages.jsonl.tmp" \
-    && mv "${BORD}/passages.jsonl.tmp" "${BORD}/passages.jsonl"
+    && mv "${BORD}/passages.jsonl.tmp" "${BORD}/passages.jsonl"     && rm -f "${BORD}/en-cours"
 }
 outil() {
   docker compose run --rm -T pipeline \
@@ -45,6 +46,11 @@ outil() {
 }
 
 horodater "passage"
+# Le passage tourne : le tableau de bord le sait par ce fichier, que `noter_passage`
+# efface à la fin (tour 1, F8 repris : sans lui, une longue transcription faisait crier
+# au retard). Resté après un échec de la note, il passe pour un passage bloqué.
+{ mkdir -p "${BORD}" && printf '%s
+' "${DEBUT}" >"${BORD}/en-cours"; }   || horodater "suivi du passage en cours impossible" || true
 git -C depot pull --ff-only --quiet \
   || echec git-pull "git pull impossible : passage sur la copie locale"
 outil detecter   || echec detecter "détection en échec"

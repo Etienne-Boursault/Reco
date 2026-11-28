@@ -68,8 +68,8 @@ def _colonne(cle: str, titre: str, contenu: str, nb: int | None = None) -> str:
             f'<h2 id="bord-t-{cle}">{titre}</h2>{_nb(nb)}</div>{contenu}</section>')
 
 
-def _entete(titre: str, passages: list[dict] | None, maintenant: datetime) -> str:
-    etat, texte = blocs.etat_entete(passages, maintenant)
+def _entete(titre: str, chaine: dict, maintenant: datetime) -> str:
+    etat, texte = blocs.etat_entete(chaine.get("passages"), maintenant, chaine.get("en_cours"))
     vues = "".join(f'<button type="button" data-vue-choix="{v}">{html.escape(_NOMS_VUES[v])}'
                    "</button>" for v in VUES)
     return ('<header class="bord-entete"><div class="bord-marque">'
@@ -120,7 +120,7 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
         f'<meta http-equiv="refresh" content="{_RECHARGE_S};url=/bord">'
         f"<title>Tableau de bord — {html.escape(titre)}</title>"
         f"<script>{_SCRIPT_VUE}</script><style>{_lire(_CSS)}</style></head>"
-        f'<body class="bord">{_entete(titre, chaine.get("passages"), maintenant)}'
+        f'<body class="bord">{_entete(titre, chaine, maintenant)}'
         f'{_flash_banner(flash, flash_kind)}'
         f'<nav class="bord-nav" aria-label="Sections">{nav}</nav>'
         f'<main class="bord-grille">{grille}</main>'
