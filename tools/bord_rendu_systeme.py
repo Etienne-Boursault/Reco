@@ -97,15 +97,19 @@ def _etat(github: dict) -> str:
     age = github.get("age")
     if github.get("donnees") is not None and isinstance(age, int):
         quand = _depuis(timedelta(seconds=age))
-        perime = timedelta(seconds=age) > 2 * bord_distant.FRAICHEUR
+        perime = bord_distant.donnees_perimees(github)
         message = (f"{'Périmé' if perime else 'À jour'} · lu {quand}." if etat == "ok"
                    else f"{message} Ce sont les données d'{quand}.")
     return (f'<p class="bord-audience-etat" data-etat="{html.escape(etat)}">'
             f'<span class="bord-pastille" aria-hidden="true"></span><span>{message}</span></p>')
 
 
-def _course(nom: str, course: Any, panne: Any = None) -> str:
-    """Une ligne de CI ou de déploiement ; une forme inattendue est « inconnu » (avec sa panne, si connue)."""
+def _course(nom: str, course: Any, panne: Any = None, *, masculin: bool = False) -> str:
+    """Une ligne de CI ou de déploiement ; une forme inattendue est « inconnu » (avec sa panne, si connue).
+
+    `masculin` : le déploiement est « réussi » et « annulé », la CI « réussie » et « annulée » (revue
+    globale, accord).
+    """
     if not isinstance(course, dict):
         cause = ""
         if isinstance(panne, dict) and (panne.get("detail") or panne.get("etat")):
@@ -114,6 +118,8 @@ def _course(nom: str, course: Any, panne: Any = None) -> str:
     conclusion = course.get("conclusion")
     cle, texte = _CONCLUSIONS.get(conclusion, (None, None)) if isinstance(conclusion, str) \
         else (None, None)
+    if cle is not None and masculin:
+        texte = texte.removesuffix("e")
     if cle is None:
         cle = "autre"
         texte = f"autre : {_texte(conclusion, 40)}" if conclusion else "conclusion inconnue"
@@ -141,7 +147,7 @@ def bloc_sante(github: dict | None, systeme: dict | None) -> str:
                   + '<ul class="bord-signalements">'
                   + _course("CI de main", donnees.get("ci"), pannes.get("ci"))
                   + _course("Dernier déploiement", donnees.get("deploiement"),
-                            pannes.get("deploiement"))
+                            pannes.get("deploiement"), masculin=True)
                   + f'</ul>{jeton}<p class="bord-mut">{version}.</p>')
 
 

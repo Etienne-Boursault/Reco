@@ -87,7 +87,8 @@ def _etat(audience: dict) -> str:
     age = audience.get("age")
     if audience.get("donnees") is not None and isinstance(age, int):
         quand = _depuis(timedelta(seconds=age))
-        message = (f"À jour · lu {quand}." if etat == "ok"
+        perime = bord_distant.donnees_perimees(audience)  # même seuil que Santé (revue globale, M2)
+        message = (f"{'Périmé' if perime else 'À jour'} · lu {quand}." if etat == "ok"
                    else f"{message} Ce sont les données d'{quand}.")
     return (f'<p class="bord-audience-etat" data-etat="{html.escape(etat)}">'
             f'<span class="bord-pastille" aria-hidden="true"></span>'

@@ -16,6 +16,13 @@ se lit sur la branche `origin/contenu/<slug>` (`git show`), ou manque.
 
 Un fichier de cases illisible n'est jamais réécrit (F22) : `lire` et `cocher`
 lèvent `EtatIllisible`, la page le signale et la case est refusée.
+
+LA FENÊTRE DE PUBLICATION (revue globale du tableau de bord, E1, 28/11/2026)
+----------------------------------------------------------------------------
+Les cases restent sur les 3 derniers, mais « fusionner la PR » regarde les `N_PUBLICATION` (10)
+derniers publiés : venus pousse `contenu/<slug>` sans ouvrir de PR, et un épisode non fusionné
+au-delà des 3 derniers n'apparaissait plus nulle part. Plus ancien que la fenêtre, un épisode
+absent du clone est compté par `non_verifies` (un épisode revenu dans le clone est fusionné).
 """
 from __future__ import annotations
 
@@ -34,8 +41,10 @@ from publication import PREFIXE_BRANCHE
 RESEAUX = ("instagram", "threads", "spotify", "deezer", "senscritique", "youtube")
 LIBELLES = {"instagram": "Instagram", "threads": "Threads", "spotify": "Spotify",
             "deezer": "Deezer", "senscritique": "SensCritique",
-            "youtube": "commentaire YouTube"}
+            "youtube": "Commentaire YouTube"}
 N_RECENTS = 3
+#: Les derniers publiés dont la PR est vérifiée (revue globale, E1) ; les cases n'en prennent que 3.
+N_PUBLICATION = 10
 # Le serveur de relecture n'a qu'un fil : un git bloqué ne doit pas le figer.
 _DELAI_GIT = 5
 
@@ -69,10 +78,23 @@ def lire() -> dict[str, dict[str, str]]:
     return donnees
 
 
-def guids_recents(state: dict[str, Any] | None) -> list[str]:
-    """Les 3 derniers guid publiés, du plus récent au plus ancien."""
-    publies = list(dict.fromkeys((state or {}).get("published") or []))
-    return publies[::-1][:N_RECENTS]
+def _publies(state: dict[str, Any] | None) -> list[str]:
+    """Tous les guid publiés, du plus récent au plus ancien."""
+    return list(dict.fromkeys((state or {}).get("published") or []))[::-1]
+
+
+def guids_recents(state: dict[str, Any] | None, n: int = N_RECENTS) -> list[str]:
+    """Les `n` derniers guid publiés (3 par défaut), du plus récent au plus ancien."""
+    return _publies(state)[:n]
+
+
+def non_verifies(state: dict[str, Any] | None, episodes: dict[str, dict]) -> int:
+    """Les publiés plus anciens que la fenêtre de publication et absents du clone (`episodes`).
+
+    Leur PR n'est pas regardée : l'« À faire d'abord » le dit (F23). Un ancien épisode revenu
+    dans le clone est fusionné, il ne compte pas.
+    """
+    return sum(1 for g in _publies(state)[N_PUBLICATION:] if g not in episodes)
 
 
 def cocher(state: dict[str, Any] | None, guid: str, reseau: str, fait: bool, *,
@@ -128,8 +150,8 @@ def _episode_sur_la_branche(source_id: str, guid: str) -> dict[str, Any] | None:
 
 
 def episodes_recents(source_id: str, state: dict[str, Any] | None,
-                     episodes: dict[str, dict]) -> list[dict[str, Any]] | None:
-    """Les 3 derniers publiés : `{"guid", "fusionne", "episode"}`, ou None sans état.
+                     episodes: dict[str, dict], n: int = N_RECENTS) -> list[dict[str, Any]] | None:
+    """Les `n` derniers publiés (3 par défaut) : `{"guid", "fusionne", "episode"}`, ou None sans état.
 
     `fusionne` : l'épisode est revenu dans le clone (`episodes`, ceux de
     `_load_groups`), donc sa PR est fusionnée. Sinon, `episode` vient de sa
@@ -138,7 +160,7 @@ def episodes_recents(source_id: str, state: dict[str, Any] | None,
     if state is None:
         return None
     recents = []
-    for guid in guids_recents(state):
+    for guid in guids_recents(state, n):
         fusionne = guid in episodes
         episode = episodes[guid] if fusionne else _episode_sur_la_branche(source_id, guid)
         recents.append({"guid": guid, "fusionne": fusionne, "episode": episode})

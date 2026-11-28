@@ -176,7 +176,8 @@ def test_date_illisible_ou_absente_est_dite():
 
 @pytest.mark.parametrize("adresse", [
     JS, "http://github.com/x", "https://github.com.evil.test/x", "https://evil.test/github.com/",
-    "https://github.com\\@evil.test/x", "", None, 42, CHARGE])
+    "https://github.com\\@evil.test/x", "https://evil.com\\@github.com/x",
+    "https://evil.com@github.com/x", "https://github.com:443@evil.test/x", "", None, 42, CHARGE])
 def test_un_lien_qui_n_est_pas_github_devient_du_texte(adresse):
     bloc = brs.bloc_sante(_github(donnees={"ci": _course(adresse=adresse), "deploiement": None}),
                           _systeme())

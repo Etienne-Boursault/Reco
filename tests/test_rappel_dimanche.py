@@ -100,6 +100,26 @@ def test_le_texte_reprend_les_lignes_de_la_colonne_a_faire(monde):
     assert _corps(monde) == "🗒️ Il te reste : " + " · ".join(i["texte"] for i in items)
 
 
+def test_le_message_dit_les_reseaux_a_cocher_et_la_publication_au_dela_des_trois_derniers(
+        monde, monkeypatch):
+    """Revue globale, E1 : 4 épisodes publiés sans PR, le plus ancien reste dit ; les cases
+    ne portent que sur les 3 derniers ; les publiés hors fenêtre sont comptés."""
+    entrees = [{"guid": f"yt-{n}", "fusionne": False, "episode": {"season": 6, "number": n}}
+               for n in (14, 13, 12, 11)]
+    monkeypatch.setattr(bord_reseaux, "episodes_recents",
+                        lambda source_id, state, episodes, n=3: entrees[:n])
+    monkeypatch.setattr(review_render_page, "_pipeline_state", lambda source_id: {
+        "published": ["old-1", *[f"yt-{n}" for n in (11, 12, 13, 14)], *[f"z{i}" for i in range(6)]]})
+    monde.github = {**GITHUB, "donnees": {**GITHUB["donnees"], "ouvertes": {
+        "episodes": [], "sorties": [], "coupee": False}}}
+    assert _lancer() == 0
+    corps = _corps(monde)
+    assert "ouvrir puis fusionner la PR de S6·E11" in corps            # au-delà des 3 derniers
+    assert "réseaux de S6·E14 : Instagram, Threads" in corps
+    assert "réseaux de S6·E12 :" in corps and "réseaux de S6·E11 :" not in corps
+    assert "1 épisode plus ancien non vérifié" in corps               # old-1, hors des 10 derniers
+
+
 @pytest.mark.parametrize("quand", [
     datetime(2026, 11, 28, 19, 5, tzinfo=UTC),    # samedi soir
     datetime(2026, 11, 30, 19, 5, tzinfo=UTC),    # lundi : pas de rattrapage
@@ -324,3 +344,20 @@ def test_l_envoi_passe_par_matrix_et_dit_non_configure_sans_ses_variables(monkey
     monkeypatch.setenv("RECO_MATRIX_TOKEN", "faux")
     monkeypatch.setenv("RECO_MATRIX_ROOM", "!faux:matrix.invalid")
     assert rd._sender() is not None
+
+
+def test_une_ligne_d_une_source_ok_perimee_porte_la_date_des_donnees(monde):
+    # Revue globale, M2 : « ok » mais plus réécrite depuis 72 h : la ligne reste, datée.
+    monde.audience = {**AUDIENCE, "lu": "2026-11-26T12:00:00+00:00", "age": 72 * 3600}
+    monde.github = {**GITHUB, "lu": "2026-11-26T08:00:00+00:00", "age": 72 * 3600}
+    assert _lancer() == 0
+    corps = _corps(monde)
+    assert "1 signalement en attente (données du 26/11)" in corps
+    assert "fusionner la PR des sorties : Sorties (#7) (données du 26/11)" in corps
+    assert "3 liens morts" in corps and "3 liens morts (données" not in corps
+
+
+def test_une_source_fraiche_ne_change_pas_le_message(monde):
+    monde.audience = {**AUDIENCE, "age": 120}
+    assert _lancer() == 0
+    assert "(données du" not in _corps(monde)

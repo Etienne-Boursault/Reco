@@ -86,8 +86,10 @@ def _lignes(source_id: str, fuseau) -> tuple[list[str], int]:
     Une ligne « inconnu » d'audience ou de GitHub cite la date des dernières données gardées.
     """
     _, episodes, groups = review_render._load_groups(source_id)
-    recents = bord_reseaux.episodes_recents(
-        source_id, review_render_page._pipeline_state(source_id), episodes)
+    etat = review_render_page._pipeline_state(source_id)
+    # Revue globale, E1 : la publication regarde 10 épisodes, les cases les 3 derniers.
+    publies = bord_reseaux.episodes_recents(source_id, etat, episodes, bord_reseaux.N_PUBLICATION)
+    recents = None if publies is None else publies[:bord_reseaux.N_RECENTS]
     try:
         coches = bord_reseaux.lire()
     except bord_reseaux.EtatIllisible as exc:
@@ -97,7 +99,8 @@ def _lignes(source_id: str, fuseau) -> tuple[list[str], int]:
            "github": bord_github.lire(relancer=False)}
     items = bord_afaire.a_faire_depuis(
         episodes=episodes, groups=groups, recents=recents, coches=coches,
-        audience=lus["audience"], github=lus["github"], contenu=bord_contenu.lire(source_id))
+        audience=lus["audience"], github=lus["github"], contenu=bord_contenu.lire(source_id),
+        publies=publies, non_verifies=bord_reseaux.non_verifies(etat, episodes))
     lignes, taches = [], 0
     for item in items:
         texte = item["texte"]

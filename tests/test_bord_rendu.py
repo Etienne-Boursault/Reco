@@ -290,6 +290,18 @@ def test_chaine_montre_l_episode_et_ses_etapes():
     assert 'title="source : fiche de l&#x27;épisode"' in contenu
 
 
+def test_chaine_dit_les_fiches_illisibles():
+    """Revue globale, D9 : une fiche sautée se compte et se dit (F22)."""
+    assert "illisible" not in bb.bloc_chaine(_chaine())
+    assert "illisible" not in bb.bloc_chaine({k: v for k, v in _chaine().items()
+                                              if k != "fiches_illisibles"})
+    un = bb.bloc_chaine(_chaine(fiches_illisibles=1))
+    assert "1 fiche d'épisode illisible" in un and 'role="alert"' in un
+    assert "3 fiches d'épisode illisibles" in bb.bloc_chaine(_chaine(fiches_illisibles=3))
+    sans_episode = bb.bloc_chaine(_chaine(episode=None, etapes=[], fiches_illisibles=1))
+    assert "Aucun épisode en cours." in sans_episode and "1 fiche d'épisode illisible" in sans_episode
+
+
 def test_chaine_une_etape_inconnue_et_une_heure_illisible():
     chaine = _chaine(etapes=[_etape("extrait", "Extrait", etat="inconnu", source="inconnu"),
                              _etape("transcrit", "Transcrit", heure="hier")])
@@ -339,9 +351,9 @@ def test_chaine_les_derniers_passages():
     lignes = re.findall(r'<li data-echec="(\d)"><span>(.*?)</span><span class="bord-mut">'
                         r'(.*?)</span></li>', contenu)
     assert lignes == [
-        ("0", "10 h 17 · rien de neuf", "41 s"),
+        ("0", "10 h 17 · aucune étape suivie", "41 s"),
         ("1", "08 h 17 · lancé : extraire, chercher-liens · en échec : publier", "3 min 12"),
-        ("0", "? · rien de neuf", "?"),
+        ("0", "? · aucune étape suivie", "?"),
     ]
 
 
@@ -372,7 +384,7 @@ def test_reseaux_une_ligne_par_reseau_une_colonne_par_episode():
     contenu, nb = bb.bloc_reseaux([_recent(), _recent("yt-10", None)], {})
     lignes = re.findall(r'<th scope="row">(.*?)</th>', contenu)
     assert lignes == ["Instagram", "Threads", "Spotify", "Deezer", "SensCritique",
-                      "commentaire YouTube"]
+                      "Commentaire YouTube"]
     assert re.findall(r'<th scope="col">(.*?)</th>', contenu) == ["Réseau", "S6·E11", "yt-10"]
     assert nb == 12
 

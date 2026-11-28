@@ -182,9 +182,10 @@ def _execution(reponse: Any, depot: str) -> dict[str, Any] | None:
         return None
     # Tour 1, F5 : `deploy.yml` suit `workflow_run`, il est sauté (`skipped`) quand la CI échoue. La
     # requête ne garde que les exécutions terminées ; on prend la première qui a un vrai résultat,
-    # sinon la plus récente.
+    # sinon la plus récente. Revue globale, D10 : `ci.yml` annule l'exécution en cours quand une
+    # nouvelle démarre, « annulée » n'est donc pas un résultat non plus.
     course = next((c for c in courses if isinstance(c, dict)
-                   and c.get("conclusion") not in (None, "skipped")), courses[0])
+                   and c.get("conclusion") not in (None, "skipped", "cancelled")), courses[0])
     if not isinstance(course, dict):
         raise ValueError("exécution de forme inattendue")
     ident, conclusion, date = course.get("id"), course.get("conclusion"), course.get("updated_at")
@@ -235,7 +236,7 @@ def _appeler() -> tuple[str, str | None, dict[str, Any] | None]:
     base = f"{API_GITHUB}/repos/{depot}"
     ouv = f"{base}/pulls?state=open&per_page={_PAGE}"
     fer = f"{base}/pulls?state=closed&sort=updated&direction=desc&per_page={_PAGE_FERMEES}"
-    ci = f"{base}/actions/workflows/ci.yml/runs?branch=main&event=push&status=completed&per_page=1"
+    ci = f"{base}/actions/workflows/ci.yml/runs?branch=main&event=push&status=completed&per_page=10"
     dep = f"{base}/actions/workflows/deploy.yml/runs?branch=main&status=completed&per_page=10"
     appels = (  # (bloc, adresse, avec jeton, lecture) ; le jeton ne sert qu'aux PR
         ("ouvertes", ouv, True, _ouvertes), ("fusionnees", fer, True, _fusionnees),
@@ -292,7 +293,7 @@ def lire(*, maintenant: datetime | None = None, relancer: bool = True) -> dict[s
             etat = "inconnu"
     entree = entree or {}
     relance = (relancer and etat != "cache-illisible" and bd._perime(entree or None, maintenant)
-               and bd._lancer(Path(__file__).resolve(), SOURCE))
+               and bd._lancer(Path(__file__).resolve(), SOURCE, maintenant))
     lu = entree.get("lu")
     return {"source": SOURCE, "etat": etat, "libelle": LIBELLES[etat],
             "detail": entree.get("detail"), "donnees": entree.get("donnees"), "lu": lu,

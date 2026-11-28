@@ -75,7 +75,7 @@ def test_le_libelle_retombe_sur_le_titre_court_puis_le_guid():
     items = _appel(recents=recents, coches={"yt-x": {}, "yt-y": {}})
     assert _textes(items)[0].startswith("réseaux de Hors série : Instagram")
     assert _textes(items)[1].startswith("réseaux de yt-y : ")
-    assert _textes(items)[0].endswith("commentaire YouTube")
+    assert _textes(items)[0].endswith("Commentaire YouTube")
 
 
 def test_l_ordre_des_blocs():
@@ -325,6 +325,74 @@ def test_une_pr_sans_branche_n_est_rapprochee_d_aucun_episode():
         ("fusionner la PR #5 : sans titre", f"{PR_URL}5")]
 
 
+def _publies(*numeros):
+    """Des épisodes publiés sans PR, du plus récent au plus ancien."""
+    return [_recent(f"yt-{n}", {"guid": f"yt-{n}", "title": "T", "season": 6, "number": n})
+            for n in numeros]
+
+
+def test_un_episode_publie_sans_pr_au_dela_des_trois_derniers_reste_signale():
+    """Revue globale, E1 : la chaîne ne crée pas de PR ; le plus ancien de 4 ne doit pas disparaître."""
+    lignes = ba.lignes_publication(_github(), _publies(14, 13, 12, 11))
+    assert [t for t, _ in lignes] == [f"ouvrir puis fusionner la PR de S6·E{n}"
+                                      for n in (14, 13, 12, 11)]
+
+
+def test_au_dela_de_la_fenetre_une_note_grisee_dit_combien_ne_sont_pas_verifies():
+    """Revue globale, E1 (F23) : la liste coupée le dit ; la note ne compte pas comme tâche."""
+    import bord_rendu_blocs as bb
+    lignes = ba.lignes_publication(_github(), [], non_verifies=2)
+    assert lignes == [ba.Note("2 épisodes plus anciens non vérifiés (hors des 10 derniers publiés)")]
+    assert ba.lignes_publication(_github(), [], non_verifies=1) == [
+        ba.Note("1 épisode plus ancien non vérifié (hors des 10 derniers publiés)")]
+    assert ba.lignes_publication(_github(), [], non_verifies=0) == []
+    assert bb.bloc_afaire(_appel(publication=lignes))[1] == 0
+
+
+def test_a_faire_depuis_regarde_la_fenetre_pour_la_publication_et_trois_pour_les_reseaux():
+    publies = _publies(14, 13, 12, 11)
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=publies[:3], publies=publies,
+                              coches={}, audience=None, github=_github(), contenu=None,
+                              non_verifies=1)
+    publication = [i["texte"] for i in items if i["bloc"] == "publication"]
+    assert publication[:4] == [f"ouvrir puis fusionner la PR de S6·E{n}" for n in (14, 13, 12, 11)]
+    assert publication[4].startswith("1 épisode plus ancien non vérifié")
+    assert [i["texte"].split(" : ")[0] for i in items if i["bloc"] == "reseaux"] == [
+        "réseaux de S6·E14", "réseaux de S6·E13", "réseaux de S6·E12"]
+    # Sans GitHub lisible, le repli sur l'état de la chaîne regarde aussi la fenêtre.
+    repli = ba.a_faire_depuis(episodes={}, groups={}, recents=publies[:3], publies=publies,
+                              coches={}, audience=None, github=None, contenu=None)
+    assert [i["texte"] for i in repli if i["bloc"] == "publication"] == [
+        f"fusionner la PR de S6·E{n}" for n in (14, 13, 12, 11)]
+
+
+def test_sans_github_lisible_la_note_des_plus_anciens_non_verifies_apparait_aussi():
+    """Tour 2, T2-4 (F23) : le repli sur l'état de la chaîne ne tait pas les épisodes hors fenêtre."""
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=_publies(14, 13), coches={},
+                              audience=None, github=None, contenu=None, non_verifies=2)
+    note = [i for i in items if i["bloc"] == "publication"][-1]
+    assert note["texte"] == "2 épisodes plus anciens non vérifiés (hors des 10 derniers publiés)"
+    assert note["inconnu"] is True      # grisée, ne compte pas comme tâche
+
+
+def test_une_panne_isolee_des_pr_fermees_rend_les_fusionnees_inconnues():
+    """Revue globale, D4 : la liste gardée d'avant ne dit pas que la dernière lecture est complète."""
+    github = _github(fusionnees=[_pr(40, "contenu/yt-11")])
+    github["donnees"]["pannes"] = {"fusionnees": {"etat": "panne", "detail": "HTTP 500"}}
+    assert ba.branches_fusionnees(github) is None
+    # Tour 2, T2-3 : une PR fusionnée le reste ; la chaîne lit la liste gardée malgré la panne.
+    assert ba.branches_fusionnees(github, meme_en_panne=True) == {
+        "contenu/yt-11": "2026-11-28T08:00:00Z"}
+    assert ba.branches_fusionnees({"donnees": {}}, meme_en_panne=True) is None
+    assert ba.lignes_publication(github, [_recent("yt-11", EP11)]) == [
+        ba.Note("publication de S6·E11 : inconnu (PR fusionnées non lues)")]
+    # Une autre panne (CI, déploiement) ne touche pas aux PR fusionnées.
+    github["donnees"]["pannes"] = {"ci": {"etat": "panne", "detail": "HTTP 500"}}
+    assert ba.branches_fusionnees(github) == {"contenu/yt-11": "2026-11-28T08:00:00Z"}
+    github["donnees"]["pannes"] = "x"
+    assert ba.branches_fusionnees(github) is not None
+
+
 def test_la_ligne_des_sorties_passe_d_inconnu_a_un_nombre_depuis_github():
     avant = _appel(sorties=ba.lignes_sorties(None))
     assert _textes(avant) == ["sorties : inconnu"] and avant[0]["inconnu"]
@@ -384,3 +452,49 @@ def test_le_lien_d_une_pr_ne_vaut_que_pour_github():
         assert "<a " not in contenu
     contenu, _ = bb.bloc_afaire([bon])
     assert f'href="{PR_URL}1"' in contenu and "Ouvrir la PR" in contenu
+
+
+# ---- Revue globale, M2 : une source « ok » périmée date ses lignes ----------
+
+def _vieille(source: dict, age: int = 72 * 3600) -> dict:
+    """La source telle que `lire()` la rend quand rien n'a été réécrit depuis `age` secondes."""
+    return {**source, "lu": "2026-11-27T10:00:00+00:00", "age": age}
+
+
+def test_une_ligne_de_signalements_d_une_audience_perimee_porte_sa_date():
+    audience = _vieille(_audience(signalements=_en_attente(3)))
+    assert ba.lignes_signalements(audience) == ["3 signalements en attente"]  # le texte reste
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=[], coches={}, audience=audience,
+                              github=None, contenu=None)
+    ligne = [i for i in items if i["bloc"] == "signalements"]
+    # Une PR ou un signalement vu il y a deux jours reste probablement à traiter : c'est toujours
+    # une tâche (`inconnu` faux), mais datée.
+    assert _textes(ligne) == ["3 signalements en attente (données du 27/11)"]
+    assert not ligne[0]["inconnu"]
+
+
+def test_les_lignes_de_github_perimee_portent_leur_date_et_gardent_leur_lien():
+    github = _vieille(_github(episodes=[_pr(41, "contenu/yt-11")],
+                              sorties=[_pr(50, "contenu/sorties-x", "Sorties", "sorties")]))
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=[], publies=[_recent("yt-11", EP11)],
+                              coches={}, audience=None, github=github, contenu=None)
+    assert [(i["bloc"], i["texte"], i["href"]) for i in items if i["bloc"] in ("publication", "sorties")
+            ] == [("publication", "fusionner la PR de S6·E11 (#41) (données du 27/11)", f"{PR_URL}41"),
+                  ("sorties", "fusionner la PR des sorties : Sorties (#50) (données du 27/11)",
+                   f"{PR_URL}50")]
+
+
+def test_une_note_d_une_source_perimee_ne_porte_pas_de_date():
+    github = _vieille(_github(coupee=True))
+    lignes = ba.a_faire_depuis(episodes={}, groups={}, recents=[], coches={}, audience=None,
+                               github=github, contenu=None)
+    assert "d'autres PR ouvertes ne sont pas listées" in _textes(lignes)
+
+
+def test_des_sources_fraiches_ne_changent_aucune_ligne():
+    audience = _vieille(_audience(signalements=_en_attente(1)), age=20 * 60)
+    github = _vieille(_github(sorties=[_pr(50, "contenu/sorties-x", "Sorties", "sorties")]), age=60)
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=[], coches={}, audience=audience,
+                              github=github, contenu=None)
+    assert "données du" not in " ".join(_textes(items))
+    assert ba.lignes_signalements(audience) == ["1 signalement en attente"]

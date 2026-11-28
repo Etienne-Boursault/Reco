@@ -41,6 +41,33 @@ def test_guids_recents_sans_etat_de_chaine():
     assert br.guids_recents({}) == []
 
 
+# ---- La fenêtre de publication, plus large que les cases (revue globale, E1) ----
+PUBLIES = {"published": [f"yt-{i:02d}" for i in range(12)]}
+
+
+def test_la_fenetre_de_publication_garde_les_dix_derniers_et_les_cases_les_trois():
+    assert len(br.guids_recents(PUBLIES, br.N_PUBLICATION)) == br.N_PUBLICATION == 10
+    assert br.guids_recents(PUBLIES) == ["yt-11", "yt-10", "yt-09"]
+    # Les cases refusent toujours un épisode hors des 3 derniers, même dans la fenêtre.
+    with pytest.raises(ValueError):
+        br.cocher(PUBLIES, "yt-05", "deezer", True, maintenant=MAINTENANT)
+
+
+def test_episodes_recents_prend_la_fenetre_demandee():
+    episodes = {g: {"guid": g} for g in PUBLIES["published"]}
+    assert len(br.episodes_recents("demo", PUBLIES, episodes)) == 3
+    large = br.episodes_recents("demo", PUBLIES, episodes, br.N_PUBLICATION)
+    assert [r["guid"] for r in large][-1] == "yt-02" and len(large) == 10
+
+
+def test_non_verifies_compte_les_anciens_hors_fenetre_absents_du_clone():
+    """Un ancien épisode revenu dans le clone est fusionné : il n'est pas « non vérifié »."""
+    assert br.non_verifies(PUBLIES, {}) == 2
+    assert br.non_verifies(PUBLIES, {"yt-00": {}}) == 1
+    assert br.non_verifies(PUBLIES, {"yt-00": {}, "yt-01": {}}) == 0
+    assert br.non_verifies({"published": ["yt-a"]}, {}) == 0 and br.non_verifies(None, {}) == 0
+
+
 # ---- Pose et retrait ------------------------------------------------------
 def test_lire_sans_fichier_rend_un_etat_vide():
     assert br.lire() == {}

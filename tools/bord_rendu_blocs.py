@@ -28,7 +28,8 @@ from typing import Any
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from bord_afaire import _libelle, signalements_en_attente
+import bord_distant
+from bord_afaire import A_CREER, _libelle, signalements_en_attente, total_signalements
 from bord_reseaux import LIBELLES, RESEAUX
 from review_render_focus import short_title
 
@@ -81,16 +82,20 @@ def _heure(iso: Any, *, jour: bool = False) -> str | None:
 def date_du_jour(maintenant: datetime) -> str:
     """« dimanche 29 novembre »."""
     t = maintenant.astimezone(_fuseau())
-    return f"{_JOURS[t.weekday()]} {t.day} {_MOIS[t.month - 1]}"
+    jour = "1er" if t.day == 1 else t.day
+    return f"{_JOURS[t.weekday()]} {jour} {_MOIS[t.month - 1]}"
 
 
 def _depuis(ecart: timedelta) -> str:
+    """« à l'instant », « il y a 12 min », « il y a 2 h 05 », puis « il y a 2 j 7 h » dès 48 h."""
     minutes = int(ecart.total_seconds() // 60)
     if minutes < 1:
         return "à l'instant"
     if minutes < 60:
         return f"il y a {minutes} min"
-    return f"il y a {minutes // 60} h {minutes % 60:02d}"
+    if minutes < 48 * 60:
+        return f"il y a {minutes // 60} h {minutes % 60:02d}"
+    return f"il y a {minutes // 1440} j {minutes % 1440 // 60} h"
 
 
 def _duree(debut: Any, fin: Any) -> str:
@@ -141,12 +146,20 @@ def etat_entete(passages: list[dict] | None, maintenant: datetime,
 
 
 def _est_github(adresse: Any) -> bool:
-    """Vrai pour `https://github.com/…` seulement (F21)."""
+    """Vrai pour `https://github.com/…` seulement (F21).
+
+    Revue globale, S2 : une adresse « evil.com, barre oblique inverse, @github.com » se lit
+    `github.com` pour `urlparse`, mais le navigateur ouvre evil.com. Toute adresse qui porte une
+    barre oblique inverse ou un `@` est donc refusée, et `netloc`
+    doit être exactement `github.com` (ni port, ni identifiants).
+    """
+    if not isinstance(adresse, str) or "\\" in adresse or "@" in adresse:
+        return False
     try:
-        u = urlparse(adresse) if isinstance(adresse, str) else None
-        return u is not None and u.scheme == "https" and u.hostname == "github.com"
+        u = urlparse(adresse)
     except ValueError:
         return False
+    return u.scheme == "https" and u.netloc == "github.com"
 
 
 def _carte(contenu: str, classe: str = "bord-carte") -> str:
@@ -168,8 +181,10 @@ def bloc_afaire(items: list[dict]) -> tuple[str, int]:
             href = "/ep?guid=" + urllib.parse.quote(str(item["guid"]), safe="")
             lien = f'<a class="bord-bouton" href="{html.escape(href)}">Ouvrir la relecture</a>'
         elif _est_github(item.get("href")):  # une PR : jamais un autre hôte (F21)
+            # Sans PR encore, le lien mène à la page de comparaison : « Créer » (revue globale, R12).
+            bouton = "Créer la PR" if str(item.get("texte")).startswith(A_CREER) else "Ouvrir la PR"
             lien = (f'<a class="bord-bouton" href="{html.escape(item["href"])}" '
-                    'rel="noreferrer">Ouvrir la PR</a>')
+                    f'rel="noreferrer">{bouton}</a>')
         lignes.append(
             f'<li class="bord-tache" data-bloc="{html.escape(bloc)}"{inconnu}>'
             f'<span class="bord-tache-bloc">{_texte(_BLOCS.get(bloc, bloc), 40)}</span>'
@@ -193,18 +208,34 @@ def _etape(e: dict) -> str:
             f'<span class="bord-etape-quand">{html.escape(quand)}</span></li>')
 
 
-def _passage(p: dict) -> str:
+def _passage(p: dict, maintenant: datetime | None = None) -> str:
+    # Seules les étapes notées par `lance` (tick.sh) comptent : la détection et la transcription
+    # n'en sont pas, un passage qui n'a fait qu'elles ne dit donc pas « rien de neuf » (revue
+    # globale, M5).
     lancees, echecs = _noms(p.get("lancees")), _noms(p.get("echecs"))
-    texte = (_heure(p.get("debut")) or "?") + " · "
-    texte += ("lancé : " + ", ".join(lancees)) if lancees else "rien de neuf"
+    # Le jour, quand le passage n'est pas du jour même (heure de Paris) : « sam. 23 h 05 ». Au-delà
+    # de 6 jours un nom de jour serait ambigu : « 22/11 10 h 00 » (tour 2, T2-6).
+    debut = _instant(p.get("debut"))
+    ecart = 0
+    if debut is not None and maintenant is not None:
+        ecart = (maintenant.astimezone(_fuseau()).date() - debut.astimezone(_fuseau()).date()).days
+    if ecart > 6:
+        heure = f"{debut.astimezone(_fuseau()):%d/%m} {_heure(p.get('debut'))}"
+    else:
+        heure = _heure(p.get("debut"), jour=ecart != 0)
+    texte = (heure or "?") + " · "
+    texte += ("lancé : " + ", ".join(lancees)) if lancees else "aucune étape suivie"
     if echecs:
         texte += " · en échec : " + ", ".join(echecs)
     return (f'<li data-echec="{1 if echecs else 0}"><span>{texte}</span>'
             f'<span class="bord-mut">{_duree(p.get("debut"), p.get("fin"))}</span></li>')
 
 
-def bloc_chaine(chaine: dict) -> str:
-    """Le bloc de `bord_chaine.etat_chaine` : épisode, étapes, erreurs, passages."""
+def bloc_chaine(chaine: dict, maintenant: datetime | None = None) -> str:
+    """Le bloc de `bord_chaine.etat_chaine` : épisode, étapes, erreurs, passages.
+
+    `maintenant` : sans lui, les passages ne portent jamais de jour.
+    """
     episode = chaine.get("episode")
     etapes = chaine.get("etapes") or []
     if episode is None:
@@ -214,6 +245,11 @@ def bloc_chaine(chaine: dict) -> str:
         tete = (f'<span class="bord-etiquette">L\'épisode de la semaine</span>'
                 f'<h3 class="bord-episode">{_texte(nom)}</h3>'
                 f'<ol class="bord-etapes">{"".join(_etape(e) for e in etapes)}</ol>')
+    illisibles = chaine.get("fiches_illisibles")
+    if isinstance(illisibles, int) and illisibles > 0:  # revue globale, D9 (F22)
+        s = "s" if illisibles > 1 else ""
+        tete += (f'<p class="bord-alerte" role="alert">{illisibles} fiche{s} d\'épisode '
+                 f'illisible{s} : l\'épisode montré peut ne pas être le dernier.</p>')
     erreurs = chaine.get("erreurs") or []
     etat_lu = bool(chaine.get("etat_lu"))
     if erreurs:
@@ -228,7 +264,7 @@ def bloc_chaine(chaine: dict) -> str:
     elif not passages:
         liste = '<p class="bord-mut">Aucun passage noté.</p>'
     else:
-        liste = f'<ul class="bord-passages">{"".join(_passage(p) for p in passages)}</ul>'
+        liste = f'<ul class="bord-passages">{"".join(_passage(p, maintenant) for p in passages)}</ul>'
     return (_carte(tete)
             + _carte(f'<span class="bord-etiquette">Derniers passages</span>{liste}{bas}'))
 
@@ -313,11 +349,13 @@ def bloc_signalements(audience: dict | None) -> str:
     age = audience.get("age")
     perime = ""
     if audience.get("etat") != "ok" and isinstance(age, int):
-        perime = (f'<p class="bord-mut">Liste des données d\'{_depuis(timedelta(seconds=age))}'
+        perime = (f'<p class="bord-mut">Données d\'{_depuis(timedelta(seconds=age))}'
                   " : l'audience n'a pas pu être relue.</p>")
+    elif bord_distant.donnees_perimees(audience):  # même seuil que le bloc Audience (revue globale, M2)
+        perime = (f'<p class="bord-mut">Périmé : données d\'{_depuis(timedelta(seconds=age))}.</p>')
     if not liste:
         return _carte(titre + '<p class="bord-vide">Aucun signalement en attente.</p>' + perime)
-    reste = len(liste) - SIGNALEMENTS_MAX
+    reste = total_signalements(audience) - min(len(liste), SIGNALEMENTS_MAX)
     autres = f'<p class="bord-mut">+ {reste} autres</p>' if reste > 0 else ""
     lignes = "".join(_signalement(s) for s in liste[:SIGNALEMENTS_MAX])
     return _carte(f'{titre}<ul class="bord-signalements">{lignes}</ul>{autres}{perime}')

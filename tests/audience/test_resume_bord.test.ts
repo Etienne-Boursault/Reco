@@ -37,8 +37,8 @@ function agregat(over: Partial<Agregat> = {}): Agregat {
   return {
     du: '2026-11-22', au: '2026-11-28', jours: [jour()], pagesVues: 12, visiteurs: 6,
     visitesRobots: 40, prechargements: 1, clics: 2, clicsPour100Visiteurs: 33.3,
-    clicsHorsPeriode: 0, topPages: compte(7),
-    provenances: compte(6).map((c) => ({ ...c, cle: `site-${c.n}.test` })),
+    clicsHorsPeriode: 0, topPages: compte(7), pagesDistinctes: 7,
+    provenances: compte(6).map((c) => ({ ...c, cle: `site-${c.n}.test` })), provenancesDistinctes: 6,
     appareils: [{ cle: 'mobile', n: 3 }], langues: [{ cle: 'fr', n: 3 }],
     paysConnus: [{ cle: 'FR', n: 3 }], paysIndisponible: false,
     erreurs404: [{ cle: '/vieux', n: 1 }], sondes: 4, plateformes: [{ cle: 'tmdb', n: 2 }],
@@ -91,12 +91,18 @@ describe('resumerBord : les fenêtres de 7 et 30 jours', () => {
   });
 
   it('envoie le total des pages et des provenances, pour que la page dise « + N autres » (F23)', () => {
-    const exact = resumer({ sept: lecture(agregat({ topPages: compte(5), provenances: compte(2) })) });
+    const exact = resumer({ sept: lecture(agregat({
+      topPages: compte(5), pagesDistinctes: 5, provenances: compte(2), provenancesDistinctes: 2,
+    })) });
     expect(exact.sept).toMatchObject({ pages: compte(5), pagesTotal: 5, provenancesTotal: 2 });
 
-    const plus = resumer({ sept: lecture(agregat({ topPages: compte(9) })) });
+    // L'agrégat a déjà coupé à 12 : le total vient de lui, pas de la liste (revue globale, M4).
+    const plus = resumer({ sept: lecture(agregat({
+      topPages: compte(12), pagesDistinctes: 40, provenances: compte(12), provenancesDistinctes: 15,
+    })) });
     expect(plus.sept?.pages).toHaveLength(5);
-    expect(plus.sept?.pagesTotal).toBe(9);
+    expect(plus.sept?.pagesTotal).toBe(40);
+    expect(plus.sept?.provenancesTotal).toBe(15);
   });
 
   it('dit « ancien tri » avant la bascule, sans colonnes', () => {
@@ -166,6 +172,7 @@ describe('resumerBord : les signalements en attente (F15)', () => {
 
     expect(r.signalements).toEqual({
       etat: 'lu',
+      total: 2,
       enAttente: [
         { id: 'rep-recent', recoId: 'ubm-9', categorie: 'broken-link', date: '2026-11-27T10:00:00.000Z' },
         { id: 'rep-ancien', recoId: 'ubm-1', categorie: 'error', date: '2026-11-20T08:00:00.000Z' },
@@ -182,6 +189,15 @@ describe('resumerBord : les signalements en attente (F15)', () => {
   });
 
   it('dit « inconnu » quand les signalements n’ont pas pu être lus, jamais « rien en attente »', () => {
-    expect(resumer({ signalements: null }).signalements).toEqual({ etat: 'inconnu', enAttente: [] });
+    expect(resumer({ signalements: null }).signalements).toEqual({ etat: 'inconnu', total: 0, enAttente: [] });
+  });
+
+  it('n’envoie que les 5 plus récents, avec le total, pour que le site ne livre pas toute la file (revue globale, S4)', () => {
+    const huit = Array.from({ length: 8 }, (_, i) =>
+      signalement({ id: `rep-${i}`, submittedAt: `2026-11-1${i}T08:00:00.000Z` }));
+    const r = resumer({ signalements: huit });
+
+    expect(r.signalements.total).toBe(8);
+    expect(r.signalements.enAttente.map((s) => s.id)).toEqual(['rep-7', 'rep-6', 'rep-5', 'rep-4', 'rep-3']);
   });
 });

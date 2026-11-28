@@ -13,6 +13,7 @@ import re
 
 import pytest
 
+import bord_afaire as ba
 import bord_distant
 import bord_rendu_audience as bra
 import bord_rendu_blocs as bb
@@ -373,6 +374,36 @@ def test_signalements_coupes_disent_combien_restent():
     assert f"+ {8 - bb.SIGNALEMENTS_MAX} autres" in bloc
 
 
+def _aud_total(envoyes, total):
+    """Le site n'envoie que les 5 plus récents, avec le total (revue globale, S4)."""
+    aud = _aud(_sig(envoyes))
+    aud["donnees"]["signalements"]["total"] = total
+    return aud
+
+
+def test_signalements_coupes_par_le_site_disent_combien_restent_d_apres_le_total():
+    bloc = bb.bloc_signalements(_aud_total(5, 8))
+    assert bloc.count("<li") == 5 and "+ 3 autres" in bloc
+
+
+def test_la_ligne_a_faire_compte_le_total_du_site_pas_la_liste_coupee():
+    assert ba.lignes_signalements(_aud_total(5, 8)) == ["8 signalements en attente"]
+
+
+@pytest.mark.parametrize("total", ["beaucoup", True, 2, -1, None])
+def test_un_total_absent_ou_faux_se_rabat_sur_la_liste(total):
+    """Un cache d'avant S4 n'a pas `total` ; un total qui n'est pas un entier plausible est écarté."""
+    aud = _aud_total(5, total)
+    assert ba.lignes_signalements(aud) == ["5 signalements en attente"]
+    assert "+ " not in bb.bloc_signalements(aud)
+
+
+def test_signalements_ok_mais_anciens_se_disent_perimes():
+    bloc = bb.bloc_signalements(_aud(_sig(1), age=3 * 3600))
+    assert "Périmé" in bloc and "données d'il y a 3 h 00" in bloc
+    assert "Périmé" not in bb.bloc_signalements(_aud(_sig(1), age=60))
+
+
 def test_signalements_aucun_en_attente():
     assert "Aucun signalement en attente." in bb.bloc_signalements(_aud([]))
 
@@ -385,7 +416,7 @@ def test_signalements_inconnus_sans_donnees_ou_illisibles_sur_le_site():
 
 def test_signalements_perimes_disent_leur_age():
     bloc = bb.bloc_signalements(_aud(_sig(1), etat="panne", age=2 * 3600))
-    assert "ubm-0" in bloc and "données d'il y a 2 h 00" in bloc
+    assert "ubm-0" in bloc and "Données d'il y a 2 h 00" in bloc
     assert "il y a" not in bb.bloc_signalements(_aud(_sig(1)))
 
 
@@ -405,3 +436,10 @@ def test_signalements_de_forme_inattendue_restent_inconnus(sig):
     """Tour 1, M3."""
     bloc = bb.bloc_signalements({"etat": "ok", "age": 1, "donnees": {"signalements": sig}})
     assert "Signalements : inconnu" in bloc
+
+
+def test_des_donnees_ok_de_plus_de_20_min_se_disent_perimees():
+    """Revue globale, M2 : un essai réussi mais plus réécrit ne reste pas « À jour »."""
+    assert "À jour · lu il y a 20 min" in _bloc(age=20 * 60)
+    bloc = _bloc(age=3 * 3600)
+    assert "Périmé · lu il y a 3 h 00" in bloc and "À jour" not in bloc

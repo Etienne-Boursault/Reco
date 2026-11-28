@@ -121,7 +121,11 @@ export interface Agregat {
    */
   clicsHorsPeriode: number;
   topPages: Compte[];
+  /** Les pages distinctes avant la coupe de `topPages` : la page du bord dit « + N autres » (revue globale, M4). */
+  pagesDistinctes: number;
   provenances: Compte[];
+  /** Les provenances distinctes avant la coupe de `provenances` (même raison). */
+  provenancesDistinctes: number;
   appareils: Compte[];
   langues: Compte[];
   paysConnus: Compte[];
@@ -261,7 +265,8 @@ function lireJsonl<T>(chemin: string): T[] {
   return lignes;
 }
 
-function compter(valeurs: (string | null)[], limite = 12): Compte[] {
+/** Tous les comptes, du plus fréquent au moins fréquent, sans coupe. */
+function compterTout(valeurs: (string | null)[]): Compte[] {
   const par = new Map<string, number>();
   for (const v of valeurs) {
     if (v === null || v === undefined || v === '') continue;
@@ -269,8 +274,11 @@ function compter(valeurs: (string | null)[], limite = 12): Compte[] {
   }
   return [...par.entries()]
     .map(([cle, n]) => ({ cle, n }))
-    .sort((a, b) => b.n - a.n || a.cle.localeCompare(b.cle))
-    .slice(0, limite);
+    .sort((a, b) => b.n - a.n || a.cle.localeCompare(b.cle));
+}
+
+function compter(valeurs: (string | null)[], limite = 12): Compte[] {
+  return compterTout(valeurs).slice(0, limite);
 }
 
 function mediane(valeurs: number[]): number | null {
@@ -368,6 +376,12 @@ export function agreger({
   // période : un même identifiant d'un jour à l'autre ne serait qu'un hasard,
   // le sel changeant chaque jour.
   const visiteurs = parJour.reduce((n, j) => n + j.visiteurs, 0);
+  const toutesPages = compterTout(
+    consultees.filter((v) => v.statut === 200).map((v) => cheminNormalise(v.chemin)),
+  );
+  const toutesProvenances = compterTout(
+    consultees.map((v) => (estInterne(v.provenance, hoteDuSite) ? null : v.provenance)),
+  );
 
   // Un ratio n'a de sens que sur une période commune aux deux mesures. On ne
   // retient donc que les clics des jours où l'on sait aussi qui est venu.
@@ -390,12 +404,10 @@ export function agreger({
     clicsPour100Visiteurs:
       visiteurs > 0 ? Math.round((clicsComparables / visiteurs) * 1000) / 10 : null,
     clicsHorsPeriode: clics.length - clicsComparables,
-    topPages: compter(
-      consultees.filter((v) => v.statut === 200).map((v) => cheminNormalise(v.chemin)),
-    ),
-    provenances: compter(
-      consultees.map((v) => (estInterne(v.provenance, hoteDuSite) ? null : v.provenance)),
-    ),
+    topPages: toutesPages.slice(0, 12),
+    pagesDistinctes: toutesPages.length,
+    provenances: toutesProvenances.slice(0, 12),
+    provenancesDistinctes: toutesProvenances.length,
     appareils: compter(consultees.map((v) => v.appareil), 4),
     langues: compter(consultees.map((v) => v.langue), 8),
     paysConnus: compter(consultees.map((v) => v.pays), 12),

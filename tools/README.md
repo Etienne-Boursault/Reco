@@ -190,17 +190,34 @@ exploitation : `../deploy/venus/README.md`. Modules :
 - `rappel_dimanche.py` : le message Matrix du dimanche soir (une fois par semaine, `bord/rappel.json`),
   appelé par `deploy/venus/tick.sh` ; `--apercu` lit le cache : sans appel réseau, sans envoi ni écriture. Variable et exploitation : `../deploy/venus/README.md`.
 - `bord_chaine.py` : l'épisode en cours, ses étapes et les passages de `tick.sh`
-  (`passages.jsonl`).
-- `bord_reseaux.py` : les cases des réseaux (`reseaux.json`), pour les 3 derniers publiés.
+  (`passages.jsonl`, que `lance` de `tick.sh` remplit : un passage sans étape suivie dit « aucune
+  étape suivie », car la détection et la transcription n'en sont pas, revue globale, M5) ; une fiche d'épisode illisible, ou lisible mais qui n'est pas une fiche YouTube (fichier `yt-*` dont
+  le contenu n'est pas un objet ou dont le `guid` ne commence pas par `yt-`), est comptée et dite (« 1 fiche d'épisode
+  illisible », T2-5), sinon un épisode plus ancien passerait pour celui de la semaine (revue globale, D9).
+- `bord_reseaux.py` : les cases des réseaux (`reseaux.json`), pour les 3 derniers publiés ; la
+  vérification de la publication regarde les 10 derniers (`N_PUBLICATION`, revue globale, E1).
 - `bord_distant.py` : l'audience du site, lue par `GET /api/bord` avec `RECO_AUDIENCE_KEY` ;
   la page ne lit que le cache `distant.json`, `python tools/bord_distant.py rafraichir` le
   relit (lancé détaché par la page quand il a 10 min, sa sortie ajoutée à `distant.log`,
-  remis à zéro au-delà de 200 Ko).
+  remis à zéro au-delà de 200 Ko). Chaque lancement inscrit son heure dans `lance-<source>`
+  (`lance-audience`, `lance-github`) : tant qu'il date de moins de 2 min (`LANCEMENT_MIN`), aucun
+  autre ne part, donc une page appelée en boucle n'empile pas de processus (revue globale, M1).
+  Un marqueur illisible ou daté du futur compte comme absent (T2-2). Pendant ces 2 min, la page dit
+  « lancée » (`relance` vrai) tant que le lancement est en route ; un lancement raté laisse son
+  marqueur, noté « echec », et la page dit qu'il n'a pas pu être lancé (T2-1). Des données « ok » de plus de 20 min (2 fois la
+  fraîcheur, `donnees_perimees`) sont dites « Périmé » pour l'audience comme pour Santé ; leurs
+  lignes de « À faire d'abord » et du message du dimanche restent des tâches, avec
+  « (données du jj/mm) » (revue globale, M2).
 - `bord_rendu_audience.py` : la colonne Audience (pure) ; `bord_rendu_blocs.bloc_signalements`
-  et `bord_afaire.lignes_signalements` lisent les signalements dans le même état.
+  et `bord_afaire.lignes_signalements` lisent les signalements dans le même état, avec leur
+  total (`bord_afaire.total_signalements`) : le site n'envoie que les 5 plus récents, et un cache
+  sans `total` se rabat sur la longueur de la liste (revue globale, S4). La carte dit « Périmé »
+  comme la colonne Audience (`bord_distant.donnees_perimees`).
 - `bord_github.py` : les PR ouvertes et fusionnées, la CI de `main` et le dernier déploiement,
   lus par l'API publique de GitHub (jeton `RECO_GITHUB_TOKEN` facultatif) dans le même cache
-  `distant.json` et sous le même verrou que l'audience.
+  `distant.json` et sous le même verrou que l'audience. La CI de `main` saute les exécutions
+  « annulées » (`ci.yml` annule l'exécution en cours quand une nouvelle démarre), comme le
+  déploiement saute les « sautées » (revue globale, D10).
 - `bord_systeme.py` : coûts et modèles (télémétrie locale) et image de la chaîne (`compose.yml`).
 - `bord_contenu.py` : sorties à venir, graphies apprises et liens morts, lus sur le disque.
 - `bord_rendu_systeme.py` : les blocs « Santé et versions », « Coûts et modèles », « Sorties à
@@ -212,13 +229,23 @@ exploitation : `../deploy/venus/README.md`. Modules :
 ni « verte » : un « aucun » est une vraie mesure (la liste lue est vide). Sur la page,
 une ligne « inconnu » de « À faire d'abord » est grisée et ne compte pas.
 
+**Les durées et les dates** (revue globale, 28/11/2026) : une durée passe aux jours dès 48 h (« il y a 2 j 7 h »),
+le premier du mois s'écrit « mardi 1er décembre », et un passage de la chaîne qui n'est pas du jour même
+(heure de Paris) porte son jour (« sam. 23 h 05 »), ou sa date (« 22/11 10 h 00 ») au-delà de 6 jours (T2-6). Le déploiement est « réussi » et la CI « réussie » ; une ligne
+« ouvrir puis fusionner la PR de … » (branche poussée, aucune PR) a un bouton « Créer la PR », les autres « Ouvrir la PR ».
+
+**Les largeurs** : 39 pouces à partir de 2 200 px (cinq colonnes) ; en dessous, 13 pouces (menu, colonne
+principale, chaîne à droite) ; de 901 à 1 240 px la chaîne passe sous l'audience pour qu'elle garde au moins
+environ 480 px (mesuré dans Edge sans interface : 558 px à 901 px de large, 633 px à 976 px) ; téléphone sous 900 px.
+La page déclare `color-scheme: dark` (barres de défilement sombres).
+
 | Bloc | Source | Fraîcheur |
 |---|---|---|
 | Santé et versions | `bord_github` : CI de `main`, dernier déploiement ; image selon `compose.yml` | cache `distant.json`, relu en arrière-plan au-delà de 10 min ; l'âge est affiché, « Périmé » au-delà de 20 min ; pannes de la CI et du déploiement, jeton refusé dits |
 | Coûts et modèles | `bord_systeme` : 7 derniers jours et 7 d'avant, par modèle ; modèles d'extraction et de secours | à chaque affichage (disque local) |
 | Sorties à venir | `bord_contenu` : recos validées dont `releaseDate` tombe dans les 30 jours avant ou après aujourd'hui ; `jours <= 0` : « déjà sortie », puis « en relance », « pas de relance » ou « relance : inconnu » selon le registre | à chaque affichage ; les à venir d'abord (la plus proche en tête), puis les passées (la plus récente en tête), 10 au plus, puis « + N autres » |
 | Graphies apprises | `bord_contenu` : registre `tools/output/graphies/registre.json`, les 5 plus vues | à chaque affichage |
-| Liens morts | `bord_contenu` : résumé `tools/output/bord/liens.json`, écrit par `verifier_liens.py externes` (contrôle du lundi) | « ancien » au-delà de 8 jours ; « inconnu » avant le premier contrôle ; 10 liens au plus, puis « + N autres » |
+| Liens morts | `bord_contenu` : résumé `tools/output/bord/liens.json`, écrit par `verifier_liens.py externes` (contrôle du lundi) | « ancien » au-delà de 8 jours (comptés en jours de Paris) ; « inconnu » avant le premier contrôle ; 10 liens au plus, puis « + N autres » |
 
 Une adresse devient un lien seulement si elle commence par `http://` ou `https://` (liens morts)
 ou si c'est du `https` vers `github.com` (PR, CI, déploiement) ; sinon elle reste du texte
@@ -228,6 +255,10 @@ branche `contenu/<slug>` : « fusionner la PR de S6·E12 » si elle est ouverte,
 comme sur venus sans jeton GitHub, et « publication de S6·E12 : inconnu » (grisée) si les PR
 fusionnées n'ont pas été lues ; toute autre PR `contenu/*` ouverte, faite à la main ou d'un épisode plus
 ancien, est une tâche, « fusionner la PR #N : titre », car une PR ouverte est à fusionner ou à fermer ;
+la vérification porte sur les 10 derniers publiés, pas sur les 3 des cases des réseaux, car la chaîne
+ne crée pas de PR et un épisode non fusionné ne doit pas disparaître en vieillissant ; au-delà, une
+note grisée dit « N épisodes plus anciens non vérifiés » (seuls comptent ceux absents du clone), aussi
+sans GitHub lisible (T2-4) ;
 sans GitHub lisible, l'état de la chaîne ; sans état de la chaîne, les PR ouvertes se listent et
 « publication des épisodes : inconnu » est grisée), `sorties` (PR ouvertes de sorties `contenu/sorties-*` ; les
 relances partent seules, rien à faire pour Étienne : décision du 28/11/2026) et `liens` (nombre
@@ -236,7 +267,8 @@ pas). L'étape « Publié » de la chaîne se lit aussi sur la PR fusionnée (sa
 
 Les PR fusionnées s'accumulent d'une lecture à l'autre (par branche, la date de fusion la plus
 récente, 200 au plus) : la fenêtre de GitHub ne compte que les 30 PR fermées les plus récentes, et une
-panne de cet appel garde la liste d'avant. Limite connue : une branche `contenu/<slug>` réutilisée pour
+panne de cet appel garde la liste d'avant, mais les PR fusionnées se disent alors « non lues » : « inconnu »
+(revue globale, D4), jamais « ouvrir puis fusionner » sur une liste peut-être incomplète. La chaîne, elle, lit la liste gardée malgré la panne : une PR fusionnée le reste, et « Publié » ne repasse pas à « à venir » (T2-3). Limite connue : une branche `contenu/<slug>` réutilisée pour
 un nouvel épisode est masquée par sa PR fusionnée d'avant (même branche, donc « fusionné ») ; rien n'est
 codé contre cela, la chaîne ne réutilise pas de branche.
 

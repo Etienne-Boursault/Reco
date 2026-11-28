@@ -193,7 +193,12 @@ page se recharge toute seule toutes les 5 minutes.
 - **Chaîne** : l'épisode en cours et ses étapes (détecté, transcrit, extrait, finalisé,
   publié), les erreurs en cours et les 5 derniers passages de `tick.sh`. Chaque passage note
   dans `tools/output/bord/passages.jsonl` les étapes lancées et celles en échec (200 lignes
-  gardées). Une écriture ratée est journalisée et n'arrête pas la chaîne. L'en-tête dit « en
+  gardées). Les étapes suivies sont l'extraction, la recherche de liens, la finalisation, la
+  publication, le commentaire YouTube et le message du dimanche ; la détection et la
+  transcription n'y sont pas (elles tournent à chaque passage), ni la relance des sorties
+  annoncées (`sorties_annoncees.py` n'appelle pas `lance`, revue globale, tour 2, T2-7), donc un passage qui n'a fait
+  qu'elles s'affiche « aucune étape suivie » (et non « rien de neuf », faux pour une
+  transcription de 45 min : revue globale, M5). Une écriture ratée est journalisée et n'arrête pas la chaîne. L'en-tête dit « en
   retard » au-delà de 2 h 30 sans passage terminé, le seuil de Kuma. Comme `tick.sh` ne note un
   passage qu'à sa fin, il écrit le début du passage dans `tools/output/bord/en-cours` dès qu'il
   tient le verrou, et l'efface en notant la fin : tant que le fichier est plus récent que le
@@ -221,9 +226,13 @@ page se recharge toute seule toutes les 5 minutes.
   âge.
 - **Signalements**, dans la colonne des réseaux : les 5 derniers en attente, avec leur reco,
   leur catégorie et leur date, jamais le nom, l'adresse ni le texte ; « + N autres » au-delà.
+  Le site n'envoie que ces 5 et le nombre total en attente (`total`) : « + N autres » et la
+  ligne de « À faire » comptent d'après ce total, ou d'après la liste pour un cache qui n'a pas
+  ce champ. Comme l'audience, la carte dit « Périmé » au-delà de 20 minutes de données.
 - **Sorties à venir**, dans la colonne des réseaux (tranche 3d-2, 28/11/2026) : titre, date et
-  jours restants des recos validées qui sortent dans les 30 jours ; « déjà sortie, en relance »
-  jusqu'à 30 jours après la date.
+  jours restants des recos validées qui sortent dans les 30 jours ; jusqu'à 30 jours après la
+  date : « déjà sortie, en relance », « déjà sortie, pas de relance » ou « déjà sortie, relance :
+  inconnu », selon ce que dit le registre des relances.
 - **Système** : **Santé et versions** (la CI de `main`, le dernier déploiement, l'image de la
   chaîne selon `compose.yml`), **Coûts et modèles** (7 jours et 7 jours d'avant, modèles
   d'extraction et de secours), **Liens morts** (nombre, date du rapport et son âge, « ancien »
@@ -280,7 +289,7 @@ signalement en attente · 3 liens morts ».
 | `~/docker/reco/.env` | clés (droits 600) | oui |
 | `~/docker/reco/depot/` | clone du dépôt ; `tools/output/` y garde transcriptions et états | oui |
 | `~/docker/reco/logs/tick-AAAA-MM.log` | journal des passages | oui |
-| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées), `distant.json` (dernières lectures de l'audience et de GitHub), `distant.log` (sortie du rafraîchissement), `liens.json` (résumé du contrôle des liens du lundi) | oui |
+| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées), `distant.json` (dernières lectures de l'audience et de GitHub), `distant.log` (sortie du rafraîchissement), `lance-audience` et `lance-github` (heure du dernier lancement d'un rafraîchissement, 2 min de répit), `liens.json` (résumé du contrôle des liens du lundi) | oui |
 | `~/.cache/reco/` | modèle Whisper (1,6 Go), caches yt-dlp — se retéléchargent | **non**, volontairement |
 | `~/.ssh/reco_deploy` | clé de dépôt (écriture sur ce dépôt seul), droits 600 | **non** : la sauvegarde ne couvre que `~/docker`. Une clé perdue se régénère et se redéclare sur GitHub |
 

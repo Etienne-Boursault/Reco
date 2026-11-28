@@ -115,7 +115,8 @@ def _liens(maintenant: datetime) -> dict[str, Any] | None:
             and all(isinstance(m["url"], str) and isinstance(m["reponse"], str)
                     and isinstance(m["recos"], list) for m in liste)):
         return None
-    age = (maintenant.astimezone(UTC).date() - jour_rapport).days
+    # Revue globale, D7 : des jours de Paris, comme les sorties, pas des jours UTC.
+    age = (date_sortie.jour_a_paris(maintenant) - jour_rapport).days
     return {"date": jour_rapport.isoformat(), "age": age, "ancien": age > AGE_ANCIEN,
             **comptes, "liste": liste}
 

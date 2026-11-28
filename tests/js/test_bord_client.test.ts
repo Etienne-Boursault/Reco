@@ -282,6 +282,31 @@ describe('la feuille de style', () => {
     expect(css).toContain('@media(max-width:900px){html[data-vue="auto"]');
   });
 
+  // Revue globale, M3 : de 900 à 1 300 px, le menu (248 px) et la chaîne (360 px) fixes
+  // laissaient environ 210 px à l'audience. Sous 1 240 px, 13 pouces et « auto » passent à
+  // une colonne, dans l'ordre du téléphone ; la règle vient avant celle du téléphone.
+  it('de 900 à 1 240 px, la chaîne passe sous l\'audience (M3)', () => {
+    const regle = '@media(max-width:1240px){html[data-vue="13"],html[data-vue="auto"]{' +
+      '--grille-cols:minmax(0,1fr);--grille-zones:"afaire""audience""chaine""reseaux""systeme";}}';
+    expect(css).toContain(regle);
+    expect(css.indexOf(regle)).toBeGreaterThan(css.indexOf('@media(max-width:2200px)'));
+    expect(css.indexOf(regle)).toBeLessThan(css.indexOf('@media(max-width:900px)'));
+  });
+
+  it('la vue 39 pouces et la vue téléphone ne changent pas (M3)', () => {
+    expect(css).toContain('--grille-cols:minmax(0,1.25fr)minmax(0,1fr)minmax(0,1.9fr)repeat(2,minmax(0,1fr));');
+    expect(css).not.toContain('html[data-vue="39"]');
+    expect(css).toContain('@media(max-width:900px){html[data-vue="auto"]');
+  });
+
+  it('la page sombre déclare color-scheme: dark, pour des barres de défilement sombres (R9)', () => {
+    expect(css).toMatch(/html\{[^}]*color-scheme:dark;/);
+  });
+
+  it('les lignes de coûts et de modèles n\'ont pas de marge de paragraphe en plus de l\'écart (39")', () => {
+    expect(css).toContain('.bord-cout,.bord-carte>p{margin:0;}');
+  });
+
   it('les lignes « inconnu » sont grisées sans opacité, pour garder le contraste', () => {
     expect(css).toContain('.bord-tache[data-inconnu]');
     expect(css).not.toMatch(/opacity/);

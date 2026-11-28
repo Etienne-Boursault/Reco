@@ -33,6 +33,21 @@ LES LIGNES DE LA PR 3 (tranche 3d-2)
 - liens morts : le résumé du contrôle du lundi (`bord_contenu.lire()`), « inconnu » sans
   rapport.
 Une ligne peut porter `href` : le rendu ne le suit que pour `https://github.com/` (F21).
+
+REVUE GLOBALE DU TABLEAU DE BORD (28/11/2026)
+---------------------------------------------
+- E1 : la publication regarde les `N_PUBLICATION` (10) derniers publiés (`publies`), les cases
+  des réseaux seulement les 3 derniers (`recents`). La chaîne ne crée pas de PR : un épisode non
+  fusionné au-delà des 3 derniers disparaissait. Les publiés plus anciens, absents du clone, sont
+  comptés dans une note grisée (`non_verifies`, F23) ;
+- M2 : des données `ok` dont `lire()["age"]` dépasse 2 fois la fraîcheur (`bord_distant.donnees_perimees`)
+  ne sont plus réécrites. Leurs lignes (signalements, publication, sorties) restent des tâches :
+  une PR ouverte vue il y a deux jours est probablement encore à fusionner. Mais elles portent
+  « (données du jj/mm) » ; les notes grisées n'en portent pas ;
+- D4 : si l'appel des PR fermées a échoué à la dernière lecture (`pannes`), la liste gardée
+  d'avant ne dit pas que les PR fusionnées sont toutes connues : `branches_fusionnees` rend None
+  (sauf pour la chaîne, `meme_en_panne` : une PR fusionnée le reste, tour 2, T2-3) ;
+- T2-4 : sans GitHub lisible, le repli garde la note des plus anciens non vérifiés.
 """
 from __future__ import annotations
 
@@ -40,12 +55,17 @@ import re
 from datetime import date
 from typing import Any
 
-from bord_reseaux import LIBELLES, RESEAUX, branche_de
+import bord_distant
+from bord_reseaux import LIBELLES, N_PUBLICATION, RESEAUX, branche_de
+from date_sortie import jour_a_paris
 from publication import lien_comparaison
 from review_render_focus import _ep_label, entry_state, short_title
 
 #: `propriétaire/nom` en caractères sûrs : seul un dépôt de cette forme entre dans un lien.
 _DEPOT = re.compile(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")
+#: Début de la ligne d'un épisode poussé sans PR : `bord_rendu_blocs` y règle son bouton « Créer la PR »
+#: (revue globale, R12).
+A_CREER = "ouvrir puis fusionner"
 
 
 class Note(str):
@@ -81,15 +101,25 @@ def _relecture(episodes: dict[str, dict], groups: dict[str, list[dict]]) -> list
     return items
 
 
-def _publication(recents: list[dict] | None, lignes: list | None) -> list[dict]:
+def _note_non_verifies(n: int) -> Note:
+    s = "s" if n > 1 else ""
+    return Note(f"{n} épisode{s} plus ancien{s} non vérifié{s} (hors des {N_PUBLICATION} derniers publiés)")
+
+
+def _publication(recents: list[dict] | None, lignes: list | None,
+                 non_verifies: int = 0) -> list[dict]:
     if lignes is not None:
         return _textes("publication", "publication", lignes)
     if recents is None:
         return [_item("publication", "publication : inconnu", inconnu=True)]
-    # Sans GitHub lisible : seuls les 3 derniers publiés sont vus.
-    return [_item("publication", f"fusionner la PR de {_libelle(r['guid'], r['episode'])}",
-                  r["guid"])
-            for r in recents if not r["fusionne"]]
+    # Sans GitHub lisible : seule la fenêtre de publication est vue, et la note des plus anciens
+    # non vérifiés reste (tour 2, T2-4, F23).
+    items = [_item("publication", f"fusionner la PR de {_libelle(r['guid'], r['episode'])}",
+                   r["guid"])
+             for r in recents if not r["fusionne"]]
+    if non_verifies:
+        items.append(_item("publication", _note_non_verifies(non_verifies), inconnu=True))
+    return items
 
 
 def _reseaux(recents: list[dict] | None,
@@ -129,6 +159,22 @@ def signalements_en_attente(audience: dict | None) -> list[dict] | None:
     return liste
 
 
+def total_signalements(audience: dict | None) -> int | None:
+    """Combien de signalements attendent, ou None (inconnu).
+
+    Le site n'envoie que les 5 plus récents et leur total `total` (tableau de bord, revue
+    globale, S4). Un cache d'avant ce champ, ou un total qui n'est pas un entier au moins égal
+    à la liste envoyée, se rabat sur la longueur de la liste.
+    """
+    liste = signalements_en_attente(audience)
+    if liste is None:
+        return None
+    total = audience["donnees"]["signalements"].get("total")
+    if isinstance(total, int) and not isinstance(total, bool) and total >= len(liste):
+        return total
+    return len(liste)
+
+
 def lignes_signalements(audience: dict | None) -> list[str] | None:
     """La ligne des signalements, depuis `bord_distant.lire()` ; None : inconnu.
 
@@ -138,10 +184,9 @@ def lignes_signalements(audience: dict | None) -> list[str] | None:
     donnees = (audience or {}).get("donnees")
     if not audience or audience.get("etat") != "ok" or not donnees:
         return None
-    liste = signalements_en_attente(audience)
-    if liste is None:
+    n = total_signalements(audience)
+    if n is None:
         return None
-    n = len(liste)
     return [f"{n} signalement{'s' if n > 1 else ''} en attente"] if n else []
 
 
@@ -161,14 +206,20 @@ def _ouvertes(github: dict | None) -> dict | None:
     return ouvertes
 
 
-def branches_fusionnees(github: dict | None) -> dict[str, Any] | None:
+def branches_fusionnees(github: dict | None, *, meme_en_panne: bool = False) -> dict[str, Any] | None:
     """`{branche: date de fusion}` des PR fusionnées (`bord_github.lire()`), ou None si le bloc manque.
 
-    Une PR fusionnée le reste : des données gardées après une panne servent donc aussi.
+    Une PR fusionnée le reste : des données gardées après une panne de la source servent donc
+    aussi. Mais si l'appel des PR fermées est en panne dans la dernière lecture (revue globale, D4),
+    la liste gardée est celle d'avant : elle ne dit pas que toutes les fusions sont connues, donc
+    « À faire » ne s'en sert pas pour dire « ouvrir la PR ». `meme_en_panne` (tour 2, T2-3) : la
+    chaîne, qui ne s'en sert que pour dire « Publié », lit la liste gardée malgré la panne.
     """
     donnees = github.get("donnees") if isinstance(github, dict) else None
     liste = donnees.get("fusionnees") if isinstance(donnees, dict) else None
-    if not isinstance(liste, list):
+    pannes = donnees.get("pannes") if isinstance(donnees, dict) else None
+    if not isinstance(liste, list) or (
+            isinstance(pannes, dict) and "fusionnees" in pannes and not meme_en_panne):
         return None
     return {pr["branche"]: pr.get("date") for pr in liste
             if isinstance(pr, dict) and pr.get("branche")}
@@ -181,7 +232,8 @@ def _comparaison(depot: Any, branche: str) -> str | None:
     return lien_comparaison(*depot.split("/"), branche)
 
 
-def lignes_publication(github: dict | None, recents: list[dict] | None) -> list | None:
+def lignes_publication(github: dict | None, recents: list[dict] | None,
+                       non_verifies: int = 0) -> list | None:
     """Les PR d'épisodes à fusionner, depuis `bord_github.lire()` ; None : GitHub illisible.
 
     Chaque épisode récent se rapproche de sa branche `contenu/<slugify(guid)>` (tour 1, E2, F1) :
@@ -192,6 +244,8 @@ def lignes_publication(github: dict | None, recents: list[dict] | None) -> list 
     (tour 2, M-2). Sans état de la chaîne (`recents` à None), elles se listent aussi, avec une ligne
     grisée « publication des épisodes : inconnu ».
     Une liste coupée par l'API (100 PR) le dit, sans pouvoir dire combien de PR manquent.
+    `non_verifies` : les publiés plus anciens que la fenêtre (revue globale, E1), dits « + N »
+    par une note grisée (F23).
     """
     ouvertes = _ouvertes(github)
     if ouvertes is None:
@@ -212,7 +266,7 @@ def lignes_publication(github: dict | None, recents: list[dict] | None) -> list 
             if fusionnees is None:     # tour 2, M-1 : « inconnu » n'est pas « aucune »
                 lignes.append(Note(f"publication de {nom} : inconnu (PR fusionnées non lues)"))
             elif branche not in fusionnees:
-                lignes.append((f"ouvrir puis fusionner la PR de {nom}",
+                lignes.append((f"{A_CREER} la PR de {nom}",
                                _comparaison(depot, branche)))
     if recents is None:
         lignes.append(Note("publication des épisodes : inconnu"))
@@ -222,6 +276,8 @@ def lignes_publication(github: dict | None, recents: list[dict] | None) -> list 
                            pr.get("adresse")))
     if ouvertes.get("coupee"):
         lignes.append(Note("d'autres PR ouvertes ne sont pas listées"))
+    if non_verifies:
+        lignes.append(_note_non_verifies(non_verifies))
     return lignes
 
 
@@ -257,11 +313,33 @@ def lignes_liens(contenu: dict | None) -> list[str] | None:
     return [f"{morts} lien{'s' if morts > 1 else ''} mort{'s' if morts > 1 else ''}"]
 
 
+def _datees(lignes: list | None, source: dict | None) -> list | None:
+    """Ajoute « (données du jj/mm) » aux lignes tirées d'une source `ok` périmée (revue globale, M2).
+
+    Choix du 28/11/2026 : une ligne périmée reste une tâche (une PR ouverte vue il y a deux jours est
+    probablement encore à fusionner), mais elle porte la date de ses données. Les notes grisées
+    (`Note`) n'en portent pas. Le jour est celui de Paris.
+    """
+    if lignes is None or not bord_distant.donnees_perimees(source):
+        return lignes
+    jour = jour_a_paris(bord_distant._date(source["lu"]))
+    suffixe = f" (données du {jour:%d/%m})"
+    datees: list = []
+    for ligne in lignes:
+        if isinstance(ligne, Note):
+            datees.append(ligne)
+        elif isinstance(ligne, str):
+            datees.append(ligne + suffixe)
+        else:
+            datees.append((ligne[0] + suffixe, ligne[1]))
+    return datees
+
+
 def a_faire(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
             recents: list[dict] | None, coches: dict[str, dict[str, str]] | None,
             signalements: list[str] | None = None, liens: list[str] | None = None,
-            sorties: list | None = None, publication: list | None = None
-            ) -> list[dict[str, Any]]:
+            sorties: list | None = None, publication: list | None = None,
+            publies: list[dict] | None = None, non_verifies: int = 0) -> list[dict[str, Any]]:
     """La liste « À faire d'abord », dans l'ordre fixe ; `[]` s'il ne reste rien.
 
     - `episodes`, `groups` : ceux de `review_render._load_groups` ;
@@ -269,12 +347,12 @@ def a_faire(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
     - `coches` : `bord_reseaux.lire()` (None : `EtatIllisible`) ;
     - `signalements`, `liens`, `sorties` : les lignes déjà rédigées par leur source
       (PR 2 et 3), None tant qu'elle n'est pas lue ; `publication` : de même, avec le
-      repli sur `recents` quand GitHub n'est pas lisible.
+      repli sur `publies` (la fenêtre de publication, `recents` à défaut) quand GitHub n'est pas lisible.
 
     Chaque élément : `{"bloc", "texte", "guid" (ou None), "inconnu"}`.
     """
     return (_relecture(episodes, groups)
-            + _publication(recents, publication)
+            + _publication(recents if publies is None else publies, publication, non_verifies)
             + _reseaux(recents, coches)
             + _textes("signalements", "signalements", signalements)
             + _textes("liens", "liens morts", liens)
@@ -284,11 +362,17 @@ def a_faire(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
 def a_faire_depuis(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
                    recents: list[dict] | None, coches: dict[str, dict[str, str]] | None,
                    audience: dict | None, github: dict | None,
-                   contenu: dict | None) -> list[dict[str, Any]]:
+                   contenu: dict | None, publies: list[dict] | None = None,
+                   non_verifies: int = 0) -> list[dict[str, Any]]:
     """La liste « À faire d'abord » depuis les sources lues (PR 4 : `/bord` et le rappel du
-    dimanche l'appellent toutes deux, donc ne divergent jamais)."""
+    dimanche l'appellent toutes deux, donc ne divergent jamais).
+
+    `recents` : les 3 derniers publiés, pour les cases des réseaux ; `publies` : la fenêtre de
+    publication (revue globale, E1), `recents` à défaut ; `non_verifies` : les plus anciens.
+    """
+    publies = recents if publies is None else publies
     return a_faire(
-        episodes=episodes, groups=groups, recents=recents, coches=coches,
-        signalements=lignes_signalements(audience),
-        publication=lignes_publication(github, recents),
-        sorties=lignes_sorties(github), liens=lignes_liens(contenu))
+        episodes=episodes, groups=groups, recents=recents, coches=coches, publies=publies,
+        non_verifies=non_verifies, signalements=_datees(lignes_signalements(audience), audience),
+        publication=_datees(lignes_publication(github, publies, non_verifies), github),
+        sorties=_datees(lignes_sorties(github), github), liens=lignes_liens(contenu))

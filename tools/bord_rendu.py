@@ -113,7 +113,7 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
     contenu_reseaux, nb_reseaux = blocs.bloc_reseaux(recents, coches)
     colonnes = [
         ("afaire", "À faire d'abord", contenu_afaire, nb_afaire),
-        ("chaine", "Chaîne", blocs.bloc_chaine(chaine), None),
+        ("chaine", "Chaîne", blocs.bloc_chaine(chaine, maintenant), None),
         ("audience", "Audience", bord_rendu_audience.bloc_audience(audience), None),
         ("reseaux", "Réseaux", contenu_reseaux + bord_rendu_systeme.bloc_sorties(contenu)
          + blocs.bloc_signalements(audience), nb_reseaux),

@@ -237,6 +237,54 @@ def test_get_bord_passe_les_prs_fusionnees_a_la_chaine_et_a_la_publication(monke
     assert "fusionner la PR de S6·E1" not in page
 
 
+def test_get_bord_une_panne_des_pr_fermees_ne_fait_pas_perdre_la_publication_a_la_chaine(
+        monkeypatch):
+    """Tour 2, T2-3 : « À faire » dit « inconnu » (D4), mais la chaîne garde la fusion connue."""
+    vus = []
+    original = bord_chaine.etat_chaine
+    monkeypatch.setattr(bord_chaine, "etat_chaine",
+                        lambda source_id, **kw: vus.append(kw) or original(source_id, **kw))
+    pr = {"numero": 3, "titre": "T", "branche": "contenu/ep-001", "groupe": "episodes",
+          "date": "2026-11-27T10:00:00Z", "adresse": "https://github.com/a/b/pull/3"}
+    github = {"etat": "ok", "age": 5, "donnees": {
+        "depot": "a/b", "ouvertes": {"episodes": [], "sorties": [], "coupee": False},
+        "fusionnees": [pr], "ci": None, "deploiement": None,
+        "pannes": {"fusionnees": {"etat": "panne", "detail": "HTTP 500"}}}}
+    monkeypatch.setattr(bord_github, "lire", lambda **kw: github)
+    monkeypatch.setattr(bord_reseaux, "episodes_recents", lambda *a: [
+        {"guid": "ep-001", "fusionne": False, "episode": {"season": 6, "number": 1}}])
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert vus == [{"fusionnees": {"contenu/ep-001": "2026-11-27T10:00:00Z"}}]
+    assert "publication de S6·E1 : inconnu (PR fusionnées non lues)" in page
+
+
+def test_get_bord_verifie_la_publication_sur_dix_episodes_et_les_cases_sur_trois(
+        corpus, monkeypatch):
+    """Revue globale, E1 : la chaîne ne crée pas de PR ; un épisode non fusionné au-delà des 3
+    derniers reste signalé, et les publiés plus anciens que la fenêtre sont comptés."""
+    chemin = corpus / "output_dir" / "pipeline" / f"{SOURCE}.json"
+    chemin.write_text(json.dumps({"published": ["old-1", "old-2", *[f"x{i}" for i in range(10)]]}),
+                      encoding="utf-8")
+    entrees = [{"guid": f"x{i}", "fusionne": False, "episode": {"season": 6, "number": i + 1}}
+               for i in range(9, -1, -1)]
+    appels = []
+
+    def faux(source_id, state, episodes, n=3):
+        appels.append(n)
+        return entrees[:n]
+
+    monkeypatch.setattr(bord_reseaux, "episodes_recents", faux)
+    monkeypatch.setattr(bord_github, "lire", lambda **kw: {
+        "etat": "ok", "age": 5, "donnees": {
+            "depot": "a/b", "fusionnees": [], "ci": None, "deploiement": None,
+            "ouvertes": {"episodes": [], "sorties": [], "coupee": False}}})
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert appels == [bord_reseaux.N_PUBLICATION]
+    assert "ouvrir puis fusionner la PR de S6·E1" in page          # le plus ancien de la fenêtre
+    assert "2 épisodes plus anciens non vérifiés" in page           # old-1 et old-2
+    assert "réseaux de S6·E10 :" in page and "réseaux de S6·E7 :" not in page
+
+
 def test_get_bord_sans_contenu_lisible_dit_inconnu(monkeypatch):
     monkeypatch.setattr(bord_contenu, "lire",
                         lambda source_id, **kw: {"sorties": None, "graphies": None, "liens": None})
