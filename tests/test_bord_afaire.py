@@ -366,11 +366,24 @@ def test_a_faire_depuis_regarde_la_fenetre_pour_la_publication_et_trois_pour_les
         f"fusionner la PR de S6·E{n}" for n in (14, 13, 12, 11)]
 
 
+def test_sans_github_lisible_la_note_des_plus_anciens_non_verifies_apparait_aussi():
+    """Tour 2, T2-4 (F23) : le repli sur l'état de la chaîne ne tait pas les épisodes hors fenêtre."""
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=_publies(14, 13), coches={},
+                              audience=None, github=None, contenu=None, non_verifies=2)
+    note = [i for i in items if i["bloc"] == "publication"][-1]
+    assert note["texte"] == "2 épisodes plus anciens non vérifiés (hors des 10 derniers publiés)"
+    assert note["inconnu"] is True      # grisée, ne compte pas comme tâche
+
+
 def test_une_panne_isolee_des_pr_fermees_rend_les_fusionnees_inconnues():
     """Revue globale, D4 : la liste gardée d'avant ne dit pas que la dernière lecture est complète."""
     github = _github(fusionnees=[_pr(40, "contenu/yt-11")])
     github["donnees"]["pannes"] = {"fusionnees": {"etat": "panne", "detail": "HTTP 500"}}
     assert ba.branches_fusionnees(github) is None
+    # Tour 2, T2-3 : une PR fusionnée le reste ; la chaîne lit la liste gardée malgré la panne.
+    assert ba.branches_fusionnees(github, meme_en_panne=True) == {
+        "contenu/yt-11": "2026-11-28T08:00:00Z"}
+    assert ba.branches_fusionnees({"donnees": {}}, meme_en_panne=True) is None
     assert ba.lignes_publication(github, [_recent("yt-11", EP11)]) == [
         ba.Note("publication de S6·E11 : inconnu (PR fusionnées non lues)")]
     # Une autre panne (CI, déploiement) ne touche pas aux PR fusionnées.

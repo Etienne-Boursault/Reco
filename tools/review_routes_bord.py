@@ -93,7 +93,7 @@ class BordRoutesMixin:
                 non_verifies=bord_reseaux.non_verifies(etat, episodes)),
             audience=audience, github=github, systeme=systeme, contenu=contenu,
             chaine=bord_chaine.etat_chaine(
-                self.source_id, fusionnees=bord_afaire.branches_fusionnees(github)),
+                self.source_id, fusionnees=bord_afaire.branches_fusionnees(github, meme_en_panne=True)),
             recents=recents,
             coches=coches, flash=qs.get("flash", [""])[0] or None,
             flash_kind=kind if kind in _GENRES else "info"))

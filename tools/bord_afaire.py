@@ -45,7 +45,9 @@ REVUE GLOBALE DU TABLEAU DE BORD (28/11/2026)
   une PR ouverte vue il y a deux jours est probablement encore à fusionner. Mais elles portent
   « (données du jj/mm) » ; les notes grisées n'en portent pas ;
 - D4 : si l'appel des PR fermées a échoué à la dernière lecture (`pannes`), la liste gardée
-  d'avant ne dit pas que les PR fusionnées sont toutes connues : `branches_fusionnees` rend None.
+  d'avant ne dit pas que les PR fusionnées sont toutes connues : `branches_fusionnees` rend None
+  (sauf pour la chaîne, `meme_en_panne` : une PR fusionnée le reste, tour 2, T2-3) ;
+- T2-4 : sans GitHub lisible, le repli garde la note des plus anciens non vérifiés.
 """
 from __future__ import annotations
 
@@ -99,15 +101,25 @@ def _relecture(episodes: dict[str, dict], groups: dict[str, list[dict]]) -> list
     return items
 
 
-def _publication(recents: list[dict] | None, lignes: list | None) -> list[dict]:
+def _note_non_verifies(n: int) -> Note:
+    s = "s" if n > 1 else ""
+    return Note(f"{n} épisode{s} plus ancien{s} non vérifié{s} (hors des {N_PUBLICATION} derniers publiés)")
+
+
+def _publication(recents: list[dict] | None, lignes: list | None,
+                 non_verifies: int = 0) -> list[dict]:
     if lignes is not None:
         return _textes("publication", "publication", lignes)
     if recents is None:
         return [_item("publication", "publication : inconnu", inconnu=True)]
-    # Sans GitHub lisible : seule la fenêtre de publication est vue.
-    return [_item("publication", f"fusionner la PR de {_libelle(r['guid'], r['episode'])}",
-                  r["guid"])
-            for r in recents if not r["fusionne"]]
+    # Sans GitHub lisible : seule la fenêtre de publication est vue, et la note des plus anciens
+    # non vérifiés reste (tour 2, T2-4, F23).
+    items = [_item("publication", f"fusionner la PR de {_libelle(r['guid'], r['episode'])}",
+                   r["guid"])
+             for r in recents if not r["fusionne"]]
+    if non_verifies:
+        items.append(_item("publication", _note_non_verifies(non_verifies), inconnu=True))
+    return items
 
 
 def _reseaux(recents: list[dict] | None,
@@ -194,17 +206,20 @@ def _ouvertes(github: dict | None) -> dict | None:
     return ouvertes
 
 
-def branches_fusionnees(github: dict | None) -> dict[str, Any] | None:
+def branches_fusionnees(github: dict | None, *, meme_en_panne: bool = False) -> dict[str, Any] | None:
     """`{branche: date de fusion}` des PR fusionnées (`bord_github.lire()`), ou None si le bloc manque.
 
     Une PR fusionnée le reste : des données gardées après une panne de la source servent donc
     aussi. Mais si l'appel des PR fermées est en panne dans la dernière lecture (revue globale, D4),
-    la liste gardée est celle d'avant : elle ne dit pas que toutes les fusions sont connues.
+    la liste gardée est celle d'avant : elle ne dit pas que toutes les fusions sont connues, donc
+    « À faire » ne s'en sert pas pour dire « ouvrir la PR ». `meme_en_panne` (tour 2, T2-3) : la
+    chaîne, qui ne s'en sert que pour dire « Publié », lit la liste gardée malgré la panne.
     """
     donnees = github.get("donnees") if isinstance(github, dict) else None
     liste = donnees.get("fusionnees") if isinstance(donnees, dict) else None
     pannes = donnees.get("pannes") if isinstance(donnees, dict) else None
-    if not isinstance(liste, list) or (isinstance(pannes, dict) and "fusionnees" in pannes):
+    if not isinstance(liste, list) or (
+            isinstance(pannes, dict) and "fusionnees" in pannes and not meme_en_panne):
         return None
     return {pr["branche"]: pr.get("date") for pr in liste
             if isinstance(pr, dict) and pr.get("branche")}
@@ -262,9 +277,7 @@ def lignes_publication(github: dict | None, recents: list[dict] | None,
     if ouvertes.get("coupee"):
         lignes.append(Note("d'autres PR ouvertes ne sont pas listées"))
     if non_verifies:
-        s = "s" if non_verifies > 1 else ""
-        lignes.append(Note(f"{non_verifies} épisode{s} plus ancien{s} non vérifié{s} "
-                           f"(hors des {N_PUBLICATION} derniers publiés)"))
+        lignes.append(_note_non_verifies(non_verifies))
     return lignes
 
 
@@ -326,7 +339,7 @@ def a_faire(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
             recents: list[dict] | None, coches: dict[str, dict[str, str]] | None,
             signalements: list[str] | None = None, liens: list[str] | None = None,
             sorties: list | None = None, publication: list | None = None,
-            publies: list[dict] | None = None) -> list[dict[str, Any]]:
+            publies: list[dict] | None = None, non_verifies: int = 0) -> list[dict[str, Any]]:
     """La liste « À faire d'abord », dans l'ordre fixe ; `[]` s'il ne reste rien.
 
     - `episodes`, `groups` : ceux de `review_render._load_groups` ;
@@ -339,7 +352,7 @@ def a_faire(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
     Chaque élément : `{"bloc", "texte", "guid" (ou None), "inconnu"}`.
     """
     return (_relecture(episodes, groups)
-            + _publication(recents if publies is None else publies, publication)
+            + _publication(recents if publies is None else publies, publication, non_verifies)
             + _reseaux(recents, coches)
             + _textes("signalements", "signalements", signalements)
             + _textes("liens", "liens morts", liens)
@@ -360,6 +373,6 @@ def a_faire_depuis(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
     publies = recents if publies is None else publies
     return a_faire(
         episodes=episodes, groups=groups, recents=recents, coches=coches, publies=publies,
-        signalements=_datees(lignes_signalements(audience), audience),
+        non_verifies=non_verifies, signalements=_datees(lignes_signalements(audience), audience),
         publication=_datees(lignes_publication(github, publies, non_verifies), github),
         sorties=_datees(lignes_sorties(github), github), liens=lignes_liens(contenu))
