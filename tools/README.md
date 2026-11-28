@@ -197,7 +197,13 @@ exploitation : `../deploy/venus/README.md`. Modules :
 - `bord_distant.py` : l'audience du site, lue par `GET /api/bord` avec `RECO_AUDIENCE_KEY` ;
   la page ne lit que le cache `distant.json`, `python tools/bord_distant.py rafraichir` le
   relit (lancé détaché par la page quand il a 10 min, sa sortie ajoutée à `distant.log`,
-  remis à zéro au-delà de 200 Ko).
+  remis à zéro au-delà de 200 Ko). Chaque lancement inscrit son heure dans `lance-<source>`
+  (`lance-audience`, `lance-github`) : tant qu'il date de moins de 2 min (`LANCEMENT_MIN`), aucun
+  autre ne part, donc une page appelée en boucle n'empile pas de processus (revue globale, M1).
+  Un marqueur illisible compte comme absent. Des données « ok » de plus de 20 min (2 fois la
+  fraîcheur, `donnees_perimees`) sont dites « Périmé » pour l'audience comme pour Santé ; leurs
+  lignes de « À faire d'abord » et du message du dimanche restent des tâches, avec
+  « (données du jj/mm) » (revue globale, M2).
 - `bord_rendu_audience.py` : la colonne Audience (pure) ; `bord_rendu_blocs.bloc_signalements`
   et `bord_afaire.lignes_signalements` lisent les signalements dans le même état.
 - `bord_github.py` : les PR ouvertes et fusionnées, la CI de `main` et le dernier déploiement,

@@ -40,6 +40,10 @@ REVUE GLOBALE DU TABLEAU DE BORD (28/11/2026)
   des réseaux seulement les 3 derniers (`recents`). La chaîne ne crée pas de PR : un épisode non
   fusionné au-delà des 3 derniers disparaissait. Les publiés plus anciens, absents du clone, sont
   comptés dans une note grisée (`non_verifies`, F23) ;
+- M2 : des données `ok` dont `lire()["age"]` dépasse 2 fois la fraîcheur (`bord_distant.donnees_perimees`)
+  ne sont plus réécrites. Leurs lignes (signalements, publication, sorties) restent des tâches :
+  une PR ouverte vue il y a deux jours est probablement encore à fusionner. Mais elles portent
+  « (données du jj/mm) » ; les notes grisées n'en portent pas ;
 - D4 : si l'appel des PR fermées a échoué à la dernière lecture (`pannes`), la liste gardée
   d'avant ne dit pas que les PR fusionnées sont toutes connues : `branches_fusionnees` rend None.
 """
@@ -49,7 +53,9 @@ import re
 from datetime import date
 from typing import Any
 
+import bord_distant
 from bord_reseaux import LIBELLES, N_PUBLICATION, RESEAUX, branche_de
+from date_sortie import jour_a_paris
 from publication import lien_comparaison
 from review_render_focus import _ep_label, entry_state, short_title
 
@@ -276,6 +282,28 @@ def lignes_liens(contenu: dict | None) -> list[str] | None:
     return [f"{morts} lien{'s' if morts > 1 else ''} mort{'s' if morts > 1 else ''}"]
 
 
+def _datees(lignes: list | None, source: dict | None) -> list | None:
+    """Ajoute « (données du jj/mm) » aux lignes tirées d'une source `ok` périmée (revue globale, M2).
+
+    Choix du 28/11/2026 : une ligne périmée reste une tâche (une PR ouverte vue il y a deux jours est
+    probablement encore à fusionner), mais elle porte la date de ses données. Les notes grisées
+    (`Note`) n'en portent pas. Le jour est celui de Paris.
+    """
+    if lignes is None or not bord_distant.donnees_perimees(source):
+        return lignes
+    jour = jour_a_paris(bord_distant._date(source["lu"]))
+    suffixe = f" (données du {jour:%d/%m})"
+    datees: list = []
+    for ligne in lignes:
+        if isinstance(ligne, Note):
+            datees.append(ligne)
+        elif isinstance(ligne, str):
+            datees.append(ligne + suffixe)
+        else:
+            datees.append((ligne[0] + suffixe, ligne[1]))
+    return datees
+
+
 def a_faire(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
             recents: list[dict] | None, coches: dict[str, dict[str, str]] | None,
             signalements: list[str] | None = None, liens: list[str] | None = None,
@@ -314,6 +342,6 @@ def a_faire_depuis(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
     publies = recents if publies is None else publies
     return a_faire(
         episodes=episodes, groups=groups, recents=recents, coches=coches, publies=publies,
-        signalements=lignes_signalements(audience),
-        publication=lignes_publication(github, publies, non_verifies),
-        sorties=lignes_sorties(github), liens=lignes_liens(contenu))
+        signalements=_datees(lignes_signalements(audience), audience),
+        publication=_datees(lignes_publication(github, publies, non_verifies), github),
+        sorties=_datees(lignes_sorties(github), github), liens=lignes_liens(contenu))

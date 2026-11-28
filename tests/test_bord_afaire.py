@@ -439,3 +439,49 @@ def test_le_lien_d_une_pr_ne_vaut_que_pour_github():
         assert "<a " not in contenu
     contenu, _ = bb.bloc_afaire([bon])
     assert f'href="{PR_URL}1"' in contenu and "Ouvrir la PR" in contenu
+
+
+# ---- Revue globale, M2 : une source « ok » périmée date ses lignes ----------
+
+def _vieille(source: dict, age: int = 72 * 3600) -> dict:
+    """La source telle que `lire()` la rend quand rien n'a été réécrit depuis `age` secondes."""
+    return {**source, "lu": "2026-11-27T10:00:00+00:00", "age": age}
+
+
+def test_une_ligne_de_signalements_d_une_audience_perimee_porte_sa_date():
+    audience = _vieille(_audience(signalements=_en_attente(3)))
+    assert ba.lignes_signalements(audience) == ["3 signalements en attente"]  # le texte reste
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=[], coches={}, audience=audience,
+                              github=None, contenu=None)
+    ligne = [i for i in items if i["bloc"] == "signalements"]
+    # Une PR ou un signalement vu il y a deux jours reste probablement à traiter : c'est toujours
+    # une tâche (`inconnu` faux), mais datée.
+    assert _textes(ligne) == ["3 signalements en attente (données du 27/11)"]
+    assert not ligne[0]["inconnu"]
+
+
+def test_les_lignes_de_github_perimee_portent_leur_date_et_gardent_leur_lien():
+    github = _vieille(_github(episodes=[_pr(41, "contenu/yt-11")],
+                              sorties=[_pr(50, "contenu/sorties-x", "Sorties", "sorties")]))
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=[], publies=[_recent("yt-11", EP11)],
+                              coches={}, audience=None, github=github, contenu=None)
+    assert [(i["bloc"], i["texte"], i["href"]) for i in items if i["bloc"] in ("publication", "sorties")
+            ] == [("publication", "fusionner la PR de S6·E11 (#41) (données du 27/11)", f"{PR_URL}41"),
+                  ("sorties", "fusionner la PR des sorties : Sorties (#50) (données du 27/11)",
+                   f"{PR_URL}50")]
+
+
+def test_une_note_d_une_source_perimee_ne_porte_pas_de_date():
+    github = _vieille(_github(coupee=True))
+    lignes = ba.a_faire_depuis(episodes={}, groups={}, recents=[], coches={}, audience=None,
+                               github=github, contenu=None)
+    assert "d'autres PR ouvertes ne sont pas listées" in _textes(lignes)
+
+
+def test_des_sources_fraiches_ne_changent_aucune_ligne():
+    audience = _vieille(_audience(signalements=_en_attente(1)), age=20 * 60)
+    github = _vieille(_github(sorties=[_pr(50, "contenu/sorties-x", "Sorties", "sorties")]), age=60)
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=[], coches={}, audience=audience,
+                              github=github, contenu=None)
+    assert "données du" not in " ".join(_textes(items))
+    assert ba.lignes_signalements(audience) == ["1 signalement en attente"]

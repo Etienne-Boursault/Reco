@@ -344,3 +344,20 @@ def test_l_envoi_passe_par_matrix_et_dit_non_configure_sans_ses_variables(monkey
     monkeypatch.setenv("RECO_MATRIX_TOKEN", "faux")
     monkeypatch.setenv("RECO_MATRIX_ROOM", "!faux:matrix.invalid")
     assert rd._sender() is not None
+
+
+def test_une_ligne_d_une_source_ok_perimee_porte_la_date_des_donnees(monde):
+    # Revue globale, M2 : « ok » mais plus réécrite depuis 72 h : la ligne reste, datée.
+    monde.audience = {**AUDIENCE, "lu": "2026-11-26T12:00:00+00:00", "age": 72 * 3600}
+    monde.github = {**GITHUB, "lu": "2026-11-26T08:00:00+00:00", "age": 72 * 3600}
+    assert _lancer() == 0
+    corps = _corps(monde)
+    assert "1 signalement en attente (données du 26/11)" in corps
+    assert "fusionner la PR des sorties : Sorties (#7) (données du 26/11)" in corps
+    assert "3 liens morts" in corps and "3 liens morts (données" not in corps
+
+
+def test_une_source_fraiche_ne_change_pas_le_message(monde):
+    monde.audience = {**AUDIENCE, "age": 120}
+    assert _lancer() == 0
+    assert "(données du" not in _corps(monde)

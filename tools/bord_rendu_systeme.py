@@ -97,7 +97,7 @@ def _etat(github: dict) -> str:
     age = github.get("age")
     if github.get("donnees") is not None and isinstance(age, int):
         quand = _depuis(timedelta(seconds=age))
-        perime = timedelta(seconds=age) > 2 * bord_distant.FRAICHEUR
+        perime = bord_distant.donnees_perimees(github)
         message = (f"{'Périmé' if perime else 'À jour'} · lu {quand}." if etat == "ok"
                    else f"{message} Ce sont les données d'{quand}.")
     return (f'<p class="bord-audience-etat" data-etat="{html.escape(etat)}">'

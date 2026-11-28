@@ -405,3 +405,10 @@ def test_signalements_de_forme_inattendue_restent_inconnus(sig):
     """Tour 1, M3."""
     bloc = bb.bloc_signalements({"etat": "ok", "age": 1, "donnees": {"signalements": sig}})
     assert "Signalements : inconnu" in bloc
+
+
+def test_des_donnees_ok_de_plus_de_20_min_se_disent_perimees():
+    """Revue globale, M2 : un essai réussi mais plus réécrit ne reste pas « À jour »."""
+    assert "À jour · lu il y a 20 min" in _bloc(age=20 * 60)
+    bloc = _bloc(age=3 * 3600)
+    assert "Périmé · lu il y a 3 h 00" in bloc and "À jour" not in bloc

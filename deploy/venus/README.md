@@ -280,7 +280,7 @@ signalement en attente · 3 liens morts ».
 | `~/docker/reco/.env` | clés (droits 600) | oui |
 | `~/docker/reco/depot/` | clone du dépôt ; `tools/output/` y garde transcriptions et états | oui |
 | `~/docker/reco/logs/tick-AAAA-MM.log` | journal des passages | oui |
-| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées), `distant.json` (dernières lectures de l'audience et de GitHub), `distant.log` (sortie du rafraîchissement), `liens.json` (résumé du contrôle des liens du lundi) | oui |
+| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées), `distant.json` (dernières lectures de l'audience et de GitHub), `distant.log` (sortie du rafraîchissement), `lance-audience` et `lance-github` (heure du dernier lancement d'un rafraîchissement, 2 min de répit), `liens.json` (résumé du contrôle des liens du lundi) | oui |
 | `~/.cache/reco/` | modèle Whisper (1,6 Go), caches yt-dlp — se retéléchargent | **non**, volontairement |
 | `~/.ssh/reco_deploy` | clé de dépôt (écriture sur ce dépôt seul), droits 600 | **non** : la sauvegarde ne couvre que `~/docker`. Une clé perdue se régénère et se redéclare sur GitHub |
 
