@@ -141,6 +141,15 @@ def test_get_bord_sans_etat_de_chaine(corpus):
     assert code == 200
 
 
+@pytest.mark.parametrize("contenu", ["[]", '["published"]', '"texte"', "3"])
+def test_get_bord_etat_de_chaine_qui_n_est_pas_un_objet(corpus, contenu):
+    # Tour 1, F1 : un JSON valide mais pas un objet ne fait pas tomber la connexion.
+    (corpus / "output_dir" / "pipeline" / f"{SOURCE}.json").write_text(contenu, encoding="utf-8")
+    code, _, corps = _requete("GET", "/bord")
+    assert code == 200
+    assert "inconnu" in corps.decode("utf-8")
+
+
 def test_l_accueil_de_la_relecture_mene_au_tableau_de_bord():
     _, _, corps = _requete("GET", "/")
     assert 'href="/bord"' in corps.decode("utf-8")

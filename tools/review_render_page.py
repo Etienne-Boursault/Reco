@@ -144,9 +144,11 @@ def _pipeline_state(source_id: str) -> dict | None:
     if not path.exists():
         return None
     try:
-        return common.read_json(path)
+        state = common.read_json(path)
     except (OSError, ValueError):
         return None
+    # Tour 1, F1 : un JSON valide qui n'est pas un objet vaut « illisible ».
+    return state if isinstance(state, dict) else None
 
 
 def _render_with_clusters(
