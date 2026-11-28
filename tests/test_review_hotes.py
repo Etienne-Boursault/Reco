@@ -103,6 +103,21 @@ def test_lan_review_url_host_refused_without_env(lan):
     assert _status(_request(host="revue.exemple.org:8000")) == 403
 
 
+def test_malformed_request_line_refused_before_the_guard(strict):
+    # Une ligne de requête invalide est refusée par http.server (400), avant la garde.
+    h = _request(method="GET / EN TROP")
+    assert _status(h) == 400 and not h.reached
+
+
+def test_lan_malformed_review_url_admits_nothing_but_lists_still_work(lan, monkeypatch):
+    # Une RECO_REVIEW_URL mal formée (crochet non fermé) n'ouvre rien et ne fait pas
+    # tomber la garde : les autres noms admis passent toujours.
+    monkeypatch.setenv("RECO_REVIEW_URL", "http://[revue.exemple.org:8000")
+    monkeypatch.setenv("RECO_REVIEW_HOTES", "un.exemple.org")
+    assert _status(_request(host="revue.exemple.org:8000")) == 403
+    assert _status(_request(host="un.exemple.org:8000")) == 204
+
+
 def test_lan_extra_hosts_list_admitted(lan, monkeypatch):
     monkeypatch.setenv("RECO_REVIEW_HOTES", "un.exemple.org, deux.exemple.org:8000")
     assert _status(_request(host="un.exemple.org:8000")) == 204
