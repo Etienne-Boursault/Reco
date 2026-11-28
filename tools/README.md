@@ -226,6 +226,16 @@ exploitation : `../deploy/venus/README.md`. Modules :
 ni « verte » : un « aucun » est une vraie mesure (la liste lue est vide). Sur la page,
 une ligne « inconnu » de « À faire d'abord » est grisée et ne compte pas.
 
+**Les durées et les dates** (revue globale, 28/11/2026) : une durée passe aux jours dès 48 h (« il y a 2 j 7 h »),
+le premier du mois s'écrit « mardi 1er décembre », et un passage de la chaîne qui n'est pas du jour même
+(heure de Paris) porte son jour (« sam. 23 h 05 »). Le déploiement est « réussi » et la CI « réussie » ; une ligne
+« ouvrir puis fusionner la PR de … » (branche poussée, aucune PR) a un bouton « Créer la PR », les autres « Ouvrir la PR ».
+
+**Les largeurs** : 39 pouces à partir de 2 200 px (cinq colonnes) ; en dessous, 13 pouces (menu, colonne
+principale, chaîne à droite) ; de 901 à 1 240 px la chaîne passe sous l'audience pour qu'elle garde au moins
+environ 480 px (mesuré dans Edge sans interface : 558 px à 901 px de large, 633 px à 976 px) ; téléphone sous 900 px.
+La page déclare `color-scheme: dark` (barres de défilement sombres).
+
 | Bloc | Source | Fraîcheur |
 |---|---|---|
 | Santé et versions | `bord_github` : CI de `main`, dernier déploiement ; image selon `compose.yml` | cache `distant.json`, relu en arrière-plan au-delà de 10 min ; l'âge est affiché, « Périmé » au-delà de 20 min ; pannes de la CI et du déploiement, jeton refusé dits |

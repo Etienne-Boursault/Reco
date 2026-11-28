@@ -29,7 +29,7 @@ from urllib.parse import urlparse
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import bord_distant
-from bord_afaire import _libelle, signalements_en_attente, total_signalements
+from bord_afaire import A_CREER, _libelle, signalements_en_attente, total_signalements
 from bord_reseaux import LIBELLES, RESEAUX
 from review_render_focus import short_title
 
@@ -82,16 +82,20 @@ def _heure(iso: Any, *, jour: bool = False) -> str | None:
 def date_du_jour(maintenant: datetime) -> str:
     """« dimanche 29 novembre »."""
     t = maintenant.astimezone(_fuseau())
-    return f"{_JOURS[t.weekday()]} {t.day} {_MOIS[t.month - 1]}"
+    jour = "1er" if t.day == 1 else t.day
+    return f"{_JOURS[t.weekday()]} {jour} {_MOIS[t.month - 1]}"
 
 
 def _depuis(ecart: timedelta) -> str:
+    """« à l'instant », « il y a 12 min », « il y a 2 h 05 », puis « il y a 2 j 7 h » dès 48 h."""
     minutes = int(ecart.total_seconds() // 60)
     if minutes < 1:
         return "à l'instant"
     if minutes < 60:
         return f"il y a {minutes} min"
-    return f"il y a {minutes // 60} h {minutes % 60:02d}"
+    if minutes < 48 * 60:
+        return f"il y a {minutes // 60} h {minutes % 60:02d}"
+    return f"il y a {minutes // 1440} j {minutes % 1440 // 60} h"
 
 
 def _duree(debut: Any, fin: Any) -> str:
@@ -177,8 +181,10 @@ def bloc_afaire(items: list[dict]) -> tuple[str, int]:
             href = "/ep?guid=" + urllib.parse.quote(str(item["guid"]), safe="")
             lien = f'<a class="bord-bouton" href="{html.escape(href)}">Ouvrir la relecture</a>'
         elif _est_github(item.get("href")):  # une PR : jamais un autre hôte (F21)
+            # Sans PR encore, le lien mène à la page de comparaison : « Créer » (revue globale, R12).
+            bouton = "Créer la PR" if str(item.get("texte")).startswith(A_CREER) else "Ouvrir la PR"
             lien = (f'<a class="bord-bouton" href="{html.escape(item["href"])}" '
-                    'rel="noreferrer">Ouvrir la PR</a>')
+                    f'rel="noreferrer">{bouton}</a>')
         lignes.append(
             f'<li class="bord-tache" data-bloc="{html.escape(bloc)}"{inconnu}>'
             f'<span class="bord-tache-bloc">{_texte(_BLOCS.get(bloc, bloc), 40)}</span>'
@@ -202,12 +208,16 @@ def _etape(e: dict) -> str:
             f'<span class="bord-etape-quand">{html.escape(quand)}</span></li>')
 
 
-def _passage(p: dict) -> str:
+def _passage(p: dict, maintenant: datetime | None = None) -> str:
     # Seules les étapes notées par `lance` (tick.sh) comptent : la détection et la transcription
     # n'en sont pas, un passage qui n'a fait qu'elles ne dit donc pas « rien de neuf » (revue
     # globale, M5).
     lancees, echecs = _noms(p.get("lancees")), _noms(p.get("echecs"))
-    texte = (_heure(p.get("debut")) or "?") + " · "
+    # Le jour, quand le passage n'est pas du jour même (heure de Paris) : « sam. 23 h 05 ».
+    debut = _instant(p.get("debut"))
+    autre_jour = (debut is not None and maintenant is not None and
+                  debut.astimezone(_fuseau()).date() != maintenant.astimezone(_fuseau()).date())
+    texte = (_heure(p.get("debut"), jour=autre_jour) or "?") + " · "
     texte += ("lancé : " + ", ".join(lancees)) if lancees else "aucune étape suivie"
     if echecs:
         texte += " · en échec : " + ", ".join(echecs)
@@ -215,8 +225,11 @@ def _passage(p: dict) -> str:
             f'<span class="bord-mut">{_duree(p.get("debut"), p.get("fin"))}</span></li>')
 
 
-def bloc_chaine(chaine: dict) -> str:
-    """Le bloc de `bord_chaine.etat_chaine` : épisode, étapes, erreurs, passages."""
+def bloc_chaine(chaine: dict, maintenant: datetime | None = None) -> str:
+    """Le bloc de `bord_chaine.etat_chaine` : épisode, étapes, erreurs, passages.
+
+    `maintenant` : sans lui, les passages ne portent jamais de jour.
+    """
     episode = chaine.get("episode")
     etapes = chaine.get("etapes") or []
     if episode is None:
@@ -245,7 +258,7 @@ def bloc_chaine(chaine: dict) -> str:
     elif not passages:
         liste = '<p class="bord-mut">Aucun passage noté.</p>'
     else:
-        liste = f'<ul class="bord-passages">{"".join(_passage(p) for p in passages)}</ul>'
+        liste = f'<ul class="bord-passages">{"".join(_passage(p, maintenant) for p in passages)}</ul>'
     return (_carte(tete)
             + _carte(f'<span class="bord-etiquette">Derniers passages</span>{liste}{bas}'))
 
@@ -330,10 +343,10 @@ def bloc_signalements(audience: dict | None) -> str:
     age = audience.get("age")
     perime = ""
     if audience.get("etat") != "ok" and isinstance(age, int):
-        perime = (f'<p class="bord-mut">Liste des données d\'{_depuis(timedelta(seconds=age))}'
+        perime = (f'<p class="bord-mut">Données d\'{_depuis(timedelta(seconds=age))}'
                   " : l'audience n'a pas pu être relue.</p>")
     elif bord_distant.donnees_perimees(audience):  # même seuil que le bloc Audience (revue globale, M2)
-        perime = (f'<p class="bord-mut">Périmé : liste des données d\'{_depuis(timedelta(seconds=age))}.</p>')
+        perime = (f'<p class="bord-mut">Périmé : données d\'{_depuis(timedelta(seconds=age))}.</p>')
     if not liste:
         return _carte(titre + '<p class="bord-vide">Aucun signalement en attente.</p>' + perime)
     reste = total_signalements(audience) - min(len(liste), SIGNALEMENTS_MAX)

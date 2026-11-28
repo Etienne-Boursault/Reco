@@ -75,7 +75,7 @@ def test_le_libelle_retombe_sur_le_titre_court_puis_le_guid():
     items = _appel(recents=recents, coches={"yt-x": {}, "yt-y": {}})
     assert _textes(items)[0].startswith("réseaux de Hors série : Instagram")
     assert _textes(items)[1].startswith("réseaux de yt-y : ")
-    assert _textes(items)[0].endswith("commentaire YouTube")
+    assert _textes(items)[0].endswith("Commentaire YouTube")
 
 
 def test_l_ordre_des_blocs():

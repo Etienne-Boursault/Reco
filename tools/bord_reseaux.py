@@ -41,7 +41,7 @@ from publication import PREFIXE_BRANCHE
 RESEAUX = ("instagram", "threads", "spotify", "deezer", "senscritique", "youtube")
 LIBELLES = {"instagram": "Instagram", "threads": "Threads", "spotify": "Spotify",
             "deezer": "Deezer", "senscritique": "SensCritique",
-            "youtube": "commentaire YouTube"}
+            "youtube": "Commentaire YouTube"}
 N_RECENTS = 3
 #: Les derniers publiés dont la PR est vérifiée (revue globale, E1) ; les cases n'en prennent que 3.
 N_PUBLICATION = 10

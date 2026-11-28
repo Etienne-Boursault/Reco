@@ -416,7 +416,7 @@ def test_signalements_inconnus_sans_donnees_ou_illisibles_sur_le_site():
 
 def test_signalements_perimes_disent_leur_age():
     bloc = bb.bloc_signalements(_aud(_sig(1), etat="panne", age=2 * 3600))
-    assert "ubm-0" in bloc and "données d'il y a 2 h 00" in bloc
+    assert "ubm-0" in bloc and "Données d'il y a 2 h 00" in bloc
     assert "il y a" not in bb.bloc_signalements(_aud(_sig(1)))
 
 

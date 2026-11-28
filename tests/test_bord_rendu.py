@@ -384,7 +384,7 @@ def test_reseaux_une_ligne_par_reseau_une_colonne_par_episode():
     contenu, nb = bb.bloc_reseaux([_recent(), _recent("yt-10", None)], {})
     lignes = re.findall(r'<th scope="row">(.*?)</th>', contenu)
     assert lignes == ["Instagram", "Threads", "Spotify", "Deezer", "SensCritique",
-                      "commentaire YouTube"]
+                      "Commentaire YouTube"]
     assert re.findall(r'<th scope="col">(.*?)</th>', contenu) == ["Réseau", "S6·E11", "yt-10"]
     assert nb == 12
 

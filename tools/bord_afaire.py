@@ -61,6 +61,9 @@ from review_render_focus import _ep_label, entry_state, short_title
 
 #: `propriétaire/nom` en caractères sûrs : seul un dépôt de cette forme entre dans un lien.
 _DEPOT = re.compile(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")
+#: Début de la ligne d'un épisode poussé sans PR : `bord_rendu_blocs` y règle son bouton « Créer la PR »
+#: (revue globale, R12).
+A_CREER = "ouvrir puis fusionner"
 
 
 class Note(str):
@@ -248,7 +251,7 @@ def lignes_publication(github: dict | None, recents: list[dict] | None,
             if fusionnees is None:     # tour 2, M-1 : « inconnu » n'est pas « aucune »
                 lignes.append(Note(f"publication de {nom} : inconnu (PR fusionnées non lues)"))
             elif branche not in fusionnees:
-                lignes.append((f"ouvrir puis fusionner la PR de {nom}",
+                lignes.append((f"{A_CREER} la PR de {nom}",
                                _comparaison(depot, branche)))
     if recents is None:
         lignes.append(Note("publication des épisodes : inconnu"))
