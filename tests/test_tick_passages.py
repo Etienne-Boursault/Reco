@@ -29,6 +29,10 @@ _SANS_ESSAI = sys.platform == "win32" or _SANS_SH or shutil.which("flock") is No
 
 _FAUX_DOCKER = """#!/bin/sh
 printf '%s\\n' "$*" >>"$FAUX_JOURNAL"
+# Ce que voit la page pendant le passage (tour 1, F8 repris).
+if [ -f "${RECO_BORD_DIR:-/nulle-part}/en-cours" ]; then
+  cp "${RECO_BORD_DIR}/en-cours" "$FAUX_JOURNAL.en-cours"
+fi
 for dernier in "$@"; do :; done
 case " ${FAUX_OUI:-} " in *" $dernier "*) exit 0 ;; esac
 case " ${FAUX_ECHEC:-} " in *" $dernier "*) exit 1 ;; esac
