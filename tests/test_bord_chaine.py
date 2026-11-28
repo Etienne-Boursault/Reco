@@ -177,6 +177,14 @@ def test_les_erreurs_de_la_chaine_sont_rendues(corpus):
         "⚠️ un", "⚠️ deux", "trois", "⚠️ la transcription a échoué"]
 
 
+def test_etat_lu_se_dit_sans_dependre_d_un_episode(corpus):
+    # Tour 1, F3 : sans épisode, un état lu reste lu.
+    assert bord_chaine.etat_chaine(SOURCE)["etat_lu"] is False
+    _etat(corpus)
+    etat = bord_chaine.etat_chaine(SOURCE)
+    assert etat["episode"] is None and etat["etat_lu"] is True
+
+
 def _passages(dossier, lignes):
     dossier.mkdir(parents=True, exist_ok=True)
     (dossier / "passages.jsonl").write_text("".join(x + "\n" for x in lignes), encoding="utf-8")

@@ -187,7 +187,7 @@ def bloc_chaine(chaine: dict) -> str:
                 f'<h3 class="bord-episode">{_texte(nom)}</h3>'
                 f'<ol class="bord-etapes">{"".join(_etape(e) for e in etapes)}</ol>')
     erreurs = chaine.get("erreurs") or []
-    etat_lu = any(e.get("source") == "état de la chaîne" for e in etapes)
+    etat_lu = bool(chaine.get("etat_lu"))
     if erreurs:
         bas = ('<ul class="bord-erreurs">'
                + "".join(f"<li>{_texte(m)}</li>" for m in erreurs) + "</ul>")

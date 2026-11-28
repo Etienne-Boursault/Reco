@@ -51,6 +51,7 @@ def _chaine(**kw):
             _etape("publie", "Publié", etat="a_venir"),
         ],
         "erreurs": [],
+        "etat_lu": True,
         "passages": [_passage()],
     }
     chaine.update(kw)
@@ -275,8 +276,15 @@ def test_chaine_les_erreurs_signalees():
 
 def test_chaine_aucune_erreur_seulement_quand_l_etat_est_lu():
     assert "Erreurs en cours : aucune." in bb.bloc_chaine(_chaine())
-    sans_etat = _chaine(etapes=[_etape("publie", "Publié", etat="inconnu", source="inconnu")])
+    sans_etat = _chaine(etapes=[_etape("publie", "Publié", etat="inconnu", source="inconnu")],
+                        etat_lu=False)
     assert "Erreurs en cours : inconnu." in bb.bloc_chaine(sans_etat)
+
+
+def test_chaine_etat_lu_sans_episode_dit_aucune_erreur():
+    # Tour 1, F3 : l'état lu et vide ne se déduit pas des étapes.
+    contenu = bb.bloc_chaine(_chaine(episode=None, etapes=[]))
+    assert "Erreurs en cours : aucune." in contenu
 
 
 def test_chaine_les_derniers_passages():

@@ -187,5 +187,6 @@ def etat_chaine(source_id: str, *, db_path: Path | None = None,
     # Toutes : l'état est écrit trié par clé, un plafond garderait les premières
     # par ordre alphabétique et cacherait la dernière (tour 1, M1).
     erreurs = [str(m) for m in signalees.values()] if isinstance(signalees, dict) else []
-    return {"episode": episode, "etapes": liste, "erreurs": erreurs,
+    # `etat_lu` : l'état a été lu, même sans épisode à montrer (tour 1, F3).
+    return {"episode": episode, "etapes": liste, "erreurs": erreurs, "etat_lu": etat is not None,
             "passages": lire_passages(bord_dir() / "passages.jsonl", nb_passages)}
