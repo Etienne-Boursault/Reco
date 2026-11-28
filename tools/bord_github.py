@@ -21,13 +21,20 @@ LES PR : SEULES CELLES DU DÉPÔT
 Une PR d'un fork peut s'appeler `contenu/x` sans venir de la chaîne : on ne garde que
 `head.repo.full_name` égal au dépôt (R4). Les PR d'épisode (`contenu/<guid>`) sont séparées des
 sorties annoncées (`contenu/sorties-…`, R3). Les autres branches ne sont pas du tableau de bord.
-Les PR fusionnées viennent des 100 PR fermées les plus récemment modifiées : c'est une fenêtre,
-pas un historique ; « publié » se lit sur `merged_at` (R7).
+Les PR fusionnées viennent des 30 PR fermées les plus récemment modifiées : c'est une fenêtre,
+pas un historique ; « publié » se lit sur `merged_at` (R7). Les 100 d'avant pesaient 1,9 Mo
+pour une limite de 2 Mo (mesuré le 28/11/2026, tour 1, E1).
 Les PR ouvertes portent `coupee: true` si la page de l'API était pleine (F23).
+
+Toute branche `contenu/*` hors `sorties-` est rangée dans `episodes`, car ce module ne lit pas le
+corpus : il ne sait pas quels slugs sont des guids d'épisode. Des PR faites à la main
+(`contenu/liens-rebelle`) s'y trouvent donc aussi (tour 1, F2). Chaque PR garde sa `branche` : c'est à
+l'appelant, qui connaît les guids, de la rapprocher de `slugify(guid)` (`publication.py`).
 
 LE JETON
 --------
-`RECO_GITHUB_TOKEN`, s'il existe, ne sert qu'aux appels des PR (plus de requêtes par heure) ; les
+`RECO_GITHUB_TOKEN`, s'il existe, ne sert qu'aux appels des PR (plus de requêtes par heure) ; un
+401 (jeton expiré) répète l'appel sans jeton, le dépôt étant public, et note `jeton: "refuse"` (F3) ; les
 appels des Actions restent anonymes : le dépôt est public, et un jeton à grain fin sans droit sur
 les Actions risquerait un 403 (note du plan, § 2). Il ne passe jamais dans l'adresse, et il
 n'est ni dans un journal, ni dans un message, ni dans le cache (F15) : les erreurs ne sont
@@ -37,8 +44,10 @@ décrites que par leur type ou leur code HTTP. Une limite de débit atteinte (40
 LES FORMES INATTENDUES (F6, F12)
 --------------------------------
 Chaque bloc se lit seul : une forme inattendue dans l'un le rend `None` (inconnu, jamais
-« aucune PR » ni « CI verte »), et les autres restent. Une panne du réseau ou de l'API
-garde en revanche les dernières données entières, avec leur heure (`lu`).
+« aucune PR » ni « CI verte »), et les autres restent. Chaque appel est isolé de même (E1) : un appel
+en panne met son seul bloc à `None` et se note dans `pannes` (bloc, état, détail). L'état de la
+source reste `ok` si un appel au moins a réussi ; si tous échouent, la panne garde en revanche
+les dernières données entières, avec leur heure (`lu`).
 """
 from __future__ import annotations
 
@@ -62,6 +71,7 @@ SOURCE = "github"
 VARIABLE_JETON = "RECO_GITHUB_TOKEN"
 _HOTE = urlsplit(API_GITHUB).hostname
 _PAGE = 100
+_PAGE_FERMEES = 30
 _TITRE_MAX = 200
 LIBELLES = {"ok": "à jour", "inconnu": "inconnu", "panne": "panne",
             "limite": "limite de débit atteinte", "reponse-illisible": "réponse illisible",
@@ -165,7 +175,11 @@ def _execution(reponse: Any, depot: str) -> dict[str, Any] | None:
         raise ValueError("liste d'exécutions attendue")
     if not courses:
         return None
-    course = courses[0]
+    # Tour 1, F5 : `deploy.yml` suit `workflow_run`, il est sauté (`skipped`) quand la CI échoue. La
+    # requête ne garde que les exécutions terminées ; on prend la première qui a un vrai résultat,
+    # sinon la plus récente.
+    course = next((c for c in courses if isinstance(c, dict)
+                   and c.get("conclusion") not in (None, "skipped")), courses[0])
     if not isinstance(course, dict):
         raise ValueError("exécution de forme inattendue")
     ident, conclusion, date = course.get("id"), course.get("conclusion"), course.get("updated_at")
@@ -186,26 +200,39 @@ def _bloc(fabrique: Any, brut: Any, depot: str) -> Any:
 
 
 def _appeler() -> tuple[str, str | None, dict[str, Any] | None]:
-    """Les quatre appels : (état, détail sans secret, données ou None)."""
+    """Les quatre appels, chacun isolé : (état, détail sans secret, données ou None)."""
     depot = _depot()
     if not depot:
         return "panne", "dépôt inconnu", None
     jeton = os.environ.get(VARIABLE_JETON)
     base = f"{API_GITHUB}/repos/{depot}"
-    try:
-        ouvertes = _get(f"{base}/pulls?state=open&per_page={_PAGE}", jeton)
-        fermees = _get(f"{base}/pulls?state=closed&sort=updated&direction=desc&per_page={_PAGE}",
-                       jeton)
-        ci = _get(f"{base}/actions/workflows/ci.yml/runs"
-                  "?branch=main&event=push&status=completed&per_page=1", None)
-        deploiement = _get(f"{base}/actions/workflows/deploy.yml/runs"
-                           "?branch=main&status=completed&per_page=1", None)
-    except _Echec as exc:
-        return exc.etat, exc.detail, None
-    return "ok", None, {"depot": depot, "ouvertes": _bloc(_ouvertes, ouvertes, depot),
-                        "fusionnees": _bloc(_fusionnees, fermees, depot),
-                        "ci": _bloc(_execution, ci, depot),
-                        "deploiement": _bloc(_execution, deploiement, depot)}
+    ouv = f"{base}/pulls?state=open&per_page={_PAGE}"
+    fer = f"{base}/pulls?state=closed&sort=updated&direction=desc&per_page={_PAGE_FERMEES}"
+    ci = f"{base}/actions/workflows/ci.yml/runs?branch=main&event=push&status=completed&per_page=1"
+    dep = f"{base}/actions/workflows/deploy.yml/runs?branch=main&status=completed&per_page=10"
+    appels = (  # (bloc, adresse, avec jeton, lecture) ; le jeton ne sert qu'aux PR
+        ("ouvertes", ouv, True, _ouvertes), ("fusionnees", fer, True, _fusionnees),
+        ("ci", ci, False, _execution), ("deploiement", dep, False, _execution))
+    donnees: dict[str, Any] = {"depot": depot, "pannes": {}, "jeton": None}
+    for bloc, adresse, avec_jeton, fabrique in appels:
+        try:
+            try:
+                brut = _get(adresse, jeton if avec_jeton else None)
+            except _Echec as exc:
+                if not (avec_jeton and jeton and exc.detail == "HTTP 401"):
+                    raise
+                jeton, donnees["jeton"] = None, "refuse"      # F3 : le dépôt est public
+                brut = _get(adresse, None)
+        except _Echec as exc:
+            donnees[bloc] = None
+            donnees["pannes"][bloc] = {"etat": exc.etat, "detail": exc.detail}
+            continue
+        donnees[bloc] = _bloc(fabrique, brut, depot)
+    pannes = donnees["pannes"]
+    if len(pannes) == len(appels):
+        premiere = next(iter(pannes.values()))
+        return premiere["etat"], premiere["detail"], None
+    return "ok", None, donnees
 
 
 def rafraichir(*, maintenant: datetime | None = None) -> str:
@@ -221,7 +248,8 @@ def lire(*, maintenant: datetime | None = None, relancer: bool = True) -> dict[s
     pas), `panne`, `limite`, `reponse-illisible` ou `cache-illisible` ; il dit le dernier essai, et
     `donnees` reste celles d'avant une panne (`lu`, `age`). `donnees` :
     `{"depot", "ouvertes": {"episodes": [PR], "sorties": [PR], "coupee"} | None,
-    "fusionnees": [PR] | None, "ci": course | None, "deploiement": course | None}` ;
+    "fusionnees": [PR] | None, "ci": course | None, "deploiement": course | None,
+    "pannes": {bloc: {"etat", "detail"}}, "jeton": "refuse" | None}` ;
     PR = `{"numero", "titre", "branche", "groupe", "date", "adresse"}` ;
     course = `{"conclusion", "date", "adresse"}`. Un bloc `None` est inconnu.
     """

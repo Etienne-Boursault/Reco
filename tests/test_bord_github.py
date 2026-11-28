@@ -174,9 +174,9 @@ def test_ci_et_deploiement_rendent_conclusion_date_et_adresse(monkeypatch, bord)
     base = f"https://api.github.com/repos/{DEPOT}"
     assert adresses == [
         f"{base}/pulls?state=open&per_page=100",
-        f"{base}/pulls?state=closed&sort=updated&direction=desc&per_page=100",
+        f"{base}/pulls?state=closed&sort=updated&direction=desc&per_page=30",
         f"{base}/actions/workflows/ci.yml/runs?branch=main&event=push&status=completed&per_page=1",
-        f"{base}/actions/workflows/deploy.yml/runs?branch=main&status=completed&per_page=1"]
+        f"{base}/actions/workflows/deploy.yml/runs?branch=main&status=completed&per_page=10"]
 
 
 def test_aucune_execution_donne_inconnu(monkeypatch, bord):
@@ -211,31 +211,31 @@ def test_une_execution_de_forme_inattendue_donne_inconnu(monkeypatch, bord, corp
 ])
 def test_un_refus_de_l_api_est_une_panne_ou_la_limite(monkeypatch, bord, code, entetes, etat,
                                                        detail):
-    faux = _serveur(monkeypatch, (code, entetes, b"{}"))
+    faux = _serveur(monkeypatch, *[(code, entetes, b"{}")] * 4)
     assert bg.rafraichir(maintenant=MAINTENANT) == etat
     entree = _cache(bord)["github"]
     assert (entree["etat"], entree["detail"], entree["donnees"]) == (etat, detail, None)
-    assert len(faux.requetes) == 1                    # la redirection n'est pas suivie
+    assert len(faux.requetes) == 4                    # un appel par bloc ; aucune redirection suivie
 
 
 def test_une_reponse_d_un_autre_hote_est_une_panne(monkeypatch, bord):
-    _serveur(monkeypatch, (200, {}, b"[]", "https://autre.test/x"))
+    _serveur(monkeypatch, *[(200, {}, b"[]", "https://autre.test/x")] * 4)
     assert bg.rafraichir(maintenant=MAINTENANT) == "panne"
     assert _cache(bord)["github"]["detail"] == "autre hôte"
 
 
 def test_une_erreur_reseau_est_une_panne_sans_message(monkeypatch, bord):
-    _serveur(monkeypatch, OSError(f"échec avec {JETON}"))
+    _serveur(monkeypatch, *[OSError(f"échec avec {JETON}")] * 4)
     assert bg.rafraichir(maintenant=MAINTENANT) == "panne"
     assert _cache(bord)["github"]["detail"] == "OSError"
 
 
 def test_json_invalide_et_reponse_trop_longue(monkeypatch, bord):
-    _serveur(monkeypatch, (200, {}, b"<html>"))
+    _serveur(monkeypatch, *[(200, {}, b"<html>")] * 4)
     assert bg.rafraichir(maintenant=MAINTENANT) == "reponse-illisible"
     assert _cache(bord)["github"]["detail"] == "JSON invalide"
     monkeypatch.setattr(bd, "_TAILLE_MAX", 10)
-    _serveur(monkeypatch, (200, {}, b"[" + b" " * 50 + b"]"))
+    _serveur(monkeypatch, *[(200, {}, b"[" + b" " * 50 + b"]")] * 4)
     assert bg.rafraichir(maintenant=MAINTENANT + timedelta(hours=1)) == "reponse-illisible"
     assert _cache(bord)["github"]["detail"] == "trop longue"
 
@@ -270,7 +270,7 @@ def test_un_git_qui_echoue_est_une_panne_sans_message(monkeypatch, bord):
 def test_une_panne_garde_les_dernieres_donnees_et_leur_heure(monkeypatch, bord):
     _serveur(monkeypatch, *_tout(ouvertes=[_pr(1, "contenu/g")]))
     bg.rafraichir(maintenant=MAINTENANT)
-    _serveur(monkeypatch, (500, {}, b"{}"))
+    _serveur(monkeypatch, *[(500, {}, b"{}")] * 4)
     assert bg.rafraichir(maintenant=MAINTENANT + timedelta(minutes=11)) == "panne"
     entree = _cache(bord)["github"]
     assert entree["etat"] == "panne" and entree["lu"] == "2026-11-28T09:30:00+00:00"
