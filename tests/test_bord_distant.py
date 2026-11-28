@@ -12,6 +12,7 @@ import io
 import json
 import logging
 import subprocess
+import threading
 import time
 import types
 import urllib.error
@@ -60,6 +61,7 @@ def bord(tmp_path, monkeypatch):
     monkeypatch.setenv("RECO_BORD_DIR", str(d))
     monkeypatch.setenv("RECO_AUDIENCE_KEY", CLE)
     monkeypatch.delenv("SITE_URL", raising=False)
+    monkeypatch.setattr(bd, "_ATTENTE_VERROU", 0)       # les tests n'attendent pas 60 s
     return d
 
 
@@ -218,6 +220,42 @@ def test_verrou_deja_tenu_aucun_appel(monkeypatch, bord):
         assert bd.rafraichir(maintenant=MAINTENANT) == "occupe"
     assert faux.requetes == []
     assert not (bord / "distant.json").exists()
+
+
+def test_un_verrou_tenu_plus_longtemps_que_l_attente_rend_toujours_occupe(monkeypatch, bord):
+    monkeypatch.setattr(bd, "_ATTENTE_VERROU", 0.2)
+    faux = _serveur(monkeypatch, _ok())
+    bord.mkdir(parents=True)
+    debut = time.monotonic()
+    with filelock.FileLock(str(bord / "distant.lock")):
+        assert bd.rafraichir(maintenant=MAINTENANT) == "occupe"
+    assert time.monotonic() - debut >= 0.2               # il a bien attendu avant d'abandonner
+    assert faux.requetes == []
+
+
+def test_un_verrou_relache_pendant_l_attente_est_obtenu_par_le_second(monkeypatch, bord):
+    # M1 du tour 1 : l'audience et GitHub périmés ensemble lancent deux processus ; le second
+    # attend le premier au lieu de rendre « occupé » sans noter son essai.
+    monkeypatch.setattr(bd, "_ATTENTE_VERROU", 10)
+    faux = _serveur(monkeypatch, _ok())
+    bord.mkdir(parents=True)
+    pris, relache = threading.Event(), threading.Event()
+
+    def tenir():
+        with filelock.FileLock(str(bord / "distant.lock")):
+            pris.set()
+            relache.wait(10)
+
+    premier = threading.Thread(target=tenir)
+    premier.start()
+    assert pris.wait(10)
+    threading.Timer(0.3, relache.set).start()
+    try:
+        assert bd.rafraichir(maintenant=MAINTENANT) == "ok"
+    finally:
+        relache.set()
+        premier.join(10)
+    assert len(faux.requetes) == 1 and _cache(bord)["audience"]["etat"] == "ok"
 
 
 @pytest.mark.parametrize("contenu", ["{tronqué", "[]", '{"audience": []}',

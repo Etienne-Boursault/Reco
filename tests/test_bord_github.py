@@ -33,6 +33,7 @@ def bord(tmp_path, monkeypatch):
     monkeypatch.setenv("RECO_BORD_DIR", str(d))
     monkeypatch.setenv("RECO_GITHUB_TOKEN", JETON)
     monkeypatch.setattr(bg, "_depot", lambda: DEPOT)
+    monkeypatch.setattr(bd, "_ATTENTE_VERROU", 0)       # les tests n'attendent pas 60 s
     return d
 
 

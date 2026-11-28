@@ -13,8 +13,11 @@ Le serveur de relecture n'a qu'un fil, et le délai d'urllib ne borne pas la
 résolution DNS : un appel réseau dans le rendu figerait toute la relecture.
 `lire()` lit donc `<RECO_BORD_DIR>/distant.json` et, quand le dernier essai a
 plus de 10 min, lance `python bord_distant.py rafraichir` détaché, sans l'attendre.
-Le rafraîchissement prend `distant.lock` sans attendre : deux ne tournent jamais
-ensemble. Après un échec, on ne réessaie pas avant 10 min (F6), et la dernière
+Le rafraîchissement prend `distant.lock`, qu'il attend au plus 60 s : deux ne tournent jamais
+ensemble. Cette attente est celle du processus détaché seulement ; le serveur de relecture
+n'appelle jamais `rafraichir_source` (M1 du tour 1, 28/11/2026 : l'audience et GitHub périmés
+ensemble lançaient deux processus, et celui de GitHub rendait « occupé » sans noter son essai, à
+chaque affichage). Après un échec, on ne réessaie pas avant 10 min (F6), et la dernière
 valeur lue reste, avec son heure.
 
 POURQUOI AUCUNE REDIRECTION
@@ -60,6 +63,9 @@ _DELAI = 10
 #: Échéance de toute la lecture de la réponse (F3 du tour 1, 28/11/2026) : `_DELAI`
 #: ne vaut que pour chaque lecture, donc une réponse goutte à goutte tiendrait le verrou.
 _ECHEANCE = 30
+#: Attente du verrou par le processus détaché : une lecture dure au plus `_ECHEANCE` + `_DELAI`, soit
+#: environ 40 s, donc le second processus passe après le premier (M1 du tour 1).
+_ATTENTE_VERROU = 60
 _TAILLE_MAX = 2_000_000
 #: Au-delà, `distant.log` repart de zéro (M1 du tour 1).
 _JOURNAL_MAX = 200_000
@@ -203,13 +209,14 @@ def rafraichir_source(source: str, appeler: Callable[[], tuple[str, str | None, 
     """Relit `source` par `appeler()` si son cache est périmé, sous verrou ; rend l'état obtenu.
 
     Même cache, même verrou et même fraîcheur pour toutes les sources (3a : `bord_github`).
-    Rend aussi `occupe` (un autre rafraîchissement tient le verrou), `frais` (un
+    Attend le verrou au plus `_ATTENTE_VERROU` : à n'appeler que depuis le processus détaché.
+    Rend aussi `occupe` (un autre rafraîchissement tient encore le verrou), `frais` (un
     essai de moins de 10 min) ou `cache-illisible` (rien n'est écrit).
     """
     maintenant = maintenant or datetime.now(UTC)
     dossier().mkdir(parents=True, exist_ok=True)
     try:
-        with filelock.FileLock(str(dossier() / "distant.lock"), timeout=0):
+        with filelock.FileLock(str(dossier() / "distant.lock"), timeout=_ATTENTE_VERROU):
             try:
                 cache = _lire_cache(source)
             except CacheIllisible as exc:

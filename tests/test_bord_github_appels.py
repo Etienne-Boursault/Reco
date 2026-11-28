@@ -10,6 +10,7 @@ from datetime import timedelta
 
 import pytest
 
+import bord_distant as bd
 import bord_github as bg
 from test_bord_github import (
     DEPOT,
@@ -30,6 +31,7 @@ def bord(tmp_path, monkeypatch):
     monkeypatch.setenv("RECO_BORD_DIR", str(d))
     monkeypatch.setenv("RECO_GITHUB_TOKEN", JETON)
     monkeypatch.setattr(bg, "_depot", lambda: DEPOT)
+    monkeypatch.setattr(bd, "_ATTENTE_VERROU", 0)
     return d
 
 
