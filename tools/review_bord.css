@@ -48,6 +48,8 @@ html {
   --grille-zones: "afaire chaine audience reseaux systeme"; --grille-gap: 40px;
   --defile: auto; --col-haut: 100%; --ancre: 0;
   background: var(--fond);
+  /* Page sombre : barres de défilement et contrôles sombres (revue globale, R9). */
+  color-scheme: dark;
 }
 
 html[data-vue="13"] {
@@ -77,6 +79,15 @@ html[data-vue="telephone"] {
     --grille-cols: minmax(0, 1fr) 360px;
     --grille-zones: "afaire chaine" "audience chaine" "reseaux chaine" "systeme chaine";
     --grille-gap: 24px; --defile: visible; --col-haut: none; --ancre: 32px;
+  }
+}
+/* De 900 à 1 240 px, le menu (248 px) et la chaîne (360 px) fixes ne laissaient qu'environ 210 px
+ * à l'audience (revue globale, M3, 28/11/2026) : la chaîne passe sous l'audience, dans l'ordre du
+ * téléphone. La 39 pouces (« 39 » forcé ou « auto » au-delà de 2 200 px) ne change pas. */
+@media (max-width: 1240px) {
+  html[data-vue="13"], html[data-vue="auto"] {
+    --grille-cols: minmax(0, 1fr);
+    --grille-zones: "afaire" "audience" "chaine" "reseaux" "systeme";
   }
 }
 @media (max-width: 900px) {
@@ -197,6 +208,8 @@ h1, h2, h3 {
 .bord-carte-table { padding: 12px 12px 6px; overflow-x: auto; }
 .bord-mut, .bord-vide { margin: 0; color: var(--mut); }
 .bord-alerte { margin: 0; color: var(--alerte); font-weight: 600; }
+/* Une ligne de coût ou de modèle : l'écart de la carte suffit, sans la marge d'un paragraphe en plus. */
+.bord-cout, .bord-carte > p { margin: 0; }
 
 /* ---- À faire d'abord ---------------------------------------------------- */
 
