@@ -25,7 +25,7 @@ faster-whisper>=1.2.1,<2     # transcription Whisper en local (CTranslate2, CPU/
 # Mesuré le 2026-10-02 — l'image reconstruite ce jour-là a installé av 19.0.0 et ne
 # transcrivait plus rien, là où celle du 2026-09-28 (av 18.1.0) marchait. À relever
 # quand faster-whisper publiera une version qui n'utilise plus cet argument.
-av>=11,<19
+av>=19.0.2,<20
 # `[default]` installe yt-dlp-ejs, le solveur des défis JavaScript de YouTube. Depuis
 # yt-dlp 2026.10, il n'est plus inclus : l'image reconstruite le 2026-11-14 avertissait
 # « n challenge solving failed: Some formats may be missing ». Avec lui, plus rien.
