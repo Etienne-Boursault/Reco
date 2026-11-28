@@ -137,6 +137,32 @@ def test_get_bord_lit_l_audience_et_compte_les_signalements(corpus, monkeypatch)
     assert "fausse-cle-audience-123" not in page
 
 
+@pytest.mark.parametrize("signalements", [
+    {"etat": "lu", "enAttente": "pas une liste"},
+    {"etat": "lu", "enAttente": {"id": "x"}},
+    {"etat": "lu", "enAttente": ["texte", 3, None]},
+    ["pas", "un", "objet"],
+    "texte",
+])
+def test_get_bord_une_forme_inattendue_de_signalements_reste_inconnue(corpus, monkeypatch,
+                                                                       signalements):
+    """Tour 1, M3 : un site qui répond de travers ne fait pas tomber `/bord` en 500."""
+    from datetime import UTC, datetime
+
+    monkeypatch.setenv("RECO_AUDIENCE_KEY", "fausse-cle-audience-123")
+    quand = datetime.now(UTC).isoformat(timespec="seconds")
+    donnees = {"genere": quand, "perimetre": "tout le site", "sept": None, "trente": None,
+               "jours": [], "erreur": None, "signalements": signalements}
+    (corpus / "bord").mkdir(parents=True, exist_ok=True)
+    (corpus / "bord" / "distant.json").write_text(json.dumps({"audience": {
+        "etat": "ok", "detail": None, "essai": quand, "lu": quand, "donnees": donnees}}),
+        encoding="utf-8")
+    code, _, corps = _requete("GET", "/bord")
+    page = corps.decode("utf-8")
+    assert code == 200
+    assert "Signalements : inconnu" in page and "signalements : inconnu" in page
+
+
 def test_get_bord_sans_cle_d_audience_le_dit(corpus):
     page = _requete("GET", "/bord")[2].decode("utf-8")
     assert 'data-etat="cle-absente"' in page and "signalements : inconnu" in page

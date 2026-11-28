@@ -5,6 +5,8 @@ disque ni réseau.
 """
 from __future__ import annotations
 
+import pytest
+
 import bord_afaire as ba
 
 EP10 = {"guid": "yt-10", "title": "Dix (Un Bon Moment, S6-E10)", "season": 6, "number": 10}
@@ -136,3 +138,22 @@ def test_les_signalements_restent_inconnus_si_l_audience_n_est_pas_a_jour():
     assert ba.lignes_signalements({"etat": "ok", "donnees": None}) is None
     assert ba.lignes_signalements(_audience(signalements={"etat": "inconnu",
                                                           "enAttente": []})) is None
+
+
+@pytest.mark.parametrize("sig", [
+    {"etat": "lu", "enAttente": "pas une liste"},
+    {"etat": "lu", "enAttente": {"id": "x"}},
+    {"etat": "lu", "enAttente": [{"id": "x"}, "texte"]},
+    ["pas", "un", "objet"],
+    "texte",
+])
+def test_une_forme_inattendue_de_signalements_reste_inconnue(sig):
+    """Tour 1, M3 : jamais une exception, jamais un compte inventé."""
+    assert ba.lignes_signalements(_audience(signalements=sig)) is None
+    assert ba.signalements_en_attente(_audience(signalements=sig)) is None
+
+
+def test_signalements_en_attente_rend_la_liste_lue():
+    assert ba.signalements_en_attente(_audience(signalements=_en_attente(2))) ==         _en_attente(2)["enAttente"]
+    assert ba.signalements_en_attente(_audience()) == []
+    assert ba.signalements_en_attente(None) is None

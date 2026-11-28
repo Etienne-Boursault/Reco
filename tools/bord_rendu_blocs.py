@@ -26,7 +26,7 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from bord_afaire import _libelle
+from bord_afaire import _libelle, signalements_en_attente
 from bord_reseaux import LIBELLES, RESEAUX
 from review_render_focus import short_title
 
@@ -293,16 +293,14 @@ def bloc_signalements(audience: dict | None) -> str:
     Des données gardées après une panne restent, marquées par leur âge.
     """
     titre = '<span class="bord-etiquette">Signalements</span>'
-    donnees = (audience or {}).get("donnees") or {}
-    signalements = donnees.get("signalements") or {}
-    if signalements.get("etat") != "lu":
+    liste = signalements_en_attente(audience)
+    if liste is None:
         return _carte(titre + '<p class="bord-mut">Signalements : inconnu.</p>')
     age = audience.get("age")
     perime = ""
     if audience.get("etat") != "ok" and isinstance(age, int):
         perime = (f'<p class="bord-mut">Liste des données d\'{_depuis(timedelta(seconds=age))}'
                   " : l'audience n'a pas pu être relue.</p>")
-    liste = signalements.get("enAttente") or []
     if not liste:
         return _carte(titre + '<p class="bord-vide">Aucun signalement en attente.</p>' + perime)
     reste = len(liste) - SIGNALEMENTS_MAX

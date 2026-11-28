@@ -76,6 +76,19 @@ def _textes(bloc: str, nom: str, textes: list[str] | None) -> list[dict]:
     return [_item(bloc, t) for t in textes]
 
 
+def signalements_en_attente(audience: dict | None) -> list[dict] | None:
+    """La liste lue par le site, ou None (inconnu) : pas de données, signalements non lus, ou
+    forme inattendue (tour 1, M3 : un site qui répond de travers ne fait pas tomber `/bord`).
+    """
+    signalements = ((audience or {}).get("donnees") or {}).get("signalements")
+    if not isinstance(signalements, dict) or signalements.get("etat") != "lu":
+        return None
+    liste = signalements.get("enAttente", [])
+    if not isinstance(liste, list) or not all(isinstance(s, dict) for s in liste):
+        return None
+    return liste
+
+
 def lignes_signalements(audience: dict | None) -> list[str] | None:
     """La ligne des signalements, depuis `bord_distant.lire()` ; None : inconnu.
 
@@ -85,10 +98,10 @@ def lignes_signalements(audience: dict | None) -> list[str] | None:
     donnees = (audience or {}).get("donnees")
     if not audience or audience.get("etat") != "ok" or not donnees:
         return None
-    signalements = donnees.get("signalements") or {}
-    if signalements.get("etat") != "lu":
+    liste = signalements_en_attente(audience)
+    if liste is None:
         return None
-    n = len(signalements.get("enAttente") or [])
+    n = len(liste)
     return [f"{n} signalement{'s' if n > 1 else ''} en attente"] if n else []
 
 
