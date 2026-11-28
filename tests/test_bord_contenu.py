@@ -48,9 +48,9 @@ def test_les_sorties_dans_les_trente_jours_et_pas_au_dela(monde):
     _reco(monde, "e-sans-date")
     sorties = _lire()["sorties"]
     assert [(s["id"], s["jours"]) for s in sorties["liste"]] == [
-        ("c-j-moins-30", -30), ("a-j-plus-30", 30)]
+        ("a-j-plus-30", 30), ("c-j-moins-30", -30)]
     assert sorties["total"] == 2 and sorties["illisibles"] == 0
-    assert sorties["liste"][0] == {"id": "c-j-moins-30", "titre": "Titre c-j-moins-30",
+    assert sorties["liste"][1] == {"id": "c-j-moins-30", "titre": "Titre c-j-moins-30",
                                    "date": "2026-10-29", "jours": -30, "relancee": False}
 
 
@@ -70,6 +70,20 @@ def test_la_liste_est_coupee_par_date_et_dit_son_total(monde):
     assert len(sorties["liste"]) == bord_contenu.LISTE_MAX
     assert sorties["liste"][0]["date"] == "2026-12-01"
     assert sorties["liste"][-1]["date"] == "2026-12-10"
+
+
+def test_les_sorties_a_venir_passent_avant_les_sorties_passees_meme_apres_la_coupe(monde):
+    """Tour 1, F4 : douze sorties passées ne noient pas les deux à venir ; les passées, récentes d'abord."""
+    for k in range(12):
+        _reco(monde, f"p{k:02d}", releaseDate=f"2026-11-{k + 1:02d}")
+    _reco(monde, "loin", releaseDate="2026-12-20")
+    _reco(monde, "proche", releaseDate="2026-11-30")
+    _reco(monde, "aujourdhui", releaseDate="2026-11-28")
+    sorties = _lire()["sorties"]
+    ids = [s["id"] for s in sorties["liste"]]
+    assert ids[:3] == ["proche", "loin", "aujourdhui"]
+    assert ids[3:] == [f"p{k:02d}" for k in (11, 10, 9, 8, 7, 6, 5)]
+    assert sorties["total"] == 15
 
 
 def test_une_reco_illisible_se_compte_et_les_autres_restent(monde):
@@ -99,7 +113,7 @@ def test_une_reco_deja_relancee_est_marquee(monde):
     etat.parent.mkdir(parents=True)
     etat.write_text(json.dumps({"relancees": [f"{SOURCE}/a"]}), encoding="utf-8")
     assert [(s["id"], s["relancee"]) for s in _lire()["sorties"]["liste"]] == [
-        ("a", True), ("b", False)]
+        ("b", False), ("a", True)]
 
 
 def test_un_etat_de_relance_illisible_laisse_relancee_inconnue(monde):

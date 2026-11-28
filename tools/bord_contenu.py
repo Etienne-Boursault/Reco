@@ -8,8 +8,9 @@ lit des fichiers locaux seulement. Chaque partie illisible vaut `None` (« incon
 « aucun » (F22) ; chaque liste coupée donne son total (F23).
 
 - `sorties` : les recos validées, de type servi, dont la `releaseDate` tombe entre J-30 et J+30
-  (la fenêtre de relance de `date_sortie`, plus les 30 jours à venir), de la plus ancienne à la
-  plus proche. Les fichiers de recos qui ne se lisent pas sont comptés (`illisibles`), pas
+  (la fenêtre de relance de `date_sortie`, plus les 30 jours à venir). Tour 1, F4 : celles à venir
+  (`jours > 0`) d'abord, la plus proche en tête, puis les passées, la plus récente en tête, pour que
+  la coupe à `LISTE_MAX` ne noie pas les sorties à venir sous les passées. Les fichiers de recos qui ne se lisent pas sont comptés (`illisibles`), pas
   cachés. Un fichier sans le mot `releaseDate` n'est pas ouvert comme JSON : le dépôt compte
   plus de 3 000 recos et `/bord` se lit à chaque affichage.
 - `graphies` : les 5 plus vues du registre et le nombre d'entrées. Un registre absent vaut
@@ -68,7 +69,8 @@ def _sorties(source_id: str, maintenant: datetime) -> dict[str, Any] | None:
             "titre": (titre if isinstance(titre, str) and titre else identifiant)[:TITRE_MAX],
             "date": sortie.isoformat(), "jours": (sortie - jour).days,
             "relancee": None if relancees is None else cle in relancees}))
-    trouvees.sort(key=lambda t: t[:2])
+    trouvees.sort(key=lambda t: (0, t[2]["jours"], t[1]) if t[2]["jours"] > 0
+                  else (1, -t[2]["jours"], t[1]))
     return {"liste": [t[2] for t in trouvees[:LISTE_MAX]], "total": len(trouvees),
             "illisibles": illisibles}
 
