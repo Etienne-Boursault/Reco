@@ -279,3 +279,16 @@ def a_faire(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
             + _textes("signalements", "signalements", signalements)
             + _textes("liens", "liens morts", liens)
             + _textes("sorties", "sorties", sorties))
+
+
+def a_faire_depuis(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
+                   recents: list[dict] | None, coches: dict[str, dict[str, str]] | None,
+                   audience: dict | None, github: dict | None,
+                   contenu: dict | None) -> list[dict[str, Any]]:
+    """La liste « À faire d'abord » depuis les sources lues (PR 4 : `/bord` et le rappel du
+    dimanche l'appellent toutes deux, donc ne divergent jamais)."""
+    return a_faire(
+        episodes=episodes, groups=groups, recents=recents, coches=coches,
+        signalements=lignes_signalements(audience),
+        publication=lignes_publication(github, recents),
+        sorties=lignes_sorties(github), liens=lignes_liens(contenu))
