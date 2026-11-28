@@ -86,7 +86,12 @@ export interface ResumeBord {
   jours: JourBord[];
   /** Le message d'une lecture en échec (7 jours d'abord) ; `null` si tout a été lu. */
   erreur: string | null;
-  signalements: { etat: 'lu' | 'inconnu'; enAttente: SignalementBord[] };
+  /**
+   * `enAttente` : les 5 plus récents seulement ; `total` : combien attendent
+   * (revue globale, S4). Un cache plus ancien n'a pas `total` : le côté Python
+   * se rabat alors sur la longueur de la liste.
+   */
+  signalements: { etat: 'lu' | 'inconnu'; total: number; enAttente: SignalementBord[] };
 }
 
 function fenetre(a: Agregat | null): FenetreBord | null {
@@ -104,17 +109,24 @@ function fenetre(a: Agregat | null): FenetreBord | null {
     clics: a.clics,
     clicsPour100Visiteurs: a.clicsPour100Visiteurs,
     pages: a.topPages.slice(0, PREMIERES),
-    pagesTotal: a.topPages.length,
+    pagesTotal: a.pagesDistinctes,
     provenances: a.provenances.slice(0, PREMIERES),
-    provenancesTotal: a.provenances.length,
+    provenancesTotal: a.provenancesDistinctes,
   };
 }
 
+/** Les signalements en attente, du plus récent au plus ancien. */
 function enAttente(signalements: Report[]): SignalementBord[] {
   return signalements
     .filter((s) => s.status === 'pending')
     .map((s) => ({ id: s.id, recoId: s.recoId, categorie: s.category, date: s.submittedAt }))
     .sort((a, b) => Number(a.date < b.date) - Number(a.date > b.date));
+}
+
+function resumerSignalements(signalements: Report[] | null): ResumeBord['signalements'] {
+  if (!signalements) return { etat: 'inconnu', total: 0, enAttente: [] };
+  const attente = enAttente(signalements);
+  return { etat: 'lu', total: attente.length, enAttente: attente.slice(0, PREMIERES) };
 }
 
 export function resumerBord({
@@ -142,8 +154,6 @@ export function resumerBord({
       colonnes: j.colonnes,
     })),
     erreur: sept.erreur ?? trente.erreur,
-    signalements: signalements
-      ? { etat: 'lu', enAttente: enAttente(signalements) }
-      : { etat: 'inconnu', enAttente: [] },
+    signalements: resumerSignalements(signalements),
   };
 }

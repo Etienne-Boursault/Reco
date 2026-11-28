@@ -230,6 +230,7 @@ describe('GET /api/bord : les signalements', () => {
 
     expect(JSON.parse(brut).signalements).toEqual({
       etat: 'lu',
+      total: 2,
       enAttente: [
         { id: 'rep-3', recoId: 'as-4', categorie: 'suggestion', date: `${jourRel(0)}T07:00:00.000Z` },
         { id: 'rep-1', recoId: 'ubm-1', categorie: 'error', date: `${jourRel(1)}T08:00:00.000Z` },
@@ -241,7 +242,7 @@ describe('GET /api/bord : les signalements', () => {
   });
 
   it('rend une liste vide, lue, quand il n’y a aucun signalement', async () => {
-    expect((await (await appeler()).json()).signalements).toEqual({ etat: 'lu', enAttente: [] });
+    expect((await (await appeler()).json()).signalements).toEqual({ etat: 'lu', total: 0, enAttente: [] });
   });
 
   it('dit « inconnu » et le journalise quand un fichier de signalement est tronqué (F22)', async () => {
@@ -253,7 +254,7 @@ describe('GET /api/bord : les signalements', () => {
     const reponse = await appeler();
 
     expect(reponse.status).toBe(200);
-    expect((await reponse.json()).signalements).toEqual({ etat: 'inconnu', enAttente: [] });
+    expect((await reponse.json()).signalements).toEqual({ etat: 'inconnu', total: 0, enAttente: [] });
     expect(journal).toHaveBeenCalledWith(
       '[api/bord] signalements illisibles :', ['rep-casse.json'],
     );
@@ -267,7 +268,7 @@ describe('GET /api/bord : les signalements', () => {
     const reponse = await appeler();
 
     expect(reponse.status).toBe(200);
-    expect((await reponse.json()).signalements).toEqual({ etat: 'inconnu', enAttente: [] });
+    expect((await reponse.json()).signalements).toEqual({ etat: 'inconnu', total: 0, enAttente: [] });
     expect(journal).toHaveBeenCalledWith('[api/bord] signalements illisibles :', expect.any(Error));
   });
 });

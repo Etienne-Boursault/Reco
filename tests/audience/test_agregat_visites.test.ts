@@ -110,6 +110,17 @@ describe('ce qui compte comme une visite', () => {
     });
     expect(a.provenances).toEqual([{ cle: 'unebonnereco.fr', n: 1 }]);
   });
+
+  it('garde 12 pages et 12 provenances, mais dit combien il y en avait avant la coupe (tableau de bord, revue globale, M4)', () => {
+    // Sans ce total, la page du bord disait « + 7 autres » pour 40 pages vues.
+    ecrire('audience', '2026-08-25', Array.from({ length: 40 }, (_, i) =>
+      visite({ chemin: `/un-bon-moment/page-${i}`, provenance: `site-${i % 15}.test` })));
+    const a = lire();
+    expect(a.topPages).toHaveLength(12);
+    expect(a.provenances).toHaveLength(12);
+    expect(a.pagesDistinctes).toBe(40);
+    expect(a.provenancesDistinctes).toBe(15);
+  });
 });
 
 // ===== Le tri en trois colonnes (AU-1 A, tranche B3) =======================
