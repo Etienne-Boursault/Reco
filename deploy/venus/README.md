@@ -193,7 +193,11 @@ page se recharge toute seule toutes les 5 minutes.
 - **Chaîne** : l'épisode en cours et ses étapes (détecté, transcrit, extrait, finalisé,
   publié), les erreurs en cours et les 5 derniers passages de `tick.sh`. Chaque passage note
   dans `tools/output/bord/passages.jsonl` les étapes lancées et celles en échec (200 lignes
-  gardées). Une écriture ratée est journalisée et n'arrête pas la chaîne. L'en-tête dit « en
+  gardées). Les étapes suivies sont l'extraction, la recherche de liens, la finalisation, la
+  publication, le commentaire YouTube et le message du dimanche ; la détection et la
+  transcription n'y sont pas (elles tournent à chaque passage), donc un passage qui n'a fait
+  qu'elles s'affiche « aucune étape suivie » (et non « rien de neuf », faux pour une
+  transcription de 45 min : revue globale, M5). Une écriture ratée est journalisée et n'arrête pas la chaîne. L'en-tête dit « en
   retard » au-delà de 2 h 30 sans passage terminé, le seuil de Kuma. Comme `tick.sh` ne note un
   passage qu'à sa fin, il écrit le début du passage dans `tools/output/bord/en-cours` dès qu'il
   tient le verrou, et l'efface en notant la fin : tant que le fichier est plus récent que le
@@ -221,9 +225,13 @@ page se recharge toute seule toutes les 5 minutes.
   âge.
 - **Signalements**, dans la colonne des réseaux : les 5 derniers en attente, avec leur reco,
   leur catégorie et leur date, jamais le nom, l'adresse ni le texte ; « + N autres » au-delà.
+  Le site n'envoie que ces 5 et le nombre total en attente (`total`) : « + N autres » et la
+  ligne de « À faire » comptent d'après ce total, ou d'après la liste pour un cache qui n'a pas
+  ce champ. Comme l'audience, la carte dit « Périmé » au-delà de 20 minutes de données.
 - **Sorties à venir**, dans la colonne des réseaux (tranche 3d-2, 28/11/2026) : titre, date et
-  jours restants des recos validées qui sortent dans les 30 jours ; « déjà sortie, en relance »
-  jusqu'à 30 jours après la date.
+  jours restants des recos validées qui sortent dans les 30 jours ; jusqu'à 30 jours après la
+  date : « déjà sortie, en relance », « déjà sortie, pas de relance » ou « déjà sortie, relance :
+  inconnu », selon ce que dit le registre des relances.
 - **Système** : **Santé et versions** (la CI de `main`, le dernier déploiement, l'image de la
   chaîne selon `compose.yml`), **Coûts et modèles** (7 jours et 7 jours d'avant, modèles
   d'extraction et de secours), **Liens morts** (nombre, date du rapport et son âge, « ancien »

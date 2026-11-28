@@ -190,7 +190,8 @@ exploitation : `../deploy/venus/README.md`. Modules :
 - `rappel_dimanche.py` : le message Matrix du dimanche soir (une fois par semaine, `bord/rappel.json`),
   appelé par `deploy/venus/tick.sh` ; `--apercu` lit le cache : sans appel réseau, sans envoi ni écriture. Variable et exploitation : `../deploy/venus/README.md`.
 - `bord_chaine.py` : l'épisode en cours, ses étapes et les passages de `tick.sh`
-  (`passages.jsonl`) ; une fiche d'épisode illisible est comptée et dite (« 1 fiche d'épisode
+  (`passages.jsonl`, que `lance` de `tick.sh` remplit : un passage sans étape suivie dit « aucune
+  étape suivie », car la détection et la transcription n'en sont pas, revue globale, M5) ; une fiche d'épisode illisible est comptée et dite (« 1 fiche d'épisode
   illisible »), sinon un épisode plus ancien passerait pour celui de la semaine (revue globale, D9).
 - `bord_reseaux.py` : les cases des réseaux (`reseaux.json`), pour les 3 derniers publiés ; la
   vérification de la publication regarde les 10 derniers (`N_PUBLICATION`, revue globale, E1).
@@ -205,7 +206,10 @@ exploitation : `../deploy/venus/README.md`. Modules :
   lignes de « À faire d'abord » et du message du dimanche restent des tâches, avec
   « (données du jj/mm) » (revue globale, M2).
 - `bord_rendu_audience.py` : la colonne Audience (pure) ; `bord_rendu_blocs.bloc_signalements`
-  et `bord_afaire.lignes_signalements` lisent les signalements dans le même état.
+  et `bord_afaire.lignes_signalements` lisent les signalements dans le même état, avec leur
+  total (`bord_afaire.total_signalements`) : le site n'envoie que les 5 plus récents, et un cache
+  sans `total` se rabat sur la longueur de la liste (revue globale, S4). La carte dit « Périmé »
+  comme la colonne Audience (`bord_distant.donnees_perimees`).
 - `bord_github.py` : les PR ouvertes et fusionnées, la CI de `main` et le dernier déploiement,
   lus par l'API publique de GitHub (jeton `RECO_GITHUB_TOKEN` facultatif) dans le même cache
   `distant.json` et sous le même verrou que l'audience. La CI de `main` saute les exécutions
