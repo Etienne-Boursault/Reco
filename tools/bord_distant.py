@@ -13,6 +13,13 @@ Le serveur de relecture n'a qu'un fil, et le délai d'urllib ne borne pas la
 résolution DNS : un appel réseau dans le rendu figerait toute la relecture.
 `lire()` lit donc `<RECO_BORD_DIR>/distant.json` et, quand le dernier essai a
 plus de 10 min, lance `python bord_distant.py rafraichir` détaché, sans l'attendre.
+Chaque lancement inscrit son heure dans `lance-<source>` (même dossier) : tant qu'il date de
+moins de `LANCEMENT_MIN`, aucun autre ne part (revue globale, M1 du 28/11/2026 : sans cela, un
+GitHub lent ou une page qui appelle `/bord` en boucle empilait des centaines de processus, qui
+attendaient le verrou 60 s, sortaient sans noter leur essai, et chaque affichage en relançait).
+Un marqueur illisible compte comme absent ; un marqueur impossible à écrire empêche le
+lancement (le plafond ne pourrait pas tenir), et un lancement raté laisse le sien : pas de
+boucle de relances sur un échec.
 Le rafraîchissement prend `distant.lock`, qu'il attend au plus 60 s : deux ne tournent jamais
 ensemble. Cette attente est celle du processus détaché seulement ; le serveur de relecture
 n'appelle jamais `rafraichir_source` (M1 du tour 1, 28/11/2026 : l'audience et GitHub périmés
@@ -59,6 +66,11 @@ CHEMIN = "/api/bord"
 VARIABLE_CLE = "RECO_AUDIENCE_KEY"
 #: Au-delà, le cache est relu sur le site (succès comme échec : F6).
 FRAICHEUR = timedelta(minutes=10)
+#: Au-delà, des données « ok » sont dites périmées : le rafraîchissement ne les réécrit plus
+#: (revue globale, M2). Une seule définition, pour la santé, l'audience et « À faire ».
+PERIME = 2 * FRAICHEUR
+#: Pas de nouveau lancement d'une source avant cet écart (revue globale, M1).
+LANCEMENT_MIN = timedelta(minutes=2)
 _DELAI = 10
 #: Échéance de toute la lecture de la réponse (F3 du tour 1, 28/11/2026) : `_DELAI`
 #: ne vaut que pour chaque lecture, donc une réponse goutte à goutte tiendrait le verrou.
@@ -202,6 +214,21 @@ def _perime(entree: dict[str, Any] | None, maintenant: datetime) -> bool:
     return entree is None or maintenant - _date(entree["essai"]) >= FRAICHEUR
 
 
+def donnees_perimees(source: dict[str, Any] | None) -> bool:
+    """Vrai si les données lues (`lire()["age"]`) ont plus de `PERIME`, même à l'état « ok »."""
+    age = (source or {}).get("age")
+    return isinstance(age, int) and timedelta(seconds=age) > PERIME
+
+
+def _lance_recemment(source: str, maintenant: datetime) -> bool:
+    """Un lancement de `source` date de moins de `LANCEMENT_MIN` ; un marqueur illisible n'en est pas un."""
+    try:
+        lance = _date((dossier() / f"lance-{source}").read_text(encoding="utf-8").strip())
+    except (OSError, ValueError):
+        return False
+    return maintenant - lance < LANCEMENT_MIN
+
+
 def rafraichir(*, maintenant: datetime | None = None) -> str:
     """Relit le site si le cache est périmé, sous verrou ; rend l'état obtenu."""
     return rafraichir_source(SOURCE, _appeler, maintenant=maintenant)
@@ -253,8 +280,12 @@ def rafraichir_source(source: str, appeler: Callable[[], tuple[str, str | None, 
         return "occupe"
 
 
-def _lancer(script: Path | None = None, source: str = SOURCE) -> bool:
+def _lancer(script: Path | None = None, source: str = SOURCE,
+            maintenant: datetime | None = None) -> bool:
     """Lance `rafraichir` dans un processus détaché, sans l'attendre.
+
+    Rend False, sans lancer, si `source` a déjà été lancée il y a moins de `LANCEMENT_MIN`
+    (M1) : le marqueur `lance-<source>` s'écrit juste avant le lancement.
 
     `script` : le module à lancer (par défaut celui-ci ; `bord_github.py` pour GitHub).
 
@@ -263,8 +294,13 @@ def _lancer(script: Path | None = None, source: str = SOURCE) -> bool:
     et `rafraichir` ne laisse sortir aucun message d'exception : la clé n'y entre pas.
     Au-delà de 200 Ko, le journal repart de zéro.
     """
+    maintenant = maintenant or datetime.now(UTC)
+    if _lance_recemment(source, maintenant):
+        return False
     try:
         dossier().mkdir(parents=True, exist_ok=True)
+        (dossier() / f"lance-{source}").write_text(
+            maintenant.isoformat(timespec="seconds"), encoding="utf-8")
         with open(dossier() / "distant.log", "ab") as journal:
             if os.fstat(journal.fileno()).st_size > _JOURNAL_MAX:
                 journal.truncate(0)
@@ -297,7 +333,7 @@ def lire(*, maintenant: datetime | None = None, relancer: bool = True) -> dict[s
             etat = "cle-absente"
     entree = entree or {}
     relance = (relancer and etat not in ("cache-illisible", "cle-absente")
-               and _perime(entree or None, maintenant) and _lancer())
+               and _perime(entree or None, maintenant) and _lancer(maintenant=maintenant))
     lu = entree.get("lu")
     return {"source": SOURCE, "etat": etat, "libelle": LIBELLES.get(etat, etat),
             "detail": entree.get("detail"), "donnees": entree.get("donnees"), "lu": lu,

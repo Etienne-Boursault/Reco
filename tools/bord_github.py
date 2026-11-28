@@ -293,7 +293,7 @@ def lire(*, maintenant: datetime | None = None, relancer: bool = True) -> dict[s
             etat = "inconnu"
     entree = entree or {}
     relance = (relancer and etat != "cache-illisible" and bd._perime(entree or None, maintenant)
-               and bd._lancer(Path(__file__).resolve(), SOURCE))
+               and bd._lancer(Path(__file__).resolve(), SOURCE, maintenant))
     lu = entree.get("lu")
     return {"source": SOURCE, "etat": etat, "libelle": LIBELLES[etat],
             "detail": entree.get("detail"), "donnees": entree.get("donnees"), "lu": lu,

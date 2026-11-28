@@ -447,3 +447,4 @@ def test_une_reponse_qui_arrive_goutte_a_goutte_est_coupee_a_l_echeance(monkeypa
 def test_une_reponse_normale_passe_par_la_lecture_bornee(monkeypatch, bord):
     _serveur(monkeypatch, _ok())
     assert bd.rafraichir(maintenant=MAINTENANT) == "ok"
+

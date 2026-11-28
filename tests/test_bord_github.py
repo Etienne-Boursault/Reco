@@ -438,3 +438,14 @@ def test_le_module_se_lance_comme_script(bord):
     sortie = subprocess.run([sys.executable, bg.__file__, "--help"], capture_output=True,
                             text=True, check=False)
     assert sortie.returncode == 0 and "rafraichir" in sortie.stdout
+
+
+def test_deux_lectures_de_suite_ne_lancent_qu_un_processus_de_github(monkeypatch, bord):
+    # Revue globale, M1 : le marqueur `lance-github` plafonne les lancements, comme celui de l'audience.
+    _sans_reseau(monkeypatch)
+    lances = []
+    monkeypatch.setattr(bd.subprocess, "Popen", lambda *a, **k: lances.append(a))
+    assert bg.lire(maintenant=MAINTENANT)["relance"] is True
+    assert bg.lire(maintenant=MAINTENANT + timedelta(seconds=30))["relance"] is False
+    assert bg.lire(maintenant=MAINTENANT + bd.LANCEMENT_MIN)["relance"] is True
+    assert len(lances) == 2 and (bord / "lance-github").exists()
