@@ -171,6 +171,8 @@ def etat_chaine(source_id: str, *, db_path: Path | None = None,
                    "date": (fiche or {}).get("date")}
         liste = etapes(guid, fiche, etat, heures_etapes(db_path, source_id, guid))
     signalees = (etat or {}).get("lastErrors")
-    erreurs = [str(m) for m in list(signalees.values())[:3]] if isinstance(signalees, dict) else []
+    # Toutes : l'état est écrit trié par clé, un plafond garderait les premières
+    # par ordre alphabétique et cacherait la dernière (tour 1, M1).
+    erreurs = [str(m) for m in signalees.values()] if isinstance(signalees, dict) else []
     return {"episode": episode, "etapes": liste, "erreurs": erreurs,
             "passages": lire_passages(bord_dir() / "passages.jsonl", nb_passages)}

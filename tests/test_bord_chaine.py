@@ -56,7 +56,7 @@ def _par_cle(etat):
 
 def test_l_episode_en_cours_est_le_plus_recent_non_publie(corpus):
     _episode(corpus, "yt-Ancien", "2026-11-01")
-    _episode(corpus, "yt-Recent", "2026-11-20")
+    _episode(corpus, "yt-Recent", "2026-11-26")
     _episode(corpus, "yt-Publie", "2026-11-25")
     _episode(corpus, "S6-E01", "2026-11-30")  # Acast : hors de la chaîne
     _etat(corpus, published=["yt-Publie"])
@@ -155,8 +155,11 @@ def test_sans_aucun_episode(corpus):
 
 def test_les_erreurs_de_la_chaine_sont_rendues(corpus):
     _episode(corpus, "yt-A", "2026-11-20")
-    _etat(corpus, lastErrors={"a": "⚠️ un", "b": "⚠️ deux", "c": "trois", "d": "quatre"})
-    assert bord_chaine.etat_chaine(SOURCE)["erreurs"] == ["⚠️ un", "⚠️ deux", "trois"]
+    _etat(corpus, lastErrors={"a": "⚠️ un", "b": "⚠️ deux", "c": "trois",
+                              "transcription:yt-A": "⚠️ la transcription a échoué"})
+    # Tour 1, M1 : l'état est écrit trié par clé, un plafond cacherait la dernière.
+    assert bord_chaine.etat_chaine(SOURCE)["erreurs"] == [
+        "⚠️ un", "⚠️ deux", "trois", "⚠️ la transcription a échoué"]
 
 
 def _passages(dossier, lignes):
