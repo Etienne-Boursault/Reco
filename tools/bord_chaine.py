@@ -17,30 +17,24 @@ Relecture du plan, R7 (28/11/2026) : l'étape `detecter` n'est pas mesurée, don
 « fait » ni « à venir ». Les heures viennent toutes de la télémétrie
 (`stage_attempts`, dernière tentative réussie), lue en `mode=ro`.
 
-Le dossier du bord (`tools/output/bord/`) se règle par `RECO_BORD_DIR`, comme
-dans `tick.sh`, qui y écrit `passages.jsonl`.
+Le dossier du bord (`tools/output/bord/`) se règle par `RECO_BORD_DIR`
+(`bord_reseaux.dossier`), comme dans `tick.sh`, qui y écrit `passages.jsonl`.
 """
 from __future__ import annotations
 
 import json
-import os
 import sqlite3
 from pathlib import Path
 from typing import Any
 
 import common
+from bord_reseaux import dossier as bord_dir
 
 INCONNU = "inconnu"
 _FICHE = "fiche de l'épisode"
 _ETAT = "état de la chaîne"
 _TELEMETRIE = "télémétrie"
 _TRANSCRIT = {"auto", "validated"}
-
-
-def bord_dir() -> Path:
-    """Dossier du tableau de bord, lu À L'APPEL (un test qui déplace OUTPUT_DIR est suivi)."""
-    explicite = os.environ.get("RECO_BORD_DIR", "").strip()
-    return Path(explicite) if explicite else common.OUTPUT_DIR / "bord"
 
 
 def _lire_etat(source_id: str) -> dict[str, Any] | None:
