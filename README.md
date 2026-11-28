@@ -122,7 +122,7 @@ d'identifiable n'est écrit :
 
 | Variable | Rôle | Sans elle |
 |---|---|---|
-| `RECO_AUDIENCE_KEY` | ouvre `/audience?cle=…` (≥ 16 signes) | la page n'existe pas |
+| `RECO_AUDIENCE_KEY` | ouvre `/audience?cle=…` (≥ 16 signes), et `GET /api/bord` avec la même clé dans l'en-tête `X-Reco-Cle` | la page et le point d'accès n'existent pas (404) |
 | `RECO_AUDIENCE_SALT` | sale l'identifiant de visiteur du jour (≥ 16 signes) | les pages sont comptées, pas les visiteurs |
 | `RECO_SOURCES` | les sources mesurées, ex. `un-bon-moment` | aucun chemin n'est rattaché à une source |
 | `RECO_AUDIENCE_EXCLURE` | adresses de l'éditeur à ne pas mesurer : noms d'hôte (DNS dynamique) et adresses IP, séparés par des virgules ; les noms sont résolus au démarrage puis toutes les 5 min ; les plages (`203.0.113.0/24`) ne sont pas prises en charge : une entrée avec `/` est refusée et signalée dans le journal | rien n'est exclu |
@@ -134,6 +134,17 @@ corrigées ; une adresse qui change compte encore au plus 5 min, plus le délai 
 La clé transite dans l'URL pour qu'un signet suffise : c'est un secret partagé, du niveau
 d'un lien non listé, **pas** une authentification. Ce que la mesure retient et ce qu'elle
 jette est détaillé dans [`src/lib/audience/derive.mjs`](src/lib/audience/derive.mjs).
+
+**`GET /api/bord`** (tableau de bord, 27/11/2026) rend en JSON ce que le tableau de bord de
+la relecture affiche : sur 7 et sur 30 jours, les visiteurs-jours et visites confirmés,
+incertains et robots (ou « ancien tri » avant la bascule), les 7 jours un par un, les 5
+premières pages et provenances, les clics pour 100 visiteurs, et les signalements en attente
+(identifiant, reco, catégorie, date ; **jamais** le nom, l'adresse ni le texte). Les chiffres
+sont ceux de `/audience`, par la même lecture (`src/lib/audience/vue.ts`). La clé passe dans
+l'en-tête `X-Reco-Cle`, jamais dans l'URL ; sans elle, ou pour une autre méthode que GET, la
+réponse est un 404, jamais mise en cache. Comme `/audience`, la route n'existe qu'avec
+`RECO_SSR=1`, et la mesure ne compte pas les appels sous `/api/`. Le détail :
+[`src/lib/bord/resume.ts`](src/lib/bord/resume.ts).
 
 Le **pays** vient d'un en-tête de l'hébergeur quand il en pose un, sinon d'une table
 embarquée — aucune requête sortante, aucun tiers. Chez un hébergeur inconnu, commencer par

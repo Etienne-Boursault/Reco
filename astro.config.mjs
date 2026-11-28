@@ -57,6 +57,14 @@ function ssrOnDemandRoutes() {
           entrypoint: './src/routes/audience.astro',
           prerender: false,
         });
+        // Même garde pour le point d'accès du tableau de bord de venus
+        // (tableau de bord, R2 B du 27/11/2026) : la clé arrive dans
+        // l'en-tête `X-Reco-Cle`, cf. `src/routes/api-bord.ts`.
+        injectRoute({
+          pattern: '/api/bord',
+          entrypoint: './src/routes/api-bord.ts',
+          prerender: false,
+        });
       },
       'astro:route:setup': ({ route }) => {
         if (process.env.RECO_SSR !== '1') return;
