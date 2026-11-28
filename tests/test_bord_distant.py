@@ -11,6 +11,9 @@ import email.message
 import io
 import json
 import logging
+import subprocess
+import time
+import types
 import urllib.error
 import urllib.request
 import urllib.response
@@ -45,7 +48,8 @@ class FauxHttps(urllib.request.HTTPSHandler):
         message = email.message.Message()
         for nom, valeur in entetes.items():
             message[nom] = valeur
-        rendu = urllib.response.addinfourl(io.BytesIO(corps), message, url or req.full_url, code)
+        flux = io.BytesIO(corps) if isinstance(corps, bytes) else corps
+        rendu = urllib.response.addinfourl(flux, message, url or req.full_url, code)
         rendu.msg = "faux"
         return rendu
 
@@ -295,3 +299,113 @@ def test_main_rafraichir(monkeypatch, bord, capsys):
     assert bd.main(["rafraichir"]) == 0
     assert _cache(bord)["audience"]["etat"] == "ok"
     assert capsys.readouterr().out.strip() == "audience : ok"
+
+
+# ---- Tour 1, M1 : le processus détaché garde son journal ---------------------
+def _popen_espion(monkeypatch) -> list[dict]:
+    appels: list[dict] = []
+
+    def faux(args, **options):
+        appels.append({"args": args, **options, "nom": options["stdout"].name})
+    monkeypatch.setattr(bd.subprocess, "Popen", faux)
+    return appels
+
+
+def test_le_processus_detache_ecrit_dans_distant_log_en_ajout(monkeypatch, bord):
+    appels = _popen_espion(monkeypatch)
+    bord.mkdir(parents=True)
+    (bord / "distant.log").write_text("avant\n", encoding="utf-8")
+    assert bd._lancer() is True
+    (appel,) = appels
+    assert appel["nom"] == str(bord / "distant.log")
+    assert appel["stderr"] == subprocess.STDOUT
+    assert appel["stdout"].closed
+    assert (bord / "distant.log").read_text(encoding="utf-8") == "avant\n"
+
+
+def test_un_journal_de_plus_de_200_ko_repart_de_zero(monkeypatch, bord):
+    _popen_espion(monkeypatch)
+    bord.mkdir(parents=True)
+    (bord / "distant.log").write_bytes(b"x" * (bd._JOURNAL_MAX + 1))
+    assert bd._lancer() is True
+    assert (bord / "distant.log").read_bytes() == b""
+
+
+def test_un_journal_de_taille_normale_est_gardé(monkeypatch, bord):
+    _popen_espion(monkeypatch)
+    bord.mkdir(parents=True)
+    (bord / "distant.log").write_bytes(b"x" * bd._JOURNAL_MAX)
+    bd._lancer()
+    assert (bord / "distant.log").stat().st_size == bd._JOURNAL_MAX
+
+
+def test_le_vrai_processus_detache_ecrit_son_etat_dans_le_journal(monkeypatch, bord):
+    monkeypatch.delenv("RECO_AUDIENCE_KEY")
+    assert bd._lancer() is True
+    journal = bord / "distant.log"
+    fin = time.monotonic() + 30
+    while time.monotonic() < fin and "audience : cle-absente" not in (
+            journal.read_text(encoding="utf-8") if journal.exists() else ""):
+        time.sleep(0.2)
+    assert "audience : cle-absente" in journal.read_text(encoding="utf-8")
+
+
+def test_la_cle_n_entre_dans_aucun_journal_meme_si_l_appel_leve(monkeypatch, bord, capsys,
+                                                                caplog):
+    caplog.set_level(logging.DEBUG)
+    _serveur(monkeypatch, ValueError(f"Invalid header value {CLE}"))
+    assert bd.main(["rafraichir"]) == 0
+    sorties = capsys.readouterr()
+    assert CLE not in sorties.out + sorties.err + caplog.text
+    assert CLE not in (bord / "distant.json").read_text(encoding="utf-8")
+
+
+# ---- Tour 1, M2 : une exception imprévue est une panne, et l'essai est noté ---
+@pytest.mark.parametrize(("exception", "nom"), [
+    (ValueError(f"cle {CLE}\r"), "ValueError"),
+    (UnicodeEncodeError("latin-1", "é", 0, 1, "x"), "UnicodeEncodeError"),
+    (RecursionError(), "RecursionError"),
+])
+def test_une_exception_imprevue_est_une_panne_avec_son_essai(monkeypatch, bord, exception, nom):
+    _serveur(monkeypatch, exception)
+    assert bd.rafraichir(maintenant=MAINTENANT) == "panne"
+    entree = _cache(bord)["audience"]
+    assert (entree["etat"], entree["detail"]) == ("panne", nom)
+    assert entree["essai"] == MAINTENANT.isoformat(timespec="seconds")
+    assert bd.rafraichir(maintenant=MAINTENANT + timedelta(minutes=1)) == "frais"
+
+
+def test_un_json_tres_imbrique_est_une_panne(monkeypatch, bord):
+    _serveur(monkeypatch, (200, {}, b"[" * 200_000 + b"]" * 200_000))
+    assert bd.rafraichir(maintenant=MAINTENANT) == "panne"
+    assert _cache(bord)["audience"]["detail"] == "RecursionError"
+
+
+# ---- Tour 1, F3 : une échéance pour toute la lecture -------------------------
+class _FluxLent(io.BytesIO):
+    """Rend 1 octet par lecture, et chaque lecture avance l'horloge de 4 s."""
+
+    def __init__(self, horloge):
+        super().__init__(b"{" * 100_000)
+        self.horloge = horloge
+        self.lectures = 0
+
+    def read(self, n=-1):
+        self.lectures += 1
+        self.horloge[0] += 4
+        return super().read(min(n, 1))
+
+
+def test_une_reponse_qui_arrive_goutte_a_goutte_est_coupee_a_l_echeance(monkeypatch, bord):
+    horloge = [1000.0]
+    monkeypatch.setattr(bd, "time", types.SimpleNamespace(monotonic=lambda: horloge[0]))
+    flux = _FluxLent(horloge)
+    _serveur(monkeypatch, (200, {}, flux))
+    assert bd.rafraichir(maintenant=MAINTENANT) == "panne"
+    assert _cache(bord)["audience"]["detail"] == "TimeoutError"
+    assert flux.lectures <= bd._ECHEANCE / 4 + 2
+
+
+def test_une_reponse_normale_passe_par_la_lecture_bornee(monkeypatch, bord):
+    _serveur(monkeypatch, _ok())
+    assert bd.rafraichir(maintenant=MAINTENANT) == "ok"

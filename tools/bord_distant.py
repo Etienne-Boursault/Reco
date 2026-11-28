@@ -35,6 +35,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import UTC, datetime, timedelta
@@ -55,7 +56,12 @@ VARIABLE_CLE = "RECO_AUDIENCE_KEY"
 #: Au-delà, le cache est relu sur le site (succès comme échec : F6).
 FRAICHEUR = timedelta(minutes=10)
 _DELAI = 10
+#: Échéance de toute la lecture de la réponse (F3 du tour 1, 28/11/2026) : `_DELAI`
+#: ne vaut que pour chaque lecture, donc une réponse goutte à goutte tiendrait le verrou.
+_ECHEANCE = 30
 _TAILLE_MAX = 2_000_000
+#: Au-delà, `distant.log` repart de zéro (M1 du tour 1).
+_JOURNAL_MAX = 200_000
 LIBELLES = {"ok": "à jour", "inconnu": "inconnu", "cle-absente": "clé absente",
             "cle-refusee": "clé refusée", "panne": "panne",
             "reponse-illisible": "réponse illisible", "cache-illisible": "cache illisible"}
@@ -94,6 +100,26 @@ def _forme_attendue(donnees: Any) -> bool:
             and isinstance(donnees.get("signalements"), dict))
 
 
+def _lire_borne(reponse: Any) -> bytes:
+    """Le corps, par morceaux : au plus `_TAILLE_MAX` + 1 octets, en `_ECHEANCE` s.
+
+    `TimeoutError` (une `OSError`) à l'échéance. Ne couvre pas la résolution DNS,
+    qui précède l'ouverture : seul le délai de chaque lecture borne la suite.
+    """
+    fin = time.monotonic() + _ECHEANCE
+    morceaux: list[bytes] = []
+    total = 0
+    while total <= _TAILLE_MAX:
+        if time.monotonic() > fin:
+            raise TimeoutError("échéance de lecture dépassée")
+        morceau = reponse.read(min(8192, _TAILLE_MAX + 1 - total))
+        if not morceau:
+            break
+        morceaux.append(morceau)
+        total += len(morceau)
+    return b"".join(morceaux)
+
+
 def _appeler() -> tuple[str, str | None, dict[str, Any] | None]:
     """Un appel au site : (état, détail sans secret, résumé ou None)."""
     cle = os.environ.get(VARIABLE_CLE)
@@ -110,7 +136,7 @@ def _appeler() -> tuple[str, str | None, dict[str, Any] | None]:
         with _ouvreur().open(requete, timeout=_DELAI) as reponse:
             if urlsplit(reponse.geturl()).hostname != urlsplit(url).hostname:
                 return "panne", "autre hôte", None
-            corps = reponse.read(_TAILLE_MAX + 1)
+            corps = _lire_borne(reponse)
     except urllib.error.HTTPError as exc:
         exc.close()
         return ("cle-refusee" if exc.code == 404 else "panne"), f"HTTP {exc.code}", None
@@ -181,7 +207,13 @@ def rafraichir(*, maintenant: datetime | None = None) -> str:
             avant = cache.get(SOURCE)
             if not _perime(avant, maintenant):
                 return "frais"
-            etat, detail, donnees = _appeler()
+            try:
+                etat, detail, donnees = _appeler()
+            except Exception as exc:  # noqa: BLE001
+                # Tour 1, M2 : une `ValueError` (clé finie par un retour chariot), une `RecursionError`
+                # (JSON très imbriqué)... Jamais le message (la clé a pu y passer), et
+                # `essai` s'écrit toujours : sinon chaque affichage relancerait un processus.
+                etat, detail, donnees = "panne", type(exc).__name__, None
             quand = maintenant.isoformat(timespec="seconds")
             avant = avant or {}
             cache[SOURCE] = {"etat": etat, "detail": detail, "essai": quand,
@@ -195,11 +227,21 @@ def rafraichir(*, maintenant: datetime | None = None) -> str:
 
 
 def _lancer() -> bool:
-    """Lance `rafraichir` dans un processus détaché, sans l'attendre."""
+    """Lance `rafraichir` dans un processus détaché, sans l'attendre.
+
+    Ses sorties vont dans `distant.log`, en ajout (tour 1, M1 : sinon une erreur
+    imprévue ne se voyait nulle part). Il ne reçoit la clé que par l'environnement,
+    et `rafraichir` ne laisse sortir aucun message d'exception : la clé n'y entre pas.
+    Au-delà de 200 Ko, le journal repart de zéro.
+    """
     try:
-        subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "rafraichir"],
-                         stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
-                         stderr=subprocess.DEVNULL, close_fds=True, start_new_session=True)
+        dossier().mkdir(parents=True, exist_ok=True)
+        with open(dossier() / "distant.log", "ab") as journal:
+            if os.fstat(journal.fileno()).st_size > _JOURNAL_MAX:
+                journal.truncate(0)
+            subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "rafraichir"],
+                             stdin=subprocess.DEVNULL, stdout=journal,
+                             stderr=subprocess.STDOUT, close_fds=True, start_new_session=True)
     except OSError as exc:
         log.warning("bord : rafraîchissement non lancé pour %s (%s)", SOURCE, type(exc).__name__)
         return False
