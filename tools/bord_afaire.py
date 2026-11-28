@@ -18,7 +18,13 @@ même critère que l'accueil de la relecture ; l'état de la chaîne vient de
 LES LIGNES DE LA PR 3 (tranche 3d-2)
 ------------------------------------
 - publication : les PR d'épisodes ouvertes sur GitHub (`bord_github.lire()`), quand le
-  dernier essai a réussi ; sinon, l'état de la chaîne (`recents`), comme avant ;
+  dernier essai a réussi ; sinon, l'état de la chaîne (`recents`), comme avant. Tour 1, E2 et F2
+  (28/11/2026) : venus n'a pas de `RECO_GITHUB_TOKEN`, il pousse `contenu/<slugify(guid)>` sans
+  ouvrir de PR. Chaque épisode récent se rapproche donc de sa branche : une PR ouverte donne
+  « fusionner la PR de … », une PR fusionnée ne donne rien (seul le clone est en retard), ni l'une
+  ni l'autre donne « ouvrir puis fusionner la PR de … » avec le lien de comparaison. Une PR
+  `contenu/*` ouverte qui ne correspond à aucun épisode récent (faite à la main) n'est pas une
+  publication : elle est comptée dans une ligne grisée, sans lien (le choix le plus simple) ;
 - sorties : les PR ouvertes de sorties (`contenu/sorties-*`) à fusionner, lues de même ;
   « inconnu » si GitHub n'est pas lisible. Choix du 28/11/2026 : les recos « à relancer »
   se relancent seules chaque jour, il n'y a rien à faire pour Étienne ;
@@ -28,11 +34,21 @@ Une ligne peut porter `href` : le rendu ne le suit que pour `https://github.com/
 """
 from __future__ import annotations
 
+import re
 from datetime import date
 from typing import Any
 
 from bord_reseaux import LIBELLES, RESEAUX
+from common import slugify
+from publication import PREFIXE_BRANCHE
 from review_render_focus import _ep_label, entry_state, short_title
+
+#: `propriétaire/nom` en caractères sûrs : seul un dépôt de cette forme entre dans un lien.
+_DEPOT = re.compile(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")
+
+
+class Note(str):
+    """Une ligne grisée qui ne compte pas comme tâche (comme « inconnu », mais qui dit autre chose)."""
 
 
 def _item(bloc: str, texte: str, guid: str | None = None, *,
@@ -95,7 +111,7 @@ def _textes(bloc: str, nom: str, textes: list | None) -> list[dict]:
     items = []
     for t in textes:
         texte, href = (t, None) if isinstance(t, str) else t
-        items.append(_item(bloc, texte, href=href))
+        items.append(_item(bloc, texte, href=href, inconnu=isinstance(t, Note)))
     return items
 
 
@@ -144,25 +160,56 @@ def _ouvertes(github: dict | None) -> dict | None:
     return ouvertes
 
 
+def branches_fusionnees(github: dict | None) -> set[str] | None:
+    """Les branches dont une PR est fusionnée (`bord_github.lire()`), ou None si le bloc manque.
+
+    Une PR fusionnée le reste : des données gardées après une panne servent donc aussi.
+    """
+    donnees = github.get("donnees") if isinstance(github, dict) else None
+    liste = donnees.get("fusionnees") if isinstance(donnees, dict) else None
+    if not isinstance(liste, list):
+        return None
+    return {pr["branche"] for pr in liste if isinstance(pr, dict) and pr.get("branche")}
+
+
+def _comparaison(depot: Any, branche: str) -> str | None:
+    """Le lien de comparaison de la branche poussée, seulement pour un dépôt `propriétaire/nom` sûr."""
+    if not isinstance(depot, str) or not _DEPOT.fullmatch(depot):
+        return None
+    return f"https://github.com/{depot}/compare/main...{branche}"
+
+
 def lignes_publication(github: dict | None, recents: list[dict] | None) -> list | None:
     """Les PR d'épisodes à fusionner, depuis `bord_github.lire()` ; None : GitHub illisible.
 
-    Le nom vient de l'état de la chaîne quand la branche `contenu/<guid>` y est, sinon du
-    titre de la PR. Une liste coupée par l'API (100 PR) le dit.
+    Chaque épisode récent se rapproche de sa branche `contenu/<slugify(guid)>` (tour 1, E2, F1) :
+    PR ouverte, « fusionner la PR » ; PR fusionnée ou épisode revenu dans le clone, rien ;
+    sinon « ouvrir puis fusionner la PR », avec le lien de comparaison. Les autres PR ouvertes
+    de contenu (faites à la main, F2) ne sont pas des épisodes : une ligne grisée les compte.
+    Une liste coupée par l'API (100 PR) le dit, sans pouvoir dire combien de PR manquent.
     """
     ouvertes = _ouvertes(github)
     if ouvertes is None:
         return None
-    par_guid = {r["guid"]: r for r in recents or []}
+    fusionnees = branches_fusionnees(github) or set()
+    depot = github["donnees"].get("depot")
+    par_branche = {pr.get("branche"): pr for pr in ouvertes["episodes"]}
     lignes: list = []
-    for pr in ouvertes["episodes"]:
-        guid = str(pr.get("branche") or "").removeprefix("contenu/")
-        recent = par_guid.get(guid)
-        nom = _libelle(guid, recent["episode"]) if recent else pr.get("titre")
-        lignes.append((f"fusionner la PR de {nom} (#{pr.get('numero')})" if nom
-                       else f"fusionner la PR #{pr.get('numero')}", pr.get("adresse")))
+    vues = set()
+    for r in recents or []:
+        branche = PREFIXE_BRANCHE + slugify(r["guid"])
+        nom = _libelle(r["guid"], r["episode"])
+        pr = par_branche.get(branche)
+        if pr:
+            vues.add(branche)
+            lignes.append((f"fusionner la PR de {nom} (#{pr.get('numero')})", pr.get("adresse")))
+        elif not r["fusionne"] and branche not in fusionnees:
+            lignes.append((f"ouvrir puis fusionner la PR de {nom}", _comparaison(depot, branche)))
+    autres = sum(1 for pr in ouvertes["episodes"] if pr.get("branche") not in vues)
+    if autres:
+        lignes.append(Note(f"autres PR de contenu ouvertes : {autres}"))
     if ouvertes.get("coupee"):
-        lignes.append("d'autres PR ouvertes ne sont pas listées")
+        lignes.append(Note("d'autres PR ouvertes ne sont pas listées"))
     return lignes
 
 
@@ -179,20 +226,23 @@ def lignes_sorties(github: dict | None) -> list | None:
 
 
 def lignes_liens(contenu: dict | None) -> list[str] | None:
-    """La ligne des liens morts, depuis `bord_contenu.lire()` ; None : aucun rapport lisible."""
+    """La ligne des liens morts, depuis `bord_contenu.lire()` ; None : aucun rapport lisible.
+
+    Un rapport « ancien » (plus de 8 jours) donne une ligne grisée qui ne compte pas, même à 0.
+    """
     liens = (contenu or {}).get("liens")
     morts = liens.get("morts") if isinstance(liens, dict) else None
     if not isinstance(morts, int) or isinstance(morts, bool):
         return None
+    if liens.get("ancien"):  # tour 1, F8 : un rapport de plus de 8 jours ne fait pas une tâche
+        try:
+            quand = f" du {date.fromisoformat(liens['date']):%d/%m}"
+        except (TypeError, ValueError):
+            quand = ""
+        return [Note(f"liens morts : rapport ancien{quand}")]
     if not morts:
         return []
-    texte = f"{morts} lien{'s' if morts > 1 else ''} mort{'s' if morts > 1 else ''}"
-    if liens.get("ancien"):
-        try:
-            texte += f" (rapport ancien, du {date.fromisoformat(liens['date']):%d/%m})"
-        except (TypeError, ValueError):
-            texte += " (rapport ancien)"
-    return [texte]
+    return [f"{morts} lien{'s' if morts > 1 else ''} mort{'s' if morts > 1 else ''}"]
 
 
 def a_faire(*, episodes: dict[str, dict], groups: dict[str, list[dict]],
