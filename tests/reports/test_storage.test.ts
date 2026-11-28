@@ -2,7 +2,7 @@
  * tests/reports/test_storage.test.ts — Persistance atomique des reports.
  */
 import { describe, it, expect, beforeEach } from 'vitest';
-import { mkdtempSync, readFileSync, rmSync, existsSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, existsSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
@@ -65,6 +65,18 @@ describe('reports storage', () => {
     writeReport(mkReport({ id: 'rep-c', submittedAt: '2026-06-10T10:00:00.000Z' }), CWD);
     const list = listReports('un-bon-moment', { cwd: CWD });
     expect(list.map((r) => r.id)).toEqual(['rep-b', 'rep-a', 'rep-c']);
+  });
+
+  it('listReports note les fichiers illisibles dans `sautes`, sans changer sa liste', () => {
+    writeReport(mkReport({ id: 'rep-bon' }), CWD);
+    const dir = join(CWD, 'tools', 'output', 'reports', 'un-bon-moment');
+    writeFileSync(join(dir, 'rep-casse.json'), '{"id": "rep-casse", "reco', 'utf8');
+
+    const sautes: string[] = [];
+    expect(listReports('un-bon-moment', { cwd: CWD, sautes }).map((r) => r.id)).toEqual(['rep-bon']);
+    expect(sautes).toEqual(['rep-casse.json']);
+    // Sans l'option : même liste, aucun changement pour les appelants d'aujourd'hui.
+    expect(listReports('un-bon-moment', { cwd: CWD }).map((r) => r.id)).toEqual(['rep-bon']);
   });
 
   it('listReports filtre par status', () => {

@@ -18,7 +18,8 @@
  * LA LECTURE
  * ----------
  * `lireAudience`, la même que `/audience`, sur 7 puis 30 jours : deux
- * lectures du disque, au plus une fois toutes les 10 min (plan, § 8). Le
+ * lectures du disque. C'est venus qui espace ses appels (au plus un toutes les 10 min,
+ * plan, § 8) : la route elle-même n'impose aucune limite. Le
  * résumé est fait par `src/lib/bord/resume.ts`, qui ne laisse sortir d'un
  * signalement ni le nom, ni l'adresse, ni le texte.
  */
@@ -32,10 +33,19 @@ import type { Report } from '../lib/reports/types';
 
 const ENTETES = { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' };
 
-/** Tous les signalements, ou `null` (journalisé) si l'un des dossiers ne se lit pas. */
+/**
+ * Tous les signalements, ou `null` (journalisé) si un dossier ou un fichier ne se lit pas :
+ * un fichier sauté en silence ferait dire « aucun en attente » (F22, tour 1, M4).
+ */
 function lireSignalements(racine: string): Report[] | null {
   try {
-    return listSourcesWithReports(racine).flatMap((s) => listReports(s, { cwd: racine }));
+    const sautes: string[] = [];
+    const tous = listSourcesWithReports(racine).flatMap((s) => listReports(s, { cwd: racine, sautes }));
+    if (sautes.length > 0) {
+      console.error('[api/bord] signalements illisibles :', sautes);
+      return null;
+    }
+    return tous;
   } catch (e) {
     console.error('[api/bord] signalements illisibles :', e);
     return null;

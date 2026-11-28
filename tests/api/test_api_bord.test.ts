@@ -244,6 +244,21 @@ describe('GET /api/bord : les signalements', () => {
     expect((await (await appeler()).json()).signalements).toEqual({ etat: 'lu', enAttente: [] });
   });
 
+  it('dit « inconnu » et le journalise quand un fichier de signalement est tronqué (F22)', async () => {
+    ecrireSignalement(signalement());
+    const dossier = path.join(racine, 'tools', 'output', 'reports', 'un-bon-moment');
+    writeFileSync(path.join(dossier, 'rep-casse.json'), '{"id": "rep-casse", "recoI', 'utf8');
+    const journal = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    const reponse = await appeler();
+
+    expect(reponse.status).toBe(200);
+    expect((await reponse.json()).signalements).toEqual({ etat: 'inconnu', enAttente: [] });
+    expect(journal).toHaveBeenCalledWith(
+      '[api/bord] signalements illisibles :', ['rep-casse.json'],
+    );
+  });
+
   it('dit « inconnu » et le journalise quand les signalements ne se lisent pas', async () => {
     // Un dossier dont le nom n'est pas un identifiant : `reportsDirFor` refuse de le lire.
     mkdirSync(path.join(racine, 'tools', 'output', 'reports', 'nom invalide'), { recursive: true });
