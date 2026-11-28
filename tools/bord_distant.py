@@ -38,6 +38,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from collections.abc import Callable
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -166,14 +167,17 @@ def _date(valeur: Any) -> datetime:
     return date
 
 
-def _lire_cache() -> dict[str, Any]:
-    """Tout `distant.json` ; `{}` sans fichier ; `CacheIllisible` s'il est abîmé."""
+def _lire_cache(source: str = SOURCE) -> dict[str, Any]:
+    """Tout `distant.json` ; `{}` sans fichier ; `CacheIllisible` s'il est abîmé.
+
+    Seule l'entrée de `source` est contrôlée : les autres (GitHub, 3a) sont gardées telles quelles.
+    """
     chemin = _chemin()
     if not chemin.exists():
         return {}
     try:
         cache = common.read_json(chemin)
-        entree = cache.get(SOURCE) if isinstance(cache, dict) else None
+        entree = cache.get(source) if isinstance(cache, dict) else None
         if not isinstance(cache, dict) or (entree is not None and not (
                 isinstance(entree, dict) and isinstance(entree.get("etat"), str)
                 and _date(entree.get("essai"))
@@ -190,8 +194,15 @@ def _perime(entree: dict[str, Any] | None, maintenant: datetime) -> bool:
 
 
 def rafraichir(*, maintenant: datetime | None = None) -> str:
-    """Relit le site si le cache est périmé, sous verrou ; rend l'état obtenu.
+    """Relit le site si le cache est périmé, sous verrou ; rend l'état obtenu."""
+    return rafraichir_source(SOURCE, _appeler, maintenant=maintenant)
 
+
+def rafraichir_source(source: str, appeler: Callable[[], tuple[str, str | None, dict[str, Any] | None]],
+                      *, maintenant: datetime | None = None) -> str:
+    """Relit `source` par `appeler()` si son cache est périmé, sous verrou ; rend l'état obtenu.
+
+    Même cache, même verrou et même fraîcheur pour toutes les sources (3a : `bord_github`).
     Rend aussi `occupe` (un autre rafraîchissement tient le verrou), `frais` (un
     essai de moins de 10 min) ou `cache-illisible` (rien n'est écrit).
     """
@@ -200,15 +211,15 @@ def rafraichir(*, maintenant: datetime | None = None) -> str:
     try:
         with filelock.FileLock(str(dossier() / "distant.lock"), timeout=0):
             try:
-                cache = _lire_cache()
+                cache = _lire_cache(source)
             except CacheIllisible as exc:
-                log.warning("bord : %s, rafraîchissement de %s abandonné", exc, SOURCE)
+                log.warning("bord : %s, rafraîchissement de %s abandonné", exc, source)
                 return "cache-illisible"
-            avant = cache.get(SOURCE)
+            avant = cache.get(source)
             if not _perime(avant, maintenant):
                 return "frais"
             try:
-                etat, detail, donnees = _appeler()
+                etat, detail, donnees = appeler()
             except Exception as exc:  # noqa: BLE001
                 # Tour 1, M2 : une `ValueError` (clé finie par un retour chariot), une `RecursionError`
                 # (JSON très imbriqué)... Jamais le message (la clé a pu y passer), et
@@ -216,18 +227,20 @@ def rafraichir(*, maintenant: datetime | None = None) -> str:
                 etat, detail, donnees = "panne", type(exc).__name__, None
             quand = maintenant.isoformat(timespec="seconds")
             avant = avant or {}
-            cache[SOURCE] = {"etat": etat, "detail": detail, "essai": quand,
+            cache[source] = {"etat": etat, "detail": detail, "essai": quand,
                              "lu": quand if etat == "ok" else avant.get("lu"),
                              "donnees": donnees if etat == "ok" else avant.get("donnees")}
             common.write_json_if_changed(_chemin(), cache)
-            log.info("bord : %s relue sur le site, état %s (%s)", SOURCE, etat, detail or "-")
+            log.info("bord : %s relue sur le site, état %s (%s)", source, etat, detail or "-")
             return etat
     except filelock.Timeout:
         return "occupe"
 
 
-def _lancer() -> bool:
+def _lancer(script: Path | None = None, source: str = SOURCE) -> bool:
     """Lance `rafraichir` dans un processus détaché, sans l'attendre.
+
+    `script` : le module à lancer (par défaut celui-ci ; `bord_github.py` pour GitHub).
 
     Ses sorties vont dans `distant.log`, en ajout (tour 1, M1 : sinon une erreur
     imprévue ne se voyait nulle part). Il ne reçoit la clé que par l'environnement,
@@ -239,11 +252,11 @@ def _lancer() -> bool:
         with open(dossier() / "distant.log", "ab") as journal:
             if os.fstat(journal.fileno()).st_size > _JOURNAL_MAX:
                 journal.truncate(0)
-            subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "rafraichir"],
+            subprocess.Popen([sys.executable, str(script or Path(__file__).resolve()), "rafraichir"],
                              stdin=subprocess.DEVNULL, stdout=journal,
                              stderr=subprocess.STDOUT, close_fds=True, start_new_session=True)
     except OSError as exc:
-        log.warning("bord : rafraîchissement non lancé pour %s (%s)", SOURCE, type(exc).__name__)
+        log.warning("bord : rafraîchissement non lancé pour %s (%s)", source, type(exc).__name__)
         return False
     return True
 
