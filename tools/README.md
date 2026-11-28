@@ -212,18 +212,22 @@ une ligne « inconnu » de « À faire d'abord » est grisée et ne compte pas.
 
 | Bloc | Source | Fraîcheur |
 |---|---|---|
-| Santé et versions | `bord_github` : CI de `main`, dernier déploiement ; image selon `compose.yml` | cache `distant.json`, relu en arrière-plan au-delà de 10 min ; l'âge est affiché |
+| Santé et versions | `bord_github` : CI de `main`, dernier déploiement ; image selon `compose.yml` | cache `distant.json`, relu en arrière-plan au-delà de 10 min ; l'âge est affiché, « Périmé » au-delà de 20 min ; pannes de la CI et du déploiement, jeton refusé dits |
 | Coûts et modèles | `bord_systeme` : 7 derniers jours et 7 d'avant, par modèle ; modèles d'extraction et de secours | à chaque affichage (disque local) |
-| Sorties à venir | `bord_contenu` : recos validées dont `releaseDate` tombe dans les 30 jours avant ou après aujourd'hui ; `jours <= 0` : « déjà sortie, en relance » | à chaque affichage ; les 10 premières, puis « + N autres » |
+| Sorties à venir | `bord_contenu` : recos validées dont `releaseDate` tombe dans les 30 jours avant ou après aujourd'hui ; `jours <= 0` : « déjà sortie », puis « en relance », « pas de relance » ou « relance : inconnu » selon le registre | à chaque affichage ; les à venir d'abord (la plus proche en tête), puis les passées (la plus récente en tête), 10 au plus, puis « + N autres » |
 | Graphies apprises | `bord_contenu` : registre `tools/output/graphies/registre.json`, les 5 plus vues | à chaque affichage |
 | Liens morts | `bord_contenu` : résumé `tools/output/bord/liens.json`, écrit par `verifier_liens.py externes` (contrôle du lundi) | « ancien » au-delà de 8 jours ; « inconnu » avant le premier contrôle ; 10 liens au plus, puis « + N autres » |
 
 Une adresse devient un lien seulement si elle commence par `http://` ou `https://` (liens morts)
 ou si c'est du `https` vers `github.com` (PR, CI, déploiement) ; sinon elle reste du texte
-échappé. Les lignes de « À faire d'abord » : `publication` (PR d'épisodes ouvertes ; sans GitHub
-lisible, l'état de la chaîne), `sorties` (PR ouvertes de sorties `contenu/sorties-*` ; les
+échappé. Les lignes de « À faire d'abord » : `publication` (chaque épisode récent se rapproche de sa
+branche `contenu/<slug>` : « fusionner la PR de S6·E12 » si elle est ouverte, rien si elle est fusionnée,
+« ouvrir puis fusionner la PR de S6·E12 » avec le lien de comparaison si la branche est poussée sans PR,
+comme sur venus sans jeton GitHub ; les autres PR `contenu/*` ouvertes ne sont comptées que dans une
+ligne grisée ; sans GitHub lisible, l'état de la chaîne), `sorties` (PR ouvertes de sorties `contenu/sorties-*` ; les
 relances partent seules, rien à faire pour Étienne : décision du 28/11/2026) et `liens` (nombre
-de liens morts du dernier rapport).
+de liens morts du dernier rapport ; au-delà de 8 jours, une ligne grisée « rapport ancien » qui ne compte
+pas). L'étape « Publié » de la chaîne se lit aussi sur la PR fusionnée (sa date de fusion).
 
 Les états vivent sous `tools/output/bord/` (`RECO_BORD_DIR` pour les essais), hors de Git.
 
