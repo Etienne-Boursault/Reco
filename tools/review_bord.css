@@ -1,0 +1,238 @@
+/* review_bord.css — le style de `/bord`, le tableau de bord d'admin de Reco V1.
+ *
+ * Décision : tableau de bord, R2 B du 27/11/2026 ; TB-1 C du 28/11/2026, vue
+ * 39 pouces par défaut (plan `pr-tableau-de-bord.md`, § 5, tranche 1d-2).
+ * Recopié en ligne par `bord_rendu.py` (la CSP n'admet que du style en ligne).
+ *
+ * LES TROIS VUES. Le style est écrit pour la vue 39 pouces (3 440 × 1 440, cinq
+ * colonnes qui défilent seules). Les vues 13 pouces et téléphone ne changent que
+ * des variables, posées deux fois chacune : par le choix forcé
+ * (`html[data-vue="13"]`, `html[data-vue="telephone"]`), et en `auto` par la
+ * largeur (13 pouces sous 2 200 px, téléphone sous 900 px).
+ *
+ * CONTRASTE. Le texte discret `#9a99a3` sur `#17171c` fait 6,3:1 (AA : 4,5).
+ * Une ligne « inconnu » est grisée par sa couleur et un trait pointillé, jamais
+ * par l'opacité, qui ferait tomber ce rapport sous 4,5.
+ *
+ * POLICES. Bebas Neue et Inter seront servies en local (tranche 1e) ; d'ici là,
+ * les piles de repli.
+ */
+
+html {
+  --fond: #0e0e10; --carte: #17171c; --texte: #f6f4ee; --mut: #9a99a3;
+  --accent: #ffd23f; --ok: #5ed39b; --alerte: #ff9a9a; --trait: #23232a; --trait-fort: #34343c;
+  --titre: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+  --corps: Inter, system-ui, sans-serif;
+  /* Vue 39 pouces. */
+  --corps-aff: flex; --corps-haut: 100vh; --corps-pad: 40px 56px; --corps-gap: 32px;
+  --taille: 17px; --h1: 88px; --h2: 44px; --h3: 34px;
+  --nav-aff: none; --nav-dir: column; --nav-haut: auto; --nav-top: 0;
+  --nav-bord: 0; --nav-pad: 0; --onglet-bord: transparent;
+  --grille-cols: minmax(0, 1.25fr) repeat(4, minmax(0, 1fr));
+  --grille-zones: "afaire chaine audience reseaux systeme"; --grille-gap: 40px;
+  --defile: auto; --col-haut: 100%; --ancre: 0;
+  background: var(--fond);
+}
+
+html[data-vue="13"] {
+  --corps-aff: grid; --corps-haut: auto; --corps-pad: 32px 40px 32px 0; --corps-gap: 24px 40px;
+  --taille: 15px; --h1: 64px; --h2: 30px; --h3: 26px;
+  --nav-aff: flex; --nav-dir: column; --nav-haut: calc(100vh - 64px); --nav-top: 32px;
+  --nav-bord: 1px solid var(--trait); --nav-pad: 0 16px; --onglet-bord: transparent;
+  --grille-cols: minmax(0, 1fr) 360px;
+  --grille-zones: "afaire chaine" "audience chaine" "reseaux chaine" "systeme chaine";
+  --grille-gap: 24px; --defile: visible; --col-haut: none; --ancre: 32px;
+}
+html[data-vue="telephone"] {
+  --corps-aff: flex; --corps-haut: auto; --corps-pad: 20px 16px 32px; --corps-gap: 18px;
+  --taille: 15px; --h1: 52px; --h2: 28px; --h3: 24px;
+  --nav-aff: flex; --nav-dir: row; --nav-haut: auto; --nav-top: 0;
+  --nav-bord: 0; --nav-pad: 8px 0; --onglet-bord: var(--trait-fort);
+  --grille-cols: minmax(0, 1fr);
+  --grille-zones: "afaire" "audience" "chaine" "reseaux" "systeme";
+  --grille-gap: 18px; --defile: visible; --col-haut: none; --ancre: 72px;
+}
+@media (max-width: 2200px) {
+  html[data-vue="auto"] {
+    --corps-aff: grid; --corps-haut: auto; --corps-pad: 32px 40px 32px 0; --corps-gap: 24px 40px;
+    --taille: 15px; --h1: 64px; --h2: 30px; --h3: 26px;
+    --nav-aff: flex; --nav-dir: column; --nav-haut: calc(100vh - 64px); --nav-top: 32px;
+    --nav-bord: 1px solid var(--trait); --nav-pad: 0 16px; --onglet-bord: transparent;
+    --grille-cols: minmax(0, 1fr) 360px;
+    --grille-zones: "afaire chaine" "audience chaine" "reseaux chaine" "systeme chaine";
+    --grille-gap: 24px; --defile: visible; --col-haut: none; --ancre: 32px;
+  }
+}
+@media (max-width: 900px) {
+  html[data-vue="auto"] {
+    --corps-aff: flex; --corps-haut: auto; --corps-pad: 20px 16px 32px; --corps-gap: 18px;
+    --taille: 15px; --h1: 52px; --h2: 28px; --h3: 24px;
+    --nav-aff: flex; --nav-dir: row; --nav-haut: auto; --nav-top: 0;
+    --nav-bord: 0; --nav-pad: 8px 0; --onglet-bord: var(--trait-fort);
+    --grille-cols: minmax(0, 1fr);
+    --grille-zones: "afaire" "audience" "chaine" "reseaux" "systeme";
+    --grille-gap: 18px; --defile: visible; --col-haut: none; --ancre: 72px;
+  }
+}
+
+/* ---- La page ---------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+body.bord {
+  margin: 0; min-height: 100vh; height: var(--corps-haut); padding: var(--corps-pad);
+  display: var(--corps-aff); flex-direction: column; gap: var(--corps-gap);
+  /* Vue 13 pouces : le menu à gauche, le reste à droite (ignoré en flex). */
+  grid-template-columns: 248px minmax(0, 1fr);
+  background: var(--fond); color: var(--texte);
+  font: var(--taille)/1.55 var(--corps);
+}
+body.bord > * { min-width: 0; }
+body.bord > :not(.bord-nav) { grid-column: 2; }
+a { color: var(--accent); }
+a:hover { color: #ffe27a; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 {
+  margin: 0; font-family: var(--titre); font-weight: 400; text-transform: uppercase;
+  letter-spacing: .01em; line-height: .98;
+}
+
+/* ---- L'en-tête -------------------------------------------------------- */
+
+.bord-entete {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+  gap: 12px 24px;
+}
+.bord-marque { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 28px; }
+.bord-titre { font-size: var(--h1); letter-spacing: -.01em; }
+.bord-sous-titre, .bord-etiquette, .bord-tache-bloc {
+  font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--mut);
+}
+.bord-sous-titre { color: var(--accent); font-size: 15px; }
+.bord-infos { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; font-size: 16px; }
+.bord-etat-chaine { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.bord-pastille { flex: none; width: 11px; height: 11px; border-radius: 50%; background: var(--mut); }
+[data-etat="ok"] > .bord-pastille { background: var(--ok); }
+[data-etat="alerte"] > .bord-pastille { background: var(--alerte); }
+.bord-date { color: var(--mut); }
+.bord-vues { display: flex; flex-wrap: wrap; gap: 6px; }
+.bord-vues[hidden] { display: none; }
+.bord-vues button {
+  min-height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--trait-fort);
+  background: none; color: var(--texte); font: 600 14px var(--corps); cursor: pointer;
+}
+.bord-vues button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--fond); }
+
+.flash { padding: .7em 1em; border-radius: 8px; border: 1px solid; font-size: 15px; }
+.flash-success { background: #0f2417; border-color: #1f4d2f; color: #a9e3b8; }
+.flash-warning { background: #27220a; border-color: #5a4a14; color: var(--accent); }
+.flash-error { background: #2a1010; border-color: #5c1a1a; color: var(--alerte); }
+.flash-info { background: #0f1825; border-color: #1f3a5c; color: #a2c4ee; }
+
+/* ---- Le menu des sections : absent en 39", à gauche en 13", onglets au téléphone ---- */
+
+.bord-nav {
+  display: var(--nav-aff); flex-direction: var(--nav-dir); gap: 4px 8px;
+  grid-column: 1; grid-row: 1 / span 3;
+  position: sticky; top: var(--nav-top); z-index: 1; height: var(--nav-haut);
+  padding: var(--nav-pad); border-right: var(--nav-bord); background: var(--fond);
+  overflow-x: auto;
+}
+.bord-nav a {
+  flex: none; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--onglet-bord);
+  color: var(--texte); text-decoration: none; font-weight: 600; font-size: 15px; white-space: nowrap;
+}
+.bord-nav a:hover { background: #1f1f26; color: var(--texte); }
+.bord-nav .bord-nb {
+  min-width: 22px; padding: 1px 7px; border-radius: 999px; text-align: center;
+  background: #2a2a31; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+
+/* ---- La grille des cinq colonnes ---------------------------------------- */
+
+.bord-grille {
+  display: grid; grid-template-columns: var(--grille-cols);
+  grid-template-areas: var(--grille-zones); gap: var(--grille-gap);
+  flex: 1; min-height: 0; align-items: start;
+}
+.bord-col {
+  display: flex; flex-direction: column; gap: 20px; min-width: 0;
+  max-height: var(--col-haut); overflow-y: var(--defile); scroll-margin-top: var(--ancre);
+}
+[data-col="afaire"] { grid-area: afaire; }
+[data-col="chaine"] { grid-area: chaine; }
+[data-col="audience"] { grid-area: audience; }
+[data-col="reseaux"] { grid-area: reseaux; }
+[data-col="systeme"] { grid-area: systeme; }
+.bord-col-tete {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--trait);
+}
+.bord-col-tete h2 { font-size: var(--h2); }
+.bord-col-tete .bord-nb { font-family: var(--titre); font-size: var(--h2); line-height: .98; color: var(--accent); }
+
+/* ---- Cartes et textes communs ------------------------------------------ */
+
+.bord-carte {
+  display: flex; flex-direction: column; gap: 12px; min-width: 0;
+  padding: 22px; border-radius: 14px; background: var(--carte);
+}
+.bord-carte-table { padding: 12px 12px 6px; overflow-x: auto; }
+.bord-carte[data-attente] { background: none; border: 1px dashed var(--trait-fort); }
+.bord-mut, .bord-vide { margin: 0; color: var(--mut); }
+.bord-alerte { margin: 0; color: var(--alerte); font-weight: 600; }
+
+/* ---- À faire d'abord ---------------------------------------------------- */
+
+.bord-taches { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.bord-tache {
+  display: flex; flex-direction: column; gap: 8px; padding: 22px; border-radius: 14px;
+  background: var(--carte);
+}
+.bord-tache[data-bloc="relecture"] { box-shadow: inset 0 0 0 1px var(--accent); }
+.bord-tache[data-bloc="relecture"] .bord-tache-bloc { color: var(--accent); }
+.bord-tache-texte { font-family: var(--titre); font-size: calc(var(--h3) - 4px); line-height: 1.05; text-transform: uppercase; }
+.bord-tache[data-inconnu] { background: none; border: 1px dashed var(--trait-fort); color: var(--mut); }
+.bord-tache[data-inconnu] .bord-tache-texte { font-family: var(--corps); font-size: inherit; text-transform: none; }
+.bord-bouton {
+  align-self: flex-start; display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px;
+  border-radius: 999px; background: var(--accent); color: var(--fond); font-weight: 700;
+  font-size: 15px; text-decoration: none; white-space: nowrap;
+}
+.bord-bouton:hover { background: #ffe27a; color: var(--fond); }
+
+/* ---- Chaîne ------------------------------------------------------------- */
+
+.bord-episode { font-size: var(--h3); }
+.bord-etapes, .bord-passages, .bord-erreurs {
+  margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px;
+}
+.bord-etape, .bord-passages li { display: flex; justify-content: space-between; gap: 12px; }
+.bord-etape-quand, .bord-passages li > .bord-mut { flex: none; color: var(--mut); white-space: nowrap; }
+/* L'état est déjà écrit en texte : l'icône est cachée aux lecteurs d'écran. */
+.bord-etape-nom::before { display: inline-block; width: 1.4em; content: "?"; content: "?" / ""; color: var(--mut); }
+.bord-etape[data-etat="fait"] .bord-etape-nom::before { content: "✓"; content: "✓" / ""; color: var(--ok); }
+.bord-etape[data-etat="a_venir"] { color: var(--mut); }
+.bord-etape[data-etat="a_venir"] .bord-etape-nom::before { content: "○"; content: "○" / ""; }
+.bord-passages li[data-echec="1"] > span:first-child, .bord-erreurs li { color: var(--alerte); }
+
+/* ---- Réseaux ------------------------------------------------------------ */
+
+.bord-reseaux { width: 100%; border-collapse: collapse; font-size: 15px; }
+.bord-reseaux th {
+  padding: 8px 10px; border-bottom: 1px solid #2a2a31; text-align: left;
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--mut);
+}
+.bord-reseaux th[scope="row"] { font-size: 15px; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--texte); }
+.bord-reseaux td, .bord-reseaux tbody th { padding: 6px 10px; border-bottom: 1px solid #222228; }
+.bord-reseaux tr:last-child > * { border-bottom: 0; }
+.bord-case-form { margin: 0; }
+.bord-case {
+  min-width: 44px; min-height: 36px; padding: 0 12px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--accent); background: none; color: var(--accent);
+  font: 700 14px var(--corps); white-space: nowrap;
+}
+.bord-case[data-fait="1"] { border-color: transparent; color: var(--ok); }
+.bord-case:hover { background: #1f1f26; }
+.bord-case:disabled { cursor: progress; }

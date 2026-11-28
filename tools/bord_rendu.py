@@ -45,7 +45,8 @@ _NOMS_VUES = {"auto": "auto", "39": "39\"", "13": "13\"", "telephone": "téléph
 _SCRIPT_VUE = ('try{var v=localStorage.getItem("bord-vue");'
                'if(["39","13","telephone"].indexOf(v)>=0)'
                'document.documentElement.setAttribute("data-vue",v);}catch(e){}')
-#: Le rechargement, pour l'écran de 39 pouces qui reste ouvert (§ 1).
+#: Le rechargement, pour l'écran de 39 pouces qui reste ouvert (§ 1) ; vers
+#: `/bord` nu, pour ne pas réafficher le message d'un `?flash=` (tranche 1d-2).
 _RECHARGE_S = 300
 
 
@@ -116,7 +117,7 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
     return (
         '<!doctype html><html lang="fr" data-vue="auto"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
-        f'<meta http-equiv="refresh" content="{_RECHARGE_S}">'
+        f'<meta http-equiv="refresh" content="{_RECHARGE_S};url=/bord">'
         f"<title>Tableau de bord — {html.escape(titre)}</title>"
         f"<script>{_SCRIPT_VUE}</script><style>{_lire(_CSS)}</style></head>"
         f'<body class="bord">{_entete(titre, chaine.get("passages"), maintenant)}'

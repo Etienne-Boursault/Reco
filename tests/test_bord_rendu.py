@@ -104,8 +104,9 @@ def test_le_choix_de_la_vue_offre_les_quatre_vues_et_reste_cache_sans_script():
     assert br.VUES == ("auto", "39", "13", "telephone")
 
 
-def test_la_page_se_recharge_toutes_les_cinq_minutes():
-    assert '<meta http-equiv="refresh" content="300">' in _page()
+def test_la_page_se_recharge_toutes_les_cinq_minutes_sans_le_message():
+    # Vers `/bord` nu : recharger `/bord?flash=…` réafficherait le message (1d-2).
+    assert '<meta http-equiv="refresh" content="300;url=/bord">' in _page(flash="Fait.")
 
 
 def test_la_page_n_envoie_pas_le_battement_de_la_relecture():
