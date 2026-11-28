@@ -38,12 +38,13 @@ def _cache_perime(bord, minutes: int = 11) -> None:
 
 
 def test_deux_lectures_de_suite_ne_lancent_qu_un_processus(monkeypatch, bord):
+    # Tour 2, T2-1 : la seconde dit « lancée » (une lecture est bien en route), sans second processus.
     _cache_perime(bord)
     lances = []
     monkeypatch.setattr(bd.subprocess, "Popen", lambda *a, **k: lances.append(a))
     premiere = bd.lire(maintenant=MAINTENANT)
     seconde = bd.lire(maintenant=MAINTENANT + timedelta(seconds=30))
-    assert (premiere["relance"], seconde["relance"]) == (True, False)
+    assert (premiere["relance"], seconde["relance"]) == (True, True)
     assert len(lances) == 1
     assert (bord / "lance-audience").read_text(encoding="utf-8") == MAINTENANT.isoformat(
         timespec="seconds")
@@ -86,6 +87,31 @@ def test_un_lancement_rate_laisse_son_marqueur_donc_ne_boucle_pas(monkeypatch, b
     monkeypatch.setattr(bd.subprocess, "Popen", echoue)
     assert bd.lire(maintenant=MAINTENANT)["relance"] is False
     assert (bord / "lance-audience").exists()
+
+
+def test_un_lancement_rate_ne_se_dit_pas_lance_dans_les_2_minutes_suivantes(monkeypatch, bord):
+    """Tour 2, T2-1 : « lancée » seulement si une lecture est en route ; un échec reste un échec."""
+    _cache_perime(bord)
+
+    def echoue(*_a, **_k):
+        raise OSError("pas de python")
+    monkeypatch.setattr(bd.subprocess, "Popen", echoue)
+    assert bd.lire(maintenant=MAINTENANT)["relance"] is False
+    assert bd.lire(maintenant=MAINTENANT + timedelta(seconds=30))["relance"] is False
+    assert bd._lancer(maintenant=MAINTENANT + bd.LANCEMENT_MIN) is False   # relancé, raté de nouveau
+
+
+def test_un_marqueur_date_du_futur_n_empeche_pas_le_lancement(monkeypatch, bord, caplog):
+    """Tour 2, T2-2 : seul un écart entre 0 et 2 min compte ; le futur vaut un marqueur absent."""
+    _cache_perime(bord)
+    lances = []
+    monkeypatch.setattr(bd.subprocess, "Popen", lambda *a, **k: lances.append(a))
+    (bord / "lance-audience").write_text(
+        (MAINTENANT + timedelta(days=3650)).isoformat(timespec="seconds"), encoding="utf-8")
+    assert bd.lire(maintenant=MAINTENANT)["relance"] is True and len(lances) == 1
+    assert "daté du futur" in caplog.text
+    # Un marqueur de l'instant même compte, lui, comme récent.
+    assert bd._lancer(maintenant=MAINTENANT) is True and len(lances) == 1
 
 
 def test_le_marqueur_de_chaque_source_est_a_part(monkeypatch, bord):

@@ -446,6 +446,6 @@ def test_deux_lectures_de_suite_ne_lancent_qu_un_processus_de_github(monkeypatch
     lances = []
     monkeypatch.setattr(bd.subprocess, "Popen", lambda *a, **k: lances.append(a))
     assert bg.lire(maintenant=MAINTENANT)["relance"] is True
-    assert bg.lire(maintenant=MAINTENANT + timedelta(seconds=30))["relance"] is False
+    assert bg.lire(maintenant=MAINTENANT + timedelta(seconds=30))["relance"] is True   # T2-1 : en route
     assert bg.lire(maintenant=MAINTENANT + bd.LANCEMENT_MIN)["relance"] is True
     assert len(lances) == 2 and (bord / "lance-github").exists()

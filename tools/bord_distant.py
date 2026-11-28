@@ -17,9 +17,12 @@ Chaque lancement inscrit son heure dans `lance-<source>` (même dossier) : tant 
 moins de `LANCEMENT_MIN`, aucun autre ne part (revue globale, M1 du 28/11/2026 : sans cela, un
 GitHub lent ou une page qui appelle `/bord` en boucle empilait des centaines de processus, qui
 attendaient le verrou 60 s, sortaient sans noter leur essai, et chaque affichage en relançait).
-Un marqueur illisible compte comme absent ; un marqueur impossible à écrire empêche le
-lancement (le plafond ne pourrait pas tenir), et un lancement raté laisse le sien : pas de
-boucle de relances sur un échec.
+Un marqueur illisible compte comme absent, comme un marqueur daté du futur (tour 2, T2-2 : sinon
+une horloge déréglée bloquerait tout jusqu'à sa date) ; un marqueur impossible à écrire empêche le
+lancement (le plafond ne pourrait pas tenir), et un lancement raté laisse le sien, marqué « echec » :
+pas de boucle de relances sur un échec. Pendant les 2 min d'un lancement réussi, `lire()` dit que la
+lecture est lancée (`relance` vrai, tour 2, T2-1) : elle est bien en route ; seul un échec dit
+« n'a pas pu être lancée ».
 Le rafraîchissement prend `distant.lock`, qu'il attend au plus 60 s : deux ne tournent jamais
 ensemble. Cette attente est celle du processus détaché seulement ; le serveur de relecture
 n'appelle jamais `rafraichir_source` (M1 du tour 1, 28/11/2026 : l'audience et GitHub périmés
@@ -40,6 +43,7 @@ jamais pris pour un cache vide, donc jamais réécrit (F22).
 from __future__ import annotations
 
 import argparse
+import contextlib
 import http.client
 import json
 import os
@@ -220,13 +224,23 @@ def donnees_perimees(source: dict[str, Any] | None) -> bool:
     return isinstance(age, int) and timedelta(seconds=age) > PERIME
 
 
-def _lance_recemment(source: str, maintenant: datetime) -> bool:
-    """Un lancement de `source` date de moins de `LANCEMENT_MIN` ; un marqueur illisible n'en est pas un."""
+def _lancement_recent(source: str, maintenant: datetime) -> str | None:
+    """« lance » ou « echec » si le dernier lancement de `source` date de 0 à `LANCEMENT_MIN` ; sinon None.
+
+    Un marqueur illisible n'en est pas un, ni un marqueur daté du futur (T2-2, noté en `warning`).
+    """
     try:
-        lance = _date((dossier() / f"lance-{source}").read_text(encoding="utf-8").strip())
+        mots = (dossier() / f"lance-{source}").read_text(encoding="utf-8").split()
+        lance = _date(mots[0] if mots else "")
     except (OSError, ValueError):
-        return False
-    return maintenant - lance < LANCEMENT_MIN
+        return None
+    ecart = maintenant - lance
+    if ecart < timedelta(0):
+        log.warning("bord : marqueur de lancement de %s daté du futur, ignoré", source)
+        return None
+    if ecart >= LANCEMENT_MIN:
+        return None
+    return "echec" if mots[1:] == ["echec"] else "lance"
 
 
 def rafraichir(*, maintenant: datetime | None = None) -> str:
@@ -284,8 +298,9 @@ def _lancer(script: Path | None = None, source: str = SOURCE,
             maintenant: datetime | None = None) -> bool:
     """Lance `rafraichir` dans un processus détaché, sans l'attendre.
 
-    Rend False, sans lancer, si `source` a déjà été lancée il y a moins de `LANCEMENT_MIN`
-    (M1) : le marqueur `lance-<source>` s'écrit juste avant le lancement.
+    Sans lancer, si `source` a déjà été lancée il y a moins de `LANCEMENT_MIN` (M1) : rend True si ce
+    lancement est en route, False s'il avait échoué (T2-1). Le marqueur `lance-<source>` s'écrit
+    juste avant le lancement ; un lancement raté y ajoute « echec ». Rend False aussi à un échec.
 
     `script` : le module à lancer (par défaut celui-ci ; `bord_github.py` pour GitHub).
 
@@ -295,12 +310,14 @@ def _lancer(script: Path | None = None, source: str = SOURCE,
     Au-delà de 200 Ko, le journal repart de zéro.
     """
     maintenant = maintenant or datetime.now(UTC)
-    if _lance_recemment(source, maintenant):
-        return False
+    recent = _lancement_recent(source, maintenant)
+    if recent:
+        return recent == "lance"
+    marqueur = dossier() / f"lance-{source}"
+    quand = maintenant.isoformat(timespec="seconds")
     try:
         dossier().mkdir(parents=True, exist_ok=True)
-        (dossier() / f"lance-{source}").write_text(
-            maintenant.isoformat(timespec="seconds"), encoding="utf-8")
+        marqueur.write_text(quand, encoding="utf-8")
         with open(dossier() / "distant.log", "ab") as journal:
             if os.fstat(journal.fileno()).st_size > _JOURNAL_MAX:
                 journal.truncate(0)
@@ -309,6 +326,8 @@ def _lancer(script: Path | None = None, source: str = SOURCE,
                              stderr=subprocess.STDOUT, close_fds=True, start_new_session=True)
     except OSError as exc:
         log.warning("bord : rafraîchissement non lancé pour %s (%s)", source, type(exc).__name__)
+        with contextlib.suppress(OSError):
+            marqueur.write_text(f"{quand} echec", encoding="utf-8")
         return False
     return True
 
@@ -319,7 +338,7 @@ def lire(*, maintenant: datetime | None = None, relancer: bool = True) -> dict[s
     `{"source", "etat", "libelle", "detail", "donnees", "lu", "essai", "age", "relance"}` :
     `donnees` est le dernier résumé lu (gardé après une panne), `lu` son heure et
     `age` ses secondes ; `essai` l'heure du dernier appel ; `relance` dit si un
-    rafraîchissement vient d'être lancé.
+    rafraîchissement est lancé (ou l'a été il y a moins de 2 min).
     """
     maintenant = maintenant or datetime.now(UTC)
     try:
