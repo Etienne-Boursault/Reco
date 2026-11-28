@@ -64,6 +64,21 @@ def test_l_episode_en_cours_est_le_plus_recent_non_publie(corpus):
     assert etat["episode"]["guid"] == "yt-Recent"
 
 
+def test_un_vieil_episode_hors_de_published_n_est_pas_en_cours(corpus):
+    # Tour 1, M2 : seul un épisode plus récent que le dernier publié est « en cours ».
+    _episode(corpus, "yt-Vieux", "2026-10-01")
+    _episode(corpus, "yt-Publie", "2026-11-25")
+    _etat(corpus, published=["yt-Publie"])
+    assert bord_chaine.etat_chaine(SOURCE)["episode"]["guid"] == "yt-Publie"
+
+
+def test_le_dernier_publie_se_choisit_par_date_et_non_par_position(corpus):
+    _episode(corpus, "yt-Neuf", "2026-11-25")
+    _episode(corpus, "yt-Vieux", "2026-10-01")
+    _etat(corpus, published=["yt-Neuf", "yt-Vieux"])  # dans le désordre
+    assert bord_chaine.etat_chaine(SOURCE)["episode"]["guid"] == "yt-Neuf"
+
+
 def test_detecte_sans_heure_et_publie_a_venir(corpus):
     _episode(corpus, "yt-A", "2026-11-20")
     _etat(corpus, extracted=["yt-A"])

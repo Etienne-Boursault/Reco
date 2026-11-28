@@ -4,8 +4,9 @@ bord_chaine.py — le bloc « Chaîne » du tableau de bord d'admin.
 Décision : tableau de bord, R2 B du 27/11/2026 et TB-1 C du 28/11/2026.
 
 Rend, sans rien écrire :
-  - l'épisode en cours : le plus récent des épisodes `yt-…` pas encore publiés ;
-    à défaut, le dernier publié (sa fiche peut manquer : la publication la retire
+  - l'épisode en cours : le plus récent des épisodes `yt-…` pas encore publiés
+    et plus récent que le dernier publié (tour 1, M2) ; à défaut, le dernier
+    publié, par date de fiche (sa fiche peut manquer : la publication la retire
     du clone jusqu'à la fusion de la PR, on n'a alors que son guid) ;
   - ses étapes, chacune avec son état, son heure et la source qui le dit ;
   - les dernières erreurs signalées par la chaîne ;
@@ -68,14 +69,26 @@ def _episodes_yt(source_id: str) -> list[dict[str, Any]]:
 def _episode_en_cours(episodes: list[dict[str, Any]], etat: dict[str, Any] | None
                       ) -> tuple[str, dict[str, Any] | None] | None:
     """(guid, fiche ou None) de l'épisode à montrer, ou None s'il n'y en a aucun."""
-    publies = list((etat or {}).get("published") or [])
-    par_date = sorted(episodes, key=lambda e: (str(e.get("date") or ""), str(e["guid"])))
-    en_cours = [e for e in par_date if e["guid"] not in publies]
+    publies = [str(g) for g in (etat or {}).get("published") or []]
+    fiches = {e["guid"]: e for e in episodes}
+
+    def date(e: dict[str, Any]) -> str:
+        return str(e.get("date") or "")
+
+    # Tour 1, M2 : n'est « en cours » qu'un épisode plus récent que le dernier
+    # publié connu ; un vieil épisode resté hors de `published` n'en est pas un.
+    dernier = max((date(fiches[g]) for g in publies if g in fiches), default=None)
+    en_cours = sorted((e for e in episodes if e["guid"] not in publies
+                       and (dernier is None or date(e) > dernier)),
+                      key=lambda e: (date(e), e["guid"]))
     if en_cours:
         return en_cours[-1]["guid"], en_cours[-1]
-    if publies:  # tous publiés (sinon `en_cours` ne serait pas vide)
-        guid = str(publies[-1])
-        return guid, next((e for e in episodes if e["guid"] == guid), None)
+    if publies:
+        # Le plus récent des publiés, par date de fiche : un publié sans fiche
+        # (la publication l'a retirée du clone) est le plus récent, puis la position.
+        guid = max(publies, key=lambda g: (g not in fiches, date(fiches.get(g, {})),
+                                           publies.index(g)))
+        return guid, fiches.get(guid)
     return None
 
 
