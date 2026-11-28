@@ -80,11 +80,26 @@ def test_une_sortie_a_venir_dit_son_titre_sa_date_et_les_jours_restants():
 
 
 def test_demain_et_une_sortie_deja_passee_en_relance():
-    liste = [_sortie("Demain", "2026-11-30", 1), _sortie("Aujourd'hui", "2026-11-29", 0),
-             _sortie("Hier", "2026-11-28", -1)]
+    liste = [_sortie("Demain", "2026-11-30", 1),
+             _sortie("Aujourd'hui", "2026-11-29", 0, relancee=True),
+             _sortie("Hier", "2026-11-28", -1, relancee=True)]
     bloc = brs.bloc_sorties(_contenu(sorties=_sorties(liste)))
     assert "demain" in bloc
     assert bloc.count("déjà sortie, en relance") == 2
+
+
+def test_une_sortie_passee_dit_si_elle_est_en_relance_ou_non():
+    """Tour 1, F7 : « en relance » n'est affirmé que si le registre le dit."""
+    liste = [_sortie("Relancée", "2026-11-20", -9, relancee=True),
+             _sortie("Pas relancée", "2026-11-21", -8, relancee=False),
+             _sortie("Registre illisible", "2026-11-22", -7, relancee=None),
+             _sortie("Forme fausse", "2026-11-23", -6, relancee=["x"])]
+    bloc = brs.bloc_sorties(_contenu(sorties=_sorties(liste)))
+    assert bloc.count("déjà sortie, en relance") == 1
+    assert bloc.count("déjà sortie, pas de relance") == 1
+    assert bloc.count("déjà sortie, relance : inconnu") == 2
+    # Une sortie à venir ne parle pas de relance.
+    assert "relance" not in brs.bloc_sorties(_contenu())
 
 
 def test_une_date_ou_des_jours_illisibles_ne_cassent_pas_le_bloc():

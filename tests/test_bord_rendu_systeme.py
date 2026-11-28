@@ -13,6 +13,7 @@ from datetime import UTC, datetime
 
 import pytest
 
+import bord_distant
 import bord_rendu as br
 import bord_rendu_blocs as bb
 import bord_rendu_systeme as brs
@@ -102,6 +103,40 @@ def test_des_donnees_gardees_apres_une_panne_restent_avec_leur_age():
     assert "GitHub injoignable (HTTP 403)" in bloc
     assert "Ce sont les données d'il y a 2 h 00" in bloc
     assert "réussie" in bloc and "À jour" not in bloc
+
+
+def test_des_donnees_trop_vieilles_ne_sont_plus_dites_a_jour():
+    """Tour 1, F9 : au-delà de 2 fois la fraîcheur de la source, « Périmé », pas « À jour »."""
+    limite = int(2 * bord_distant.FRAICHEUR.total_seconds())
+    assert "À jour · lu il y a 20 min" in brs.bloc_sante(_github(age=limite), _systeme())
+    bloc = brs.bloc_sante(_github(age=limite + 1), _systeme())
+    assert "Périmé · lu il y a 20 min" in bloc and "À jour" not in bloc
+    assert 'data-etat="ok"' in bloc
+
+
+def test_une_panne_de_la_ci_ou_du_deploiement_est_dite_et_echappee():
+    """Tour 1, lot A : `pannes` dit pourquoi un bloc est inconnu."""
+    donnees = {"ci": None, "deploiement": None, "jeton": None,
+               "pannes": {"ci": {"etat": "panne", "detail": "HTTP 500"},
+                          "deploiement": {"etat": "limite", "detail": CHARGE}}}
+    bloc = brs.bloc_sante(_github(donnees=donnees), _systeme())
+    assert "inconnu (panne : HTTP 500)" in bloc
+    assert "<script>alert" not in bloc and "&quot;&gt;&lt;script&gt;" in bloc
+    sans_detail = {"ci": None, "deploiement": None, "pannes": {"ci": {"etat": "limite"}}}
+    assert "inconnu (panne : limite)" in brs.bloc_sante(_github(donnees=sans_detail), _systeme())
+    for pannes in (None, "texte", {"ci": "texte"}, {}):
+        bloc = brs.bloc_sante(_github(donnees={"ci": None, "deploiement": None,
+                                               "pannes": pannes}), _systeme())
+        assert "panne :" not in bloc
+
+
+def test_un_jeton_refuse_est_dit():
+    donnees = {"ci": _course(), "deploiement": None, "jeton": "refuse"}
+    assert "Jeton GitHub refusé : lecture anonyme." in brs.bloc_sante(
+        _github(donnees=donnees), _systeme())
+    for jeton in (None, "autre"):
+        assert "Jeton" not in brs.bloc_sante(
+            _github(donnees={"ci": None, "deploiement": None, "jeton": jeton}), _systeme())
 
 
 def test_aucun_bloc_github_se_lit_inconnu():

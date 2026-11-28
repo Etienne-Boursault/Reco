@@ -10,7 +10,12 @@ La route les lit une fois chacun ; `None` vaut « inconnu ».
 CE QUE DIT « SANTÉ ET VERSIONS »
 --------------------------------
 - L'état du dernier essai auprès de GitHub et l'âge des données ; après une panne, les
-  dernières données restent, marquées par leur âge (même conduite que l'audience).
+  dernières données restent, marquées par leur âge (même conduite que l'audience). Tour 1, F9 :
+  au-delà de 2 fois `bord_distant.FRAICHEUR`, un essai réussi dit « Périmé », pas « À jour ».
+- Tour 1, lot A : `pannes` dit « inconnu (panne : <type>) » pour la CI et le déploiement ;
+  `jeton: "refuse"` donne « Jeton GitHub refusé : lecture anonyme ». Les anciens caches n'ont
+  ni l'un ni l'autre : tout se lit avec `.get`. Les pannes des PR vont dans « À faire d'abord »,
+  qui dit « inconnu » sans en donner la cause (le plus simple).
 - La CI de `main` et le dernier déploiement : conclusion, date (heure de Paris) et lien
   vers l'exécution. Un bloc absent est « inconnu », jamais « verte ».
 - L'image du conteneur, « selon compose.yml » : le conteneur ne voit pas ce qui tourne.
@@ -92,16 +97,20 @@ def _etat(github: dict) -> str:
     age = github.get("age")
     if github.get("donnees") is not None and isinstance(age, int):
         quand = _depuis(timedelta(seconds=age))
-        message = (f"À jour · lu {quand}." if etat == "ok"
+        perime = timedelta(seconds=age) > 2 * bord_distant.FRAICHEUR
+        message = (f"{'Périmé' if perime else 'À jour'} · lu {quand}." if etat == "ok"
                    else f"{message} Ce sont les données d'{quand}.")
     return (f'<p class="bord-audience-etat" data-etat="{html.escape(etat)}">'
             f'<span class="bord-pastille" aria-hidden="true"></span><span>{message}</span></p>')
 
 
-def _course(nom: str, course: Any) -> str:
-    """Une ligne de CI ou de déploiement ; une forme inattendue est « inconnu »."""
+def _course(nom: str, course: Any, panne: Any = None) -> str:
+    """Une ligne de CI ou de déploiement ; une forme inattendue est « inconnu » (avec sa panne, si connue)."""
     if not isinstance(course, dict):
-        return f'<li><span>{nom}</span><span class="bord-mut">inconnu</span></li>'
+        cause = ""
+        if isinstance(panne, dict) and (panne.get("detail") or panne.get("etat")):
+            cause = f" (panne : {_texte(panne.get('detail') or panne.get('etat'), 40)})"
+        return f'<li><span>{nom}</span><span class="bord-mut">inconnu{cause}</span></li>'
     conclusion = course.get("conclusion")
     cle, texte = _CONCLUSIONS.get(conclusion, (None, None)) if isinstance(conclusion, str) \
         else (None, None)
@@ -123,13 +132,17 @@ def bloc_sante(github: dict | None, systeme: dict | None) -> str:
     github = _dict(github)
     donnees = _dict(github.get("donnees"))
     image = _dict(systeme).get("image")
+    pannes = _dict(donnees.get("pannes"))
+    jeton = ('<p class="bord-mut">Jeton GitHub refusé : lecture anonyme.</p>'
+             if donnees.get("jeton") == "refuse" else "")
     version = (f"Image de la chaîne : {_texte(image, 80)} (selon compose.yml)" if image
                else "Image de la chaîne : inconnue")
     return _carte('<span class="bord-etiquette">Santé et versions</span>' + _etat(github)
                   + '<ul class="bord-signalements">'
-                  + _course("CI de main", donnees.get("ci"))
-                  + _course("Dernier déploiement", donnees.get("deploiement"))
-                  + f'</ul><p class="bord-mut">{version}.</p>')
+                  + _course("CI de main", donnees.get("ci"), pannes.get("ci"))
+                  + _course("Dernier déploiement", donnees.get("deploiement"),
+                            pannes.get("deploiement"))
+                  + f'</ul>{jeton}<p class="bord-mut">{version}.</p>')
 
 
 # ---- Coûts et modèles ------------------------------------------------------
@@ -251,11 +264,14 @@ def _nombre(n: int, singulier: str, pluriel: str) -> str:
     return f"{n} {singulier if n <= 1 else pluriel}"
 
 
-def _echeance(jours: Any) -> str:
+def _echeance(jours: Any, relancee: Any = None) -> str:
+    """Tour 1, F7 : « en relance » n'est dit que si le registre le dit (`relancee` : True, False, None)."""
     if not _entier(jours):
         return "jours inconnus"
     if jours <= 0:
-        return "déjà sortie, en relance"
+        suite = ("en relance" if relancee is True else "pas de relance" if relancee is False
+                 else "relance : inconnu")
+        return f"déjà sortie, {suite}"
     return "demain" if jours == 1 else f"dans {jours} jours"
 
 
@@ -275,7 +291,7 @@ def bloc_sorties(contenu: dict | None) -> str:
         return _inconnu(titre)
     lignes = "".join(
         f'<li><span>{_texte(_dict(s).get("titre"))}</span><span class="bord-mut">'
-        f'{_jj_mm(_dict(s).get("date"))} · {_echeance(_dict(s).get("jours"))}</span></li>'
+        f'{_jj_mm(_dict(s).get("date"))} · {_echeance(_dict(s).get("jours"), _dict(s).get("relancee"))}</span></li>'
         for s in liste)
     corps = (f'<ul class="bord-signalements">{lignes}</ul>' if liste
              else '<p class="bord-vide">Aucune sortie dans les 30 jours.</p>')
