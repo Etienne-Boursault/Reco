@@ -448,18 +448,10 @@ def test_reseaux_compte_en_tete_de_colonne():
     assert tete.startswith('<span class="bord-nb">6</span>')
 
 
-# ---- Les places en attente ------------------------------------------------
+# ---- Les colonnes ---------------------------------------------------------
 
 def _colonne(page, cle):
     return page.split(f'id="bord-{cle}"', 1)[1].split("</section>", 1)[0]
-
-
-def test_le_systeme_et_les_sorties_ont_leur_place_en_attente():
-    page = _page()
-    systeme = _colonne(page, "systeme")
-    assert "data-attente" in systeme and "Liens morts" in systeme
-    reseaux = _colonne(page, "reseaux")
-    assert "Sorties à venir" in reseaux and "Signalements" in reseaux
 
 
 def test_l_audience_remplit_le_centre_et_sans_elle_dit_inconnu():
@@ -476,10 +468,6 @@ def test_les_signalements_vont_dans_la_colonne_des_reseaux():
     reseaux = _colonne(_page(audience={"etat": "ok", "donnees": {"signalements": sig}}),
                        "reseaux")
     assert "ubm-0" in reseaux and "Signalements" in reseaux
-
-
-def test_bloc_attente_echappe_son_titre():
-    _sans_balise_active(bb.bloc_attente(CHARGE))
 
 
 # ---- Le fuseau ------------------------------------------------------------

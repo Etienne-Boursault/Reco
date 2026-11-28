@@ -12,9 +12,10 @@ L'ÉCHAPPEMENT (R10)
 -------------------
 La CSP du serveur admet les scripts en ligne, et rien n'est authentifié : tout
 texte passe par `_texte` (échappé, coupé à `LONGUEUR` signes), une valeur mise
-en attribut est échappée ou prise dans une liste fixe. Aucun bloc de cette PR ne
-met d'adresse venue des données dans un `href` : le seul lien, vers la
-relecture, est un chemin du serveur dont le guid est encodé.
+en attribut est échappée ou prise dans une liste fixe. Une adresse venue des données
+n'entre dans un `href` qu'en `https://github.com/` (`_est_github`, la PR d'une ligne
+d'« À faire d'abord ») ; l'autre lien, vers la relecture, est un chemin du serveur dont le
+guid est encodé.
 
 Une donnée absente s'affiche « inconnu », jamais « rien » ni « aucune » (F11).
 """
@@ -24,6 +25,7 @@ import html
 import urllib.parse
 from datetime import UTC, datetime, timedelta
 from typing import Any
+from urllib.parse import urlparse
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from bord_afaire import _libelle, signalements_en_attente
@@ -138,6 +140,15 @@ def etat_entete(passages: list[dict] | None, maintenant: datetime,
     return "ok", f"Chaîne en marche · {quand}"
 
 
+def _est_github(adresse: Any) -> bool:
+    """Vrai pour `https://github.com/…` seulement (F21)."""
+    try:
+        u = urlparse(adresse) if isinstance(adresse, str) else None
+        return u is not None and u.scheme == "https" and u.hostname == "github.com"
+    except ValueError:
+        return False
+
+
 def _carte(contenu: str, classe: str = "bord-carte") -> str:
     return f'<div class="{classe}">{contenu}</div>'
 
@@ -156,6 +167,9 @@ def bloc_afaire(items: list[dict]) -> tuple[str, int]:
         if bloc == "relecture" and item.get("guid"):
             href = "/ep?guid=" + urllib.parse.quote(str(item["guid"]), safe="")
             lien = f'<a class="bord-bouton" href="{html.escape(href)}">Ouvrir la relecture</a>'
+        elif _est_github(item.get("href")):  # une PR : jamais un autre hôte (F21)
+            lien = (f'<a class="bord-bouton" href="{html.escape(item["href"])}" '
+                    'rel="noreferrer">Ouvrir la PR</a>')
         lignes.append(
             f'<li class="bord-tache" data-bloc="{html.escape(bloc)}"{inconnu}>'
             f'<span class="bord-tache-bloc">{_texte(_BLOCS.get(bloc, bloc), 40)}</span>'
@@ -307,11 +321,3 @@ def bloc_signalements(audience: dict | None) -> str:
     autres = f'<p class="bord-mut">+ {reste} autres</p>' if reste > 0 else ""
     lignes = "".join(_signalement(s) for s in liste[:SIGNALEMENTS_MAX])
     return _carte(f'{titre}<ul class="bord-signalements">{lignes}</ul>{autres}{perime}')
-
-
-# ---- Places en attente ----------------------------------------------------
-
-def bloc_attente(titre: str) -> str:
-    """Une place réservée à un bloc qui viendra plus tard (audience, système…)."""
-    return (f'<div class="bord-carte" data-attente><span class="bord-etiquette">{_texte(titre)}'
-            '</span><p class="bord-mut">en attente</p></div>')

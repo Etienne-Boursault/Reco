@@ -18,6 +18,7 @@ from pathlib import Path
 
 import pytest
 
+import bord_contenu
 import bord_distant
 import bord_github
 import bord_reseaux
@@ -180,6 +181,42 @@ def test_get_bord_lit_github_et_le_systeme_une_seule_fois_chacun(monkeypatch):
     page = _requete("GET", "/bord")[2].decode("utf-8")
     assert sorted(map(str, appels)) == sorted(["github", str(("systeme", SOURCE))])
     assert 'data-conclusion="echec"' in page and "reco-atelier:essai-1" in page
+
+
+def test_get_bord_lit_le_contenu_une_seule_fois_et_remplit_les_lignes_d_a_faire(monkeypatch):
+    appels = []
+    contenu = {"sorties": {"liste": [{"id": "r", "titre": "Un film à venir", "date": "2026-12-01",
+                                      "jours": 3, "relancee": False}], "total": 1,
+                           "illisibles": 0},
+               "graphies": {"total": 1, "ecartees": 0,
+                            "plus_vues": [{"fausse": "Kaffka", "juste": "Kafka", "vu": 2}]},
+               "liens": {"date": "2026-11-25", "age": 3, "ancien": False, "morts": 2,
+                         "nouveaux": 0, "inconnus": 0, "vivants": 5,
+                         "liste": [{"url": "https://exemple.test/mort", "reponse": "404",
+                                    "recos": ["r"]}]}}
+    pr = {"numero": 7, "titre": "Sorties", "branche": "contenu/sorties-x", "groupe": "sorties",
+          "date": "2026-11-28T08:00:00Z", "adresse": "https://github.com/a/b/pull/7"}
+    github = {"etat": "ok", "donnees": {"ouvertes": {"episodes": [], "sorties": [pr],
+                                                     "coupee": False},
+                                        "ci": None, "deploiement": None}, "age": 5}
+    monkeypatch.setattr(bord_contenu, "lire",
+                        lambda source_id, **kw: appels.append(source_id) or contenu)
+    monkeypatch.setattr(bord_github, "lire", lambda **kw: github)
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert appels == [SOURCE]
+    assert "Un film à venir" in page and "Kaffka" in page
+    assert 'href="https://exemple.test/mort"' in page
+    assert "2 liens morts" in page and "fusionner la PR des sorties : Sorties (#7)" in page
+    assert 'href="https://github.com/a/b/pull/7"' in page
+    assert "data-attente" not in page
+
+
+def test_get_bord_sans_contenu_lisible_dit_inconnu(monkeypatch):
+    monkeypatch.setattr(bord_contenu, "lire",
+                        lambda source_id, **kw: {"sorties": None, "graphies": None, "liens": None})
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert "liens morts : inconnu" in page and "sorties : inconnu" in page
+    assert "Liens morts : inconnu" in page and "Sorties à venir : inconnu" in page
 
 
 def test_get_bord_sans_cache_github_dit_inconnu():

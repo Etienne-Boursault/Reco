@@ -312,7 +312,6 @@ def test_le_systeme_montre_la_sante_et_les_couts_sans_donnees_comme_inconnus():
     assert "GitHub : pas encore lu" in systeme and "Image de la chaîne : inconnue" in systeme
     assert "7 derniers jours : inconnu" in systeme and "Extraction : inconnu" in systeme
     assert "Santé et versions</span><p class=\"bord-mut\">en attente" not in systeme
-    assert "Liens morts" in systeme and "Graphies apprises" in systeme  # 3d-2
 
 
 def test_le_systeme_rend_les_donnees_de_github_et_de_la_chaine():

@@ -195,7 +195,6 @@ h1, h2, h3 {
   padding: 22px; border-radius: 14px; background: var(--carte);
 }
 .bord-carte-table { padding: 12px 12px 6px; overflow-x: auto; }
-.bord-carte[data-attente] { background: none; border: 1px dashed var(--trait-fort); }
 .bord-mut, .bord-vide { margin: 0; color: var(--mut); }
 .bord-alerte { margin: 0; color: var(--alerte); font-weight: 600; }
 

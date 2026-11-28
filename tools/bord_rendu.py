@@ -93,7 +93,8 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
                 recents: list[dict] | None, coches: dict[str, dict[str, str]] | None,
                 maintenant: datetime | None = None, flash: str | None = None,
                 flash_kind: str = "info", audience: dict | None = None,
-                github: dict | None = None, systeme: dict | None = None) -> str:
+                github: dict | None = None, systeme: dict | None = None,
+                contenu: dict | None = None) -> str:
     """La page entière.
 
     - `titre` : le titre de la source ;
@@ -104,7 +105,8 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
     - `flash`, `flash_kind` : le message après une case cochée (redirection 303) ;
     - `audience` : `bord_distant.lire()`, qui ne lit que le cache (None : inconnu) ;
     - `github` : `bord_github.lire()`, de même (None : inconnu) ;
-    - `systeme` : `bord_systeme.lire(source_id)` : coûts, modèles, image (None : inconnu).
+    - `systeme` : `bord_systeme.lire(source_id)` : coûts, modèles, image (None : inconnu) ;
+    - `contenu` : `bord_contenu.lire(source_id)` : sorties, graphies, liens morts (None : inconnu).
     """
     maintenant = maintenant or datetime.now(UTC)
     contenu_afaire, nb_afaire = blocs.bloc_afaire(afaire)
@@ -113,11 +115,11 @@ def rendre_bord(*, titre: str, afaire: list[dict], chaine: dict,
         ("afaire", "À faire d'abord", contenu_afaire, nb_afaire),
         ("chaine", "Chaîne", blocs.bloc_chaine(chaine), None),
         ("audience", "Audience", bord_rendu_audience.bloc_audience(audience), None),
-        ("reseaux", "Réseaux", contenu_reseaux + blocs.bloc_attente("Sorties à venir")
+        ("reseaux", "Réseaux", contenu_reseaux + bord_rendu_systeme.bloc_sorties(contenu)
          + blocs.bloc_signalements(audience), nb_reseaux),
         ("systeme", "Système", bord_rendu_systeme.bloc_sante(github, systeme)
-         + bord_rendu_systeme.bloc_couts(systeme) + blocs.bloc_attente("Liens morts")
-         + blocs.bloc_attente("Graphies apprises"), None),
+         + bord_rendu_systeme.bloc_couts(systeme) + bord_rendu_systeme.bloc_liens(contenu)
+         + bord_rendu_systeme.bloc_graphies(contenu), None),
     ]
     nav = "".join(f'<a href="#bord-{cle}">{titre_col}{" " + _nb(nb) if nb else ""}</a>'
                   for cle, titre_col, _, nb in colonnes)
