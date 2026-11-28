@@ -237,6 +237,33 @@ def test_get_bord_passe_les_prs_fusionnees_a_la_chaine_et_a_la_publication(monke
     assert "fusionner la PR de S6·E1" not in page
 
 
+def test_get_bord_verifie_la_publication_sur_dix_episodes_et_les_cases_sur_trois(
+        corpus, monkeypatch):
+    """Revue globale, E1 : la chaîne ne crée pas de PR ; un épisode non fusionné au-delà des 3
+    derniers reste signalé, et les publiés plus anciens que la fenêtre sont comptés."""
+    chemin = corpus / "output_dir" / "pipeline" / f"{SOURCE}.json"
+    chemin.write_text(json.dumps({"published": ["old-1", "old-2", *[f"x{i}" for i in range(10)]]}),
+                      encoding="utf-8")
+    entrees = [{"guid": f"x{i}", "fusionne": False, "episode": {"season": 6, "number": i + 1}}
+               for i in range(9, -1, -1)]
+    appels = []
+
+    def faux(source_id, state, episodes, n=3):
+        appels.append(n)
+        return entrees[:n]
+
+    monkeypatch.setattr(bord_reseaux, "episodes_recents", faux)
+    monkeypatch.setattr(bord_github, "lire", lambda **kw: {
+        "etat": "ok", "age": 5, "donnees": {
+            "depot": "a/b", "fusionnees": [], "ci": None, "deploiement": None,
+            "ouvertes": {"episodes": [], "sorties": [], "coupee": False}}})
+    page = _requete("GET", "/bord")[2].decode("utf-8")
+    assert appels == [bord_reseaux.N_PUBLICATION]
+    assert "ouvrir puis fusionner la PR de S6·E1" in page          # le plus ancien de la fenêtre
+    assert "2 épisodes plus anciens non vérifiés" in page           # old-1 et old-2
+    assert "réseaux de S6·E10 :" in page and "réseaux de S6·E7 :" not in page
+
+
 def test_get_bord_sans_contenu_lisible_dit_inconnu(monkeypatch):
     monkeypatch.setattr(bord_contenu, "lire",
                         lambda source_id, **kw: {"sorties": None, "graphies": None, "liens": None})

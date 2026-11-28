@@ -70,8 +70,11 @@ class BordRoutesMixin:
         qs = urllib.parse.parse_qs(parsed.query)
         kind = qs.get("kind", [""])[0]
         source, episodes, groups = review_render._load_groups(self.source_id)
-        recents = bord_reseaux.episodes_recents(
-            self.source_id, review_render_page._pipeline_state(self.source_id), episodes)
+        etat = review_render_page._pipeline_state(self.source_id)
+        # Revue globale, E1 : la publication regarde 10 épisodes, les cases les 3 derniers.
+        publies = bord_reseaux.episodes_recents(
+            self.source_id, etat, episodes, bord_reseaux.N_PUBLICATION)
+        recents = None if publies is None else publies[:bord_reseaux.N_RECENTS]
         try:
             coches = bord_reseaux.lire()
         except bord_reseaux.EtatIllisible as exc:
@@ -86,7 +89,8 @@ class BordRoutesMixin:
             titre=source.get("title", self.source_id),
             afaire=bord_afaire.a_faire_depuis(
                 episodes=episodes, groups=groups, recents=recents, coches=coches,
-                audience=audience, github=github, contenu=contenu),
+                audience=audience, github=github, contenu=contenu, publies=publies,
+                non_verifies=bord_reseaux.non_verifies(etat, episodes)),
             audience=audience, github=github, systeme=systeme, contenu=contenu,
             chaine=bord_chaine.etat_chaine(
                 self.source_id, fusionnees=bord_afaire.branches_fusionnees(github)),

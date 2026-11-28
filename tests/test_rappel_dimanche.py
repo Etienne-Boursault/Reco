@@ -100,6 +100,26 @@ def test_le_texte_reprend_les_lignes_de_la_colonne_a_faire(monde):
     assert _corps(monde) == "🗒️ Il te reste : " + " · ".join(i["texte"] for i in items)
 
 
+def test_le_message_dit_les_reseaux_a_cocher_et_la_publication_au_dela_des_trois_derniers(
+        monde, monkeypatch):
+    """Revue globale, E1 : 4 épisodes publiés sans PR, le plus ancien reste dit ; les cases
+    ne portent que sur les 3 derniers ; les publiés hors fenêtre sont comptés."""
+    entrees = [{"guid": f"yt-{n}", "fusionne": False, "episode": {"season": 6, "number": n}}
+               for n in (14, 13, 12, 11)]
+    monkeypatch.setattr(bord_reseaux, "episodes_recents",
+                        lambda source_id, state, episodes, n=3: entrees[:n])
+    monkeypatch.setattr(review_render_page, "_pipeline_state", lambda source_id: {
+        "published": ["old-1", *[f"yt-{n}" for n in (11, 12, 13, 14)], *[f"z{i}" for i in range(6)]]})
+    monde.github = {**GITHUB, "donnees": {**GITHUB["donnees"], "ouvertes": {
+        "episodes": [], "sorties": [], "coupee": False}}}
+    assert _lancer() == 0
+    corps = _corps(monde)
+    assert "ouvrir puis fusionner la PR de S6·E11" in corps            # au-delà des 3 derniers
+    assert "réseaux de S6·E14 : Instagram, Threads" in corps
+    assert "réseaux de S6·E12 :" in corps and "réseaux de S6·E11 :" not in corps
+    assert "1 épisode plus ancien non vérifié" in corps               # old-1, hors des 10 derniers
+
+
 @pytest.mark.parametrize("quand", [
     datetime(2026, 11, 28, 19, 5, tzinfo=UTC),    # samedi soir
     datetime(2026, 11, 30, 19, 5, tzinfo=UTC),    # lundi : pas de rattrapage

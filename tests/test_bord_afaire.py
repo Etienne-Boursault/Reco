@@ -325,6 +325,61 @@ def test_une_pr_sans_branche_n_est_rapprochee_d_aucun_episode():
         ("fusionner la PR #5 : sans titre", f"{PR_URL}5")]
 
 
+def _publies(*numeros):
+    """Des épisodes publiés sans PR, du plus récent au plus ancien."""
+    return [_recent(f"yt-{n}", {"guid": f"yt-{n}", "title": "T", "season": 6, "number": n})
+            for n in numeros]
+
+
+def test_un_episode_publie_sans_pr_au_dela_des_trois_derniers_reste_signale():
+    """Revue globale, E1 : la chaîne ne crée pas de PR ; le plus ancien de 4 ne doit pas disparaître."""
+    lignes = ba.lignes_publication(_github(), _publies(14, 13, 12, 11))
+    assert [t for t, _ in lignes] == [f"ouvrir puis fusionner la PR de S6·E{n}"
+                                      for n in (14, 13, 12, 11)]
+
+
+def test_au_dela_de_la_fenetre_une_note_grisee_dit_combien_ne_sont_pas_verifies():
+    """Revue globale, E1 (F23) : la liste coupée le dit ; la note ne compte pas comme tâche."""
+    import bord_rendu_blocs as bb
+    lignes = ba.lignes_publication(_github(), [], non_verifies=2)
+    assert lignes == [ba.Note("2 épisodes plus anciens non vérifiés (hors des 10 derniers publiés)")]
+    assert ba.lignes_publication(_github(), [], non_verifies=1) == [
+        ba.Note("1 épisode plus ancien non vérifié (hors des 10 derniers publiés)")]
+    assert ba.lignes_publication(_github(), [], non_verifies=0) == []
+    assert bb.bloc_afaire(_appel(publication=lignes))[1] == 0
+
+
+def test_a_faire_depuis_regarde_la_fenetre_pour_la_publication_et_trois_pour_les_reseaux():
+    publies = _publies(14, 13, 12, 11)
+    items = ba.a_faire_depuis(episodes={}, groups={}, recents=publies[:3], publies=publies,
+                              coches={}, audience=None, github=_github(), contenu=None,
+                              non_verifies=1)
+    publication = [i["texte"] for i in items if i["bloc"] == "publication"]
+    assert publication[:4] == [f"ouvrir puis fusionner la PR de S6·E{n}" for n in (14, 13, 12, 11)]
+    assert publication[4].startswith("1 épisode plus ancien non vérifié")
+    assert [i["texte"].split(" : ")[0] for i in items if i["bloc"] == "reseaux"] == [
+        "réseaux de S6·E14", "réseaux de S6·E13", "réseaux de S6·E12"]
+    # Sans GitHub lisible, le repli sur l'état de la chaîne regarde aussi la fenêtre.
+    repli = ba.a_faire_depuis(episodes={}, groups={}, recents=publies[:3], publies=publies,
+                              coches={}, audience=None, github=None, contenu=None)
+    assert [i["texte"] for i in repli if i["bloc"] == "publication"] == [
+        f"fusionner la PR de S6·E{n}" for n in (14, 13, 12, 11)]
+
+
+def test_une_panne_isolee_des_pr_fermees_rend_les_fusionnees_inconnues():
+    """Revue globale, D4 : la liste gardée d'avant ne dit pas que la dernière lecture est complète."""
+    github = _github(fusionnees=[_pr(40, "contenu/yt-11")])
+    github["donnees"]["pannes"] = {"fusionnees": {"etat": "panne", "detail": "HTTP 500"}}
+    assert ba.branches_fusionnees(github) is None
+    assert ba.lignes_publication(github, [_recent("yt-11", EP11)]) == [
+        ba.Note("publication de S6·E11 : inconnu (PR fusionnées non lues)")]
+    # Une autre panne (CI, déploiement) ne touche pas aux PR fusionnées.
+    github["donnees"]["pannes"] = {"ci": {"etat": "panne", "detail": "HTTP 500"}}
+    assert ba.branches_fusionnees(github) == {"contenu/yt-11": "2026-11-28T08:00:00Z"}
+    github["donnees"]["pannes"] = "x"
+    assert ba.branches_fusionnees(github) is not None
+
+
 def test_la_ligne_des_sorties_passe_d_inconnu_a_un_nombre_depuis_github():
     avant = _appel(sorties=ba.lignes_sorties(None))
     assert _textes(avant) == ["sorties : inconnu"] and avant[0]["inconnu"]
