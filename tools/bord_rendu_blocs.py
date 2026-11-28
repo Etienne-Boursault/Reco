@@ -31,7 +31,8 @@ from review_render_focus import short_title
 
 #: Longueur maximale d'un texte venu des données (messages d'erreur, titres).
 LONGUEUR = 160
-#: Au-delà, la chaîne est « en retard » : le même seuil que le moniteur Kuma.
+#: Au-delà, depuis le début du dernier passage, la chaîne est « en retard » (le seuil
+#: de Kuma, qui compte lui depuis le dernier ping, donc depuis la fin d'un passage).
 RETARD = timedelta(hours=2, minutes=30)
 
 _JOURS = ("lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche")
@@ -119,7 +120,10 @@ def etat_entete(passages: list[dict] | None, maintenant: datetime) -> tuple[str,
     if echecs:
         pluriel = "s" if len(echecs) > 1 else ""
         return "alerte", f"Chaîne : {len(echecs)} étape{pluriel} en échec · {quand}"
-    if ecart > RETARD:
+    # Tour 1, F8 : l'écart se mesure depuis le début du passage, pas depuis sa fin :
+    # un passage qui transcrit pendant plus de 30 min ne fait pas crier au retard.
+    debut = _instant(dernier.get("debut")) or fin
+    if maintenant - debut > RETARD:
         return "alerte", f"Chaîne en retard · {quand}"
     return "ok", f"Chaîne en marche · {quand}"
 

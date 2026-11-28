@@ -187,7 +187,8 @@ page se recharge toute seule toutes les 5 minutes.
   publié), les erreurs en cours et les 5 derniers passages de `tick.sh`. Chaque passage note
   dans `tools/output/bord/passages.jsonl` les étapes lancées et celles en échec (200 lignes
   gardées). Une écriture ratée est journalisée et n'arrête pas la chaîne. L'en-tête dit « en
-  retard » au-delà de 2 h 30 sans passage, le seuil de Kuma.
+  retard » quand le dernier passage a commencé il y a plus de 2 h 30 (la durée d'un passage
+  compte donc dans l'écart ; Kuma, lui, compte depuis le dernier ping).
 - **Réseaux** : une case par réseau (Instagram, Threads, Spotify, Deezer, SensCritique,
   YouTube) et par épisode, pour les 3 derniers publiés. Un clic la coche ou la décoche, sans
   recharger la page ; sans script, le formulaire part et la page revient avec un message. Les

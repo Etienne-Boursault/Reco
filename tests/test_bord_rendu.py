@@ -166,9 +166,21 @@ def test_la_chaine_est_en_marche_apres_un_passage_recent():
     assert _etat_entete([_passage()]) == ("ok", "Chaîne en marche · passage il y a 33 min")
 
 
-def test_la_chaine_est_en_retard_au_dela_de_deux_heures_et_demie():
-    vieux = _passage(fin="2026-11-29T08:20:00+00:00")
-    assert _etat_entete([vieux]) == ("alerte", "Chaîne en retard · passage il y a 2 h 31")
+def test_la_chaine_est_en_retard_au_dela_de_deux_heures_et_demie_depuis_le_debut():
+    # Commencé il y a 2 h 40, fini il y a 1 h 40 : l'écart se mesure depuis le début.
+    vieux = _passage(debut="2026-11-29T08:11:00+00:00", fin="2026-11-29T09:11:00+00:00")
+    assert _etat_entete([vieux]) == ("alerte", "Chaîne en retard · passage il y a 1 h 40")
+
+
+def test_un_long_passage_ne_fait_pas_passer_la_chaine_en_retard():
+    # Tour 1, F8 : commencé il y a 2 h 10, fini il y a 1 h 40 (30 min de transcription).
+    long = _passage(debut="2026-11-29T08:41:00+00:00", fin="2026-11-29T09:11:00+00:00")
+    assert _etat_entete([long]) == ("ok", "Chaîne en marche · passage il y a 1 h 40")
+
+
+def test_un_debut_illisible_se_mesure_depuis_la_fin():
+    passage = _passage(debut="pas une date", fin="2026-11-29T08:20:00+00:00")
+    assert _etat_entete([passage]) == ("alerte", "Chaîne en retard · passage il y a 2 h 31")
 
 
 def test_un_passage_en_echec_se_voit_en_tete():
