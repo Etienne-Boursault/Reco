@@ -41,6 +41,17 @@ par le refus par défaut. Tout appareil du Wi-Fi peut donc modifier le corpus. P
 refermer sans perdre l'accès local : exiger une clé dans l'URL et répondre 404 sans
 elle, comme le fait déjà `/audience` (`src/lib/audience/`).
 
+**La garde des hôtes** (tableau de bord, 28/11/2026, `tools/review_handler_base.py`) ferme
+le « DNS rebinding » : une page piégée qui parle au serveur sous son propre nom de domaine
+reçoit un 403, en lecture comme en écriture. Sont admis une adresse IP littérale, un nom en
+`.local`, `localhost`, l'hôte de `RECO_REVIEW_URL` et les noms de `RECO_REVIEW_HOTES`.
+`RECO_REVIEW_URL` et `RECO_REVIEW_HOTES` ne comptent qu'en mode réseau local (`ALLOW_LAN`) :
+en mode local strict, seuls `localhost` et le bouclage passent, quoi que disent ces deux
+variables. Un signet sous un autre nom recevrait « Forbidden » : ajouter ce nom à `RECO_REVIEW_HOTES`, puis
+`docker compose up -d --force-recreate review` sous le verrou du tick. Chaque refus est
+journalisé avec le `Host` reçu. Un moniteur HTTP qui appellerait la page par un nom de
+conteneur serait refusé de même.
+
 Juste après l'extraction, le même passage **cherche les liens** des brouillons
 (`chercher-liens`, cf. `tools/liens_avant_relecture.py`) avec les passes de la
 finalisation, sans arrêter la page de validation : chaque carte montre ensuite ses
@@ -161,6 +172,45 @@ les cherche donc après coup, sans que personne y pense.
   elle ne fait pas échouer l'étape. Un message ⚠️ qui n'a pas pu partir sur Matrix est
   renvoyé au passage suivant.
 
+## Le tableau de bord : `/bord`
+
+Décision R2 B du 27/11/2026, puis TB-1 C du 28/11/2026. La page `/bord`, liée depuis
+l'accueil de la relecture (« 🧭 Tableau de bord »), dit en un coup d'œil ce qu'il reste à
+faire. `/` reste la relecture. Cinq colonnes sur l'écran de 39 pouces : **À faire
+d'abord**, **Chaîne**, **Audience** au centre, **Réseaux**, **Système**. Sous 2 200 px, le
+menu des sections passe à gauche et la chaîne à droite ; sous 900 px, une colonne avec des
+onglets. Le choix « Vue : auto · 39" · 13" · téléphone » reste gardé dans le navigateur. La
+page se recharge toute seule toutes les 5 minutes.
+
+- **À faire d'abord** : les épisodes à relire, la PR de publication à fusionner, les réseaux
+  pas encore faits des 3 derniers épisodes publiés. Les signalements, les liens morts et les
+  sorties disent « inconnu » tant que leurs blocs n'existent pas.
+- **Chaîne** : l'épisode en cours et ses étapes (détecté, transcrit, extrait, finalisé,
+  publié), les erreurs en cours et les 5 derniers passages de `tick.sh`. Chaque passage note
+  dans `tools/output/bord/passages.jsonl` les étapes lancées et celles en échec (200 lignes
+  gardées). Une écriture ratée est journalisée et n'arrête pas la chaîne. L'en-tête dit « en
+  retard » au-delà de 2 h 30 sans passage terminé, le seuil de Kuma. Comme `tick.sh` ne note un
+  passage qu'à sa fin, il écrit le début du passage dans `tools/output/bord/en-cours` dès qu'il
+  tient le verrou, et l'efface en notant la fin : tant que le fichier est plus récent que le
+  dernier passage noté, l'en-tête dit « passage en cours depuis … » au lieu de « en retard »
+  (tour 1, F8, 28/11/2026). Au-delà de 2 h 30, le passage est dit « bloqué » ; un fichier resté
+  après une note ratée finit de même par le dire. Les échecs du dernier passage terminé
+  passent avant.
+- **Réseaux** : une case par réseau (Instagram, Threads, Spotify, Deezer, SensCritique,
+  YouTube) et par épisode, pour les 3 derniers publiés. Un clic la coche ou la décoche, sans
+  recharger la page ; sans script, le formulaire part et la page revient avec un message. Les
+  cases vivent dans `tools/output/bord/reseaux.json`. Un fichier abîmé n'est jamais réécrit :
+  la page le signale, et aucune case ne s'enregistre tant qu'il n'est pas réparé ou retiré.
+- **Audience** et **Système** viendront avec les PR suivantes.
+
+Les polices de la page (Bebas Neue, Inter, licence OFL) sont servies par le serveur lui-même
+(`/polices/…`, `tools/review_polices/`), sans appel extérieur. `RECO_BORD_DIR` déplace
+le dossier du tableau de bord pour les essais : ne pas la poser dans le `.env`. `tick.sh` ne l'y
+lit pas, et le serveur et `tick.sh` écriraient alors dans deux dossiers différents. La page
+n'écrit que dans ce dossier, jamais dans le corpus, et ne prend aucun verrou de la chaîne : comme la relecture,
+elle s'arrête une à deux minutes pendant l'extraction et la finalisation. Après une PR qui la
+change : `docker compose restart review` sous le verrou du tick, une fois le `git pull` passé.
+
 ## Où sont les choses
 
 | Chemin sur venus | Rôle | Sauvegardé |
@@ -169,6 +219,7 @@ les cherche donc après coup, sans que personne y pense.
 | `~/docker/reco/.env` | clés (droits 600) | oui |
 | `~/docker/reco/depot/` | clone du dépôt ; `tools/output/` y garde transcriptions et états | oui |
 | `~/docker/reco/logs/tick-AAAA-MM.log` | journal des passages | oui |
+| `~/docker/reco/depot/tools/output/bord/` | tableau de bord : `passages.jsonl` (200 derniers passages) et `en-cours` (début du passage qui tourne), écrits par `tick.sh`, `reseaux.json` (cases cochées) | oui |
 | `~/.cache/reco/` | modèle Whisper (1,6 Go), caches yt-dlp — se retéléchargent | **non**, volontairement |
 | `~/.ssh/reco_deploy` | clé de dépôt (écriture sur ce dépôt seul), droits 600 | **non** : la sauvegarde ne couvre que `~/docker`. Une clé perdue se régénère et se redéclare sur GitHub |
 
@@ -187,6 +238,7 @@ RECO_SPOTIFY=0                 # sans Premium, l'API répond 403 : liens posés 
 RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le message porte le lien de comparaison
 RECO_SORTIES_ANNONCEES=1       # relance quotidienne des liens à la sortie annoncée ; absent, l'étape ne fait rien
 RECO_KUMA_PUSH_URL=…           # moniteur « push » Uptime Kuma ; absent, aucun ping n'est envoyé
+RECO_REVIEW_HOTES=…            # facultatif : autres noms admis par la garde des hôtes (virgules ou espaces) ; lu seulement en mode réseau local (ALLOW_LAN)
 ```
 
 ### Changer de modèle d'extraction : `RECO_MODELE_EXTRACTION`
@@ -346,7 +398,8 @@ après chaque build (`tools/verifier_liens.py internes dist`).
 Quand tout va bien, la chaîne est **silencieuse**. Si le cron meurt, si un conteneur
 casse, si le verrou reste coincé, rien ne le dit : cela se verrait au prochain épisode
 manqué. Kuma tourne sur venus et ne peut pas interroger la page de validation, ouverte
-au seul VPN (l'adresse d'un conteneur n'est pas dans la plage autorisée par ufw). C'est
+au seul réseau local et au VPN (l'adresse d'un conteneur n'est pas dans la plage
+autorisée par ufw, et la garde des hôtes refuse un nom de conteneur). C'est
 donc au passage de se signaler.
 
 À la **fin** de chaque passage, `tick.sh` appelle l'URL de `RECO_KUMA_PUSH_URL` si elle

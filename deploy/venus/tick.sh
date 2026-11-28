@@ -20,32 +20,61 @@ exec 9>/tmp/reco-tick.lock
 flock -n 9 || exit 0
 
 horodater() { printf '%s — %s\n' "$(date -Iseconds)" "$*"; }
+# Suivi des passages pour le tableau de bord (R2 B du 27/11/2026, TB-1 C du
+# 28/11/2026) : une ligne JSON par passage dans passages.jsonl (début, fin, étapes
+# lancées parce que leur sonde a répondu oui, étapes en échec), les 200 dernières.
+# Pendant le passage, `en-cours` porte son début (effacé à la fin de la note).
+# Le dossier est sous tools/output/, que Git ignore et que le conteneur de la page
+# voit. Une erreur du suivi ne doit jamais arrêter la chaîne : l'écriture finit par
+# `|| true`, et chaque variable a une valeur avant d'être lue (set -u).
+BORD="${RECO_BORD_DIR:-depot/tools/output/bord}"
+DEBUT=$(date -Iseconds)
+LANCEES=""
+ECHECS=""
+lance() { LANCEES="${LANCEES:+${LANCEES},}\"$1\""; }
+echec() { ECHECS="${ECHECS:+${ECHECS},}\"$1\""; shift; horodater "$@"; }
+noter_passage() {
+  mkdir -p "${BORD}" \
+    && printf '{"debut":"%s","fin":"%s","lancees":[%s],"echecs":[%s]}\n' \
+      "${DEBUT}" "$(date -Iseconds)" "${LANCEES}" "${ECHECS}" >>"${BORD}/passages.jsonl" \
+    && tail -n 200 "${BORD}/passages.jsonl" >"${BORD}/passages.jsonl.tmp" \
+    && mv "${BORD}/passages.jsonl.tmp" "${BORD}/passages.jsonl" \
+    && rm -f "${BORD}/en-cours"
+}
 outil() {
   docker compose run --rm -T pipeline \
     python traiter_nouveaux_episodes.py --source un-bon-moment "$@"
 }
 
 horodater "passage"
+# Le passage tourne : le tableau de bord le sait par ce fichier, que `noter_passage`
+# efface à la fin (tour 1, F8 repris : sans lui, une longue transcription faisait crier
+# au retard). Resté après un échec de la note, il passe pour un passage bloqué.
+{ mkdir -p "${BORD}" && printf '%s\n' "${DEBUT}" >"${BORD}/en-cours"; } \
+  || horodater "suivi du passage en cours impossible" || true
 git -C depot pull --ff-only --quiet \
-  || horodater "git pull impossible : passage sur la copie locale"
-outil detecter   || horodater "détection en échec"
-outil transcrire || horodater "transcription en échec"
+  || echec git-pull "git pull impossible : passage sur la copie locale"
+outil detecter   || echec detecter "détection en échec"
+outil transcrire || echec transcrire "transcription en échec"
 if outil a-extraire; then
+  lance extraire
   horodater "extraction : arrêt de la page de validation"
   docker compose stop review
-  outil extraire || horodater "extraction en échec"
+  outil extraire || echec extraire "extraction en échec"
   docker compose start review
 fi
 # Les liens sont cherchés AVANT la relecture, pour que la page les montre. Sans
 # verrou : l'étape n'écrit que les liens nouveaux, dans la reco relue à
 # l'instant d'écrire — la page de validation reste ouverte pendant ce temps.
 if outil a-chercher-liens; then
-  outil chercher-liens || horodater "recherche de liens en échec"
+  lance chercher-liens
+  outil chercher-liens || echec chercher-liens "recherche de liens en échec"
 fi
 if outil a-finaliser; then
+  lance finaliser
   horodater "finalisation : arrêt de la page de validation"
   docker compose stop review
-  outil finaliser || horodater "finalisation en échec"
+  outil finaliser || echec finaliser "finalisation en échec"
   docker compose start review
 fi
 # La publication ne prend pas le verrou : elle ne touche pas au corpus, elle le
@@ -53,7 +82,8 @@ fi
 # fusion de la PR — la page de validation ne l'affichera plus, sa relecture étant
 # terminée. Inutile donc de l'arrêter.
 if outil a-publier; then
-  outil publier || horodater "publication en échec"
+  lance publier
+  outil publier || echec publier "publication en échec"
 fi
 # Relance des sorties annoncées (R4 B, 27/11/2026) : une fois par jour, après 6 h à
 # Paris (l'étape se l'impose), elle cherche les liens des recos dont la date de sortie
@@ -62,16 +92,17 @@ fi
 # touche jamais au clone. Inerte sans RECO_SORTIES_ANNONCEES=1 dans le .env.
 docker compose run --rm -T pipeline \
   python sorties_annoncees.py --notifier matrix \
-  || horodater "relance des sorties annoncées en échec"
+  || echec sorties-annoncees "relance des sorties annoncées en échec"
 # Le commentaire YouTube attend que la page de l'épisode soit en ligne : la
 # sonde répond « oui » dès la PR fusionnée, l'étape repasse tant que le
 # déploiement n'a pas fini. Inerte sans RECO_YT_COMMENTAIRES=1 dans le .env.
 if outil a-commenter; then
-  outil commenter || horodater "commentaire YouTube en échec"
+  lance commenter
+  outil commenter || echec commenter "commentaire YouTube en échec"
 fi
 # Une fois par semaine (l'étape se l'impose) : modèle d'extraction disparu, ou
 # plus récent dans sa famille. Un message Matrix, jamais de bascule automatique.
-outil veiller-modeles || horodater "veille des modèles en échec"
+outil veiller-modeles || echec veiller-modeles "veille des modèles en échec"
 
 # Une fois par semaine : les runs de télémétrie restés « started » (arrêt brutal
 # d'un conteneur) passent en « interrupted » au-delà de 24 h. Rien n'est effacé
@@ -81,14 +112,16 @@ if [ ! -e "${SEMAINE}" ]; then
   if docker compose run --rm -T pipeline python metrics_report.py recover >/dev/null; then
     touch "${SEMAINE}"
   else
-    horodater "récupération des runs interrompus en échec"
+    echec recover "récupération des runs interrompus en échec"
   fi
 fi
 
+noter_passage || horodater "suivi des passages impossible dans ${BORD}" || true
+
 # Moniteur « push » Uptime Kuma : sans lui, une chaîne qui s'arrête ne se
-# remarque qu'au prochain épisode manqué. Kuma tourne sur venus et ne peut pas
-# interroger la page de validation, ouverte au seul VPN — c'est donc au passage
-# de se signaler. On extrait la seule variable utile du .env plutôt que de le
+# remarque qu'au prochain épisode manqué. La page de validation répond au réseau
+# local et au VPN depuis le 2026-10-02, jamais à Internet ; mais qu'elle réponde
+# ne dit pas que la chaîne passe : c'est donc au passage de se signaler. On extrait la seule variable utile du .env plutôt que de le
 # sourcer : le fichier porte aussi des clés d'API, qui n'ont rien à faire dans
 # l'environnement de tout ce que lance ce script. Un ping raté n'est jamais fatal.
 KUMA=$(sed -n 's/^RECO_KUMA_PUSH_URL=//p' .env 2>/dev/null | tail -1)

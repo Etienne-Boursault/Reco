@@ -177,6 +177,25 @@ sœurs de la même œuvre, ni les playlists de l'épisode.
 
 ---
 
+## Tableau de bord `/bord` (R2 B du 27/11/2026, TB-1 C du 28/11/2026)
+
+Une page du serveur de relecture, liée depuis son accueil. Ce qu'elle montre et son
+exploitation : `../deploy/venus/README.md`. Modules :
+
+- `review_routes_bord.py` : `GET /bord`, `POST /bord/reseau` (JSON `{kind, message}` pour le
+  script de la page, sinon redirection 303 vers `/bord`) et `GET /polices/<nom>` (liste fixe).
+- `bord_rendu.py`, `bord_rendu_blocs.py` : le rendu (pur) ; `review_bord.css` et
+  `bord_client.js`, recopiés en ligne (la CSP n'admet que du style et du script en ligne).
+- `bord_afaire.py` : la liste « À faire d'abord » (pure), que reprendra le rappel du dimanche (PR 4).
+- `bord_chaine.py` : l'épisode en cours, ses étapes et les passages de `tick.sh`
+  (`passages.jsonl`).
+- `bord_reseaux.py` : les cases des réseaux (`reseaux.json`), pour les 3 derniers publiés.
+- `review_polices/` : Bebas Neue et Inter en WOFF2, copiées de `@fontsource`, licence OFL.
+
+Les états vivent sous `tools/output/bord/` (`RECO_BORD_DIR` pour les essais), hors de Git.
+
+---
+
 ## Limites & risques connus
 
 - **Coût API** : l'extraction appelle le modèle (défaut `claude-sonnet-4-6`) une

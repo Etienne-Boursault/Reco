@@ -11,6 +11,9 @@ Fonts
 - Bebas Neue (https://github.com/dharmatype/Bebas-Neue) — SIL Open Font
   License 1.1. The WOFF file redistributed under src/fonts/og/ is covered by
   the OFL 1.1. See src/fonts/og/LICENSE-bebas-neue for full terms.
+- Both fonts (Latin subset, WOFF2, copied from @fontsource 5.3.0) are also
+  redistributed under tools/review_polices/ for the review dashboard, with
+  their OFL 1.1 terms in OFL-inter.txt and OFL-bebas-neue.txt.
 
 JavaScript / Astro dependencies (see package.json for the full list)
 -------------------------------------------------------------------

@@ -22,6 +22,15 @@ from common import log
 # reco en `draft` et ne passe jamais par ici.
 SAVE_ACTIONS: frozenset[str] = frozenset(
     {"validate", "discard", "citation", "guest-work"})
+# m3 (revue 2026-07-19) — message de confirmation de chaque décision (toast
+# JSON et bandeau sans script). Sorti de `review_routes.py` pour qu'il ne
+# grandisse pas (tableau de bord, 28/11/2026, tranche 1e).
+SAVE_FLASH: dict[str, str] = {
+    "validate": "Validée.",
+    "discard": "Écartée.",
+    "citation": "Citation enregistrée.",
+    "guest-work": "Marquée « leur œuvre ».",
+}
 
 
 def _set_recommended_by(reco: dict, recommended: str) -> None:

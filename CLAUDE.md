@@ -10,6 +10,7 @@
 - NEVER commit secrets, credentials, or .env files
 - Keep files under 500 lines
 - Validate input at system boundaries
+- Une liste coupée à l'affichage (`[:N]`) l'est selon un ordre voulu (date, gravité), jamais selon l'ordre d'un dictionnaire, et dit combien d'éléments restent (« + N autres ») : famille F23 de `docs/capitalisation-constats.md`
 
 ## Build & Test
 

@@ -8,6 +8,7 @@ métier (cf. review_routes.py pour les handlers GET/POST).
 from __future__ import annotations
 
 import ipaddress
+import os
 import re
 import urllib.parse
 from functools import wraps
@@ -44,6 +45,56 @@ def _is_private_ip(ip: str) -> bool:
         return ipaddress.ip_address(ip).is_private
     except ValueError:
         return False
+
+
+def _host_name(netloc: str | None) -> str | None:
+    """Nom d'un `Host` (`nom[:port]` ou `[ipv6][:port]`) : en minuscules, sans
+    crochets, point final ni port. None si absent ou mal formé."""
+    if not netloc:
+        return None
+    try:
+        parts = urllib.parse.urlsplit("//" + netloc)
+        _ = parts.port  # lève ValueError sur un port non numérique
+    except ValueError:
+        return None
+    if parts.username is not None or parts.path or parts.query or parts.fragment:
+        return None
+    return (parts.hostname or "").removesuffix(".") or None
+
+
+def _extra_hosts() -> set[str]:
+    """L'hôte de RECO_REVIEW_URL et les noms de RECO_REVIEW_HOTES (virgules),
+    relus à chaque requête. Lus seulement en mode réseau local (`ALLOW_LAN`) :
+    en mode local strict, `_host_allowed` ne les consulte pas (tour 1, F6)."""
+    raw = re.split(r"[,\s]+", os.environ.get("RECO_REVIEW_HOTES", ""))
+    url = os.environ.get("RECO_REVIEW_URL", "")
+    try:
+        raw.append(urllib.parse.urlsplit(url).netloc)
+    except ValueError:
+        log.warning("RECO_REVIEW_URL mal formée, son hôte n'est pas admis")
+    return {n for n in map(_host_name, raw) if n}
+
+
+def _host_allowed(host: str | None) -> bool:
+    """Garde des noms d'hôte (tableau de bord, 28/11/2026, relecture du plan
+    R16 ; faille du rebinding DNS).
+
+    Une page piégée qui fait pointer SON nom de domaine sur le serveur envoie
+    un `Origin` égal au `Host` : seule une liste de noms admis l'arrête. Mode
+    local strict : `localhost` et le bouclage. Mode LAN : en plus, toute IP
+    littérale, les noms en `.local` et ceux de `_extra_hosts`.
+    """
+    name = _host_name(host)
+    if name is None:
+        return False
+    try:
+        ip = ipaddress.ip_address(name)
+    except ValueError:
+        ip = None
+    if not ALLOW_LAN:
+        return name == "localhost" or (ip is not None and ip.is_loopback)
+    return (ip is not None or name == "localhost" or name.endswith(".local")
+            or name in _extra_hosts())
 
 
 # Limite max sur les requêtes POST (en octets) — anti-DoS.
@@ -188,6 +239,20 @@ class BaseHandler(BaseHTTPRequestHandler):
         self.source_id = source_id
         super().__init__(*args, **kwargs)
 
+    def parse_request(self) -> bool:
+        """Refuse en 403 tout `Host` non admis, GET compris, avant toute route
+        (tableau de bord, 28/11/2026, relecture du plan R16 ; faille du
+        rebinding DNS ; cf. `_host_allowed`)."""
+        if not super().parse_request():
+            return False
+        host = self.headers.get("Host")
+        if _host_allowed(host):
+            return True
+        log.warning("Requête refusée : Host non admis %r", (host or "")[:100])
+        self.close_connection = True
+        self._send(403, "Forbidden")
+        return False
+
     # ---- Réponses --------------------------------------------------------
     @staticmethod
     def _content_type_for(body: str) -> str:
@@ -257,11 +322,12 @@ class BaseHandler(BaseHTTPRequestHandler):
             return False
         if parsed.scheme not in ("http", "https"):
             return False
-        host = (parsed.hostname or "").lower()
+        host = _host_name(parsed.netloc) or ""
         if ALLOW_LAN:
             # Anti-CSRF réel : l'Origin doit matcher le Host de la requête (même
             # origine) — en LAN le navigateur utilise l'IP, pas « localhost ».
-            req_host = (self.headers.get("Host") or "").split(":")[0].lower()
+            # Même analyse que la garde des hôtes (IPv6 entre crochets, R16).
+            req_host = _host_name(self.headers.get("Host"))
             if not req_host or host != req_host:
                 return False
         elif host not in ("127.0.0.1", "localhost"):

@@ -18,7 +18,7 @@ from common import (
     write_json_if_changed,
 )
 from reco_dedup_merge import BACKUP_DIR
-from review_actions import SAVE_ACTIONS, apply_review_action
+from review_actions import SAVE_ACTIONS, SAVE_FLASH, apply_review_action
 from review_edit import apply_edit, apply_reenrich, retour_edition
 from review_guests import handle_rename_guest as _handle_rename_guest_fn
 from review_handler_base import (
@@ -37,6 +37,7 @@ from review_render import (
     _render_index,
     refresh_reco_in_cache,
 )
+from review_routes_bord import BordRoutesMixin
 from review_routes_merge import MergeRoutesMixin
 
 # _allocate_new_reco ré-exporté pour la compat (review_server + tests l'importent
@@ -56,15 +57,8 @@ __all__ = [
 ]
 
 # m4 (revue 2026-07-19) — actions POST /save autorisées. Toute autre valeur est
-# rejetée (avant : retombait en `validate` silencieux). m3 — message de
-# confirmation synthétisé par action (toast JSON + flash non-JS).
+# rejetée (avant : retombait en `validate` silencieux).
 _SAVE_ACTIONS: frozenset[str] = SAVE_ACTIONS
-_SAVE_FLASH: dict[str, str] = {
-    "validate": "Validée.",
-    "discard": "Écartée.",
-    "citation": "Citation enregistrée.",
-    "guest-work": "Marquée « leur œuvre ».",
-}
 
 
 def _cleanup_orphan_tmp_files(source_id: str) -> int:
@@ -94,7 +88,7 @@ def _cleanup_orphan_tmp_files(source_id: str) -> int:
 
 
 class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, LienRoutesMixin,
-              TableRoutesMixin, ReviewJournalMixin, BaseHandler):
+              TableRoutesMixin, BordRoutesMixin, ReviewJournalMixin, BaseHandler):
     """Handler HTTP métier — assemble GET/POST sur les routes du review_server.
 
     Hérite de :
@@ -143,6 +137,9 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, LienRoutesMixin,
                 kind = "info"
             self._send(200, render_dedup_page(self.source_id, flash=flash,
                                               flash_kind=kind))
+            return
+        if parsed.path == "/bord" or parsed.path.startswith("/polices/"):
+            self._handle_get_bord(parsed)  # tableau de bord (review_routes_bord)
             return
         if parsed.path == "/tableau":
             # Tableau de pilotage des recos actives (cf. review_table) : une
@@ -248,6 +245,8 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, LienRoutesMixin,
         if route == "/activite":
             self._handle_activite(data)
             return
+        if route == "/bord/reseau":  # hors du journal : aucune reco n'y change
+            return self._handle_bord_reseau(data)
         # Avant/après sur disque : seules les écritures réussies sont journalisées.
         with self._journal_revue(route, data):
             self._router_post(route, data)
@@ -526,7 +525,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, LienRoutesMixin,
         # m3 (revue 2026-07-19) : synthétiser un flash succès — sinon le POST
         # /save en JSON (fetch) ne renvoyait aucun toast, et la redirection
         # non-JS ne confirmait rien à l'utilisateur·rice.
-        return guid, _SAVE_FLASH[action], "success"
+        return guid, SAVE_FLASH[action], "success"
 
     @staticmethod
     def _apply_save_action(reco: dict, action: str, recommended: str,

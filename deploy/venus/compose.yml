@@ -26,8 +26,9 @@ x-atelier: &atelier
     dockerfile: deploy/venus/Dockerfile
   user: "1000:1000"
   env_file: /home/etienne/docker/reco/.env
-  # Réseau de l'hôte : la page de validation écoute sur l'adresse du VPN
-  # (10.8.0.1, interface wg0), que le réseau Docker ne voit pas.
+  # Réseau de l'hôte : la page de validation écoute sur toutes ses interfaces,
+  # réseau local et VPN compris (depuis le 2026-10-02), que le réseau Docker ne
+  # voit pas.
   network_mode: host
   volumes:
     - /home/etienne/docker/reco/depot:/app
@@ -39,8 +40,10 @@ x-atelier: &atelier
     - /home/etienne/.ssh/reco_deploy:/home/etienne/.ssh/reco_deploy:ro
 
 services:
-  # Page de validation. Elle n'a AUCUNE authentification : ce qui la protège est
-  # le pare-feu, et lui seul.
+  # Page de validation, et son tableau de bord `/bord`. Elle n'a AUCUNE
+  # authentification : ce qui la protège est le pare-feu. La garde des hôtes
+  # (28/11/2026, README.md) refuse en plus tout nom de domaine étranger, contre
+  # le « DNS rebinding » ; un autre nom se déclare dans RECO_REVIEW_HOTES.
   #
   # Jusqu'au 2026-10-02 elle n'écoutait que sur 10.8.0.1, l'adresse du VPN. Mais
   # l'éditeur, chez lui, devait monter un VPN pour atteindre une machine à trois
